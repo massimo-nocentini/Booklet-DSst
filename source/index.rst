@@ -6,15 +6,17 @@
 Welcome to DSst's documentation!
 ================================
 
+Below are a collection of my favourite recipes. I highly recommend the
+:recipe:ref:`TomatoSoup` recipe in particular!
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-
+   chapters/links
 
 Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
