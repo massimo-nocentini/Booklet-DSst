@@ -35,7 +35,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Welcome to DSst’s documentation!" href="index.html" /> 
+    <link rel="prev" title="Data Structures in Smalltalk" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -152,16 +152,54 @@
 <span class="target" id="compiledMethod-0"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="nc">CTLinkedStorageValueLinkTest</span> <span class="nf">&gt;&gt;</span> <span class="nv">testEmptyLink</span> 
 
 	<span class="nf">|</span> <span class="nv">l</span> <span class="nf">|</span>
-	<span class="nv">l</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span>
+	<span class="nv">l</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span>
+		  <span class="nf">export:</span> <span class="nv">l</span>
+		  <span class="nf">pathSuffix:</span> <span class="s">&#39;&#39;</span>
+		  <span class="nf">selector:</span> <span class="ss">#gtInspectorSlotsGraphInCanvas:</span>
 </pre></div>
 </div>
-<span class="target" id="compiledMethod-1"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="nc">CTLinkedStorageValueLinkTest</span> <span class="nf">&gt;&gt;</span> <span class="nv">testMostSimpleLink</span> 
+<blockquote>
+<div><img alt="_images/CTLinkedStorageValueLinkTest-testEmptyLink.svg" class="align-center" src="_images/CTLinkedStorageValueLinkTest-testEmptyLink.svg" /></div></blockquote>
+<span class="target" id="compiledMethod-1"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="nc">CTLinkedStorageValueLinkTest</span> <span class="nf">&gt;&gt;</span> <span class="nv">testLinkReferencingItself</span> 
 
 	<span class="nf">|</span> <span class="nv">l</span> <span class="nf">|</span>
 	<span class="nv">l</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
-	<span class="nv">l</span> <span class="nf">nextLink:</span> <span class="nv">l</span>
+	<span class="nv">l</span> <span class="nf">nextLink:</span> <span class="nv">l</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span>
+		  <span class="nf">export:</span> <span class="nv">l</span>
+		  <span class="nf">pathSuffix:</span> <span class="s">&#39;&#39;</span>
+		  <span class="nf">selector:</span> <span class="ss">#gtInspectorSlotsGraphInCanvas:</span><span class="p">;</span>
+		  <span class="nf">export:</span> <span class="nv">l</span>
+		  <span class="nf">pathSuffix:</span> <span class="s">&#39;recursive&#39;</span>
+		  <span class="nf">selector:</span> <span class="ss">#gtInspectorSlotsGraphRecursiveInCanvas:</span>
 </pre></div>
 </div>
+<blockquote>
+<div><img alt="_images/CTLinkedStorageValueLinkTest-testLinkReferencingItself.svg" class="align-center" src="_images/CTLinkedStorageValueLinkTest-testLinkReferencingItself.svg" /><p>moreover, the recursive view is much more appealing:</p>
+<img alt="_images/CTLinkedStorageValueLinkTest-testLinkReferencingItself-recursive.svg" class="align-center" src="_images/CTLinkedStorageValueLinkTest-testLinkReferencingItself-recursive.svg" /></div></blockquote>
+<span class="target" id="compiledMethod-2"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="nc">CTLinkedStorageValueLinkTest</span> <span class="nf">&gt;&gt;</span> <span class="nv">testTwoLinksReferencingEachOther</span> 
+
+	<span class="nf">|</span> <span class="nv">l1</span> <span class="nf">l2</span> <span class="nf">|</span>
+	<span class="nv">l1</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+	<span class="nv">l2</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+	<span class="nv">l1</span> <span class="nf">nextLink:</span> <span class="nv">l2</span><span class="p">.</span>
+	<span class="nv">l2</span> <span class="nf">nextLink:</span> <span class="nv">l1</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span>
+		  <span class="nf">export:</span> <span class="nv">l1</span>
+		  <span class="nf">pathSuffix:</span> <span class="s">&#39;&#39;</span>
+		  <span class="nf">selector:</span> <span class="ss">#gtInspectorSlotsGraphInCanvas:</span><span class="p">;</span>
+		  <span class="nf">export:</span> <span class="nv">l1</span>
+		  <span class="nf">pathSuffix:</span> <span class="s">&#39;recursive&#39;</span>
+		  <span class="nf">selector:</span> <span class="ss">#gtInspectorSlotsGraphRecursiveInCanvas:</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="_images/CTLinkedStorageValueLinkTest-testTwoLinksReferencingEachOther.svg" class="align-center" src="_images/CTLinkedStorageValueLinkTest-testTwoLinksReferencingEachOther.svg" /><p>moreover, the recursive view is much more appealing:</p>
+<img alt="_images/CTLinkedStorageValueLinkTest-testTwoLinksReferencingEachOther-recursive.svg" class="align-center" src="_images/CTLinkedStorageValueLinkTest-testTwoLinksReferencingEachOther-recursive.svg" /></div></blockquote>
 </div>
 
 
@@ -173,7 +211,7 @@
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to DSst’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Data Structures in Smalltalk" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
