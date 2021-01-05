@@ -8,13 +8,11 @@ Welcome to DSst's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
-
+   linked-allocation.rst
 
 Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
