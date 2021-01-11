@@ -81,7 +81,11 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Linked memory allocation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Linked memory allocation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#link-objects"><code class="docutils literal notranslate"><span class="pre">Link</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linkedlist-objects"><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> objects</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -149,9 +153,22 @@
             
   <div class="section" id="linked-memory-allocation">
 <h1>Linked memory allocation<a class="headerlink" href="#linked-memory-allocation" title="Permalink to this headline">¶</a></h1>
-<span class="target" id="compiledMethod-0"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="nc">CTLinkedStorageValueLinkTest</span> <span class="nf">&gt;&gt;</span> <span class="nv">testEmptyLink</span> 
+<div class="section" id="link-objects">
+<h2><code class="docutils literal notranslate"><span class="pre">Link</span></code> objects<a class="headerlink" href="#link-objects" title="Permalink to this headline">¶</a></h2>
+<p>Our discussion starts with <code class="docutils literal notranslate"><span class="pre">Link</span></code>, a tiny class that is included by default in a fresh image and has been defined as</p>
+<div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">subclass:</span> <span class="ss">#Link</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;nextLink&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Collections-Support-Links&#39;</span>
 
-	<span class="nf">|</span> <span class="nv">l</span> <span class="nf">|</span>
+<span class="c">&quot;An instance of me is a simple record of a pointer to another Link. I am an abstract class; my concrete subclasses, for example, Process, can be stored in a LinkedList structure.&quot;</span>
+</pre></div>
+</div>
+<p>The simplest <code class="docutils literal notranslate"><span class="pre">Link</span></code> object is</p>
+<span class="target" id="compiledMethod-0"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testEmptyLink</span>
+
+	<span class="o">|</span><span class="nv"> l </span><span class="o">|</span>
 	<span class="nv">l</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
 
 	<span class="o">^</span> <span class="bp">self</span>
@@ -162,44 +179,209 @@
 </div>
 <blockquote>
 <div><img alt="_images/CTLinkedStorageValueLinkTest-testEmptyLink.svg" class="align-center" src="_images/CTLinkedStorageValueLinkTest-testEmptyLink.svg" /></div></blockquote>
-<span class="target" id="compiledMethod-1"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="nc">CTLinkedStorageValueLinkTest</span> <span class="nf">&gt;&gt;</span> <span class="nv">testLinkReferencingItself</span> 
+<p>Although we can use a <code class="docutils literal notranslate"><span class="pre">Link</span></code> to point to an arbitrary object, implicity <code class="docutils literal notranslate"><span class="pre">nil</span></code> in
+the previous test case and explicity <code class="docutils literal notranslate"><span class="pre">3</span></code> in the following one,</p>
+<span class="target" id="compiledMethod-1"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testLinkReferencingThree</span>
 
-	<span class="nf">|</span> <span class="nv">l</span> <span class="nf">|</span>
+	<span class="o">|</span><span class="nv"> l </span><span class="o">|</span>
+	<span class="nv">l</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+	<span class="nv">l</span> <span class="nf">nextLink:</span> <span class="m">3</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span>
+		  <span class="nf">export:</span> <span class="nv">l</span>
+		  <span class="nf">pathSuffix:</span> <span class="s">&#39;&#39;</span>
+		  <span class="nf">selector:</span> <span class="ss">#gtInspectorSlotsGraphInCanvas:</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="_images/CTLinkedStorageValueLinkTest-testLinkReferencingThree.svg" class="align-center" src="_images/CTLinkedStorageValueLinkTest-testLinkReferencingThree.svg" /></div></blockquote>
+<p>a <code class="docutils literal notranslate"><span class="pre">Link</span></code> is designed for referencing a <code class="docutils literal notranslate"><span class="pre">Link</span></code> object, either a new one</p>
+<span class="target" id="compiledMethod-2"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testLinkReferencingAnotherLink</span>
+
+	<span class="o">|</span><span class="nv"> l1 l2 </span><span class="o">|</span>
+	<span class="nv">l1</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+	<span class="nv">l2</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+
+	<span class="nv">l1</span> <span class="nf">nextLink:</span> <span class="nv">l2</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span>
+		  <span class="nf">export:</span> <span class="nv">l1</span>
+		  <span class="nf">pathSuffix:</span> <span class="s">&#39;&#39;</span>
+		  <span class="nf">selector:</span> <span class="ss">#gtInspectorSlotsGraphInCanvas:</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="_images/CTLinkedStorageValueLinkTest-testLinkReferencingAnotherLink.svg" class="align-center" src="_images/CTLinkedStorageValueLinkTest-testLinkReferencingAnotherLink.svg" /></div></blockquote>
+<p>or possibly itself</p>
+<span class="target" id="compiledMethod-3"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testLinkReferencingItself</span>
+
+	<span class="o">|</span><span class="nv"> l </span><span class="o">|</span>
 	<span class="nv">l</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
 	<span class="nv">l</span> <span class="nf">nextLink:</span> <span class="nv">l</span><span class="p">.</span>
 
 	<span class="o">^</span> <span class="bp">self</span>
 		  <span class="nf">export:</span> <span class="nv">l</span>
 		  <span class="nf">pathSuffix:</span> <span class="s">&#39;&#39;</span>
-		  <span class="nf">selector:</span> <span class="ss">#gtInspectorSlotsGraphInCanvas:</span><span class="p">;</span>
-		  <span class="nf">export:</span> <span class="nv">l</span>
-		  <span class="nf">pathSuffix:</span> <span class="s">&#39;recursive&#39;</span>
-		  <span class="nf">selector:</span> <span class="ss">#gtInspectorSlotsGraphRecursiveInCanvas:</span>
+		  <span class="nf">selector:</span> <span class="ss">#gtInspectorSlotsGraphInCanvas:</span>
 </pre></div>
 </div>
 <blockquote>
-<div><img alt="_images/CTLinkedStorageValueLinkTest-testLinkReferencingItself.svg" class="align-center" src="_images/CTLinkedStorageValueLinkTest-testLinkReferencingItself.svg" /><p>moreover, the recursive view is much more appealing:</p>
-<img alt="_images/CTLinkedStorageValueLinkTest-testLinkReferencingItself-recursive.svg" class="align-center" src="_images/CTLinkedStorageValueLinkTest-testLinkReferencingItself-recursive.svg" /></div></blockquote>
-<span class="target" id="compiledMethod-2"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="nc">CTLinkedStorageValueLinkTest</span> <span class="nf">&gt;&gt;</span> <span class="nv">testTwoLinksReferencingEachOther</span> 
+<div><img alt="_images/CTLinkedStorageValueLinkTest-testLinkReferencingItself.svg" class="align-center" src="_images/CTLinkedStorageValueLinkTest-testLinkReferencingItself.svg" /></div></blockquote>
+<p>The previous two representations look the same but in memory are completely
+different structures. To see this, we unroll the representation for the <code class="docutils literal notranslate"><span class="pre">Link</span></code>
+objects that are <em>recursively</em> referenced via the <code class="docutils literal notranslate"><span class="pre">nextLink</span></code> slot so that
+both the usual structure</p>
+<span class="target" id="compiledMethod-4"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testLinkReferencingAnotherLinkRecursive</span>
 
-	<span class="nf">|</span> <span class="nv">l1</span> <span class="nf">l2</span> <span class="nf">|</span>
+	<span class="o">|</span><span class="nv"> l1 l2 </span><span class="o">|</span>
 	<span class="nv">l1</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
 	<span class="nv">l2</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
-	<span class="nv">l1</span> <span class="nf">nextLink:</span> <span class="nv">l2</span><span class="p">.</span>
-	<span class="nv">l2</span> <span class="nf">nextLink:</span> <span class="nv">l1</span><span class="p">.</span>
 
-	<span class="o">^</span> <span class="bp">self</span>
-		  <span class="nf">export:</span> <span class="nv">l1</span>
-		  <span class="nf">pathSuffix:</span> <span class="s">&#39;&#39;</span>
-		  <span class="nf">selector:</span> <span class="ss">#gtInspectorSlotsGraphInCanvas:</span><span class="p">;</span>
-		  <span class="nf">export:</span> <span class="nv">l1</span>
-		  <span class="nf">pathSuffix:</span> <span class="s">&#39;recursive&#39;</span>
-		  <span class="nf">selector:</span> <span class="ss">#gtInspectorSlotsGraphRecursiveInCanvas:</span>
+	<span class="nv">l1</span> <span class="nf">nextLink:</span> <span class="nv">l2</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">export:</span> <span class="nv">l1</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;&#39;</span> <span class="nf">selector:</span> [ <span class="o">:</span><span class="nv">aLink</span> <span class="o">:</span><span class="nv">aCanvas</span> <span class="o">|</span> 
+		  <span class="nv">aLink</span>
+			  <span class="nf">gtInspectorSlotsGraphRecursiveInCanvas:</span> <span class="nv">aCanvas</span>
+			  <span class="nf">recursiveReferences:</span> <span class="nv">aLink</span> <span class="nf">recursiveReferences</span> ]
 </pre></div>
 </div>
 <blockquote>
-<div><img alt="_images/CTLinkedStorageValueLinkTest-testTwoLinksReferencingEachOther.svg" class="align-center" src="_images/CTLinkedStorageValueLinkTest-testTwoLinksReferencingEachOther.svg" /><p>moreover, the recursive view is much more appealing:</p>
-<img alt="_images/CTLinkedStorageValueLinkTest-testTwoLinksReferencingEachOther-recursive.svg" class="align-center" src="_images/CTLinkedStorageValueLinkTest-testTwoLinksReferencingEachOther-recursive.svg" /></div></blockquote>
+<div><img alt="_images/CTLinkedStorageValueLinkTest-testLinkReferencingAnotherLinkRecursive.svg" class="align-center" src="_images/CTLinkedStorageValueLinkTest-testLinkReferencingAnotherLinkRecursive.svg" /></div></blockquote>
+<p>and the loop structure</p>
+<span class="target" id="compiledMethod-5"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testLinkReferencingItselfRecursive</span>
+
+	<span class="o">|</span><span class="nv"> l </span><span class="o">|</span>
+	<span class="nv">l</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+	<span class="nv">l</span> <span class="nf">nextLink:</span> <span class="nv">l</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">export:</span> <span class="nv">l</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;&#39;</span> <span class="nf">selector:</span> [ <span class="o">:</span><span class="nv">aLink</span> <span class="o">:</span><span class="nv">aCanvas</span> <span class="o">|</span> 
+		  <span class="nv">aLink</span>
+			  <span class="nf">gtInspectorSlotsGraphRecursiveInCanvas:</span> <span class="nv">aCanvas</span>
+			  <span class="nf">recursiveReferences:</span> <span class="nv">aLink</span> <span class="nf">recursiveReferences</span> ]
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="_images/CTLinkedStorageValueLinkTest-testLinkReferencingItselfRecursive.svg" class="align-center" src="_images/CTLinkedStorageValueLinkTest-testLinkReferencingItselfRecursive.svg" /></div></blockquote>
+<p>are correcly drawn and the difference is now clear. For the sake of clarity the
+unrolling rests on</p>
+<span class="target" id="compiledMethod-7"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Link, protocol *Collections-Support-Extensions&quot;</span>
+<span class="nf">recursiveReferences</span>
+
+	<span class="o">^</span> <span class="nc">Array</span> <span class="nf">streamContents:</span> [ <span class="o">:</span><span class="nv">aStream</span> <span class="o">|</span> 
+		  <span class="bp">self</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">aValueLink</span> <span class="o">|</span> <span class="nv">aStream</span> <span class="nf">nextPut:</span> <span class="nv">aValueLink</span> ] ]
+</pre></div>
+</div>
+<blockquote>
+<div><p>where</p>
+<span class="target" id="compiledMethod-6"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Link, protocol *Collections-Support-Extensions&quot;</span>
+<span class="nf">do:</span> <span class="nv">aBlock</span>
+
+	<span class="o">|</span><span class="nv"> link </span><span class="o">|</span>
+	<span class="nv">link</span> <span class="o">:=</span> <span class="bp">self</span><span class="p">.</span>
+	[ <span class="nv">link</span> ] <span class="nf">whileNotNil:</span> [ 
+		<span class="nv">aBlock</span> <span class="nf">value:</span> <span class="nv">link</span><span class="p">.</span>
+		<span class="nv">link</span> <span class="o">:=</span> <span class="nv">link</span> <span class="nf">nextLink</span><span class="p">.</span>
+		<span class="nv">link</span> <span class="nf">==</span> <span class="bp">self</span> <span class="nb">ifTrue:</span> [ <span class="nv">link</span> <span class="o">:=</span> <span class="bp">nil</span> ] ]
+</pre></div>
+</div>
+</div></blockquote>
+<p>From now on we will use the recursive representation in order to have the big picture of the structures allocated in memory,
+so a combination of what we have seen so far looks as follows</p>
+<span class="target" id="compiledMethod-8"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testTwoLinksReferencingEachOtherRecursive</span>
+
+	<span class="o">|</span><span class="nv"> l1 l2 l3 </span><span class="o">|</span>
+	<span class="nv">l1</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+	<span class="nv">l2</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+	<span class="nv">l3</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+	<span class="nv">l1</span> <span class="nf">nextLink:</span> <span class="nv">l2</span><span class="p">.</span>
+	<span class="nv">l2</span> <span class="nf">nextLink:</span> <span class="nv">l3</span><span class="p">.</span>
+	<span class="nv">l3</span> <span class="nf">nextLink:</span> <span class="nv">l1</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">export:</span> <span class="nv">l1</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;&#39;</span> <span class="nf">selector:</span> [ <span class="o">:</span><span class="nv">aLink</span> <span class="o">:</span><span class="nv">aCanvas</span> <span class="o">|</span> 
+		  <span class="nv">aLink</span>
+			  <span class="nf">gtInspectorSlotsGraphRecursiveInCanvas:</span> <span class="nv">aCanvas</span>
+			  <span class="nf">recursiveReferences:</span> <span class="nv">aLink</span> <span class="nf">recursiveReferences</span> ]
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="_images/CTLinkedStorageValueLinkTest-testTwoLinksReferencingEachOtherRecursive.svg" class="align-center" src="_images/CTLinkedStorageValueLinkTest-testTwoLinksReferencingEachOtherRecursive.svg" /></div></blockquote>
+</div>
+<div class="section" id="linkedlist-objects">
+<h2><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> objects<a class="headerlink" href="#linkedlist-objects" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="nc">SequenceableCollection</span> <span class="nf">subclass:</span> <span class="ss">#LinkedList</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;firstLink lastLink&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Collections-Sequenceable-Base&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>I am a sequential collection where adjecent objects are linked.
+I can store any kind of objects that I will wrap into a Link (See implementation points).
+I act pretty much as an OrderedCollection, but my access times differs: the method <span class="ni">#atIndex:</span> is depending of the number of elements so is not constant. In the worse case, the whole list must be crossed.
+Using the message <span class="ni">#addFirst:</span> / <span class="ni">#removeLast</span> causes the receiver to behave as a stack; using <span class="ni">#addLast:</span> / <span class="ni">#removeFirst</span> causes the receiver to behave as a queue.
+
+I use the Link class (or his subclasses) in my implementation. 
+
+<span class="gu">### Public API and Key Messages</span>
+
+<span class="k">-</span> <span class="ni">#new</span> / <span class="ni">#withAll:</span> aCollection / <span class="ni">#with:</span> anObject 	are common constructors
+<span class="k">-</span> <span class="ni">#add:</span> anObject / <span class="ni">#at:</span> anIndex put: anObject 	allow to add new elements to myself.
+<span class="k">-</span> <span class="ni">#remove:</span> anObject 	allow to remove an element.
+<span class="k">-</span> <span class="ni">#do:</span> aBlock / <span class="ni">#collect:</span> aBlock / <span class="ni">#select:</span> aBlock / <span class="ni">#reject:</span> aBlock 	are common iterators.
+
+<span class="gu">### Example </span>
+
+ 	&quot;There is many ways to create a LinkedList, here are some:&quot;
+```
+	linkedList := LinkedList new.
+	linkedList
+		add: &#39;one&#39;;
+		add: &#39;two&#39;;
+		addFirst: &#39;zero&#39;;
+		addLast: &#39;three&#39;.
+	linkedList.		&quot;returns: a LinkedList(&#39;zero&#39; &#39;one&#39; &#39;two&#39; &#39;three&#39;)&quot;
+
+<span class="sb">	&quot;or&quot;</span>
+<span class="sb">	linkedList := LinkedList with: &#39;one&#39; with: &#39;two&#39; with: &#39;three&#39;.</span>
+<span class="sb">	linkedList.		&quot;returns: a LinkedList(&#39;one&#39; &#39;two&#39; &#39;three&#39;)&quot;</span>
+
+	&quot;or from an other collection (here an Array)&quot;
+	linkedList := LinkedList withAll: #(&#39;one&#39; &#39;two&#39; &#39;three&#39;).
+	linkedList.		&quot;returns: a LinkedList(&#39;one&#39; &#39;two&#39; &#39;three&#39;)&quot;
+
+<span class="sb">	&quot;Some manipulations&quot;</span>
+<span class="sb">	linkedList := LinkedList new.</span>
+<span class="sb">	linkedList</span>
+<span class="sb">		add: 1;</span>
+<span class="sb">		add: 2.</span>
+<span class="sb">	linkedList.		&quot;returns: a LinkedList(1 2)&quot;</span>
+<span class="sb">	linkedList remove: 1.</span>
+<span class="sb">	linkedList.		&quot;returns: a LinkedList(2)&quot;</span>
+
+	&quot;A last one&quot;
+	linkedList := LinkedList with: $b with: $c with: $a.
+	linkedList sort: [ :first :second | first &lt; second ].			&quot;returns: a LinkedList($a $b $c)&quot;
+	linkedList collect: [ :element | element asUppercase ].	&quot;returns:  a LinkedList($A $B $C)&quot;
+	linkedList select: [ :element | element &gt;= $b ].			&quot;returns:  a LinkedList($b $c)&quot;
+	linkedList do: [ :element | element inspect ].
+	linkedList asArray									&quot;returns: #($a $b $c)&quot;
+```
+			
+<span class="gu">### Internal Representation and Key Implementation Points.</span>
+
+Instance Variables
+<span class="k">-</span> firstLink:		 &lt;Link&gt; 	A link that contains the first value of the LinkedList.
+<span class="k">-</span> lastLink:		 &lt;Link&gt; 	A link that contains the last value of the LinkedList.
+
+If you attempt to add any object into a LinkedList that is not a Link, it will automatically be wrapped by a ValueLink.
+</pre></div>
+</div>
+</div>
 </div>
 
 
