@@ -40,6 +40,7 @@ extensions = [
 # The following configuation values concerns the Pharo domain.
 pharo_json_export_filenames = [
         '../Containers-LinkedStoragePool/json-for-doc/link-core-messages.json',
+        '../Containers-LinkedStoragePool/json-for-doc/valuelink-core-messages.json',
 ]
 
 # Add any paths that contain templates here, relative to this directory.

@@ -7,7 +7,7 @@ Data Structures in Smalltalk
 ============================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    linked-allocation.rst
 
