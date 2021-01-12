@@ -223,6 +223,44 @@ then all the values are kept as well</p>
 <div><img alt="../_images/CTLinkedStorageValueLinkTest-testAsLinkedList4321.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-testAsLinkedList4321.svg" /></div></blockquote>
 </li>
 </ul>
+<p>Additionally, <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> objects can be built using other objects than
+<code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> ones, for example sending <code class="docutils literal notranslate"><span class="pre">#as:</span></code> to an <code class="docutils literal notranslate"><span class="pre">Interval</span></code></p>
+<span class="target" id="compiledMethod-6"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testAsLinkedListFromInterval</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> ((<span class="m">1</span> <span class="nf">to:</span> <span class="m">10</span>) <span class="nf">as:</span> <span class="nc">LinkedList</span>)
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-testAsLinkedListFromInterval.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-testAsLinkedListFromInterval.svg" /></div></blockquote>
+<p>Moreover, from a <code class="docutils literal notranslate"><span class="pre">SequenceableCollection</span></code> we can revert back to a <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> with</p>
+<span class="target" id="compiledMethod-9"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testAsValueLink</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">10</span>) <span class="nf">asValueLink</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-testAsValueLink.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-testAsValueLink.svg" /><p>where</p>
+<span class="target" id="compiledMethod-8"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Collections-Sequenceable-Extensions&quot;</span>
+<span class="nf">asValueLink</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">foldr:</span> <span class="ss">#~~&gt;</span> <span class="nf">init:</span> <span class="bp">nil</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>where</p>
+<span class="target" id="compiledMethod-7"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Collections-Sequenceable-Extensions&quot;</span>
+<span class="nf">foldr:</span> <span class="nv">aBlock</span> <span class="nf">init:</span> <span class="nv">init</span>
+
+	<span class="o">|</span><span class="nv"> cell </span><span class="o">|</span>
+	<span class="nv">cell</span> <span class="o">:=</span> <span class="nv">init</span><span class="p">.</span>
+	<span class="bp">self</span> <span class="nf">reverseDo:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">cell</span> <span class="o">:=</span> <span class="nv">aBlock</span> <span class="nf">value:</span> <span class="nv">each</span> <span class="nf">value:</span> <span class="nv">cell</span> ]<span class="p">.</span>
+	<span class="o">^</span> <span class="nv">cell</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
 <p>Finally, the definition and class comment of <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> follows</p>
 <div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="nc">SequenceableCollection</span> <span class="nf">subclass:</span> <span class="ss">#LinkedList</span>
 	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;firstLink lastLink&#39;</span>

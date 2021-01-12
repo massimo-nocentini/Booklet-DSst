@@ -52,6 +52,29 @@ Two observations are in order:
     .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-testAsLinkedList4321.svg
       :align: center
   
+Additionally, ``LinkedList`` objects can be built using other objects than
+``ValueLink`` ones, for example sending ``#as:`` to an ``Interval`` 
+
+.. pharo:autocompiledmethod:: CTLinkedStorageValueLinkTest>>#testAsLinkedListFromInterval
+
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-testAsLinkedListFromInterval.svg
+    :align: center
+
+Moreover, from a ``SequenceableCollection`` we can revert back to a ``ValueLink`` with
+
+.. pharo:autocompiledmethod:: CTLinkedStorageValueLinkTest>>#testAsValueLink
+
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-testAsValueLink.svg
+    :align: center
+  
+  where
+
+  .. pharo:autocompiledmethod:: SequenceableCollection>>#asValueLink
+
+    where
+
+    .. pharo:autocompiledmethod:: SequenceableCollection>>#foldr:init:
+
 Finally, the definition and class comment of ``LinkedList`` follows
 
 .. pharo:autoclass:: LinkedList
