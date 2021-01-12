@@ -261,6 +261,34 @@ then all the values are kept as well</p>
 </div>
 </div></blockquote>
 </div></blockquote>
+<p>Using another folding message <code class="docutils literal notranslate"><span class="pre">#inject:into:</span></code>, defined as</p>
+<span class="target" id="compiledMethod-10"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Collection, protocol enumerating&quot;</span>
+<span class="nf">inject:</span> <span class="nv">thisValue</span> <span class="nf">into:</span> <span class="nv">binaryBlock</span>
+
+	<span class="c">&quot;Accumulate a running value associated with evaluating the argument, binaryBlock, with the current value of the argument, thisValue, and the receiver as block arguments.&quot;</span>
+
+	<span class="c">&quot;( #(1 2 3) inject: 0 into: [ :sum :each | sum + each ] ) &gt;&gt;&gt; 6&quot;</span>
+
+	<span class="o">|</span><span class="nv"> nextValue </span><span class="o">|</span>
+	<span class="nv">nextValue</span> <span class="o">:=</span> <span class="nv">thisValue</span><span class="p">.</span>
+	<span class="bp">self</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> 
+		<span class="nv">nextValue</span> <span class="o">:=</span> <span class="nv">binaryBlock</span> <span class="nf">value:</span> <span class="nv">nextValue</span> <span class="nf">value:</span> <span class="nv">each</span> ]<span class="p">.</span>
+	<span class="o">^</span> <span class="nv">nextValue</span>
+</pre></div>
+</div>
+<p>we obtain a <em>reversed</em> <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code></p>
+<span class="target" id="compiledMethod-11"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testAsValueLinkInjectInto</span>
+
+	<span class="o">|</span><span class="nv"> l </span><span class="o">|</span>
+	<span class="nv">l</span> <span class="o">:=</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">10</span>)
+		     <span class="nf">inject:</span> <span class="bp">nil</span>
+		     <span class="nf">into:</span> [ <span class="o">:</span><span class="nv">aValueLink</span> <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">each</span> <span class="nf">~~&gt;</span> <span class="nv">aValueLink</span> ]<span class="p">.</span>
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphRecursiveOf:</span> <span class="nv">l</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-testAsValueLinkInjectInto.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-testAsValueLinkInjectInto.svg" /></div></blockquote>
 <p>Finally, the definition and class comment of <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> follows</p>
 <div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="nc">SequenceableCollection</span> <span class="nf">subclass:</span> <span class="ss">#LinkedList</span>
 	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;firstLink lastLink&#39;</span>

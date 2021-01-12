@@ -75,6 +75,17 @@ Moreover, from a ``SequenceableCollection`` we can revert back to a ``ValueLink`
 
     .. pharo:autocompiledmethod:: SequenceableCollection>>#foldr:init:
 
+Using another folding message ``#inject:into:``, defined as
+
+.. pharo:autocompiledmethod:: Collection>>#inject:into:
+
+we obtain a *reversed* ``ValueLink``
+
+.. pharo:autocompiledmethod:: CTLinkedStorageValueLinkTest>>#testAsValueLinkInjectInto
+
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-testAsValueLinkInjectInto.svg
+    :align: center
+
 Finally, the definition and class comment of ``LinkedList`` follows
 
 .. pharo:autoclass:: LinkedList
