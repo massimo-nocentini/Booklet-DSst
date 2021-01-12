@@ -1,0 +1,643 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Linked memory allocation &mdash; Data Structures in Smalltalk  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Data Structures in Smalltalk" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Data Structures in Smalltalk
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Linked memory allocation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#links">Links</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#link-objects"><code class="docutils literal notranslate"><span class="pre">Link</span></code> objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#valuelink-objects"><code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#containers">Containers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linkedlist-objects"><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> objects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Data Structures in Smalltalk</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Linked memory allocation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/linked-allocation/linked-allocation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="linked-memory-allocation">
+<h1>Linked memory allocation<a class="headerlink" href="#linked-memory-allocation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="links">
+<h2>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="link-objects">
+<h3><code class="docutils literal notranslate"><span class="pre">Link</span></code> objects<a class="headerlink" href="#link-objects" title="Permalink to this headline">¶</a></h3>
+<p>Our discussion starts with <code class="docutils literal notranslate"><span class="pre">Link</span></code>, a tiny class that is included by default in a fresh image and has been defined as</p>
+<div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">subclass:</span> <span class="ss">#Link</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;nextLink&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Collections-Support-Links&#39;</span>
+
+<span class="c">&quot;An instance of me is a simple record of a pointer to another Link. I am an abstract class; my concrete subclasses, for example, Process, can be stored in a LinkedList structure.&quot;</span>
+</pre></div>
+</div>
+<p>The simplest <code class="docutils literal notranslate"><span class="pre">Link</span></code> object is</p>
+<span class="target" id="compiledMethod-0"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageLinkTest, protocol tests&quot;</span>
+<span class="nf">testEmptyLink</span>
+
+	<span class="o">|</span><span class="nv"> l </span><span class="o">|</span>
+	<span class="nv">l</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">l</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageLinkTest-testEmptyLink.svg" class="align-center" src="../_images/CTLinkedStorageLinkTest-testEmptyLink.svg" /></div></blockquote>
+<p>Although we can use a <code class="docutils literal notranslate"><span class="pre">Link</span></code> to point to an arbitrary object, implicity <code class="docutils literal notranslate"><span class="pre">nil</span></code> in
+the previous test case and explicity <code class="docutils literal notranslate"><span class="pre">3</span></code> in the following one,</p>
+<span class="target" id="compiledMethod-1"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageLinkTest, protocol tests&quot;</span>
+<span class="nf">testLinkReferencingThree</span>
+
+	<span class="o">|</span><span class="nv"> l </span><span class="o">|</span>
+	<span class="nv">l</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+	<span class="nv">l</span> <span class="nf">nextLink:</span> <span class="m">3</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">l</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageLinkTest-testLinkReferencingThree.svg" class="align-center" src="../_images/CTLinkedStorageLinkTest-testLinkReferencingThree.svg" /></div></blockquote>
+<p>a <code class="docutils literal notranslate"><span class="pre">Link</span></code> is designed for referencing a <code class="docutils literal notranslate"><span class="pre">Link</span></code> object, either a new one</p>
+<span class="target" id="compiledMethod-2"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageLinkTest, protocol tests&quot;</span>
+<span class="nf">testLinkReferencingAnotherLink</span>
+
+	<span class="o">|</span><span class="nv"> l1 l2 </span><span class="o">|</span>
+	<span class="nv">l1</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+	<span class="nv">l2</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+
+	<span class="nv">l1</span> <span class="nf">nextLink:</span> <span class="nv">l2</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">l1</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageLinkTest-testLinkReferencingAnotherLink.svg" class="align-center" src="../_images/CTLinkedStorageLinkTest-testLinkReferencingAnotherLink.svg" /></div></blockquote>
+<p>or possibly itself</p>
+<span class="target" id="compiledMethod-3"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageLinkTest, protocol tests&quot;</span>
+<span class="nf">testLinkReferencingItself</span>
+
+	<span class="o">|</span><span class="nv"> l </span><span class="o">|</span>
+	<span class="nv">l</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+	<span class="nv">l</span> <span class="nf">nextLink:</span> <span class="nv">l</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">l</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageLinkTest-testLinkReferencingItself.svg" class="align-center" src="../_images/CTLinkedStorageLinkTest-testLinkReferencingItself.svg" /></div></blockquote>
+<p>The previous two representations look the same but in memory are completely
+different structures. To see this, we unroll the representation for the <code class="docutils literal notranslate"><span class="pre">Link</span></code>
+objects that are <em>recursively</em> referenced via the <code class="docutils literal notranslate"><span class="pre">nextLink</span></code> slot so that
+both the usual structure</p>
+<span class="target" id="compiledMethod-4"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageLinkTest, protocol tests&quot;</span>
+<span class="nf">testLinkReferencingAnotherLinkRecursive</span>
+
+	<span class="o">|</span><span class="nv"> l1 l2 </span><span class="o">|</span>
+	<span class="nv">l1</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+	<span class="nv">l2</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+
+	<span class="nv">l1</span> <span class="nf">nextLink:</span> <span class="nv">l2</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphRecursiveOf:</span> <span class="nv">l1</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageLinkTest-testLinkReferencingAnotherLinkRecursive.svg" class="align-center" src="../_images/CTLinkedStorageLinkTest-testLinkReferencingAnotherLinkRecursive.svg" /></div></blockquote>
+<p>and the loop structure</p>
+<span class="target" id="compiledMethod-5"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageLinkTest, protocol tests&quot;</span>
+<span class="nf">testLinkReferencingItselfRecursive</span>
+
+	<span class="o">|</span><span class="nv"> l </span><span class="o">|</span>
+	<span class="nv">l</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+	<span class="nv">l</span> <span class="nf">nextLink:</span> <span class="nv">l</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphRecursiveOf:</span> <span class="nv">l</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageLinkTest-testLinkReferencingItselfRecursive.svg" class="align-center" src="../_images/CTLinkedStorageLinkTest-testLinkReferencingItselfRecursive.svg" /></div></blockquote>
+<p>are correcly drawn and the difference is now clear.  From now on we will use
+the recursive representation in order to have the big picture of the structures
+allocated in memory, so a combination of what we have seen so far looks as
+follows</p>
+<span class="target" id="compiledMethod-6"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageLinkTest, protocol tests&quot;</span>
+<span class="nf">testTwoLinksReferencingEachOtherRecursive</span>
+
+	<span class="o">|</span><span class="nv"> l1 l2 l3 </span><span class="o">|</span>
+	<span class="nv">l1</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+	<span class="nv">l2</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+	<span class="nv">l3</span> <span class="o">:=</span> <span class="nc">Link</span> <span class="nb">new</span><span class="p">.</span>
+	<span class="nv">l1</span> <span class="nf">nextLink:</span> <span class="nv">l2</span><span class="p">.</span>
+	<span class="nv">l2</span> <span class="nf">nextLink:</span> <span class="nv">l3</span><span class="p">.</span>
+	<span class="nv">l3</span> <span class="nf">nextLink:</span> <span class="nv">l1</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphRecursiveOf:</span> <span class="nv">l1</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageLinkTest-testTwoLinksReferencingEachOtherRecursive.svg" class="align-center" src="../_images/CTLinkedStorageLinkTest-testTwoLinksReferencingEachOtherRecursive.svg" /></div></blockquote>
+</div>
+<div class="section" id="valuelink-objects">
+<h3><code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects<a class="headerlink" href="#valuelink-objects" title="Permalink to this headline">¶</a></h3>
+<p>With the addition of the <code class="docutils literal notranslate"><span class="pre">value</span></code> slot to the <code class="docutils literal notranslate"><span class="pre">Link</span></code> class we obtain the
+<code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> class, precisely</p>
+<div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="nc">Link</span> <span class="nf">subclass:</span> <span class="ss">#ValueLink</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;value&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Collections-Support-Links&#39;</span>
+
+<span class="c">&quot;A ValueLink is a Link containing a Value.</span>
+<span class="c">Adding an object to a LinkedList which is not a Link will create a ValueLink containing that object.</span>
+
+
+<span class="c">value - The object this link points to.&quot;</span>
+</pre></div>
+</div>
+<p>and the binary message</p>
+<span class="target" id="compiledMethod-7"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Object, protocol associating&quot;</span>
+<span class="nf">~~&gt;</span> <span class="nv">aValueLinkOrNil</span>
+
+	<span class="c">&quot;Answer a ValueLink between self and aValueLinkOrNil.</span>
+<span class="c">	This message allows the receiver to be inserted in a chain of objects, terminated by nil.&quot;</span>
+
+	<span class="c">&quot;Code of ValueLink&gt;&gt;#nextLink: and ValueLink&gt;&gt;#value: are inline here for speed.&quot;</span>
+
+	<span class="c">&quot;(1 ~~&gt; nil) = ValueLink new value: 1&quot;</span>
+
+	<span class="c">&quot;(1 ~~&gt; &#39;one&#39;) value &gt;&gt;&gt; 1&quot;</span>
+
+	<span class="c">&quot;(1 ~~&gt; nil) nextLink &gt;&gt;&gt; nil&quot;</span>
+
+	<span class="c">&quot;Note that `value` can be ANY object; on the other hand, `nextLink` should be either another </span>
+<span class="c">	ValueLink object or nil.&quot;</span>
+
+	<span class="o">^</span> <span class="nc">ValueLink</span> <span class="nf">basicNew</span>
+		  <span class="nf">value:</span> <span class="bp">self</span><span class="p">;</span>
+		  <span class="nf">nextLink:</span> <span class="nv">aValueLinkOrNil</span><span class="p">;</span>
+		  <span class="nf">yourself</span>
+</pre></div>
+</div>
+<p>allows us to build a simple <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> as</p>
+<span class="target" id="compiledMethod-8"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testSimpleValueLink</span>
+
+	<span class="o">|</span><span class="nv"> l </span><span class="o">|</span>
+	<span class="nv">l</span> <span class="o">:=</span> <span class="m">1</span> <span class="nf">~~&gt;</span> <span class="bp">nil</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">l</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-testSimpleValueLink.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-testSimpleValueLink.svg" /></div></blockquote>
+<p>Of course, we can compose the application of <code class="docutils literal notranslate"><span class="pre">#~~&gt;</span></code> to build an arbitrary long chain as</p>
+<span class="target" id="compiledMethod-9"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">test21ValueLinks</span>
+
+	<span class="o">|</span><span class="nv"> l </span><span class="o">|</span>
+	<span class="nv">l</span> <span class="o">:=</span> <span class="m">2</span> <span class="nf">~~&gt;</span> <span class="bp">self</span> <span class="nf">testSimpleValueLink</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">l</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-test21ValueLinks.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-test21ValueLinks.svg" /></div></blockquote>
+<span class="target" id="compiledMethod-10"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">test321ValueLinks</span>
+
+	<span class="o">|</span><span class="nv"> l </span><span class="o">|</span>
+	<span class="nv">l</span> <span class="o">:=</span> <span class="m">3</span> <span class="nf">~~&gt;</span> <span class="bp">self</span> <span class="nf">test21ValueLinks</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">l</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-test321ValueLinks.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-test321ValueLinks.svg" /></div></blockquote>
+<span class="target" id="compiledMethod-11"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">test4321ValueLinks</span>
+
+	<span class="o">|</span><span class="nv"> l </span><span class="o">|</span>
+	<span class="nv">l</span> <span class="o">:=</span> <span class="m">4</span> <span class="nf">~~&gt;</span> <span class="bp">self</span> <span class="nf">test321ValueLinks</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">l</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-test4321ValueLinks.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-test4321ValueLinks.svg" /></div></blockquote>
+<p>Moreover, using the recursive representation we can have a look at all of them in one shot</p>
+<span class="target" id="compiledMethod-12"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">test4321ValueLinksRecursive</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphRecursiveOf:</span> <span class="bp">self</span> <span class="nf">test4321ValueLinks</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-test4321ValueLinksRecursive.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-test4321ValueLinksRecursive.svg" /></div></blockquote>
+<p>and in a simpler form</p>
+<span class="target" id="compiledMethod-13"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">test4321ValueLinksSimplerRepr</span>
+
+	<span class="o">^</span> <span class="bp">self</span>
+		  <span class="nf">export:</span> <span class="bp">self</span> <span class="nf">test4321ValueLinks</span>
+		  <span class="nf">pathSuffix:</span> <span class="s">&#39;&#39;</span>
+		  <span class="nf">selector:</span> <span class="ss">#gtInspectorLinksUsingCanvas:</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-test4321ValueLinksSimplerRepr.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-test4321ValueLinksSimplerRepr.svg" /></div></blockquote>
+<p>As we have seen for <code class="docutils literal notranslate"><span class="pre">Link</span></code> objects, we can build a loop with <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code>
+objects too, both implicitly</p>
+<span class="target" id="compiledMethod-14"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">test11ValueLinksLoop</span>
+
+	<span class="o">|</span><span class="nv"> l </span><span class="o">|</span>
+	<span class="nv">l</span> <span class="o">:=</span> <span class="m">1</span> <span class="nf">~~&gt;</span> <span class="bp">nil</span><span class="p">.</span>
+	<span class="nv">l</span> <span class="nf">nextLink:</span> <span class="nv">l</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">l</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-test11ValueLinksLoop.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-test11ValueLinksLoop.svg" /></div></blockquote>
+<p>and explicitly</p>
+<span class="target" id="compiledMethod-15"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">test11ValueLinksLoopRecursive</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphRecursiveOf:</span> <span class="bp">self</span> <span class="nf">test11ValueLinksLoop</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-test11ValueLinksLoopRecursive.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-test11ValueLinksLoopRecursive.svg" /></div></blockquote>
+<p>Finally, a combination of the constructions given before looks as follows</p>
+<span class="target" id="compiledMethod-16"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">test43214ValueLinksRecursive</span>
+
+	<span class="o">|</span><span class="nv"> l1 l </span><span class="o">|</span>
+	<span class="nv">l1</span> <span class="o">:=</span> <span class="m">1</span> <span class="nf">~~&gt;</span> <span class="bp">nil</span><span class="p">.</span>
+	<span class="nv">l</span> <span class="o">:=</span> <span class="m">4</span> <span class="nf">~~&gt;</span> (<span class="m">3</span> <span class="nf">~~&gt;</span> (<span class="m">2</span> <span class="nf">~~&gt;</span> <span class="nv">l1</span>))<span class="p">.</span>
+	<span class="nv">l1</span> <span class="nf">nextLink:</span> <span class="nv">l</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphRecursiveOf:</span> <span class="nv">l</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-test43214ValueLinksRecursive.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-test43214ValueLinksRecursive.svg" /></div></blockquote>
+<p>and since we are in a loop, we can just skip a few times to get a different but
+equivalent representation</p>
+<span class="target" id="compiledMethod-17"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">test43214ValueLinksFrom2Recursive</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphRecursiveOf:</span>
+		  <span class="bp">self</span> <span class="nf">test43214ValueLinksRecursive</span> <span class="nf">nextLink</span> <span class="nf">nextLink</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-test43214ValueLinksFrom2Recursive.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-test43214ValueLinksFrom2Recursive.svg" /></div></blockquote>
+</div>
+</div>
+<div class="section" id="containers">
+<h2>Containers<a class="headerlink" href="#containers" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linkedlist-objects">
+<h3><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> objects<a class="headerlink" href="#linkedlist-objects" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects are small and allow us to compose them in an applicative
+way so that we can share part of a composite structure among different client
+objects so that those clients don’t observe any side effect on the
+<code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects they are currently referencing.</p>
+<p>By the way, some applications prefer to have a manager object that handles
+those links as a whole, hiding the inner machinery that keeps their structure
+sound. Those managers are called <em>containers</em>.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> understands the <code class="docutils literal notranslate"><span class="pre">#asLinkedList</span></code> message to enclose itself in
+a <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> container</p>
+<span class="target" id="compiledMethod-20"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testAsLinkedList</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="bp">self</span> <span class="nf">testSimpleValueLink</span> <span class="nf">asLinkedList</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-testAsLinkedList.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-testAsLinkedList.svg" /><p>where</p>
+<span class="target" id="compiledMethod-19"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;ValueLink, protocol *Collections-Support-Extensions&quot;</span>
+<span class="nf">asLinkedList</span>
+
+	<span class="o">|</span><span class="nv"> list </span><span class="o">|</span>
+	<span class="nv">list</span> <span class="o">:=</span> <span class="nc">LinkedList</span> <span class="nf">empty</span><span class="p">.</span>
+	<span class="bp">self</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">list</span> <span class="nf">addLast:</span> <span class="nv">each</span> <span class="nf">value</span> ]<span class="p">.</span>
+	<span class="o">^</span> <span class="nv">list</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>where</p>
+<span class="target" id="compiledMethod-18"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Link, protocol *Collections-Support-Extensions&quot;</span>
+<span class="nf">do:</span> <span class="nv">aBlock</span>
+
+	<span class="o">|</span><span class="nv"> link </span><span class="o">|</span>
+	<span class="nv">link</span> <span class="o">:=</span> <span class="bp">self</span><span class="p">.</span>
+	[ <span class="nv">link</span> ] <span class="nf">whileNotNil:</span> [ 
+		<span class="nv">aBlock</span> <span class="nf">value:</span> <span class="nv">link</span><span class="p">.</span>
+		<span class="nv">link</span> <span class="o">:=</span> <span class="nv">link</span> <span class="nf">nextLink</span><span class="p">.</span>
+		<span class="nv">link</span> <span class="nf">==</span> <span class="bp">self</span> <span class="nb">ifTrue:</span> [ <span class="nv">link</span> <span class="o">:=</span> <span class="bp">nil</span> ] ]
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<p>Two observations are in order:</p>
+<ul>
+<li><p>On one hand, since the slot <code class="docutils literal notranslate"><span class="pre">nextLink</span></code> hosts either a <code class="docutils literal notranslate"><span class="pre">Link</span></code> or <code class="docutils literal notranslate"><span class="pre">nil</span></code>
+then the latter has to understand</p>
+<span class="target" id="compiledMethod-21"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;UndefinedObject, protocol *Kernel-Extensions&quot;</span>
+<span class="nf">asLinkedList</span>
+
+	<span class="o">^</span> <span class="nc">LinkedList</span> <span class="nf">empty</span>
+</pre></div>
+</div>
+<p>too and it behaves as follows</p>
+<span class="target" id="compiledMethod-22"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testNilAsLinkedList</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="bp">nil</span> <span class="nf">asLinkedList</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-testNilAsLinkedList.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-testNilAsLinkedList.svg" /></div></blockquote>
+</li>
+<li><p>On the other hand, since a <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> could keep a recursive structure
+then all the values are kept as well</p>
+<span class="target" id="compiledMethod-23"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testAsLinkedList4321</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="bp">self</span> <span class="nf">test4321ValueLinks</span> <span class="nf">asLinkedList</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-testAsLinkedList4321.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-testAsLinkedList4321.svg" /></div></blockquote>
+</li>
+</ul>
+<p>Finally, the definition and class comment of <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> follows</p>
+<div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="nc">SequenceableCollection</span> <span class="nf">subclass:</span> <span class="ss">#LinkedList</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;firstLink lastLink&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Collections-Sequenceable-Base&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>I am a sequential collection where adjecent objects are linked.
+I can store any kind of objects that I will wrap into a Link (See implementation points).
+I act pretty much as an OrderedCollection, but my access times differs: the method <span class="ni">#atIndex:</span> is depending of the number of elements so is not constant. In the worse case, the whole list must be crossed.
+Using the message <span class="ni">#addFirst:</span> / <span class="ni">#removeLast</span> causes the receiver to behave as a stack; using <span class="ni">#addLast:</span> / <span class="ni">#removeFirst</span> causes the receiver to behave as a queue.
+
+I use the Link class (or his subclasses) in my implementation. 
+
+<span class="gu">### Public API and Key Messages</span>
+
+<span class="k">-</span> <span class="ni">#new</span> / <span class="ni">#withAll:</span> aCollection / <span class="ni">#with:</span> anObject 	are common constructors
+<span class="k">-</span> <span class="ni">#add:</span> anObject / <span class="ni">#at:</span> anIndex put: anObject 	allow to add new elements to myself.
+<span class="k">-</span> <span class="ni">#remove:</span> anObject 	allow to remove an element.
+<span class="k">-</span> <span class="ni">#do:</span> aBlock / <span class="ni">#collect:</span> aBlock / <span class="ni">#select:</span> aBlock / <span class="ni">#reject:</span> aBlock 	are common iterators.
+
+<span class="gu">### Example </span>
+
+ 	&quot;There is many ways to create a LinkedList, here are some:&quot;
+```
+	linkedList := LinkedList new.
+	linkedList
+		add: &#39;one&#39;;
+		add: &#39;two&#39;;
+		addFirst: &#39;zero&#39;;
+		addLast: &#39;three&#39;.
+	linkedList.		&quot;returns: a LinkedList(&#39;zero&#39; &#39;one&#39; &#39;two&#39; &#39;three&#39;)&quot;
+
+<span class="sb">	&quot;or&quot;</span>
+<span class="sb">	linkedList := LinkedList with: &#39;one&#39; with: &#39;two&#39; with: &#39;three&#39;.</span>
+<span class="sb">	linkedList.		&quot;returns: a LinkedList(&#39;one&#39; &#39;two&#39; &#39;three&#39;)&quot;</span>
+
+	&quot;or from an other collection (here an Array)&quot;
+	linkedList := LinkedList withAll: #(&#39;one&#39; &#39;two&#39; &#39;three&#39;).
+	linkedList.		&quot;returns: a LinkedList(&#39;one&#39; &#39;two&#39; &#39;three&#39;)&quot;
+
+<span class="sb">	&quot;Some manipulations&quot;</span>
+<span class="sb">	linkedList := LinkedList new.</span>
+<span class="sb">	linkedList</span>
+<span class="sb">		add: 1;</span>
+<span class="sb">		add: 2.</span>
+<span class="sb">	linkedList.		&quot;returns: a LinkedList(1 2)&quot;</span>
+<span class="sb">	linkedList remove: 1.</span>
+<span class="sb">	linkedList.		&quot;returns: a LinkedList(2)&quot;</span>
+
+	&quot;A last one&quot;
+	linkedList := LinkedList with: $b with: $c with: $a.
+	linkedList sort: [ :first :second | first &lt; second ].			&quot;returns: a LinkedList($a $b $c)&quot;
+	linkedList collect: [ :element | element asUppercase ].	&quot;returns:  a LinkedList($A $B $C)&quot;
+	linkedList select: [ :element | element &gt;= $b ].			&quot;returns:  a LinkedList($b $c)&quot;
+	linkedList do: [ :element | element inspect ].
+	linkedList asArray									&quot;returns: #($a $b $c)&quot;
+```
+			
+<span class="gu">### Internal Representation and Key Implementation Points.</span>
+
+Instance Variables
+<span class="k">-</span> firstLink:		 &lt;Link&gt; 	A link that contains the first value of the LinkedList.
+<span class="k">-</span> lastLink:		 &lt;Link&gt; 	A link that contains the last value of the LinkedList.
+
+If you attempt to add any object into a LinkedList that is not a Link, it will automatically be wrapped by a ValueLink.
+</pre></div>
+</div>
+<p>respectively.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="Data Structures in Smalltalk" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Massimo Nocentini
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

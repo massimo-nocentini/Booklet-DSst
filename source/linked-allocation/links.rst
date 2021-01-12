@@ -1,13 +1,9 @@
 
-Linked memory allocation
-========================
-
 Links
------
-
+*****
 
 ``Link`` objects
-^^^^^^^^^^^^^^^^
+================
 
 Our discussion starts with ``Link``, a tiny class that is included by default in a fresh image and has been defined as
 
@@ -18,7 +14,7 @@ The simplest ``Link`` object is
 
 .. pharo:autocompiledmethod:: CTLinkedStorageLinkTest>>#testEmptyLink
 
-  .. image:: ../../Containers-LinkedStoragePool/images/CTLinkedStorageLinkTest-testEmptyLink.svg
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageLinkTest-testEmptyLink.svg
     :align: center
 
 Although we can use a ``Link`` to point to an arbitrary object, implicity ``nil`` in
@@ -26,21 +22,21 @@ the previous test case and explicity ``3`` in the following one,
 
 .. pharo:autocompiledmethod:: CTLinkedStorageLinkTest>>#testLinkReferencingThree
 
-  .. image:: ../../Containers-LinkedStoragePool/images/CTLinkedStorageLinkTest-testLinkReferencingThree.svg
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageLinkTest-testLinkReferencingThree.svg
     :align: center
 
 a ``Link`` is designed for referencing a ``Link`` object, either a new one
 
 .. pharo:autocompiledmethod:: CTLinkedStorageLinkTest>>#testLinkReferencingAnotherLink
 
-  .. image:: ../../Containers-LinkedStoragePool/images/CTLinkedStorageLinkTest-testLinkReferencingAnotherLink.svg
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageLinkTest-testLinkReferencingAnotherLink.svg
     :align: center
 
 or possibly itself
 
 .. pharo:autocompiledmethod:: CTLinkedStorageLinkTest>>#testLinkReferencingItself
 
-  .. image:: ../../Containers-LinkedStoragePool/images/CTLinkedStorageLinkTest-testLinkReferencingItself.svg
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageLinkTest-testLinkReferencingItself.svg
     :align: center
 
 The previous two representations look the same but in memory are completely
@@ -50,36 +46,28 @@ both the usual structure
 
 .. pharo:autocompiledmethod:: CTLinkedStorageLinkTest>>#testLinkReferencingAnotherLinkRecursive
 
-  .. image:: ../../Containers-LinkedStoragePool/images/CTLinkedStorageLinkTest-testLinkReferencingAnotherLinkRecursive.svg
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageLinkTest-testLinkReferencingAnotherLinkRecursive.svg
     :align: center
 
 and the loop structure
 
 .. pharo:autocompiledmethod:: CTLinkedStorageLinkTest>>#testLinkReferencingItselfRecursive
 
-  .. image:: ../../Containers-LinkedStoragePool/images/CTLinkedStorageLinkTest-testLinkReferencingItselfRecursive.svg
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageLinkTest-testLinkReferencingItselfRecursive.svg
     :align: center
 
-are correcly drawn and the difference is now clear. For the sake of clarity the
-unrolling rests on
-
-.. pharo:autocompiledmethod:: Link>>#recursiveReferences
-
-  where
-
-  .. pharo:autocompiledmethod:: Link>>#do:
-
-From now on we will use the recursive representation in order to have the big
-picture of the structures allocated in memory, so a combination of what we have
-seen so far looks as follows
+are correcly drawn and the difference is now clear.  From now on we will use
+the recursive representation in order to have the big picture of the structures
+allocated in memory, so a combination of what we have seen so far looks as
+follows
 
 .. pharo:autocompiledmethod:: CTLinkedStorageLinkTest>>#testTwoLinksReferencingEachOtherRecursive
 
-  .. image:: ../../Containers-LinkedStoragePool/images/CTLinkedStorageLinkTest-testTwoLinksReferencingEachOtherRecursive.svg
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageLinkTest-testTwoLinksReferencingEachOtherRecursive.svg
     :align: center
 
 ``ValueLink`` objects
-^^^^^^^^^^^^^^^^^^^^^
+=====================
 
 With the addition of the ``value`` slot to the ``Link`` class we obtain the
 ``ValueLink`` class, precisely
@@ -95,38 +83,38 @@ allows us to build a simple ``ValueLink`` as
 
 .. pharo:autocompiledmethod:: CTLinkedStorageValueLinkTest>>#testSimpleValueLink
 
-  .. image:: ../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-testSimpleValueLink.svg
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-testSimpleValueLink.svg
     :align: center
 
 Of course, we can compose the application of ``#~~>`` to build an arbitrary long chain as
 
 .. pharo:autocompiledmethod:: CTLinkedStorageValueLinkTest>>#test21ValueLinks
 
-  .. image:: ../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-test21ValueLinks.svg
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-test21ValueLinks.svg
     :align: center
 
 .. pharo:autocompiledmethod:: CTLinkedStorageValueLinkTest>>#test321ValueLinks
 
-  .. image:: ../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-test321ValueLinks.svg
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-test321ValueLinks.svg
     :align: center
 
 .. pharo:autocompiledmethod:: CTLinkedStorageValueLinkTest>>#test4321ValueLinks
 
-  .. image:: ../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-test4321ValueLinks.svg
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-test4321ValueLinks.svg
     :align: center
 
 Moreover, using the recursive representation we can have a look at all of them in one shot
 
 .. pharo:autocompiledmethod:: CTLinkedStorageValueLinkTest>>#test4321ValueLinksRecursive
 
-  .. image:: ../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-test4321ValueLinksRecursive.svg
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-test4321ValueLinksRecursive.svg
     :align: center
 
 and in a simpler form
 
 .. pharo:autocompiledmethod:: CTLinkedStorageValueLinkTest>>#test4321ValueLinksSimplerRepr
 
-  .. image:: ../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-test4321ValueLinksSimplerRepr.svg
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-test4321ValueLinksSimplerRepr.svg
     :align: center
 
 As we have seen for ``Link`` objects, we can build a loop with ``ValueLink``
@@ -134,21 +122,21 @@ objects too, both implicitly
 
 .. pharo:autocompiledmethod:: CTLinkedStorageValueLinkTest>>#test11ValueLinksLoop
 
-  .. image:: ../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-test11ValueLinksLoop.svg
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-test11ValueLinksLoop.svg
     :align: center
 
 and explicitly
 
 .. pharo:autocompiledmethod:: CTLinkedStorageValueLinkTest>>#test11ValueLinksLoopRecursive
 
-  .. image:: ../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-test11ValueLinksLoopRecursive.svg
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-test11ValueLinksLoopRecursive.svg
     :align: center
 
 Finally, a combination of the constructions given before looks as follows
 
 .. pharo:autocompiledmethod:: CTLinkedStorageValueLinkTest>>#test43214ValueLinksRecursive
 
-  .. image:: ../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-test43214ValueLinksRecursive.svg
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-test43214ValueLinksRecursive.svg
     :align: center
 
 and since we are in a loop, we can just skip a few times to get a different but
@@ -156,15 +144,5 @@ equivalent representation
 
 .. pharo:autocompiledmethod:: CTLinkedStorageValueLinkTest>>#test43214ValueLinksFrom2Recursive
 
-  .. image:: ../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-test43214ValueLinksFrom2Recursive.svg
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-test43214ValueLinksFrom2Recursive.svg
     :align: center
-
-Containers
-----------
-
-``LinkedList`` objects
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. pharo:autoclass:: LinkedList
-  :include-comment: md
-

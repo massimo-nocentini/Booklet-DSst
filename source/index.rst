@@ -9,7 +9,7 @@ Data Structures in Smalltalk
 .. toctree::
    :maxdepth: 3
 
-   linked-allocation.rst
+   linked-allocation/linked-allocation.rst
 
 Indices and tables
 ==================
