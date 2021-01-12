@@ -34,7 +34,7 @@ extensions = [
         'sphinx.ext.githubpages',
         'sphinxcontrib.pharodomain',
         #'sphinx_rtd_theme',
-        'recommonmark',
+        #'recommonmark',
 ]
 
 # The following configuation values concerns the Pharo domain.
@@ -58,6 +58,7 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
+html_theme = 'sphinxdoc'
 #html_theme = 'python_docs_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -65,9 +66,9 @@ html_theme = 'sphinx_rtd_theme'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-source_parsers = {
-    '.md': CommonMarkParser,
-}
-source_suffix = ['.rst', '.md']
+#source_parsers = {
+    #'.md': CommonMarkParser,
+#}
+#source_suffix = ['.rst', '.md']
 
 
