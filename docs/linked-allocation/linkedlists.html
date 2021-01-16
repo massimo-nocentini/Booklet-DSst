@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinkedList containers &#8212; Data Structures in Smalltalk  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Data Structures in Smalltalk  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="linkedlist-containers">
+<h1><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers<a class="headerlink" href="#linkedlist-containers" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects are small and allow us to compose them in an applicative
+way so that we can share part of a composite structure among different client
+objects so that those clients don’t observe any side effect on the
+<code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects they are currently referencing.</p>
+<p>By the way, some applications prefer to have a manager object that handles
+those links as a whole, hiding the inner machinery that keeps their structure
+sound. Those managers are called <em>containers</em>.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> understands the <code class="docutils literal notranslate"><span class="pre">#asLinkedList</span></code> message to enclose itself in
+a <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> container</p>
+<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="nc">SequenceableCollection</span> <span class="nf">subclass:</span> <span class="ss">#LinkedList</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;firstLink lastLink&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Collections-Sequenceable-Base&#39;</span>
+</pre></div>
+</div>
+<p>for example,</p>
+<span class="target" id="compiledMethod-2"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testAsLinkedList</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="bp">self</span> <span class="nf">testSimpleValueLink</span> <span class="nf">asLinkedList</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-testAsLinkedList.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-testAsLinkedList.svg" /><p>where</p>
+<span class="target" id="compiledMethod-1"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;ValueLink, protocol *Collections-Support-Extensions&quot;</span>
+<span class="nf">asLinkedList</span>
+
+	<span class="o">|</span><span class="nv"> list </span><span class="o">|</span>
+	<span class="nv">list</span> <span class="o">:=</span> <span class="nc">LinkedList</span> <span class="nf">empty</span><span class="p">.</span>
+	<span class="bp">self</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">list</span> <span class="nf">addLast:</span> <span class="nv">each</span> <span class="nf">value</span> ]<span class="p">.</span>
+	<span class="o">^</span> <span class="nv">list</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>where</p>
+<span class="target" id="compiledMethod-0"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Link, protocol *Collections-Support-Extensions&quot;</span>
+<span class="nf">do:</span> <span class="nv">aBlock</span>
+
+	<span class="o">|</span><span class="nv"> link </span><span class="o">|</span>
+	<span class="nv">link</span> <span class="o">:=</span> <span class="bp">self</span><span class="p">.</span>
+	[ <span class="nv">link</span> ] <span class="nf">whileNotNil:</span> [ 
+		<span class="nv">aBlock</span> <span class="nf">value:</span> <span class="nv">link</span><span class="p">.</span>
+		<span class="nv">link</span> <span class="o">:=</span> <span class="nv">link</span> <span class="nf">nextLink</span><span class="p">.</span>
+		<span class="nv">link</span> <span class="nf">==</span> <span class="bp">self</span> <span class="nb">ifTrue:</span> [ <span class="nv">link</span> <span class="o">:=</span> <span class="bp">nil</span> ] ]
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<p>Two observations are in order:</p>
+<ul>
+<li><p>On one hand, since the slot <code class="docutils literal notranslate"><span class="pre">nextLink</span></code> hosts either a <code class="docutils literal notranslate"><span class="pre">Link</span></code> or <code class="docutils literal notranslate"><span class="pre">nil</span></code>
+then the latter has to understand</p>
+<span class="target" id="compiledMethod-3"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;UndefinedObject, protocol *Kernel-Extensions&quot;</span>
+<span class="nf">asLinkedList</span>
+
+	<span class="o">^</span> <span class="nc">LinkedList</span> <span class="nf">empty</span>
+</pre></div>
+</div>
+<p>too and it behaves as follows</p>
+<span class="target" id="compiledMethod-4"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testNilAsLinkedList</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="bp">nil</span> <span class="nf">asLinkedList</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-testNilAsLinkedList.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-testNilAsLinkedList.svg" /></div></blockquote>
+</li>
+<li><p>On the other hand, since a <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> could keep a recursive structure
+then all the values are kept as well</p>
+<span class="target" id="compiledMethod-5"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testAsLinkedList4321</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="bp">self</span> <span class="nf">test4321ValueLinks</span> <span class="nf">asLinkedList</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-testAsLinkedList4321.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-testAsLinkedList4321.svg" /></div></blockquote>
+</li>
+</ul>
+<p>Additionally, <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> objects can be built using other objects than
+<code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> ones, for example sending <code class="docutils literal notranslate"><span class="pre">#as:</span></code> to an <code class="docutils literal notranslate"><span class="pre">Interval</span></code>,</p>
+<span class="target" id="compiledMethod-7"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testAsLinkedListFromInterval</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> ((<span class="m">4</span> <span class="nf">to:</span> <span class="m">1</span> <span class="nf">by:</span> <span class="m">-1</span>) <span class="nf">as:</span> <span class="nc">LinkedList</span>)
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-testAsLinkedListFromInterval.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-testAsLinkedListFromInterval.svg" /><p>where</p>
+<span class="target" id="compiledMethod-6"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Number, protocol *Collections-Sequenceable&quot;</span>
+<span class="nf">to:</span> <span class="nv">stop</span> <span class="nf">by:</span> <span class="nv">step</span>
+
+	<span class="c">&quot;Answer an Interval from the receiver up to the argument, stop, </span>
+<span class="c">	incrementing by step.&quot;</span>
+
+	<span class="o">^</span> <span class="nc">Interval</span> <span class="nf">from:</span> <span class="bp">self</span> <span class="nf">to:</span> <span class="nv">stop</span> <span class="nf">by:</span> <span class="nv">step</span>
+</pre></div>
+</div>
+<p>and</p>
+<span class="target" id="pharo-class-1"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="nc">SequenceableCollection</span> <span class="nf">subclass:</span> <span class="ss">#Interval</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;start stop step&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Collections-Sequenceable-Base&#39;</span>
+
+<span class="c">&quot;I represent a finite arithmetic progression (a range of number).</span>
+
+<span class="c">Description</span>
+<span class="c">--------------------------</span>
+
+<span class="c">I allow to iterate easily on a range of number (for example to manupulate an index) with a define step (by default one by one).</span>
+
+<span class="c">Zero step size is not allowed and will raise an error.</span>
+
+<span class="c">I know at which number I begin, at which number I end and the step.</span>
+
+<span class="c">I work with the Number class. I manipulate some numbers and I can be created from a Number.  </span>
+
+<span class="c">Public API and Key Messages</span>
+<span class="c">--------------------------</span>
+
+<span class="c">- I implement most of the classic Iterators as #do: or #collect:.</span>
+
+<span class="c">- #from: to: and #from: to: by:  are my two common contructors. But I am usually created by a message send on Number  (See examples).</span>
+
+<span class="c">Examples </span>
+<span class="c">--------------------------</span>
+
+<span class="c">To create an Interval from 1 to 100 there is many ways:</span>
+
+<span class="c">	Interval from: 1 to: 100</span>
+<span class="c">	or</span>
+<span class="c">	Interval from: 1 to: 100 by: 1</span>
+<span class="c">	</span>
+<span class="c">	or from a Number </span>
+<span class="c">	</span>
+<span class="c">	1 to: 100 </span>
+<span class="c">	or </span>
+<span class="c">	1 to: 100 by: 1</span>
+<span class="c">	</span>
+<span class="c">	You can also use floats or fractions: </span>
+<span class="c">	</span>
+<span class="c">	0.1 to: 0.5 by: 0.01</span>
+<span class="c">	or</span>
+<span class="c">	1/10 to: 1/2 by: 1/100</span>
+<span class="c">	</span>
+<span class="c">	NB: both expressions will not give exactly the same result. The first will contains only floats and the second only fractions.</span>
+<span class="c">	</span>
+<span class="c"> </span>
+<span class="c">Internal Representation and Key Implementation Points.</span>
+<span class="c">--------------------------</span>
+
+<span class="c">    Instance Variables</span>
+<span class="c">	start:		&lt;Number&gt; 	The beginning of the Interval.</span>
+<span class="c">	step:		&lt;Number&gt; 	The end of the Interval.</span>
+<span class="c">	stop:		&lt;Number&gt; 	The step of the interval. If the step is 3 and we begin at 1 the interval will be 1, 4, 7, 10, 13… until the end.&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Moreover, from a <code class="docutils literal notranslate"><span class="pre">SequenceableCollection</span></code> we can revert back to a <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> with,</p>
+<span class="target" id="compiledMethod-9"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Collections-Sequenceable-Extensions&quot;</span>
+<span class="nf">asValueLink</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">foldr:</span> <span class="ss">#~~&gt;</span> <span class="nf">init:</span> <span class="bp">nil</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>where <code class="docutils literal notranslate"><span class="pre">#foldr:init:</span></code> folds by associating to the right,</p>
+<span class="target" id="compiledMethod-8"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Collections-Sequenceable-Extensions&quot;</span>
+<span class="nf">foldr:</span> <span class="nv">aBlock</span> <span class="nf">init:</span> <span class="nv">init</span>
+
+	<span class="o">|</span><span class="nv"> cell </span><span class="o">|</span>
+	<span class="nv">cell</span> <span class="o">:=</span> <span class="nv">init</span><span class="p">.</span>
+	<span class="bp">self</span> <span class="nf">reverseDo:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">cell</span> <span class="o">:=</span> <span class="nv">aBlock</span> <span class="nf">value:</span> <span class="nv">each</span> <span class="nf">value:</span> <span class="nv">cell</span> ]<span class="p">.</span>
+	<span class="o">^</span> <span class="nv">cell</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>as we can see in the following example</p>
+<span class="target" id="compiledMethod-10"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testAsValueLink</span>
+
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphRecursiveOf:</span> (<span class="m">4</span> <span class="nf">to:</span> <span class="m">1</span> <span class="nf">by:</span> <span class="m">-1</span>) <span class="nf">asValueLink</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-testAsValueLink.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-testAsValueLink.svg" /></div></blockquote>
+<p>Using another folding message <code class="docutils literal notranslate"><span class="pre">#inject:into:</span></code> that associates to the left,</p>
+<span class="target" id="compiledMethod-11"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Collection, protocol enumerating&quot;</span>
+<span class="nf">inject:</span> <span class="nv">thisValue</span> <span class="nf">into:</span> <span class="nv">binaryBlock</span>
+
+	<span class="c">&quot;Accumulate a running value associated with evaluating the argument, binaryBlock, with the current value of the argument, thisValue, and the receiver as block arguments.&quot;</span>
+
+	<span class="c">&quot;( #(1 2 3) inject: 0 into: [ :sum :each | sum + each ] ) &gt;&gt;&gt; 6&quot;</span>
+
+	<span class="o">|</span><span class="nv"> nextValue </span><span class="o">|</span>
+	<span class="nv">nextValue</span> <span class="o">:=</span> <span class="nv">thisValue</span><span class="p">.</span>
+	<span class="bp">self</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> 
+		<span class="nv">nextValue</span> <span class="o">:=</span> <span class="nv">binaryBlock</span> <span class="nf">value:</span> <span class="nv">nextValue</span> <span class="nf">value:</span> <span class="nv">each</span> ]<span class="p">.</span>
+	<span class="o">^</span> <span class="nv">nextValue</span>
+</pre></div>
+</div>
+<p>we obtain a <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> that keeps the same elements in <em>reversed</em> order,</p>
+<span class="target" id="compiledMethod-12"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="nf">testAsValueLinkInjectInto</span>
+
+	<span class="o">|</span><span class="nv"> l </span><span class="o">|</span>
+	<span class="nv">l</span> <span class="o">:=</span> (<span class="m">4</span> <span class="nf">to:</span> <span class="m">1</span> <span class="nf">by:</span> <span class="m">-1</span>)
+		     <span class="nf">inject:</span> <span class="bp">nil</span>
+		     <span class="nf">into:</span> [ <span class="o">:</span><span class="nv">aValueLink</span> <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">each</span> <span class="nf">~~&gt;</span> <span class="nv">aValueLink</span> ]<span class="p">.</span>
+	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphRecursiveOf:</span> <span class="nv">l</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStorageValueLinkTest-testAsValueLinkInjectInto.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-testAsValueLinkInjectInto.svg" /></div></blockquote>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/linked-allocation/linkedlists.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Data Structures in Smalltalk  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Massimo Nocentini.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.1.
+    </div>
+  </body>
+</html>

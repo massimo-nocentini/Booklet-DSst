@@ -1,9 +1,7 @@
 
-Containers
-**********
 
-``LinkedList`` objects
-======================
+``LinkedList`` containers
+*************************
 
 ``ValueLink`` objects are small and allow us to compose them in an applicative
 way so that we can share part of a composite structure among different client

@@ -146,3 +146,53 @@ equivalent representation
 
   .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-test43214ValueLinksFrom2Recursive.svg
     :align: center
+
+.. index::
+  single: Sorting algorithms; Topological by associations of naturals
+  single: TAOCP by Donald Knuth; Volume 1, Algorithm T at page 264
+
+
+
+  
+Topological sorting
+-------------------
+
+Implementation of the *Algorithm T* in TAOCP by Donald Knuth, Volume 1 page 264.
+
+The complexity is :math:`O(m + n)` where :math:`m` is the number of input
+relations and :math:`n` is the number of (unique) objects represented by
+naturals.  The message send ``c topologicalSortOnCycleDo: b``, where ``c`` is a
+collection of associations :math:`j \rightarrow k`, for :math:`j, k \in [1, n]`
+no holes allowed, namely every natural *has* to be used in at least one input
+relation. And, ``b`` is a block consuming a collection of associations forming
+a cycle.
+
+
+
+.. pharo:autocompiledmethod:: Collection>>#topologicalSortOnCycleDo:
+
+  where
+
+  .. pharo:autocompiledmethod:: Object>>#ignoreBlock:
+
+  and
+
+  .. pharo:autocompiledmethod:: Dictionary>>#anyAssociation
+
+Testing for acyclic property can be done with the following message:
+
+.. code-block:: smalltalk
+
+  isAcyclic
+
+      self topologicalSortOnCycleDo: [ ^ false ].
+      ^ true
+
+Some tests are in order:
+
+.. pharo:autocompiledmethod:: CollectionTest>>#testTopologicalSortOnCycleDo
+.. pharo:autocompiledmethod:: CollectionTest>>#testTopologicalSortOnCycleDo1
+.. pharo:autocompiledmethod:: CollectionTest>>#testTopologicalSortOnCycleDo2
+.. pharo:autocompiledmethod:: CollectionTest>>#testTopologicalSortOnCycleDo3
+.. pharo:autocompiledmethod:: CollectionTest>>#testTopologicalSortOnCycleDo4
+.. pharo:autocompiledmethod:: CollectionTest>>#testTopologicalSortOnCycleDo5
