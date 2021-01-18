@@ -154,8 +154,8 @@ equivalent representation
 
 
   
-Topological sorting
--------------------
+Test case: Topological sorting
+------------------------------
 
 Implementation of the *Algorithm T* in TAOCP by Donald Knuth, Volume 1 page 264.
 
