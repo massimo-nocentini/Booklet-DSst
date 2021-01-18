@@ -162,31 +162,29 @@ Implementation of the *Algorithm T* in TAOCP by Donald Knuth, Volume 1 page 264.
 The complexity is :math:`O(m + n)` where :math:`m` is the number of input
 relations and :math:`n` is the number of (unique) objects represented by
 naturals.  The message send ``c topologicalSortOnCycleDo: b``, where ``c`` is a
-collection of associations :math:`j \rightarrow k`, for :math:`j, k \in [1, n]`
-no holes allowed, namely every natural *has* to be used in at least one input
-relation. And, ``b`` is a block consuming a collection of associations forming
-a cycle.
+collection of associations :math:`(j, k) \in [1, n]^{2}` no holes allowed,
+namely every natural *has* to be used in at least one input relation. And,
+``b`` is a block consuming a collection of associations forming a cycle.
 
 
 
-.. pharo:autocompiledmethod:: Collection>>#topologicalSortOnCycleDo:
+.. pharo:autocompiledmethod:: SequenceableCollection>>#topologicalSortByAssociations:onCycleDo:
 
   where
 
-  .. pharo:autocompiledmethod:: Object>>#ignoreBlock:
+  .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#value:onCycleDo:
 
-  and
+  where
 
-  .. pharo:autocompiledmethod:: Dictionary>>#anyAssociation
+    .. pharo:autocompiledmethod:: Object>>#ignoreBlock:
+
+    and
+
+    .. pharo:autocompiledmethod:: Dictionary>>#anyAssociation
 
 Testing for acyclic property can be done with the following message:
 
-.. code-block:: smalltalk
-
-  isAcyclic
-
-      self topologicalSortOnCycleDo: [ ^ false ].
-      ^ true
+.. pharo:autocompiledmethod:: SequenceableCollection>>#isAcyclicWithRespectToAssociations:
 
 Some tests are in order:
 
@@ -194,5 +192,7 @@ Some tests are in order:
 .. pharo:autocompiledmethod:: CollectionTest>>#testTopologicalSortOnCycleDo1
 .. pharo:autocompiledmethod:: CollectionTest>>#testTopologicalSortOnCycleDo2
 .. pharo:autocompiledmethod:: CollectionTest>>#testTopologicalSortOnCycleDo3
-.. pharo:autocompiledmethod:: CollectionTest>>#testTopologicalSortOnCycleDo4
-.. pharo:autocompiledmethod:: CollectionTest>>#testTopologicalSortOnCycleDo5
+  
+  where
+  
+  .. pharo:autocompiledmethod:: SequenceableCollection>>#topologicalSortByAssociations:acyclicDo: 
