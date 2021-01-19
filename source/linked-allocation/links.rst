@@ -176,11 +176,31 @@ namely every natural *has* to be used in at least one input relation. And,
 
   where
 
-    .. pharo:autocompiledmethod:: Object>>#ignoreBlock:
+    .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#makeValueLinksTable
 
     and
 
-    .. pharo:autocompiledmethod:: Dictionary>>#anyAssociation
+    .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#initializeValueLinksTable:
+
+    and
+
+    .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#scanSinksOfValueLinksTable:in:
+
+    and
+
+    .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#sortOn:sinksDictionary:valueLinksTable:
+
+      where
+
+      .. pharo:autocompiledmethod:: Object>>#ignoreBlock:
+
+    and
+
+    .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#handleCycleInValueLinksTable:do:
+
+      where
+
+      .. pharo:autocompiledmethod:: Dictionary>>#anyAssociation
 
 Testing for acyclic property can be done with the following message:
 

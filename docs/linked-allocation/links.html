@@ -315,7 +315,7 @@ naturals.  The message send <code class="docutils literal notranslate"><span cla
 collection of associations <span class="math notranslate nohighlight">\((j, k) \in [1, n]^{2}\)</span> no holes allowed,
 namely every natural <em>has</em> to be used in at least one input relation. And,
 <code class="docutils literal notranslate"><span class="pre">b</span></code> is a block consuming a collection of associations forming a cycle.</p>
-<span class="target" id="compiledMethod-21"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-LinkedStoragePool-Examples&quot;</span>
+<span class="target" id="compiledMethod-26"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-LinkedStoragePool-Examples&quot;</span>
 <span class="nf">topologicalSortByAssociations:</span> <span class="nv">aRelation</span> <span class="nf">onCycleDo:</span> <span class="nv">cBlock</span>
 
 	<span class="o">|</span><span class="nv"> sorter </span><span class="o">|</span>
@@ -341,17 +341,42 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 <span class="target" id="compiledMethod-18"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
 <span class="nf">value:</span> <span class="nv">aBlock</span> <span class="nf">onCycleDo:</span> <span class="nv">cycleBlock</span>
 
-	<span class="o">|</span><span class="nv"> table r qlink f sort </span><span class="o">|</span>
+	<span class="o">|</span><span class="nv"> table sort </span><span class="o">|</span>
+	<span class="nv">table</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">makeValueLinksTable</span><span class="p">.</span>
+
 	<span class="c">&quot;T1: initialize.&quot;</span>
-	<span class="nv">table</span> <span class="o">:=</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="nv">size</span>) <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">k</span> <span class="o">|</span> 
-		         <span class="nc">Association</span> <span class="nb">new</span>
-			         <span class="nf">key:</span> <span class="m">0</span><span class="p">;</span>
-			         <span class="c">&quot;COUNT: the number of direct predecessors of this object.&quot;</span>
-			         <span class="nf">value:</span> <span class="bp">nil</span><span class="p">;</span>
-			         <span class="c">&quot;TOP: link to the beginning of the list of direct successors of this object.&quot;</span>
-				         <span class="nf">yourself</span> ]<span class="p">.</span>
+	<span class="bp">self</span> <span class="nf">initializeValueLinksTable:</span> <span class="nv">table</span><span class="p">.</span>
+
+	<span class="c">&quot;T4: scan for zeros.&quot;</span>
+	<span class="nv">sort</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">scanSinksOfValueLinksTable:</span> <span class="nv">table</span> <span class="nf">in:</span> [ <span class="o">:</span><span class="nv">qlink</span> <span class="o">|</span> 
+		        <span class="nc">Array</span> <span class="nf">streamContents:</span> [ <span class="o">:</span><span class="nv">aStream</span> <span class="o">|</span> 
+			        <span class="bp">self</span>
+				        <span class="nf">sortOn:</span> <span class="nv">aStream</span>
+				        <span class="nf">sinksDictionary:</span> <span class="nv">qlink</span>
+				        <span class="nf">valueLinksTable:</span> <span class="nv">table</span> ] ]<span class="p">.</span>
+	<span class="o">^</span> <span class="nv">sort</span> <span class="nf">size</span> <span class="nf">&lt;</span> <span class="nv">size</span>
+		  <span class="nb">ifTrue:</span> [ <span class="bp">self</span> <span class="nf">handleCycleInValueLinksTable:</span> <span class="nv">table</span> <span class="nf">do:</span> <span class="nv">cycleBlock</span> ]
+		  <span class="nb">ifFalse:</span> [ <span class="nv">aBlock</span> <span class="nf">value:</span> <span class="nv">sort</span> ]
+</pre></div>
+</div>
+<p>where</p>
+<blockquote>
+<div><span class="target" id="compiledMethod-19"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
+<span class="nf">makeValueLinksTable</span>
+
+	<span class="c">&quot;COUNT: the number of direct predecessors of this object.&quot;</span>
+
+	<span class="c">&quot;TOP: link to the beginning of the list of direct successors of this object.&quot;</span>
+
+	<span class="o">^</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="nv">size</span>) <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">k</span> <span class="o">|</span> <span class="m">0</span> <span class="nf">-&gt;</span> <span class="bp">nil</span> ]
+</pre></div>
+</div>
+<p>and</p>
+<span class="target" id="compiledMethod-20"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
+<span class="nf">initializeValueLinksTable:</span> <span class="nv">table</span>
 
 	<span class="c">&quot;T2: next relation.&quot;</span>
+
 	<span class="nv">relation</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">anAssoc</span> <span class="o">|</span> 
 		<span class="o">|</span><span class="nv"> j k </span><span class="o">|</span>
 		<span class="c">&quot;Unpack `relation` such that `relation = (j -&gt; k)` holds.&quot;</span>
@@ -363,80 +388,61 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 
 		<span class="c">&quot;T3: record the relation.&quot;</span>
 		(<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">j</span>) <span class="nf">in:</span> [ <span class="o">:</span><span class="nv">sourceAssoc</span> <span class="o">|</span> <span class="c">&quot;Operation (8)&quot;</span> 
-			<span class="nv">sourceAssoc</span> <span class="nf">value:</span> <span class="nv">k</span> <span class="nf">~~&gt;</span> <span class="nv">sourceAssoc</span> <span class="nf">value</span> ] ]<span class="p">.</span>
-
-	<span class="c">&quot;T4: scan for zeros.&quot;</span>
-	<span class="nv">qlink</span> <span class="o">:=</span> <span class="nc">Dictionary</span> <span class="nb">new</span><span class="p">.</span>
-	<span class="nv">r</span> <span class="o">:=</span> <span class="m">0</span><span class="p">.</span>
-	<span class="m">1</span> <span class="nf">to:</span> <span class="nv">size</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">k</span> <span class="o">|</span> 
-		<span class="o">|</span><span class="nv"> count </span><span class="o">|</span>
-		<span class="nv">count</span> <span class="o">:=</span> (<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">k</span>) <span class="nf">key</span><span class="p">.</span>
-		<span class="nv">count</span> <span class="nf">=</span> <span class="m">0</span> <span class="nb">ifTrue:</span> [ <span class="nv">r</span> <span class="o">:=</span> <span class="nv">qlink</span> <span class="nf">at:</span> <span class="nv">r</span> <span class="nf">put:</span> <span class="nv">k</span> ] ]<span class="p">.</span>
-	<span class="nv">f</span> <span class="o">:=</span> <span class="nv">qlink</span> <span class="nf">at:</span> <span class="m">0</span> <span class="nf">ifAbsent:</span> [ <span class="m">0</span> ]<span class="p">.</span>
-	<span class="nv">sort</span> <span class="o">:=</span> <span class="nc">Array</span> <span class="nf">streamContents:</span> [ <span class="o">:</span><span class="nv">array</span> <span class="o">|</span> 
-		        [ <span class="nv">f</span> <span class="nf">=</span> <span class="m">0</span> ] <span class="nb">whileFalse:</span> [ 
-			        <span class="o">|</span> <span class="nv">p</span> <span class="nf">|</span>
-			        <span class="c">&quot;T5: output front of queue.&quot;</span>
-			        <span class="nv">array</span> <span class="nf">nextPut:</span> <span class="nv">f</span><span class="p">.</span>
-
-			        <span class="nv">p</span> <span class="o">:=</span> (<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">f</span>) <span class="nf">in:</span> [ <span class="o">:</span><span class="nv">assoc</span> <span class="o">|</span> 
-				             <span class="nv">assoc</span> <span class="nf">value</span> <span class="nf">ignoreBlock:</span> [ <span class="nv">assoc</span> <span class="nf">value:</span> <span class="bp">nil</span> ] ]<span class="p">.</span>
-
-			        <span class="c">&quot;T6: erase relations.&quot;</span>
-			        [ <span class="nv">p</span> ] <span class="nf">whileNotNil:</span> [ 
-				        <span class="o">|</span> <span class="nv">assoc</span> <span class="nf">k</span> <span class="nf">count</span> <span class="nf">|</span>
-				        <span class="nv">k</span> <span class="o">:=</span> <span class="nv">p</span> <span class="nf">value</span><span class="p">.</span>
-				        <span class="nv">assoc</span> <span class="o">:=</span> <span class="nv">table</span> <span class="nf">at:</span> <span class="nv">k</span><span class="p">.</span>
-				        <span class="nv">count</span> <span class="o">:=</span> <span class="nv">assoc</span>
-					                 <span class="nf">key:</span> <span class="nv">assoc</span> <span class="nf">key</span> <span class="nf">-</span> <span class="m">1</span><span class="p">;</span>
-					                 <span class="nf">key</span><span class="p">.</span> <span class="c">&quot;decrease COUNT by one.&quot;</span>
-				        <span class="nv">count</span> <span class="nf">=</span> <span class="m">0</span> <span class="nb">ifTrue:</span> [ <span class="nv">r</span> <span class="o">:=</span> <span class="nv">qlink</span> <span class="nf">at:</span> <span class="nv">r</span> <span class="nf">put:</span> <span class="nv">k</span> ]<span class="p">.</span>
-				        <span class="nv">p</span> <span class="o">:=</span> <span class="nv">p</span> <span class="nf">nextLink</span> ]<span class="p">.</span>
-
-			        <span class="c">&quot;T7: remove from queue.&quot;</span>
-			        <span class="nv">f</span> <span class="o">:=</span> <span class="nv">qlink</span> <span class="nf">at:</span> <span class="nv">f</span> <span class="nf">ifAbsent:</span> [ <span class="m">0</span> ] ] ]<span class="p">.</span>
-	<span class="o">^</span> <span class="nv">sort</span> <span class="nf">size</span> <span class="nf">&lt;</span> <span class="nv">size</span>
-		  <span class="nb">ifTrue:</span> [ 
-			  <span class="o">|</span> <span class="nv">kk</span> <span class="nf">cycle</span> <span class="nf">|</span>
-			  <span class="c">&quot;T9&quot;</span>
-			  <span class="nv">qlink</span> <span class="o">:=</span> <span class="nc">Dictionary</span> <span class="nb">new</span><span class="p">.</span>
-			  <span class="m">1</span> <span class="nf">to:</span> <span class="nv">size</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">k</span> <span class="o">|</span> 
-				  <span class="o">|</span><span class="nv"> assoc p </span><span class="o">|</span>
-				  <span class="nv">assoc</span> <span class="o">:=</span> <span class="nv">table</span> <span class="nf">at:</span> <span class="nv">k</span><span class="p">.</span>
-				  <span class="nv">p</span> <span class="o">:=</span> <span class="nv">assoc</span> <span class="nf">value</span> <span class="nf">ignoreBlock:</span> [ <span class="nv">assoc</span> <span class="nf">value:</span> <span class="m">0</span> ]<span class="p">.</span>
-
-				  <span class="c">&quot;T10&quot;</span>
-				  [ <span class="nv">p</span> ] <span class="nf">whileNotNil:</span> [ 
-					  <span class="nv">qlink</span> <span class="nf">at:</span> <span class="nv">p</span> <span class="nf">value</span> <span class="nf">put:</span> <span class="nv">k</span><span class="p">.</span>
-					  <span class="nv">p</span> <span class="o">:=</span> <span class="nv">p</span> <span class="nf">nextLink</span> ] ]<span class="p">.</span>
-
-			  <span class="c">&quot;T11&quot;</span>
-			  <span class="nv">kk</span> <span class="o">:=</span> <span class="nv">qlink</span> <span class="nf">anyAssociation</span> <span class="nf">key</span><span class="p">.</span>
-
-			  <span class="c">&quot;T12&quot;</span>
-			  [ 
-			  (<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">kk</span>) <span class="nf">value:</span> <span class="m">1</span><span class="p">.</span>
-			  <span class="nv">kk</span> <span class="o">:=</span> <span class="nv">qlink</span> <span class="nf">at:</span> <span class="nv">kk</span><span class="p">.</span>
-			  (<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">kk</span>) <span class="nf">value</span> <span class="nf">=</span> <span class="m">0</span> ] <span class="nf">whileTrue</span><span class="p">.</span>
-
-			  <span class="c">&quot;T13&quot;</span>
-			  <span class="nv">cycle</span> <span class="o">:=</span> <span class="nc">Array</span> <span class="nf">streamContents:</span> [ <span class="o">:</span><span class="nv">array</span> <span class="o">|</span> 
-				           [ 
-				           <span class="nv">array</span> <span class="nf">nextPut:</span> <span class="nv">kk</span><span class="p">.</span>
-				           (<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">kk</span>) <span class="nf">value:</span> <span class="m">0</span><span class="p">.</span>
-				           <span class="nv">kk</span> <span class="o">:=</span> <span class="nv">qlink</span> <span class="nf">at:</span> <span class="nv">kk</span><span class="p">.</span>
-				           (<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">kk</span>) <span class="nf">value</span> <span class="nf">=</span> <span class="m">1</span> ] <span class="nf">whileTrue</span><span class="p">.</span>
-				           <span class="nv">array</span> <span class="nf">nextPut:</span> <span class="nv">kk</span> ]<span class="p">.</span>
-
-			  <span class="c">&quot;Invoke the given block with the detected cycle.&quot;</span>
-			  <span class="nv">cycleBlock</span> <span class="nf">value:</span>
-				  (<span class="nv">cycle</span> <span class="nf">overlappingPairsCollect:</span> [ <span class="o">:</span><span class="nv">a</span> <span class="o">:</span><span class="nv">b</span> <span class="o">|</span> <span class="nv">b</span> <span class="nf">-&gt;</span> <span class="nv">a</span> ]) ]
-		  <span class="nb">ifFalse:</span> [ <span class="nv">aBlock</span> <span class="nf">value:</span> <span class="nv">sort</span> ]
+			<span class="nv">sourceAssoc</span> <span class="nf">value:</span> <span class="nv">k</span> <span class="nf">~~&gt;</span> <span class="nv">sourceAssoc</span> <span class="nf">value</span> ] ]
 </pre></div>
 </div>
-<p>where</p>
+<p>and</p>
+<span class="target" id="compiledMethod-21"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
+<span class="nf">scanSinksOfValueLinksTable:</span> <span class="nv">table</span> <span class="nf">in:</span> <span class="nv">aBlock</span>
+
+	<span class="o">|</span><span class="nv"> qlink </span><span class="o">|</span>
+	<span class="nv">qlink</span> <span class="o">:=</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="nv">size</span>)
+		         <span class="nf">foldr:</span> [ <span class="o">:</span><span class="nv">k</span> <span class="o">:</span><span class="nv">aValueLink</span> <span class="o">|</span> 
+			         <span class="o">|</span><span class="nv"> count </span><span class="o">|</span>
+			         <span class="nv">count</span> <span class="o">:=</span> (<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">k</span>) <span class="nf">key</span><span class="p">.</span>
+			         <span class="nv">count</span> <span class="nf">=</span> <span class="m">0</span>
+				         <span class="nb">ifTrue:</span> [ <span class="nv">k</span> <span class="nf">~~&gt;</span> <span class="nv">aValueLink</span> ]
+				         <span class="nb">ifFalse:</span> [ <span class="nv">aValueLink</span> ] ]
+		         <span class="nf">init:</span> <span class="bp">nil</span><span class="p">.</span>
+
+	<span class="o">^</span> <span class="nv">aBlock</span> <span class="nf">value:</span> <span class="nv">qlink</span>
+</pre></div>
+</div>
+<p>and</p>
+<span class="target" id="compiledMethod-23"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
+<span class="nf">sortOn:</span> <span class="nv">aStream</span> <span class="nf">sinksDictionary:</span> <span class="nv">qlink</span> <span class="nf">valueLinksTable:</span> <span class="nv">table</span>
+
+	<span class="o">|</span><span class="nv"> f </span><span class="o">|</span>
+	<span class="nv">f</span> <span class="o">:=</span> <span class="nv">qlink</span><span class="p">.</span>
+	[ <span class="nv">f</span> ] <span class="nf">whileNotNil:</span> [ 
+		<span class="o">|</span> <span class="nv">p</span> <span class="nf">anIndex</span> <span class="nf">|</span>
+		<span class="c">&quot;T5: output front of queue.&quot;</span>
+		<span class="nv">anIndex</span> <span class="o">:=</span> <span class="nv">f</span> <span class="nf">value</span><span class="p">.</span>
+		<span class="nv">aStream</span> <span class="nf">nextPut:</span> <span class="nv">anIndex</span><span class="p">.</span>
+
+		<span class="c">&quot;T7: remove from queue.&quot;</span>
+		<span class="nv">f</span> <span class="o">:=</span> <span class="nv">f</span> <span class="nf">nextLink</span><span class="p">.</span>
+
+		<span class="nv">p</span> <span class="o">:=</span> (<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">anIndex</span>) <span class="nf">in:</span> [ <span class="o">:</span><span class="nv">assoc</span> <span class="o">|</span> 
+			     <span class="nv">assoc</span> <span class="nf">value</span> <span class="nf">ignoreBlock:</span> [ <span class="nv">assoc</span> <span class="nf">value:</span> <span class="bp">nil</span> ] ]<span class="p">.</span>
+
+		<span class="c">&quot;T6: erase relations.&quot;</span>
+		[ <span class="nv">p</span> ] <span class="nf">whileNotNil:</span> [ 
+			<span class="o">|</span> <span class="nv">assoc</span> <span class="nf">k</span> <span class="nf">count</span> <span class="nf">|</span>
+			<span class="nv">k</span> <span class="o">:=</span> <span class="nv">p</span> <span class="nf">value</span><span class="p">.</span>
+			<span class="nv">assoc</span> <span class="o">:=</span> <span class="nv">table</span> <span class="nf">at:</span> <span class="nv">k</span><span class="p">.</span>
+
+			<span class="c">&quot;decrease COUNT by one.&quot;</span>
+			<span class="nv">count</span> <span class="o">:=</span> <span class="nv">assoc</span>
+				         <span class="nf">key:</span> <span class="nv">assoc</span> <span class="nf">key</span> <span class="nf">-</span> <span class="m">1</span><span class="p">;</span>
+				         <span class="nf">key</span><span class="p">.</span>
+			<span class="nv">count</span> <span class="nf">=</span> <span class="m">0</span> <span class="nb">ifTrue:</span> [ <span class="nv">f</span> <span class="o">:=</span> <span class="nv">k</span> <span class="nf">~~&gt;</span> <span class="nv">f</span> ]<span class="p">.</span>
+			<span class="nv">p</span> <span class="o">:=</span> <span class="nv">p</span> <span class="nf">nextLink</span> ] ]
+</pre></div>
+</div>
 <blockquote>
-<div><span class="target" id="compiledMethod-19"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Object, protocol *Kernel-Extensions&quot;</span>
+<div><p>where</p>
+<span class="target" id="compiledMethod-22"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Object, protocol *Kernel-Extensions&quot;</span>
 <span class="nf">ignoreBlock:</span> <span class="nv">aBlock</span>
 
 	<span class="c">&quot;I invoke the given block giving myself as argument if it needs to consume me.</span>
@@ -446,8 +452,50 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 	<span class="o">^</span> <span class="bp">self</span>
 </pre></div>
 </div>
+</div></blockquote>
 <p>and</p>
-<span class="target" id="compiledMethod-20"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Dictionary, protocol *Collections-Unordered-Extensions&quot;</span>
+<span class="target" id="compiledMethod-25"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
+<span class="nf">handleCycleInValueLinksTable:</span> <span class="nv">table</span> <span class="nf">do:</span> <span class="nv">cycleBlock</span>
+
+	<span class="o">|</span><span class="nv"> kk cycle qlink </span><span class="o">|</span>
+	<span class="c">&quot;T9&quot;</span>
+	<span class="nv">qlink</span> <span class="o">:=</span> <span class="nc">Dictionary</span> <span class="nb">new</span><span class="p">.</span>
+	<span class="m">1</span> <span class="nf">to:</span> <span class="nv">size</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">k</span> <span class="o">|</span> 
+		<span class="o">|</span><span class="nv"> assoc p </span><span class="o">|</span>
+		<span class="nv">assoc</span> <span class="o">:=</span> <span class="nv">table</span> <span class="nf">at:</span> <span class="nv">k</span><span class="p">.</span>
+		<span class="nv">p</span> <span class="o">:=</span> <span class="nv">assoc</span> <span class="nf">value</span> <span class="nf">ignoreBlock:</span> [ <span class="nv">assoc</span> <span class="nf">value:</span> <span class="m">0</span> ]<span class="p">.</span>
+
+		<span class="c">&quot;T10&quot;</span>
+		[ <span class="nv">p</span> ] <span class="nf">whileNotNil:</span> [ 
+			<span class="nv">qlink</span> <span class="nf">at:</span> <span class="nv">p</span> <span class="nf">value</span> <span class="nf">put:</span> <span class="nv">k</span><span class="p">.</span>
+			<span class="nv">p</span> <span class="o">:=</span> <span class="nv">p</span> <span class="nf">nextLink</span> ] ]<span class="p">.</span>
+
+	<span class="c">&quot;T11&quot;</span>
+	<span class="nv">kk</span> <span class="o">:=</span> <span class="nv">qlink</span> <span class="nf">anyAssociation</span> <span class="nf">key</span><span class="p">.</span>
+
+	<span class="c">&quot;T12&quot;</span>
+	[ 
+	(<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">kk</span>) <span class="nf">value:</span> <span class="m">1</span><span class="p">.</span>
+	<span class="nv">kk</span> <span class="o">:=</span> <span class="nv">qlink</span> <span class="nf">at:</span> <span class="nv">kk</span><span class="p">.</span>
+	(<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">kk</span>) <span class="nf">value</span> <span class="nf">=</span> <span class="m">0</span> ] <span class="nf">whileTrue</span><span class="p">.</span>
+
+	<span class="c">&quot;T13&quot;</span>
+	<span class="nv">cycle</span> <span class="o">:=</span> <span class="nc">Array</span> <span class="nf">streamContents:</span> [ <span class="o">:</span><span class="nv">array</span> <span class="o">|</span> 
+		         [ 
+		         <span class="nv">array</span> <span class="nf">nextPut:</span> <span class="nv">kk</span><span class="p">.</span>
+		         (<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">kk</span>) <span class="nf">value:</span> <span class="m">0</span><span class="p">.</span>
+		         <span class="nv">kk</span> <span class="o">:=</span> <span class="nv">qlink</span> <span class="nf">at:</span> <span class="nv">kk</span><span class="p">.</span>
+		         (<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">kk</span>) <span class="nf">value</span> <span class="nf">=</span> <span class="m">1</span> ] <span class="nf">whileTrue</span><span class="p">.</span>
+		         <span class="nv">array</span> <span class="nf">nextPut:</span> <span class="nv">kk</span> ]<span class="p">.</span>
+
+	<span class="c">&quot;Invoke the given block with the detected cycle.&quot;</span>
+	<span class="o">^</span> <span class="nv">cycleBlock</span> <span class="nf">value:</span>
+		  (<span class="nv">cycle</span> <span class="nf">overlappingPairsCollect:</span> [ <span class="o">:</span><span class="nv">a</span> <span class="o">:</span><span class="nv">b</span> <span class="o">|</span> <span class="nv">b</span> <span class="nf">-&gt;</span> <span class="nv">a</span> ])
+</pre></div>
+</div>
+<blockquote>
+<div><p>where</p>
+<span class="target" id="compiledMethod-24"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Dictionary, protocol *Collections-Unordered-Extensions&quot;</span>
 <span class="nf">anyAssociation</span>
 
 	<span class="c">&quot;I mimic the message `Collection&gt;&gt;#anyone` with respect to associations that I collect.&quot;</span>
@@ -459,8 +507,9 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 </div>
 </div></blockquote>
 </div></blockquote>
+</div></blockquote>
 <p>Testing for acyclic property can be done with the following message:</p>
-<span class="target" id="compiledMethod-22"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-LinkedStoragePool-Examples&quot;</span>
+<span class="target" id="compiledMethod-27"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-LinkedStoragePool-Examples&quot;</span>
 <span class="nf">isAcyclicWithRespectToAssociations:</span> <span class="nv">aRelation</span>
 
 	<span class="o">|</span><span class="nv"> isAcyclic </span><span class="o">|</span>
@@ -472,7 +521,7 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 </pre></div>
 </div>
 <p>Some tests are in order:</p>
-<span class="target" id="compiledMethod-23"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-LinkedStoragePool-Tests&quot;</span>
+<span class="target" id="compiledMethod-28"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-LinkedStoragePool-Tests&quot;</span>
 <span class="nf">testTopologicalSortOnCycleDo</span>
 
 	<span class="c">&quot;The following test is kept from TAOCP by Donald Knuth, Volume 1 page 272.&quot;</span>
@@ -491,10 +540,10 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 						 (<span class="m">9</span> <span class="nf">-&gt;</span> <span class="m">5</span>)<span class="p">.</span>
 						 (<span class="m">2</span> <span class="nf">-&gt;</span> <span class="m">8</span>) }
 				 <span class="nf">onCycleDo:</span> [ <span class="nc">Error</span> <span class="nf">signal</span> ])
-		<span class="nf">equals:</span> <span class="ss">#(</span> <span class="m">1</span> <span class="m">9</span> <span class="m">3</span> <span class="m">2</span> <span class="m">7</span> <span class="m">4</span> <span class="m">5</span> <span class="m">8</span> <span class="m">6</span> <span class="ss">)</span>
+		<span class="nf">equals:</span> <span class="ss">#(</span> <span class="m">1</span> <span class="m">3</span> <span class="m">7</span> <span class="m">4</span> <span class="m">9</span> <span class="m">2</span> <span class="m">5</span> <span class="m">8</span> <span class="m">6</span> <span class="ss">)</span>
 </pre></div>
 </div>
-<span class="target" id="compiledMethod-24"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-LinkedStoragePool-Tests&quot;</span>
+<span class="target" id="compiledMethod-29"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-LinkedStoragePool-Tests&quot;</span>
 <span class="nf">testTopologicalSortOnCycleDo1</span>
 
 	<span class="c">&quot;This test stress four small cycles detection.&quot;</span>
@@ -557,7 +606,7 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 				(<span class="m">1</span> <span class="nf">-&gt;</span> <span class="m">2</span>) }
 </pre></div>
 </div>
-<span class="target" id="compiledMethod-25"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-LinkedStoragePool-Tests&quot;</span>
+<span class="target" id="compiledMethod-30"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-LinkedStoragePool-Tests&quot;</span>
 <span class="nf">testTopologicalSortOnCycleDo2</span>
 
 	<span class="c">&quot;The following test is kept from https://upload.wikimedia.org/wikipedia/commons/0/03/Directed_acyclic_graph_2.svg.&quot;</span>
@@ -575,10 +624,10 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 						 (<span class="m">4</span> <span class="nf">-&gt;</span> <span class="m">8</span>)<span class="p">.</span>
 						 (<span class="m">5</span> <span class="nf">-&gt;</span> <span class="m">7</span>) }
 				 <span class="nf">onCycleDo:</span> [ <span class="nc">Error</span> <span class="nf">signal</span> ])
-		<span class="nf">equals:</span> <span class="ss">#(</span> <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span> <span class="m">8</span> <span class="m">6</span> <span class="m">7</span> <span class="ss">)</span>
+		<span class="nf">equals:</span> <span class="ss">#(</span> <span class="m">1</span> <span class="m">2</span> <span class="m">4</span> <span class="m">6</span> <span class="m">3</span> <span class="m">5</span> <span class="m">7</span> <span class="m">8</span> <span class="ss">)</span>
 </pre></div>
 </div>
-<span class="target" id="compiledMethod-27"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-LinkedStoragePool-Tests&quot;</span>
+<span class="target" id="compiledMethod-32"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-LinkedStoragePool-Tests&quot;</span>
 <span class="nf">testTopologicalSortOnCycleDo3</span>
 
 	<span class="c">&quot;This test case shows how to iteratively removing edges</span>
@@ -594,18 +643,18 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 			<span class="bp">self</span>
 				<span class="nf">assert:</span> <span class="nv">ordering</span>
 				<span class="nf">equals:</span>
-					<span class="ss">#(</span> <span class="m">60</span> <span class="m">73</span> <span class="m">86</span> <span class="m">94</span> <span class="m">95</span> <span class="m">99</span> <span class="m">100</span> <span class="m">57</span> <span class="m">96</span> <span class="m">90</span> <span class="m">87</span> <span class="m">98</span> <span class="m">82</span> <span class="m">80</span> <span class="m">64</span> <span class="m">1</span> <span class="m">88</span> <span class="m">89</span> <span class="m">84</span> <span class="m">92</span> <span class="m">93</span>
-					   <span class="m">15</span> <span class="m">2</span> <span class="m">69</span> <span class="m">97</span> <span class="m">41</span> <span class="m">63</span> <span class="m">67</span> <span class="m">81</span> <span class="m">76</span> <span class="m">7</span> <span class="m">75</span> <span class="m">44</span> <span class="m">68</span> <span class="m">37</span> <span class="m">3</span> <span class="m">65</span> <span class="m">47</span> <span class="m">70</span> <span class="m">66</span> <span class="m">85</span> <span class="m">91</span> <span class="m">71</span>
-					   <span class="m">59</span> <span class="m">4</span> <span class="m">62</span> <span class="m">77</span> <span class="m">50</span> <span class="m">58</span> <span class="m">83</span> <span class="m">72</span> <span class="m">46</span> <span class="m">9</span> <span class="m">5</span> <span class="m">56</span> <span class="m">42</span> <span class="m">48</span> <span class="m">11</span> <span class="m">49</span> <span class="m">38</span> <span class="m">6</span> <span class="m">39</span> <span class="m">45</span> <span class="m">8</span> <span class="m">16</span>
-					   <span class="m">27</span> <span class="m">78</span> <span class="m">74</span> <span class="m">30</span> <span class="m">79</span> <span class="m">34</span> <span class="m">40</span> <span class="m">20</span> <span class="m">19</span> <span class="m">36</span> <span class="m">14</span> <span class="m">24</span> <span class="m">53</span> <span class="m">35</span> <span class="m">33</span> <span class="m">12</span> <span class="m">25</span> <span class="m">55</span> <span class="m">51</span> <span class="m">26</span> <span class="m">13</span>
-					   <span class="m">23</span> <span class="m">21</span> <span class="m">52</span> <span class="m">28</span> <span class="m">17</span> <span class="m">31</span> <span class="m">22</span> <span class="m">18</span> <span class="m">32</span> <span class="m">43</span> <span class="m">29</span> <span class="m">61</span> <span class="m">10</span> <span class="m">54</span> <span class="ss">)</span><span class="p">.</span>
+					<span class="ss">#(</span> <span class="m">60</span> <span class="m">73</span> <span class="m">86</span> <span class="m">94</span> <span class="m">57</span> <span class="m">95</span> <span class="m">99</span> <span class="m">100</span> <span class="m">96</span> <span class="m">98</span> <span class="m">87</span> <span class="m">64</span> <span class="m">80</span> <span class="m">88</span> <span class="m">15</span> <span class="m">41</span> <span class="m">1</span> <span class="m">93</span> <span class="m">2</span> <span class="m">84</span> <span class="m">97</span>
+					   <span class="m">89</span> <span class="m">67</span> <span class="m">75</span> <span class="m">7</span> <span class="m">82</span> <span class="m">92</span> <span class="m">81</span> <span class="m">90</span> <span class="m">63</span> <span class="m">76</span> <span class="m">37</span> <span class="m">66</span> <span class="m">4</span> <span class="m">50</span> <span class="m">70</span> <span class="m">71</span> <span class="m">77</span> <span class="m">9</span> <span class="m">42</span> <span class="m">72</span> <span class="m">68</span> <span class="m">65</span>
+					   <span class="m">58</span> <span class="m">69</span> <span class="m">47</span> <span class="m">44</span> <span class="m">3</span> <span class="m">91</span> <span class="m">46</span> <span class="m">85</span> <span class="m">62</span> <span class="m">56</span> <span class="m">49</span> <span class="m">6</span> <span class="m">45</span> <span class="m">8</span> <span class="m">78</span> <span class="m">27</span> <span class="m">11</span> <span class="m">83</span> <span class="m">59</span> <span class="m">5</span> <span class="m">48</span> <span class="m">38</span>
+					   <span class="m">39</span> <span class="m">79</span> <span class="m">16</span> <span class="m">30</span> <span class="m">74</span> <span class="m">34</span> <span class="m">40</span> <span class="m">19</span> <span class="m">53</span> <span class="m">24</span> <span class="m">20</span> <span class="m">14</span> <span class="m">12</span> <span class="m">51</span> <span class="m">13</span> <span class="m">33</span> <span class="m">25</span> <span class="m">26</span> <span class="m">23</span> <span class="m">36</span> <span class="m">35</span>
+					   <span class="m">21</span> <span class="m">52</span> <span class="m">17</span> <span class="m">22</span> <span class="m">18</span> <span class="m">28</span> <span class="m">31</span> <span class="m">32</span> <span class="m">61</span> <span class="m">29</span> <span class="m">10</span> <span class="m">54</span> <span class="m">43</span> <span class="m">55</span> <span class="ss">)</span><span class="p">.</span>
 
 			<span class="bp">self</span> <span class="nf">assert_testTopologicalSortOnCycleDo3_edgesEqualsTo:</span> <span class="nv">edges</span> ]
 </pre></div>
 </div>
 <blockquote>
 <div><p>where</p>
-<span class="target" id="compiledMethod-26"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-LinkedStoragePool-Examples&quot;</span>
+<span class="target" id="compiledMethod-31"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-LinkedStoragePool-Examples&quot;</span>
 <span class="nf">topologicalSortByAssociations:</span> <span class="nv">aRelation</span> <span class="nf">acyclicDo:</span> <span class="nv">aBlock</span>
 
 	<span class="o">|</span><span class="nv"> ordering edges </span><span class="o">|</span>
