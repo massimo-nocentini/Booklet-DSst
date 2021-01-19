@@ -150,9 +150,7 @@ equivalent representation
 .. index::
   single: Sorting algorithms; Topological by associations of naturals
   single: TAOCP by Donald Knuth; Volume 1, Algorithm T at page 264
-
-
-
+  single: Test cases; Topological sort
   
 Test case: Topological sorting
 ------------------------------
@@ -166,7 +164,11 @@ collection of associations :math:`(j, k) \in [1, n]^{2}` no holes allowed,
 namely every natural *has* to be used in at least one input relation. And,
 ``b`` is a block consuming a collection of associations forming a cycle.
 
+.. index::
+  single: GitHub Pull Requests; 7457 - Topological sort
 
+The following implementation had been proposed in the PR
+https://github.com/pharo-project/pharo/pull/7457.
 
 .. pharo:autocompiledmethod:: SequenceableCollection>>#topologicalSortByAssociations:onCycleDo:
 
@@ -184,15 +186,23 @@ namely every natural *has* to be used in at least one input relation. And,
 
     and
 
-    .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#scanSinksOfValueLinksTable:in:
+    .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#sinksOfValueLinksTable:
+
+      where
+
+        .. pharo:autocompiledmethod:: Association>>#ifSink:otherwise:forTopologicalSortAlgorithm:
 
     and
 
-    .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#sortOn:sinksDictionary:valueLinksTable:
+    .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#sortOn:sinksValueLink:valueLinksTable:
 
       where
 
       .. pharo:autocompiledmethod:: Object>>#ignoreBlock:
+      
+      and
+
+      .. pharo:autocompiledmethod:: Association>>#decrementCountIfZero:forTopologicalSortAlgorithm:
 
     and
 

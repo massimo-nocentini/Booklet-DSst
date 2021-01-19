@@ -7,12 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Linked memory allocation &#8212; Data Structures in Smalltalk  documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Data Structures in Smalltalk" href="../index.html" /> 
@@ -321,24 +323,23 @@ naturals.  The message send <code class="docutils literal notranslate"><span cla
 collection of associations <span class="math notranslate nohighlight">\((j, k) \in [1, n]^{2}\)</span> no holes allowed,
 namely every natural <em>has</em> to be used in at least one input relation. And,
 <code class="docutils literal notranslate"><span class="pre">b</span></code> is a block consuming a collection of associations forming a cycle.</p>
-<span class="target" id="compiledMethod-26"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-LinkedStoragePool-Examples&quot;</span>
+<p id="index-1">The following implementation had been proposed in the PR
+<a class="reference external" href="https://github.com/pharo-project/pharo/pull/7457">https://github.com/pharo-project/pharo/pull/7457</a>.</p>
+<span class="target" id="compiledMethod-28"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-LinkedStoragePool-Examples&quot;</span>
 <span class="nf">topologicalSortByAssociations:</span> <span class="nv">aRelation</span> <span class="nf">onCycleDo:</span> <span class="nv">cBlock</span>
 
-	<span class="o">|</span><span class="nv"> sorter </span><span class="o">|</span>
-	<span class="nv">sorter</span> <span class="o">:=</span> <span class="nc">TopologicalSortAlgorithm</span> <span class="nb">new</span>
-		          <span class="nf">size:</span> <span class="bp">self</span> <span class="nf">size</span><span class="p">;</span>
-		          <span class="nf">relation:</span> <span class="nv">aRelation</span><span class="p">;</span>
-		          <span class="nf">yourself</span><span class="p">.</span>
-	<span class="o">^</span> <span class="nv">sorter</span>
+	<span class="o">^</span> <span class="nc">TopologicalSortAlgorithm</span> <span class="nb">new</span>
+		  <span class="nf">size:</span> <span class="bp">self</span> <span class="nf">size</span><span class="p">;</span>
+		  <span class="nf">relation:</span> <span class="nv">aRelation</span><span class="p">;</span>
 		  <span class="nf">value:</span> [ <span class="o">:</span><span class="nv">ordering</span> <span class="o">|</span> 
 			  <span class="bp">self</span> <span class="nf">species</span> <span class="nf">streamContents:</span> [ <span class="o">:</span><span class="nv">aStream</span> <span class="o">|</span> 
-				  <span class="nv">ordering</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">anIndex</span> <span class="o">|</span> <span class="nv">aStream</span> <span class="nf">nextPut:</span> (<span class="bp">self</span> <span class="nf">at:</span> <span class="nv">anIndex</span>) ] ] ]
+					  <span class="nv">ordering</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">anIndex</span> <span class="o">|</span> <span class="nv">aStream</span> <span class="nf">nextPut:</span> (<span class="bp">self</span> <span class="nf">at:</span> <span class="nv">anIndex</span>) ] ] ]
 		  <span class="nf">onCycleDo:</span> [ <span class="o">:</span><span class="nv">cycle</span> <span class="o">|</span> 
 			  <span class="o">|</span><span class="nv"> sequence </span><span class="o">|</span>
 			  <span class="nv">sequence</span> <span class="o">:=</span> <span class="nc">Array</span> <span class="nf">streamContents:</span> [ <span class="o">:</span><span class="nv">aStream</span> <span class="o">|</span> 
-				              <span class="nv">aStream</span> <span class="nf">nextPut:</span> (<span class="bp">self</span> <span class="nf">at:</span> <span class="nv">cycle</span> <span class="nf">first</span> <span class="nf">key</span>)<span class="p">.</span>
-				              <span class="nv">cycle</span> <span class="nf">reverseDo:</span> [ <span class="o">:</span><span class="nv">anAssoc</span> <span class="o">|</span> 
-					              <span class="nv">aStream</span> <span class="nf">nextPut:</span> (<span class="bp">self</span> <span class="nf">at:</span> <span class="nv">anAssoc</span> <span class="nf">key</span>) ] ]<span class="p">.</span>
+					              <span class="nv">aStream</span> <span class="nf">nextPut:</span> (<span class="bp">self</span> <span class="nf">at:</span> <span class="nv">cycle</span> <span class="nf">first</span> <span class="nf">key</span>)<span class="p">.</span>
+					              <span class="nv">cycle</span> <span class="nf">reverseDo:</span> [ <span class="o">:</span><span class="nv">anAssoc</span> <span class="o">|</span> 
+							              <span class="nv">aStream</span> <span class="nf">nextPut:</span> (<span class="bp">self</span> <span class="nf">at:</span> <span class="nv">anAssoc</span> <span class="nf">key</span>) ] ]<span class="p">.</span>
 			  <span class="nv">cBlock</span> <span class="nf">cull:</span> <span class="nv">sequence</span> <span class="nf">cull:</span> <span class="nv">cycle</span> ]
 </pre></div>
 </div>
@@ -347,19 +348,20 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 <span class="target" id="compiledMethod-18"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
 <span class="nf">value:</span> <span class="nv">aBlock</span> <span class="nf">onCycleDo:</span> <span class="nv">cycleBlock</span>
 
-	<span class="o">|</span><span class="nv"> table sort </span><span class="o">|</span>
+	<span class="o">|</span><span class="nv"> table sort qlink </span><span class="o">|</span>
 	<span class="nv">table</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">makeValueLinksTable</span><span class="p">.</span>
 
-	<span class="c">&quot;T1: initialize.&quot;</span>
-	<span class="bp">self</span> <span class="nf">initializeValueLinksTable:</span> <span class="nv">table</span><span class="p">.</span>
+	<span class="c">&quot;T1: initialize. T4: scan for zeros.&quot;</span>
+	<span class="nv">qlink</span> <span class="o">:=</span> <span class="bp">self</span>
+		         <span class="nf">initializeValueLinksTable:</span> <span class="nv">table</span><span class="p">;</span>
+		         <span class="nf">sinksOfValueLinksTable:</span> <span class="nv">table</span><span class="p">.</span>
 
-	<span class="c">&quot;T4: scan for zeros.&quot;</span>
-	<span class="nv">sort</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">scanSinksOfValueLinksTable:</span> <span class="nv">table</span> <span class="nf">in:</span> [ <span class="o">:</span><span class="nv">qlink</span> <span class="o">|</span> 
-		        <span class="nc">Array</span> <span class="nf">streamContents:</span> [ <span class="o">:</span><span class="nv">aStream</span> <span class="o">|</span> 
-			        <span class="bp">self</span>
-				        <span class="nf">sortOn:</span> <span class="nv">aStream</span>
-				        <span class="nf">sinksDictionary:</span> <span class="nv">qlink</span>
-				        <span class="nf">valueLinksTable:</span> <span class="nv">table</span> ] ]<span class="p">.</span>
+	<span class="nv">sort</span> <span class="o">:=</span> <span class="nc">Array</span> <span class="nf">streamContents:</span> [ <span class="o">:</span><span class="nv">aStream</span> <span class="o">|</span> 
+		        <span class="bp">self</span>
+			        <span class="nf">sortOn:</span> <span class="nv">aStream</span>
+			        <span class="nf">sinksValueLink:</span> <span class="nv">qlink</span>
+			        <span class="nf">valueLinksTable:</span> <span class="nv">table</span> ]<span class="p">.</span>
+
 	<span class="o">^</span> <span class="nv">sort</span> <span class="nf">size</span> <span class="nf">&lt;</span> <span class="nv">size</span>
 		  <span class="nb">ifTrue:</span> [ <span class="bp">self</span> <span class="nf">handleCycleInValueLinksTable:</span> <span class="nv">table</span> <span class="nf">do:</span> <span class="nv">cycleBlock</span> ]
 		  <span class="nb">ifFalse:</span> [ <span class="nv">aBlock</span> <span class="nf">value:</span> <span class="nv">sort</span> ]
@@ -398,30 +400,37 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 </pre></div>
 </div>
 <p>and</p>
-<span class="target" id="compiledMethod-21"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
-<span class="nf">scanSinksOfValueLinksTable:</span> <span class="nv">table</span> <span class="nf">in:</span> <span class="nv">aBlock</span>
+<span class="target" id="compiledMethod-22"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
+<span class="nf">sinksOfValueLinksTable:</span> <span class="nv">table</span>
 
-	<span class="o">|</span><span class="nv"> qlink </span><span class="o">|</span>
-	<span class="nv">qlink</span> <span class="o">:=</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="nv">size</span>)
-		         <span class="nf">foldr:</span> [ <span class="o">:</span><span class="nv">k</span> <span class="o">:</span><span class="nv">aValueLink</span> <span class="o">|</span> 
-			         <span class="o">|</span><span class="nv"> count </span><span class="o">|</span>
-			         <span class="nv">count</span> <span class="o">:=</span> (<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">k</span>) <span class="nf">key</span><span class="p">.</span>
-			         <span class="nv">count</span> <span class="nf">=</span> <span class="m">0</span>
-				         <span class="nb">ifTrue:</span> [ <span class="nv">k</span> <span class="nf">~~&gt;</span> <span class="nv">aValueLink</span> ]
-				         <span class="nb">ifFalse:</span> [ <span class="nv">aValueLink</span> ] ]
-		         <span class="nf">init:</span> <span class="bp">nil</span><span class="p">.</span>
-
-	<span class="o">^</span> <span class="nv">aBlock</span> <span class="nf">value:</span> <span class="nv">qlink</span>
+	<span class="o">^</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="nv">size</span>)
+		  <span class="nf">foldr:</span> [ <span class="o">:</span><span class="nv">k</span> <span class="o">:</span><span class="nv">aValueLink</span> <span class="o">|</span> 
+			  (<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">k</span>)
+				  <span class="nf">ifSink:</span> [ <span class="nv">k</span> <span class="nf">~~&gt;</span> <span class="nv">aValueLink</span> ]
+				  <span class="nf">otherwise:</span> [ <span class="nv">aValueLink</span> ]
+				  <span class="nf">forTopologicalSortAlgorithm:</span> <span class="bp">self</span> ]
+		  <span class="nf">init:</span> <span class="bp">nil</span>
 </pre></div>
 </div>
+<blockquote>
+<div><p>where</p>
+<blockquote>
+<div><span class="target" id="compiledMethod-21"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Association, protocol *Containers-LinkedStoragePool-Examples&quot;</span>
+<span class="nf">ifSink:</span> <span class="nv">sBlock</span> <span class="nf">otherwise:</span> <span class="nv">oBlock</span> <span class="nf">forTopologicalSortAlgorithm:</span> <span class="nv">aTSA</span>
+
+	<span class="o">^</span> <span class="nv">key</span> <span class="nf">ifZero:</span> <span class="nv">sBlock</span> <span class="nf">ifNotZero:</span> <span class="nv">oBlock</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
 <p>and</p>
-<span class="target" id="compiledMethod-23"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
-<span class="nf">sortOn:</span> <span class="nv">aStream</span> <span class="nf">sinksDictionary:</span> <span class="nv">qlink</span> <span class="nf">valueLinksTable:</span> <span class="nv">table</span>
+<span class="target" id="compiledMethod-25"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
+<span class="nf">sortOn:</span> <span class="nv">aStream</span> <span class="nf">sinksValueLink:</span> <span class="nv">qlink</span> <span class="nf">valueLinksTable:</span> <span class="nv">table</span>
 
 	<span class="o">|</span><span class="nv"> f </span><span class="o">|</span>
 	<span class="nv">f</span> <span class="o">:=</span> <span class="nv">qlink</span><span class="p">.</span>
 	[ <span class="nv">f</span> ] <span class="nf">whileNotNil:</span> [ 
-		<span class="o">|</span> <span class="nv">p</span> <span class="nf">anIndex</span> <span class="nf">|</span>
+		<span class="o">|</span> <span class="nv">aValueLink</span> <span class="nf">anIndex</span> <span class="nf">|</span>
 		<span class="c">&quot;T5: output front of queue.&quot;</span>
 		<span class="nv">anIndex</span> <span class="o">:=</span> <span class="nv">f</span> <span class="nf">value</span><span class="p">.</span>
 		<span class="nv">aStream</span> <span class="nf">nextPut:</span> <span class="nv">anIndex</span><span class="p">.</span>
@@ -429,26 +438,21 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 		<span class="c">&quot;T7: remove from queue.&quot;</span>
 		<span class="nv">f</span> <span class="o">:=</span> <span class="nv">f</span> <span class="nf">nextLink</span><span class="p">.</span>
 
-		<span class="nv">p</span> <span class="o">:=</span> (<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">anIndex</span>) <span class="nf">in:</span> [ <span class="o">:</span><span class="nv">assoc</span> <span class="o">|</span> 
-			     <span class="nv">assoc</span> <span class="nf">value</span> <span class="nf">ignoreBlock:</span> [ <span class="nv">assoc</span> <span class="nf">value:</span> <span class="bp">nil</span> ] ]<span class="p">.</span>
+		<span class="nv">aValueLink</span> <span class="o">:=</span> (<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">anIndex</span>) <span class="nf">in:</span> [ <span class="o">:</span><span class="nv">anAssoc</span> <span class="o">|</span> 
+			              <span class="nv">anAssoc</span> <span class="nf">value</span> <span class="nf">ignoreBlock:</span> [ <span class="nv">anAssoc</span> <span class="nf">value:</span> <span class="bp">nil</span> ] ]<span class="p">.</span>
 
 		<span class="c">&quot;T6: erase relations.&quot;</span>
-		[ <span class="nv">p</span> ] <span class="nf">whileNotNil:</span> [ 
-			<span class="o">|</span> <span class="nv">assoc</span> <span class="nf">k</span> <span class="nf">count</span> <span class="nf">|</span>
-			<span class="nv">k</span> <span class="o">:=</span> <span class="nv">p</span> <span class="nf">value</span><span class="p">.</span>
-			<span class="nv">assoc</span> <span class="o">:=</span> <span class="nv">table</span> <span class="nf">at:</span> <span class="nv">k</span><span class="p">.</span>
-
-			<span class="c">&quot;decrease COUNT by one.&quot;</span>
-			<span class="nv">count</span> <span class="o">:=</span> <span class="nv">assoc</span>
-				         <span class="nf">key:</span> <span class="nv">assoc</span> <span class="nf">key</span> <span class="nf">-</span> <span class="m">1</span><span class="p">;</span>
-				         <span class="nf">key</span><span class="p">.</span>
-			<span class="nv">count</span> <span class="nf">=</span> <span class="m">0</span> <span class="nb">ifTrue:</span> [ <span class="nv">f</span> <span class="o">:=</span> <span class="nv">k</span> <span class="nf">~~&gt;</span> <span class="nv">f</span> ]<span class="p">.</span>
-			<span class="nv">p</span> <span class="o">:=</span> <span class="nv">p</span> <span class="nf">nextLink</span> ] ]
+		<span class="nv">aValueLink</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">k</span> <span class="o">|</span> 
+			<span class="o">|</span><span class="nv"> kIndex </span><span class="o">|</span>
+			<span class="nv">kIndex</span> <span class="o">:=</span> <span class="nv">k</span> <span class="nf">value</span><span class="p">.</span>
+			(<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">kIndex</span>)
+				<span class="nf">decrementCountIfZero:</span> [ <span class="nv">f</span> <span class="o">:=</span> <span class="nv">kIndex</span> <span class="nf">~~&gt;</span> <span class="nv">f</span> ]
+				<span class="nf">forTopologicalSortAlgorithm:</span> <span class="bp">self</span> ] ]
 </pre></div>
 </div>
 <blockquote>
 <div><p>where</p>
-<span class="target" id="compiledMethod-22"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Object, protocol *Kernel-Extensions&quot;</span>
+<span class="target" id="compiledMethod-23"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Object, protocol *Kernel-Extensions&quot;</span>
 <span class="nf">ignoreBlock:</span> <span class="nv">aBlock</span>
 
 	<span class="c">&quot;I invoke the given block giving myself as argument if it needs to consume me.</span>
@@ -458,9 +462,16 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 	<span class="o">^</span> <span class="bp">self</span>
 </pre></div>
 </div>
+<p>and</p>
+<span class="target" id="compiledMethod-24"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Association, protocol *Containers-LinkedStoragePool-Examples&quot;</span>
+<span class="nf">decrementCountIfZero:</span> <span class="nv">zBlock</span> <span class="nf">forTopologicalSortAlgorithm:</span> <span class="nv">aTSA</span>
+
+	<span class="o">^</span> (<span class="nv">key</span> <span class="o">:=</span> <span class="nv">key</span> <span class="nf">-</span> <span class="m">1</span>) <span class="nf">ifZero:</span> <span class="nv">zBlock</span>
+</pre></div>
+</div>
 </div></blockquote>
 <p>and</p>
-<span class="target" id="compiledMethod-25"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
+<span class="target" id="compiledMethod-27"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
 <span class="nf">handleCycleInValueLinksTable:</span> <span class="nv">table</span> <span class="nf">do:</span> <span class="nv">cycleBlock</span>
 
 	<span class="o">|</span><span class="nv"> kk cycle qlink </span><span class="o">|</span>
@@ -472,9 +483,7 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 		<span class="nv">p</span> <span class="o">:=</span> <span class="nv">assoc</span> <span class="nf">value</span> <span class="nf">ignoreBlock:</span> [ <span class="nv">assoc</span> <span class="nf">value:</span> <span class="m">0</span> ]<span class="p">.</span>
 
 		<span class="c">&quot;T10&quot;</span>
-		[ <span class="nv">p</span> ] <span class="nf">whileNotNil:</span> [ 
-			<span class="nv">qlink</span> <span class="nf">at:</span> <span class="nv">p</span> <span class="nf">value</span> <span class="nf">put:</span> <span class="nv">k</span><span class="p">.</span>
-			<span class="nv">p</span> <span class="o">:=</span> <span class="nv">p</span> <span class="nf">nextLink</span> ] ]<span class="p">.</span>
+		<span class="nv">p</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">qlink</span> <span class="nf">at:</span> <span class="nv">each</span> <span class="nf">value</span> <span class="nf">put:</span> <span class="nv">k</span> ] ]<span class="p">.</span>
 
 	<span class="c">&quot;T11&quot;</span>
 	<span class="nv">kk</span> <span class="o">:=</span> <span class="nv">qlink</span> <span class="nf">anyAssociation</span> <span class="nf">key</span><span class="p">.</span>
@@ -486,13 +495,13 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 	(<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">kk</span>) <span class="nf">value</span> <span class="nf">=</span> <span class="m">0</span> ] <span class="nf">whileTrue</span><span class="p">.</span>
 
 	<span class="c">&quot;T13&quot;</span>
-	<span class="nv">cycle</span> <span class="o">:=</span> <span class="nc">Array</span> <span class="nf">streamContents:</span> [ <span class="o">:</span><span class="nv">array</span> <span class="o">|</span> 
+	<span class="nv">cycle</span> <span class="o">:=</span> <span class="nc">Array</span> <span class="nf">streamContents:</span> [ <span class="o">:</span><span class="nv">aStream</span> <span class="o">|</span> 
 		         [ 
-		         <span class="nv">array</span> <span class="nf">nextPut:</span> <span class="nv">kk</span><span class="p">.</span>
+		         <span class="nv">aStream</span> <span class="nf">nextPut:</span> <span class="nv">kk</span><span class="p">.</span>
 		         (<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">kk</span>) <span class="nf">value:</span> <span class="m">0</span><span class="p">.</span>
 		         <span class="nv">kk</span> <span class="o">:=</span> <span class="nv">qlink</span> <span class="nf">at:</span> <span class="nv">kk</span><span class="p">.</span>
 		         (<span class="nv">table</span> <span class="nf">at:</span> <span class="nv">kk</span>) <span class="nf">value</span> <span class="nf">=</span> <span class="m">1</span> ] <span class="nf">whileTrue</span><span class="p">.</span>
-		         <span class="nv">array</span> <span class="nf">nextPut:</span> <span class="nv">kk</span> ]<span class="p">.</span>
+		         <span class="nv">aStream</span> <span class="nf">nextPut:</span> <span class="nv">kk</span> ]<span class="p">.</span>
 
 	<span class="c">&quot;Invoke the given block with the detected cycle.&quot;</span>
 	<span class="o">^</span> <span class="nv">cycleBlock</span> <span class="nf">value:</span>
@@ -501,7 +510,7 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 </div>
 <blockquote>
 <div><p>where</p>
-<span class="target" id="compiledMethod-24"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Dictionary, protocol *Collections-Unordered-Extensions&quot;</span>
+<span class="target" id="compiledMethod-26"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Dictionary, protocol *Collections-Unordered-Extensions&quot;</span>
 <span class="nf">anyAssociation</span>
 
 	<span class="c">&quot;I mimic the message `Collection&gt;&gt;#anyone` with respect to associations that I collect.&quot;</span>
@@ -515,7 +524,7 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 </div></blockquote>
 </div></blockquote>
 <p>Testing for acyclic property can be done with the following message:</p>
-<span class="target" id="compiledMethod-27"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-LinkedStoragePool-Examples&quot;</span>
+<span class="target" id="compiledMethod-29"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-LinkedStoragePool-Examples&quot;</span>
 <span class="nf">isAcyclicWithRespectToAssociations:</span> <span class="nv">aRelation</span>
 
 	<span class="o">|</span><span class="nv"> isAcyclic </span><span class="o">|</span>
@@ -527,7 +536,7 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 </pre></div>
 </div>
 <p>Some tests are in order:</p>
-<span class="target" id="compiledMethod-28"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-LinkedStoragePool-Tests&quot;</span>
+<span class="target" id="compiledMethod-30"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-LinkedStoragePool-Tests&quot;</span>
 <span class="nf">testTopologicalSortOnCycleDo</span>
 
 	<span class="c">&quot;The following test is kept from TAOCP by Donald Knuth, Volume 1 page 272.&quot;</span>
@@ -549,7 +558,7 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 		<span class="nf">equals:</span> <span class="ss">#(</span> <span class="m">1</span> <span class="m">3</span> <span class="m">7</span> <span class="m">4</span> <span class="m">9</span> <span class="m">2</span> <span class="m">5</span> <span class="m">8</span> <span class="m">6</span> <span class="ss">)</span>
 </pre></div>
 </div>
-<span class="target" id="compiledMethod-29"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-LinkedStoragePool-Tests&quot;</span>
+<span class="target" id="compiledMethod-31"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-LinkedStoragePool-Tests&quot;</span>
 <span class="nf">testTopologicalSortOnCycleDo1</span>
 
 	<span class="c">&quot;This test stress four small cycles detection.&quot;</span>
@@ -612,7 +621,7 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 				(<span class="m">1</span> <span class="nf">-&gt;</span> <span class="m">2</span>) }
 </pre></div>
 </div>
-<span class="target" id="compiledMethod-30"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-LinkedStoragePool-Tests&quot;</span>
+<span class="target" id="compiledMethod-32"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-LinkedStoragePool-Tests&quot;</span>
 <span class="nf">testTopologicalSortOnCycleDo2</span>
 
 	<span class="c">&quot;The following test is kept from https://upload.wikimedia.org/wikipedia/commons/0/03/Directed_acyclic_graph_2.svg.&quot;</span>
@@ -633,7 +642,7 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 		<span class="nf">equals:</span> <span class="ss">#(</span> <span class="m">1</span> <span class="m">2</span> <span class="m">4</span> <span class="m">6</span> <span class="m">3</span> <span class="m">5</span> <span class="m">7</span> <span class="m">8</span> <span class="ss">)</span>
 </pre></div>
 </div>
-<span class="target" id="compiledMethod-32"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-LinkedStoragePool-Tests&quot;</span>
+<span class="target" id="compiledMethod-34"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-LinkedStoragePool-Tests&quot;</span>
 <span class="nf">testTopologicalSortOnCycleDo3</span>
 
 	<span class="c">&quot;This test case shows how to iteratively removing edges</span>
@@ -660,7 +669,7 @@ namely every natural <em>has</em> to be used in at least one input relation. And
 </div>
 <blockquote>
 <div><p>where</p>
-<span class="target" id="compiledMethod-31"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-LinkedStoragePool-Examples&quot;</span>
+<span class="target" id="compiledMethod-33"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-LinkedStoragePool-Examples&quot;</span>
 <span class="nf">topologicalSortByAssociations:</span> <span class="nv">aRelation</span> <span class="nf">acyclicDo:</span> <span class="nv">aBlock</span>
 
 	<span class="o">|</span><span class="nv"> ordering edges </span><span class="o">|</span>
@@ -704,7 +713,7 @@ a <code class="docutils literal notranslate"><span class="pre">LinkedList</span>
 </pre></div>
 </div>
 <p>for example,</p>
-<span class="target" id="compiledMethod-35"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="target" id="compiledMethod-37"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
 <span class="nf">testAsLinkedList</span>
 
 	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="bp">self</span> <span class="nf">testSimpleValueLink</span> <span class="nf">asLinkedList</span>
@@ -712,7 +721,7 @@ a <code class="docutils literal notranslate"><span class="pre">LinkedList</span>
 </div>
 <blockquote>
 <div><img alt="../_images/CTLinkedStorageValueLinkTest-testAsLinkedList.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-testAsLinkedList.svg" /><p>where</p>
-<span class="target" id="compiledMethod-34"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;ValueLink, protocol *Collections-Support-Extensions&quot;</span>
+<span class="target" id="compiledMethod-36"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;ValueLink, protocol *Collections-Support-Extensions&quot;</span>
 <span class="nf">asLinkedList</span>
 
 	<span class="o">|</span><span class="nv"> list </span><span class="o">|</span>
@@ -723,7 +732,7 @@ a <code class="docutils literal notranslate"><span class="pre">LinkedList</span>
 </div>
 <blockquote>
 <div><p>where</p>
-<span class="target" id="compiledMethod-33"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Link, protocol *Collections-Support-Extensions&quot;</span>
+<span class="target" id="compiledMethod-35"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Link, protocol *Collections-Support-Extensions&quot;</span>
 <span class="nf">do:</span> <span class="nv">aBlock</span>
 
 	<span class="o">|</span><span class="nv"> link </span><span class="o">|</span>
@@ -740,14 +749,14 @@ a <code class="docutils literal notranslate"><span class="pre">LinkedList</span>
 <ul>
 <li><p>On one hand, since the slot <code class="docutils literal notranslate"><span class="pre">nextLink</span></code> hosts either a <code class="docutils literal notranslate"><span class="pre">Link</span></code> or <code class="docutils literal notranslate"><span class="pre">nil</span></code>
 then the latter has to understand</p>
-<span class="target" id="compiledMethod-36"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;UndefinedObject, protocol *Kernel-Extensions&quot;</span>
+<span class="target" id="compiledMethod-38"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;UndefinedObject, protocol *Kernel-Extensions&quot;</span>
 <span class="nf">asLinkedList</span>
 
 	<span class="o">^</span> <span class="nc">LinkedList</span> <span class="nf">empty</span>
 </pre></div>
 </div>
 <p>too and it behaves as follows</p>
-<span class="target" id="compiledMethod-37"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="target" id="compiledMethod-39"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
 <span class="nf">testNilAsLinkedList</span>
 
 	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="bp">nil</span> <span class="nf">asLinkedList</span>
@@ -758,7 +767,7 @@ then the latter has to understand</p>
 </li>
 <li><p>On the other hand, since a <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> could keep a recursive structure
 then all the values are kept as well</p>
-<span class="target" id="compiledMethod-38"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="target" id="compiledMethod-40"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
 <span class="nf">testAsLinkedList4321</span>
 
 	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="bp">self</span> <span class="nf">test4321ValueLinks</span> <span class="nf">asLinkedList</span>
@@ -770,7 +779,7 @@ then all the values are kept as well</p>
 </ul>
 <p>Additionally, <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> objects can be built using other objects than
 <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> ones, for example sending <code class="docutils literal notranslate"><span class="pre">#as:</span></code> to an <code class="docutils literal notranslate"><span class="pre">Interval</span></code>,</p>
-<span class="target" id="compiledMethod-40"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="target" id="compiledMethod-42"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
 <span class="nf">testAsLinkedListFromInterval</span>
 
 	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> ((<span class="m">4</span> <span class="nf">to:</span> <span class="m">1</span> <span class="nf">by:</span> <span class="m">-1</span>) <span class="nf">as:</span> <span class="nc">LinkedList</span>)
@@ -778,7 +787,7 @@ then all the values are kept as well</p>
 </div>
 <blockquote>
 <div><img alt="../_images/CTLinkedStorageValueLinkTest-testAsLinkedListFromInterval.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-testAsLinkedListFromInterval.svg" /><p>where</p>
-<span class="target" id="compiledMethod-39"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Number, protocol *Collections-Sequenceable&quot;</span>
+<span class="target" id="compiledMethod-41"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Number, protocol *Collections-Sequenceable&quot;</span>
 <span class="nf">to:</span> <span class="nv">stop</span> <span class="nf">by:</span> <span class="nv">step</span>
 
 	<span class="c">&quot;Answer an Interval from the receiver up to the argument, stop, </span>
@@ -848,7 +857,7 @@ then all the values are kept as well</p>
 </div>
 </div></blockquote>
 <p>Moreover, from a <code class="docutils literal notranslate"><span class="pre">SequenceableCollection</span></code> we can revert back to a <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> with,</p>
-<span class="target" id="compiledMethod-42"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Collections-Sequenceable-Extensions&quot;</span>
+<span class="target" id="compiledMethod-44"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Collections-Sequenceable-Extensions&quot;</span>
 <span class="nf">asValueLink</span>
 
 	<span class="o">^</span> <span class="bp">self</span> <span class="nf">foldr:</span> <span class="ss">#~~&gt;</span> <span class="nf">init:</span> <span class="bp">nil</span>
@@ -856,7 +865,7 @@ then all the values are kept as well</p>
 </div>
 <blockquote>
 <div><p>where <code class="docutils literal notranslate"><span class="pre">#foldr:init:</span></code> folds by associating to the right,</p>
-<span class="target" id="compiledMethod-41"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Collections-Sequenceable-Extensions&quot;</span>
+<span class="target" id="compiledMethod-43"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Collections-Sequenceable-Extensions&quot;</span>
 <span class="nf">foldr:</span> <span class="nv">aBlock</span> <span class="nf">init:</span> <span class="nv">init</span>
 
 	<span class="o">|</span><span class="nv"> cell </span><span class="o">|</span>
@@ -867,7 +876,7 @@ then all the values are kept as well</p>
 </div>
 </div></blockquote>
 <p>as we can see in the following example</p>
-<span class="target" id="compiledMethod-43"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="target" id="compiledMethod-45"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
 <span class="nf">testAsValueLink</span>
 
 	<span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphRecursiveOf:</span> (<span class="m">4</span> <span class="nf">to:</span> <span class="m">1</span> <span class="nf">by:</span> <span class="m">-1</span>) <span class="nf">asValueLink</span>
@@ -876,7 +885,7 @@ then all the values are kept as well</p>
 <blockquote>
 <div><img alt="../_images/CTLinkedStorageValueLinkTest-testAsValueLink.svg" class="align-center" src="../_images/CTLinkedStorageValueLinkTest-testAsValueLink.svg" /></div></blockquote>
 <p>Using another folding message <code class="docutils literal notranslate"><span class="pre">#inject:into:</span></code> that associates to the left,</p>
-<span class="target" id="compiledMethod-44"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Collection, protocol enumerating&quot;</span>
+<span class="target" id="compiledMethod-46"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;Collection, protocol enumerating&quot;</span>
 <span class="nf">inject:</span> <span class="nv">thisValue</span> <span class="nf">into:</span> <span class="nv">binaryBlock</span>
 
 	<span class="c">&quot;Accumulate a running value associated with evaluating the argument, binaryBlock, with the current value of the argument, thisValue, and the receiver as block arguments.&quot;</span>
@@ -891,7 +900,7 @@ then all the values are kept as well</p>
 </pre></div>
 </div>
 <p>we obtain a <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> that keeps the same elements in <em>reversed</em> order,</p>
-<span class="target" id="compiledMethod-45"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
+<span class="target" id="compiledMethod-47"></span><div class="highlight-smalltalk notranslate"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStorageValueLinkTest, protocol tests&quot;</span>
 <span class="nf">testAsValueLinkInjectInto</span>
 
 	<span class="o">|</span><span class="nv"> l </span><span class="o">|</span>

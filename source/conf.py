@@ -41,6 +41,7 @@ extensions = [
 pharo_json_export_filenames = [
         '../Containers-LinkedStoragePool/json-for-doc/link-core-messages.json',
         '../Containers-LinkedStoragePool/json-for-doc/valuelink-core-messages.json',
+        '../Containers-LinkedStoragePool/json-for-doc/topologicalSort-core-messages.json',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -59,6 +60,7 @@ exclude_patterns = []
 #
 html_theme = 'sphinx_rtd_theme'
 html_theme = 'sphinxdoc'
+html_theme = 'classic'
 #html_theme = 'python_docs_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
