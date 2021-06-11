@@ -11,5 +11,10 @@ BaselineOfBookletDSst >> baseline: spec [
 	spec for: #common do: [ 
 		spec baseline: 'ContainersLinkedStoragePool' with: [ 
 			spec repository:
-				'github://massimo-nocentini/Containers-LinkedStoragePool/src' ] ]
+				'github://massimo-nocentini/Containers-LinkedStoragePool/src' ].
+
+		spec
+			baseline: 'MetaSTExporter'
+			with: [ 
+			spec repository: 'github://massimo-nocentini/MetaSTExporter/src' ] ]
 ]
