@@ -19,9 +19,9 @@ a ``LinkedList`` container
 
 for example,
 
-.. pharo:autocompiledmethod:: CTLinkedStorageValueLinkTest>>#testAsLinkedList
+.. pharo:autocompiledmethod:: CTLinksValueLinkTest>>#testAsLinkedList
 
-  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-testAsLinkedList.svg
+  .. image:: ../../../Containers-Links/images/CTLinksValueLinkTest-testAsLinkedList.svg
     :align: center
 
   where
@@ -41,25 +41,25 @@ Two observations are in order:
 
   too and it behaves as follows
 
-  .. pharo:autocompiledmethod:: CTLinkedStorageValueLinkTest>>#testNilAsLinkedList
+  .. pharo:autocompiledmethod:: CTLinksValueLinkTest>>#testNilAsLinkedList
 
-    .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-testNilAsLinkedList.svg
+    .. image:: ../../../Containers-Links/images/CTLinksValueLinkTest-testNilAsLinkedList.svg
       :align: center
 
 * On the other hand, since a ``ValueLink`` could keep a recursive structure
   then all the values are kept as well
 
-  .. pharo:autocompiledmethod:: CTLinkedStorageValueLinkTest>>#testAsLinkedList4321
+  .. pharo:autocompiledmethod:: CTLinksValueLinkTest>>#testAsLinkedList4321
 
-    .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-testAsLinkedList4321.svg
+    .. image:: ../../../Containers-Links/images/CTLinksValueLinkTest-testAsLinkedList4321.svg
       :align: center
   
 Additionally, ``LinkedList`` objects can be built using other objects than
 ``ValueLink`` ones, for example sending ``#as:`` to an ``Interval``, 
 
-.. pharo:autocompiledmethod:: CTLinkedStorageValueLinkTest>>#testAsLinkedListFromInterval
+.. pharo:autocompiledmethod:: CTLinksValueLinkTest>>#testAsLinkedListFromInterval
 
-  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-testAsLinkedListFromInterval.svg
+  .. image:: ../../../Containers-Links/images/CTLinksValueLinkTest-testAsLinkedListFromInterval.svg
     :align: center
 
   where
@@ -81,9 +81,9 @@ Moreover, from a ``SequenceableCollection`` we can revert back to a ``ValueLink`
 
 as we can see in the following example
 
-.. pharo:autocompiledmethod:: CTLinkedStorageValueLinkTest>>#testAsValueLink
+.. pharo:autocompiledmethod:: CTLinksValueLinkTest>>#testAsValueLink
 
-  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-testAsValueLink.svg
+  .. image:: ../../../Containers-Links/images/CTLinksValueLinkTest-testAsValueLink.svg
     :align: center
 
 Using another folding message ``#inject:into:`` that associates to the left,
@@ -92,9 +92,9 @@ Using another folding message ``#inject:into:`` that associates to the left,
 
 we obtain a ``ValueLink`` that keeps the same elements in *reversed* order,
 
-.. pharo:autocompiledmethod:: CTLinkedStorageValueLinkTest>>#testAsValueLinkInjectInto
+.. pharo:autocompiledmethod:: CTLinksValueLinkTest>>#testAsValueLinkInjectInto
 
-  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStorageValueLinkTest-testAsValueLinkInjectInto.svg
+  .. image:: ../../../Containers-Links/images/CTLinksValueLinkTest-testAsValueLinkInjectInto.svg
     :align: center
 
 

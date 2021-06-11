@@ -39,9 +39,9 @@ extensions = [
 
 # The following configuation values concerns the Pharo domain.
 pharo_json_export_filenames = [
-        '../Containers-LinkedStoragePool/json-for-doc/link-core-messages.json',
-        '../Containers-LinkedStoragePool/json-for-doc/valuelink-core-messages.json',
-        '../Containers-LinkedStoragePool/json-for-doc/topologicalSort-core-messages.json',
+        'json-for-doc/link-core-messages.json',
+        'json-for-doc/valuelink-core-messages.json',
+        'json-for-doc/topologicalSort-core-messages.json',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -58,8 +58,6 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
-html_theme = 'sphinxdoc'
 html_theme = 'classic'
 #html_theme = 'python_docs_theme'
 
