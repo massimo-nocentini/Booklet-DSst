@@ -33,9 +33,13 @@ extensions = [
         'sphinx.ext.mathjax',
         'sphinx.ext.githubpages',
         'sphinxcontrib.pharodomain',
+        'sphinxcontrib.bibtex',
         #'sphinx_rtd_theme',
         #'recommonmark',
 ]
+
+# For the bibliography.
+bibtex_bibfiles = []
 
 # The following configuation values concerns the Pharo domain.
 pharo_json_export_filenames = [
@@ -58,17 +62,24 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'classic'
-#html_theme = 'python_docs_theme'
+html_theme = 'alabaster'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-#source_parsers = {
-    #'.md': CommonMarkParser,
-#}
-#source_suffix = ['.rst', '.md']
-
+html_theme_options = {
+    "globaltoc_collapse": False,
+    'github_user': 'massimo-nocentini',
+    'github_repo': 'Booklet-DSst',
+    #'code_font_family': 'Monaco, Consolas',
+    'code_font_size': '0.8em',
+    'show_relbars': True,
+    'fixed_sidebar':True,
+    #'page_width':'85%',
+    'pre_bg':'white',
+    'note_bg':'white',
+    'show_powered_by':False,
+}
 

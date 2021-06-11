@@ -20,6 +20,6 @@ help:
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 deploy:
-	rm -rf ../docs
+	rm -rf ./docs
 	cp -r $(BUILDDIR)/html/ docs/
 

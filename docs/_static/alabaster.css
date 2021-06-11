@@ -295,7 +295,7 @@ div.important {
 }
 
 div.note {
-    background-color: #EEE;
+    background-color: white;
     border: 1px solid #CCC;
 }
 
@@ -328,7 +328,7 @@ p.admonition-title:after {
 
 pre, tt, code {
     font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 
 .hll {
@@ -439,7 +439,7 @@ ul, ol {
 }
 
 pre {
-    background: #EEE;
+    background: white;
     padding: 7px 30px;
     margin: 15px 0px;
     line-height: 1.3em;
@@ -571,7 +571,7 @@ a:hover tt, a:hover code {
         display: block;
         float: none;
         width: 102.5%;
-        margin: 50px -30px -20px -30px;
+        margin: -20px -30px 20px -30px;
         padding: 10px 20px;
         background: #333;
         color: #FFF;
@@ -626,6 +626,12 @@ a:hover tt, a:hover code {
 
     .github {
         display: none;
+    }
+}
+@media screen and (min-width: 876px) {
+    div.sphinxsidebar {
+        position: fixed;
+        margin-left: 0;
     }
 }
 
