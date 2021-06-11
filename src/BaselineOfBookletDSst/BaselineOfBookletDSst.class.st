@@ -64,16 +64,14 @@ BaselineOfBookletDSst >> scriptValueLinkMessagesForDoc [
 		  selectors:
 			  #( ~~> asLinkedList asValueLink #foldr:init: #inject:into:
 			     #to:by: testSimpleValueLink test4321ValueLinks
-			     test321ValueLinks test21ValueLinks test4321ValueLinksRecursive
-			     test4321ValueLinksSimplerRepr test43214ValueLinksRecursive
-			     test11ValueLinksLoopRecursive test11ValueLinksLoop
-			     test43214ValueLinksFrom2Recursive
-			     testAsLinkedList testAsLinkedList4321 testNilAsLinkedList
-			     testAsLinkedListFromInterval testAsValueLink testAsValueLinkInjectInto
+			     test321ValueLinks test21ValueLinks #test43214ValueLinks
+			     test11ValueLinksLoop testAsLinkedList testAsLinkedList4321
+			     testNilAsLinkedList testAsLinkedListFromInterval
+			     testAsValueLink testAsValueLinkInjectInto
 			     #topologicalSortByAssociations:acyclicDo:
 			     #topologicalSortByAssociations:onCycleDo:
 			     isAcyclicWithRespectToAssociations:
-			     #value:onCycleDo:  anyAssociation makeValueLinksTable
+			     #value:onCycleDo: anyAssociation makeValueLinksTable
 			     initializeValueLinksTable: #sinksOfValueLinksTable:
 			     #sortOn:sinksValueLink:valueLinksTable:
 			     #handleCycleInValueLinksTable:do:
