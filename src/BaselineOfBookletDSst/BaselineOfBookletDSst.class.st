@@ -26,10 +26,8 @@ BaselineOfBookletDSst >> scriptLinkMessagesForDoc [
 	^ MetaSTExporter new
 		  selectors:
 			  #( do: nextLink: asLinkedList testEmptyLink testLinkReferencingItself
-			     testLinkReferencingItselfRecursive
-			     testTwoLinksReferencingEachOtherRecursive
-			     testLinkReferencingThree testLinkReferencingAnotherLink
-			     testLinkReferencingAnotherLinkRecursive );
+			     #testTwoLinksReferencingEachOther
+			     testLinkReferencingThree testLinkReferencingAnotherLink );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'link-core-messages.json' ]
 		  ofPackage: self class package
