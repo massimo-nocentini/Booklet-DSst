@@ -52,7 +52,7 @@ BaselineOfBookletDSst >> scriptTopologicalSortMessagesForDoc [
 			     #handleCycleInValueLinksTable:do:
 			     testTopologicalSortOnCycleDo testTopologicalSortOnCycleDo1
 			     testTopologicalSortOnCycleDo2 testTopologicalSortOnCycleDo3
-			     testIgnoreBlock testAnyAssociation );
+			     #testYourselfBlock testAnyAssociation );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'topologicalSort-core-messages.json' ]
 		  ofPackage: self class package
@@ -81,7 +81,7 @@ BaselineOfBookletDSst >> scriptValueLinkMessagesForDoc [
 			     #handleCycleInValueLinksTable:do:
 			     testTopologicalSortOnCycleDo testTopologicalSortOnCycleDo1
 			     testTopologicalSortOnCycleDo2 testTopologicalSortOnCycleDo3
-			     testIgnoreBlock testAnyAssociation );
+			     #testYourselfBlock testAnyAssociation );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'valuelink-core-messages.json' ]
 		  ofPackage: self class package
