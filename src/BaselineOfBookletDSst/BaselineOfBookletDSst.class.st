@@ -27,7 +27,7 @@ BaselineOfBookletDSst >> scriptLinkMessagesForDoc [
 		  selectors:
 			  #( do: nextLink: asLinkedList testEmptyLink testLinkReferencingItself
 			     #testTwoLinksReferencingEachOther
-			     testLinkReferencingThree testLinkReferencingAnotherLink );
+			     yourself: testLinkReferencingThree testLinkReferencingAnotherLink );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'link-core-messages.json' ]
 		  ofPackage: self class package
