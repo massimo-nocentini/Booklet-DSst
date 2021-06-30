@@ -240,7 +240,7 @@ have a chain of just <em>one</em> link object. To augment such a chain, we can</
 </pre></div>
 </div>
 <p>that dispatches back again to <code class="docutils literal notranslate"><span class="pre">Link</span></code> objects</p>
-<span class="target" id="pharo-compiledMethod-9"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-link-nextinteger"><div class="highlight"><pre><span></span><span class="c">&quot;Link, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-9"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-link-nextinteger"><div class="highlight"><pre><span></span><span class="c">&quot;Link, protocol *Containers-Essentials&quot;</span>
 <span class="nf">nextInteger:</span> <span class="nv">anInteger</span>
 
    <span class="o">|</span><span class="nv"> link </span><span class="o">|</span>
@@ -407,18 +407,20 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
 <span class="target" id="pharo-compiledMethod-28"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-topologicalsortbyassociations-oncycledo"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-Links&quot;</span>
 <span class="nf">topologicalSortByAssociations:</span> <span class="nv">aRelation</span> <span class="nf">onCycleDo:</span> <span class="nv">cBlock</span>
 
-   <span class="o">^</span> <span class="nc">TopologicalSortAlgorithm</span> <span class="nb">new</span>
-        <span class="nf">size:</span> <span class="bp">self</span> <span class="nf">size</span><span class="p">;</span>
-        <span class="nf">relation:</span> <span class="nv">aRelation</span><span class="p">;</span>
-        <span class="nf">value:</span> [ <span class="o">:</span><span class="nv">ordering</span> <span class="o">|</span> 
-           <span class="bp">self</span> <span class="nf">species</span> <span class="nf">streamContents:</span> [ <span class="o">:</span><span class="nv">aStream</span> <span class="o">|</span> 
-                 <span class="nv">ordering</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">anIndex</span> <span class="o">|</span> <span class="nv">aStream</span> <span class="nf">nextPut:</span> (<span class="bp">self</span> <span class="nf">at:</span> <span class="nv">anIndex</span>) ] ] ]
+   <span class="o">|</span><span class="nv"> topo </span><span class="o">|</span>
+   <span class="nv">topo</span> <span class="o">:=</span> <span class="nc">TopologicalSortAlgorithm</span> <span class="nb">new</span>
+              <span class="nf">size:</span> <span class="bp">self</span> <span class="nf">size</span><span class="p">;</span>
+              <span class="nf">relation:</span> <span class="nv">aRelation</span><span class="p">;</span>
+              <span class="nf">yourself</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="nv">topo</span>
+        <span class="nf">value:</span> [ <span class="o">:</span><span class="nv">ordering</span> <span class="o">|</span> <span class="nv">ordering</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">anIndex</span> <span class="o">|</span> <span class="bp">self</span> <span class="nf">at:</span> <span class="nv">anIndex</span> ] ]
         <span class="nf">onCycleDo:</span> [ <span class="o">:</span><span class="nv">cycle</span> <span class="o">|</span> 
            <span class="o">|</span><span class="nv"> sequence </span><span class="o">|</span>
            <span class="nv">sequence</span> <span class="o">:=</span> <span class="nc">Array</span> <span class="nf">streamContents:</span> [ <span class="o">:</span><span class="nv">aStream</span> <span class="o">|</span> 
-                             <span class="nv">aStream</span> <span class="nf">nextPut:</span> (<span class="bp">self</span> <span class="nf">at:</span> <span class="nv">cycle</span> <span class="nf">first</span> <span class="nf">key</span>)<span class="p">.</span>
-                             <span class="nv">cycle</span> <span class="nf">reverseDo:</span> [ <span class="o">:</span><span class="nv">anAssoc</span> <span class="o">|</span> 
-                                   <span class="nv">aStream</span> <span class="nf">nextPut:</span> (<span class="bp">self</span> <span class="nf">at:</span> <span class="nv">anAssoc</span> <span class="nf">key</span>) ] ]<span class="p">.</span>
+                          <span class="nv">aStream</span> <span class="nf">nextPut:</span> (<span class="bp">self</span> <span class="nf">at:</span> <span class="nv">cycle</span> <span class="nf">first</span> <span class="nf">key</span>)<span class="p">.</span>
+                          <span class="nv">cycle</span> <span class="nf">reverseDo:</span> [ <span class="o">:</span><span class="nv">anAssoc</span> <span class="o">|</span> 
+                             <span class="nv">aStream</span> <span class="nf">nextPut:</span> (<span class="bp">self</span> <span class="nf">at:</span> <span class="nv">anAssoc</span> <span class="nf">key</span>) ] ]<span class="p">.</span>
            <span class="nv">cBlock</span> <span class="nf">cull:</span> <span class="nv">sequence</span> <span class="nf">cull:</span> <span class="nv">cycle</span> ]
 </pre></div>
 </div>
@@ -801,7 +803,7 @@ a <code class="docutils literal notranslate"><span class="pre">LinkedList</span>
 </div>
 <blockquote>
 <div><img alt="../_images/CTLinksValueLinkTest-testAsLinkedList.svg" class="align-center" src="../_images/CTLinksValueLinkTest-testAsLinkedList.svg" /><p>where</p>
-<span class="target" id="pharo-compiledMethod-36"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-valuelink-aslinkedlist"><div class="highlight"><pre><span></span><span class="c">&quot;ValueLink, protocol *Collections-Support-Extensions&quot;</span>
+<span class="target" id="pharo-compiledMethod-36"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-valuelink-aslinkedlist"><div class="highlight"><pre><span></span><span class="c">&quot;ValueLink, protocol *Containers-Essentials&quot;</span>
 <span class="nf">asLinkedList</span>
 
    <span class="o">|</span><span class="nv"> list </span><span class="o">|</span>
@@ -812,7 +814,7 @@ a <code class="docutils literal notranslate"><span class="pre">LinkedList</span>
 </div>
 <blockquote>
 <div><p>where</p>
-<span class="target" id="pharo-compiledMethod-35"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-link-do"><div class="highlight"><pre><span></span><span class="c">&quot;Link, protocol *Collections-Support-Extensions&quot;</span>
+<span class="target" id="pharo-compiledMethod-35"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-link-do"><div class="highlight"><pre><span></span><span class="c">&quot;Link, protocol *Containers-Essentials&quot;</span>
 <span class="nf">do:</span> <span class="nv">aBlock</span>
 
    <span class="o">|</span><span class="nv"> link </span><span class="o">|</span>
