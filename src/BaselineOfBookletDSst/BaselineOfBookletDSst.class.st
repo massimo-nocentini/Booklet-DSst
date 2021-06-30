@@ -9,14 +9,18 @@ BaselineOfBookletDSst >> baseline: spec [
 
 	<baseline>
 	spec for: #common do: [ 
-		spec baseline: 'ContainersLinkedStoragePool' with: [ 
+		spec baseline: 'ContainersEssentials' with: [ 
 			spec repository:
-				'github://massimo-nocentini/Containers-LinkedStoragePool/src' ].
+				'github://massimo-nocentini/Containers-Essentials' ].
 
 		spec
 			baseline: 'MetaSTExporter'
 			with: [ 
-			spec repository: 'github://massimo-nocentini/MetaSTExporter/src' ] ]
+			spec repository: 'github://massimo-nocentini/MetaSTExporter/src' ].
+
+		spec baseline: 'ContainersLinkedStoragePool' with: [ 
+			spec repository:
+				'github://massimo-nocentini/Containers-LinkedStoragePool/src' ] ]
 ]
 
 { #category : #documentation }
