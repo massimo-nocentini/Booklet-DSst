@@ -30,6 +30,17 @@ BaselineOfBookletDSst >> baseline: spec [
 ]
 
 { #category : #documentation }
+BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
+
+	<script: 'BaselineOfBookletDSst new scriptCoreMessagesForDoc'>
+	^ MetaSTExporter new
+		  selectors: #( testInspectObjectClass testInspectTraitClass );
+		  exportWithRepositoryPath: [ :aPath | 
+			  aPath / 'json-for-doc' / 'core-messages.json' ]
+		  ofPackage: self class package
+]
+
+{ #category : #documentation }
 BaselineOfBookletDSst >> scriptLinkMessagesForDoc [
 
 	<script: 'BaselineOfBookletDSst new scriptLinkMessagesForDoc'>
@@ -42,6 +53,24 @@ BaselineOfBookletDSst >> scriptLinkMessagesForDoc [
 			     testThreeLinksTooMuchSkipping );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'link-core-messages.json' ]
+		  ofPackage: self class package
+]
+
+{ #category : #documentation }
+BaselineOfBookletDSst >> scriptSymbolicDivisibilityForDoc [
+
+	<script: 'BaselineOfBookletDSst new scriptSymbolicDivisibilityForDoc'>
+	^ MetaSTExporter new
+		  selectors:
+			  #( initialize /% /%~ /%< >|< quoRemInteger: quoRemComplementaryInteger:
+			     quoRemMinimalInteger: #a:b: #testStandardQuoRem21Over9
+			     testComplementaryQuoRem21Over9 testComplementaryQuoRem9Over21
+			     testQuoRem9Over21 testQuoRemMinimal9Over21
+			     testGCDof9and21 testGCDof12and21 testGCDof83and71
+			     testGCDofZ17 testGCDofMultiplicativeInversesInZ17
+			     testGCDofAdjacentFibonacciNumbers );
+		  exportWithRepositoryPath: [ :aPath | 
+			  aPath / 'json-for-doc' / 'symbolic-divisibility.json' ]
 		  ofPackage: self class package
 ]
 
