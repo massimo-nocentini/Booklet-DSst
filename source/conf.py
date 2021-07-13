@@ -43,9 +43,11 @@ bibtex_bibfiles = []
 
 # The following configuation values concerns the Pharo domain.
 pharo_json_export_filenames = [
+        'json-for-doc/core-messages.json',
         'json-for-doc/link-core-messages.json',
         'json-for-doc/valuelink-core-messages.json',
         'json-for-doc/topologicalSort-core-messages.json',
+        'json-for-doc/symbolic-divisibility.json',
 ]
 
 # Add any paths that contain templates here, relative to this directory.

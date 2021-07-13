@@ -1,0 +1,388 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Symbolic computation &#8212; Data Structures in Smalltalk  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Linked memory allocation" href="../linked-allocation/linked-allocation.html" />
+    <link rel="prev" title="Pharo" href="../pharo/pharo.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Data Structures in Smalltalk</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=massimo-nocentini&repo=Booklet-DSst&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../pharo/pharo.html">Pharo</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Symbolic computation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#divisibility">Divisibility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#quotients-and-remainders">Quotients and remainders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#greatest-common-divisor">Greatest Common Divisor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#diophantine-equations">Diophantine equations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/linked-allocation.html">Linked memory allocation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../pharo/pharo.html" title="previous chapter">Pharo</a></li>
+      <li>Next: <a href="../linked-allocation/linked-allocation.html" title="next chapter">Linked memory allocation</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+              <div class="related top">
+                &nbsp;
+  <nav id="rellinks">
+    <ul>
+        <li>
+          &larr;
+          <a href="../pharo/pharo.html" title="Previous document">Pharo</a>
+        </li>
+        <li>
+          <a href="../linked-allocation/linked-allocation.html" title="Next document">Linked memory allocation</a>
+          &rarr;
+        </li>
+    </ul>
+  </nav>
+              </div>
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="symbolic-computation">
+<h1>Symbolic computation<a class="headerlink" href="#symbolic-computation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="divisibility">
+<h2>Divisibility<a class="headerlink" href="#divisibility" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="quotients-and-remainders">
+<h3>Quotients and remainders<a class="headerlink" href="#quotients-and-remainders" title="Permalink to this headline">¶</a></h3>
+<p>Lets divide <span class="math notranslate nohighlight">\(20\)</span> by <span class="math notranslate nohighlight">\(9\)</span>,</p>
+<span class="target" id="pharo-compiledMethod-0"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-teststandardquorem21over9"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="nf">testStandardQuoRem21Over9</span>
+
+   <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
+   <span class="nv">quoRem</span> <span class="o">:=</span> <span class="m">21</span> <span class="nf">/%</span> <span class="m">9</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">quoRem</span> <span class="nf">value</span> <span class="nf">equals:</span> <span class="m">21</span> <span class="nf">/</span> <span class="m">9</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">quoRem</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/SymbolicIntegerTest-testStandardQuoRem21Over9.svg" class="align-center" src="../_images/SymbolicIntegerTest-testStandardQuoRem21Over9.svg" /></div></blockquote>
+<p>by means of the binary message</p>
+<span class="target" id="pharo-compiledMethod-1"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="nf">/%</span> <span class="nv">anObject</span>
+
+   <span class="o">^</span> <span class="nv">anObject</span> <span class="nf">quoRemInteger:</span> <span class="bp">self</span>
+</pre></div>
+</div>
+<p>that dispatches</p>
+<span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-quoreminteger"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="nf">quoRemInteger:</span> <span class="nv">anInteger</span>
+
+   <span class="o">^</span> <span class="nc">QuoRemStandard</span> <span class="nf">a:</span> <span class="nv">anInteger</span> <span class="nf">b:</span> <span class="bp">self</span>
+</pre></div>
+</div>
+<p>which instantiate a symbolic <code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> object via the class-side message</p>
+<span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-quoremcomplementary-class-a-b"><div class="highlight"><pre><span></span><span class="c">&quot;QuoRemComplementary class, protocol as yet unclassified&quot;</span>
+<span class="nf">a:</span> <span class="nv">a</span> <span class="nf">b:</span> <span class="nv">b</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">basicNew</span>
+        <span class="nf">a:</span> <span class="nv">a</span><span class="p">;</span>
+        <span class="nf">b:</span> <span class="nv">b</span><span class="p">;</span>
+        <span class="nf">initialize</span><span class="p">;</span>
+        <span class="nf">yourself</span>
+</pre></div>
+</div>
+<p>where both the <em>quotient</em> and the <em>remainder</em> are computed in the overridden</p>
+<span class="target" id="pharo-compiledMethod-4"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-quoremstandard-initialize"><div class="highlight"><pre><span></span><span class="c">&quot;QuoRemStandard, protocol accessing&quot;</span>
+<span class="nf">initialize</span>
+
+   <span class="bp">super</span> <span class="nf">initialize</span><span class="p">.</span>
+
+   <span class="nv">quo</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">value</span> <span class="nf">floor</span><span class="p">.</span>
+   <span class="nv">rem</span> <span class="o">:=</span> <span class="nv">a</span> <span class="nf">-</span> (<span class="nv">quo</span> <span class="nf">*</span> <span class="nv">b</span>)
+</pre></div>
+</div>
+<p>as the usual computation does and the assertion checks in the initial test case.</p>
+<p>The same division can be carried out by</p>
+<span class="target" id="pharo-compiledMethod-5"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testcomplementaryquorem21over9"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="nf">testComplementaryQuoRem21Over9</span>
+
+   <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
+   <span class="nv">quoRem</span> <span class="o">:=</span> <span class="m">21</span> <span class="nf">/%~</span> <span class="m">9</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">quoRem</span> <span class="nf">value</span> <span class="nf">equals:</span> <span class="m">21</span> <span class="nf">/</span> <span class="m">9</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">quoRem</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/SymbolicIntegerTest-testComplementaryQuoRem21Over9.svg" class="align-center" src="../_images/SymbolicIntegerTest-testComplementaryQuoRem21Over9.svg" /></div></blockquote>
+<p>that yields a negative remainder, shown by full dots. To do that, we have the following messages chain</p>
+<span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="id1"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="nf">/%~</span> <span class="nv">anObject</span>
+
+   <span class="o">^</span> <span class="nv">anObject</span> <span class="nf">quoRemComplementaryInteger:</span> <span class="bp">self</span>
+</pre></div>
+</div>
+<p>that dispatches</p>
+<span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-quoremcomplementaryinteger"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="nf">quoRemComplementaryInteger:</span> <span class="nv">anInteger</span>
+
+   <span class="o">^</span> <span class="nc">QuoRemComplementary</span> <span class="nf">a:</span> <span class="nv">anInteger</span> <span class="nf">b:</span> <span class="bp">self</span>
+</pre></div>
+</div>
+<p>which instantiate a symbolic <code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> object of class</p>
+<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-quoremcomplementary"><div class="highlight"><pre><span></span><span class="nc">Magnitude</span> <span class="nf">subclass:</span> <span class="ss">#QuoRemComplementary</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;a b ratio quo rem&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-Essentials&#39;</span>
+</pre></div>
+</div>
+<p>Both the <em>quotient</em> and the <em>remainder</em> are computed in the initialization message</p>
+<span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-quoremcomplementary-initialize"><div class="highlight"><pre><span></span><span class="c">&quot;QuoRemComplementary, protocol accessing&quot;</span>
+<span class="nf">initialize</span>
+
+   <span class="nv">ratio</span> <span class="o">:=</span> <span class="nv">a</span> <span class="nf">/</span> <span class="nv">b</span><span class="p">.</span>
+
+   <span class="nv">quo</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">value</span> <span class="nf">ceiling</span><span class="p">.</span>
+   <span class="nv">rem</span> <span class="o">:=</span> <span class="nv">a</span> <span class="nf">-</span> (<span class="nv">quo</span> <span class="nf">*</span> <span class="nv">b</span>)
+</pre></div>
+</div>
+<p>The latter representation is uniform in the sense that it yields a rectangle of dots
+that are stacked horizontally, where the number of rows equals the quotient of the division
+while the number of columns equals the divisor denoted by the instance variable <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
+<span class="target" id="pharo-compiledMethod-9"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testcomplementaryquorem9over21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="nf">testComplementaryQuoRem9Over21</span>
+
+   <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
+   <span class="nv">quoRem</span> <span class="o">:=</span> <span class="m">9</span> <span class="nf">/%~</span> <span class="m">21</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">quoRem</span> <span class="nf">value</span> <span class="nf">equals:</span> <span class="m">9</span> <span class="nf">/</span> <span class="m">21</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">quoRem</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/SymbolicIntegerTest-testComplementaryQuoRem9Over21.svg" class="align-center" src="../_images/SymbolicIntegerTest-testComplementaryQuoRem9Over21.svg" /></div></blockquote>
+<span class="target" id="pharo-compiledMethod-10"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testquorem9over21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="nf">testQuoRem9Over21</span>
+
+   <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
+   <span class="nv">quoRem</span> <span class="o">:=</span> <span class="m">9</span> <span class="nf">/%</span> <span class="m">21</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">quoRem</span> <span class="nf">value</span> <span class="nf">equals:</span> <span class="m">9</span> <span class="nf">/</span> <span class="m">21</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">quoRem</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/SymbolicIntegerTest-testQuoRem9Over21.svg" class="align-center" src="../_images/SymbolicIntegerTest-testQuoRem9Over21.svg" /></div></blockquote>
+<span class="target" id="pharo-compiledMethod-11"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testquoremminimal9over21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="nf">testQuoRemMinimal9Over21</span>
+
+   <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
+   <span class="nv">quoRem</span> <span class="o">:=</span> <span class="m">9</span> <span class="nf">/%&lt;</span> <span class="m">21</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">quoRem</span> <span class="nf">value</span> <span class="nf">equals:</span> <span class="m">9</span> <span class="nf">/</span> <span class="m">21</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">quoRem</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/SymbolicIntegerTest-testQuoRemMinimal9Over21.svg" class="align-center" src="../_images/SymbolicIntegerTest-testQuoRemMinimal9Over21.svg" /></div></blockquote>
+</div>
+<div class="section" id="greatest-common-divisor">
+<h3>Greatest Common Divisor<a class="headerlink" href="#greatest-common-divisor" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="pharo-compiledMethod-12"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdof9and21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="nf">testGCDof9and21</span>
+
+   <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
+   <span class="nv">quoRem</span> <span class="o">:=</span> <span class="m">9</span> <span class="nf">&gt;|&lt;</span> <span class="m">21</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">quoRem</span> <span class="nf">value</span> <span class="nf">equals:</span> (<span class="m">9</span> <span class="nf">gcd:</span> <span class="m">21</span>)<span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">quoRem</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/SymbolicIntegerTest-testGCDof9and21.svg" class="align-center" src="../_images/SymbolicIntegerTest-testGCDof9and21.svg" /></div></blockquote>
+<span class="target" id="pharo-compiledMethod-13"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdof12and21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="nf">testGCDof12and21</span>
+
+   <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
+   <span class="nv">quoRem</span> <span class="o">:=</span> <span class="m">12</span> <span class="nf">&gt;|&lt;</span> <span class="m">21</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">quoRem</span> <span class="nf">value</span> <span class="nf">equals:</span> (<span class="m">12</span> <span class="nf">gcd:</span> <span class="m">21</span>)<span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">quoRem</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/SymbolicIntegerTest-testGCDof12and21.svg" class="align-center" src="../_images/SymbolicIntegerTest-testGCDof12and21.svg" /></div></blockquote>
+</div>
+<div class="section" id="diophantine-equations">
+<h3>Diophantine equations<a class="headerlink" href="#diophantine-equations" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="pharo-compiledMethod-14"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdof83and71"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="nf">testGCDof83and71</span>
+
+   <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
+   <span class="nv">quoRem</span> <span class="o">:=</span> <span class="m">83</span> <span class="nf">&gt;|&lt;</span> <span class="m">71</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">quoRem</span> <span class="nf">value</span> <span class="nf">equals:</span> (<span class="m">83</span> <span class="nf">gcd:</span> <span class="m">71</span>)<span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">quoRem</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/SymbolicIntegerTest-testGCDof83and71.svg" class="align-center" src="../_images/SymbolicIntegerTest-testGCDof83and71.svg" /></div></blockquote>
+<span class="target" id="pharo-compiledMethod-15"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdofz17"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="nf">testGCDofZ17</span>
+
+   <span class="o">|</span><span class="nv"> field prime interval </span><span class="o">|</span>
+   <span class="nv">prime</span> <span class="o">:=</span> <span class="m">17</span><span class="p">.</span>
+   <span class="nv">interval</span> <span class="o">:=</span> <span class="m">1</span> <span class="nf">to:</span> <span class="nv">prime</span> <span class="nf">-</span> <span class="m">1</span><span class="p">.</span>
+   <span class="nv">field</span> <span class="o">:=</span> <span class="nv">interval</span> <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">each</span> <span class="nf">&gt;|&lt;</span> <span class="nv">prime</span> ]<span class="p">.</span>
+
+   <span class="bp">self</span>
+      <span class="nf">assert:</span> (<span class="nv">field</span> <span class="nf">collect:</span> <span class="ss">#value</span>)
+      <span class="nf">equals:</span> (<span class="nv">interval</span> <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">prime</span> <span class="nf">gcd:</span> <span class="nv">each</span> ])<span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">field</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/SymbolicIntegerTest-testGCDofZ17.svg" class="align-center" src="../_images/SymbolicIntegerTest-testGCDofZ17.svg" /></div></blockquote>
+<span class="target" id="pharo-compiledMethod-16"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdofmultiplicativeinversesinz17"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="nf">testGCDofMultiplicativeInversesInZ17</span>
+
+   <span class="o">|</span><span class="nv"> inverses </span><span class="o">|</span>
+   <span class="nv">inverses</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">testGCDofZ17</span> <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> 
+                  <span class="nv">each</span> <span class="nf">b</span> <span class="nf">@</span> <span class="nv">each</span> <span class="nf">inverseMultiplicativeOfb</span> <span class="nf">key</span> ]<span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">inverses</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/SymbolicIntegerTest-testGCDofMultiplicativeInversesInZ17.svg" class="align-center" src="../_images/SymbolicIntegerTest-testGCDofMultiplicativeInversesInZ17.svg" /></div></blockquote>
+<span class="target" id="pharo-compiledMethod-17"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdofadjacentfibonaccinumbers"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="nf">testGCDofAdjacentFibonacciNumbers</span>
+
+   <span class="o">|</span><span class="nv"> fibs gcds </span><span class="o">|</span>
+   <span class="nv">fibs</span> <span class="o">:=</span> <span class="nc">OrderedCollection</span> <span class="nf">with:</span> <span class="m">1</span> <span class="nf">with:</span> <span class="m">1</span><span class="p">.</span>
+
+   <span class="m">3</span> <span class="nf">to:</span> <span class="m">13</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">i</span> <span class="o">|</span> <span class="nv">fibs</span> <span class="nf">add:</span> (<span class="nv">fibs</span> <span class="nf">at:</span> <span class="nv">i</span> <span class="nf">-</span> <span class="m">2</span>) <span class="nf">+</span> (<span class="nv">fibs</span> <span class="nf">at:</span> <span class="nv">i</span> <span class="nf">-</span> <span class="m">1</span>) ]<span class="p">.</span>
+
+   <span class="nv">gcds</span> <span class="o">:=</span> <span class="nv">fibs</span>
+              <span class="nf">with:</span> <span class="nv">fibs</span> <span class="nf">allButFirst</span> <span class="nf">,</span> { (<span class="nv">fibs</span> <span class="nf">lastButOne</span> <span class="nf">+</span> <span class="nv">fibs</span> <span class="nf">last</span>) }
+              <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">r</span> <span class="o">:</span><span class="nv">s</span> <span class="o">|</span> <span class="nv">r</span> <span class="nf">&gt;|&lt;</span> <span class="nv">s</span> ]<span class="p">.</span>
+
+   <span class="bp">self</span>
+      <span class="nf">assert:</span> (<span class="nv">gcds</span> <span class="nf">collect:</span> <span class="ss">#value</span>)
+      <span class="nf">equals:</span> (<span class="nv">gcds</span> <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="m">1</span> ])<span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">gcds</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/SymbolicIntegerTest-testGCDofAdjacentFibonacciNumbers.svg" class="align-center" src="../_images/SymbolicIntegerTest-testGCDofAdjacentFibonacciNumbers.svg" /></div></blockquote>
+</div>
+</div>
+</div>
+
+
+          </div>
+              <div class="related bottom">
+                &nbsp;
+  <nav id="rellinks">
+    <ul>
+        <li>
+          &larr;
+          <a href="../pharo/pharo.html" title="Previous document">Pharo</a>
+        </li>
+        <li>
+          <a href="../linked-allocation/linked-allocation.html" title="Next document">Linked memory allocation</a>
+          &rarr;
+        </li>
+    </ul>
+  </nav>
+              </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Massimo Nocentini.
+      
+      |
+      <a href="../_sources/symbolic/symbolic.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

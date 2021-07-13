@@ -9,6 +9,8 @@ Data Structures in Smalltalk
 .. toctree::
    :maxdepth: 4
 
+   pharo/pharo.rst
+   symbolic/symbolic.rst
    linked-allocation/linked-allocation.rst
 
 Indices and tables

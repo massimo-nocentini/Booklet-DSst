@@ -44,6 +44,8 @@
 
 <h3>Navigation</h3>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="pharo/pharo.html">Pharo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbolic/symbolic.html">Symbolic computation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linked-allocation/linked-allocation.html">Linked memory allocation</a></li>
 </ul>
 
@@ -103,6 +105,27 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
+    #/% is understood by
+
+      <ul>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-1">Integer&gt;&gt;#/%</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-1">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    #/%~ is understood by
+
+      <ul>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-6">Integer&gt;&gt;#/%~</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-6">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    #a:b: is understood by
+
+      <ul>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-3">QuoRemComplementary class&gt;&gt;#a:b:</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-3">[1]</a>
+</li>
+      </ul></li>
+      <li>
     #anyAssociation is understood by
 
       <ul>
@@ -161,6 +184,15 @@
 </li>
       </ul></li>
       <li>
+    #initialize is understood by
+
+      <ul>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-8">QuoRemComplementary&gt;&gt;#initialize</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-8">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-4">QuoRemStandard&gt;&gt;#initialize</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-4">[1]</a>
+</li>
+      </ul></li>
+      <li>
     #initializeValueLinksTable: is understood by
 
       <ul>
@@ -181,6 +213,8 @@
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-29">SequenceableCollection&gt;&gt;#isAcyclicWithRespectToAssociations:</a>, <a href="linked-allocation/links.html#pharo-compiledMethod-29">[1]</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     #makeValueLinksTable is understood by
 
@@ -188,8 +222,6 @@
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-19">TopologicalSortAlgorithm&gt;&gt;#makeValueLinksTable</a>, <a href="linked-allocation/links.html#pharo-compiledMethod-19">[1]</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     #next: is understood by
 
@@ -218,6 +250,20 @@
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-8">Integer&gt;&gt;#nextOfLink:</a>, <a href="linked-allocation/links.html#pharo-compiledMethod-8">[1]</a>
 </li>
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-4">Link&gt;&gt;#nextOfLink:</a>, <a href="linked-allocation/links.html#pharo-compiledMethod-4">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    #quoRemComplementaryInteger: is understood by
+
+      <ul>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-7">Integer&gt;&gt;#quoRemComplementaryInteger:</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-7">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    #quoRemInteger: is understood by
+
+      <ul>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-2">Integer&gt;&gt;#quoRemInteger:</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-2">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -364,13 +410,28 @@
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-26">#anyAssociation</a>, <a href="linked-allocation/links.html#pharo-compiledMethod-26">[1]</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    a EssentialsObjectTest understands
+
+      <ul>
+        <li><a href="pharo/oo.html#pharo-compiledMethod-0">#testInspectObjectClass</a>, <a href="pharo/pharo.html#pharo-compiledMethod-0">[1]</a>
+</li>
+        <li><a href="pharo/oo.html#pharo-compiledMethod-1">#testInspectTraitClass</a>, <a href="pharo/pharo.html#pharo-compiledMethod-1">[1]</a>
+</li>
+      </ul></li>
       <li>
     a Integer understands
 
       <ul>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-1">#/%</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-1">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-6">#/%~</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-6">[1]</a>
+</li>
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-8">#nextOfLink:</a>, <a href="linked-allocation/links.html#pharo-compiledMethod-8">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-7">#quoRemComplementaryInteger:</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-7">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-2">#quoRemInteger:</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-2">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -388,6 +449,8 @@
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-4">#nextOfLink:</a>, <a href="linked-allocation/links.html#pharo-compiledMethod-4">[1]</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     a Number understands
 
@@ -405,6 +468,27 @@
 </li>
       </ul></li>
       <li>
+    a QuoRemComplementary class understands
+
+      <ul>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-3">#a:b:</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-3">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    a QuoRemComplementary understands
+
+      <ul>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-8">#initialize</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-8">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    a QuoRemStandard understands
+
+      <ul>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-4">#initialize</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-4">[1]</a>
+</li>
+      </ul></li>
+      <li>
     a SequenceableCollection understands
 
       <ul>
@@ -417,6 +501,33 @@
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-33">#topologicalSortByAssociations:acyclicDo:</a>, <a href="linked-allocation/links.html#pharo-compiledMethod-33">[1]</a>
 </li>
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-28">#topologicalSortByAssociations:onCycleDo:</a>, <a href="linked-allocation/links.html#pharo-compiledMethod-28">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    a SymbolicIntegerTest understands
+
+      <ul>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-5">#testComplementaryQuoRem21Over9</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-5">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-9">#testComplementaryQuoRem9Over21</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-9">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-13">#testGCDof12and21</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-13">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-14">#testGCDof83and71</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-14">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-12">#testGCDof9and21</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-12">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-17">#testGCDofAdjacentFibonacciNumbers</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-17">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-16">#testGCDofMultiplicativeInversesInZ17</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-16">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-15">#testGCDofZ17</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-15">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-10">#testQuoRem9Over21</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-10">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-11">#testQuoRemMinimal9Over21</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-11">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-0">#testStandardQuoRem21Over9</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-0">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -488,6 +599,13 @@
 </li>
       </ul></li>
       <li>
+    Package Containers-Essentials contains
+
+      <ul>
+        <li><a href="symbolic/divisibility.html#pharo-class-0">QuoRemComplementary</a>, <a href="symbolic/symbolic.html#pharo-class-0">[1]</a>
+</li>
+      </ul></li>
+      <li>
     Protocol *Collections-Abstract-Extensions
 
       <ul>
@@ -509,7 +627,15 @@
       <ul>
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-26">Dictionary&gt;&gt;#anyAssociation</a>, <a href="linked-allocation/links.html#pharo-compiledMethod-26">[1]</a>
 </li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-1">Integer&gt;&gt;#/%</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-1">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-6">Integer&gt;&gt;#/%~</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-6">[1]</a>
+</li>
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-8">Integer&gt;&gt;#nextOfLink:</a>, <a href="linked-allocation/links.html#pharo-compiledMethod-8">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-7">Integer&gt;&gt;#quoRemComplementaryInteger:</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-7">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-2">Integer&gt;&gt;#quoRemInteger:</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-2">[1]</a>
 </li>
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-35">Link&gt;&gt;#do:</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-0">[1]</a>
 </li>
@@ -559,13 +685,24 @@
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-38">UndefinedObject&gt;&gt;#asLinkedList</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-3">[1]</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     Protocol accessing
 
       <ul>
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-5">Link&gt;&gt;#nextLink:</a>, <a href="linked-allocation/links.html#pharo-compiledMethod-5">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-8">QuoRemComplementary&gt;&gt;#initialize</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-8">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-4">QuoRemStandard&gt;&gt;#initialize</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-4">[1]</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    Protocol as yet unclassified
+
+      <ul>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-3">QuoRemComplementary class&gt;&gt;#a:b:</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-3">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -633,6 +770,32 @@
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-39">CTLinksValueLinkTest&gt;&gt;#testNilAsLinkedList</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-4">[1]</a>
 </li>
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-12">CTLinksValueLinkTest&gt;&gt;#testSimpleValueLink</a>, <a href="linked-allocation/links.html#pharo-compiledMethod-12">[1]</a>
+</li>
+        <li><a href="pharo/oo.html#pharo-compiledMethod-0">EssentialsObjectTest&gt;&gt;#testInspectObjectClass</a>, <a href="pharo/pharo.html#pharo-compiledMethod-0">[1]</a>
+</li>
+        <li><a href="pharo/oo.html#pharo-compiledMethod-1">EssentialsObjectTest&gt;&gt;#testInspectTraitClass</a>, <a href="pharo/pharo.html#pharo-compiledMethod-1">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-5">SymbolicIntegerTest&gt;&gt;#testComplementaryQuoRem21Over9</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-5">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-9">SymbolicIntegerTest&gt;&gt;#testComplementaryQuoRem9Over21</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-9">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-13">SymbolicIntegerTest&gt;&gt;#testGCDof12and21</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-13">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-14">SymbolicIntegerTest&gt;&gt;#testGCDof83and71</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-14">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-12">SymbolicIntegerTest&gt;&gt;#testGCDof9and21</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-12">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-17">SymbolicIntegerTest&gt;&gt;#testGCDofAdjacentFibonacciNumbers</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-17">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-16">SymbolicIntegerTest&gt;&gt;#testGCDofMultiplicativeInversesInZ17</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-16">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-15">SymbolicIntegerTest&gt;&gt;#testGCDofZ17</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-15">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-10">SymbolicIntegerTest&gt;&gt;#testQuoRem9Over21</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-10">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-11">SymbolicIntegerTest&gt;&gt;#testQuoRemMinimal9Over21</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-11">[1]</a>
+</li>
+        <li><a href="symbolic/divisibility.html#pharo-compiledMethod-0">SymbolicIntegerTest&gt;&gt;#testStandardQuoRem21Over9</a>, <a href="symbolic/symbolic.html#pharo-compiledMethod-0">[1]</a>
 </li>
       </ul></li>
   </ul></td>
