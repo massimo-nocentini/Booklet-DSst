@@ -88,10 +88,16 @@ Greatest Common Divisor
 Diophantine equations
 =====================
 
+Coprimes
+++++++++
+
 .. pharo:autocompiledmethod:: SymbolicIntegerTest>>#testGCDof83and71
 
   .. image:: ../../../Containers-Essentials/images/SymbolicIntegerTest-testGCDof83and71.svg
     :align: center
+
+:math:`\mathbb{Z}_{17}` field
++++++++++++++++++++++++++++++
 
 .. pharo:autocompiledmethod:: SymbolicIntegerTest>>#testGCDofZ17
 
@@ -102,6 +108,9 @@ Diophantine equations
 
   .. image:: ../../../Containers-Essentials/images/SymbolicIntegerTest-testGCDofMultiplicativeInversesInZ17.svg
     :align: center
+
+:math:`GCD(F_{n}, F_{n+1})`, where :math:`F_{n}` is the :math:`n`\-th Fibonacci number
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. pharo:autocompiledmethod:: SymbolicIntegerTest>>#testGCDofAdjacentFibonacciNumbers
 
