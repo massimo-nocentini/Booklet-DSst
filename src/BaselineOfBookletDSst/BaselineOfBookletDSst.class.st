@@ -34,7 +34,10 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 
 	<script: 'BaselineOfBookletDSst new scriptCoreMessagesForDoc'>
 	^ MetaSTExporter new
-		  selectors: #( testInspectObjectClass testInspectTraitClass );
+		  selectors:
+			  #( testInspectObjectClass testInspectTraitClass
+			     testMagnitudeSubclasses testCollectionSubclasses
+			     testRBNodeSubclasses );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'core-messages.json' ]
 		  ofPackage: self class package
