@@ -113,6 +113,26 @@
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspectTraitClass.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectTraitClass.svg" /></div></blockquote>
 </div>
+<div class="section" id="magnitude-hierarchy-again">
+<h2><code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy, again<a class="headerlink" href="#magnitude-hierarchy-again" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testmagnitudesubclassesslotsgraph"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="nf">testMagnitudeSubclassesSlotsGraph</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nc">Magnitude</span> <span class="nf">slotsBlock:</span> [ <span class="o">:</span><span class="nv">anObject</span> <span class="o">|</span> 
+        <span class="nv">anObject</span> <span class="nf">isClass</span>
+           <span class="nb">ifTrue:</span> [ 
+              { 
+                 <span class="ss">#name</span> <span class="nf">asSlotDescriptor</span><span class="p">.</span>
+                 <span class="c">&quot;(#comment asSlotDescriptor inline: true).&quot;</span>
+                 (<span class="ss">#instVarNames</span> <span class="nf">asSlotDescriptor</span> <span class="nf">inline:</span> <span class="bp">true</span>)<span class="p">.</span>
+                 (<span class="ss">#subclasses</span> <span class="nf">asSlotDescriptor</span> <span class="nf">yourself:</span> [ <span class="o">:</span><span class="nv">aDescriptor</span> <span class="o">|</span> 
+                     <span class="nv">anObject</span> <span class="nf">subclasses</span> <span class="nf">ifEmpty:</span> [ <span class="nv">aDescriptor</span> <span class="nf">inline:</span> <span class="bp">true</span> ] ]) } ]
+           <span class="nb">ifFalse:</span> [ <span class="nv">anObject</span> <span class="nf">instVarsNamesOrderedCollection</span> ] ]
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/EssentialsObjectTest-testMagnitudeSubclassesSlotsGraph.svg" class="align-center" src="../_images/EssentialsObjectTest-testMagnitudeSubclassesSlotsGraph.svg" /></div></blockquote>
+</div>
 </div>
 
 

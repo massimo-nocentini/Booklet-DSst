@@ -4,5 +4,5 @@ Pharo
 #####
 
 
-.. include:: oo.rst
 .. include:: hierarchies.rst
+.. include:: oo.rst
