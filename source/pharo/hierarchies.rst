@@ -80,8 +80,16 @@ An array of Fibonacci numbers
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspect20FibonacciNumbers.svg
     :align: center
 
-An heap
-+++++++
+Binary Reflected Gray Codes
++++++++++++++++++++++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectBRGCodes
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectBRGCodes.svg
+    :align: center
+
+A heap
+++++++
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectHeap
 

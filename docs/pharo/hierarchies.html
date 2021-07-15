@@ -211,12 +211,39 @@
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspect20FibonacciNumbers.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspect20FibonacciNumbers.svg" /></div></blockquote>
 </div>
-<div class="section" id="an-heap">
-<h3>An heap<a class="headerlink" href="#an-heap" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-10"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectheap"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<div class="section" id="binary-reflected-gray-codes">
+<h3>Binary Reflected Gray Codes<a class="headerlink" href="#binary-reflected-gray-codes" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="pharo-compiledMethod-10"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectbrgcodes"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="nf">testInspectBRGCodes</span>
+
+   <span class="o">^</span> <span class="bp">self</span>
+        <span class="nf">exportSlotsGraphOf:</span>
+        ((<span class="m">0</span> <span class="nf">to:</span> <span class="m">15</span>) <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">each</span> <span class="nf">asShapeBRGCDots</span> ])
+        <span class="nf">slotsBlock:</span> [ <span class="o">:</span><span class="nv">anObject</span> <span class="o">|</span> 
+           <span class="nv">anObject</span> <span class="nf">instVarsNamesOrderedCollection</span> <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">aDescriptor</span> <span class="o">|</span> 
+              <span class="nv">aDescriptor</span>
+                 <span class="nf">inline:</span> <span class="bp">true</span><span class="p">;</span>
+                 <span class="nf">quote</span> ] ]
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/EssentialsObjectTest-testInspectBRGCodes.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectBRGCodes.svg" /></div></blockquote>
+</div>
+<div class="section" id="a-heap">
+<h3>A heap<a class="headerlink" href="#a-heap" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="pharo-compiledMethod-11"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectheap"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectHeap</span>
 
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="nc">Heap</span> <span class="nf">withAll:</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">100</span>) <span class="nf">shuffled</span>)
+   <span class="o">|</span><span class="nv"> array random </span><span class="o">|</span>
+   <span class="nv">random</span> <span class="o">:=</span> <span class="nc">Random</span> <span class="nf">seed:</span> <span class="m">11</span><span class="p">.</span>
+   <span class="nv">array</span> <span class="o">:=</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">30</span>) <span class="nf">asArray</span> <span class="nf">shuffleBy:</span> <span class="nv">random</span><span class="p">.</span>
+   <span class="bp">self</span>
+      <span class="nf">assert:</span> <span class="nv">array</span>
+      <span class="nf">equals:</span>
+         <span class="ss">#(</span> <span class="m">12</span> <span class="m">16</span> <span class="m">22</span> <span class="m">30</span> <span class="m">8</span> <span class="m">17</span> <span class="m">15</span> <span class="m">4</span> <span class="m">20</span> <span class="m">19</span> <span class="m">28</span> <span class="m">18</span> <span class="m">27</span> <span class="m">21</span> <span class="m">24</span> <span class="m">10</span> <span class="m">7</span> <span class="m">3</span> <span class="m">14</span> <span class="m">5</span> <span class="m">6</span> <span class="m">26</span> <span class="m">25</span>
+            <span class="m">29</span> <span class="m">11</span> <span class="m">23</span> <span class="m">2</span> <span class="m">9</span> <span class="m">13</span> <span class="m">1</span> <span class="ss">)</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="nc">Heap</span> <span class="nf">withAll:</span> <span class="nv">array</span>)
 </pre></div>
 </div>
 <blockquote>
@@ -225,7 +252,7 @@
 </div>
 <div class="section" id="rbnode-hierarchy">
 <h2><code class="docutils literal notranslate"><span class="pre">RBNode</span></code> hierarchy<a class="headerlink" href="#rbnode-hierarchy" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="pharo-compiledMethod-11"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testrbnodesubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-12"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testrbnodesubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testRBNodeSubclasses</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportShapeOf:</span> <span class="nc">RBNode</span> <span class="nf">accessorBlock:</span> <span class="ss">#asShapeSubclasses</span>
