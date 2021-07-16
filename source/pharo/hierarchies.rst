@@ -10,8 +10,8 @@ Hierarchies
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testMagnitudeSubclasses.svg
     :align: center
 
-The character ``$π``
-++++++++++++++++++++
+The character ``π``
++++++++++++++++++++
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectCharacterPi
 
@@ -37,6 +37,14 @@ The integer ``13``, in details
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectInteger13Detailed
 
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectInteger13Detailed.svg
+    :align: center
+
+The irrational ``π``
+++++++++++++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectFloatPi
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectFloatPi.svg
     :align: center
 
 The Golden ratio
@@ -103,3 +111,55 @@ A heap
 
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testRBNodeSubclasses.svg
     :align: center
+
+For a few objects more
+======================
+
+An object, simply
++++++++++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectObject
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectObject.svg
+    :align: center
+    
+``nil``, even more simpler
+++++++++++++++++++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectNil
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectNil.svg
+    :align: center
+
+``true`` and ``false``
+++++++++++++++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectTrueAndFalse
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectTrueAndFalse.svg
+    :align: center
+
+A point
++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectPoint
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectPoint.svg
+    :align: center
+
+The green color
++++++++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectColorGreen
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectColorGreen.svg
+    :align: center
+
+The ``Shape`` of a polygon
+++++++++++++++++++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectRSPolygon
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectRSPolygon.svg
+    :align: center
+
