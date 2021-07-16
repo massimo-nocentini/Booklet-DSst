@@ -34,15 +34,18 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 
 	<script: 'BaselineOfBookletDSst new scriptCoreMessagesForDoc'>
 	^ MetaSTExporter new
-		  selectors: #( testInspectObjectModel testMagnitudeSubclasses
-			     testMagnitudeSubclassesSlotsGraph
+		  selectors:
+			  #( instVarsNamesOrderedCollection testInspectObjectModel
+			     testMagnitudeSubclasses testMagnitudeSubclassesSlotsGraph
 			     testCollectionSubclasses testRBNodeSubclasses
-			     testInspectCharacterPi testInspectDatetimeNow
+			     testInspectCharacterPi testInspectFloatPi testInspectDatetimeNow
 			     testInspectAssociation testInspectInteger13
 			     testInspectInteger13Detailed testInspectGoldenRatio
 			     testInspectHeap testInspectString testInspect20FibonacciNumbers
 			     testInspectPoint instVarsNamesOrderedCollection_testMagnitudeSubclassesSlotsGraph
-			     testInspectBRGCodes );
+			     testInspectBRGCodes testInspectColorGreen
+			     testInspectObject testInspectNil testInspectTrueAndFalse
+			     testInspectRSPolygon testInspectPoint );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'core-messages.json' ]
 		  ofPackage: self class package
