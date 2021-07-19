@@ -104,6 +104,15 @@ A heap
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap.svg
     :align: center
 
+A set
+++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectSet
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectSet.svg
+    :align: center
+
+
 ``RBNode`` hierarchy
 ====================
 
@@ -155,8 +164,8 @@ The green color
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectColorGreen.svg
     :align: center
 
-The ``Shape`` of a polygon
-++++++++++++++++++++++++++
+A ``RSShape`` of a polygon, quoting itself
+++++++++++++++++++++++++++++++++++++++++++
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectRSPolygon
 
