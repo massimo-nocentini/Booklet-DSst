@@ -41,11 +41,12 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     testInspectCharacterPi testInspectFloatPi testInspectDatetimeNow
 			     testInspectAssociation testInspectInteger13
 			     testInspectInteger13Detailed testInspectGoldenRatio
-			     testInspectHeap testInspectString testInspect20FibonacciNumbers
-			     testInspectPoint instVarsNamesOrderedCollection_testMagnitudeSubclassesSlotsGraph
+			     testInspectHeap testInspectSet testInspectString
+			     testInspect20FibonacciNumbers testInspectPoint
+			     instVarsNamesOrderedCollection_testMagnitudeSubclassesSlotsGraph
 			     testInspectBRGCodes testInspectColorGreen
 			     testInspectObject testInspectNil testInspectTrueAndFalse
-			     testInspectRSPolygon testInspectPoint );
+			     testInspectRSPolygon testInspectPoint testInspectRBNodesQuine );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'core-messages.json' ]
 		  ofPackage: self class package
