@@ -104,8 +104,8 @@ A heap
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap.svg
     :align: center
 
-A set
-++++++
+A ``Set``
++++++++++
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectSet
 
@@ -120,6 +120,11 @@ A set
 
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testRBNodeSubclasses.svg
     :align: center
+
+A quine ``RBProgramNode``
++++++++++++++++++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectRBNodesQuine
 
 For a few objects more
 ======================
