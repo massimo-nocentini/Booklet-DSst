@@ -55,8 +55,8 @@ The Golden ratio
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectGoldenRatio.svg
     :align: center
 
-A (reflexive) association
-+++++++++++++++++++++++++
+A (reflective) ``Association``
+++++++++++++++++++++++++++++++
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectAssociation
 
@@ -80,8 +80,8 @@ Lorem ipsum
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectString.svg
     :align: center
 
-An array of Fibonacci numbers
-+++++++++++++++++++++++++++++
+An ``Array`` of Fibonacci numbers
++++++++++++++++++++++++++++++++++
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspect20FibonacciNumbers
 
@@ -89,15 +89,15 @@ An array of Fibonacci numbers
     :align: center
 
 Binary Reflected Gray Codes
-+++++++++++++++++++++++++++++
++++++++++++++++++++++++++++
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectBRGCodes
 
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectBRGCodes.svg
     :align: center
 
-A heap
-++++++
+A ``Heap``
+++++++++++
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectHeap
 
