@@ -63,6 +63,13 @@ A (reflective) ``Association``
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectAssociation.svg
     :align: center
 
+A ``Fraction``
+++++++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectFraction
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectFraction.svg
+    :align: center
 
 ``Collection`` hierarchy
 ========================

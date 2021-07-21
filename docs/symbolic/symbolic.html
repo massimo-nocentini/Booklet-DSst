@@ -327,9 +327,13 @@ while the number of columns equals the divisor denoted by the instance variable 
 <span class="target" id="pharo-compiledMethod-16"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdofmultiplicativeinversesinz17"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testGCDofMultiplicativeInversesInZ17</span>
 
-   <span class="o">|</span><span class="nv"> inverses </span><span class="o">|</span>
-   <span class="nv">inverses</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">testGCDofZ17</span> <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> 
-                  <span class="nv">each</span> <span class="nf">b</span> <span class="nf">@</span> <span class="nv">each</span> <span class="nf">inverseMultiplicativeOfb</span> <span class="nf">key</span> ]<span class="p">.</span>
+   <span class="o">|</span><span class="nv"> gcds inverses </span><span class="o">|</span>
+   <span class="nv">gcds</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">testGCDofZ17</span><span class="p">.</span>
+   <span class="nv">inverses</span> <span class="o">:=</span> <span class="nc">PointArray</span> <span class="nf">new:</span> <span class="nv">gcds</span> <span class="nf">size</span> <span class="nf">+</span> <span class="m">1</span><span class="p">.</span>
+   <span class="nv">gcds</span> <span class="nf">withIndexDo:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">:</span><span class="nv">index</span> <span class="o">|</span> 
+      <span class="nv">inverses</span> <span class="nf">at:</span> <span class="nv">index</span> <span class="nf">put:</span> <span class="nv">each</span> <span class="nf">b</span> <span class="nf">@</span> <span class="nv">each</span> <span class="nf">inverseMultiplicativeOfb</span> <span class="nf">key</span> ]<span class="p">.</span>
+
+   <span class="nv">inverses</span> <span class="nf">at:</span> <span class="nv">inverses</span> <span class="nf">size</span> <span class="nf">put:</span> <span class="m">0</span> <span class="nf">@</span> <span class="m">0</span><span class="p">.</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">inverses</span>
 </pre></div>
@@ -345,7 +349,7 @@ while the number of columns equals the divisor denoted by the instance variable 
    <span class="o">|</span><span class="nv"> fibs gcds </span><span class="o">|</span>
    <span class="nv">fibs</span> <span class="o">:=</span> <span class="nc">OrderedCollection</span> <span class="nf">with:</span> <span class="m">1</span> <span class="nf">with:</span> <span class="m">1</span><span class="p">.</span>
 
-   <span class="m">3</span> <span class="nf">to:</span> <span class="m">13</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">i</span> <span class="o">|</span> <span class="nv">fibs</span> <span class="nf">add:</span> (<span class="nv">fibs</span> <span class="nf">at:</span> <span class="nv">i</span> <span class="nf">-</span> <span class="m">2</span>) <span class="nf">+</span> (<span class="nv">fibs</span> <span class="nf">at:</span> <span class="nv">i</span> <span class="nf">-</span> <span class="m">1</span>) ]<span class="p">.</span>
+   <span class="m">3</span> <span class="nf">to:</span> <span class="m">11</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">i</span> <span class="o">|</span> <span class="nv">fibs</span> <span class="nf">add:</span> (<span class="nv">fibs</span> <span class="nf">at:</span> <span class="nv">i</span> <span class="nf">-</span> <span class="m">2</span>) <span class="nf">+</span> (<span class="nv">fibs</span> <span class="nf">at:</span> <span class="nv">i</span> <span class="nf">-</span> <span class="m">1</span>) ]<span class="p">.</span>
 
    <span class="nv">gcds</span> <span class="o">:=</span> <span class="nv">fibs</span>
               <span class="nf">with:</span> <span class="nv">fibs</span> <span class="nf">allButFirst</span> <span class="nf">,</span> { (<span class="nv">fibs</span> <span class="nf">lastButOne</span> <span class="nf">+</span> <span class="nv">fibs</span> <span class="nf">last</span>) }
