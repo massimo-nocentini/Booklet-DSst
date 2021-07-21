@@ -46,7 +46,8 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     instVarsNamesOrderedCollection_testMagnitudeSubclassesSlotsGraph
 			     testInspectBRGCodes testInspectColorGreen
 			     testInspectObject testInspectNil testInspectTrueAndFalse
-			     testInspectRSPolygon testInspectPoint testInspectRBNodesQuine );
+			     testInspectRSPolygon testInspectPoint testInspectRBNodesQuine
+			     testInspectFraction );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'core-messages.json' ]
 		  ofPackage: self class package
