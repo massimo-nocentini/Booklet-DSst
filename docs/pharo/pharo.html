@@ -55,7 +55,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#the-irrational">The irrational <code class="docutils literal notranslate"><span class="pre">π</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#the-golden-ratio">The Golden ratio</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#a-reflective-association">A (reflective) <code class="docutils literal notranslate"><span class="pre">Association</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#a-fraction">A <code class="docutils literal notranslate"><span class="pre">Fraction</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#a-fraction-on-the-unit-circle">A <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>, on the unit circle</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#collection-hierarchy"><code class="docutils literal notranslate"><span class="pre">Collection</span></code> hierarchy</a><ul>
@@ -71,11 +71,11 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#for-a-few-objects-more">For a few objects more</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#an-object-simply">An object, simply</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#an-object-simply">An <code class="docutils literal notranslate"><span class="pre">Object</span></code>, simply</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#nil-even-more-simpler"><code class="docutils literal notranslate"><span class="pre">nil</span></code>, even more simpler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#true-and-false"><code class="docutils literal notranslate"><span class="pre">true</span></code> and <code class="docutils literal notranslate"><span class="pre">false</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#a-point">A point</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#the-green-color">The green color</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#a-point">A <code class="docutils literal notranslate"><span class="pre">Point</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-color-green">The <code class="docutils literal notranslate"><span class="pre">Color</span></code> green</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#a-rsshape-of-a-polygon-quoting-itself">A <code class="docutils literal notranslate"><span class="pre">RSShape</span></code> of a polygon, quoting itself</a></li>
 </ul>
 </li>
@@ -230,8 +230,8 @@
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspectAssociation.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectAssociation.svg" /></div></blockquote>
 </div>
-<div class="section" id="a-fraction">
-<h4>A <code class="docutils literal notranslate"><span class="pre">Fraction</span></code><a class="headerlink" href="#a-fraction" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="a-fraction-on-the-unit-circle">
+<h4>A <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>, on the unit circle<a class="headerlink" href="#a-fraction-on-the-unit-circle" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfraction"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectFraction</span>
 
@@ -305,10 +305,58 @@
 </div>
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspectBRGCodes.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectBRGCodes.svg" /></div></blockquote>
+<p>where the message</p>
+<span class="target" id="pharo-compiledMethod-13"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-asshapebrgcdots"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials-Visualizations&quot;</span>
+<span class="nf">asShapeBRGCDots</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">asShapeBinaryDots:</span> (<span class="bp">self</span> <span class="nf">bitBRGC</span> <span class="nf">printStringBase:</span> <span class="m">2</span>) <span class="nf">asArray</span>
+</pre></div>
+</div>
+<p>relies on both</p>
+<span class="target" id="pharo-compiledMethod-14"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-bitbrgc"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="nf">bitBRGC</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">bitXor:</span> <span class="bp">self</span> <span class="nf">&gt;&gt;</span> <span class="m">1</span>
+</pre></div>
+</div>
+<p>that computes the Gray representation corresponding to the receiver <code class="docutils literal notranslate"><span class="pre">Integer</span></code>, and</p>
+<span class="target" id="pharo-compiledMethod-15"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-asshapebinarydots"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials-Visualizations&quot;</span>
+<span class="nf">asShapeBinaryDots:</span> <span class="nv">repr</span>
+
+   <span class="o">|</span><span class="nv"> dots </span><span class="o">|</span>
+   <span class="nv">dots</span> <span class="o">:=</span> <span class="nv">repr</span> <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> 
+              <span class="o">|</span><span class="nv"> int </span><span class="o">|</span>
+              <span class="nv">int</span> <span class="o">:=</span> <span class="nc">Integer</span> <span class="nf">readFrom:</span> <span class="nv">each</span> <span class="nf">asString</span><span class="p">.</span>
+              <span class="nc">RSCircle</span> <span class="nb">new</span>
+                 <span class="nf">model:</span> <span class="nv">int</span><span class="p">;</span>
+                 <span class="nf">color:</span> <span class="nc">Color</span> <span class="nf">white</span><span class="p">;</span>
+                 <span class="nf">withBorder</span><span class="p">;</span>
+                 <span class="nf">yourself:</span> [ <span class="o">:</span><span class="nv">c</span> <span class="o">|</span> 
+                    <span class="nv">c</span> <span class="nf">color:</span> (<span class="nv">int</span>
+                              <span class="nf">ifZero:</span> [ <span class="nc">Color</span> <span class="nf">white</span> ]
+                              <span class="nf">ifOne:</span> [ <span class="nv">c</span> <span class="nf">border</span> <span class="nf">color</span> ]
+                              <span class="nf">ifTwo:</span> [ 
+                                 <span class="nv">c</span> <span class="nf">border</span>
+                                    <span class="nf">color:</span> <span class="nc">Color</span> <span class="nf">black</span><span class="p">;</span>
+                                    <span class="nf">color</span> ]
+                              <span class="nf">otherwise:</span> [ <span class="nc">Error</span> <span class="nf">signal</span> ]) ] ]<span class="p">.</span>
+
+   <span class="nc">RSHorizontalLineLayout</span> <span class="nb">new</span>
+      <span class="nf">gapSize:</span> <span class="nc">Float</span> <span class="nf">goldenRatio</span><span class="p">;</span>
+      <span class="nf">on:</span> <span class="nv">dots</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="nc">RSComposite</span> <span class="nb">new</span>
+        <span class="nf">model:</span> <span class="nv">repr</span><span class="p">;</span>
+        <span class="nf">shapes:</span> <span class="nv">dots</span><span class="p">;</span>
+        <span class="nf">yourself</span>
+</pre></div>
+</div>
+<p>that computes the dots-oriented representation, empty dots stand for 0s while
+full dots stand for 1s.</p>
 </div>
 <div class="section" id="a-heap">
 <h4>A <code class="docutils literal notranslate"><span class="pre">Heap</span></code><a class="headerlink" href="#a-heap" title="Permalink to this headline">¶</a></h4>
-<span class="target" id="pharo-compiledMethod-13"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectheap"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-16"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectheap"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectHeap</span>
 
    <span class="o">|</span><span class="nv"> array random </span><span class="o">|</span>
@@ -328,7 +376,7 @@
 </div>
 <div class="section" id="a-set">
 <h4>A <code class="docutils literal notranslate"><span class="pre">Set</span></code><a class="headerlink" href="#a-set" title="Permalink to this headline">¶</a></h4>
-<span class="target" id="pharo-compiledMethod-14"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectset"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-17"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectset"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectSet</span>
 
    <span class="o">|</span><span class="nv"> random sample n </span><span class="o">|</span>
@@ -349,7 +397,7 @@
 </div>
 <div class="section" id="rbnode-hierarchy">
 <h3><code class="docutils literal notranslate"><span class="pre">RBNode</span></code> hierarchy<a class="headerlink" href="#rbnode-hierarchy" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-15"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testrbnodesubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-18"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testrbnodesubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testRBNodeSubclasses</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportShapeOf:</span> <span class="nc">RBNode</span> <span class="nf">accessorBlock:</span> <span class="ss">#asShapeSubclasses</span>
@@ -359,7 +407,7 @@
 <div><img alt="../_images/EssentialsObjectTest-testRBNodeSubclasses.svg" class="align-center" src="../_images/EssentialsObjectTest-testRBNodeSubclasses.svg" /></div></blockquote>
 <div class="section" id="a-quine-rbprogramnode">
 <h4>A quine <code class="docutils literal notranslate"><span class="pre">RBProgramNode</span></code><a class="headerlink" href="#a-quine-rbprogramnode" title="Permalink to this headline">¶</a></h4>
-<span class="target" id="pharo-compiledMethod-16"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectrbnodesquine"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-19"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectrbnodesquine"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectRBNodesQuine</span>
 
    <span class="c">&quot;A *quine* in Scheme:</span>
@@ -392,8 +440,8 @@
 <div class="section" id="for-a-few-objects-more">
 <h3>For a few objects more<a class="headerlink" href="#for-a-few-objects-more" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="an-object-simply">
-<h4>An object, simply<a class="headerlink" href="#an-object-simply" title="Permalink to this headline">¶</a></h4>
-<span class="target" id="pharo-compiledMethod-17"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectobject"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<h4>An <code class="docutils literal notranslate"><span class="pre">Object</span></code>, simply<a class="headerlink" href="#an-object-simply" title="Permalink to this headline">¶</a></h4>
+<span class="target" id="pharo-compiledMethod-20"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectobject"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectObject</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nc">Object</span> <span class="nb">new</span>
@@ -404,7 +452,7 @@
 </div>
 <div class="section" id="nil-even-more-simpler">
 <h4><code class="docutils literal notranslate"><span class="pre">nil</span></code>, even more simpler<a class="headerlink" href="#nil-even-more-simpler" title="Permalink to this headline">¶</a></h4>
-<span class="target" id="pharo-compiledMethod-18"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectnil"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-21"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectnil"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectNil</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="bp">nil</span>
@@ -415,7 +463,7 @@
 </div>
 <div class="section" id="true-and-false">
 <h4><code class="docutils literal notranslate"><span class="pre">true</span></code> and <code class="docutils literal notranslate"><span class="pre">false</span></code><a class="headerlink" href="#true-and-false" title="Permalink to this headline">¶</a></h4>
-<span class="target" id="pharo-compiledMethod-19"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspecttrueandfalse"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-22"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspecttrueandfalse"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectTrueAndFalse</span>
 
    <span class="o">^</span> <span class="bp">self</span>
@@ -429,8 +477,8 @@
 <div><img alt="../_images/EssentialsObjectTest-testInspectTrueAndFalse.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectTrueAndFalse.svg" /></div></blockquote>
 </div>
 <div class="section" id="a-point">
-<h4>A point<a class="headerlink" href="#a-point" title="Permalink to this headline">¶</a></h4>
-<span class="target" id="pharo-compiledMethod-20"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectpoint"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<h4>A <code class="docutils literal notranslate"><span class="pre">Point</span></code><a class="headerlink" href="#a-point" title="Permalink to this headline">¶</a></h4>
+<span class="target" id="pharo-compiledMethod-23"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectpoint"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectPoint</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="m">42</span> <span class="nf">@</span> <span class="m">24</span>
@@ -439,9 +487,9 @@
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspectPoint.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectPoint.svg" /></div></blockquote>
 </div>
-<div class="section" id="the-green-color">
-<h4>The green color<a class="headerlink" href="#the-green-color" title="Permalink to this headline">¶</a></h4>
-<span class="target" id="pharo-compiledMethod-21"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectcolorgreen"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<div class="section" id="the-color-green">
+<h4>The <code class="docutils literal notranslate"><span class="pre">Color</span></code> green<a class="headerlink" href="#the-color-green" title="Permalink to this headline">¶</a></h4>
+<span class="target" id="pharo-compiledMethod-24"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectcolorgreen"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectColorGreen</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nc">Color</span> <span class="nf">green</span> <span class="nf">translucent</span>
@@ -452,7 +500,7 @@
 </div>
 <div class="section" id="a-rsshape-of-a-polygon-quoting-itself">
 <h4>A <code class="docutils literal notranslate"><span class="pre">RSShape</span></code> of a polygon, quoting itself<a class="headerlink" href="#a-rsshape-of-a-polygon-quoting-itself" title="Permalink to this headline">¶</a></h4>
-<span class="target" id="pharo-compiledMethod-22"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectrspolygon"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-25"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectrspolygon"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectRSPolygon</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="nc">RSPolygon</span> <span class="nb">new</span>
@@ -473,7 +521,7 @@
 <h2>Object model<a class="headerlink" href="#object-model" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="classes-and-superclasses-of-object-and-trait">
 <h3>Classes and superclasses of <code class="docutils literal notranslate"><span class="pre">Object</span></code> and <code class="docutils literal notranslate"><span class="pre">Trait</span></code><a class="headerlink" href="#classes-and-superclasses-of-object-and-trait" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-23"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectobjectmodel"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-26"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectobjectmodel"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectObjectModel</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> { 
@@ -486,7 +534,7 @@
 </div>
 <div class="section" id="magnitude-hierarchy-again">
 <h3><code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy, again<a class="headerlink" href="#magnitude-hierarchy-again" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-24"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testmagnitudesubclassesslotsgraph"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-27"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testmagnitudesubclassesslotsgraph"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testMagnitudeSubclassesSlotsGraph</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nc">Magnitude</span> <span class="nf">slotsBlock:</span> [ <span class="o">:</span><span class="nv">anObject</span> <span class="o">|</span> 
@@ -497,7 +545,7 @@
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testMagnitudeSubclassesSlotsGraph.svg" class="align-center" src="../_images/EssentialsObjectTest-testMagnitudeSubclassesSlotsGraph.svg" /></div></blockquote>
 <p>where</p>
-<span class="target" id="pharo-compiledMethod-25"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-class-instvarsnamesorderedcollection-testmagnitudesubclassesslotsgraph"><div class="highlight"><pre><span></span><span class="c">&quot;Class, protocol *Containers-Essentials-Visualizations&quot;</span>
+<span class="target" id="pharo-compiledMethod-28"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-class-instvarsnamesorderedcollection-testmagnitudesubclassesslotsgraph"><div class="highlight"><pre><span></span><span class="c">&quot;Class, protocol *Containers-Essentials-Visualizations&quot;</span>
 <span class="nf">instVarsNamesOrderedCollection_testMagnitudeSubclassesSlotsGraph</span>
 
    <span class="o">^</span> { 
@@ -505,13 +553,16 @@
         <span class="c">&quot;(#comment asSlotDescriptor inline: true).&quot;</span>
         (<span class="ss">#instVarNames</span> <span class="nf">asSlotDescriptor</span>
             <span class="nf">inline:</span> <span class="bp">true</span><span class="p">;</span>
-            <span class="nf">quote:</span> <span class="ss">#asShapeSlotsDfsTree</span>)<span class="p">.</span>
+            <span class="nf">noHeader</span><span class="p">;</span>
+            <span class="nf">in:</span> [ <span class="o">:</span><span class="nv">aDescriptor</span> <span class="o">|</span> 
+               <span class="nv">aDescriptor</span> <span class="nf">quote:</span> [ <span class="o">:</span><span class="nv">anArray</span> <span class="o">|</span> 
+                     <span class="nv">anArray</span> <span class="nf">asShapeSlotsDfsTreeInitialDescriptor:</span> <span class="nv">aDescriptor</span> ] ])<span class="p">.</span>
         (<span class="ss">#subclasses</span> <span class="nf">asSlotDescriptor</span> <span class="nf">yourself:</span> [ <span class="o">:</span><span class="nv">aDescriptor</span> <span class="o">|</span> 
             <span class="bp">self</span> <span class="nf">subclasses</span> <span class="nf">ifEmpty:</span> [ <span class="nv">aDescriptor</span> <span class="nf">inline:</span> <span class="bp">true</span> ] ]) }
 </pre></div>
 </div>
 <p>and</p>
-<span class="target" id="pharo-compiledMethod-26"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-object-instvarsnamesorderedcollection-testmagnitudesubclassesslotsgraph"><div class="highlight"><pre><span></span><span class="c">&quot;Object, protocol *Containers-Essentials-Visualizations&quot;</span>
+<span class="target" id="pharo-compiledMethod-29"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-object-instvarsnamesorderedcollection-testmagnitudesubclassesslotsgraph"><div class="highlight"><pre><span></span><span class="c">&quot;Object, protocol *Containers-Essentials-Visualizations&quot;</span>
 <span class="nf">instVarsNamesOrderedCollection_testMagnitudeSubclassesSlotsGraph</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">instVarsNamesOrderedCollection</span>

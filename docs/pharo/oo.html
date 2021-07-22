@@ -125,7 +125,10 @@
         <span class="c">&quot;(#comment asSlotDescriptor inline: true).&quot;</span>
         (<span class="ss">#instVarNames</span> <span class="nf">asSlotDescriptor</span>
             <span class="nf">inline:</span> <span class="bp">true</span><span class="p">;</span>
-            <span class="nf">quote:</span> <span class="ss">#asShapeSlotsDfsTree</span>)<span class="p">.</span>
+            <span class="nf">noHeader</span><span class="p">;</span>
+            <span class="nf">in:</span> [ <span class="o">:</span><span class="nv">aDescriptor</span> <span class="o">|</span> 
+               <span class="nv">aDescriptor</span> <span class="nf">quote:</span> [ <span class="o">:</span><span class="nv">anArray</span> <span class="o">|</span> 
+                     <span class="nv">anArray</span> <span class="nf">asShapeSlotsDfsTreeInitialDescriptor:</span> <span class="nv">aDescriptor</span> ] ])<span class="p">.</span>
         (<span class="ss">#subclasses</span> <span class="nf">asSlotDescriptor</span> <span class="nf">yourself:</span> [ <span class="o">:</span><span class="nv">aDescriptor</span> <span class="o">|</span> 
             <span class="bp">self</span> <span class="nf">subclasses</span> <span class="nf">ifEmpty:</span> [ <span class="nv">aDescriptor</span> <span class="nf">inline:</span> <span class="bp">true</span> ] ]) }
 </pre></div>

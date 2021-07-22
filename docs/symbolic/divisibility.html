@@ -338,6 +338,102 @@ while the number of columns equals the divisor denoted by the instance variable 
 <blockquote>
 <div><img alt="../_images/SymbolicIntegerTest-testGCDofAdjacentFibonacciNumbers.svg" class="align-center" src="../_images/SymbolicIntegerTest-testGCDofAdjacentFibonacciNumbers.svg" /></div></blockquote>
 </div>
+<div class="section" id="kissing-fractions">
+<h3>Kissing <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s<a class="headerlink" href="#kissing-fractions" title="Permalink to this headline">¶</a></h3>
+<p>Consider the <code class="docutils literal notranslate"><span class="pre">Fraction</span></code></p>
+<span class="target" id="pharo-compiledMethod-18"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfractionforkisses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="nf">testInspectFractionForKisses</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="m">4</span> <span class="nf">/</span> <span class="m">17</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/EssentialsObjectTest-testInspectFractionForKisses.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectFractionForKisses.svg" /></div></blockquote>
+<p>which kisses other fractions, by tangents of Ford’s circles</p>
+<span class="target" id="pharo-compiledMethod-19"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfractionkissing"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="nf">testInspectFractionKissing</span>
+
+   <span class="o">|</span><span class="nv"> aFraction </span><span class="o">|</span>
+   <span class="nv">aFraction</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">testInspectFractionForKisses</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">aFraction</span> <span class="nf">kissingFractions</span> <span class="nf">equals:</span> { 
+         (<span class="m">1</span> <span class="nf">/</span> <span class="m">5</span>)<span class="p">.</span>
+         (<span class="m">2</span> <span class="nf">/</span> <span class="m">9</span>)<span class="p">.</span>
+         (<span class="m">3</span> <span class="nf">/</span> <span class="m">13</span>)<span class="p">.</span>
+         (<span class="m">4</span> <span class="nf">/</span> <span class="m">17</span>)<span class="p">.</span>
+         (<span class="m">1</span> <span class="nf">/</span> <span class="m">4</span>)<span class="p">.</span>
+         (<span class="m">1</span> <span class="nf">/</span> <span class="m">3</span>)<span class="p">.</span>
+         (<span class="m">1</span> <span class="nf">/</span> <span class="m">2</span>) }<span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportShapeOf:</span> <span class="nv">aFraction</span> <span class="nf">accessorBlock:</span> <span class="ss">#asShapeFordCircles</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/EssentialsObjectTest-testInspectFractionKissing.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectFractionKissing.svg" /></div></blockquote>
+<p>where</p>
+<span class="target" id="pharo-compiledMethod-20"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-fraction-kissingfractions"><div class="highlight"><pre><span></span><span class="c">&quot;Fraction, protocol *Containers-Essentials&quot;</span>
+<span class="nf">kissingFractions</span>
+
+   <span class="o">|</span><span class="nv"> kissedFractions vl </span><span class="o">|</span>
+   <span class="nv">kissedFractions</span> <span class="o">:=</span> <span class="nc">Set</span> <span class="nb">new</span><span class="p">.</span>
+
+   <span class="nv">vl</span> <span class="o">:=</span> <span class="nc">ValueLink</span> <span class="nb">new</span>
+            <span class="nf">value:</span> <span class="bp">self</span> <span class="nf">asFractionWrtFloor</span><span class="p">;</span>
+            <span class="nf">yourself</span><span class="p">.</span>
+
+   [ <span class="nv">vl</span> ] <span class="nf">whileNotNil:</span> [ 
+      <span class="o">|</span> <span class="nv">gcd</span> <span class="nf">diophantinePoint</span> <span class="nf">next</span> <span class="nf">less</span> <span class="nf">aFraction</span> <span class="nf">|</span>
+      <span class="nv">aFraction</span> <span class="o">:=</span> <span class="nv">vl</span> <span class="nf">value</span><span class="p">.</span>
+      <span class="nv">kissedFractions</span> <span class="nf">add:</span> <span class="nv">aFraction</span><span class="p">.</span>
+
+      <span class="nv">gcd</span> <span class="o">:=</span> <span class="nv">aFraction</span> <span class="nf">numerator</span> <span class="nf">&gt;|&lt;</span> <span class="nv">aFraction</span> <span class="nf">denominator</span><span class="p">.</span>
+
+      <span class="nv">diophantinePoint</span> <span class="o">:=</span> <span class="nv">gcd</span> <span class="nf">point</span><span class="p">.</span>
+      <span class="nv">next</span> <span class="o">:=</span> <span class="nv">diophantinePoint</span> <span class="nf">x</span> <span class="nf">/</span> <span class="nv">diophantinePoint</span> <span class="nf">y</span> <span class="nf">negated</span><span class="p">.</span>
+
+      <span class="nv">less</span> <span class="o">:=</span> <span class="nv">aFraction</span> <span class="nf">numerator</span> <span class="nf">-</span> <span class="nv">next</span> <span class="nf">numerator</span>
+              <span class="nf">/</span> (<span class="nv">aFraction</span> <span class="nf">denominator</span> <span class="nf">-</span> <span class="nv">next</span> <span class="nf">denominator</span>)<span class="p">.</span>
+
+      <span class="nv">vl</span> <span class="o">:=</span> <span class="nv">next</span> <span class="nf">kissingFractionLink:</span>
+               (<span class="nv">less</span> <span class="nf">kissingFractionLink:</span> <span class="nv">vl</span> <span class="nf">nextLink</span>) ]<span class="p">.</span>
+
+   <span class="o">^</span> <span class="nv">kissedFractions</span> <span class="nf">asArray</span>
+        <span class="nf">sort</span><span class="p">;</span>
+        <span class="nf">yourself</span>
+</pre></div>
+</div>
+<p>and the polymorphism on <code class="docutils literal notranslate"><span class="pre">#kissingFractionLink:</span></code> reads as follows</p>
+<span class="target" id="pharo-compiledMethod-21"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-fraction-kissingfractionlink"><div class="highlight"><pre><span></span><span class="c">&quot;Fraction, protocol *Containers-Essentials&quot;</span>
+<span class="nf">kissingFractionLink:</span> <span class="nv">aLink</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">~~&gt;</span> <span class="nv">aLink</span>
+</pre></div>
+</div>
+<span class="target" id="pharo-compiledMethod-22"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-kissingfractionlink"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="nf">kissingFractionLink:</span> <span class="nv">aLink</span>
+
+   <span class="o">^</span> <span class="nv">aLink</span>
+</pre></div>
+</div>
+<p>Moreover, consider the reciprocal</p>
+<span class="target" id="pharo-compiledMethod-23"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfractionreciprocalkissing"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="nf">testInspectFractionReciprocalKissing</span>
+
+   <span class="o">|</span><span class="nv"> aFraction </span><span class="o">|</span>
+   <span class="nv">aFraction</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">testInspectFractionKissing</span> <span class="nf">reciprocal</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">aFraction</span> <span class="nf">kissingFractions</span> <span class="nf">equals:</span> { 
+         (<span class="m">1</span> <span class="nf">/</span> <span class="m">4</span>)<span class="p">.</span>
+         (<span class="m">1</span> <span class="nf">/</span> <span class="m">3</span>)<span class="p">.</span>
+         (<span class="m">1</span> <span class="nf">/</span> <span class="m">2</span>) }<span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportShapeOf:</span> <span class="nv">aFraction</span> <span class="nf">accessorBlock:</span> <span class="ss">#asShapeFordCircles</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/EssentialsObjectTest-testInspectFractionReciprocalKissing.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectFractionReciprocalKissing.svg" /></div></blockquote>
+<p>which yields a simpler visualization.</p>
+</div>
 </div>
 </div>
 

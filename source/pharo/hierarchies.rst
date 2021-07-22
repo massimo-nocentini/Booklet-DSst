@@ -63,13 +63,14 @@ A (reflective) ``Association``
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectAssociation.svg
     :align: center
 
-A ``Fraction``
-++++++++++++++
+A ``Fraction``, on the unit circle
+++++++++++++++++++++++++++++++++++
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectFraction
 
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectFraction.svg
     :align: center
+
 
 ``Collection`` hierarchy
 ========================
@@ -102,6 +103,21 @@ Binary Reflected Gray Codes
 
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectBRGCodes.svg
     :align: center
+
+where the message
+
+.. pharo:autocompiledmethod:: Integer>>#asShapeBRGCDots
+
+relies on both
+
+.. pharo:autocompiledmethod:: Integer>>#bitBRGC
+
+that computes the Gray representation corresponding to the receiver ``Integer``, and
+
+.. pharo:autocompiledmethod:: Integer>>#asShapeBinaryDots:
+
+that computes the dots-oriented representation, empty dots stand for 0s while
+full dots stand for 1s.
 
 A ``Heap``
 ++++++++++
@@ -136,8 +152,8 @@ A quine ``RBProgramNode``
 For a few objects more
 ======================
 
-An object, simply
-+++++++++++++++++
+An ``Object``, simply
++++++++++++++++++++++
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectObject
 
@@ -160,16 +176,16 @@ An object, simply
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectTrueAndFalse.svg
     :align: center
 
-A point
-+++++++
+A ``Point``
++++++++++++
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectPoint
 
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectPoint.svg
     :align: center
 
-The green color
-+++++++++++++++
+The ``Color`` green
++++++++++++++++++++
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectColorGreen
 

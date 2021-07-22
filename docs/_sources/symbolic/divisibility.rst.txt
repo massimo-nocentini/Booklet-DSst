@@ -116,3 +116,38 @@ Coprimes
 
   .. image:: ../../../Containers-Essentials/images/SymbolicIntegerTest-testGCDofAdjacentFibonacciNumbers.svg
     :align: center
+
+Kissing ``Fraction``\s
+++++++++++++++++++++++
+
+Consider the ``Fraction``
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectFractionForKisses
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectFractionForKisses.svg
+    :align: center
+
+which kisses other fractions, by tangents of Ford's circles
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectFractionKissing
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectFractionKissing.svg
+    :align: center
+
+where
+
+.. pharo:autocompiledmethod:: Fraction>>#kissingFractions
+
+and the polymorphism on ``#kissingFractionLink:`` reads as follows
+
+.. pharo:autocompiledmethod:: Fraction>>#kissingFractionLink:
+.. pharo:autocompiledmethod:: Integer>>#kissingFractionLink:
+
+Moreover, consider the reciprocal
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectFractionReciprocalKissing
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectFractionReciprocalKissing.svg
+    :align: center
+
+which yields a simpler visualization.
