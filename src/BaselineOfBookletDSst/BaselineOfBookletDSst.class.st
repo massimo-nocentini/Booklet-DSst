@@ -35,8 +35,9 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 	<script: 'BaselineOfBookletDSst new scriptCoreMessagesForDoc'>
 	^ MetaSTExporter new
 		  selectors:
-			  #( instVarsNamesOrderedCollection testInspectObjectModel
-			     testMagnitudeSubclasses testMagnitudeSubclassesSlotsGraph
+			  #( bitBRGC asShapeBinaryDots: asShapeBRGCDots instVarsNamesOrderedCollection
+			     testInspectObjectModel testMagnitudeSubclasses
+			     testMagnitudeSubclassesSlotsGraph
 			     testCollectionSubclasses testRBNodeSubclasses
 			     testInspectCharacterPi testInspectFloatPi testInspectDatetimeNow
 			     testInspectAssociation testInspectInteger13
