@@ -35,7 +35,8 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 	<script: 'BaselineOfBookletDSst new scriptCoreMessagesForDoc'>
 	^ MetaSTExporter new
 		  selectors:
-			  #( bitBRGC asShapeBinaryDots: asShapeBRGCDots instVarsNamesOrderedCollection
+			  #( kissingFractions kissingFractionLink: bitBRGC asShapeBinaryDots:
+			     asShapeBRGCDots instVarsNamesOrderedCollection
 			     testInspectObjectModel testMagnitudeSubclasses
 			     testMagnitudeSubclassesSlotsGraph
 			     testCollectionSubclasses testRBNodeSubclasses
@@ -48,7 +49,8 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     testInspectBRGCodes testInspectColorGreen
 			     testInspectObject testInspectNil testInspectTrueAndFalse
 			     testInspectRSPolygon testInspectPoint testInspectRBNodesQuine
-			     testInspectFraction );
+			     testInspectFraction #testInspectFractionForKisses
+			     testInspectFractionKissing testInspectFractionReciprocalKissing );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'core-messages.json' ]
 		  ofPackage: self class package
