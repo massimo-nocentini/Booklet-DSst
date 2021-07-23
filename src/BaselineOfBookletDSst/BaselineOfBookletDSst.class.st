@@ -50,7 +50,8 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     testInspectObject testInspectNil testInspectTrueAndFalse
 			     testInspectRSPolygon testInspectPoint testInspectRBNodesQuine
 			     testInspectFraction #testInspectFractionForKisses
-			     testInspectFractionKissing testInspectFractionReciprocalKissing );
+			     testInspectFractionKissing testInspectFractionReciprocalKissing
+			     testInspectFractionKissingEnumeration );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'core-messages.json' ]
 		  ofPackage: self class package
