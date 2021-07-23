@@ -71,6 +71,12 @@ A ``Fraction``, on the unit circle
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectFraction.svg
     :align: center
 
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectFractionKissingEnumeration
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectFractionKissingEnumeration.svg
+    :align: center
+
+
 
 ``Collection`` hierarchy
 ========================
