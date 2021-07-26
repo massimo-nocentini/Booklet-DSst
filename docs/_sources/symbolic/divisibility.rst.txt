@@ -117,6 +117,8 @@ Coprimes
   .. image:: ../../../Containers-Essentials/images/SymbolicIntegerTest-testGCDofAdjacentFibonacciNumbers.svg
     :align: center
 
+.. _kissing-fractions-diophantine:
+
 Kissing ``Fraction``\s
 ++++++++++++++++++++++
 

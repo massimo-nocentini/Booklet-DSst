@@ -26,8 +26,8 @@ The character ``π``
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectDatetimeNow.svg
     :align: center
 
-The integer ``13``, in details
-++++++++++++++++++++++++++++++
+The integer ``13`` in various representations
++++++++++++++++++++++++++++++++++++++++++++++
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectInteger13
 
@@ -63,20 +63,54 @@ A (reflective) ``Association``
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectAssociation.svg
     :align: center
 
-A ``Fraction``, on the unit circle
-++++++++++++++++++++++++++++++++++
+Some ``Fraction``\s, with kisses by *mediants*
+++++++++++++++++++++++++++++++++++++++++++++++
+
+Have a look at the fraction :math:`- {{1} \over {2}}` by the following inspector,
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectFraction
 
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectFraction.svg
     :align: center
 
+Some fractions kiss each other,  here we see kisses by *mediants* via the
+polymorphism of the message ``#\/``,
+
+.. pharo:autocompiledmethod:: Fraction>>#\/
+.. pharo:autocompiledmethod:: Integer>>#\/
+
+that both implementations dispatch back to their arguments according to
+
+.. pharo:autocompiledmethod:: Integer>>#mediantFraction:
+.. pharo:autocompiledmethod:: Fraction>>#mediantFraction:
+
+for the former and to
+
+.. pharo:autocompiledmethod:: Integer>>#mediantInteger:
+.. pharo:autocompiledmethod:: Fraction>>#mediantInteger:
+
+for the latter. Now we can see some kisses,
+
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectFractionKissingEnumeration
 
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectFractionKissingEnumeration.svg
     :align: center
 
+where 
 
+.. pharo:autocompiledmethod:: BlockClosure>>#kissingFractions
+
+lies on the utility message
+
+.. pharo:autocompiledmethod:: SequenceableCollection>>#overlappingPairsDo:
+
+understood by objects that play the role of a container, the subject of the
+next section.  
+
+.. seealso::
+
+  More kissing fractions by *Diophantine equations* can be seen in the
+  section :ref:`kissing-fractions-diophantine` .
 
 ``Collection`` hierarchy
 ========================
