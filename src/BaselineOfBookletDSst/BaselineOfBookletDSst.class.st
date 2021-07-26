@@ -35,7 +35,8 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 	<script: 'BaselineOfBookletDSst new scriptCoreMessagesForDoc'>
 	^ MetaSTExporter new
 		  selectors:
-			  #( kissingFractions kissingFractionLink: bitBRGC asShapeBinaryDots:
+			  #( \/ mediantInteger: mediantFraction: kissingFractions
+			     overlappingPairsDo: kissingFractionLink: bitBRGC asShapeBinaryDots:
 			     asShapeBRGCDots instVarsNamesOrderedCollection
 			     testInspectObjectModel testMagnitudeSubclasses
 			     testMagnitudeSubclassesSlotsGraph
