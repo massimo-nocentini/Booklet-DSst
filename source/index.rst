@@ -12,6 +12,7 @@ Data Structures in Smalltalk
    pharo/pharo.rst
    symbolic/symbolic.rst
    linked-allocation/linked-allocation.rst
+   bibliography.rst
 
 Indices and tables
 ==================

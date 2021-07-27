@@ -109,8 +109,11 @@ next section.
 
 .. seealso::
 
-  More kissing fractions by *Diophantine equations* can be seen in the
-  section :ref:`kissing-fractions-diophantine` .
+  On one hand, more kissing fractions by *Diophantine equations* are the
+  subject of the section :ref:`kissing-fractions-diophantine`; on the other
+  hand, both :cite:`20120731/fractions-and-semiotics` and
+  :cite:`10.4169/amer.math.monthly.121.05.391` are inspired by the seminal work
+  :cite:`10.2307/2302799`.
 
 ``Collection`` hierarchy
 ========================
@@ -128,13 +131,31 @@ Lorem ipsum
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectString.svg
     :align: center
 
-An ``Array`` of Fibonacci numbers
-+++++++++++++++++++++++++++++++++
+An ``Array`` of (generalized) Fibonacci numbers
++++++++++++++++++++++++++++++++++++++++++++++++
+
+Two famous sequences of numbers :cite:`oeis/fibonacci-numbers` and :cite:`oeis/lucas-numbers`, of *Fibonacci* numbers
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspect20FibonacciNumbers
 
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspect20FibonacciNumbers.svg
     :align: center
+
+and of *Lucas* numbers
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspect20LucasNumbers
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspect20lucasNumbers.svg
+    :align: center
+
+respectively, where both of them
+
+.. pharo:autocompiledmethod:: Integer>>#fibonacciNumbers
+.. pharo:autocompiledmethod:: Integer>>#lucasNumbers
+
+lie on
+
+.. pharo:autocompiledmethod:: Integer>>#gibonacciNumbersFirst:second:do:
 
 Binary Reflected Gray Codes
 +++++++++++++++++++++++++++

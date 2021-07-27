@@ -39,7 +39,7 @@ extensions = [
 ]
 
 # For the bibliography.
-bibtex_bibfiles = []
+bibtex_bibfiles = ['biblio.bib']
 
 # The following configuation values concerns the Pharo domain.
 pharo_json_export_filenames = [
