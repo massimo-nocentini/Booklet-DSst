@@ -38,6 +38,11 @@ extensions = [
         #'recommonmark',
 ]
 
+# For MathJax
+mathjax_options = {
+        
+}
+
 # For the bibliography.
 bibtex_bibfiles = ['biblio.bib']
 
@@ -79,7 +84,7 @@ html_theme_options = {
     'code_font_size': '0.8em',
     'show_relbars': True,
     'fixed_sidebar':True,
-    'page_width':'100%',
+    #'page_width':'100%',
     'pre_bg':'white',
     'note_bg':'white',
     'show_powered_by':False,

@@ -5,7 +5,7 @@ Divisibility
 Quotients and remainders
 ========================
 
-Lets divide :math:`20` by :math:`9`,
+Lets divide :math:`21` by :math:`9`,
 
 .. pharo:autocompiledmethod:: SymbolicIntegerTest>>#testStandardQuoRem21Over9
 
