@@ -35,7 +35,8 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 	<script: 'BaselineOfBookletDSst new scriptCoreMessagesForDoc'>
 	^ MetaSTExporter new
 		  selectors:
-			  #( \/ mediantInteger: mediantFraction: kissingFractions
+			  #( fibonacciNumbers lucasNumbers #gibonacciNumbersFirst:second:do:
+			     \/ mediantInteger: mediantFraction: kissingFractions
 			     overlappingPairsDo: kissingFractionLink: bitBRGC asShapeBinaryDots:
 			     asShapeBRGCDots instVarsNamesOrderedCollection
 			     testInspectObjectModel testMagnitudeSubclasses
@@ -45,8 +46,8 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     testInspectAssociation testInspectInteger13
 			     testInspectInteger13Detailed testInspectGoldenRatio
 			     testInspectHeap testInspectSet testInspectString
-			     testInspect20FibonacciNumbers testInspectPoint
-			     instVarsNamesOrderedCollection_testMagnitudeSubclassesSlotsGraph
+			     testInspect20FibonacciNumbers testInspect20LucasNumbers
+			     testInspectPoint instVarsNamesOrderedCollection_testMagnitudeSubclassesSlotsGraph
 			     testInspectBRGCodes testInspectColorGreen
 			     testInspectObject testInspectNil testInspectTrueAndFalse
 			     testInspectRSPolygon testInspectPoint testInspectRBNodesQuine
