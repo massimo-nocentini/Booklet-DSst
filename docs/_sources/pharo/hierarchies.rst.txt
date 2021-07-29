@@ -196,6 +196,68 @@ A ``Set``
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectSet.svg
     :align: center
 
+``Random`` hierarchy
+====================
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testRandomSubclasses
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testRandomSubclasses.svg
+    :align: center
+
+The *uniform* distribution
+++++++++++++++++++++++++++
+
+.. pharo:autocompiledmethod:: RandomTestDistributions>>#testUniform
+
+  .. image:: ../../../Containers-Essentials/images/RandomTestDistributions-testUniform.svg
+    :align: center
+
+where both messages
+
+.. pharo:autocompiledmethod:: Random>>#next
+.. pharo:autocompiledmethod:: Random>>#privateNextValue
+
+lie on the message
+
+.. pharo:autocompiledmethod:: Random>>#privateNextSeed
+
+which provides the implementation, finally.
+
+The *exponential* distribution
+++++++++++++++++++++++++++++++
+
+.. pharo:autocompiledmethod:: RandomTestDistributions>>#testExponential
+
+  .. image:: ../../../Containers-Essentials/images/RandomTestDistributions-testExponential.svg
+    :align: center
+
+where
+
+.. pharo:autocompiledmethod:: RandomExponential>>#next
+
+The *gaussian* distribution
++++++++++++++++++++++++++++
+
+.. pharo:autocompiledmethod:: RandomTestDistributions>>#testGaussian
+
+  .. image:: ../../../Containers-Essentials/images/RandomTestDistributions-testGaussian.svg
+    :align: center
+
+where
+
+.. pharo:autocompiledmethod:: RandomGaussian>>#next
+
+The *bivariate gaussian* distribution
++++++++++++++++++++++++++++++++++++++
+
+.. pharo:autocompiledmethod:: RandomTestDistributions>>#testGaussianBoxMuller
+
+  .. image:: ../../../Containers-Essentials/images/RandomTestDistributions-testGaussianBoxMuller.svg
+    :align: center
+
+where
+
+.. pharo:autocompiledmethod:: RandomBoxMullerBivariateGaussian>>#next
 
 ``RBNode`` hierarchy
 ====================
