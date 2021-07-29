@@ -19,10 +19,3 @@ Classes and superclasses of ``Object`` and ``Trait``
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testMagnitudeSubclassesSlotsGraph.svg
     :align: center
 
-where
-
-.. pharo:autocompiledmethod:: Class>>#instVarsNamesOrderedCollection_testMagnitudeSubclassesSlotsGraph
-
-and
-
-.. pharo:autocompiledmethod:: Object>>#instVarsNamesOrderedCollection_testMagnitudeSubclassesSlotsGraph

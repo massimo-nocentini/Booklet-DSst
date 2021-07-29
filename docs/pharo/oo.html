@@ -110,37 +110,13 @@
 <span class="target" id="pharo-compiledMethod-1"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testmagnitudesubclassesslotsgraph"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testMagnitudeSubclassesSlotsGraph</span>
 
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nc">Magnitude</span> <span class="nf">slotsBlock:</span> [ <span class="o">:</span><span class="nv">anObject</span> <span class="o">|</span> 
-        <span class="nv">anObject</span>
-           <span class="nf">instVarsNamesOrderedCollection_testMagnitudeSubclassesSlotsGraph</span> ]
+   <span class="o">^</span> <span class="bp">self</span>
+        <span class="nf">exportSlotsGraphOf:</span> <span class="nc">Magnitude</span>
+        <span class="nf">slotDescriptorsContext:</span> <span class="nc">SlotDescriptorsVisitorClassHierarchy</span> <span class="nb">new</span>
 </pre></div>
 </div>
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testMagnitudeSubclassesSlotsGraph.svg" class="align-center" src="../_images/EssentialsObjectTest-testMagnitudeSubclassesSlotsGraph.svg" /></div></blockquote>
-<p>where</p>
-<span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-class-instvarsnamesorderedcollection-testmagnitudesubclassesslotsgraph"><div class="highlight"><pre><span></span><span class="c">&quot;Class, protocol *Containers-Essentials-Visualizations&quot;</span>
-<span class="nf">instVarsNamesOrderedCollection_testMagnitudeSubclassesSlotsGraph</span>
-
-   <span class="o">^</span> { 
-        <span class="ss">#name</span> <span class="nf">asSlotDescriptor</span><span class="p">.</span>
-        <span class="c">&quot;(#comment asSlotDescriptor inline: true).&quot;</span>
-        (<span class="ss">#instVarNames</span> <span class="nf">asSlotDescriptor</span>
-            <span class="nf">inline:</span> <span class="bp">true</span><span class="p">;</span>
-            <span class="nf">noHeader</span><span class="p">;</span>
-            <span class="nf">in:</span> [ <span class="o">:</span><span class="nv">aDescriptor</span> <span class="o">|</span> 
-               <span class="nv">aDescriptor</span> <span class="nf">quote:</span> [ <span class="o">:</span><span class="nv">anArray</span> <span class="o">|</span> 
-                     <span class="nv">anArray</span> <span class="nf">asShapeSlotsDfsTreeInitialDescriptor:</span> <span class="nv">aDescriptor</span> ] ])<span class="p">.</span>
-        (<span class="ss">#subclasses</span> <span class="nf">asSlotDescriptor</span> <span class="nf">yourself:</span> [ <span class="o">:</span><span class="nv">aDescriptor</span> <span class="o">|</span> 
-            <span class="bp">self</span> <span class="nf">subclasses</span> <span class="nf">ifEmpty:</span> [ <span class="nv">aDescriptor</span> <span class="nf">inline:</span> <span class="bp">true</span> ] ]) }
-</pre></div>
-</div>
-<p>and</p>
-<span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-object-instvarsnamesorderedcollection-testmagnitudesubclassesslotsgraph"><div class="highlight"><pre><span></span><span class="c">&quot;Object, protocol *Containers-Essentials-Visualizations&quot;</span>
-<span class="nf">instVarsNamesOrderedCollection_testMagnitudeSubclassesSlotsGraph</span>
-
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">instVarsNamesOrderedCollection</span>
-</pre></div>
-</div>
 </div>
 </div>
 

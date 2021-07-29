@@ -245,12 +245,12 @@ A ``Point``
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectPoint.svg
     :align: center
 
-The ``Color`` green
-+++++++++++++++++++
+The ``Color`` gray, translucent
++++++++++++++++++++++++++++++++
 
-.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectColorGreen
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectColorGray
 
-  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectColorGreen.svg
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectColorGray.svg
     :align: center
 
 A ``RSShape`` of a polygon, quoting itself

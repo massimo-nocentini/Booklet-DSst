@@ -75,7 +75,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#nil-even-more-simpler"><code class="docutils literal notranslate"><span class="pre">nil</span></code>, even more simpler</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#true-and-false"><code class="docutils literal notranslate"><span class="pre">true</span></code> and <code class="docutils literal notranslate"><span class="pre">false</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#a-point">A <code class="docutils literal notranslate"><span class="pre">Point</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#the-color-green">The <code class="docutils literal notranslate"><span class="pre">Color</span></code> green</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-color-gray-translucent">The <code class="docutils literal notranslate"><span class="pre">Color</span></code> gray, translucent</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#a-rsshape-of-a-polygon-quoting-itself">A <code class="docutils literal notranslate"><span class="pre">RSShape</span></code> of a polygon, quoting itself</a></li>
 </ul>
 </li>
@@ -192,7 +192,9 @@
 <span class="target" id="pharo-compiledMethod-4"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectinteger13detailed"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectInteger13Detailed</span>
 
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="m">13</span> <span class="nf">asDetailedRepresentationsView</span>
+   <span class="o">^</span> <span class="bp">self</span>
+        <span class="nf">exportSlotsGraphOf:</span> <span class="m">13</span>
+        <span class="nf">slotDescriptorsContext:</span> <span class="nc">SlotDescriptorsVisitorIntegerDetails</span> <span class="nb">new</span>
 </pre></div>
 </div>
 <blockquote>
@@ -528,11 +530,11 @@ hand, both <span id="id1">[<a class="reference internal" href="../bibliography.h
    <span class="o">^</span> <span class="bp">self</span>
         <span class="nf">exportSlotsGraphOf:</span>
         ((<span class="m">0</span> <span class="nf">to:</span> <span class="m">15</span>) <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">each</span> <span class="nf">asShapeBRGCDots</span> ])
-        <span class="nf">slotsBlock:</span> [ <span class="o">:</span><span class="nv">anObject</span> <span class="o">|</span> 
-           <span class="nv">anObject</span> <span class="nf">instVarsNamesOrderedCollection</span> <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">aDescriptor</span> <span class="o">|</span> 
-              <span class="nv">aDescriptor</span>
-                 <span class="nf">inline:</span> <span class="bp">true</span><span class="p">;</span>
-                 <span class="nf">quote</span> ] ]
+        <span class="nf">slotDescriptorsContext:</span>
+           (<span class="nc">SlotDescriptorsVisitor</span> <span class="nb">new</span> <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">aDescriptor</span> <span class="o">|</span> 
+               <span class="nv">aDescriptor</span>
+                  <span class="nf">inline:</span> <span class="bp">true</span><span class="p">;</span>
+                  <span class="nf">quote</span> ])
 </pre></div>
 </div>
 <blockquote>
@@ -700,9 +702,9 @@ full dots stand for 1s.</p>
 
    <span class="o">^</span> <span class="bp">self</span>
         <span class="nf">exportSlotsGraphOf:</span> (<span class="nc">Array</span> <span class="nf">with:</span> <span class="bp">true</span> <span class="nf">with:</span> <span class="bp">false</span>)
-        <span class="nf">slotsBlock:</span> [ <span class="o">:</span><span class="nv">anArray</span> <span class="o">|</span> 
-           <span class="nv">anArray</span> <span class="nf">instVarsNamesOrderedCollection</span> <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">aDescriptor</span> <span class="o">|</span> 
-              <span class="nv">aDescriptor</span> <span class="nf">inline:</span> <span class="bp">false</span> ] ]
+        <span class="nf">slotDescriptorsContext:</span>
+           (<span class="nc">SlotDescriptorsVisitor</span> <span class="nb">new</span> <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">aDescriptor</span> <span class="o">|</span> 
+               <span class="nv">aDescriptor</span> <span class="nf">inline:</span> <span class="bp">false</span> ])
 </pre></div>
 </div>
 <blockquote>
@@ -719,16 +721,16 @@ full dots stand for 1s.</p>
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspectPoint.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectPoint.svg" /></div></blockquote>
 </div>
-<div class="section" id="the-color-green">
-<h4>The <code class="docutils literal notranslate"><span class="pre">Color</span></code> green<a class="headerlink" href="#the-color-green" title="Permalink to this headline">¶</a></h4>
-<span class="target" id="pharo-compiledMethod-37"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectcolorgreen"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
-<span class="nf">testInspectColorGreen</span>
+<div class="section" id="the-color-gray-translucent">
+<h4>The <code class="docutils literal notranslate"><span class="pre">Color</span></code> gray, translucent<a class="headerlink" href="#the-color-gray-translucent" title="Permalink to this headline">¶</a></h4>
+<span class="target" id="pharo-compiledMethod-37"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectcolorgray"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="nf">testInspectColorGray</span>
 
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nc">Color</span> <span class="nf">green</span> <span class="nf">translucent</span>
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nc">Color</span> <span class="nf">gray</span> <span class="nf">translucent</span>
 </pre></div>
 </div>
 <blockquote>
-<div><img alt="../_images/EssentialsObjectTest-testInspectColorGreen.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectColorGreen.svg" /></div></blockquote>
+<div><img alt="../_images/EssentialsObjectTest-testInspectColorGray.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectColorGray.svg" /></div></blockquote>
 </div>
 <div class="section" id="a-rsshape-of-a-polygon-quoting-itself">
 <h4>A <code class="docutils literal notranslate"><span class="pre">RSShape</span></code> of a polygon, quoting itself<a class="headerlink" href="#a-rsshape-of-a-polygon-quoting-itself" title="Permalink to this headline">¶</a></h4>
@@ -769,37 +771,13 @@ full dots stand for 1s.</p>
 <span class="target" id="pharo-compiledMethod-40"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testmagnitudesubclassesslotsgraph"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testMagnitudeSubclassesSlotsGraph</span>
 
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nc">Magnitude</span> <span class="nf">slotsBlock:</span> [ <span class="o">:</span><span class="nv">anObject</span> <span class="o">|</span> 
-        <span class="nv">anObject</span>
-           <span class="nf">instVarsNamesOrderedCollection_testMagnitudeSubclassesSlotsGraph</span> ]
+   <span class="o">^</span> <span class="bp">self</span>
+        <span class="nf">exportSlotsGraphOf:</span> <span class="nc">Magnitude</span>
+        <span class="nf">slotDescriptorsContext:</span> <span class="nc">SlotDescriptorsVisitorClassHierarchy</span> <span class="nb">new</span>
 </pre></div>
 </div>
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testMagnitudeSubclassesSlotsGraph.svg" class="align-center" src="../_images/EssentialsObjectTest-testMagnitudeSubclassesSlotsGraph.svg" /></div></blockquote>
-<p>where</p>
-<span class="target" id="pharo-compiledMethod-41"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-class-instvarsnamesorderedcollection-testmagnitudesubclassesslotsgraph"><div class="highlight"><pre><span></span><span class="c">&quot;Class, protocol *Containers-Essentials-Visualizations&quot;</span>
-<span class="nf">instVarsNamesOrderedCollection_testMagnitudeSubclassesSlotsGraph</span>
-
-   <span class="o">^</span> { 
-        <span class="ss">#name</span> <span class="nf">asSlotDescriptor</span><span class="p">.</span>
-        <span class="c">&quot;(#comment asSlotDescriptor inline: true).&quot;</span>
-        (<span class="ss">#instVarNames</span> <span class="nf">asSlotDescriptor</span>
-            <span class="nf">inline:</span> <span class="bp">true</span><span class="p">;</span>
-            <span class="nf">noHeader</span><span class="p">;</span>
-            <span class="nf">in:</span> [ <span class="o">:</span><span class="nv">aDescriptor</span> <span class="o">|</span> 
-               <span class="nv">aDescriptor</span> <span class="nf">quote:</span> [ <span class="o">:</span><span class="nv">anArray</span> <span class="o">|</span> 
-                     <span class="nv">anArray</span> <span class="nf">asShapeSlotsDfsTreeInitialDescriptor:</span> <span class="nv">aDescriptor</span> ] ])<span class="p">.</span>
-        (<span class="ss">#subclasses</span> <span class="nf">asSlotDescriptor</span> <span class="nf">yourself:</span> [ <span class="o">:</span><span class="nv">aDescriptor</span> <span class="o">|</span> 
-            <span class="bp">self</span> <span class="nf">subclasses</span> <span class="nf">ifEmpty:</span> [ <span class="nv">aDescriptor</span> <span class="nf">inline:</span> <span class="bp">true</span> ] ]) }
-</pre></div>
-</div>
-<p>and</p>
-<span class="target" id="pharo-compiledMethod-42"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-object-instvarsnamesorderedcollection-testmagnitudesubclassesslotsgraph"><div class="highlight"><pre><span></span><span class="c">&quot;Object, protocol *Containers-Essentials-Visualizations&quot;</span>
-<span class="nf">instVarsNamesOrderedCollection_testMagnitudeSubclassesSlotsGraph</span>
-
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">instVarsNamesOrderedCollection</span>
-</pre></div>
-</div>
 </div>
 </div>
 </div>
