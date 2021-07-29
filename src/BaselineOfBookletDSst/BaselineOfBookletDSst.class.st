@@ -47,8 +47,7 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     testInspectInteger13Detailed testInspectGoldenRatio
 			     testInspectHeap testInspectSet testInspectString
 			     testInspect20FibonacciNumbers testInspect20LucasNumbers
-			     testInspectPoint instVarsNamesOrderedCollection_testMagnitudeSubclassesSlotsGraph
-			     testInspectBRGCodes testInspectColorGreen
+			     testInspectPoint testInspectBRGCodes #testInspectColorGray
 			     testInspectObject testInspectNil testInspectTrueAndFalse
 			     testInspectRSPolygon testInspectPoint testInspectRBNodesQuine
 			     testInspectFraction #testInspectFractionForKisses
