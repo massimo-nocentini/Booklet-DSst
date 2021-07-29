@@ -139,7 +139,7 @@ BaselineOfBookletDSst >> scriptValueLinkMessagesForDoc [
 			     #handleCycleInValueLinksTable:do:
 			     testTopologicalSortOnCycleDo testTopologicalSortOnCycleDo1
 			     testTopologicalSortOnCycleDo2 testTopologicalSortOnCycleDo3
-			     #testYourselfBlock testAnyAssociation );
+			     #testYourselfBlock testAnyAssociation test4321ValueLinksNested);
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'valuelink-core-messages.json' ]
 		  ofPackage: self class package
