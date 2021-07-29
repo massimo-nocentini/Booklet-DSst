@@ -62,7 +62,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#lorem-ipsum">Lorem ipsum</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#an-array-of-generalized-fibonacci-numbers">An <code class="docutils literal notranslate"><span class="pre">Array</span></code> of (generalized) Fibonacci numbers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#binary-reflected-gray-codes">Binary Reflected Gray Codes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#a-heap">A <code class="docutils literal notranslate"><span class="pre">Heap</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#a-heap-step-by-step-construction">A <code class="docutils literal notranslate"><span class="pre">Heap</span></code>, step by step construction</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#a-set">A <code class="docutils literal notranslate"><span class="pre">Set</span></code></a></li>
 </ul>
 </li>
@@ -595,12 +595,13 @@ hand, both <span id="id1">[<a class="reference internal" href="../bibliography.h
 <p>that computes the dots-oriented representation, empty dots stand for 0s while
 full dots stand for 1s.</p>
 </div>
-<div class="section" id="a-heap">
-<h4>A <code class="docutils literal notranslate"><span class="pre">Heap</span></code><a class="headerlink" href="#a-heap" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="a-heap-step-by-step-construction">
+<h4>A <code class="docutils literal notranslate"><span class="pre">Heap</span></code>, step by step construction<a class="headerlink" href="#a-heap-step-by-step-construction" title="Permalink to this headline">¶</a></h4>
+<p>Here we construct a heap according to the given sequence (<em>order matters</em>),</p>
 <span class="target" id="pharo-compiledMethod-29"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectheap"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectHeap</span>
 
-   <span class="o">|</span><span class="nv"> array random </span><span class="o">|</span>
+   <span class="o">|</span><span class="nv"> array random heap </span><span class="o">|</span>
    <span class="nv">random</span> <span class="o">:=</span> <span class="nc">Random</span> <span class="nf">seed:</span> <span class="m">11</span><span class="p">.</span>
    <span class="nv">array</span> <span class="o">:=</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">30</span>) <span class="nf">asArray</span> <span class="nf">shuffleBy:</span> <span class="nv">random</span><span class="p">.</span>
    <span class="bp">self</span>
@@ -609,11 +610,68 @@ full dots stand for 1s.</p>
          <span class="ss">#(</span> <span class="m">12</span> <span class="m">16</span> <span class="m">22</span> <span class="m">30</span> <span class="m">8</span> <span class="m">17</span> <span class="m">15</span> <span class="m">4</span> <span class="m">20</span> <span class="m">19</span> <span class="m">28</span> <span class="m">18</span> <span class="m">27</span> <span class="m">21</span> <span class="m">24</span> <span class="m">10</span> <span class="m">7</span> <span class="m">3</span> <span class="m">14</span> <span class="m">5</span> <span class="m">6</span> <span class="m">26</span> <span class="m">25</span>
             <span class="m">29</span> <span class="m">11</span> <span class="m">23</span> <span class="m">2</span> <span class="m">9</span> <span class="m">13</span> <span class="m">1</span> <span class="ss">)</span><span class="p">.</span>
 
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="nc">Heap</span> <span class="nf">withAll:</span> <span class="nv">array</span>)
+   <span class="nv">heap</span> <span class="o">:=</span> <span class="nc">Heap</span> <span class="nb">new</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">heap</span><span class="p">.</span>
+
+   <span class="nv">array</span> <span class="nf">withIndexDo:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">:</span><span class="nv">i</span> <span class="o">|</span> 
+      <span class="nv">heap</span> <span class="nf">add:</span> <span class="nv">each</span><span class="p">.</span>
+
+      <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">heap</span> <span class="nf">pathSuffix:</span> <span class="nv">i</span> <span class="nf">asString</span> ]
 </pre></div>
 </div>
-<blockquote>
-<div><img alt="../_images/EssentialsObjectTest-testInspectHeap.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap.svg" /></div></blockquote>
+<p>step by step as shown below</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><img alt="../_images/EssentialsObjectTest-testInspectHeap.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-1.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-1.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-2.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-2.svg" /></td>
+</tr>
+<tr class="row-even"><td><img alt="../_images/EssentialsObjectTest-testInspectHeap-3.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-3.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-4.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-4.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-5.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-5.svg" /></td>
+</tr>
+<tr class="row-odd"><td><img alt="../_images/EssentialsObjectTest-testInspectHeap-6.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-6.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-7.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-7.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-8.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-8.svg" /></td>
+</tr>
+<tr class="row-even"><td><img alt="../_images/EssentialsObjectTest-testInspectHeap-9.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-9.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-10.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-10.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-11.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-11.svg" /></td>
+</tr>
+<tr class="row-odd"><td><img alt="../_images/EssentialsObjectTest-testInspectHeap-12.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-12.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-13.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-13.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-14.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-14.svg" /></td>
+</tr>
+<tr class="row-even"><td><img alt="../_images/EssentialsObjectTest-testInspectHeap-15.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-15.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-16.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-16.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-17.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-17.svg" /></td>
+</tr>
+<tr class="row-odd"><td><img alt="../_images/EssentialsObjectTest-testInspectHeap-18.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-18.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-19.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-19.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-20.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-20.svg" /></td>
+</tr>
+<tr class="row-even"><td><img alt="../_images/EssentialsObjectTest-testInspectHeap-21.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-21.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-22.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-22.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-23.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-23.svg" /></td>
+</tr>
+<tr class="row-odd"><td><img alt="../_images/EssentialsObjectTest-testInspectHeap-24.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-24.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-25.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-25.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-26.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-26.svg" /></td>
+</tr>
+<tr class="row-even"><td><img alt="../_images/EssentialsObjectTest-testInspectHeap-27.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-27.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-28.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-28.svg" /></td>
+<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-29.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-29.svg" /></td>
+</tr>
+</tbody>
+</table>
+<p>to get</p>
+<img alt="../_images/EssentialsObjectTest-testInspectHeap-30.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-30.svg" /><p>which is the final object.</p>
 </div>
 <div class="section" id="a-set">
 <h4>A <code class="docutils literal notranslate"><span class="pre">Set</span></code><a class="headerlink" href="#a-set" title="Permalink to this headline">¶</a></h4>

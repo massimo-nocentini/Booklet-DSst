@@ -180,13 +180,84 @@ that computes the Gray representation corresponding to the receiver ``Integer``,
 that computes the dots-oriented representation, empty dots stand for 0s while
 full dots stand for 1s.
 
-A ``Heap``
-++++++++++
+A ``Heap``, step by step construction
++++++++++++++++++++++++++++++++++++++
+
+Here we construct a heap according to the given sequence (*order matters*),
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectHeap
 
-  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap.svg
-    :align: center
+step by step as shown below
+
+.. list-table:: 
+
+  * - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-1.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-2.svg
+        :align: center
+  * - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-3.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-4.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-5.svg
+        :align: center
+  * - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-6.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-7.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-8.svg
+        :align: center
+  * - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-9.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-10.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-11.svg
+        :align: center
+  * - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-12.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-13.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-14.svg
+        :align: center
+  * - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-15.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-16.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-17.svg
+        :align: center
+  * - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-18.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-19.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-20.svg
+        :align: center
+  * - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-21.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-22.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-23.svg
+        :align: center
+  * - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-24.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-25.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-26.svg
+        :align: center
+  * - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-27.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-28.svg
+        :align: center
+    - .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-29.svg
+        :align: center
+
+to get
+
+.. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-30.svg
+  :align: center
+
+which is the final object.
 
 A ``Set``
 +++++++++
