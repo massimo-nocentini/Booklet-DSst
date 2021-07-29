@@ -292,7 +292,8 @@ lie on the message
 
 .. pharo:autocompiledmethod:: Random>>#privateNextSeed
 
-which provides the implementation, finally.
+which finally provides the implementation according to
+:cite:`10.1145/63039.63042` as the message's comment states.
 
 The *exponential* distribution
 ++++++++++++++++++++++++++++++

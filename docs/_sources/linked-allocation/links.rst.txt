@@ -118,7 +118,20 @@ and
   .. image:: ../../../Containers-Links/images/CTLinksValueLinkTest-test4321ValueLinks.svg
     :align: center
 
-respectively. As we have seen for ``Link`` objects, we can build a loop with ``ValueLink``
+respectively. 
+
+.. attention::
+
+  The examples concerning recursion shows why a nested representation like
+
+  .. pharo:autocompiledmethod:: CTLinksValueLinkTest>>#test4321ValueLinksNested
+
+    .. image:: ../../../Containers-Links/images/CTLinksValueLinkTest-test4321ValueLinksNested.svg
+      :align: center
+
+  should be considered less expressive than the linked one.
+
+As we have seen for ``Link`` objects, we can build a loop with ``ValueLink``
 objects too, either a cycle of length 1
 
 .. pharo:autocompiledmethod:: CTLinksValueLinkTest>>#test11ValueLinksLoop
@@ -136,6 +149,7 @@ or greater than 1
 The examples seen so far show a tight connection among the way we connect
 ``ValueLink``\s with the strategy used by *stacks* to keep a collection of
 objects; more about that will be explored in subsequent sections.
+
 
 .. index::
   single: Sorting algorithms; Topological by associations of naturals

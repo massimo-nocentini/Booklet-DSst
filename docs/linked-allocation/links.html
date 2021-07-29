@@ -347,9 +347,28 @@ objects such that each node in the chain carries a <em>value</em> also, to have 
 </div>
 <blockquote>
 <div><img alt="../_images/CTLinksValueLinkTest-test4321ValueLinks.svg" class="align-center" src="../_images/CTLinksValueLinkTest-test4321ValueLinks.svg" /></div></blockquote>
-<p>respectively. As we have seen for <code class="docutils literal notranslate"><span class="pre">Link</span></code> objects, we can build a loop with <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code>
+<p>respectively.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The examples concerning recursion shows why a nested representation like</p>
+<span class="target" id="pharo-compiledMethod-16"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinksvaluelinktest-test4321valuelinksnested"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinksValueLinkTest, protocol tests&quot;</span>
+<span class="nf">test4321ValueLinksNested</span>
+
+   <span class="o">|</span><span class="nv"> l </span><span class="o">|</span>
+   <span class="nv">l</span> <span class="o">:=</span> <span class="m">4</span> <span class="nf">~~&gt;</span> <span class="bp">self</span> <span class="nf">test321ValueLinks</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span>
+        <span class="nf">exportSlotsGraphOf:</span> <span class="nv">l</span>
+        <span class="nf">slotDescriptorsContext:</span> <span class="nc">SlotDescriptorsVisitorNestedLinks</span> <span class="nb">new</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinksValueLinkTest-test4321ValueLinksNested.svg" class="align-center" src="../_images/CTLinksValueLinkTest-test4321ValueLinksNested.svg" /></div></blockquote>
+<p>should be considered less expressive than the linked one.</p>
+</div>
+<p>As we have seen for <code class="docutils literal notranslate"><span class="pre">Link</span></code> objects, we can build a loop with <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code>
 objects too, either a cycle of length 1</p>
-<span class="target" id="pharo-compiledMethod-16"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinksvaluelinktest-test11valuelinksloop"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinksValueLinkTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-17"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinksvaluelinktest-test11valuelinksloop"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinksValueLinkTest, protocol tests&quot;</span>
 <span class="nf">test11ValueLinksLoop</span>
 
    <span class="o">|</span><span class="nv"> l </span><span class="o">|</span>
@@ -362,7 +381,7 @@ objects too, either a cycle of length 1</p>
 <blockquote>
 <div><img alt="../_images/CTLinksValueLinkTest-test11ValueLinksLoop.svg" class="align-center" src="../_images/CTLinksValueLinkTest-test11ValueLinksLoop.svg" /></div></blockquote>
 <p>or greater than 1</p>
-<span class="target" id="pharo-compiledMethod-17"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinksvaluelinktest-test43214valuelinks"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinksValueLinkTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-18"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinksvaluelinktest-test43214valuelinks"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinksValueLinkTest, protocol tests&quot;</span>
 <span class="nf">test43214ValueLinks</span>
 
    <span class="o">|</span><span class="nv"> l1 l </span><span class="o">|</span>
@@ -391,7 +410,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
 </ul>
 <p id="index-1">The following implementation had been proposed in the PR
 <a class="reference external" href="https://github.com/pharo-project/pharo/pull/7457">https://github.com/pharo-project/pharo/pull/7457</a>.</p>
-<span class="target" id="pharo-compiledMethod-28"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-topologicalsortbyassociations-oncycledo"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-Links&quot;</span>
+<span class="target" id="pharo-compiledMethod-29"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-topologicalsortbyassociations-oncycledo"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-Links&quot;</span>
 <span class="nf">topologicalSortByAssociations:</span> <span class="nv">aRelation</span> <span class="nf">onCycleDo:</span> <span class="nv">cBlock</span>
 
    <span class="o">|</span><span class="nv"> topo </span><span class="o">|</span>
@@ -413,7 +432,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
 </div>
 <blockquote>
 <div><p>where</p>
-<span class="target" id="pharo-compiledMethod-18"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-topologicalsortalgorithm-value-oncycledo"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
+<span class="target" id="pharo-compiledMethod-19"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-topologicalsortalgorithm-value-oncycledo"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
 <span class="nf">value:</span> <span class="nv">aBlock</span> <span class="nf">onCycleDo:</span> <span class="nv">cycleBlock</span>
 
    <span class="o">|</span><span class="nv"> table sort qlink </span><span class="o">|</span>
@@ -437,7 +456,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
 </div>
 <p>where</p>
 <blockquote>
-<div><span class="target" id="pharo-compiledMethod-19"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-topologicalsortalgorithm-makevaluelinkstable"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
+<div><span class="target" id="pharo-compiledMethod-20"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-topologicalsortalgorithm-makevaluelinkstable"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
 <span class="nf">makeValueLinksTable</span>
 
    <span class="c">&quot;COUNT: the number of direct predecessors of this object.&quot;</span>
@@ -448,7 +467,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
 </pre></div>
 </div>
 <p>and</p>
-<span class="target" id="pharo-compiledMethod-20"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-topologicalsortalgorithm-initializevaluelinkstable"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
+<span class="target" id="pharo-compiledMethod-21"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-topologicalsortalgorithm-initializevaluelinkstable"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
 <span class="nf">initializeValueLinksTable:</span> <span class="nv">table</span>
 
    <span class="c">&quot;T2: next relation.&quot;</span>
@@ -468,7 +487,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
 </pre></div>
 </div>
 <p>and</p>
-<span class="target" id="pharo-compiledMethod-22"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-topologicalsortalgorithm-sinksofvaluelinkstable"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
+<span class="target" id="pharo-compiledMethod-23"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-topologicalsortalgorithm-sinksofvaluelinkstable"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
 <span class="nf">sinksOfValueLinksTable:</span> <span class="nv">table</span>
 
    <span class="o">^</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="nv">size</span>)
@@ -483,7 +502,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
 <blockquote>
 <div><p>where</p>
 <blockquote>
-<div><span class="target" id="pharo-compiledMethod-21"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-association-ifsink-otherwise-fortopologicalsortalgorithm"><div class="highlight"><pre><span></span><span class="c">&quot;Association, protocol *Containers-Links&quot;</span>
+<div><span class="target" id="pharo-compiledMethod-22"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-association-ifsink-otherwise-fortopologicalsortalgorithm"><div class="highlight"><pre><span></span><span class="c">&quot;Association, protocol *Containers-Links&quot;</span>
 <span class="nf">ifSink:</span> <span class="nv">sBlock</span> <span class="nf">otherwise:</span> <span class="nv">oBlock</span> <span class="nf">forTopologicalSortAlgorithm:</span> <span class="nv">aTSA</span>
 
    <span class="o">^</span> <span class="nv">key</span> <span class="nf">ifZero:</span> <span class="nv">sBlock</span> <span class="nf">ifNotZero:</span> <span class="nv">oBlock</span>
@@ -492,7 +511,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
 </div></blockquote>
 </div></blockquote>
 <p>and</p>
-<span class="target" id="pharo-compiledMethod-25"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-topologicalsortalgorithm-sorton-sinksvaluelink-valuelinkstable"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
+<span class="target" id="pharo-compiledMethod-26"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-topologicalsortalgorithm-sorton-sinksvaluelink-valuelinkstable"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
 <span class="nf">sortOn:</span> <span class="nv">aStream</span> <span class="nf">sinksValueLink:</span> <span class="nv">qlink</span> <span class="nf">valueLinksTable:</span> <span class="nv">table</span>
 
    <span class="o">|</span><span class="nv"> f </span><span class="o">|</span>
@@ -520,7 +539,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
 </div>
 <blockquote>
 <div><p>where</p>
-<span class="target" id="pharo-compiledMethod-23"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-object-yourself"><div class="highlight"><pre><span></span><span class="c">&quot;Object, protocol *Kernel-Extensions&quot;</span>
+<span class="target" id="pharo-compiledMethod-24"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-object-yourself"><div class="highlight"><pre><span></span><span class="c">&quot;Object, protocol *Kernel-Extensions&quot;</span>
 <span class="nf">yourself:</span> <span class="nv">aBlock</span>
 
    <span class="c">&quot;I invoke the given block giving myself as argument if it needs to consume me.</span>
@@ -532,7 +551,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
 </pre></div>
 </div>
 <p>and</p>
-<span class="target" id="pharo-compiledMethod-24"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-association-decrementcountifzero-fortopologicalsortalgorithm"><div class="highlight"><pre><span></span><span class="c">&quot;Association, protocol *Containers-Links&quot;</span>
+<span class="target" id="pharo-compiledMethod-25"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-association-decrementcountifzero-fortopologicalsortalgorithm"><div class="highlight"><pre><span></span><span class="c">&quot;Association, protocol *Containers-Links&quot;</span>
 <span class="nf">decrementCountIfZero:</span> <span class="nv">zBlock</span> <span class="nf">forTopologicalSortAlgorithm:</span> <span class="nv">aTSA</span>
 
    <span class="o">^</span> (<span class="nv">key</span> <span class="o">:=</span> <span class="nv">key</span> <span class="nf">-</span> <span class="m">1</span>) <span class="nf">ifZero:</span> <span class="nv">zBlock</span>
@@ -540,7 +559,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
 </div>
 </div></blockquote>
 <p>and</p>
-<span class="target" id="pharo-compiledMethod-27"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-topologicalsortalgorithm-handlecycleinvaluelinkstable-do"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
+<span class="target" id="pharo-compiledMethod-28"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-topologicalsortalgorithm-handlecycleinvaluelinkstable-do"><div class="highlight"><pre><span></span><span class="c">&quot;TopologicalSortAlgorithm, protocol enumerating&quot;</span>
 <span class="nf">handleCycleInValueLinksTable:</span> <span class="nv">table</span> <span class="nf">do:</span> <span class="nv">cycleBlock</span>
 
    <span class="o">|</span><span class="nv"> kk cycle qlink </span><span class="o">|</span>
@@ -579,7 +598,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
 </div>
 <blockquote>
 <div><p>where</p>
-<span class="target" id="pharo-compiledMethod-26"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-dictionary-anyassociation"><div class="highlight"><pre><span></span><span class="c">&quot;Dictionary, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-27"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-dictionary-anyassociation"><div class="highlight"><pre><span></span><span class="c">&quot;Dictionary, protocol *Containers-Essentials&quot;</span>
 <span class="nf">anyAssociation</span>
 
    <span class="c">&quot;I mimic the message `Collection&gt;&gt;#anyone` with respect to associations that I collect.&quot;</span>
@@ -593,7 +612,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
 </div></blockquote>
 </div></blockquote>
 <p>Testing for acyclic property can be done with the following message:</p>
-<span class="target" id="pharo-compiledMethod-29"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-isacyclicwithrespecttoassociations"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-Links&quot;</span>
+<span class="target" id="pharo-compiledMethod-30"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-isacyclicwithrespecttoassociations"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-Links&quot;</span>
 <span class="nf">isAcyclicWithRespectToAssociations:</span> <span class="nv">aRelation</span>
 
    <span class="o">|</span><span class="nv"> isAcyclic </span><span class="o">|</span>
@@ -605,7 +624,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
 </pre></div>
 </div>
 <p>Some tests are in order:</p>
-<span class="target" id="pharo-compiledMethod-30"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-collectiontest-testtopologicalsortoncycledo"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-Links-Tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-31"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-collectiontest-testtopologicalsortoncycledo"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-Links-Tests&quot;</span>
 <span class="nf">testTopologicalSortOnCycleDo</span>
 
    <span class="c">&quot;The following test is kept from TAOCP by Donald Knuth, Volume 1 page 272.&quot;</span>
@@ -627,7 +646,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
       <span class="nf">equals:</span> <span class="ss">#(</span> <span class="m">1</span> <span class="m">3</span> <span class="m">7</span> <span class="m">4</span> <span class="m">9</span> <span class="m">2</span> <span class="m">5</span> <span class="m">8</span> <span class="m">6</span> <span class="ss">)</span>
 </pre></div>
 </div>
-<span class="target" id="pharo-compiledMethod-31"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-collectiontest-testtopologicalsortoncycledo1"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-Links-Tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-32"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-collectiontest-testtopologicalsortoncycledo1"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-Links-Tests&quot;</span>
 <span class="nf">testTopologicalSortOnCycleDo1</span>
 
    <span class="c">&quot;This test stress four small cycles detection.&quot;</span>
@@ -690,7 +709,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
             (<span class="m">5</span> <span class="nf">-&gt;</span> <span class="m">1</span>) }
 </pre></div>
 </div>
-<span class="target" id="pharo-compiledMethod-32"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-collectiontest-testtopologicalsortoncycledo2"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-Links-Tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-33"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-collectiontest-testtopologicalsortoncycledo2"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-Links-Tests&quot;</span>
 <span class="nf">testTopologicalSortOnCycleDo2</span>
 
    <span class="c">&quot;The following test is kept from https://upload.wikimedia.org/wikipedia/commons/0/03/Directed_acyclic_graph_2.svg.&quot;</span>
@@ -711,7 +730,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
       <span class="nf">equals:</span> <span class="ss">#(</span> <span class="m">1</span> <span class="m">2</span> <span class="m">4</span> <span class="m">6</span> <span class="m">3</span> <span class="m">5</span> <span class="m">7</span> <span class="m">8</span> <span class="ss">)</span>
 </pre></div>
 </div>
-<span class="target" id="pharo-compiledMethod-34"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-collectiontest-testtopologicalsortoncycledo3"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-Links-Tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-35"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-collectiontest-testtopologicalsortoncycledo3"><div class="highlight"><pre><span></span><span class="c">&quot;CollectionTest, protocol *Containers-Links-Tests&quot;</span>
 <span class="nf">testTopologicalSortOnCycleDo3</span>
 
    <span class="c">&quot;This test case shows how to iteratively removing edges</span>
@@ -738,7 +757,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
 </div>
 <blockquote>
 <div><p>where</p>
-<span class="target" id="pharo-compiledMethod-33"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-topologicalsortbyassociations-acyclicdo"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-Links&quot;</span>
+<span class="target" id="pharo-compiledMethod-34"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-topologicalsortbyassociations-acyclicdo"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-Links&quot;</span>
 <span class="nf">topologicalSortByAssociations:</span> <span class="nv">aRelation</span> <span class="nf">acyclicDo:</span> <span class="nv">aBlock</span>
 
    <span class="o">|</span><span class="nv"> ordering edges </span><span class="o">|</span>
