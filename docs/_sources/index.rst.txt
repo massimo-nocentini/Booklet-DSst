@@ -3,6 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+..  * :ref:`genindex`
+
 Data Structures in Smalltalk
 ============================
 
@@ -14,8 +16,25 @@ Data Structures in Smalltalk
    linked-allocation/linked-allocation.rst
    bibliography.rst
 
-Indices and tables
-==================
+Moreover, have a look at the :ref:`genindex`.  
 
-* :ref:`genindex`
-* :ref:`search`
+This work is licensed under a
+`Creative Commons Attribution-ShareAlike 4.0 International License
+<http://creativecommons.org/licenses/by-sa/4.0/>`_.
+
+.. raw:: html
+
+  <div align="center">
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+    <img alt="Creative Commons License" style="border-width:0"
+         src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" />
+  </a>
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+    <img alt="Creative Commons License" style="border-width:0"
+         src="https://mirrors.creativecommons.org/presskit/icons/by.svg" />
+  </a>
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+    <img alt="Creative Commons License" style="border-width:0"
+         src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" />
+  </a>
+

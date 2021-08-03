@@ -157,6 +157,20 @@ lie on
 
 .. pharo:autocompiledmethod:: Integer>>#gibonacciNumbersFirst:second:do:
 
+A ``ByteArray``
++++++++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testByteArrayLiteral
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testByteArrayLiteral.svg
+    :align: center
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testByteArrayLoremIpsum
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testByteArrayLoremIpsum.svg
+    :align: center
+
+
 Binary Reflected Gray Codes
 +++++++++++++++++++++++++++
 
