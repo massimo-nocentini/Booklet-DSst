@@ -157,19 +157,29 @@ lie on
 
 .. pharo:autocompiledmethod:: Integer>>#gibonacciNumbersFirst:second:do:
 
-A ``ByteArray``
-+++++++++++++++
+Some ``ByteArray``\s
+++++++++++++++++++++
 
-.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testByteArrayLiteral
-
-  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testByteArrayLiteral.svg
-    :align: center
+On one hand, the combination of the previous two types of objects allows us to inspect a ``ByteArray`` object,
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testByteArrayLoremIpsum
 
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testByteArrayLoremIpsum.svg
     :align: center
 
+On the other hand, a bare bone array of bytes can be built as in
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testByteArrayLiteral
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testByteArrayLiteral.svg
+    :align: center
+
+and, in more simpler terms, even an ``Integer`` can be seen as an of array of this type
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testByteArrayInteger
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testByteArrayInteger.svg
+    :align: center
 
 Binary Reflected Gray Codes
 +++++++++++++++++++++++++++
@@ -356,7 +366,24 @@ where
 A quine ``RBProgramNode``
 +++++++++++++++++++++++++
 
+The Scheme expression
+
+.. code-block:: scheme
+
+   (define quine ((lambda (x) (list x (list (quote quote) x))) 
+                  (quote (lambda (x) (list x (list (quote quote) x))))))
+
+defines a binding such that
+
+.. code-block:: scheme
+
+   (equal? (eval quine) quine)
+
+evaluates to ``#t``; in parallel, our Smalltalk implementation
+
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectRBNodesQuine
+
+behaves the same, as required.
 
 For a few objects more
 ======================
