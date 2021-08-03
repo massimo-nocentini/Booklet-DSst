@@ -79,6 +79,19 @@ BaselineOfBookletDSst >> scriptLinkMessagesForDoc [
 ]
 
 { #category : #documentation }
+BaselineOfBookletDSst >> scriptStoragePoolsForDoc [
+
+	<script: 'BaselineOfBookletDSst new scriptStoragePoolsForDoc'>
+	^ MetaSTExporter new
+		  selectors:
+			  #( allocateOrReuseLink newLink releaseLink: testEmptyStack
+			     testSomePushesThenPopsOnStack );
+		  exportWithRepositoryPath: [ :aPath | 
+			  aPath / 'json-for-doc' / 'storage-pools.json' ]
+		  ofPackage: self class package
+]
+
+{ #category : #documentation }
 BaselineOfBookletDSst >> scriptSymbolicDivisibilityForDoc [
 
 	<script: 'BaselineOfBookletDSst new scriptSymbolicDivisibilityForDoc'>
