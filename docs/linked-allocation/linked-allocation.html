@@ -55,6 +55,10 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#linkedlist-containers"><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#storage-pools">Storage pools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stack-pool"><code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
@@ -1028,6 +1032,84 @@ then all the values are kept as well</p>
 </div>
 <blockquote>
 <div><img alt="../_images/CTLinksValueLinkTest-testAsValueLinkInjectInto.svg" class="align-center" src="../_images/CTLinksValueLinkTest-testAsValueLinkInjectInto.svg" /></div></blockquote>
+</div>
+<div class="section" id="storage-pools">
+<h2>Storage pools<a class="headerlink" href="#storage-pools" title="Permalink to this headline">¶</a></h2>
+<p>The Knuth’s description of linked allocation begins at page 254 of <span id="id1">[<a class="reference internal" href="../bibliography.html#id8"><span>Knu97</span></a>]</span>,
+in particular the citation</p>
+<blockquote class="epigraph">
+<div><p>“But even more importantly, there is often an implicit <em>gain</em> in storage by the linked
+memory approach, since tables can overlap, sharing common parts; […]
+The usefulness of linked memory is predicated on the fact that in the large majority
+of applications we want to walk through lists sequentially, not randomly. […]
+The linked scheme lends itself immediately to more intricate structures that simple
+linear lists. We can have a variable number of variable-size lists; any node
+of the list may be a starting point for another list; the nodes may simultaneously
+be linked together in several orders corresponding to different lists; and so on.”</p>
+<p class="attribution">—Donald E. Knuth</p>
+</div></blockquote>
+<p>shows the importance of this subject. We start with the mechanism that supplies space
+for a new node, by the class</p>
+<span class="target" id="pharo-class-4"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctlinkedstoragepool"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">subclass:</span> <span class="ss">#CTLinkedStoragePool</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;avail&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-LinkedStoragePool&#39;</span>
+</pre></div>
+</div>
+<p>which implements both operation (4),</p>
+<span class="target" id="pharo-compiledMethod-49"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepool-allocateorreuselink"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePool, protocol initialization&quot;</span>
+<span class="nf">allocateOrReuseLink</span>
+
+   <span class="o">^</span> <span class="nv">avail</span>
+        <span class="nf">ifNil:</span> [ <span class="bp">self</span> <span class="nf">newLink</span> ]
+        <span class="nf">ifNotNil:</span> [ <span class="nv">avail</span> <span class="nf">yourself:</span> [ <span class="nv">avail</span> <span class="o">:=</span> <span class="nv">avail</span> <span class="nf">nextLink</span> ] ]
+</pre></div>
+</div>
+<p>where</p>
+<span class="target" id="pharo-compiledMethod-50"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepool-newlink"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePool, protocol initialization&quot;</span>
+<span class="nf">newLink</span>
+
+   <span class="o">^</span> <span class="nc">ValueLink</span> <span class="nb">new</span>
+</pre></div>
+</div>
+<p>and operation (5)</p>
+<span class="target" id="pharo-compiledMethod-51"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepool-releaselink"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePool, protocol initialization&quot;</span>
+<span class="nf">releaseLink:</span> <span class="nv">aValueLink</span>
+
+   <span class="nv">aValueLink</span> <span class="nf">nextLink:</span> <span class="nv">avail</span><span class="p">.</span>
+   <span class="nv">avail</span> <span class="o">:=</span> <span class="nv">aValueLink</span>
+</pre></div>
+</div>
+<p>allow us to call <em>storage pool</em> the set of all nodes that can be allocated
+according to these messages.</p>
+<div class="section" id="stack-pool">
+<h3><code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool<a class="headerlink" href="#stack-pool" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="pharo-compiledMethod-52"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testemptystack"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
+<span class="nf">testEmptyStack</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nc">CTLinkedStoragePoolStack</span> <span class="nb">new</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStoragePoolTest-testEmptyStack.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testEmptyStack.svg" /></div></blockquote>
+<span class="target" id="pharo-compiledMethod-53"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testsomepushesthenpopsonstack"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
+<span class="nf">testSomePushesThenPopsOnStack</span>
+
+   <span class="o">|</span><span class="nv"> stack </span><span class="o">|</span>
+   <span class="nv">stack</span> <span class="o">:=</span> <span class="nc">CTLinkedStoragePoolStack</span> <span class="nb">new</span>
+               <span class="nf">push:</span> <span class="m">3</span><span class="p">;</span>
+               <span class="nf">push:</span> <span class="m">4</span><span class="p">;</span>
+               <span class="nf">pop</span><span class="p">;</span>
+               <span class="nf">pop</span><span class="p">;</span>
+               <span class="nf">push:</span> <span class="m">5</span><span class="p">;</span>
+               <span class="nf">yourself</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">stack</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnStack.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnStack.svg" /></div></blockquote>
+</div>
 </div>
 </div>
 

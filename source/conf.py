@@ -53,6 +53,7 @@ pharo_json_export_filenames = [
         'json-for-doc/valuelink-core-messages.json',
         'json-for-doc/topologicalSort-core-messages.json',
         'json-for-doc/symbolic-divisibility.json',
+        'json-for-doc/storage-pools.json',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
