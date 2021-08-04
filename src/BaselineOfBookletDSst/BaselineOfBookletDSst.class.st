@@ -83,12 +83,13 @@ BaselineOfBookletDSst >> scriptStoragePoolsForDoc [
 
 	<script: 'BaselineOfBookletDSst new scriptStoragePoolsForDoc'>
 	^ MetaSTExporter new
-		  selectors:
-			  #( push: pop removeAll allocateOrReuseLink newLink releaseLink:
-			     testEmptyStack testSomePushesThenPopsOnStack
+		  selectors: #( initialize push: pop removeAll allocateOrReuseLink
+			     newLink releaseLink: testEmptyStack testSomePushesThenPopsOnStack
 			     testPopFromEmptyStack testEmptyQueue testSomePushesThenPopsOnQueue
 			     testPopFromEmptyQueue testRemoveAllFromQueue
-			     testRemoveAllFromStack );
+			     testRemoveAllFromStack testEmptyCircularList
+			     testSomePushesThenPopsOnCircular
+			     testPopFromEmptyCircular testPolynomialAdditionFromKnuthTextbook );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'storage-pools.json' ]
 		  ofPackage: self class package
