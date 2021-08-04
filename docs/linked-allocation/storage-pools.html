@@ -92,8 +92,9 @@
             
   <div class="section" id="storage-pools">
 <h1>Storage pools<a class="headerlink" href="#storage-pools" title="Permalink to this headline">¶</a></h1>
-<p>The Knuth’s description of linked allocation begins at page 254 of <span id="id1">[<a class="reference internal" href="../bibliography.html#id8"><span>Knu97</span></a>]</span>,
-in particular the citation</p>
+<p>The Knuth’s description of linked allocation begins at page 254 of <span id="id1">[<a class="reference internal" href="../bibliography.html#id8"><span>Knu97</span></a>]</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <blockquote class="epigraph">
 <div><p>“But even more importantly, there is often an implicit <em>gain</em> in storage by the linked
 memory approach, since tables can overlap, sharing common parts; […]
@@ -105,15 +106,15 @@ of the list may be a starting point for another list; the nodes may simultaneous
 be linked together in several orders corresponding to different lists; and so on.”</p>
 <p class="attribution">—Donald E. Knuth</p>
 </div></blockquote>
-<p>shows the importance of this subject. We start with the mechanism that supplies space
-for a new node, by the class</p>
+</div>
+<p>We start with the mechanism that supplies space for a new node, by the class</p>
 <span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctlinkedstoragepool"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">subclass:</span> <span class="ss">#CTLinkedStoragePool</span>
 	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;avail&#39;</span>
 	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
 	<span class="nf">package:</span> <span class="s">&#39;Containers-LinkedStoragePool&#39;</span>
 </pre></div>
 </div>
-<p>which implements both operation (4),</p>
+<p>which implements both <em>operation (4)</em>,</p>
 <span class="target" id="pharo-compiledMethod-0"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepool-allocateorreuselink"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePool, protocol initialization&quot;</span>
 <span class="nf">allocateOrReuseLink</span>
 
@@ -129,7 +130,7 @@ for a new node, by the class</p>
    <span class="o">^</span> <span class="nc">ValueLink</span> <span class="nb">new</span>
 </pre></div>
 </div>
-<p>and operation (5)</p>
+<p>and <em>operation (5)</em></p>
 <span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepool-releaselink"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePool, protocol initialization&quot;</span>
 <span class="nf">releaseLink:</span> <span class="nv">aValueLink</span>
 
@@ -144,28 +145,185 @@ according to these messages.</p>
 <span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testemptystack"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
 <span class="nf">testEmptyStack</span>
 
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nc">CTLinkedStoragePoolStack</span> <span class="nb">new</span>
+   <span class="o">|</span><span class="nv"> stack </span><span class="o">|</span>
+   <span class="nv">stack</span> <span class="o">:=</span> <span class="nc">CTLinkedStoragePoolStack</span> <span class="nb">new</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span>
+        <span class="nf">assert:</span> <span class="nv">stack</span> <span class="nf">isEmpty</span><span class="p">;</span>
+        <span class="nf">exportSlotsGraphOf:</span> <span class="nv">stack</span>
 </pre></div>
 </div>
 <blockquote>
 <div><img alt="../_images/CTLinkedStoragePoolTest-testEmptyStack.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testEmptyStack.svg" /></div></blockquote>
+<p>Have a look at the following manipulations, starting with an empty stack pool,</p>
 <span class="target" id="pharo-compiledMethod-4"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testsomepushesthenpopsonstack"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
 <span class="nf">testSomePushesThenPopsOnStack</span>
 
-   <span class="o">|</span><span class="nv"> stack </span><span class="o">|</span>
-   <span class="nv">stack</span> <span class="o">:=</span> <span class="nc">CTLinkedStoragePoolStack</span> <span class="nb">new</span>
-               <span class="nf">push:</span> <span class="m">3</span><span class="p">;</span>
-               <span class="nf">push:</span> <span class="m">4</span><span class="p">;</span>
-               <span class="nf">pop</span><span class="p">;</span>
-               <span class="nf">pop</span><span class="p">;</span>
-               <span class="nf">push:</span> <span class="m">5</span><span class="p">;</span>
+   <span class="o">|</span><span class="nv"> stack steps </span><span class="o">|</span>
+   <span class="nv">steps</span> <span class="o">:=</span> <span class="nc">OrderedCollection</span> <span class="nb">new</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#push:</span> <span class="nf">arguments:</span> { <span class="m">3</span> })<span class="p">;</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#push:</span> <span class="nf">arguments:</span> { <span class="m">4</span> })<span class="p">;</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#push:</span> <span class="nf">arguments:</span> { <span class="m">5</span> })<span class="p">;</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#pop</span>)<span class="p">;</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#pop</span>)<span class="p">;</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#pop</span>)<span class="p">;</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#push:</span> <span class="nf">arguments:</span> { <span class="m">6</span> })<span class="p">;</span>
                <span class="nf">yourself</span><span class="p">.</span>
 
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">stack</span>
+   <span class="nv">stack</span> <span class="o">:=</span> <span class="nc">CTLinkedStoragePoolStack</span> <span class="nb">new</span><span class="p">.</span>
+
+   <span class="nv">steps</span> <span class="nf">withIndexDo:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">:</span><span class="nv">i</span> <span class="o">|</span> 
+      <span class="nv">each</span> <span class="nf">sendTo:</span> <span class="nv">stack</span><span class="p">.</span>
+      <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">stack</span> <span class="nf">pathSuffix:</span> <span class="nv">i</span> <span class="nf">asString</span> ]
+</pre></div>
+</div>
+<p>by pushing 3,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnStack-1.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnStack-1.svg" /><p>then push 4,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnStack-2.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnStack-2.svg" /><p>then push 5,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnStack-3.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnStack-3.svg" /><p>then pop,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnStack-4.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnStack-4.svg" /><p>then pop,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnStack-5.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnStack-5.svg" /><p>then pop,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnStack-6.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnStack-6.svg" /><p>then push 6,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnStack-7.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnStack-7.svg" /><p>respectively. We cannot pop from an empty stack,</p>
+<span class="target" id="pharo-compiledMethod-5"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testpopfromemptystack"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
+<span class="nf">testPopFromEmptyStack</span>
+
+   <span class="bp">self</span>
+      <span class="nf">should:</span> [ 
+         <span class="nc">CTLinkedStoragePoolStack</span> <span class="nb">new</span>
+            <span class="nf">push:</span> <span class="m">3</span><span class="p">;</span>
+            <span class="nf">pop</span><span class="p">;</span>
+            <span class="nf">pop</span> ]
+      <span class="nf">raise:</span> <span class="nc">CollectionIsEmpty</span>
+</pre></div>
+</div>
+<p>as required. Finally, lets see how to swipe the entire pool in one shot,</p>
+<span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testremoveallfromstack"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
+<span class="nf">testRemoveAllFromStack</span>
+
+   <span class="o">|</span><span class="nv"> queue </span><span class="o">|</span>
+   <span class="nv">queue</span> <span class="o">:=</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">5</span>)
+               <span class="nf">inject:</span> <span class="nc">CTLinkedStoragePoolStack</span> <span class="nb">new</span>
+               <span class="nf">into:</span> [ <span class="o">:</span><span class="nv">pool</span> <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">pool</span> <span class="nf">push:</span> <span class="nv">each</span> ]<span class="p">.</span>
+
+   <span class="nv">queue</span>
+      <span class="nf">pop</span><span class="p">;</span>
+      <span class="nf">pop</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">queue</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;full&#39;</span><span class="p">.</span>
+
+   <span class="nv">queue</span> <span class="nf">removeAll</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">queue</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;empty&#39;</span>
+</pre></div>
+</div>
+<p>first push 5 elements and then pop 2 of them in order to have some room available,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testRemoveAllFromStack-full.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testRemoveAllFromStack-full.svg" /><p>then swipe out by means of the message</p>
+<span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepoolstack-removeall"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolStack, protocol removing&quot;</span>
+<span class="nf">removeAll</span>
+
+   <span class="o">|</span><span class="nv"> link </span><span class="o">|</span>
+   <span class="nv">top</span> <span class="nf">ifNotNil:</span> [ 
+      <span class="nv">link</span> <span class="o">:=</span> <span class="nv">top</span><span class="p">.</span>
+      [ <span class="nv">link</span> <span class="nf">nextLink</span> ] <span class="nf">whileNotNil:</span> [ <span class="nv">link</span> <span class="o">:=</span> <span class="nv">link</span> <span class="nf">nextLink</span> ]<span class="p">.</span>
+      <span class="nv">link</span> <span class="nf">nextLink:</span> <span class="nv">avail</span><span class="p">.</span>
+      <span class="nv">avail</span> <span class="o">:=</span> <span class="nv">top</span><span class="p">.</span>
+      <span class="nv">top</span> <span class="o">:=</span> <span class="bp">nil</span> ]
+</pre></div>
+</div>
+<p>to have</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testRemoveAllFromStack-empty.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testRemoveAllFromStack-empty.svg" /><p>as required.</p>
+</div>
+<div class="section" id="queue-pool">
+<h2><code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool<a class="headerlink" href="#queue-pool" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testemptyqueue"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
+<span class="nf">testEmptyQueue</span>
+
+   <span class="o">|</span><span class="nv"> queue </span><span class="o">|</span>
+   <span class="nv">queue</span> <span class="o">:=</span> <span class="nc">CTLinkedStoragePoolQueue</span> <span class="nb">new</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span>
+        <span class="nf">assert:</span> <span class="nv">queue</span> <span class="nf">isEmpty</span><span class="p">;</span>
+        <span class="nf">exportSlotsGraphOf:</span> <span class="nv">queue</span>
 </pre></div>
 </div>
 <blockquote>
-<div><img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnStack.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnStack.svg" /></div></blockquote>
+<div><img alt="../_images/CTLinkedStoragePoolTest-testEmptyQueue.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testEmptyQueue.svg" /></div></blockquote>
+<p>Have a look at the following manipulations, starting with an empty queue pool,</p>
+<span class="target" id="pharo-compiledMethod-9"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testsomepushesthenpopsonqueue"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
+<span class="nf">testSomePushesThenPopsOnQueue</span>
+
+   <span class="o">|</span><span class="nv"> stack steps </span><span class="o">|</span>
+   <span class="nv">steps</span> <span class="o">:=</span> <span class="nc">OrderedCollection</span> <span class="nb">new</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#push:</span> <span class="nf">arguments:</span> { <span class="m">3</span> })<span class="p">;</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#push:</span> <span class="nf">arguments:</span> { <span class="m">4</span> })<span class="p">;</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#push:</span> <span class="nf">arguments:</span> { <span class="m">5</span> })<span class="p">;</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#pop</span>)<span class="p">;</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#pop</span>)<span class="p">;</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#pop</span>)<span class="p">;</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#push:</span> <span class="nf">arguments:</span> { <span class="m">6</span> })<span class="p">;</span>
+               <span class="nf">yourself</span><span class="p">.</span>
+
+   <span class="nv">stack</span> <span class="o">:=</span> <span class="nc">CTLinkedStoragePoolQueue</span> <span class="nb">new</span><span class="p">.</span>
+
+   <span class="nv">steps</span> <span class="nf">withIndexDo:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">:</span><span class="nv">i</span> <span class="o">|</span> 
+      <span class="nv">each</span> <span class="nf">sendTo:</span> <span class="nv">stack</span><span class="p">.</span>
+      <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">stack</span> <span class="nf">pathSuffix:</span> <span class="nv">i</span> <span class="nf">asString</span> ]
+</pre></div>
+</div>
+<p>by pushing 3,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnQueue-1.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnQueue-1.svg" /><p>then push 4,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnQueue-2.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnQueue-2.svg" /><p>then push 5,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnQueue-3.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnQueue-3.svg" /><p>then pop,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnQueue-4.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnQueue-4.svg" /><p>then pop,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnQueue-5.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnQueue-5.svg" /><p>then pop,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnQueue-6.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnQueue-6.svg" /><p>then push 6,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnQueue-7.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnQueue-7.svg" /><p>respectively. We cannot pop from an empty queue,</p>
+<span class="target" id="pharo-compiledMethod-10"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testpopfromemptyqueue"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
+<span class="nf">testPopFromEmptyQueue</span>
+
+   <span class="bp">self</span>
+      <span class="nf">should:</span> [ 
+         <span class="nc">CTLinkedStoragePoolQueue</span> <span class="nb">new</span>
+            <span class="nf">push:</span> <span class="m">3</span><span class="p">;</span>
+            <span class="nf">pop</span><span class="p">;</span>
+            <span class="nf">pop</span> ]
+      <span class="nf">raise:</span> <span class="nc">CollectionIsEmpty</span>
+</pre></div>
+</div>
+<p>as required. Finally, lets see how to swipe the entire pool in one shot,</p>
+<span class="target" id="pharo-compiledMethod-11"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testremoveallfromqueue"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
+<span class="nf">testRemoveAllFromQueue</span>
+
+   <span class="o">|</span><span class="nv"> queue </span><span class="o">|</span>
+   <span class="nv">queue</span> <span class="o">:=</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">5</span>)
+               <span class="nf">inject:</span> <span class="nc">CTLinkedStoragePoolQueue</span> <span class="nb">new</span>
+               <span class="nf">into:</span> [ <span class="o">:</span><span class="nv">pool</span> <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">pool</span> <span class="nf">push:</span> <span class="nv">each</span> ]<span class="p">.</span>
+
+   <span class="nv">queue</span>
+      <span class="nf">pop</span><span class="p">;</span>
+      <span class="nf">pop</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">queue</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;full&#39;</span><span class="p">.</span>
+
+   <span class="nv">queue</span> <span class="nf">removeAll</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">queue</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;empty&#39;</span>
+</pre></div>
+</div>
+<p>first push 5 elements and then pop 2 of them in order to have some room available,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testRemoveAllFromQueue-full.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testRemoveAllFromQueue-full.svg" /><p>then swipe out by means of the message</p>
+<span class="target" id="pharo-compiledMethod-12"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepoolqueue-removeall"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolQueue, protocol removing&quot;</span>
+<span class="nf">removeAll</span>
+
+   <span class="nv">top</span> <span class="nf">ifNotNil:</span> [ 
+      <span class="nv">bottom</span> <span class="nf">nextLink:</span> <span class="nv">avail</span><span class="p">.</span>
+      <span class="nv">avail</span> <span class="o">:=</span> <span class="nv">top</span><span class="p">.</span>
+      <span class="nv">top</span> <span class="o">:=</span> <span class="nv">bottom</span> <span class="o">:=</span> <span class="bp">nil</span> ]
+</pre></div>
+</div>
+<p>to have</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testRemoveAllFromQueue-empty.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testRemoveAllFromQueue-empty.svg" /><p>as required.</p>
 </div>
 </div>
 
