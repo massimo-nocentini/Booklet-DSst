@@ -182,3 +182,75 @@ to have
 
 as required.
 
+``CircularList`` pool
+=====================
+
+.. pharo:autocompiledmethod:: CTLinkedStoragePoolTest>>#testEmptyCircularList
+
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStoragePoolTest-testEmptyCircularList.svg
+    :align: center
+
+Have a look at the following manipulations, starting with an empty queue pool,
+
+.. pharo:autocompiledmethod:: CTLinkedStoragePoolTest>>#testSomePushesThenPopsOnCircular
+
+by pushing 3,
+
+.. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-1.svg
+  :align: center
+
+then push 4,
+
+.. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-2.svg
+  :align: center
+
+then push 5,
+
+.. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-3.svg
+  :align: center
+
+then pop,
+
+.. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-4.svg
+  :align: center
+
+then pop,
+
+.. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-5.svg
+  :align: center
+
+then pop,
+
+.. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-6.svg
+  :align: center
+
+then push 6,
+
+.. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-7.svg
+  :align: center
+
+respectively. We cannot pop from an empty queue,
+
+.. pharo:autocompiledmethod:: CTLinkedStoragePoolTest>>#testPopFromEmptyCircular
+
+Addition of *polynomials*
++++++++++++++++++++++++++
+
+Consider the addition of two polynomials,
+
+.. pharo:autocompiledmethod:: CTLinkedStoragePoolTest>>#testPolynomialAdditionFromKnuthTextbook
+
+let :math:`p` be
+
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStoragePoolTest-testPolynomialAdditionFromKnuthTextbook-p.svg
+    :align: center
+
+and let :math:`q` be
+
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStoragePoolTest-testPolynomialAdditionFromKnuthTextbook-q.svg
+    :align: center
+
+yield polynomial :math:`r` 
+
+  .. image:: ../../../Containers-LinkedStoragePool/images/CTLinkedStoragePoolTest-testPolynomialAdditionFromKnuthTextbook-r.svg
+    :align: center

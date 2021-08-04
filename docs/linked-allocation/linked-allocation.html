@@ -58,6 +58,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#storage-pools">Storage pools</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#stack-pool"><code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#queue-pool"><code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#circularlist-pool"><code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#addition-of-polynomials">Addition of <em>polynomials</em></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1145,20 +1149,22 @@ according to these messages.</p>
 <span class="target" id="pharo-compiledMethod-55"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testremoveallfromstack"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
 <span class="nf">testRemoveAllFromStack</span>
 
-   <span class="o">|</span><span class="nv"> queue </span><span class="o">|</span>
-   <span class="nv">queue</span> <span class="o">:=</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">5</span>)
+   <span class="o">|</span><span class="nv"> stack </span><span class="o">|</span>
+   <span class="nv">stack</span> <span class="o">:=</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">5</span>)
                <span class="nf">inject:</span> <span class="nc">CTLinkedStoragePoolStack</span> <span class="nb">new</span>
                <span class="nf">into:</span> [ <span class="o">:</span><span class="nv">pool</span> <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">pool</span> <span class="nf">push:</span> <span class="nv">each</span> ]<span class="p">.</span>
 
-   <span class="nv">queue</span>
+   <span class="nv">stack</span>
       <span class="nf">pop</span><span class="p">;</span>
       <span class="nf">pop</span><span class="p">.</span>
 
-   <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">queue</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;full&#39;</span><span class="p">.</span>
+   <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">stack</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;full&#39;</span><span class="p">.</span>
 
-   <span class="nv">queue</span> <span class="nf">removeAll</span><span class="p">.</span>
+   <span class="nv">stack</span> <span class="nf">removeAll</span><span class="p">.</span>
 
-   <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">queue</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;empty&#39;</span>
+   <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">stack</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;empty&#39;</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">stack</span> <span class="nf">isEmpty</span>
 </pre></div>
 </div>
 <p>first push 5 elements and then pop 2 of them in order to have some room available,</p>
@@ -1197,7 +1203,7 @@ according to these messages.</p>
 <span class="target" id="pharo-compiledMethod-58"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testsomepushesthenpopsonqueue"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
 <span class="nf">testSomePushesThenPopsOnQueue</span>
 
-   <span class="o">|</span><span class="nv"> stack steps </span><span class="o">|</span>
+   <span class="o">|</span><span class="nv"> queue steps </span><span class="o">|</span>
    <span class="nv">steps</span> <span class="o">:=</span> <span class="nc">OrderedCollection</span> <span class="nb">new</span>
                <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#push:</span> <span class="nf">arguments:</span> { <span class="m">3</span> })<span class="p">;</span>
                <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#push:</span> <span class="nf">arguments:</span> { <span class="m">4</span> })<span class="p">;</span>
@@ -1208,11 +1214,11 @@ according to these messages.</p>
                <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#push:</span> <span class="nf">arguments:</span> { <span class="m">6</span> })<span class="p">;</span>
                <span class="nf">yourself</span><span class="p">.</span>
 
-   <span class="nv">stack</span> <span class="o">:=</span> <span class="nc">CTLinkedStoragePoolQueue</span> <span class="nb">new</span><span class="p">.</span>
+   <span class="nv">queue</span> <span class="o">:=</span> <span class="nc">CTLinkedStoragePoolQueue</span> <span class="nb">new</span><span class="p">.</span>
 
    <span class="nv">steps</span> <span class="nf">withIndexDo:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">:</span><span class="nv">i</span> <span class="o">|</span> 
-      <span class="nv">each</span> <span class="nf">sendTo:</span> <span class="nv">stack</span><span class="p">.</span>
-      <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">stack</span> <span class="nf">pathSuffix:</span> <span class="nv">i</span> <span class="nf">asString</span> ]
+      <span class="nv">each</span> <span class="nf">sendTo:</span> <span class="nv">queue</span><span class="p">.</span>
+      <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">queue</span> <span class="nf">pathSuffix:</span> <span class="nv">i</span> <span class="nf">asString</span> ]
 </pre></div>
 </div>
 <p>by pushing 3,</p>
@@ -1252,7 +1258,9 @@ according to these messages.</p>
 
    <span class="nv">queue</span> <span class="nf">removeAll</span><span class="p">.</span>
 
-   <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">queue</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;empty&#39;</span>
+   <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">queue</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;empty&#39;</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">queue</span> <span class="nf">isEmpty</span>
 </pre></div>
 </div>
 <p>first push 5 elements and then pop 2 of them in order to have some room available,</p>
@@ -1268,6 +1276,103 @@ according to these messages.</p>
 </div>
 <p>to have</p>
 <img alt="../_images/CTLinkedStoragePoolTest-testRemoveAllFromQueue-empty.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testRemoveAllFromQueue-empty.svg" /><p>as required.</p>
+</div>
+<div class="section" id="circularlist-pool">
+<h3><code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool<a class="headerlink" href="#circularlist-pool" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="pharo-compiledMethod-62"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testemptycircularlist"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
+<span class="nf">testEmptyCircularList</span>
+
+   <span class="o">|</span><span class="nv"> stack </span><span class="o">|</span>
+   <span class="nv">stack</span> <span class="o">:=</span> <span class="nc">CTLinkedStoragePoolCircular</span> <span class="nb">new</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span>
+        <span class="nf">assert:</span> <span class="nv">stack</span> <span class="nf">isEmpty</span><span class="p">;</span>
+        <span class="nf">exportSlotsGraphOf:</span> <span class="nv">stack</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTLinkedStoragePoolTest-testEmptyCircularList.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testEmptyCircularList.svg" /></div></blockquote>
+<p>Have a look at the following manipulations, starting with an empty queue pool,</p>
+<span class="target" id="pharo-compiledMethod-63"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testsomepushesthenpopsoncircular"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
+<span class="nf">testSomePushesThenPopsOnCircular</span>
+
+   <span class="o">|</span><span class="nv"> circular steps </span><span class="o">|</span>
+   <span class="nv">steps</span> <span class="o">:=</span> <span class="nc">OrderedCollection</span> <span class="nb">new</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#push:</span> <span class="nf">arguments:</span> { <span class="m">3</span> })<span class="p">;</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#push:</span> <span class="nf">arguments:</span> { <span class="m">4</span> })<span class="p">;</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#push:</span> <span class="nf">arguments:</span> { <span class="m">5</span> })<span class="p">;</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#pop</span>)<span class="p">;</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#pop</span>)<span class="p">;</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#pop</span>)<span class="p">;</span>
+               <span class="nf">add:</span> (<span class="nc">Message</span> <span class="nf">selector:</span> <span class="ss">#push:</span> <span class="nf">arguments:</span> { <span class="m">6</span> })<span class="p">;</span>
+               <span class="nf">yourself</span><span class="p">.</span>
+
+   <span class="nv">circular</span> <span class="o">:=</span> <span class="nc">CTLinkedStoragePoolCircular</span> <span class="nb">new</span><span class="p">.</span>
+
+   <span class="nv">steps</span> <span class="nf">withIndexDo:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">:</span><span class="nv">i</span> <span class="o">|</span> 
+      <span class="nv">each</span> <span class="nf">sendTo:</span> <span class="nv">circular</span><span class="p">.</span>
+      <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">circular</span> <span class="nf">pathSuffix:</span> <span class="nv">i</span> <span class="nf">asString</span> ]
+</pre></div>
+</div>
+<p>by pushing 3,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-1.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-1.svg" /><p>then push 4,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-2.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-2.svg" /><p>then push 5,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-3.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-3.svg" /><p>then pop,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-4.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-4.svg" /><p>then pop,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-5.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-5.svg" /><p>then pop,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-6.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-6.svg" /><p>then push 6,</p>
+<img alt="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-7.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testSomePushesThenPopsOnCircular-7.svg" /><p>respectively. We cannot pop from an empty queue,</p>
+<span class="target" id="pharo-compiledMethod-64"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testpopfromemptycircular"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
+<span class="nf">testPopFromEmptyCircular</span>
+
+   <span class="bp">self</span>
+      <span class="nf">should:</span> [ 
+         <span class="nc">CTLinkedStoragePoolCircular</span> <span class="nb">new</span>
+            <span class="nf">push:</span> <span class="m">3</span><span class="p">;</span>
+            <span class="nf">pop</span><span class="p">;</span>
+            <span class="nf">pop</span> ]
+      <span class="nf">raise:</span> <span class="nc">CollectionIsEmpty</span>
+</pre></div>
+</div>
+<div class="section" id="addition-of-polynomials">
+<h4>Addition of <em>polynomials</em><a class="headerlink" href="#addition-of-polynomials" title="Permalink to this headline">¶</a></h4>
+<p>Consider the addition of two polynomials,</p>
+<span class="target" id="pharo-compiledMethod-65"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testpolynomialadditionfromknuthtextbook"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
+<span class="nf">testPolynomialAdditionFromKnuthTextbook</span>
+
+   <span class="bp">self</span> <span class="nf">withKnuthPolynomialsDo:</span> [ <span class="o">:</span><span class="nv">p</span> <span class="o">:</span><span class="nv">q</span> <span class="o">|</span> 
+      <span class="o">|</span><span class="nv"> r </span><span class="o">|</span>
+      <span class="bp">self</span>
+         <span class="nf">exportSlotsGraphOf:</span> <span class="nv">p</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;p&#39;</span><span class="p">;</span>
+         <span class="nf">exportSlotsGraphOf:</span> <span class="nv">q</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;q&#39;</span><span class="p">.</span>
+
+      <span class="c">&quot;SUT&quot;</span>
+      <span class="nv">r</span> <span class="o">:=</span> <span class="nv">p</span> <span class="nf">+</span> <span class="nv">q</span><span class="p">.</span>
+
+      <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">r</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;r&#39;</span><span class="p">.</span>
+
+      <span class="c">&quot;the order is important and the result can be read as side-effect on `p`&quot;</span>
+      <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">r</span> <span class="nf">equals:</span> <span class="nv">q</span><span class="p">.</span>
+
+      <span class="c">&quot;Actually check for the result.&quot;</span>
+      <span class="nv">r</span> <span class="o">:=</span> <span class="nc">Array</span> <span class="nf">streamContents:</span> [ <span class="o">:</span><span class="nv">array</span> <span class="o">|</span> 
+              [ <span class="nv">r</span> <span class="nf">isEmpty</span> ] <span class="nb">whileFalse:</span> [ <span class="nv">array</span> <span class="nf">nextPut:</span> <span class="nv">r</span> <span class="nf">pop</span> ] ]<span class="p">.</span>
+      <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">r</span> <span class="nf">equals:</span> { 
+            (<span class="ss">#(</span> <span class="m">2</span> <span class="m">0</span> <span class="m">0</span> <span class="ss">)</span> <span class="nf">-&gt;</span> <span class="m">1</span>)<span class="p">.</span>
+            (<span class="ss">#(</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span> <span class="ss">)</span> <span class="nf">-&gt;</span> <span class="m">1</span>)<span class="p">.</span>
+            (<span class="ss">#(</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span> <span class="ss">)</span> <span class="nf">-&gt;</span> <span class="m">1</span> <span class="nf">negated</span>) } ]
+</pre></div>
+</div>
+<p>let <span class="math notranslate nohighlight">\(p\)</span> be</p>
+<blockquote>
+<div><img alt="../_images/CTLinkedStoragePoolTest-testPolynomialAdditionFromKnuthTextbook-p.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testPolynomialAdditionFromKnuthTextbook-p.svg" /></div></blockquote>
+<p>and let <span class="math notranslate nohighlight">\(q\)</span> be</p>
+<blockquote>
+<div><img alt="../_images/CTLinkedStoragePoolTest-testPolynomialAdditionFromKnuthTextbook-q.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testPolynomialAdditionFromKnuthTextbook-q.svg" /></div></blockquote>
+<p>yield polynomial <span class="math notranslate nohighlight">\(r\)</span></p>
+<blockquote>
+<div><img alt="../_images/CTLinkedStoragePoolTest-testPolynomialAdditionFromKnuthTextbook-r.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testPolynomialAdditionFromKnuthTextbook-r.svg" /></div></blockquote>
+</div>
 </div>
 </div>
 </div>
