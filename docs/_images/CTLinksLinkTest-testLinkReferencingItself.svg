@@ -70,7 +70,7 @@
 </symbol>
 </g>
 </defs>
-<g id="surface1643049">
+<g id="surface1858931">
 <g style="fill:rgb(74.095797%,73.70479%,73.70479%);fill-opacity:1;">
   <use xlink:href="#glyph0-1" x="2.688189" y="10.999466"/>
   <use xlink:href="#glyph0-2" x="7.352286" y="10.999466"/>
@@ -110,6 +110,6 @@
   <use xlink:href="#glyph1-7" x="46.985898" y="46.087466"/>
 </g>
 <path style="fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;stroke-width:1;stroke-linecap:butt;stroke-linejoin:bevel;stroke:rgb(50.048876%,50.048876%,50.048876%);stroke-opacity:1;stroke-miterlimit:10;" d="M -9.076628 -8.169091 L 9.079622 -8.169091 C 10.868685 -8.169091 12.317904 -6.719872 12.317904 -4.934716 L 12.317904 4.936378 C 12.317904 6.721534 10.868685 8.170753 9.079622 8.170753 L -9.076628 8.170753 C -10.86569 8.170753 -12.314909 6.721534 -12.314909 4.936378 L -12.314909 -4.934716 C -12.314909 -6.719872 -10.86569 -8.169091 -9.076628 -8.169091 Z M -9.076628 -8.169091 " transform="matrix(1,0,0,1,69.018034,41.465966)"/>
-<path style="fill:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:bevel;stroke:rgb(74.095797%,73.70479%,73.70479%);stroke-opacity:1;stroke-dasharray:1;stroke-miterlimit:10;" d="M 25.019531 13.464844 C 27.089844 8.28125 32.277344 8.28125 40.570312 13.464844 " transform="matrix(1,0,0,1,44,28)"/>
+<path style="fill:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:bevel;stroke:rgb(74.095797%,73.70479%,73.70479%);stroke-opacity:1;stroke-dasharray:1;stroke-miterlimit:10;" d="M 25.019531 13.464844 C 21.386719 3.753906 13.050781 -0.0507812 0 2.058594 " transform="matrix(1,0,0,1,44,28)"/>
 </g>
 </svg>
