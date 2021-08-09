@@ -56,7 +56,7 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     testInspectFractionKissingEnumeration
 			     testRandomSubclasses testGaussian testUniform testExponential
 			     testGaussianBoxMuller testByteArrayLoremIpsum
-			     testByteArrayLiteral testByteArrayInteger );
+			     testByteArrayLiteral testByteArrayInteger testInspectDictionary );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'core-messages.json' ]
 		  ofPackage: self class package
