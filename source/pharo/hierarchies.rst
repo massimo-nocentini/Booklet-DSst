@@ -184,12 +184,16 @@ and, in more simpler terms, even an ``Integer`` can be seen as an of array of th
 Binary Reflected Gray Codes
 +++++++++++++++++++++++++++
 
+In :cite:`gray-pulse-code-communication-1953`, Frank Gray introduces *"an
+ordering of the binary numeral system such that two successive values differ in
+only one bit"* -- from `Wikipedia <https://en.wikipedia.org/wiki/Gray_code>`_,
+
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectBRGCodes
 
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectBRGCodes.svg
     :align: center
 
-where the message
+also known as :cite:`oeis/gray-codes`. The message
 
 .. pharo:autocompiledmethod:: Integer>>#asShapeBRGCDots
 
@@ -291,6 +295,14 @@ A ``Set``
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectSet.svg
     :align: center
 
+A ``Dictionary``
+++++++++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectDictionary
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectDictionary.svg
+    :align: center
+
 ``Random`` hierarchy
 ====================
 
@@ -346,14 +358,18 @@ where
 The *bivariate gaussian* distribution
 +++++++++++++++++++++++++++++++++++++
 
+A sample from a *bivariate* Gaussian distribution can be inspected by
+
 .. pharo:autocompiledmethod:: RandomTestDistributions>>#testGaussianBoxMuller
 
   .. image:: ../../../Containers-Essentials/images/RandomTestDistributions-testGaussianBoxMuller.svg
     :align: center
 
-where
+where the message
 
 .. pharo:autocompiledmethod:: RandomBoxMullerBivariateGaussian>>#next
+
+implements the algorithm described in :cite:`10.1214/aoms/1177706645`.
 
 ``RBNode`` hierarchy
 ====================
