@@ -51,7 +51,10 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Linked memory allocation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#links">Links</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#link-objects"><code class="docutils literal notranslate"><span class="pre">Link</span></code> objects</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#valuelink-objects"><code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#valuelink-objects"><code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#topological-sorting">Topological sorting</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#linkedlist-containers"><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
@@ -428,8 +431,8 @@ objects too, either a cycle of length 1</p>
 <p>The examples seen so far show a tight connection among the way we connect
 <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code>s with the strategy used by <em>stacks</em> to keep a collection of
 objects; more about that will be explored in subsequent sections.</p>
-<div class="topic" id="index-0">
-<p class="topic-title">Topological sorting</p>
+<div class="section" id="topological-sorting">
+<span id="index-0"></span><h4>Topological sorting<a class="headerlink" href="#topological-sorting" title="Permalink to this headline">¶</a></h4>
 <p>Implementation of the <em>Algorithm T</em> in TAOCP by Donald Knuth, Volume 1 page 264.</p>
 <p>The complexity is <span class="math notranslate nohighlight">\(O(m + n)\)</span> where <span class="math notranslate nohighlight">\(m\)</span> is the number of input
 relations and <span class="math notranslate nohighlight">\(n\)</span> is the number of (unique) objects represented by

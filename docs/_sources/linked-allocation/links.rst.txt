@@ -156,77 +156,78 @@ objects; more about that will be explored in subsequent sections.
   single: TAOCP by Donald Knuth; Volume 1, Algorithm T at page 264
   single: Test cases; Topological sort
   
-.. topic:: Topological sorting
+Topological sorting
++++++++++++++++++++
 
-  Implementation of the *Algorithm T* in TAOCP by Donald Knuth, Volume 1 page 264.
+Implementation of the *Algorithm T* in TAOCP by Donald Knuth, Volume 1 page 264.
 
-  The complexity is :math:`O(m + n)` where :math:`m` is the number of input
-  relations and :math:`n` is the number of (unique) objects represented by
-  naturals.  The message send ``c topologicalSortOnCycleDo: b`` computes provided that:
+The complexity is :math:`O(m + n)` where :math:`m` is the number of input
+relations and :math:`n` is the number of (unique) objects represented by
+naturals.  The message send ``c topologicalSortOnCycleDo: b`` computes provided that:
 
-  - ``c`` is a collection of associations :math:`(j, k) \in [1, n]^{2}` no holes allowed,
-    namely every natural *has* to be used in at least one input relation. 
-  - ``b`` is a block consuming a collection of associations forming a cycle.
-  
-  .. index::
-    single: GitHub Pull Requests; 7457 - Topological sort
-  
-  The following implementation had been proposed in the PR
-  https://github.com/pharo-project/pharo/pull/7457.
-  
-  .. pharo:autocompiledmethod:: SequenceableCollection>>#topologicalSortByAssociations:onCycleDo:
-  
-    where
-  
-    .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#value:onCycleDo:
-  
-    where
-  
-      .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#makeValueLinksTable
-  
+- ``c`` is a collection of associations :math:`(j, k) \in [1, n]^{2}` no holes allowed,
+  namely every natural *has* to be used in at least one input relation. 
+- ``b`` is a block consuming a collection of associations forming a cycle.
+
+.. index::
+  single: GitHub Pull Requests; 7457 - Topological sort
+
+The following implementation had been proposed in the PR
+https://github.com/pharo-project/pharo/pull/7457.
+
+.. pharo:autocompiledmethod:: SequenceableCollection>>#topologicalSortByAssociations:onCycleDo:
+
+  where
+
+  .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#value:onCycleDo:
+
+  where
+
+    .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#makeValueLinksTable
+
+    and
+
+    .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#initializeValueLinksTable:
+
+    and
+
+    .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#sinksOfValueLinksTable:
+
+      where
+
+        .. pharo:autocompiledmethod:: Association>>#ifSink:otherwise:forTopologicalSortAlgorithm:
+
+    and
+
+    .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#sortOn:sinksValueLink:valueLinksTable:
+
+      where
+
+      .. pharo:autocompiledmethod:: Object>>#yourself:
+      
       and
+
+      .. pharo:autocompiledmethod:: Association>>#decrementCountIfZero:forTopologicalSortAlgorithm:
+
+    and
+
+    .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#handleCycleInValueLinksTable:do:
+
+      where
+
+      .. pharo:autocompiledmethod:: Dictionary>>#anyAssociation
+
+Testing for acyclic property can be done with the following message:
+
+.. pharo:autocompiledmethod:: SequenceableCollection>>#isAcyclicWithRespectToAssociations:
+
+Some tests are in order:
+
+.. pharo:autocompiledmethod:: CollectionTest>>#testTopologicalSortOnCycleDo
+.. pharo:autocompiledmethod:: CollectionTest>>#testTopologicalSortOnCycleDo1
+.. pharo:autocompiledmethod:: CollectionTest>>#testTopologicalSortOnCycleDo2
+.. pharo:autocompiledmethod:: CollectionTest>>#testTopologicalSortOnCycleDo3
   
-      .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#initializeValueLinksTable:
+  where
   
-      and
-  
-      .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#sinksOfValueLinksTable:
-  
-        where
-  
-          .. pharo:autocompiledmethod:: Association>>#ifSink:otherwise:forTopologicalSortAlgorithm:
-  
-      and
-  
-      .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#sortOn:sinksValueLink:valueLinksTable:
-  
-        where
-  
-        .. pharo:autocompiledmethod:: Object>>#yourself:
-        
-        and
-  
-        .. pharo:autocompiledmethod:: Association>>#decrementCountIfZero:forTopologicalSortAlgorithm:
-  
-      and
-  
-      .. pharo:autocompiledmethod:: TopologicalSortAlgorithm>>#handleCycleInValueLinksTable:do:
-  
-        where
-  
-        .. pharo:autocompiledmethod:: Dictionary>>#anyAssociation
-  
-  Testing for acyclic property can be done with the following message:
-  
-  .. pharo:autocompiledmethod:: SequenceableCollection>>#isAcyclicWithRespectToAssociations:
-  
-  Some tests are in order:
-  
-  .. pharo:autocompiledmethod:: CollectionTest>>#testTopologicalSortOnCycleDo
-  .. pharo:autocompiledmethod:: CollectionTest>>#testTopologicalSortOnCycleDo1
-  .. pharo:autocompiledmethod:: CollectionTest>>#testTopologicalSortOnCycleDo2
-  .. pharo:autocompiledmethod:: CollectionTest>>#testTopologicalSortOnCycleDo3
-    
-    where
-    
-    .. pharo:autocompiledmethod:: SequenceableCollection>>#topologicalSortByAssociations:acyclicDo: 
+  .. pharo:autocompiledmethod:: SequenceableCollection>>#topologicalSortByAssociations:acyclicDo: 
