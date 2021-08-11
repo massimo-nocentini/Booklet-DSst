@@ -204,7 +204,7 @@
 <span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-quoremcomplementary"><div class="highlight"><pre><span></span><span class="nc">Magnitude</span> <span class="nf">subclass:</span> <span class="ss">#QuoRemComplementary</span>
 	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;a b ratio quo rem&#39;</span>
 	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
-	<span class="nf">package:</span> <span class="s">&#39;Containers-Essentials&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-Essentials-Divisibility&#39;</span>
 </pre></div>
 </div>
 <p>Both the <em>quotient</em> and the <em>remainder</em> are computed in the initialization message</p>
@@ -331,11 +331,9 @@ while the number of columns equals the divisor denoted by the instance variable 
 
    <span class="o">|</span><span class="nv"> gcds inverses </span><span class="o">|</span>
    <span class="nv">gcds</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">testGCDofZ17</span><span class="p">.</span>
-   <span class="nv">inverses</span> <span class="o">:=</span> <span class="nc">PointArray</span> <span class="nf">new:</span> <span class="nv">gcds</span> <span class="nf">size</span> <span class="nf">+</span> <span class="m">1</span><span class="p">.</span>
+   <span class="nv">inverses</span> <span class="o">:=</span> <span class="nc">PointArray</span> <span class="nf">new:</span> <span class="nv">gcds</span> <span class="nf">size</span><span class="p">.</span>
    <span class="nv">gcds</span> <span class="nf">withIndexDo:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">:</span><span class="nv">index</span> <span class="o">|</span> 
       <span class="nv">inverses</span> <span class="nf">at:</span> <span class="nv">index</span> <span class="nf">put:</span> <span class="nv">each</span> <span class="nf">b</span> <span class="nf">@</span> <span class="nv">each</span> <span class="nf">inverseMultiplicativeOfb</span> <span class="nf">key</span> ]<span class="p">.</span>
-
-   <span class="nv">inverses</span> <span class="nf">at:</span> <span class="nv">inverses</span> <span class="nf">size</span> <span class="nf">put:</span> <span class="m">0</span> <span class="nf">@</span> <span class="m">0</span><span class="p">.</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">inverses</span>
 </pre></div>

@@ -303,6 +303,14 @@ A ``Dictionary``
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectDictionary.svg
     :align: center
 
+A ``Bag``
++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectBag
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectBag.svg
+    :align: center
+
 ``Random`` hierarchy
 ====================
 
@@ -450,5 +458,13 @@ A ``RSShape`` of a polygon, quoting itself
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectRSPolygon
 
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectRSPolygon.svg
+    :align: center
+
+A ``Context``
++++++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectContext
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectContext.svg
     :align: center
 
