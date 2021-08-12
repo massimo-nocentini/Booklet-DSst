@@ -36,7 +36,7 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 	^ MetaSTExporter new
 		  selectors:
 			  #( next privateNextValue privateNextSeed fibonacciNumbers
-			     lucasNumbers #gibonacciNumbersFirst:second:do:
+			     goldenRatios lucasNumbers #gibonacciNumbersFirst:second:do:
 			     \/ mediantInteger: mediantFraction: kissingFractions
 			     overlappingPairsDo: kissingFractionLink: bitBRGC asShapeBinaryDots:
 			     asShapeBRGCDots instVarsNamesOrderedCollection
@@ -57,7 +57,8 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     testRandomSubclasses testGaussian testUniform testExponential
 			     testGaussianBoxMuller testByteArrayLoremIpsum
 			     testByteArrayLiteral testByteArrayInteger testInspectDictionary
-			     testInspectContext testInspectBag );
+			     testInspectContext testInspectBag testInspect10GoldenRatios
+			     testInspect10GoldenRectangles );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'core-messages.json' ]
 		  ofPackage: self class package
