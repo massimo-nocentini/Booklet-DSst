@@ -100,7 +100,7 @@
 </symbol>
 </g>
 </defs>
-<g id="surface36150">
+<g id="surface113284">
 <g style="fill:rgb(74.095797%,73.70479%,73.70479%);fill-opacity:1;">
   <use xlink:href="#glyph0-1" x="2.348189" y="11.019813"/>
   <use xlink:href="#glyph0-2" x="7.012286" y="11.019813"/>
@@ -162,6 +162,7 @@
   <use xlink:href="#glyph1-11" x="46.645898" y="83.831051"/>
 </g>
 <path style="fill-rule:evenodd;fill:rgb(90.127077%,89.638319%,89.638319%);fill-opacity:0.4;stroke-width:1;stroke-linecap:butt;stroke-linejoin:bevel;stroke:rgb(50.048876%,50.048876%,50.048876%);stroke-opacity:1;stroke-miterlimit:10;" d="M -11.420378 -11.404863 L 11.423372 -11.404863 C 13.208529 -11.404863 14.657747 -9.959551 14.657747 -8.170488 L 14.657747 8.169355 C 14.657747 9.958418 13.208529 11.407637 11.423372 11.407637 L -11.420378 11.407637 C -13.205534 11.407637 -14.654753 9.958418 -14.654753 8.169355 L -14.654753 -8.170488 C -14.654753 -9.959551 -13.205534 -11.404863 -11.420378 -11.404863 Z M -11.420378 -11.404863 " transform="matrix(1,0,0,1,71.018034,79.209551)"/>
-<path style="fill:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:bevel;stroke:rgb(74.095797%,73.70479%,73.70479%);stroke-opacity:1;stroke-dasharray:1;stroke-miterlimit:10;" d="M 25.019531 30.710938 C 29.199219 13.1875 20.859375 -0.378906 0 -9.980469 " transform="matrix(1,0,0,1,46,48.5)"/>
+<path style="fill:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:bevel;stroke:rgb(74.095797%,73.70479%,73.70479%);stroke-opacity:1;stroke-dasharray:1;stroke-miterlimit:10;" d="M 25.019531 30.710938 C 29.199219 13.1875 20.859375 -0.375 0 -9.980469 " transform="matrix(1,0,0,1,46,48.5)"/>
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(74.095797%,73.70479%,73.70479%);fill-opacity:1;" d="M 52.234375 39.160156 L 51.082031 39.867188 C 50.523438 40.210938 50.226562 40.855469 50.328125 41.5 L 50.539062 42.835938 C 50.644531 43.492188 49.816406 43.859375 49.402344 43.339844 L 47.292969 40.703125 C 46.453125 39.664062 47.167969 38.117188 48.5 38.078125 L 51.875 37.96875 C 52.539062 37.945312 52.796875 38.8125 52.234375 39.160156 Z M 52.234375 39.160156 "/>
 </g>
 </svg>

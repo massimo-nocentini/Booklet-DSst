@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Linked memory allocation &#8212; Data Structures in Smalltalk  documentation</title>
+    <title>3. Linked memory allocation &#8212; Data Structures in Smalltalk  documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -15,8 +15,8 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Bibliography" href="../bibliography.html" />
-    <link rel="prev" title="Symbolic computation" href="../symbolic/symbolic.html" />
+    <link rel="next" title="4. Bibliography" href="../bibliography.html" />
+    <link rel="prev" title="2. Symbolic computation" href="../symbolic/symbolic.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -46,38 +46,38 @@
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../pharo/pharo.html">Pharo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../symbolic/symbolic.html">Symbolic computation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Linked memory allocation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#links">Links</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#link-objects"><code class="docutils literal notranslate"><span class="pre">Link</span></code> objects</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#valuelink-objects"><code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#topological-sorting">Topological sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pharo/pharo.html">1. Pharo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic/symbolic.html">2. Symbolic computation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Linked memory allocation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#links">3.1. Links</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#link-objects">3.1.1. <code class="docutils literal notranslate"><span class="pre">Link</span></code> objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#valuelink-objects">3.1.2. <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#topological-sorting">3.1.2.1. Topological sorting</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#linkedlist-containers"><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#storage-pools">Storage pools</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#stack-pool"><code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#queue-pool"><code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#circularlist-pool"><code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#addition-of-polynomials">Addition of <em>polynomials</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linkedlist-containers">3.2. <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#storage-pools">3.3. Storage pools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stack-pool">3.3.1. <code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#queue-pool">3.3.2. <code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#circularlist-pool">3.3.3. <code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#addition-of-polynomials">3.3.3.1. Addition of <em>polynomials</em></a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">4. Bibliography</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../symbolic/symbolic.html" title="previous chapter">Symbolic computation</a></li>
-      <li>Next: <a href="../bibliography.html" title="next chapter">Bibliography</a></li>
+      <li>Previous: <a href="../symbolic/symbolic.html" title="previous chapter"><span class="section-number">2. </span>Symbolic computation</a></li>
+      <li>Next: <a href="../bibliography.html" title="next chapter"><span class="section-number">4. </span>Bibliography</a></li>
   </ul></li>
 </ul>
 </div>
@@ -109,10 +109,10 @@
     <ul>
         <li>
           &larr;
-          <a href="../symbolic/symbolic.html" title="Previous document">Symbolic computation</a>
+          <a href="../symbolic/symbolic.html" title="Previous document"><span class="section-number">2. </span>Symbolic computation</a>
         </li>
         <li>
-          <a href="../bibliography.html" title="Next document">Bibliography</a>
+          <a href="../bibliography.html" title="Next document"><span class="section-number">4. </span>Bibliography</a>
           &rarr;
         </li>
     </ul>
@@ -123,11 +123,11 @@
           <div class="body" role="main">
             
   <div class="section" id="linked-memory-allocation">
-<h1>Linked memory allocation<a class="headerlink" href="#linked-memory-allocation" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3. </span>Linked memory allocation<a class="headerlink" href="#linked-memory-allocation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="links">
-<h2>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1. </span>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="link-objects">
-<h3><code class="docutils literal notranslate"><span class="pre">Link</span></code> objects<a class="headerlink" href="#link-objects" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.1.1. </span><code class="docutils literal notranslate"><span class="pre">Link</span></code> objects<a class="headerlink" href="#link-objects" title="Permalink to this headline">¶</a></h3>
 <p>Our discussion starts with a tiny class <code class="docutils literal notranslate"><span class="pre">Link</span></code> that is provided by default in
 a fresh image; its definition follows,</p>
 <span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-link"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">subclass:</span> <span class="ss">#Link</span>
@@ -293,7 +293,7 @@ requested to skip too much,</p>
 </div>
 </div>
 <div class="section" id="valuelink-objects">
-<h3><code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects<a class="headerlink" href="#valuelink-objects" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.1.2. </span><code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects<a class="headerlink" href="#valuelink-objects" title="Permalink to this headline">¶</a></h3>
 <p>A <code class="docutils literal notranslate"><span class="pre">Link</span></code> by itself encodes just a node of a chain. We can augment those
 objects such that each node in the chain carries a <em>value</em> also, to have a
 <em>chain of values</em> actually. Such new objects belong to the class</p>
@@ -432,7 +432,7 @@ objects too, either a cycle of length 1</p>
 <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code>s with the strategy used by <em>stacks</em> to keep a collection of
 objects; more about that will be explored in subsequent sections.</p>
 <div class="section" id="topological-sorting">
-<span id="index-0"></span><h4>Topological sorting<a class="headerlink" href="#topological-sorting" title="Permalink to this headline">¶</a></h4>
+<span id="index-0"></span><h4><span class="section-number">3.1.2.1. </span>Topological sorting<a class="headerlink" href="#topological-sorting" title="Permalink to this headline">¶</a></h4>
 <p>Implementation of the <em>Algorithm T</em> in TAOCP by Donald Knuth, Volume 1 page 264.</p>
 <p>The complexity is <span class="math notranslate nohighlight">\(O(m + n)\)</span> where <span class="math notranslate nohighlight">\(m\)</span> is the number of input
 relations and <span class="math notranslate nohighlight">\(n\)</span> is the number of (unique) objects represented by
@@ -818,7 +818,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
 </div>
 </div>
 <div class="section" id="linkedlist-containers">
-<h2><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers<a class="headerlink" href="#linkedlist-containers" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2. </span><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers<a class="headerlink" href="#linkedlist-containers" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects are small and allow us to compose them in an applicative
 way so that we can share part of a composite structure among different client
 objects so that those clients don’t observe any side effect on the
@@ -1042,7 +1042,7 @@ then all the values are kept as well</p>
 <div><img alt="../_images/CTLinksValueLinkTest-testAsValueLinkInjectInto.svg" class="align-center" src="../_images/CTLinksValueLinkTest-testAsValueLinkInjectInto.svg" /></div></blockquote>
 </div>
 <div class="section" id="storage-pools">
-<h2>Storage pools<a class="headerlink" href="#storage-pools" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.3. </span>Storage pools<a class="headerlink" href="#storage-pools" title="Permalink to this headline">¶</a></h2>
 <p>The Knuth’s description of linked allocation begins at page 254 of <span id="id1">[<a class="reference internal" href="../bibliography.html#id9"><span>Knu97</span></a>]</span>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1092,7 +1092,7 @@ be linked together in several orders corresponding to different lists; and so on
 <p>allow us to call <em>storage pool</em> the set of all nodes that can be allocated
 according to these messages.</p>
 <div class="section" id="stack-pool">
-<h3><code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool<a class="headerlink" href="#stack-pool" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.3.1. </span><code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool<a class="headerlink" href="#stack-pool" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="pharo-compiledMethod-52"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testemptystack"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
 <span class="nf">testEmptyStack</span>
 
@@ -1188,7 +1188,7 @@ according to these messages.</p>
 <img alt="../_images/CTLinkedStoragePoolTest-testRemoveAllFromStack-empty.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testRemoveAllFromStack-empty.svg" /><p>as required.</p>
 </div>
 <div class="section" id="queue-pool">
-<h3><code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool<a class="headerlink" href="#queue-pool" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.3.2. </span><code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool<a class="headerlink" href="#queue-pool" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="pharo-compiledMethod-57"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testemptyqueue"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
 <span class="nf">testEmptyQueue</span>
 
@@ -1281,7 +1281,7 @@ according to these messages.</p>
 <img alt="../_images/CTLinkedStoragePoolTest-testRemoveAllFromQueue-empty.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testRemoveAllFromQueue-empty.svg" /><p>as required.</p>
 </div>
 <div class="section" id="circularlist-pool">
-<h3><code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool<a class="headerlink" href="#circularlist-pool" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.3.3. </span><code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool<a class="headerlink" href="#circularlist-pool" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="pharo-compiledMethod-62"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testemptycircularlist"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
 <span class="nf">testEmptyCircularList</span>
 
@@ -1338,7 +1338,7 @@ according to these messages.</p>
 </pre></div>
 </div>
 <div class="section" id="addition-of-polynomials">
-<h4>Addition of <em>polynomials</em><a class="headerlink" href="#addition-of-polynomials" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.3.3.1. </span>Addition of <em>polynomials</em><a class="headerlink" href="#addition-of-polynomials" title="Permalink to this headline">¶</a></h4>
 <p>Consider the addition of two polynomials,</p>
 <span class="target" id="pharo-compiledMethod-65"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testpolynomialadditionfromknuthtextbook"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
 <span class="nf">testPolynomialAdditionFromKnuthTextbook</span>
@@ -1388,10 +1388,10 @@ according to these messages.</p>
     <ul>
         <li>
           &larr;
-          <a href="../symbolic/symbolic.html" title="Previous document">Symbolic computation</a>
+          <a href="../symbolic/symbolic.html" title="Previous document"><span class="section-number">2. </span>Symbolic computation</a>
         </li>
         <li>
-          <a href="../bibliography.html" title="Next document">Bibliography</a>
+          <a href="../bibliography.html" title="Next document"><span class="section-number">4. </span>Bibliography</a>
           &rarr;
         </li>
     </ul>

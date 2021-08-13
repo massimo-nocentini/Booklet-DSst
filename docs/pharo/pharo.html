@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pharo &#8212; Data Structures in Smalltalk  documentation</title>
+    <title>1. Pharo &#8212; Data Structures in Smalltalk  documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -15,7 +15,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Symbolic computation" href="../symbolic/symbolic.html" />
+    <link rel="next" title="2. Symbolic computation" href="../symbolic/symbolic.html" />
     <link rel="prev" title="Data Structures in Smalltalk" href="../index.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -46,62 +46,62 @@
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Pharo</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#object-model">Object model</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#for-a-fistful-of-objects">For a fistful of objects</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#an-object-simply">An <code class="docutils literal notranslate"><span class="pre">Object</span></code>, simply</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#nil-even-more-simpler"><code class="docutils literal notranslate"><span class="pre">nil</span></code>, even more simpler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#true-and-false"><code class="docutils literal notranslate"><span class="pre">true</span></code> and <code class="docutils literal notranslate"><span class="pre">false</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#a-point">A <code class="docutils literal notranslate"><span class="pre">Point</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#the-color-gray-translucent">The <code class="docutils literal notranslate"><span class="pre">Color</span></code> gray, translucent</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#a-rsshape-of-a-polygon-quoting-itself">A <code class="docutils literal notranslate"><span class="pre">RSShape</span></code> of a polygon, quoting itself</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#a-context">A <code class="docutils literal notranslate"><span class="pre">Context</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Pharo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#object-model">1.1. Object model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#for-a-fistful-of-objects">1.1.1. For a fistful of objects</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#an-object-simply">1.1.1.1. An <code class="docutils literal notranslate"><span class="pre">Object</span></code>, simply</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nil-even-more-simpler">1.1.1.2. <code class="docutils literal notranslate"><span class="pre">nil</span></code>, even more simpler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#true-and-false">1.1.1.3. <code class="docutils literal notranslate"><span class="pre">true</span></code> and <code class="docutils literal notranslate"><span class="pre">false</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#a-point">1.1.1.4. A <code class="docutils literal notranslate"><span class="pre">Point</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-color-gray-translucent">1.1.1.5. The <code class="docutils literal notranslate"><span class="pre">Color</span></code> gray, translucent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#a-rsshape-of-a-polygon-quoting-itself">1.1.1.6. A <code class="docutils literal notranslate"><span class="pre">RSShape</span></code> of a polygon, quoting itself</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#a-context">1.1.1.7. A <code class="docutils literal notranslate"><span class="pre">Context</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#classes-and-superclasses-of-object-and-trait">Classes and superclasses of <code class="docutils literal notranslate"><span class="pre">Object</span></code> and <code class="docutils literal notranslate"><span class="pre">Trait</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#classes-and-superclasses-of-object-and-trait">1.1.2. Classes and superclasses of <code class="docutils literal notranslate"><span class="pre">Object</span></code> and <code class="docutils literal notranslate"><span class="pre">Trait</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#hierarchies">Hierarchies</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#magnitude-hierarchy"><code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#the-character">The character <code class="docutils literal notranslate"><span class="pre">π</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dateandtime-now"><code class="docutils literal notranslate"><span class="pre">DateAndTime</span></code>, now</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#the-integer-13-in-various-representations">The integer <code class="docutils literal notranslate"><span class="pre">13</span></code> in various representations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#the-irrational">The irrational <code class="docutils literal notranslate"><span class="pre">π</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#the-golden-ratio">The Golden ratio</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#a-reflective-association">A (reflective) <code class="docutils literal notranslate"><span class="pre">Association</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#some-fractions-with-kisses-by-mediants">Some <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s, with kisses by <em>mediants</em></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#magnitude-hierarchy-again"><code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy, again</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hierarchies">1.2. Hierarchies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#magnitude-hierarchy">1.2.1. <code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-character">1.2.1.1. The character <code class="docutils literal notranslate"><span class="pre">π</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dateandtime-now">1.2.1.2. <code class="docutils literal notranslate"><span class="pre">DateAndTime</span></code>, now</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-integer-13-in-various-representations">1.2.1.3. The integer <code class="docutils literal notranslate"><span class="pre">13</span></code> in various representations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-irrational">1.2.1.4. The irrational <code class="docutils literal notranslate"><span class="pre">π</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-golden-ratio">1.2.1.5. The Golden ratio</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#a-reflective-association">1.2.1.6. A (reflective) <code class="docutils literal notranslate"><span class="pre">Association</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#some-fractions-with-kisses-by-mediants">1.2.1.7. Some <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s, with kisses by <em>mediants</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#magnitude-hierarchy-again">1.2.1.8. <code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy, again</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#collection-hierarchy"><code class="docutils literal notranslate"><span class="pre">Collection</span></code> hierarchy</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#lorem-ipsum">Lorem ipsum</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#an-array-of-generalized-fibonacci-numbers">An <code class="docutils literal notranslate"><span class="pre">Array</span></code> of (generalized) Fibonacci numbers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#some-bytearrays">Some <code class="docutils literal notranslate"><span class="pre">ByteArray</span></code>s</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#binary-reflected-gray-codes">Binary Reflected Gray Codes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#a-heap-step-by-step-construction">A <code class="docutils literal notranslate"><span class="pre">Heap</span></code>, step by step construction</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#a-set">A <code class="docutils literal notranslate"><span class="pre">Set</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#a-dictionary">A <code class="docutils literal notranslate"><span class="pre">Dictionary</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#a-bag">A <code class="docutils literal notranslate"><span class="pre">Bag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collection-hierarchy">1.2.2. <code class="docutils literal notranslate"><span class="pre">Collection</span></code> hierarchy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lorem-ipsum">1.2.2.1. Lorem ipsum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#an-array-of-generalized-fibonacci-numbers">1.2.2.2. An <code class="docutils literal notranslate"><span class="pre">Array</span></code> of (generalized) Fibonacci numbers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#some-bytearrays">1.2.2.3. Some <code class="docutils literal notranslate"><span class="pre">ByteArray</span></code>s</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#binary-reflected-gray-codes">1.2.2.4. Binary Reflected Gray Codes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#a-heap-step-by-step-construction">1.2.2.5. A <code class="docutils literal notranslate"><span class="pre">Heap</span></code>, step by step construction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#a-set">1.2.2.6. A <code class="docutils literal notranslate"><span class="pre">Set</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#a-dictionary">1.2.2.7. A <code class="docutils literal notranslate"><span class="pre">Dictionary</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#a-bag">1.2.2.8. A <code class="docutils literal notranslate"><span class="pre">Bag</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#random-hierarchy"><code class="docutils literal notranslate"><span class="pre">Random</span></code> hierarchy</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#the-uniform-distribution">The <em>uniform</em> distribution</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#the-exponential-distribution">The <em>exponential</em> distribution</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#the-gaussian-distribution">The <em>gaussian</em> distribution</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#the-bivariate-gaussian-distribution">The <em>bivariate gaussian</em> distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#random-hierarchy">1.2.3. <code class="docutils literal notranslate"><span class="pre">Random</span></code> hierarchy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-uniform-distribution">1.2.3.1. The <em>uniform</em> distribution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-exponential-distribution">1.2.3.2. The <em>exponential</em> distribution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-gaussian-distribution">1.2.3.3. The <em>gaussian</em> distribution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-bivariate-gaussian-distribution">1.2.3.4. The <em>bivariate gaussian</em> distribution</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#rbnode-hierarchy"><code class="docutils literal notranslate"><span class="pre">RBNode</span></code> hierarchy</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#a-quine-rbprogramnode">A quine <code class="docutils literal notranslate"><span class="pre">RBProgramNode</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rbnode-hierarchy">1.2.4. <code class="docutils literal notranslate"><span class="pre">RBNode</span></code> hierarchy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#a-quine-rbprogramnode">1.2.4.1. A quine <code class="docutils literal notranslate"><span class="pre">RBProgramNode</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../symbolic/symbolic.html">Symbolic computation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/linked-allocation.html">Linked memory allocation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic/symbolic.html">2. Symbolic computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/linked-allocation.html">3. Linked memory allocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">4. Bibliography</a></li>
 </ul>
 
 <div class="relations">
@@ -109,7 +109,7 @@
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="../index.html" title="previous chapter">Data Structures in Smalltalk</a></li>
-      <li>Next: <a href="../symbolic/symbolic.html" title="next chapter">Symbolic computation</a></li>
+      <li>Next: <a href="../symbolic/symbolic.html" title="next chapter"><span class="section-number">2. </span>Symbolic computation</a></li>
   </ul></li>
 </ul>
 </div>
@@ -144,7 +144,7 @@
           <a href="../index.html" title="Previous document">Data Structures in Smalltalk</a>
         </li>
         <li>
-          <a href="../symbolic/symbolic.html" title="Next document">Symbolic computation</a>
+          <a href="../symbolic/symbolic.html" title="Next document"><span class="section-number">2. </span>Symbolic computation</a>
           &rarr;
         </li>
     </ul>
@@ -155,13 +155,13 @@
           <div class="body" role="main">
             
   <div class="section" id="pharo">
-<h1>Pharo<a class="headerlink" href="#pharo" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">1. </span>Pharo<a class="headerlink" href="#pharo" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="object-model">
-<h2>Object model<a class="headerlink" href="#object-model" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.1. </span>Object model<a class="headerlink" href="#object-model" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="for-a-fistful-of-objects">
-<h3>For a fistful of objects<a class="headerlink" href="#for-a-fistful-of-objects" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.1.1. </span>For a fistful of objects<a class="headerlink" href="#for-a-fistful-of-objects" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="an-object-simply">
-<h4>An <code class="docutils literal notranslate"><span class="pre">Object</span></code>, simply<a class="headerlink" href="#an-object-simply" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.1.1.1. </span>An <code class="docutils literal notranslate"><span class="pre">Object</span></code>, simply<a class="headerlink" href="#an-object-simply" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-0"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectobject"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectObject</span>
 
@@ -172,7 +172,7 @@
 <div><img alt="../_images/EssentialsObjectTest-testInspectObject.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectObject.svg" /></div></blockquote>
 </div>
 <div class="section" id="nil-even-more-simpler">
-<h4><code class="docutils literal notranslate"><span class="pre">nil</span></code>, even more simpler<a class="headerlink" href="#nil-even-more-simpler" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.1.1.2. </span><code class="docutils literal notranslate"><span class="pre">nil</span></code>, even more simpler<a class="headerlink" href="#nil-even-more-simpler" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-1"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectnil"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectNil</span>
 
@@ -183,7 +183,7 @@
 <div><img alt="../_images/EssentialsObjectTest-testInspectNil.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectNil.svg" /></div></blockquote>
 </div>
 <div class="section" id="true-and-false">
-<h4><code class="docutils literal notranslate"><span class="pre">true</span></code> and <code class="docutils literal notranslate"><span class="pre">false</span></code><a class="headerlink" href="#true-and-false" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.1.1.3. </span><code class="docutils literal notranslate"><span class="pre">true</span></code> and <code class="docutils literal notranslate"><span class="pre">false</span></code><a class="headerlink" href="#true-and-false" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspecttrueandfalse"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectTrueAndFalse</span>
 
@@ -198,7 +198,7 @@
 <div><img alt="../_images/EssentialsObjectTest-testInspectTrueAndFalse.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectTrueAndFalse.svg" /></div></blockquote>
 </div>
 <div class="section" id="a-point">
-<h4>A <code class="docutils literal notranslate"><span class="pre">Point</span></code><a class="headerlink" href="#a-point" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.1.1.4. </span>A <code class="docutils literal notranslate"><span class="pre">Point</span></code><a class="headerlink" href="#a-point" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectpoint"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectPoint</span>
 
@@ -209,7 +209,7 @@
 <div><img alt="../_images/EssentialsObjectTest-testInspectPoint.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectPoint.svg" /></div></blockquote>
 </div>
 <div class="section" id="the-color-gray-translucent">
-<h4>The <code class="docutils literal notranslate"><span class="pre">Color</span></code> gray, translucent<a class="headerlink" href="#the-color-gray-translucent" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.1.1.5. </span>The <code class="docutils literal notranslate"><span class="pre">Color</span></code> gray, translucent<a class="headerlink" href="#the-color-gray-translucent" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-4"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectcolorgray"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectColorGray</span>
 
@@ -220,7 +220,7 @@
 <div><img alt="../_images/EssentialsObjectTest-testInspectColorGray.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectColorGray.svg" /></div></blockquote>
 </div>
 <div class="section" id="a-rsshape-of-a-polygon-quoting-itself">
-<h4>A <code class="docutils literal notranslate"><span class="pre">RSShape</span></code> of a polygon, quoting itself<a class="headerlink" href="#a-rsshape-of-a-polygon-quoting-itself" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.1.1.6. </span>A <code class="docutils literal notranslate"><span class="pre">RSShape</span></code> of a polygon, quoting itself<a class="headerlink" href="#a-rsshape-of-a-polygon-quoting-itself" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-5"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectrspolygon"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectRSPolygon</span>
 
@@ -237,7 +237,7 @@
 <div><img alt="../_images/EssentialsObjectTest-testInspectRSPolygon.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectRSPolygon.svg" /></div></blockquote>
 </div>
 <div class="section" id="a-context">
-<h4>A <code class="docutils literal notranslate"><span class="pre">Context</span></code><a class="headerlink" href="#a-context" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.1.1.7. </span>A <code class="docutils literal notranslate"><span class="pre">Context</span></code><a class="headerlink" href="#a-context" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectcontext"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectContext</span>
 
@@ -249,7 +249,7 @@
 </div>
 </div>
 <div class="section" id="classes-and-superclasses-of-object-and-trait">
-<h3>Classes and superclasses of <code class="docutils literal notranslate"><span class="pre">Object</span></code> and <code class="docutils literal notranslate"><span class="pre">Trait</span></code><a class="headerlink" href="#classes-and-superclasses-of-object-and-trait" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.1.2. </span>Classes and superclasses of <code class="docutils literal notranslate"><span class="pre">Object</span></code> and <code class="docutils literal notranslate"><span class="pre">Trait</span></code><a class="headerlink" href="#classes-and-superclasses-of-object-and-trait" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectobjectmodel"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectObjectModel</span>
 
@@ -263,9 +263,9 @@
 </div>
 </div>
 <div class="section" id="hierarchies">
-<h2>Hierarchies<a class="headerlink" href="#hierarchies" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.2. </span>Hierarchies<a class="headerlink" href="#hierarchies" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="magnitude-hierarchy">
-<h3><code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy<a class="headerlink" href="#magnitude-hierarchy" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.2.1. </span><code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy<a class="headerlink" href="#magnitude-hierarchy" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testmagnitudesubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testMagnitudeSubclasses</span>
 
@@ -275,7 +275,7 @@
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testMagnitudeSubclasses.svg" class="align-center" src="../_images/EssentialsObjectTest-testMagnitudeSubclasses.svg" /></div></blockquote>
 <div class="section" id="the-character">
-<h4>The character <code class="docutils literal notranslate"><span class="pre">π</span></code><a class="headerlink" href="#the-character" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.1.1. </span>The character <code class="docutils literal notranslate"><span class="pre">π</span></code><a class="headerlink" href="#the-character" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-9"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectcharacterpi"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectCharacterPi</span>
 
@@ -286,7 +286,7 @@
 <div><img alt="../_images/EssentialsObjectTest-testInspectCharacterPi.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectCharacterPi.svg" /></div></blockquote>
 </div>
 <div class="section" id="dateandtime-now">
-<h4><code class="docutils literal notranslate"><span class="pre">DateAndTime</span></code>, now<a class="headerlink" href="#dateandtime-now" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.1.2. </span><code class="docutils literal notranslate"><span class="pre">DateAndTime</span></code>, now<a class="headerlink" href="#dateandtime-now" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-10"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectdatetimenow"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectDatetimeNow</span>
 
@@ -297,7 +297,7 @@
 <div><img alt="../_images/EssentialsObjectTest-testInspectDatetimeNow.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectDatetimeNow.svg" /></div></blockquote>
 </div>
 <div class="section" id="the-integer-13-in-various-representations">
-<h4>The integer <code class="docutils literal notranslate"><span class="pre">13</span></code> in various representations<a class="headerlink" href="#the-integer-13-in-various-representations" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.1.3. </span>The integer <code class="docutils literal notranslate"><span class="pre">13</span></code> in various representations<a class="headerlink" href="#the-integer-13-in-various-representations" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-11"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectinteger13"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectInteger13</span>
 
@@ -318,7 +318,7 @@
 <div><img alt="../_images/EssentialsObjectTest-testInspectInteger13Detailed.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectInteger13Detailed.svg" /></div></blockquote>
 </div>
 <div class="section" id="the-irrational">
-<h4>The irrational <code class="docutils literal notranslate"><span class="pre">π</span></code><a class="headerlink" href="#the-irrational" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.1.4. </span>The irrational <code class="docutils literal notranslate"><span class="pre">π</span></code><a class="headerlink" href="#the-irrational" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-13"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfloatpi"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectFloatPi</span>
 
@@ -329,7 +329,7 @@
 <div><img alt="../_images/EssentialsObjectTest-testInspectFloatPi.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectFloatPi.svg" /></div></blockquote>
 </div>
 <div class="section" id="the-golden-ratio">
-<h4>The Golden ratio<a class="headerlink" href="#the-golden-ratio" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.1.5. </span>The Golden ratio<a class="headerlink" href="#the-golden-ratio" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-14"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectgoldenratio"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectGoldenRatio</span>
 
@@ -340,7 +340,7 @@
 <div><img alt="../_images/EssentialsObjectTest-testInspectGoldenRatio.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectGoldenRatio.svg" /></div></blockquote>
 </div>
 <div class="section" id="a-reflective-association">
-<h4>A (reflective) <code class="docutils literal notranslate"><span class="pre">Association</span></code><a class="headerlink" href="#a-reflective-association" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.1.6. </span>A (reflective) <code class="docutils literal notranslate"><span class="pre">Association</span></code><a class="headerlink" href="#a-reflective-association" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-15"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectassociation"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectAssociation</span>
 
@@ -351,7 +351,7 @@
 <div><img alt="../_images/EssentialsObjectTest-testInspectAssociation.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectAssociation.svg" /></div></blockquote>
 </div>
 <div class="section" id="some-fractions-with-kisses-by-mediants">
-<h4>Some <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s, with kisses by <em>mediants</em><a class="headerlink" href="#some-fractions-with-kisses-by-mediants" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.1.7. </span>Some <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s, with kisses by <em>mediants</em><a class="headerlink" href="#some-fractions-with-kisses-by-mediants" title="Permalink to this headline">¶</a></h4>
 <p>Have a look at the fraction <span class="math notranslate nohighlight">\(- {{1} \over {2}}\)</span> by the following inspector,</p>
 <span class="target" id="pharo-compiledMethod-16"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfraction"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectFraction</span>
@@ -536,7 +536,7 @@ hand, both <span id="id1">[<a class="reference internal" href="../bibliography.h
 </div>
 </div>
 <div class="section" id="magnitude-hierarchy-again">
-<h4><code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy, again<a class="headerlink" href="#magnitude-hierarchy-again" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.1.8. </span><code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy, again<a class="headerlink" href="#magnitude-hierarchy-again" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-26"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testmagnitudesubclassesslotsgraph"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testMagnitudeSubclassesSlotsGraph</span>
 
@@ -550,7 +550,7 @@ hand, both <span id="id1">[<a class="reference internal" href="../bibliography.h
 </div>
 </div>
 <div class="section" id="collection-hierarchy">
-<h3><code class="docutils literal notranslate"><span class="pre">Collection</span></code> hierarchy<a class="headerlink" href="#collection-hierarchy" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.2.2. </span><code class="docutils literal notranslate"><span class="pre">Collection</span></code> hierarchy<a class="headerlink" href="#collection-hierarchy" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="pharo-compiledMethod-27"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testcollectionsubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testCollectionSubclasses</span>
 
@@ -560,7 +560,7 @@ hand, both <span id="id1">[<a class="reference internal" href="../bibliography.h
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testCollectionSubclasses.svg" class="align-center" src="../_images/EssentialsObjectTest-testCollectionSubclasses.svg" /></div></blockquote>
 <div class="section" id="lorem-ipsum">
-<h4>Lorem ipsum<a class="headerlink" href="#lorem-ipsum" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.2.1. </span>Lorem ipsum<a class="headerlink" href="#lorem-ipsum" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-28"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectstring"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectString</span>
 
@@ -571,7 +571,7 @@ hand, both <span id="id1">[<a class="reference internal" href="../bibliography.h
 <div><img alt="../_images/EssentialsObjectTest-testInspectString.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectString.svg" /></div></blockquote>
 </div>
 <div class="section" id="an-array-of-generalized-fibonacci-numbers">
-<h4>An <code class="docutils literal notranslate"><span class="pre">Array</span></code> of (generalized) Fibonacci numbers<a class="headerlink" href="#an-array-of-generalized-fibonacci-numbers" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.2.2. </span>An <code class="docutils literal notranslate"><span class="pre">Array</span></code> of (generalized) Fibonacci numbers<a class="headerlink" href="#an-array-of-generalized-fibonacci-numbers" title="Permalink to this headline">¶</a></h4>
 <p>Two famous sequences of numbers <span id="id4">[<a class="reference internal" href="../bibliography.html#id5"><span>Slob</span></a>]</span> and <span id="id5">[<a class="reference internal" href="../bibliography.html#id4"><span>Sloc</span></a>]</span>, of <em>Fibonacci</em> numbers</p>
 <span class="target" id="pharo-compiledMethod-29"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspect20fibonaccinumbers"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspect20FibonacciNumbers</span>
@@ -709,7 +709,7 @@ rectangles</p>
 <p>consequently.</p>
 </div>
 <div class="section" id="some-bytearrays">
-<h4>Some <code class="docutils literal notranslate"><span class="pre">ByteArray</span></code>s<a class="headerlink" href="#some-bytearrays" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.2.3. </span>Some <code class="docutils literal notranslate"><span class="pre">ByteArray</span></code>s<a class="headerlink" href="#some-bytearrays" title="Permalink to this headline">¶</a></h4>
 <p>On one hand, the combination of the previous two types of objects allows us to inspect a <code class="docutils literal notranslate"><span class="pre">ByteArray</span></code> object,</p>
 <span class="target" id="pharo-compiledMethod-37"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testbytearrayloremipsum"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testByteArrayLoremIpsum</span>
@@ -739,7 +739,7 @@ testByteArrayLiteral
 <div><img alt="../_images/EssentialsObjectTest-testByteArrayInteger.svg" class="align-center" src="../_images/EssentialsObjectTest-testByteArrayInteger.svg" /></div></blockquote>
 </div>
 <div class="section" id="binary-reflected-gray-codes">
-<h4>Binary Reflected Gray Codes<a class="headerlink" href="#binary-reflected-gray-codes" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.2.4. </span>Binary Reflected Gray Codes<a class="headerlink" href="#binary-reflected-gray-codes" title="Permalink to this headline">¶</a></h4>
 <p>In <span id="id6">[<a class="reference internal" href="../bibliography.html#id11"><span>Gra53</span></a>]</span>, Frank Gray introduces <em>“an
 ordering of the binary numeral system such that two successive values differ in
 only one bit”</em> – from <a class="reference external" href="https://en.wikipedia.org/wiki/Gray_code">Wikipedia</a>,</p>
@@ -809,7 +809,7 @@ only one bit”</em> – from <a class="reference external" href="https://en.wik
 full dots stand for 1s.</p>
 </div>
 <div class="section" id="a-heap-step-by-step-construction">
-<h4>A <code class="docutils literal notranslate"><span class="pre">Heap</span></code>, step by step construction<a class="headerlink" href="#a-heap-step-by-step-construction" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.2.5. </span>A <code class="docutils literal notranslate"><span class="pre">Heap</span></code>, step by step construction<a class="headerlink" href="#a-heap-step-by-step-construction" title="Permalink to this headline">¶</a></h4>
 <p>Here we construct a heap according to the given sequence (<em>order matters</em>),</p>
 <span class="target" id="pharo-compiledMethod-44"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectheap"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectHeap</span>
@@ -887,7 +887,7 @@ full dots stand for 1s.</p>
 <img alt="../_images/EssentialsObjectTest-testInspectHeap-30.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-30.svg" /><p>which is the final object.</p>
 </div>
 <div class="section" id="a-set">
-<h4>A <code class="docutils literal notranslate"><span class="pre">Set</span></code><a class="headerlink" href="#a-set" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.2.6. </span>A <code class="docutils literal notranslate"><span class="pre">Set</span></code><a class="headerlink" href="#a-set" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-45"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectset"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectSet</span>
 
@@ -907,7 +907,7 @@ full dots stand for 1s.</p>
 <div><img alt="../_images/EssentialsObjectTest-testInspectSet.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectSet.svg" /></div></blockquote>
 </div>
 <div class="section" id="a-dictionary">
-<h4>A <code class="docutils literal notranslate"><span class="pre">Dictionary</span></code><a class="headerlink" href="#a-dictionary" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.2.7. </span>A <code class="docutils literal notranslate"><span class="pre">Dictionary</span></code><a class="headerlink" href="#a-dictionary" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-46"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectdictionary"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectDictionary</span>
 
@@ -922,7 +922,7 @@ full dots stand for 1s.</p>
 <div><img alt="../_images/EssentialsObjectTest-testInspectDictionary.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectDictionary.svg" /></div></blockquote>
 </div>
 <div class="section" id="a-bag">
-<h4>A <code class="docutils literal notranslate"><span class="pre">Bag</span></code><a class="headerlink" href="#a-bag" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.2.8. </span>A <code class="docutils literal notranslate"><span class="pre">Bag</span></code><a class="headerlink" href="#a-bag" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-47"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectbag"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectBag</span>
 
@@ -934,7 +934,7 @@ full dots stand for 1s.</p>
 </div>
 </div>
 <div class="section" id="random-hierarchy">
-<h3><code class="docutils literal notranslate"><span class="pre">Random</span></code> hierarchy<a class="headerlink" href="#random-hierarchy" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.2.3. </span><code class="docutils literal notranslate"><span class="pre">Random</span></code> hierarchy<a class="headerlink" href="#random-hierarchy" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="pharo-compiledMethod-48"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testrandomsubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testRandomSubclasses</span>
 
@@ -944,7 +944,7 @@ full dots stand for 1s.</p>
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testRandomSubclasses.svg" class="align-center" src="../_images/EssentialsObjectTest-testRandomSubclasses.svg" /></div></blockquote>
 <div class="section" id="the-uniform-distribution">
-<h4>The <em>uniform</em> distribution<a class="headerlink" href="#the-uniform-distribution" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.3.1. </span>The <em>uniform</em> distribution<a class="headerlink" href="#the-uniform-distribution" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-49"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testuniform"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testUniform</span>
 
@@ -998,7 +998,7 @@ full dots stand for 1s.</p>
 <span id="id8">[<a class="reference internal" href="../bibliography.html#id8"><span>PM88</span></a>]</span> as the message’s comment states.</p>
 </div>
 <div class="section" id="the-exponential-distribution">
-<h4>The <em>exponential</em> distribution<a class="headerlink" href="#the-exponential-distribution" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.3.2. </span>The <em>exponential</em> distribution<a class="headerlink" href="#the-exponential-distribution" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-53"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testexponential"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testExponential</span>
 
@@ -1023,7 +1023,7 @@ full dots stand for 1s.</p>
 </div>
 </div>
 <div class="section" id="the-gaussian-distribution">
-<h4>The <em>gaussian</em> distribution<a class="headerlink" href="#the-gaussian-distribution" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.3.3. </span>The <em>gaussian</em> distribution<a class="headerlink" href="#the-gaussian-distribution" title="Permalink to this headline">¶</a></h4>
 <span class="target" id="pharo-compiledMethod-55"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testgaussian"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testGaussian</span>
 
@@ -1074,7 +1074,7 @@ full dots stand for 1s.</p>
 </div>
 </div>
 <div class="section" id="the-bivariate-gaussian-distribution">
-<h4>The <em>bivariate gaussian</em> distribution<a class="headerlink" href="#the-bivariate-gaussian-distribution" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.3.4. </span>The <em>bivariate gaussian</em> distribution<a class="headerlink" href="#the-bivariate-gaussian-distribution" title="Permalink to this headline">¶</a></h4>
 <p>A sample from a <em>bivariate</em> Gaussian distribution can be inspected by</p>
 <span class="target" id="pharo-compiledMethod-57"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testgaussianboxmuller"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testGaussianBoxMuller</span>
@@ -1109,7 +1109,7 @@ full dots stand for 1s.</p>
 </div>
 </div>
 <div class="section" id="rbnode-hierarchy">
-<h3><code class="docutils literal notranslate"><span class="pre">RBNode</span></code> hierarchy<a class="headerlink" href="#rbnode-hierarchy" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.2.4. </span><code class="docutils literal notranslate"><span class="pre">RBNode</span></code> hierarchy<a class="headerlink" href="#rbnode-hierarchy" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="pharo-compiledMethod-59"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testrbnodesubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testRBNodeSubclasses</span>
 
@@ -1119,7 +1119,7 @@ full dots stand for 1s.</p>
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testRBNodeSubclasses.svg" class="align-center" src="../_images/EssentialsObjectTest-testRBNodeSubclasses.svg" /></div></blockquote>
 <div class="section" id="a-quine-rbprogramnode">
-<h4>A quine <code class="docutils literal notranslate"><span class="pre">RBProgramNode</span></code><a class="headerlink" href="#a-quine-rbprogramnode" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.2.4.1. </span>A quine <code class="docutils literal notranslate"><span class="pre">RBProgramNode</span></code><a class="headerlink" href="#a-quine-rbprogramnode" title="Permalink to this headline">¶</a></h4>
 <p>The Scheme expression</p>
 <div class="highlight-scheme notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">quine</span> <span class="p">((</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">list </span><span class="nv">x</span> <span class="p">(</span><span class="nb">list </span><span class="p">(</span><span class="k">quote </span><span class="nv">quote</span><span class="p">)</span> <span class="nv">x</span><span class="p">)))</span>
                <span class="p">(</span><span class="k">quote </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">list </span><span class="nv">x</span> <span class="p">(</span><span class="nb">list </span><span class="p">(</span><span class="k">quote </span><span class="nv">quote</span><span class="p">)</span> <span class="nv">x</span><span class="p">))))))</span>
@@ -1170,7 +1170,7 @@ full dots stand for 1s.</p>
           <a href="../index.html" title="Previous document">Data Structures in Smalltalk</a>
         </li>
         <li>
-          <a href="../symbolic/symbolic.html" title="Next document">Symbolic computation</a>
+          <a href="../symbolic/symbolic.html" title="Next document"><span class="section-number">2. </span>Symbolic computation</a>
           &rarr;
         </li>
     </ul>
