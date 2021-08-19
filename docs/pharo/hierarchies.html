@@ -490,9 +490,9 @@ hand, both <span id="id1">[<a class="reference internal" href="../bibliography.h
    <span class="bp">self</span>
       <span class="nf">assert:</span> <span class="nv">ratios</span>
       <span class="nf">equals:</span>
-         <span class="ss">#(</span> <span class="m">1</span> <span class="m">0.6180339887498949</span> <span class="m">0.3819660112501051</span> <span class="m">0.2360679774997898</span>
-            <span class="m">0.1458980337503153</span> <span class="m">0.09016994374947451</span> <span class="m">0.05572809000084078</span>
-            <span class="m">0.03444185374863373</span> <span class="m">0.021286236252207047</span> <span class="m">0.013155617496426686</span> <span class="ss">)</span><span class="p">.</span>
+         <span class="ss">#(</span> <span class="m">1.618033988749895</span> <span class="m">1</span> <span class="m">0.6180339887498949</span> <span class="m">0.3819660112501051</span>
+            <span class="m">0.2360679774997898</span> <span class="m">0.1458980337503153</span> <span class="m">0.09016994374947451</span>
+            <span class="m">0.05572809000084078</span> <span class="m">0.03444185374863373</span> <span class="m">0.021286236252207047</span> <span class="ss">)</span><span class="p">.</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">ratios</span>
 </pre></div>
@@ -504,8 +504,8 @@ hand, both <span id="id1">[<a class="reference internal" href="../bibliography.h
 <span class="nf">goldenRatios</span>
 
    <span class="o">^</span> <span class="bp">self</span>
-        <span class="nf">gibonacciNumbersFirst:</span> <span class="m">1</span>
-        <span class="nf">second:</span> <span class="nc">Float</span> <span class="nf">silverRatio</span>
+        <span class="nf">gibonacciNumbersFirst:</span> <span class="nc">Float</span> <span class="nf">goldenRatio</span>
+        <span class="nf">second:</span> <span class="m">1</span>
         <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">a</span> <span class="o">:</span><span class="nv">b</span> <span class="o">|</span> <span class="nv">a</span> <span class="nf">-</span> <span class="nv">b</span> ]
 </pre></div>
 </div>
@@ -514,22 +514,17 @@ hand, both <span id="id1">[<a class="reference internal" href="../bibliography.h
 <span class="nf">testInspect10GoldenRectangles</span>
 
    <span class="o">|</span><span class="nv"> rectangles </span><span class="o">|</span>
-   <span class="nv">rectangles</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">testInspect10GoldenRatios</span> 
-                    <span class="nf">overlappingPairsCollect:</span> [ <span class="o">:</span><span class="nv">width</span> <span class="o">:</span><span class="nv">height</span> <span class="o">|</span> 
-                       <span class="nc">RSBox</span> <span class="nb">new</span>
-                          <span class="nf">cornerRadius:</span> <span class="nc">Float</span> <span class="nf">goldenRatio</span> <span class="nf">double</span><span class="p">;</span>
-                          <span class="nf">extent:</span> <span class="nv">width</span> <span class="nf">@</span> <span class="nv">height</span> <span class="nf">*</span> <span class="m">100</span><span class="p">;</span>
-                          <span class="nf">color:</span> <span class="nc">Color</span> <span class="nf">white</span><span class="p">;</span>
-                          <span class="nf">withBorder</span><span class="p">;</span>
-                          <span class="nf">yourself</span> ]<span class="p">.</span>
+   <span class="nv">rectangles</span> <span class="o">:=</span> <span class="nc">RSGroup</span> <span class="nf">withAll:</span>
+                    (<span class="bp">self</span> <span class="nf">testInspect10GoldenRatios</span> 
+                        <span class="nf">overlappingPairsCollect:</span> [ <span class="o">:</span><span class="nv">width</span> <span class="o">:</span><span class="nv">height</span> <span class="o">|</span> 
+                           <span class="nc">RSBox</span> <span class="nb">new</span>
+                              <span class="nf">cornerRadius:</span> <span class="nc">Float</span> <span class="nf">goldenRatio</span> <span class="nf">double</span><span class="p">;</span>
+                              <span class="nf">extent:</span> <span class="nv">width</span> <span class="nf">@</span> <span class="nv">height</span> <span class="nf">*</span> <span class="m">100</span><span class="p">;</span>
+                              <span class="nf">color:</span> <span class="nc">Color</span> <span class="nf">white</span><span class="p">;</span>
+                              <span class="nf">withBorder</span><span class="p">;</span>
+                              <span class="nf">yourself</span> ])<span class="p">.</span>
 
-   <span class="o">^</span> <span class="bp">self</span>
-        <span class="nf">exportSlotsGraphOf:</span> <span class="nv">rectangles</span>
-        <span class="nf">slotDescriptorsContext:</span>
-           (<span class="nc">SlotDescriptorsVisitor</span> <span class="nb">new</span> <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">aDescriptor</span> <span class="o">|</span> 
-               <span class="nv">aDescriptor</span>
-                  <span class="nf">inline:</span> <span class="bp">true</span><span class="p">;</span>
-                  <span class="nf">quote</span> ])
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">rectangles</span>
 </pre></div>
 </div>
 <blockquote>
@@ -540,7 +535,7 @@ hand, both <span id="id1">[<a class="reference internal" href="../bibliography.h
 
    <span class="o">|</span><span class="nv"> rectangles </span><span class="o">|</span>
    <span class="nv">rectangles</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">testInspect10GoldenRectangles</span> <span class="nf">foldr1:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">:</span><span class="nv">aBox</span> <span class="o">|</span> 
-                    <span class="nv">aBox</span> <span class="nf">rotateByRadians:</span> <span class="nc">Float</span> <span class="nf">pi</span> <span class="nf">half</span><span class="p">.</span>
+                    <span class="nv">aBox</span> <span class="nf">rotateByRadians:</span> <span class="nc">Float</span> <span class="nf">pi</span> <span class="nf">half</span> <span class="nf">negated</span><span class="p">.</span>
                     <span class="nc">RSLocation</span> <span class="nb">new</span> <span class="nf">left</span> <span class="nf">stick:</span> <span class="nv">aBox</span> <span class="nf">on:</span> <span class="nv">each</span><span class="p">.</span>
                     <span class="nc">RSComposite</span> <span class="nb">new</span>
                        <span class="nf">shapes:</span> { 
@@ -548,7 +543,7 @@ hand, both <span id="id1">[<a class="reference internal" href="../bibliography.h
                              <span class="nv">aBox</span> }<span class="p">;</span>
                        <span class="nf">yourself</span> ]<span class="p">.</span>
 
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportShapeOf:</span> <span class="nv">rectangles</span> <span class="nf">accessorBlock:</span> <span class="ss">#yourself</span>
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportShapeOf:</span> <span class="nv">rectangles</span>
 </pre></div>
 </div>
 <blockquote>
@@ -593,14 +588,8 @@ only one bit”</em> – from <a class="reference external" href="https://en.wik
 <span class="target" id="pharo-compiledMethod-33"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectbrgcodes"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectBRGCodes</span>
 
-   <span class="o">^</span> <span class="bp">self</span>
-        <span class="nf">exportSlotsGraphOf:</span>
-        ((<span class="m">0</span> <span class="nf">to:</span> <span class="m">15</span>) <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">each</span> <span class="nf">asShapeBRGCDots</span> ])
-        <span class="nf">slotDescriptorsContext:</span>
-           (<span class="nc">SlotDescriptorsVisitor</span> <span class="nb">new</span> <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">aDescriptor</span> <span class="o">|</span> 
-               <span class="nv">aDescriptor</span>
-                  <span class="nf">inline:</span> <span class="bp">true</span><span class="p">;</span>
-                  <span class="nf">quote</span> ])
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span>
+        ((<span class="m">0</span> <span class="nf">to:</span> <span class="m">15</span>) <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">each</span> <span class="nf">asShapeBRGCDots</span> ] <span class="nf">as:</span> <span class="nc">RSGroup</span>)
 </pre></div>
 </div>
 <blockquote>

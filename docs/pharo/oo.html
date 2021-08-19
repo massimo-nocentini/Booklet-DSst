@@ -170,21 +170,10 @@
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspectRSPolygon.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectRSPolygon.svg" /></div></blockquote>
 </div>
-<div class="section" id="a-context">
-<h3>A <code class="docutils literal notranslate"><span class="pre">Context</span></code><a class="headerlink" href="#a-context" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectcontext"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
-<span class="nf">testInspectContext</span>
-
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="bp">thisContext</span>
-</pre></div>
-</div>
-<blockquote>
-<div><img alt="../_images/EssentialsObjectTest-testInspectContext.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectContext.svg" /></div></blockquote>
-</div>
 </div>
 <div class="section" id="classes-and-superclasses-of-object-and-trait">
 <h2>Classes and superclasses of <code class="docutils literal notranslate"><span class="pre">Object</span></code> and <code class="docutils literal notranslate"><span class="pre">Trait</span></code><a class="headerlink" href="#classes-and-superclasses-of-object-and-trait" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectobjectmodel"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectobjectmodel"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectObjectModel</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> { 
@@ -194,6 +183,43 @@
 </div>
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspectObjectModel.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectObjectModel.svg" /></div></blockquote>
+</div>
+<div class="section" id="for-a-few-objects-more">
+<h2>For a few objects more<a class="headerlink" href="#for-a-few-objects-more" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-context">
+<h3>A <code class="docutils literal notranslate"><span class="pre">Context</span></code><a class="headerlink" href="#a-context" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectcontext"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="nf">testInspectContext</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="bp">thisContext</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/EssentialsObjectTest-testInspectContext.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectContext.svg" /></div></blockquote>
+</div>
+<div class="section" id="a-git-repository">
+<h3>A Git repository<a class="headerlink" href="#a-git-repository" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspecticerepository"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="nf">testInspectIceRepository</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span>
+        (<span class="nc">IceRepository</span> <span class="nf">registry</span> <span class="nf">detect:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> 
+            <span class="nv">each</span> <span class="nf">name</span> <span class="nf">=</span> <span class="s">&#39;Containers-HeapQ&#39;</span> ])
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/EssentialsObjectTest-testInspectIceRepository.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectIceRepository.svg" /></div></blockquote>
+<span class="target" id="pharo-compiledMethod-9"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspecticerepositorycommitsgraph"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="nf">testInspectIceRepositoryCommitsGraph</span>
+
+   <span class="o">^</span> <span class="bp">self</span>
+        <span class="nf">exportShapeOf:</span> <span class="bp">self</span> <span class="nf">testInspectIceRepository</span>
+        <span class="nf">accessorBlock:</span> <span class="ss">#asShapeCommitsGraph</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/EssentialsObjectTest-testInspectIceRepositoryCommitsGraph.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectIceRepositoryCommitsGraph.svg" /></div></blockquote>
+</div>
 </div>
 </div>
 

@@ -53,14 +53,6 @@ A ``RSShape`` of a polygon, quoting itself
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectRSPolygon.svg
     :align: center
 
-A ``Context``
-+++++++++++++
-
-.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectContext
-
-  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectContext.svg
-    :align: center
-
 Classes and superclasses of ``Object`` and ``Trait``
 ====================================================
 
@@ -70,4 +62,26 @@ Classes and superclasses of ``Object`` and ``Trait``
     :align: center
 
 
+For a few objects more 
+======================
 
+A ``Context``
++++++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectContext
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectContext.svg
+    :align: center
+
+A Git repository
+++++++++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectIceRepository
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectIceRepository.svg
+    :align: center
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectIceRepositoryCommitsGraph
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectIceRepositoryCommitsGraph.svg
+    :align: center
