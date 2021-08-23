@@ -194,6 +194,14 @@ consequently. The previous rectangles can be nested
 
 to have a comprehensive representation.
 
+One-to-Many descriptors
+-----------------------
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectOneToMany
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectOneToMany.svg
+    :align: center
+   
 Some ``ByteArray``\s
 ++++++++++++++++++++
 
