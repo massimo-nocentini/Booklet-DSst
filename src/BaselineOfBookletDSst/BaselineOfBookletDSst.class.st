@@ -59,7 +59,8 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     testByteArrayLiteral testByteArrayInteger testInspectDictionary
 			     testInspectContext testInspectBag testInspect10GoldenRatios
 			     testInspect10GoldenRectangles testInspect10GoldenRectanglesNested
-			     testInspectIceRepository testInspectIceRepositoryCommitsGraph );
+			     testInspectIceRepository testInspectIceRepositoryCommitsGraph
+			     testInspectOneToMany );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'core-messages.json' ]
 		  ofPackage: self class package
