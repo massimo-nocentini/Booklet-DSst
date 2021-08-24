@@ -48,9 +48,10 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     testInspectInteger13Detailed testInspectGoldenRatio
 			     testInspectHeap testInspectSet testInspectString
 			     testInspect20FibonacciNumbers testInspect20LucasNumbers
-			     testInspectPoint testInspectBRGCodes #testInspectColorGray
-			     testInspectObject testInspectNil testInspectTrueAndFalse
-			     testInspectRSPolygon testInspectPoint testInspectRBNodesQuine
+			     testInspect20CatalanNumbers testInspectPoint testInspectBRGCodes
+			     #testInspectColorGray testInspectObject testInspectNil
+			     testInspectTrueAndFalse testInspectRSPolygon
+			     testInspectPoint testInspectRBNodesQuine
 			     testInspectFraction #testInspectFractionForKisses
 			     testInspectFractionKissing testInspectFractionReciprocalKissing
 			     testInspectFractionKissingEnumeration
@@ -60,7 +61,8 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     testInspectContext testInspectBag testInspect10GoldenRatios
 			     testInspect10GoldenRectangles testInspect10GoldenRectanglesNested
 			     testInspectIceRepository testInspectIceRepositoryCommitsGraph
-			     testInspectOneToMany );
+			     testInspectOneToMany testInspectPascalArray
+			     testInspectCatalanArray );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'core-messages.json' ]
 		  ofPackage: self class package
