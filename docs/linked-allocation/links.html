@@ -279,24 +279,12 @@ objects such that each node in the chain carries a <em>value</em> also, to have 
 <span class="target" id="pharo-compiledMethod-11"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-object"><div class="highlight"><pre><span></span><span class="c">&quot;Object, protocol associating&quot;</span>
 <span class="nf">~~&gt;</span> <span class="nv">aValueLinkOrNil</span>
 
-   <span class="c">&quot;Answer a ValueLink between self and aValueLinkOrNil.</span>
-<span class="c">   This message allows the receiver to be inserted in a chain of objects, terminated by nil.&quot;</span>
+   <span class="c">&quot;Answer a link of the same class of `aValueLinkOrNil`; if that argument is nil,</span>
+<span class="c">    then the Link hierarchy is used as fallback. Moreover, `aValueLinkOrNil` can be</span>
+<span class="c">    any object, in that case by dispatching of #asLinkPrepend:, that object is enclosed</span>
+<span class="c">    in a Link and then used to chain `self`. &quot;</span>
 
-   <span class="c">&quot;Code of ValueLink&gt;&gt;#nextLink: and ValueLink&gt;&gt;#value: are inline here for speed.&quot;</span>
-
-   <span class="c">&quot;(1 ~~&gt; nil) = ValueLink new value: 1&quot;</span>
-
-   <span class="c">&quot;(1 ~~&gt; &#39;one&#39;) value &gt;&gt;&gt; 1&quot;</span>
-
-   <span class="c">&quot;(1 ~~&gt; nil) nextLink &gt;&gt;&gt; nil&quot;</span>
-
-   <span class="c">&quot;Note that `value` can be ANY object; on the other hand, `nextLink` should be either another </span>
-<span class="c">   ValueLink object or nil.&quot;</span>
-
-   <span class="o">^</span> <span class="nc">ValueLink</span> <span class="nf">basicNew</span>
-        <span class="nf">value:</span> <span class="bp">self</span><span class="p">;</span>
-        <span class="nf">nextLink:</span> <span class="nv">aValueLinkOrNil</span><span class="p">;</span>
-        <span class="nf">yourself</span>
+   <span class="o">^</span> <span class="nv">aValueLinkOrNil</span> <span class="nf">asLinkPrepend:</span> <span class="bp">self</span>
 </pre></div>
 </div>
 <p>allows us to build a simple <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> as</p>
@@ -539,7 +527,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
 </div>
 <blockquote>
 <div><p>where</p>
-<span class="target" id="pharo-compiledMethod-24"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-object-yourself"><div class="highlight"><pre><span></span><span class="c">&quot;Object, protocol *Kernel-Extensions&quot;</span>
+<span class="target" id="pharo-compiledMethod-24"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-object-yourself"><div class="highlight"><pre><span></span><span class="c">&quot;Object, protocol *Containers-Essentials&quot;</span>
 <span class="nf">yourself:</span> <span class="nv">aBlock</span>
 
    <span class="c">&quot;I invoke the given block giving myself as argument if it needs to consume me.</span>

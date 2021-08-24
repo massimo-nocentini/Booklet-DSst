@@ -757,7 +757,12 @@ hand, both <span id="id1">[<a class="reference internal" href="../bibliography.h
 <span class="target" id="pharo-compiledMethod-40"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectonetomany"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectOneToMany</span>
 
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">10</span>) <span class="nf">~~&gt;</span> (<span class="m">11</span> <span class="nf">to:</span> <span class="m">20</span>) <span class="nf">asLink</span>
+   <span class="o">^</span> <span class="bp">self</span>
+        <span class="nf">exportSlotsGraphOf:</span> { <span class="s">&#39;hello&#39;</span><span class="p">.</span> <span class="s">&#39;world&#39;</span> } <span class="nf">~~&gt;</span> ({ 
+               <span class="m">42</span> <span class="nf">asValueHolder</span><span class="p">.</span>
+               <span class="nc">Float</span> <span class="nf">goldenRatio</span> <span class="nf">asValueHolder</span> } <span class="nf">~~&gt;</span> <span class="bp">nil</span>)
+        <span class="nf">slotDescriptorsContext:</span>
+        <span class="nc">SlotDescriptorsVisitorOneToManyForValueLinkTesting</span> <span class="nb">new</span>
 </pre></div>
 </div>
 <blockquote>
