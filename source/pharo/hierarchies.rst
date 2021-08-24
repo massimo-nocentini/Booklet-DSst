@@ -157,6 +157,26 @@ lie on
 
 .. pharo:autocompiledmethod:: Integer>>#gibonacciNumbersFirst:second:do:
 
+Another famous sequence :cite:`oeis/catalan-numbers` reads as
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspect20CatalanNumbers
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspect20CatalanNumbers.svg
+    :align: center
+
+2-Dimensional arrays
+++++++++++++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectPascalArray
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectPascalArray.svg
+    :align: center
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectCatalanArray
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectCatalanArray.svg
+    :align: center
+
 Golden ratios
 +++++++++++++
 
