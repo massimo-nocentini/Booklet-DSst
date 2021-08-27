@@ -239,7 +239,7 @@ On the other hand, a bare bone array of bytes can be built as in
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testByteArrayLiteral.svg
     :align: center
 
-and, in more simpler terms, even an ``Integer`` can be seen as an of array of this type
+and, in more simpler terms, even an ``Integer`` can be seen as an array of this type
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testByteArrayInteger
 
