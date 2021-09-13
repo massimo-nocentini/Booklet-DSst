@@ -74,7 +74,7 @@ BaselineOfBookletDSst >> scriptLinkMessagesForDoc [
 	<script: 'BaselineOfBookletDSst new scriptLinkMessagesForDoc'>
 	^ MetaSTExporter new
 		  selectors:
-			  #( do: next: nextOfLink: nextLink: nextInteger: asLinkedList
+			  #( do: next: nextFromLink: nextLink: nextInteger: asLinkedList
 			     testEmptyLink testLinkReferencingItself
 			     #testThreeLinksReferencingEachOther
 			     yourself: #testLinkNext3 testLinkReferencingAnotherLink
