@@ -3,10 +3,10 @@
 Either load it with:
 
 ```smalltalk
-Metacello new
+[ Metacello new
     baseline: 'BookletDSst';
     repository: 'github://massimo-nocentini/Booklet-DSst/src';
-    load.
+    load ] on: MCMergeOrLoadWarning do: [:warning | warning load ]
 ```
 
 or depend on it with:
