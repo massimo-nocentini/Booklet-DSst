@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LinkedList containers &#8212; Data Structures in Smalltalk  documentation</title>
+    <title>5. LinkedList containers &#8212; Data Structures in Smalltalk  documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -15,6 +15,8 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Storage pools" href="storage-pools.html" />
+    <link rel="prev" title="4. Links" href="links.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -43,17 +45,22 @@
 
 
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../pharo/pharo.html">1. Pharo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../symbolic/symbolic.html">2. Symbolic computation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation.html">3. Linked memory allocation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">4. Bibliography</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../pharo/oo.html">1. Object model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pharo/hierarchies.html">2. Hierarchies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic/divisibility.html">3. Divisibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">4. Links</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="storage-pools.html">6. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">7. Bibliography</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="links.html" title="previous chapter"><span class="section-number">4. </span>Links</a></li>
+      <li>Next: <a href="storage-pools.html" title="next chapter"><span class="section-number">6. </span>Storage pools</a></li>
   </ul></li>
 </ul>
 </div>
@@ -83,6 +90,14 @@
                 &nbsp;
   <nav id="rellinks">
     <ul>
+        <li>
+          &larr;
+          <a href="links.html" title="Previous document"><span class="section-number">4. </span>Links</a>
+        </li>
+        <li>
+          <a href="storage-pools.html" title="Next document"><span class="section-number">6. </span>Storage pools</a>
+          &rarr;
+        </li>
     </ul>
   </nav>
               </div>
@@ -91,7 +106,7 @@
           <div class="body" role="main">
             
   <div class="section" id="linkedlist-containers">
-<h1><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers<a class="headerlink" href="#linkedlist-containers" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">5. </span><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers<a class="headerlink" href="#linkedlist-containers" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects are small and allow us to compose them in an applicative
 way so that we can share part of a composite structure among different client
 objects so that those clients don’t observe any side effect on the
@@ -321,6 +336,14 @@ then all the values are kept as well</p>
                 &nbsp;
   <nav id="rellinks">
     <ul>
+        <li>
+          &larr;
+          <a href="links.html" title="Previous document"><span class="section-number">4. </span>Links</a>
+        </li>
+        <li>
+          <a href="storage-pools.html" title="Next document"><span class="section-number">6. </span>Storage pools</a>
+          &rarr;
+        </li>
     </ul>
   </nav>
               </div>

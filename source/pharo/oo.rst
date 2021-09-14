@@ -53,13 +53,6 @@ A ``RSShape`` of a polygon, quoting itself
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectRSPolygon.svg
     :align: center
 
-Classes and superclasses of ``Object`` and ``Trait``
-====================================================
-
-.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectObjectModel
-
-  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectObjectModel.svg
-    :align: center
 
 
 For a few objects more 

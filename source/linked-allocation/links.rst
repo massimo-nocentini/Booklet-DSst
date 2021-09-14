@@ -41,7 +41,7 @@ by the message ``next:`` understood by ``Link`` objects,
 
 that dispatches the message
 
-.. pharo:autocompiledmethod:: Link>>#nextOfLink:
+.. pharo:autocompiledmethod:: Link>>#nextFromLink:
 
 that dispatches back the message
 
@@ -62,10 +62,10 @@ and we can skip and move forward with
   .. image:: ../../../Containers-Links/images/CTLinksLinkTest-testLinkNext3.svg
     :align: center
 
-by means of polymorphism over the ``nextOfLink:`` message also undertood by
+by means of polymorphism over the ``nextFromLink:`` message also undertood by
 ``Integer`` objects,
 
-.. pharo:autocompiledmethod:: Integer>>#nextOfLink:
+.. pharo:autocompiledmethod:: Integer>>#nextFromLink:
 
 that dispatches back again to ``Link`` objects
 

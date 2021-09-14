@@ -12,9 +12,12 @@ Data Structures in Smalltalk
    :maxdepth: 4
    :numbered:
 
-   pharo/pharo.rst
-   symbolic/symbolic.rst
-   linked-allocation/linked-allocation.rst
+   pharo/oo.rst
+   pharo/hierarchies.rst
+   symbolic/divisibility.rst
+   linked-allocation/links.rst
+   linked-allocation/linkedlists.rst
+   linked-allocation/storage-pools.rst
    bibliography.rst
 
 Moreover, have a look at the :ref:`genindex`.  

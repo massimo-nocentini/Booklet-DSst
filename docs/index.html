@@ -15,7 +15,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="1. Pharo" href="pharo/pharo.html" />
+    <link rel="next" title="1. Object model" href="pharo/oo.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -45,17 +45,20 @@
 
 <h3>Navigation</h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pharo/pharo.html">1. Pharo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="symbolic/symbolic.html">2. Symbolic computation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/linked-allocation.html">3. Linked memory allocation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">4. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pharo/oo.html">1. Object model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pharo/hierarchies.html">2. Hierarchies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbolic/divisibility.html">3. Divisibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/links.html">4. Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/linkedlists.html">5. <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">6. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">7. Bibliography</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="#">Documentation overview</a><ul>
-      <li>Next: <a href="pharo/pharo.html" title="next chapter"><span class="section-number">1. </span>Pharo</a></li>
+      <li>Next: <a href="pharo/oo.html" title="next chapter"><span class="section-number">1. </span>Object model</a></li>
   </ul></li>
 </ul>
 </div>
@@ -86,7 +89,7 @@
   <nav id="rellinks">
     <ul>
         <li>
-          <a href="pharo/pharo.html" title="Next document"><span class="section-number">1. </span>Pharo</a>
+          <a href="pharo/oo.html" title="Next document"><span class="section-number">1. </span>Object model</a>
           &rarr;
         </li>
     </ul>
@@ -100,101 +103,95 @@
 <h1>Data Structures in Smalltalk<a class="headerlink" href="#data-structures-in-smalltalk" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pharo/pharo.html">1. Pharo</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pharo/pharo.html#object-model">1.1. Object model</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pharo/pharo.html#for-a-fistful-of-objects">1.1.1. For a fistful of objects</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#an-object-simply">1.1.1.1. An <code class="docutils literal notranslate"><span class="pre">Object</span></code>, simply</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#nil-even-more-simpler">1.1.1.2. <code class="docutils literal notranslate"><span class="pre">nil</span></code>, even more simpler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#true-and-false">1.1.1.3. <code class="docutils literal notranslate"><span class="pre">true</span></code> and <code class="docutils literal notranslate"><span class="pre">false</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#a-point">1.1.1.4. A <code class="docutils literal notranslate"><span class="pre">Point</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#the-color-gray-translucent">1.1.1.5. The <code class="docutils literal notranslate"><span class="pre">Color</span></code> gray, translucent</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#a-rsshape-of-a-polygon-quoting-itself">1.1.1.6. A <code class="docutils literal notranslate"><span class="pre">RSShape</span></code> of a polygon, quoting itself</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pharo/oo.html">1. Object model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pharo/oo.html#for-a-fistful-of-objects">1.1. For a fistful of objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pharo/oo.html#an-object-simply">1.1.1. An <code class="docutils literal notranslate"><span class="pre">Object</span></code>, simply</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/oo.html#nil-even-more-simpler">1.1.2. <code class="docutils literal notranslate"><span class="pre">nil</span></code>, even more simpler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/oo.html#true-and-false">1.1.3. <code class="docutils literal notranslate"><span class="pre">true</span></code> and <code class="docutils literal notranslate"><span class="pre">false</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/oo.html#a-point">1.1.4. A <code class="docutils literal notranslate"><span class="pre">Point</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/oo.html#the-color-gray-translucent">1.1.5. The <code class="docutils literal notranslate"><span class="pre">Color</span></code> gray, translucent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/oo.html#a-rsshape-of-a-polygon-quoting-itself">1.1.6. A <code class="docutils literal notranslate"><span class="pre">RSShape</span></code> of a polygon, quoting itself</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="pharo/pharo.html#classes-and-superclasses-of-object-and-trait">1.1.2. Classes and superclasses of <code class="docutils literal notranslate"><span class="pre">Object</span></code> and <code class="docutils literal notranslate"><span class="pre">Trait</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pharo/pharo.html#for-a-few-objects-more">1.1.3. For a few objects more</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#a-context">1.1.3.1. A <code class="docutils literal notranslate"><span class="pre">Context</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#a-git-repository">1.1.3.2. A Git repository</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pharo/pharo.html#hierarchies">1.2. Hierarchies</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pharo/pharo.html#magnitude-hierarchy">1.2.1. <code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#the-character">1.2.1.1. The character <code class="docutils literal notranslate"><span class="pre">π</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#dateandtime-now">1.2.1.2. <code class="docutils literal notranslate"><span class="pre">DateAndTime</span></code>, now</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#the-integer-13-in-various-representations">1.2.1.3. The integer <code class="docutils literal notranslate"><span class="pre">13</span></code> in various representations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#the-irrational">1.2.1.4. The irrational <code class="docutils literal notranslate"><span class="pre">π</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#a-reflective-association">1.2.1.5. A (reflective) <code class="docutils literal notranslate"><span class="pre">Association</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#some-fractions-with-kisses-by-mediants">1.2.1.6. Some <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s, with kisses by <em>mediants</em></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#magnitude-hierarchy-again">1.2.1.7. <code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy, again</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="pharo/pharo.html#collection-hierarchy">1.2.2. <code class="docutils literal notranslate"><span class="pre">Collection</span></code> hierarchy</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#lorem-ipsum">1.2.2.1. Lorem ipsum</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#an-array-of-generalized-fibonacci-numbers">1.2.2.2. An <code class="docutils literal notranslate"><span class="pre">Array</span></code> of (generalized) Fibonacci numbers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#dimensional-arrays">1.2.2.3. 2-Dimensional arrays</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#golden-ratios">1.2.2.4. Golden ratios</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#some-bytearrays">1.2.2.5. Some <code class="docutils literal notranslate"><span class="pre">ByteArray</span></code>s</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#binary-reflected-gray-codes">1.2.2.6. Binary Reflected Gray Codes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#a-heap-step-by-step-construction">1.2.2.7. A <code class="docutils literal notranslate"><span class="pre">Heap</span></code>, step by step construction</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#a-set">1.2.2.8. A <code class="docutils literal notranslate"><span class="pre">Set</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#a-dictionary">1.2.2.9. A <code class="docutils literal notranslate"><span class="pre">Dictionary</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#a-bag">1.2.2.10. A <code class="docutils literal notranslate"><span class="pre">Bag</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="pharo/pharo.html#random-hierarchy">1.2.3. <code class="docutils literal notranslate"><span class="pre">Random</span></code> hierarchy</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#the-uniform-distribution">1.2.3.1. The <em>uniform</em> distribution</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#the-exponential-distribution">1.2.3.2. The <em>exponential</em> distribution</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#the-gaussian-distribution">1.2.3.3. The <em>gaussian</em> distribution</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#the-bivariate-gaussian-distribution">1.2.3.4. The <em>bivariate gaussian</em> distribution</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="pharo/pharo.html#rbnode-hierarchy">1.2.4. <code class="docutils literal notranslate"><span class="pre">RBNode</span></code> hierarchy</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pharo/pharo.html#a-quine-rbprogramnode">1.2.4.1. A quine <code class="docutils literal notranslate"><span class="pre">RBProgramNode</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pharo/oo.html#for-a-few-objects-more">1.2. For a few objects more</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pharo/oo.html#a-context">1.2.1. A <code class="docutils literal notranslate"><span class="pre">Context</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/oo.html#a-git-repository">1.2.2. A Git repository</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="pharo/hierarchies.html">2. Hierarchies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pharo/hierarchies.html#object-and-trait-and-their-superclasses">2.1. <code class="docutils literal notranslate"><span class="pre">Object</span></code> and <code class="docutils literal notranslate"><span class="pre">Trait</span></code> and their superclasses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pharo/hierarchies.html#magnitude-hierarchy">2.2. <code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#the-character">2.2.1. The character <code class="docutils literal notranslate"><span class="pre">π</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#dateandtime-now">2.2.2. <code class="docutils literal notranslate"><span class="pre">DateAndTime</span></code>, now</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#the-integer-13-in-various-representations">2.2.3. The integer <code class="docutils literal notranslate"><span class="pre">13</span></code> in various representations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#the-irrational">2.2.4. The irrational <code class="docutils literal notranslate"><span class="pre">π</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#a-reflective-association">2.2.5. A (reflective) <code class="docutils literal notranslate"><span class="pre">Association</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#some-fractions-with-kisses-by-mediants">2.2.6. Some <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s, with kisses by <em>mediants</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#magnitude-hierarchy-again">2.2.7. <code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy, again</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="symbolic/symbolic.html">2. Symbolic computation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="symbolic/symbolic.html#divisibility">2.1. Divisibility</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="symbolic/symbolic.html#quotients-and-remainders">2.1.1. Quotients and remainders</a></li>
-<li class="toctree-l3"><a class="reference internal" href="symbolic/symbolic.html#greatest-common-divisor">2.1.2. Greatest Common Divisor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="symbolic/symbolic.html#diophantine-equations">2.1.3. Diophantine equations</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="symbolic/symbolic.html#coprimes">2.1.3.1. Coprimes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="symbolic/symbolic.html#mathbb-z-17-field">2.1.3.2. <span class="math notranslate nohighlight">\(\mathbb{Z}_{17}\)</span> field</a></li>
-<li class="toctree-l4"><a class="reference internal" href="symbolic/symbolic.html#gcd-f-n-f-n-1-where-f-n-is-the-n-th-fibonacci-number">2.1.3.3. <span class="math notranslate nohighlight">\(GCD(F_{n}, F_{n+1})\)</span>, where <span class="math notranslate nohighlight">\(F_{n}\)</span> is the <span class="math notranslate nohighlight">\(n\)</span>-th Fibonacci number</a></li>
-<li class="toctree-l4"><a class="reference internal" href="symbolic/symbolic.html#kissing-fractions">2.1.3.4. Kissing <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pharo/hierarchies.html#collection-hierarchy">2.3. <code class="docutils literal notranslate"><span class="pre">Collection</span></code> hierarchy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#lorem-ipsum">2.3.1. Lorem ipsum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#an-array-of-generalized-fibonacci-numbers">2.3.2. An <code class="docutils literal notranslate"><span class="pre">Array</span></code> of (generalized) Fibonacci numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#dimensional-arrays">2.3.3. 2-Dimensional arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#golden-ratios">2.3.4. Golden ratios</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pharo/hierarchies.html#one-to-many-descriptors">2.3.4.1. One-to-Many descriptors</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#some-bytearrays">2.3.5. Some <code class="docutils literal notranslate"><span class="pre">ByteArray</span></code>s</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#binary-reflected-gray-codes">2.3.6. Binary Reflected Gray Codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#a-heap-step-by-step-construction">2.3.7. A <code class="docutils literal notranslate"><span class="pre">Heap</span></code>, step by step construction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#a-set">2.3.8. A <code class="docutils literal notranslate"><span class="pre">Set</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#a-dictionary">2.3.9. A <code class="docutils literal notranslate"><span class="pre">Dictionary</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#a-bag">2.3.10. A <code class="docutils literal notranslate"><span class="pre">Bag</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pharo/hierarchies.html#random-hierarchy">2.4. <code class="docutils literal notranslate"><span class="pre">Random</span></code> hierarchy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#the-uniform-distribution">2.4.1. The <em>uniform</em> distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#the-exponential-distribution">2.4.2. The <em>exponential</em> distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#the-gaussian-distribution">2.4.3. The <em>gaussian</em> distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#the-bivariate-gaussian-distribution">2.4.4. The <em>bivariate gaussian</em> distribution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pharo/hierarchies.html#rbnode-hierarchy">2.5. <code class="docutils literal notranslate"><span class="pre">RBNode</span></code> hierarchy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#a-quine-rbprogramnode">2.5.1. A quine <code class="docutils literal notranslate"><span class="pre">RBProgramNode</span></code></a></li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/linked-allocation.html">3. Linked memory allocation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="linked-allocation/linked-allocation.html#links">3.1. Links</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#link-objects">3.1.1. <code class="docutils literal notranslate"><span class="pre">Link</span></code> objects</a></li>
-<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#valuelink-objects">3.1.2. <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="linked-allocation/linked-allocation.html#topological-sorting">3.1.2.1. Topological sorting</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="linked-allocation/linked-allocation.html#linkedlist-containers">3.2. <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linked-allocation/linked-allocation.html#storage-pools">3.3. Storage pools</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#stack-pool">3.3.1. <code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#queue-pool">3.3.2. <code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#circularlist-pool">3.3.3. <code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="linked-allocation/linked-allocation.html#addition-of-polynomials">3.3.3.1. Addition of <em>polynomials</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbolic/divisibility.html">3. Divisibility</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="symbolic/divisibility.html#quotients-and-remainders">3.1. Quotients and remainders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symbolic/divisibility.html#greatest-common-divisor">3.2. Greatest Common Divisor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symbolic/divisibility.html#diophantine-equations">3.3. Diophantine equations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#coprimes">3.3.1. Coprimes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#mathbb-z-17-field">3.3.2. <span class="math notranslate nohighlight">\(\mathbb{Z}_{17}\)</span> field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#gcd-f-n-f-n-1-where-f-n-is-the-n-th-fibonacci-number">3.3.3. <span class="math notranslate nohighlight">\(GCD(F_{n}, F_{n+1})\)</span>, where <span class="math notranslate nohighlight">\(F_{n}\)</span> is the <span class="math notranslate nohighlight">\(n\)</span>-th Fibonacci number</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#kissing-fractions">3.3.4. Kissing <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/links.html">4. Links</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="linked-allocation/links.html#link-objects">4.1. <code class="docutils literal notranslate"><span class="pre">Link</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linked-allocation/links.html#valuelink-objects">4.2. <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="linked-allocation/links.html#topological-sorting">4.2.1. Topological sorting</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">4. Bibliography</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/linkedlists.html">5. <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">6. Storage pools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="linked-allocation/storage-pools.html#stack-pool">6.1. <code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linked-allocation/storage-pools.html#queue-pool">6.2. <code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linked-allocation/storage-pools.html#circularlist-pool">6.3. <code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="linked-allocation/storage-pools.html#addition-of-polynomials">6.3.1. Addition of <em>polynomials</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">7. Bibliography</a></li>
 </ul>
 </div>
 <p>Moreover, have a look at the <a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a>.</p>
@@ -207,7 +204,7 @@
   <nav id="rellinks">
     <ul>
         <li>
-          <a href="pharo/pharo.html" title="Next document"><span class="section-number">1. </span>Pharo</a>
+          <a href="pharo/oo.html" title="Next document"><span class="section-number">1. </span>Object model</a>
           &rarr;
         </li>
     </ul>

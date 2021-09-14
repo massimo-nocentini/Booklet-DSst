@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Links &#8212; Data Structures in Smalltalk  documentation</title>
+    <title>4. Links &#8212; Data Structures in Smalltalk  documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -15,6 +15,8 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. LinkedList containers" href="linkedlists.html" />
+    <link rel="prev" title="3. Divisibility" href="../symbolic/divisibility.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -43,17 +45,29 @@
 
 
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../pharo/pharo.html">1. Pharo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../symbolic/symbolic.html">2. Symbolic computation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation.html">3. Linked memory allocation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">4. Bibliography</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../pharo/oo.html">1. Object model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pharo/hierarchies.html">2. Hierarchies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic/divisibility.html">3. Divisibility</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Links</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#link-objects">4.1. <code class="docutils literal notranslate"><span class="pre">Link</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#valuelink-objects">4.2. <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#topological-sorting">4.2.1. Topological sorting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="linkedlists.html">5. <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="storage-pools.html">6. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">7. Bibliography</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../symbolic/divisibility.html" title="previous chapter"><span class="section-number">3. </span>Divisibility</a></li>
+      <li>Next: <a href="linkedlists.html" title="next chapter"><span class="section-number">5. </span><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
   </ul></li>
 </ul>
 </div>
@@ -83,6 +97,14 @@
                 &nbsp;
   <nav id="rellinks">
     <ul>
+        <li>
+          &larr;
+          <a href="../symbolic/divisibility.html" title="Previous document"><span class="section-number">3. </span>Divisibility</a>
+        </li>
+        <li>
+          <a href="linkedlists.html" title="Next document"><span class="section-number">5. </span><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a>
+          &rarr;
+        </li>
     </ul>
   </nav>
               </div>
@@ -91,9 +113,9 @@
           <div class="body" role="main">
             
   <div class="section" id="links">
-<h1>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4. </span>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="link-objects">
-<h2><code class="docutils literal notranslate"><span class="pre">Link</span></code> objects<a class="headerlink" href="#link-objects" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.1. </span><code class="docutils literal notranslate"><span class="pre">Link</span></code> objects<a class="headerlink" href="#link-objects" title="Permalink to this headline">¶</a></h2>
 <p>Our discussion starts with a tiny class <code class="docutils literal notranslate"><span class="pre">Link</span></code> that is provided by default in
 a fresh image; its definition follows,</p>
 <span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-link"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">subclass:</span> <span class="ss">#Link</span>
@@ -155,12 +177,12 @@ have a chain of just <em>one</em> link object. To augment such a chain, we can</
 <span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-link-next"><div class="highlight"><pre><span></span><span class="c">&quot;Link, protocol *Containers-Essentials&quot;</span>
 <span class="nf">next:</span> <span class="nv">anObject</span>
 
-   <span class="o">^</span> <span class="nv">anObject</span> <span class="nf">nextOfLink:</span> <span class="bp">self</span>
+   <span class="o">^</span> <span class="nv">anObject</span> <span class="nf">nextFromLink:</span> <span class="bp">self</span>
 </pre></div>
 </div>
 <p>that dispatches the message</p>
-<span class="target" id="pharo-compiledMethod-4"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-link-nextoflink"><div class="highlight"><pre><span></span><span class="c">&quot;Link, protocol *Containers-Essentials&quot;</span>
-<span class="nf">nextOfLink:</span> <span class="nv">aLink</span>
+<span class="target" id="pharo-compiledMethod-4"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-link-nextfromlink"><div class="highlight"><pre><span></span><span class="c">&quot;Link, protocol *Containers-Essentials&quot;</span>
+<span class="nf">nextFromLink:</span> <span class="nv">aLink</span>
 
    <span class="o">^</span> <span class="nv">aLink</span> <span class="nf">nextLink:</span> <span class="bp">self</span>
 </pre></div>
@@ -207,38 +229,30 @@ have a chain of just <em>one</em> link object. To augment such a chain, we can</
    <span class="nv">l2</span> <span class="nf">next:</span> <span class="nv">l3</span><span class="p">.</span>
    <span class="nv">l3</span> <span class="nf">next:</span> <span class="nv">l1</span><span class="p">.</span>
 
-   <span class="nv">l</span> <span class="o">:=</span> <span class="nv">l1</span> <span class="nf">next:</span> <span class="m">2</span><span class="p">.</span>
+   <span class="nv">l</span> <span class="o">:=</span> <span class="nv">l1</span> <span class="nf">next:</span> <span class="m">3</span><span class="p">.</span>
 
-   <span class="bp">self</span>
-      <span class="nf">assert:</span> <span class="nv">l</span> <span class="nf">equals:</span> <span class="nv">l3</span><span class="p">;</span>
-      <span class="nf">assert:</span> (<span class="nv">l1</span> <span class="nf">next:</span> <span class="m">3</span>) <span class="nf">equals:</span> <span class="nv">l1</span><span class="p">.</span>
+   <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">l</span> <span class="nf">nextLink</span> <span class="nf">nextLink</span> <span class="nf">nextLink</span> <span class="nf">equals:</span> <span class="bp">nil</span><span class="p">.</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">l</span>
 </pre></div>
 </div>
 <blockquote>
 <div><img alt="../_images/CTLinksLinkTest-testLinkNext3.svg" class="align-center" src="../_images/CTLinksLinkTest-testLinkNext3.svg" /></div></blockquote>
-<p>by means of polymorphism over the <code class="docutils literal notranslate"><span class="pre">nextOfLink:</span></code> message also undertood by
+<p>by means of polymorphism over the <code class="docutils literal notranslate"><span class="pre">nextFromLink:</span></code> message also undertood by
 <code class="docutils literal notranslate"><span class="pre">Integer</span></code> objects,</p>
-<span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-nextoflink"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
-<span class="nf">nextOfLink:</span> <span class="nv">aLink</span>
+<span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-nextfromlink"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="nf">nextFromLink:</span> <span class="nv">aLink</span>
 
    <span class="o">^</span> <span class="nv">aLink</span> <span class="nf">nextInteger:</span> <span class="bp">self</span>
 </pre></div>
 </div>
 <p>that dispatches back again to <code class="docutils literal notranslate"><span class="pre">Link</span></code> objects</p>
 <span class="target" id="pharo-compiledMethod-9"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-link-nextinteger"><div class="highlight"><pre><span></span><span class="c">&quot;Link, protocol *Containers-Essentials&quot;</span>
-<span class="nf">nextInteger:</span> <span class="nv">anInteger</span>
+<span class="nf">nextInteger:</span> <span class="nv">n</span>
 
-   <span class="o">|</span><span class="nv"> link </span><span class="o">|</span>
-   <span class="nv">link</span> <span class="o">:=</span> <span class="bp">self</span><span class="p">.</span>
-
-   <span class="m">1</span> <span class="nf">to:</span> <span class="nv">anInteger</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">i</span> <span class="o">|</span> 
-      <span class="nv">link</span>
-         <span class="nf">ifNil:</span> [ <span class="nc">SubscriptOutOfBounds</span> <span class="nf">signalFor:</span> <span class="nv">i</span> ]
-         <span class="nf">ifNotNil:</span> [ <span class="nv">link</span> <span class="o">:=</span> <span class="nv">link</span> <span class="nf">nextLink</span> ] ]<span class="p">.</span>
-
-   <span class="o">^</span> <span class="nv">link</span>
+   <span class="o">^</span> <span class="nv">n</span> <span class="nf">=</span> <span class="m">0</span>
+        <span class="nb">ifTrue:</span> [ <span class="bp">nil</span> ]
+        <span class="nb">ifFalse:</span> [ <span class="bp">self</span> <span class="nf">class</span> <span class="nf">nextLink:</span> (<span class="nv">nextLink</span> <span class="nf">nextInteger:</span> <span class="nv">n</span> <span class="nf">-</span> <span class="m">1</span>) ]
 </pre></div>
 </div>
 <p>to actually skim over the chain of links, raising an exception if a <code class="docutils literal notranslate"><span class="pre">Link</span></code> is
@@ -254,12 +268,12 @@ requested to skip too much,</p>
    <span class="nv">l1</span> <span class="nf">next:</span> <span class="nv">l2</span><span class="p">.</span>
    <span class="nv">l2</span> <span class="nf">next:</span> <span class="nv">l3</span><span class="p">.</span>
 
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">should:</span> [ <span class="nv">l1</span> <span class="nf">next:</span> <span class="m">10</span> ] <span class="nf">raise:</span> <span class="nc">SubscriptOutOfBounds</span>
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">shouldnt:</span> [ <span class="nv">l1</span> <span class="nf">next:</span> <span class="m">10</span> ] <span class="nf">raise:</span> <span class="nc">SubscriptOutOfBounds</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="valuelink-objects">
-<h2><code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects<a class="headerlink" href="#valuelink-objects" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.2. </span><code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects<a class="headerlink" href="#valuelink-objects" title="Permalink to this headline">¶</a></h2>
 <p>A <code class="docutils literal notranslate"><span class="pre">Link</span></code> by itself encodes just a node of a chain. We can augment those
 objects such that each node in the chain carries a <em>value</em> also, to have a
 <em>chain of values</em> actually. Such new objects belong to the class</p>
@@ -347,7 +361,7 @@ objects such that each node in the chain carries a <em>value</em> also, to have 
 
    <span class="o">^</span> <span class="bp">self</span>
         <span class="nf">exportSlotsGraphOf:</span> <span class="nv">l</span>
-        <span class="nf">slotDescriptorsContext:</span> <span class="nc">SlotDescriptorsVisitorNestedLinks</span> <span class="nb">new</span>
+        <span class="nf">slotDescriptorsContext:</span> <span class="nc">CTSlotDescriptorsVisitorNestedLinks</span> <span class="nb">new</span>
 </pre></div>
 </div>
 <blockquote>
@@ -386,7 +400,7 @@ objects too, either a cycle of length 1</p>
 <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code>s with the strategy used by <em>stacks</em> to keep a collection of
 objects; more about that will be explored in subsequent sections.</p>
 <div class="section" id="topological-sorting">
-<span id="index-0"></span><h3>Topological sorting<a class="headerlink" href="#topological-sorting" title="Permalink to this headline">¶</a></h3>
+<span id="index-0"></span><h3><span class="section-number">4.2.1. </span>Topological sorting<a class="headerlink" href="#topological-sorting" title="Permalink to this headline">¶</a></h3>
 <p>Implementation of the <em>Algorithm T</em> in TAOCP by Donald Knuth, Volume 1 page 264.</p>
 <p>The complexity is <span class="math notranslate nohighlight">\(O(m + n)\)</span> where <span class="math notranslate nohighlight">\(m\)</span> is the number of input
 relations and <span class="math notranslate nohighlight">\(n\)</span> is the number of (unique) objects represented by
@@ -778,6 +792,14 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
                 &nbsp;
   <nav id="rellinks">
     <ul>
+        <li>
+          &larr;
+          <a href="../symbolic/divisibility.html" title="Previous document"><span class="section-number">3. </span>Divisibility</a>
+        </li>
+        <li>
+          <a href="linkedlists.html" title="Next document"><span class="section-number">5. </span><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a>
+          &rarr;
+        </li>
     </ul>
   </nav>
               </div>

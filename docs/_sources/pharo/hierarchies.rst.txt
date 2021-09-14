@@ -2,6 +2,14 @@
 Hierarchies
 ***********
 
+``Object`` and ``Trait`` and their superclasses 
+===============================================
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectObjectModel
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectObjectModel.svg
+    :align: center
+
 ``Magnitude`` hierarchy
 =======================
 
