@@ -35,7 +35,8 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 	<script: 'BaselineOfBookletDSst new scriptCoreMessagesForDoc'>
 	^ MetaSTExporter new
 		  selectors:
-			  #( next privateNextValue privateNextSeed fibonacciNumbers
+			  #( dcMultiplyInteger: #halves:base: #halves:at:digits:base:
+			     next privateNextValue privateNextSeed fibonacciNumbers
 			     goldenRatios lucasNumbers #gibonacciNumbersFirst:second:do:
 			     \/ mediantInteger: mediantFraction: kissingFractions
 			     overlappingPairsDo: kissingFractionLink: bitBRGC asShapeBinaryDots:
@@ -62,7 +63,7 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     testInspect10GoldenRectangles testInspect10GoldenRectanglesNested
 			     testInspectIceRepository testInspectIceRepositoryCommitsGraph
 			     testInspectOneToMany testInspectPascalArray
-			     testInspectCatalanArray );
+			     testInspectCatalanArray testInspectLargeInteger );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'core-messages.json' ]
 		  ofPackage: self class package
