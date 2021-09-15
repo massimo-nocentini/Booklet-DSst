@@ -47,6 +47,53 @@ The integer ``13`` in various representations
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectInteger13Detailed.svg
     :align: center
 
+A large integer by Karatsuba multiplication
++++++++++++++++++++++++++++++++++++++++++++
+
+After the post :cite:`sven/speeding-up-factorial`, here we explore another large integer
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectLargeInteger
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectLargeInteger.svg
+    :align: center
+
+where the message
+
+.. pharo:autocompiledmethod:: Integer>>#dcMultiplyInteger:
+
+implements the algorithm described in :cite:`10.5555/1051910`, at page 232.
+Such algorithm runs in :math:`O(n^{\log_{2}{3}})` because the input numbers
+:math:`x` and :math:`y` are broken in *two* parts
+
+.. math::
+
+  x = x_{1}\cdot 10^{{{n}\over{2}}} + x_{0} \\
+  y = y_{1}\cdot 10^{{{n}\over{2}}} + y_{0}
+
+respectively, and there are *three* recursive ``#dcMultiplyInteger:`` message sends.
+The implementation follows from both the fact
+
+.. math::
+
+  x\,y = x_{1}\,y_{1}\cdot 10^{n} + (x_{1}\,y_{0} + x_{0}\,y_{1})\cdot 10^{{{n}\over{2}}} + x_{0}\,y_{0}
+
+and 
+
+.. math::
+
+  (x_{1} + x_{0})\,(y_{1} + y_{0}) = x_{1}\,y_{1} + \left(x_{1}\,y_{0} + x_{0}\,y_{1}\right) + x_{0}\,y_{0}
+
+respectively, more references can also be found in
+:cite:`wikipedia/Karatsuba-algorithm`. Two auxiliary messages
+
+.. pharo:autocompiledmethod:: Integer>>#halves:base:
+
+and
+
+.. pharo:autocompiledmethod:: Integer>>#halves:at:digits:base:
+
+helps the recursive message.
+
 The irrational ``π``
 ++++++++++++++++++++
 
