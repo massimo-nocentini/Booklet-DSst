@@ -47,8 +47,8 @@ The integer ``13`` in various representations
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectInteger13Detailed.svg
     :align: center
 
-A large integer by Karatsuba multiplication
-+++++++++++++++++++++++++++++++++++++++++++
+:math:`{42!}^{2}` by Karatsuba multiplication
++++++++++++++++++++++++++++++++++++++++++++++
 
 After the post :cite:`sven/speeding-up-factorial`, here we explore another large integer
 
@@ -63,7 +63,14 @@ where the message
 
 implements the algorithm described in :cite:`10.5555/1051910`, at page 232.
 Such algorithm runs in :math:`O(n^{\log_{2}{3}})` because the input numbers
-:math:`x` and :math:`y` are broken in *two* parts
+:math:`x` and :math:`y`, 
+
+.. math::
+
+  x = x_{a}\cdot 10^{a} + x_{a-1}\cdot 10^{a-1} + \cdots + x_{1}\cdot 10^{1} + x_{0}\cdot 10^{0} \\
+  y = y_{b}\cdot 10^{b} + y_{b-1}\cdot 10^{b-1} + \cdots + y_{1}\cdot 10^{1} + y_{0}\cdot 10^{0} 
+
+and let :math:`n = \max(a, b)`, are broken in *two* parts
 
 .. math::
 

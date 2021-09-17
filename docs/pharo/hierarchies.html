@@ -53,7 +53,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#the-character">2.2.1. The character <code class="docutils literal notranslate"><span class="pre">π</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dateandtime-now">2.2.2. <code class="docutils literal notranslate"><span class="pre">DateAndTime</span></code>, now</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-integer-13-in-various-representations">2.2.3. The integer <code class="docutils literal notranslate"><span class="pre">13</span></code> in various representations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#a-large-integer-by-karatsuba-multiplication">2.2.4. A large integer by Karatsuba multiplication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#by-karatsuba-multiplication">2.2.4. <span class="math notranslate nohighlight">\({42!}^{2}\)</span> by Karatsuba multiplication</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-irrational">2.2.5. The irrational <code class="docutils literal notranslate"><span class="pre">π</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#a-reflective-association">2.2.6. A (reflective) <code class="docutils literal notranslate"><span class="pre">Association</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#some-fractions-with-kisses-by-mediants">2.2.7. Some <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s, with kisses by <em>mediants</em></a></li>
@@ -214,8 +214,8 @@
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspectInteger13Detailed.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectInteger13Detailed.svg" /></div></blockquote>
 </div>
-<div class="section" id="a-large-integer-by-karatsuba-multiplication">
-<h3><span class="section-number">2.2.4. </span>A large integer by Karatsuba multiplication<a class="headerlink" href="#a-large-integer-by-karatsuba-multiplication" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="by-karatsuba-multiplication">
+<h3><span class="section-number">2.2.4. </span><span class="math notranslate nohighlight">\({42!}^{2}\)</span> by Karatsuba multiplication<a class="headerlink" href="#by-karatsuba-multiplication" title="Permalink to this headline">¶</a></h3>
 <p>After the post <span id="id1">[<a class="reference internal" href="../bibliography.html#id13"><span>VC</span></a>]</span>, here we explore another large integer</p>
 <span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectlargeinteger"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectLargeInteger</span>
@@ -273,7 +273,11 @@
 </div>
 <p>implements the algorithm described in <span id="id2">[<a class="reference internal" href="../bibliography.html#id14"><span>KT05</span></a>]</span>, at page 232.
 Such algorithm runs in <span class="math notranslate nohighlight">\(O(n^{\log_{2}{3}})\)</span> because the input numbers
-<span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are broken in <em>two</em> parts</p>
+<span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x = x_{a}\cdot 10^{a} + x_{a-1}\cdot 10^{a-1} + \cdots + x_{1}\cdot 10^{1} + x_{0}\cdot 10^{0} \\
+y = y_{b}\cdot 10^{b} + y_{b-1}\cdot 10^{b-1} + \cdots + y_{1}\cdot 10^{1} + y_{0}\cdot 10^{0}\end{split}\]</div>
+<p>and let <span class="math notranslate nohighlight">\(n = \max(a, b)\)</span>, are broken in <em>two</em> parts</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}x = x_{1}\cdot 10^{{{n}\over{2}}} + x_{0} \\
 y = y_{1}\cdot 10^{{{n}\over{2}}} + y_{0}\end{split}\]</div>
