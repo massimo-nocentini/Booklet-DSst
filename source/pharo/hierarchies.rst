@@ -466,6 +466,32 @@ lie on the message
 which finally provides the implementation according to
 :cite:`10.1145/63039.63042` as the message's comment states.
 
+The *Bernoulli* distribution
+++++++++++++++++++++++++++++
+
+.. pharo:autocompiledmethod:: RandomTestDistributions>>#testBernoulli
+
+  .. image:: ../../../Containers-Essentials/images/RandomTestDistributions-testBernoulli.svg
+    :align: center
+
+where
+
+.. pharo:autocompiledmethod:: RandomBernoulli>>#next
+
+The *geometric* distribution
+++++++++++++++++++++++++++++
+
+.. pharo:autoclass:: RandomGeometric
+
+.. pharo:autocompiledmethod:: RandomTestDistributions>>#testGeometric
+
+  .. image:: ../../../Containers-Essentials/images/RandomTestDistributions-testGeometric.svg
+    :align: center
+
+where
+
+.. pharo:autocompiledmethod:: RandomGeometric>>#next
+
 The *exponential* distribution
 ++++++++++++++++++++++++++++++
 

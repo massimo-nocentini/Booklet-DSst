@@ -361,11 +361,15 @@
       <ul>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-52">Random&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-60">RandomBoxMullerBivariateGaussian&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-56">RandomBernoulli&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-56">RandomExponential&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-64">RandomBoxMullerBivariateGaussian&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-58">RandomGaussian&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-60">RandomExponential&gt;&gt;#next</a>
+</li>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-62">RandomGaussian&gt;&gt;#next</a>
+</li>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-58">RandomGeometric&gt;&gt;#next</a>
 </li>
       </ul></li>
       <li>
@@ -736,7 +740,7 @@
 </li>
         <li><a href="pharo/oo.html#pharo-compiledMethod-3">#testInspectPoint</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-62">#testInspectRBNodesQuine</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-66">#testInspectRBNodesQuine</a>
 </li>
         <li><a href="pharo/oo.html#pharo-compiledMethod-5">#testInspectRSPolygon</a>
 </li>
@@ -752,7 +756,7 @@
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-50">#testRandomSubclasses</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-61">#testRBNodeSubclasses</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-65">#testRBNodeSubclasses</a>
 </li>
       </ul></li>
   </ul></td>
@@ -879,21 +883,35 @@
 </li>
       </ul></li>
       <li>
-    a RandomBoxMullerBivariateGaussian understands
-
-      <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-60">#next</a>
-</li>
-      </ul></li>
-      <li>
-    a RandomExponential understands
+    a RandomBernoulli understands
 
       <ul>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-56">#next</a>
 </li>
       </ul></li>
       <li>
+    a RandomBoxMullerBivariateGaussian understands
+
+      <ul>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-64">#next</a>
+</li>
+      </ul></li>
+      <li>
+    a RandomExponential understands
+
+      <ul>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-60">#next</a>
+</li>
+      </ul></li>
+      <li>
     a RandomGaussian understands
+
+      <ul>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-62">#next</a>
+</li>
+      </ul></li>
+      <li>
+    a RandomGeometric understands
 
       <ul>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-58">#next</a>
@@ -903,11 +921,15 @@
     a RandomTestDistributions understands
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-55">#testExponential</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-55">#testBernoulli</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-57">#testGaussian</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-59">#testExponential</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-59">#testGaussianBoxMuller</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-61">#testGaussian</a>
+</li>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-63">#testGaussianBoxMuller</a>
+</li>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-57">#testGeometric</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-51">#testUniform</a>
 </li>
@@ -1032,6 +1054,13 @@
 </li>
       </ul></li>
       <li>
+    Package Containers-Essentials-Random contains
+
+      <ul>
+        <li><a href="pharo/hierarchies.html#pharo-class-0">RandomGeometric</a>
+</li>
+      </ul></li>
+      <li>
     Package Containers-LinkedStoragePool contains
 
       <ul>
@@ -1120,11 +1149,15 @@
     Protocol *Containers-Essentials-Tests
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-55">RandomTestDistributions&gt;&gt;#testExponential</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-55">RandomTestDistributions&gt;&gt;#testBernoulli</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-57">RandomTestDistributions&gt;&gt;#testGaussian</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-59">RandomTestDistributions&gt;&gt;#testExponential</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-59">RandomTestDistributions&gt;&gt;#testGaussianBoxMuller</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-61">RandomTestDistributions&gt;&gt;#testGaussian</a>
+</li>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-63">RandomTestDistributions&gt;&gt;#testGaussianBoxMuller</a>
+</li>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-57">RandomTestDistributions&gt;&gt;#testGeometric</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-51">RandomTestDistributions&gt;&gt;#testUniform</a>
 </li>
@@ -1178,11 +1211,15 @@
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-52">Random&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-60">RandomBoxMullerBivariateGaussian&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-56">RandomBernoulli&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-56">RandomExponential&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-64">RandomBoxMullerBivariateGaussian&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-58">RandomGaussian&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-60">RandomExponential&gt;&gt;#next</a>
+</li>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-62">RandomGaussian&gt;&gt;#next</a>
+</li>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-58">RandomGeometric&gt;&gt;#next</a>
 </li>
       </ul></li>
       <li>
@@ -1231,6 +1268,8 @@
         <li><a href="linked-allocation/storage-pools.html#pharo-compiledMethod-2">CTLinkedStoragePool&gt;&gt;#releaseLink:</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     Protocol private
 
@@ -1240,8 +1279,6 @@
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-53">Random&gt;&gt;#privateNextValue</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     Protocol removing
 
@@ -1393,7 +1430,7 @@
 </li>
         <li><a href="pharo/oo.html#pharo-compiledMethod-3">EssentialsObjectTest&gt;&gt;#testInspectPoint</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-62">EssentialsObjectTest&gt;&gt;#testInspectRBNodesQuine</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-66">EssentialsObjectTest&gt;&gt;#testInspectRBNodesQuine</a>
 </li>
         <li><a href="pharo/oo.html#pharo-compiledMethod-5">EssentialsObjectTest&gt;&gt;#testInspectRSPolygon</a>
 </li>
@@ -1409,7 +1446,7 @@
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-50">EssentialsObjectTest&gt;&gt;#testRandomSubclasses</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-61">EssentialsObjectTest&gt;&gt;#testRBNodeSubclasses</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-65">EssentialsObjectTest&gt;&gt;#testRBNodeSubclasses</a>
 </li>
         <li><a href="symbolic/divisibility.html#pharo-compiledMethod-5">SymbolicIntegerTest&gt;&gt;#testComplementaryQuoRem21Over9</a>
 </li>

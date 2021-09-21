@@ -78,9 +78,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#random-hierarchy">2.4. <code class="docutils literal notranslate"><span class="pre">Random</span></code> hierarchy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#the-uniform-distribution">2.4.1. The <em>uniform</em> distribution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-exponential-distribution">2.4.2. The <em>exponential</em> distribution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-gaussian-distribution">2.4.3. The <em>gaussian</em> distribution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-bivariate-gaussian-distribution">2.4.4. The <em>bivariate gaussian</em> distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-bernoulli-distribution">2.4.2. The <em>Bernoulli</em> distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-geometric-distribution">2.4.3. The <em>geometric</em> distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-exponential-distribution">2.4.4. The <em>exponential</em> distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-gaussian-distribution">2.4.5. The <em>gaussian</em> distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-bivariate-gaussian-distribution">2.4.6. The <em>bivariate gaussian</em> distribution</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#rbnode-hierarchy">2.5. <code class="docutils literal notranslate"><span class="pre">RBNode</span></code> hierarchy</a><ul>
@@ -242,33 +244,33 @@
          <span class="nv">anInteger</span> <span class="nf">between:</span> <span class="m">0</span> <span class="nf">and:</span> <span class="nv">base</span> <span class="nf">-</span> <span class="m">1</span> ])
         <span class="nb">ifTrue:</span> [ <span class="bp">self</span> <span class="nf">*</span> <span class="nv">anInteger</span> ]
         <span class="nb">ifFalse:</span> [ 
-           <span class="o">|</span> <span class="nv">a</span> <span class="nf">b</span> <span class="nf">bDigits</span> <span class="nf">|</span>
+           <span class="o">|</span> <span class="nv">x</span> <span class="nf">y</span> <span class="nf">yDigits</span> <span class="nf">|</span>
            (<span class="bp">self</span> <span class="nf">numberOfDigitsInBase:</span> <span class="nv">base</span>)
            <span class="nf">&gt;</span> (<span class="nv">anInteger</span> <span class="nf">numberOfDigitsInBase:</span> <span class="nv">base</span>)
               <span class="nb">ifTrue:</span> [ 
-                 <span class="nv">a</span> <span class="o">:=</span> <span class="bp">self</span><span class="p">.</span>
-                 <span class="nv">b</span> <span class="o">:=</span> <span class="nv">anInteger</span> ]
+                 <span class="nv">x</span> <span class="o">:=</span> <span class="bp">self</span><span class="p">.</span>
+                 <span class="nv">y</span> <span class="o">:=</span> <span class="nv">anInteger</span> ]
               <span class="nb">ifFalse:</span> [ 
-                 <span class="nv">a</span> <span class="o">:=</span> <span class="nv">anInteger</span><span class="p">.</span>
-                 <span class="nv">b</span> <span class="o">:=</span> <span class="bp">self</span> ]<span class="p">.</span>
+                 <span class="nv">x</span> <span class="o">:=</span> <span class="nv">anInteger</span><span class="p">.</span>
+                 <span class="nv">y</span> <span class="o">:=</span> <span class="bp">self</span> ]<span class="p">.</span>
 
-           <span class="nv">bDigits</span> <span class="o">:=</span> <span class="nv">b</span> <span class="nf">numberOfDigitsInBase:</span> <span class="nv">base</span><span class="p">.</span>
+           <span class="nv">yDigits</span> <span class="o">:=</span> <span class="nv">y</span> <span class="nf">numberOfDigitsInBase:</span> <span class="nv">base</span><span class="p">.</span>
 
-           <span class="o">^</span> <span class="nv">a</span>
-                <span class="nf">halves:</span> [ <span class="o">:</span><span class="nv">xHigh</span> <span class="o">:</span><span class="nv">xLow</span> <span class="o">:</span><span class="nv">xn</span> <span class="o">:</span><span class="nv">xl</span> <span class="o">|</span> 
-                   <span class="nv">b</span>
-                      <span class="nf">halves:</span> [ <span class="o">:</span><span class="nv">yHigh</span> <span class="o">:</span><span class="nv">yLow</span> <span class="o">:</span><span class="nv">yn</span> <span class="o">:</span><span class="nv">yl</span> <span class="o">|</span> 
-                         <span class="o">|</span><span class="nv"> p pp xyHigh xyLow </span><span class="o">|</span>
-                         <span class="nv">p</span> <span class="o">:=</span> <span class="nv">xHigh</span> <span class="nf">+</span> <span class="nv">xLow</span> <span class="nf">dcMultiplyInteger:</span> <span class="nv">yHigh</span> <span class="nf">+</span> <span class="nv">yLow</span><span class="p">.</span>
-                         <span class="nv">xyHigh</span> <span class="o">:=</span> <span class="nv">xHigh</span> <span class="nf">dcMultiplyInteger:</span> <span class="nv">yHigh</span><span class="p">.</span>
-                         <span class="nv">xyLow</span> <span class="o">:=</span> <span class="nv">xLow</span> <span class="nf">dcMultiplyInteger:</span> <span class="nv">yLow</span><span class="p">.</span>
+           <span class="nv">x</span>
+              <span class="nf">halves:</span> [ <span class="o">:</span><span class="nv">xHigh</span> <span class="o">:</span><span class="nv">xLow</span> <span class="o">:</span><span class="nv">xn</span> <span class="o">:</span><span class="nv">xl</span> <span class="o">|</span> 
+                 <span class="nv">y</span>
+                    <span class="nf">halves:</span> [ <span class="o">:</span><span class="nv">yHigh</span> <span class="o">:</span><span class="nv">yLow</span> <span class="o">:</span><span class="nv">yn</span> <span class="o">:</span><span class="nv">yl</span> <span class="o">|</span> 
+                       <span class="o">|</span><span class="nv"> p pp xyHigh xyLow </span><span class="o">|</span>
+                       <span class="nv">p</span> <span class="o">:=</span> <span class="nv">xHigh</span> <span class="nf">+</span> <span class="nv">xLow</span> <span class="nf">dcMultiplyInteger:</span> <span class="nv">yHigh</span> <span class="nf">+</span> <span class="nv">yLow</span><span class="p">.</span>
+                       <span class="nv">xyHigh</span> <span class="o">:=</span> <span class="nv">xHigh</span> <span class="nf">dcMultiplyInteger:</span> <span class="nv">yHigh</span><span class="p">.</span>
+                       <span class="nv">xyLow</span> <span class="o">:=</span> <span class="nv">xLow</span> <span class="nf">dcMultiplyInteger:</span> <span class="nv">yLow</span><span class="p">.</span>
 
-                         <span class="nv">pp</span> <span class="o">:=</span> <span class="nv">p</span> <span class="nf">-</span> <span class="nv">xyHigh</span> <span class="nf">-</span> <span class="nv">xyLow</span> <span class="nf">*</span> (<span class="nv">base</span> <span class="nf">**</span> <span class="nv">xl</span>)<span class="p">.</span>
-                         <span class="nv">xyHigh</span> <span class="nf">*</span> (<span class="nv">base</span> <span class="nf">**</span> <span class="nv">xl</span> <span class="nf">double</span>) <span class="nf">+</span> <span class="nv">pp</span> <span class="nf">+</span> <span class="nv">xyLow</span> ]
-                      <span class="nf">at:</span> <span class="nv">xl</span>
-                      <span class="nf">digits:</span> <span class="nv">bDigits</span>
-                      <span class="nf">base:</span> <span class="nv">base</span> ]
-                <span class="nf">base:</span> <span class="nv">base</span> ]
+                       <span class="nv">pp</span> <span class="o">:=</span> <span class="nv">p</span> <span class="nf">-</span> <span class="nv">xyHigh</span> <span class="nf">-</span> <span class="nv">xyLow</span> <span class="nf">*</span> (<span class="nv">base</span> <span class="nf">**</span> <span class="nv">xl</span>)<span class="p">.</span>
+                       <span class="nv">xyHigh</span> <span class="nf">*</span> (<span class="nv">base</span> <span class="nf">**</span> <span class="nv">xl</span> <span class="nf">double</span>) <span class="nf">+</span> <span class="nv">pp</span> <span class="nf">+</span> <span class="nv">xyLow</span> ]
+                    <span class="nf">at:</span> <span class="nv">xl</span>
+                    <span class="nf">digits:</span> <span class="nv">yDigits</span>
+                    <span class="nf">base:</span> <span class="nv">base</span> ]
+              <span class="nf">base:</span> <span class="nv">base</span> ]
 </pre></div>
 </div>
 <p>implements the algorithm described in <span id="id2">[<a class="reference internal" href="../bibliography.html#id14"><span>KT05</span></a>]</span>, at page 232.
@@ -1072,9 +1074,73 @@ full dots stand for 1s.</p>
 <p>which finally provides the implementation according to
 <span id="id12">[<a class="reference internal" href="../bibliography.html#id9"><span>PM88</span></a>]</span> as the message’s comment states.</p>
 </div>
+<div class="section" id="the-bernoulli-distribution">
+<h3><span class="section-number">2.4.2. </span>The <em>Bernoulli</em> distribution<a class="headerlink" href="#the-bernoulli-distribution" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="pharo-compiledMethod-55"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testbernoulli"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
+<span class="nf">testBernoulli</span>
+
+   <span class="o">|</span><span class="nv"> gen </span><span class="o">|</span>
+   <span class="nv">gen</span> <span class="o">:=</span> <span class="nc">RandomBernoulli</span> <span class="nf">seed:</span> <span class="m">13</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">gen</span><span class="p">.</span>
+
+   <span class="bp">self</span>
+      <span class="nf">assert:</span> ((<span class="m">1</span> <span class="nf">to:</span> <span class="m">1000</span>) <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">each1</span> <span class="o">|</span> <span class="nv">gen</span> <span class="nf">next</span> ])
+      <span class="nf">equals:</span> <span class="bp">self</span> <span class="nf">expectedValue_testBernoulli</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/RandomTestDistributions-testBernoulli.svg" class="align-center" src="../_images/RandomTestDistributions-testBernoulli.svg" /></div></blockquote>
+<p>where</p>
+<span class="target" id="pharo-compiledMethod-56"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randombernoulli-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomBernoulli, protocol accessing&quot;</span>
+<span class="nf">next</span>
+
+   <span class="o">^</span> (<span class="bp">super</span> <span class="nf">next</span> <span class="nf">&lt;</span> <span class="nv">p</span>) <span class="nf">asInteger</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-geometric-distribution">
+<h3><span class="section-number">2.4.3. </span>The <em>geometric</em> distribution<a class="headerlink" href="#the-geometric-distribution" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-randomgeometric"><div class="highlight"><pre><span></span><span class="nc">RandomBernoulli</span> <span class="nf">subclass:</span> <span class="ss">#RandomGeometric</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-Essentials-Random&#39;</span>
+</pre></div>
+</div>
+<span class="target" id="pharo-compiledMethod-57"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testgeometric"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
+<span class="nf">testGeometric</span>
+
+   <span class="o">|</span><span class="nv"> gen </span><span class="o">|</span>
+   <span class="nv">gen</span> <span class="o">:=</span> (<span class="nc">RandomGeometric</span> <span class="nf">seed:</span> <span class="m">13</span>)
+             <span class="nf">p:</span> <span class="m">0.2</span><span class="p">;</span>
+             <span class="nf">yourself</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">gen</span><span class="p">.</span>
+
+   <span class="bp">self</span>
+      <span class="nf">assert:</span> ((<span class="m">1</span> <span class="nf">to:</span> <span class="m">1000</span>) <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">each1</span> <span class="o">|</span> <span class="nv">gen</span> <span class="nf">next</span> ])
+      <span class="nf">equals:</span> <span class="bp">self</span> <span class="nf">expectedValue_testGeometric</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/RandomTestDistributions-testGeometric.svg" class="align-center" src="../_images/RandomTestDistributions-testGeometric.svg" /></div></blockquote>
+<p>where</p>
+<span class="target" id="pharo-compiledMethod-58"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomgeometric-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomGeometric, protocol accessing&quot;</span>
+<span class="nf">next</span>
+
+   <span class="o">|</span><span class="nv"> failures </span><span class="o">|</span>
+   <span class="nv">failures</span> <span class="o">:=</span> <span class="m">0</span><span class="p">.</span>
+   [ 
+   <span class="nv">failures</span> <span class="o">:=</span> <span class="nv">failures</span> <span class="nf">+</span> <span class="m">1</span><span class="p">.</span>
+   <span class="bp">super</span> <span class="nf">next</span> <span class="nf">=</span> <span class="m">0</span> ] <span class="nf">whileTrue</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="nv">failures</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="the-exponential-distribution">
-<h3><span class="section-number">2.4.2. </span>The <em>exponential</em> distribution<a class="headerlink" href="#the-exponential-distribution" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-55"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testexponential"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
+<h3><span class="section-number">2.4.4. </span>The <em>exponential</em> distribution<a class="headerlink" href="#the-exponential-distribution" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="pharo-compiledMethod-59"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testexponential"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testExponential</span>
 
    <span class="o">|</span><span class="nv"> gen </span><span class="o">|</span>
@@ -1090,7 +1156,7 @@ full dots stand for 1s.</p>
 <blockquote>
 <div><img alt="../_images/RandomTestDistributions-testExponential.svg" class="align-center" src="../_images/RandomTestDistributions-testExponential.svg" /></div></blockquote>
 <p>where</p>
-<span class="target" id="pharo-compiledMethod-56"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomexponential-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomExponential, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-60"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomexponential-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomExponential, protocol accessing&quot;</span>
 <span class="nf">next</span>
 
    <span class="o">^</span> (<span class="m">1</span> <span class="nf">-</span> <span class="bp">super</span> <span class="nf">next</span>) <span class="nf">ln</span> <span class="nf">negated</span> <span class="nf">/</span> <span class="nv">lambda</span>
@@ -1098,8 +1164,8 @@ full dots stand for 1s.</p>
 </div>
 </div>
 <div class="section" id="the-gaussian-distribution">
-<h3><span class="section-number">2.4.3. </span>The <em>gaussian</em> distribution<a class="headerlink" href="#the-gaussian-distribution" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-57"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testgaussian"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
+<h3><span class="section-number">2.4.5. </span>The <em>gaussian</em> distribution<a class="headerlink" href="#the-gaussian-distribution" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="pharo-compiledMethod-61"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testgaussian"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testGaussian</span>
 
    <span class="o">|</span><span class="nv"> gen </span><span class="o">|</span>
@@ -1115,26 +1181,10 @@ full dots stand for 1s.</p>
 <blockquote>
 <div><img alt="../_images/RandomTestDistributions-testGaussian.svg" class="align-center" src="../_images/RandomTestDistributions-testGaussian.svg" /></div></blockquote>
 <p>where</p>
-<span class="target" id="pharo-compiledMethod-58"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomgaussian-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomGaussian, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-62"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomgaussian-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomGaussian, protocol accessing&quot;</span>
 <span class="nf">next</span>
 
-   <span class="c">&quot;Python implementation:</span>
-
-<span class="c">   .. code:: </span>
-<span class="c">      </span>
-<span class="c">        random = self.random</span>
-<span class="c">        while 1:</span>
-<span class="c">            u1 = random()</span>
-<span class="c">            u2 = 1.0 - random()</span>
-<span class="c">            z = NV_MAGICCONST*(u1-0.5)/u2</span>
-<span class="c">            zz = z*z/4.0</span>
-<span class="c">            if zz &lt;= -_log(u2):</span>
-<span class="c">                break</span>
-<span class="c">        return mu + z*sigma&quot;</span>
-
-   <span class="o">|</span><span class="nv"> z magic </span><span class="o">|</span>
-   <span class="nv">magic</span> <span class="o">:=</span> <span class="m">-0.5</span> <span class="nf">exp</span> <span class="nf">*</span> <span class="m">4</span> <span class="nf">/</span> <span class="m">2</span> <span class="nf">sqrt</span><span class="p">.</span>
-
+   <span class="o">|</span><span class="nv"> z </span><span class="o">|</span>
    [ 
    <span class="o">|</span> <span class="nv">u1</span> <span class="nf">u2</span> <span class="nf">|</span>
    <span class="nv">u1</span> <span class="o">:=</span> <span class="bp">super</span> <span class="nf">next</span><span class="p">.</span>
@@ -1149,9 +1199,9 @@ full dots stand for 1s.</p>
 </div>
 </div>
 <div class="section" id="the-bivariate-gaussian-distribution">
-<h3><span class="section-number">2.4.4. </span>The <em>bivariate gaussian</em> distribution<a class="headerlink" href="#the-bivariate-gaussian-distribution" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.4.6. </span>The <em>bivariate gaussian</em> distribution<a class="headerlink" href="#the-bivariate-gaussian-distribution" title="Permalink to this headline">¶</a></h3>
 <p>A sample from a <em>bivariate</em> Gaussian distribution can be inspected by</p>
-<span class="target" id="pharo-compiledMethod-59"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testgaussianboxmuller"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-63"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testgaussianboxmuller"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testGaussianBoxMuller</span>
 
    <span class="o">|</span><span class="nv"> gen </span><span class="o">|</span>
@@ -1167,7 +1217,7 @@ full dots stand for 1s.</p>
 <blockquote>
 <div><img alt="../_images/RandomTestDistributions-testGaussianBoxMuller.svg" class="align-center" src="../_images/RandomTestDistributions-testGaussianBoxMuller.svg" /></div></blockquote>
 <p>where the message</p>
-<span class="target" id="pharo-compiledMethod-60"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomboxmullerbivariategaussian-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomBoxMullerBivariateGaussian, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-64"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomboxmullerbivariategaussian-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomBoxMullerBivariateGaussian, protocol accessing&quot;</span>
 <span class="nf">next</span>
 
    <span class="o">|</span><span class="nv"> u1 u2 z0 z1 z w </span><span class="o">|</span>
@@ -1185,7 +1235,7 @@ full dots stand for 1s.</p>
 </div>
 <div class="section" id="rbnode-hierarchy">
 <h2><span class="section-number">2.5. </span><code class="docutils literal notranslate"><span class="pre">RBNode</span></code> hierarchy<a class="headerlink" href="#rbnode-hierarchy" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="pharo-compiledMethod-61"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testrbnodesubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-65"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testrbnodesubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testRBNodeSubclasses</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportShapeOf:</span> <span class="nc">RBNode</span> <span class="nf">accessorBlock:</span> <span class="ss">#asShapeSubclasses</span>
@@ -1205,7 +1255,7 @@ full dots stand for 1s.</p>
 </pre></div>
 </div>
 <p>evaluates to <code class="docutils literal notranslate"><span class="pre">#t</span></code>; in parallel, our Smalltalk implementation</p>
-<span class="target" id="pharo-compiledMethod-62"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectrbnodesquine"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-66"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectrbnodesquine"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectRBNodesQuine</span>
 
    <span class="o">|</span><span class="nv"> quine aQuineBlock evalBlock </span><span class="o">|</span>
