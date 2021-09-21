@@ -57,8 +57,9 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     testInspectFractionKissing testInspectFractionReciprocalKissing
 			     testInspectFractionKissingEnumeration
 			     testRandomSubclasses testGaussian testUniform testExponential
-			     testGaussianBoxMuller testByteArrayLoremIpsum
-			     testByteArrayLiteral testByteArrayInteger testInspectDictionary
+			     testGaussianBoxMuller testBernoulli testGeometric
+			     testByteArrayLoremIpsum testByteArrayLiteral
+			     testByteArrayInteger testInspectDictionary
 			     testInspectContext testInspectBag testInspect10GoldenRatios
 			     testInspect10GoldenRectangles testInspect10GoldenRectanglesNested
 			     testInspectIceRepository testInspectIceRepositoryCommitsGraph
