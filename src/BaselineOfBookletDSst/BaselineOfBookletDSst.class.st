@@ -34,6 +34,18 @@ BaselineOfBookletDSst >> baseline: spec [
 ]
 
 { #category : #documentation }
+BaselineOfBookletDSst >> runAllTests [
+
+	<script: 'BaselineOfBookletDSst new runAllTests'>
+	{ 'Containers-Essentials-Tests'. 'Containers-Links-Tests'.
+	'Containers-LinkedStoragePool-Tests'.
+	'Containers-RedBlackSet-Tests' } do: [ :each | 
+		each asPackage testSuite run ].
+
+	self inform: thisContext method name , ' has finished.'
+]
+
+{ #category : #documentation }
 BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 
 	<script: 'BaselineOfBookletDSst new scriptCoreMessagesForDoc'>
@@ -87,6 +99,20 @@ BaselineOfBookletDSst >> scriptLinkMessagesForDoc [
 			     testThreeLinksTooMuchSkipping );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'link-core-messages.json' ]
+		  ofPackage: self class package
+]
+
+{ #category : #documentation }
+BaselineOfBookletDSst >> scriptRedBlackSetMessagesForDoc [
+
+	<script: 'BaselineOfBookletDSst new scriptRedBlackSetMessagesForDoc'>
+	^ MetaSTExporter new
+		  selectors: #( empty binaryTreeElementEmpty binaryTreeElementNode
+			     #leftBinaryTreeElement:value:rightBinaryTreeElement:
+			     push: pop root binaryTreeElementEmpty testPushOrderedInterval
+			     testCreation );
+		  exportWithRepositoryPath: [ :aPath | 
+			  aPath / 'json-for-doc' / 'redblackset-messages.json' ]
 		  ofPackage: self class package
 ]
 
