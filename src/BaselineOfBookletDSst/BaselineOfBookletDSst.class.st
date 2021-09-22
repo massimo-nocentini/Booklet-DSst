@@ -12,7 +12,7 @@ BaselineOfBookletDSst >> baseline: spec [
 		spec
 			baseline: 'MetaSTExporter'
 			with: [ 
-			spec repository: 'github://massimo-nocentini/MetaSTExporter/src' ].
+			spec repository: 'github://massimo-nocentini/MetaSTExporter' ].
 
 		spec
 			baseline: 'ContainersEssentials'
@@ -26,7 +26,11 @@ BaselineOfBookletDSst >> baseline: spec [
 
 		spec baseline: 'ContainersLinkedStoragePool' with: [ 
 			spec repository:
-				'github://massimo-nocentini/Containers-LinkedStoragePool/src' ] ]
+				'github://massimo-nocentini/Containers-LinkedStoragePool' ].
+
+		spec baseline: 'ContainersBinaryTreeAbstract' with: [ 
+			spec repository:
+				'github://massimo-nocentini/Containers-BinaryTreeAbstract' ] ]
 ]
 
 { #category : #documentation }
