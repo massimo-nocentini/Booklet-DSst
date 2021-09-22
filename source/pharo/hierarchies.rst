@@ -478,6 +478,18 @@ where
 
 .. pharo:autocompiledmethod:: RandomBernoulli>>#next
 
+The *binomial* distribution
++++++++++++++++++++++++++++
+
+.. pharo:autocompiledmethod:: RandomTestDistributions>>#testBinomial
+
+  .. image:: ../../../Containers-Essentials/images/RandomTestDistributions-testBinomial.svg
+    :align: center
+
+where
+
+.. pharo:autocompiledmethod:: RandomBinomial>>#next
+
 The *geometric* distribution
 ++++++++++++++++++++++++++++
 
