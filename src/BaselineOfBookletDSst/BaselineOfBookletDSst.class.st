@@ -110,7 +110,9 @@ BaselineOfBookletDSst >> scriptRedBlackSetMessagesForDoc [
 		  selectors: #( empty binaryTreeElementEmpty binaryTreeElementNode
 			     #leftBinaryTreeElement:value:rightBinaryTreeElement:
 			     push: pop root binaryTreeElementEmpty #mergeBinaryTreeElement:inBinaryTree:
-			     testPushOrderedInterval testCreation testPushOrderedInterval );
+			     testPushOrderedInterval testCreation testPushOrderedInterval
+			     testPushShuffledInterval testPushShuffledCollection
+			     testPushOrderedCollection );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'redblackset-messages.json' ]
 		  ofPackage: self class package
