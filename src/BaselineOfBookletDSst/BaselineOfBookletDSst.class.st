@@ -56,8 +56,7 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     goldenRatios lucasNumbers #gibonacciNumbersFirst:second:do:
 			     \/ mediantInteger: mediantFraction: kissingFractions
 			     overlappingPairsDo: kissingFractionLink: bitBRGC asShapeBinaryDots:
-			     asShapeBRGCDots instVarsNamesOrderedCollection
-			     testInspectObjectModel testMagnitudeSubclasses
+			     asShapeBRGCDots testInspectObjectModel testMagnitudeSubclasses
 			     testMagnitudeSubclassesSlotsGraph
 			     testCollectionSubclasses testRBNodeSubclasses
 			     testInspectCharacterPi testInspectFloatPi testInspectDatetimeNow
@@ -80,7 +79,8 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     testInspect10GoldenRectangles testInspect10GoldenRectanglesNested
 			     testInspectIceRepository testInspectIceRepositoryCommitsGraph
 			     testInspectOneToMany testInspectPascalArray
-			     testInspectCatalanArray testInspectLargeInteger );
+			     testInspectCatalanArray testInspectLargeInteger
+			     testLinkSubclasses );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'core-messages.json' ]
 		  ofPackage: self class package
@@ -109,8 +109,8 @@ BaselineOfBookletDSst >> scriptRedBlackSetMessagesForDoc [
 	^ MetaSTExporter new
 		  selectors: #( empty binaryTreeElementEmpty binaryTreeElementNode
 			     #leftBinaryTreeElement:value:rightBinaryTreeElement:
-			     push: pop root binaryTreeElementEmpty testPushOrderedInterval
-			     testCreation );
+			     push: pop root binaryTreeElementEmpty #mergeBinaryTreeElement:inBinaryTree:
+			     testPushOrderedInterval testCreation testPushOrderedInterval );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'redblackset-messages.json' ]
 		  ofPackage: self class package
