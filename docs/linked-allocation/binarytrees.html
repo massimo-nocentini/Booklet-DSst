@@ -53,8 +53,6 @@
 <li class="toctree-l1"><a class="reference internal" href="linkedlists.html">5. <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">6. <code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#definition">6.1. Definition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#creation">6.2. Creation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#push">6.3. Push</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="unbalancedsets.html">7. <code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a></li>
@@ -140,13 +138,10 @@
 	<span class="nf">package:</span> <span class="s">&#39;Containers-BinaryTreeAbstract&#39;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="creation">
-<h2><span class="section-number">6.2. </span>Creation<a class="headerlink" href="#creation" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="pharo-compiledMethod-0"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstracttest-testcreation"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstractTest, protocol tests&quot;</span>
 <span class="nf">testCreation</span>
 
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">treeClass</span> <span class="nf">empty</span>
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="bp">self</span> <span class="nf">tree:</span> {  })
 </pre></div>
 </div>
 <blockquote>
@@ -155,25 +150,14 @@
 <span class="target" id="pharo-compiledMethod-1"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstract-class-empty"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstract class, protocol requirements&quot;</span>
 <span class="nf">empty</span>
 
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">basicNew</span> <span class="nf">in:</span> [ <span class="o">:</span><span class="nv">aTree</span> <span class="o">|</span> 
-        <span class="nv">aTree</span>
-           <span class="nf">representation:</span> <span class="nv">aTree</span> <span class="nf">binaryTreeElementEmpty</span><span class="p">;</span>
-           <span class="nf">initialize</span><span class="p">;</span>
-           <span class="nf">yourself</span> ]
+   <span class="o">^</span> <span class="bp">self</span> <span class="nb">new</span> <span class="nf">yourself:</span> [ <span class="o">:</span><span class="nv">aTree</span> <span class="o">|</span> 
+        <span class="nv">aTree</span> <span class="nf">representation:</span> <span class="nv">aTree</span> <span class="nf">binaryTreeElementEmpty</span> ]
 </pre></div>
 </div>
-</div>
-<div class="section" id="push">
-<h2><span class="section-number">6.3. </span>Push<a class="headerlink" href="#push" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstracttest-testpushorderedinterval"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstractTest, protocol tests&quot;</span>
 <span class="nf">testPushOrderedInterval</span>
 
-   <span class="o">|</span><span class="nv"> tree </span><span class="o">|</span>
-   <span class="nv">tree</span> <span class="o">:=</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">20</span>)
-              <span class="nf">inject:</span> <span class="nv">treeClass</span> <span class="nf">empty</span>
-              <span class="nf">into:</span> [ <span class="o">:</span><span class="nv">aBinaryTree</span> <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">aBinaryTree</span> <span class="nf">push:</span> <span class="nv">each</span> ]<span class="p">.</span>
-
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">tree</span>
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="bp">self</span> <span class="nf">tree:</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">20</span>))
 </pre></div>
 </div>
 <blockquote>
@@ -225,6 +209,47 @@
               <span class="nf">rightBinaryTreeElement:</span> <span class="nv">link</span> ]
 </pre></div>
 </div>
+<span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstracttest-testpushorderedcollection"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstractTest, protocol tests&quot;</span>
+<span class="nf">testPushOrderedCollection</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span>
+        (<span class="bp">self</span> <span class="nf">tree:</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">20</span>) <span class="nf">asOrderedCollection</span>)
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTBinaryTreeAbstractTest-testPushOrderedCollection.svg" class="align-center" src="../_images/CTBinaryTreeAbstractTest-testPushOrderedCollection.svg" /></div></blockquote>
+<span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstracttest-testpushshuffledinterval"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstractTest, protocol tests&quot;</span>
+<span class="nf">testPushShuffledInterval</span>
+
+   <span class="o">|</span><span class="nv"> shuffled </span><span class="o">|</span>
+   <span class="nv">shuffled</span> <span class="o">:=</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">20</span>) <span class="nf">asArray</span> <span class="nf">shuffleBy:</span> (<span class="nc">Random</span> <span class="nf">seed:</span> <span class="m">13</span>)<span class="p">.</span>
+
+   <span class="bp">self</span>
+      <span class="nf">assert:</span> <span class="nv">shuffled</span>
+      <span class="nf">equals:</span> <span class="ss">#(</span> <span class="m">8</span> <span class="m">16</span> <span class="m">20</span> <span class="m">3</span> <span class="m">6</span> <span class="m">5</span> <span class="m">4</span> <span class="m">19</span> <span class="m">7</span> <span class="m">12</span> <span class="m">2</span> <span class="m">10</span> <span class="m">11</span> <span class="m">9</span> <span class="m">13</span> <span class="m">18</span> <span class="m">17</span> <span class="m">15</span> <span class="m">14</span> <span class="m">1</span> <span class="ss">)</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="bp">self</span> <span class="nf">tree:</span> <span class="nv">shuffled</span>)
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTBinaryTreeAbstractTest-testPushShuffledInterval.svg" class="align-center" src="../_images/CTBinaryTreeAbstractTest-testPushShuffledInterval.svg" /></div></blockquote>
+<span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstracttest-testpushshuffledcollection"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstractTest, protocol tests&quot;</span>
+<span class="nf">testPushShuffledCollection</span>
+
+   <span class="o">|</span><span class="nv"> shuffled </span><span class="o">|</span>
+   <span class="nv">shuffled</span> <span class="o">:=</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">20</span>) <span class="nf">asOrderedCollection</span> <span class="nf">shuffleBy:</span>
+                  (<span class="nc">Random</span> <span class="nf">seed:</span> <span class="m">13</span>)<span class="p">.</span>
+
+   <span class="bp">self</span>
+      <span class="nf">assert:</span> <span class="nv">shuffled</span>
+      <span class="nf">equals:</span> <span class="ss">#(</span> <span class="m">8</span> <span class="m">16</span> <span class="m">20</span> <span class="m">3</span> <span class="m">6</span> <span class="m">5</span> <span class="m">4</span> <span class="m">19</span> <span class="m">7</span> <span class="m">12</span> <span class="m">2</span> <span class="m">10</span> <span class="m">11</span> <span class="m">9</span> <span class="m">13</span> <span class="m">18</span> <span class="m">17</span> <span class="m">15</span> <span class="m">14</span> <span class="m">1</span> <span class="ss">)</span>
+            <span class="nf">asOrderedCollection</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="bp">self</span> <span class="nf">tree:</span> <span class="nv">shuffled</span>)
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTBinaryTreeAbstractTest-testPushShuffledCollection.svg" class="align-center" src="../_images/CTBinaryTreeAbstractTest-testPushShuffledCollection.svg" /></div></blockquote>
 </div>
 </div>
 
