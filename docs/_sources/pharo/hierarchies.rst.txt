@@ -177,6 +177,14 @@ next section.
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testMagnitudeSubclassesSlotsGraph.svg
     :align: center
 
+``Link`` hierarchy
+==================
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testLinkSubclasses
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testLinkSubclasses.svg
+    :align: center
+
 ``Collection`` hierarchy
 ========================
 

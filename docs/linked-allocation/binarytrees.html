@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6. CTBinaryTreeAbstract containers &#8212; Data Structures in Smalltalk  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. CTUnbalancedSet containers" href="unbalancedsets.html" />
+    <link rel="prev" title="5. LinkedList containers" href="linkedlists.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Data Structures in Smalltalk</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=massimo-nocentini&repo=Booklet-DSst&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../pharo/oo.html">1. Object model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pharo/hierarchies.html">2. Hierarchies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic/divisibility.html">3. Divisibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">4. Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linkedlists.html">5. <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. <code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#definition">6.1. Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creation">6.2. Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#push">6.3. Push</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="unbalancedsets.html">7. <code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="storage-pools.html">8. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">9. Bibliography</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="linkedlists.html" title="previous chapter"><span class="section-number">5. </span><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
+      <li>Next: <a href="unbalancedsets.html" title="next chapter"><span class="section-number">7. </span><code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+              <div class="related top">
+                &nbsp;
+  <nav id="rellinks">
+    <ul>
+        <li>
+          &larr;
+          <a href="linkedlists.html" title="Previous document"><span class="section-number">5. </span><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a>
+        </li>
+        <li>
+          <a href="unbalancedsets.html" title="Next document"><span class="section-number">7. </span><code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a>
+          &rarr;
+        </li>
+    </ul>
+  </nav>
+              </div>
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="ctbinarytreeabstract-containers">
+<h1><span class="section-number">6. </span><code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers<a class="headerlink" href="#ctbinarytreeabstract-containers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="definition">
+<h2><span class="section-number">6.1. </span>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreeabstract"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">subclass:</span> <span class="ss">#CTBinaryTreeAbstract</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;representation&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-BinaryTreeAbstract&#39;</span>
+</pre></div>
+</div>
+<span class="target" id="pharo-class-1"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreeelement"><div class="highlight"><pre><span></span><span class="nc">CTDoubleValueLink</span> <span class="nf">subclass:</span> <span class="ss">#CTBinaryTreeElement</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-BinaryTreeAbstract&#39;</span>
+</pre></div>
+</div>
+<span class="target" id="pharo-class-2"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreeempty"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeElement</span> <span class="nf">subclass:</span> <span class="ss">#CTBinaryTreeEmpty</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-BinaryTreeAbstract&#39;</span>
+</pre></div>
+</div>
+<span class="target" id="pharo-class-3"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreenode"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeElement</span> <span class="nf">subclass:</span> <span class="ss">#CTBinaryTreeNode</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-BinaryTreeAbstract&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creation">
+<h2><span class="section-number">6.2. </span>Creation<a class="headerlink" href="#creation" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="pharo-compiledMethod-0"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstracttest-testcreation"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstractTest, protocol tests&quot;</span>
+<span class="nf">testCreation</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">treeClass</span> <span class="nf">empty</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTBinaryTreeAbstractTest-testCreation.svg" class="align-center" src="../_images/CTBinaryTreeAbstractTest-testCreation.svg" /></div></blockquote>
+<p>where</p>
+<span class="target" id="pharo-compiledMethod-1"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstract-class-empty"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstract class, protocol requirements&quot;</span>
+<span class="nf">empty</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">basicNew</span> <span class="nf">in:</span> [ <span class="o">:</span><span class="nv">aTree</span> <span class="o">|</span> 
+        <span class="nv">aTree</span>
+           <span class="nf">representation:</span> <span class="nv">aTree</span> <span class="nf">binaryTreeElementEmpty</span><span class="p">;</span>
+           <span class="nf">initialize</span><span class="p">;</span>
+           <span class="nf">yourself</span> ]
+</pre></div>
+</div>
+</div>
+<div class="section" id="push">
+<h2><span class="section-number">6.3. </span>Push<a class="headerlink" href="#push" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstracttest-testpushorderedinterval"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstractTest, protocol tests&quot;</span>
+<span class="nf">testPushOrderedInterval</span>
+
+   <span class="o">|</span><span class="nv"> tree </span><span class="o">|</span>
+   <span class="nv">tree</span> <span class="o">:=</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">20</span>)
+              <span class="nf">inject:</span> <span class="nv">treeClass</span> <span class="nf">empty</span>
+              <span class="nf">into:</span> [ <span class="o">:</span><span class="nv">aBinaryTree</span> <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">aBinaryTree</span> <span class="nf">push:</span> <span class="nv">each</span> ]<span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">tree</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTBinaryTreeAbstractTest-testPushOrderedInterval.svg" class="align-center" src="../_images/CTBinaryTreeAbstractTest-testPushOrderedInterval.svg" /></div></blockquote>
+<p>where</p>
+<span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstract-push"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstract, protocol adding&quot;</span>
+<span class="nf">push:</span> <span class="nv">anObject</span>
+
+   <span class="o">|</span><span class="nv"> leaf </span><span class="o">|</span>
+   <span class="nv">leaf</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">binaryTreeElementLeaf:</span> <span class="nv">anObject</span><span class="p">.</span>
+
+   <span class="nv">representation</span> <span class="o">:=</span> <span class="nv">leaf</span>
+                        <span class="nf">mergeBinaryTreeElement:</span> <span class="nv">representation</span>
+                        <span class="nf">inBinaryTree:</span> <span class="bp">self</span>
+</pre></div>
+</div>
+<p>and</p>
+<span class="target" id="pharo-compiledMethod-4"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeempty-mergebinarytreeelement-inbinarytree"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeEmpty, protocol actions&quot;</span>
+<span class="nf">mergeBinaryTreeElement:</span> <span class="nv">aBTElement</span> <span class="nf">inBinaryTree:</span> <span class="nv">aBinaryTree</span>
+
+   <span class="o">^</span> <span class="nv">aBTElement</span>
+</pre></div>
+</div>
+<span class="target" id="pharo-compiledMethod-5"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreenode-mergebinarytreeelement-inbinarytree"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeNode, protocol actions&quot;</span>
+<span class="nf">mergeBinaryTreeElement:</span> <span class="nv">aBTElement</span> <span class="nf">inBinaryTree:</span> <span class="nv">aBinaryTree</span>
+
+   <span class="o">^</span> (<span class="nc">RandomBernoulli</span> <span class="nb">new</span>
+         <span class="nf">p:</span> <span class="m">0.5</span><span class="p">;</span>
+         <span class="nf">next</span>) <span class="nf">=</span> <span class="m">0</span>
+        <span class="nb">ifTrue:</span> [ 
+           <span class="o">|</span> <span class="nv">link</span> <span class="nf">|</span>
+           <span class="nv">link</span> <span class="o">:=</span> <span class="nv">previousLink</span>
+                      <span class="nf">mergeBinaryTreeElement:</span> <span class="nv">aBTElement</span>
+                      <span class="nf">inBinaryTree:</span> <span class="nv">aBinaryTree</span><span class="p">.</span>
+
+           <span class="nv">aBinaryTree</span>
+              <span class="nf">leftBinaryTreeElement:</span> <span class="nv">link</span>
+              <span class="nf">value:</span> <span class="nv">value</span>
+              <span class="nf">rightBinaryTreeElement:</span> <span class="nv">nextLink</span> ]
+        <span class="nb">ifFalse:</span> [ 
+           <span class="o">|</span> <span class="nv">link</span> <span class="nf">|</span>
+           <span class="nv">link</span> <span class="o">:=</span> <span class="nv">nextLink</span>
+                      <span class="nf">mergeBinaryTreeElement:</span> <span class="nv">aBTElement</span>
+                      <span class="nf">inBinaryTree:</span> <span class="nv">aBinaryTree</span><span class="p">.</span>
+
+           <span class="nv">aBinaryTree</span>
+              <span class="nf">leftBinaryTreeElement:</span> <span class="nv">previousLink</span>
+              <span class="nf">value:</span> <span class="nv">value</span>
+              <span class="nf">rightBinaryTreeElement:</span> <span class="nv">link</span> ]
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+              <div class="related bottom">
+                &nbsp;
+  <nav id="rellinks">
+    <ul>
+        <li>
+          &larr;
+          <a href="linkedlists.html" title="Previous document"><span class="section-number">5. </span><code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a>
+        </li>
+        <li>
+          <a href="unbalancedsets.html" title="Next document"><span class="section-number">7. </span><code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a>
+          &rarr;
+        </li>
+    </ul>
+  </nav>
+              </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Massimo Nocentini.
+      
+      |
+      <a href="../_sources/linked-allocation/binarytrees.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -49,9 +49,10 @@
 <li class="toctree-l1"><a class="reference internal" href="symbolic/divisibility.html">3. Divisibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linked-allocation/links.html">4. Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linked-allocation/linkedlists.html">5. <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/unbalancedsets.html">6. <code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">7. Storage pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">8. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/binarytrees.html">6. <code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/unbalancedsets.html">7. <code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">8. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">9. Bibliography</a></li>
 </ul>
 
 <div class="relations">
@@ -166,14 +167,14 @@
     #asShapeBinaryDots: is understood by
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-45">Integer&gt;&gt;#asShapeBinaryDots:</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-46">Integer&gt;&gt;#asShapeBinaryDots:</a>
 </li>
       </ul></li>
       <li>
     #asShapeBRGCDots is understood by
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-43">Integer&gt;&gt;#asShapeBRGCDots</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-44">Integer&gt;&gt;#asShapeBRGCDots</a>
 </li>
       </ul></li>
       <li>
@@ -187,7 +188,7 @@
     #bitBRGC is understood by
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-44">Integer&gt;&gt;#bitBRGC</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-45">Integer&gt;&gt;#bitBRGC</a>
 </li>
       </ul></li>
       <li>
@@ -212,10 +213,17 @@
 </li>
       </ul></li>
       <li>
+    #empty is understood by
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-1">CTBinaryTreeAbstract class&gt;&gt;#empty</a>
+</li>
+      </ul></li>
+      <li>
     #fibonacciNumbers is understood by
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-27">Integer&gt;&gt;#fibonacciNumbers</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-28">Integer&gt;&gt;#fibonacciNumbers</a>
 </li>
       </ul></li>
       <li>
@@ -229,14 +237,14 @@
     #gibonacciNumbersFirst:second:do: is understood by
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-29">Integer&gt;&gt;#gibonacciNumbersFirst:second:do:</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-30">Integer&gt;&gt;#gibonacciNumbersFirst:second:do:</a>
 </li>
       </ul></li>
       <li>
     #goldenRatios is understood by
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-35">Integer&gt;&gt;#goldenRatios</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-36">Integer&gt;&gt;#goldenRatios</a>
 </li>
       </ul></li>
       <li>
@@ -315,15 +323,15 @@
         <li><a href="symbolic/divisibility.html#pharo-compiledMethod-20">Fraction&gt;&gt;#kissingFractions</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     #lucasNumbers is understood by
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-28">Integer&gt;&gt;#lucasNumbers</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-29">Integer&gt;&gt;#lucasNumbers</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     #makeValueLinksTable is understood by
 
@@ -350,6 +358,15 @@
 </li>
       </ul></li>
       <li>
+    #mergeBinaryTreeElement:inBinaryTree: is understood by
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-4">CTBinaryTreeEmpty&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+</li>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-5">CTBinaryTreeNode&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+</li>
+      </ul></li>
+      <li>
     #newLink is understood by
 
       <ul>
@@ -360,19 +377,19 @@
     #next is understood by
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-52">Random&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-53">Random&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-56">RandomBernoulli&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-57">RandomBernoulli&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-58">RandomBinomial&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-59">RandomBinomial&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-66">RandomBoxMullerBivariateGaussian&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-67">RandomBoxMullerBivariateGaussian&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-62">RandomExponential&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-63">RandomExponential&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-64">RandomGaussian&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-65">RandomGaussian&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-60">RandomGeometric&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-61">RandomGeometric&gt;&gt;#next</a>
 </li>
       </ul></li>
       <li>
@@ -416,14 +433,21 @@
     #privateNextSeed is understood by
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-54">Random&gt;&gt;#privateNextSeed</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-55">Random&gt;&gt;#privateNextSeed</a>
 </li>
       </ul></li>
       <li>
     #privateNextValue is understood by
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-53">Random&gt;&gt;#privateNextValue</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-54">Random&gt;&gt;#privateNextValue</a>
+</li>
+      </ul></li>
+      <li>
+    #push: is understood by
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-3">CTBinaryTreeAbstract&gt;&gt;#push:</a>
 </li>
       </ul></li>
       <li>
@@ -555,6 +579,43 @@
 </li>
       </ul></li>
       <li>
+    a CTBinaryTreeAbstract class understands
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-1">#empty</a>
+</li>
+      </ul></li>
+      <li>
+    a CTBinaryTreeAbstract understands
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-3">#push:</a>
+</li>
+      </ul></li>
+      <li>
+    a CTBinaryTreeAbstractTest understands
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-0">#testCreation</a>
+</li>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-2">#testPushOrderedInterval</a>
+</li>
+      </ul></li>
+      <li>
+    a CTBinaryTreeEmpty understands
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-4">#mergeBinaryTreeElement:inBinaryTree:</a>
+</li>
+      </ul></li>
+      <li>
+    a CTBinaryTreeNode understands
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-5">#mergeBinaryTreeElement:inBinaryTree:</a>
+</li>
+      </ul></li>
+      <li>
     a CTLinkedStoragePool understands
 
       <ul>
@@ -667,33 +728,33 @@
     a EssentialsObjectTest understands
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-41">#testByteArrayInteger</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-42">#testByteArrayInteger</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-40">#testByteArrayLiteral</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-41">#testByteArrayLiteral</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-39">#testByteArrayLoremIpsum</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-40">#testByteArrayLoremIpsum</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-23">#testCollectionSubclasses</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-24">#testCollectionSubclasses</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-34">#testInspect10GoldenRatios</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-35">#testInspect10GoldenRatios</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-36">#testInspect10GoldenRectangles</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-37">#testInspect10GoldenRectangles</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-37">#testInspect10GoldenRectanglesNested</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-38">#testInspect10GoldenRectanglesNested</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-30">#testInspect20CatalanNumbers</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-31">#testInspect20CatalanNumbers</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-25">#testInspect20FibonacciNumbers</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-26">#testInspect20FibonacciNumbers</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-26">#testInspect20LucasNumbers</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-27">#testInspect20LucasNumbers</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-11">#testInspectAssociation</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-49">#testInspectBag</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-50">#testInspectBag</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-42">#testInspectBRGCodes</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-43">#testInspectBRGCodes</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-32">#testInspectCatalanArray</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-33">#testInspectCatalanArray</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-2">#testInspectCharacterPi</a>
 </li>
@@ -703,7 +764,7 @@
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-3">#testInspectDatetimeNow</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-48">#testInspectDictionary</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-49">#testInspectDictionary</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-10">#testInspectFloatPi</a>
 </li>
@@ -717,9 +778,9 @@
 </li>
         <li><a href="symbolic/divisibility.html#pharo-compiledMethod-23">#testInspectFractionReciprocalKissing</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-33">#testInspectGoldenRatio</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-34">#testInspectGoldenRatio</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-46">#testInspectHeap</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-47">#testInspectHeap</a>
 </li>
         <li><a href="pharo/oo.html#pharo-compiledMethod-7">#testInspectIceRepository</a>
 </li>
@@ -737,29 +798,31 @@
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-0">#testInspectObjectModel</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-38">#testInspectOneToMany</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-39">#testInspectOneToMany</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-31">#testInspectPascalArray</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-32">#testInspectPascalArray</a>
 </li>
         <li><a href="pharo/oo.html#pharo-compiledMethod-3">#testInspectPoint</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-68">#testInspectRBNodesQuine</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-69">#testInspectRBNodesQuine</a>
 </li>
         <li><a href="pharo/oo.html#pharo-compiledMethod-5">#testInspectRSPolygon</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-47">#testInspectSet</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-48">#testInspectSet</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-24">#testInspectString</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-25">#testInspectString</a>
 </li>
         <li><a href="pharo/oo.html#pharo-compiledMethod-2">#testInspectTrueAndFalse</a>
+</li>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-23">#testLinkSubclasses</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-1">#testMagnitudeSubclasses</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-22">#testMagnitudeSubclassesSlotsGraph</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-50">#testRandomSubclasses</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-51">#testRandomSubclasses</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-67">#testRBNodeSubclasses</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-68">#testRBNodeSubclasses</a>
 </li>
       </ul></li>
   </ul></td>
@@ -789,19 +852,19 @@
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-14">#\/</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-45">#asShapeBinaryDots:</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-46">#asShapeBinaryDots:</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-43">#asShapeBRGCDots</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-44">#asShapeBRGCDots</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-44">#bitBRGC</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-45">#bitBRGC</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-7">#dcMultiplyInteger:</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-27">#fibonacciNumbers</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-28">#fibonacciNumbers</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-29">#gibonacciNumbersFirst:second:do:</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-30">#gibonacciNumbersFirst:second:do:</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-35">#goldenRatios</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-36">#goldenRatios</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-9">#halves:at:digits:base:</a>
 </li>
@@ -809,7 +872,7 @@
 </li>
         <li><a href="symbolic/divisibility.html#pharo-compiledMethod-22">#kissingFractionLink:</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-28">#lucasNumbers</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-29">#lucasNumbers</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-15">#mediantFraction:</a>
 </li>
@@ -878,72 +941,72 @@
     a Random understands
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-52">#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-53">#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-54">#privateNextSeed</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-55">#privateNextSeed</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-53">#privateNextValue</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-54">#privateNextValue</a>
 </li>
       </ul></li>
       <li>
     a RandomBernoulli understands
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-56">#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-57">#next</a>
 </li>
       </ul></li>
       <li>
     a RandomBinomial understands
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-58">#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-59">#next</a>
 </li>
       </ul></li>
       <li>
     a RandomBoxMullerBivariateGaussian understands
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-66">#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-67">#next</a>
 </li>
       </ul></li>
       <li>
     a RandomExponential understands
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-62">#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-63">#next</a>
 </li>
       </ul></li>
       <li>
     a RandomGaussian understands
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-64">#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-65">#next</a>
 </li>
       </ul></li>
       <li>
     a RandomGeometric understands
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-60">#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-61">#next</a>
 </li>
       </ul></li>
       <li>
     a RandomTestDistributions understands
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-55">#testBernoulli</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-56">#testBernoulli</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-57">#testBinomial</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-58">#testBinomial</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-61">#testExponential</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-62">#testExponential</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-63">#testGaussian</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-64">#testGaussian</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-65">#testGaussianBoxMuller</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-66">#testGaussianBoxMuller</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-59">#testGeometric</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-60">#testGeometric</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-51">#testUniform</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-52">#testUniform</a>
 </li>
       </ul></li>
       <li>
@@ -1059,6 +1122,19 @@
 </li>
       </ul></li>
       <li>
+    Package Containers-BinaryTreeAbstract contains
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-class-0">CTBinaryTreeAbstract</a>
+</li>
+        <li><a href="linked-allocation/binarytrees.html#pharo-class-1">CTBinaryTreeElement</a>
+</li>
+        <li><a href="linked-allocation/binarytrees.html#pharo-class-2">CTBinaryTreeEmpty</a>
+</li>
+        <li><a href="linked-allocation/binarytrees.html#pharo-class-3">CTBinaryTreeNode</a>
+</li>
+      </ul></li>
+      <li>
     Package Containers-Essentials-Numbers contains
 
       <ul>
@@ -1117,15 +1193,15 @@
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-14">Integer&gt;&gt;#\/</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-44">Integer&gt;&gt;#bitBRGC</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-45">Integer&gt;&gt;#bitBRGC</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-7">Integer&gt;&gt;#dcMultiplyInteger:</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-27">Integer&gt;&gt;#fibonacciNumbers</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-28">Integer&gt;&gt;#fibonacciNumbers</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-29">Integer&gt;&gt;#gibonacciNumbersFirst:second:do:</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-30">Integer&gt;&gt;#gibonacciNumbersFirst:second:do:</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-35">Integer&gt;&gt;#goldenRatios</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-36">Integer&gt;&gt;#goldenRatios</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-9">Integer&gt;&gt;#halves:at:digits:base:</a>
 </li>
@@ -1133,7 +1209,7 @@
 </li>
         <li><a href="symbolic/divisibility.html#pharo-compiledMethod-22">Integer&gt;&gt;#kissingFractionLink:</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-28">Integer&gt;&gt;#lucasNumbers</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-29">Integer&gt;&gt;#lucasNumbers</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-15">Integer&gt;&gt;#mediantFraction:</a>
 </li>
@@ -1168,28 +1244,28 @@
     Protocol *Containers-Essentials-Tests
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-55">RandomTestDistributions&gt;&gt;#testBernoulli</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-56">RandomTestDistributions&gt;&gt;#testBernoulli</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-57">RandomTestDistributions&gt;&gt;#testBinomial</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-58">RandomTestDistributions&gt;&gt;#testBinomial</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-61">RandomTestDistributions&gt;&gt;#testExponential</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-62">RandomTestDistributions&gt;&gt;#testExponential</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-63">RandomTestDistributions&gt;&gt;#testGaussian</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-64">RandomTestDistributions&gt;&gt;#testGaussian</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-65">RandomTestDistributions&gt;&gt;#testGaussianBoxMuller</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-66">RandomTestDistributions&gt;&gt;#testGaussianBoxMuller</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-59">RandomTestDistributions&gt;&gt;#testGeometric</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-60">RandomTestDistributions&gt;&gt;#testGeometric</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-51">RandomTestDistributions&gt;&gt;#testUniform</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-52">RandomTestDistributions&gt;&gt;#testUniform</a>
 </li>
       </ul></li>
       <li>
     Protocol *Containers-Essentials-Visualizations
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-45">Integer&gt;&gt;#asShapeBinaryDots:</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-46">Integer&gt;&gt;#asShapeBinaryDots:</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-43">Integer&gt;&gt;#asShapeBRGCDots</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-44">Integer&gt;&gt;#asShapeBRGCDots</a>
 </li>
       </ul></li>
       <li>
@@ -1230,19 +1306,35 @@
 </li>
         <li><a href="symbolic/divisibility.html#pharo-compiledMethod-4">QuoRemStandard&gt;&gt;#initialize</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-52">Random&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-53">Random&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-56">RandomBernoulli&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-57">RandomBernoulli&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-58">RandomBinomial&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-59">RandomBinomial&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-66">RandomBoxMullerBivariateGaussian&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-67">RandomBoxMullerBivariateGaussian&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-62">RandomExponential&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-63">RandomExponential&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-64">RandomGaussian&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-65">RandomGaussian&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-60">RandomGeometric&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-61">RandomGeometric&gt;&gt;#next</a>
+</li>
+      </ul></li>
+      <li>
+    Protocol actions
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-4">CTBinaryTreeEmpty&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+</li>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-5">CTBinaryTreeNode&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+</li>
+      </ul></li>
+      <li>
+    Protocol adding
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-3">CTBinaryTreeAbstract&gt;&gt;#push:</a>
 </li>
       </ul></li>
       <li>
@@ -1280,6 +1372,8 @@
         <li><a href="linked-allocation/links.html#pharo-compiledMethod-19">TopologicalSortAlgorithm&gt;&gt;#value:onCycleDo:</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     Protocol initialization
 
@@ -1291,15 +1385,13 @@
         <li><a href="linked-allocation/storage-pools.html#pharo-compiledMethod-2">CTLinkedStoragePool&gt;&gt;#releaseLink:</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     Protocol private
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-54">Random&gt;&gt;#privateNextSeed</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-55">Random&gt;&gt;#privateNextSeed</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-53">Random&gt;&gt;#privateNextValue</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-54">Random&gt;&gt;#privateNextValue</a>
 </li>
       </ul></li>
       <li>
@@ -1312,9 +1404,20 @@
 </li>
       </ul></li>
       <li>
+    Protocol requirements
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-1">CTBinaryTreeAbstract class&gt;&gt;#empty</a>
+</li>
+      </ul></li>
+      <li>
     Protocol tests
 
       <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-0">CTBinaryTreeAbstractTest&gt;&gt;#testCreation</a>
+</li>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-2">CTBinaryTreeAbstractTest&gt;&gt;#testPushOrderedInterval</a>
+</li>
         <li><a href="linked-allocation/storage-pools.html#pharo-compiledMethod-13">CTLinkedStoragePoolTest&gt;&gt;#testEmptyCircularList</a>
 </li>
         <li><a href="linked-allocation/storage-pools.html#pharo-compiledMethod-8">CTLinkedStoragePoolTest&gt;&gt;#testEmptyQueue</a>
@@ -1377,33 +1480,33 @@
 </li>
         <li><a href="linked-allocation/links.html#pharo-compiledMethod-12">CTLinksValueLinkTest&gt;&gt;#testSimpleValueLink</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-41">EssentialsObjectTest&gt;&gt;#testByteArrayInteger</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-42">EssentialsObjectTest&gt;&gt;#testByteArrayInteger</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-40">EssentialsObjectTest&gt;&gt;#testByteArrayLiteral</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-41">EssentialsObjectTest&gt;&gt;#testByteArrayLiteral</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-39">EssentialsObjectTest&gt;&gt;#testByteArrayLoremIpsum</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-40">EssentialsObjectTest&gt;&gt;#testByteArrayLoremIpsum</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-23">EssentialsObjectTest&gt;&gt;#testCollectionSubclasses</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-24">EssentialsObjectTest&gt;&gt;#testCollectionSubclasses</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-34">EssentialsObjectTest&gt;&gt;#testInspect10GoldenRatios</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-35">EssentialsObjectTest&gt;&gt;#testInspect10GoldenRatios</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-36">EssentialsObjectTest&gt;&gt;#testInspect10GoldenRectangles</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-37">EssentialsObjectTest&gt;&gt;#testInspect10GoldenRectangles</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-37">EssentialsObjectTest&gt;&gt;#testInspect10GoldenRectanglesNested</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-38">EssentialsObjectTest&gt;&gt;#testInspect10GoldenRectanglesNested</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-30">EssentialsObjectTest&gt;&gt;#testInspect20CatalanNumbers</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-31">EssentialsObjectTest&gt;&gt;#testInspect20CatalanNumbers</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-25">EssentialsObjectTest&gt;&gt;#testInspect20FibonacciNumbers</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-26">EssentialsObjectTest&gt;&gt;#testInspect20FibonacciNumbers</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-26">EssentialsObjectTest&gt;&gt;#testInspect20LucasNumbers</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-27">EssentialsObjectTest&gt;&gt;#testInspect20LucasNumbers</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-11">EssentialsObjectTest&gt;&gt;#testInspectAssociation</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-49">EssentialsObjectTest&gt;&gt;#testInspectBag</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-50">EssentialsObjectTest&gt;&gt;#testInspectBag</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-42">EssentialsObjectTest&gt;&gt;#testInspectBRGCodes</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-43">EssentialsObjectTest&gt;&gt;#testInspectBRGCodes</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-32">EssentialsObjectTest&gt;&gt;#testInspectCatalanArray</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-33">EssentialsObjectTest&gt;&gt;#testInspectCatalanArray</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-2">EssentialsObjectTest&gt;&gt;#testInspectCharacterPi</a>
 </li>
@@ -1413,7 +1516,7 @@
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-3">EssentialsObjectTest&gt;&gt;#testInspectDatetimeNow</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-48">EssentialsObjectTest&gt;&gt;#testInspectDictionary</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-49">EssentialsObjectTest&gt;&gt;#testInspectDictionary</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-10">EssentialsObjectTest&gt;&gt;#testInspectFloatPi</a>
 </li>
@@ -1427,9 +1530,9 @@
 </li>
         <li><a href="symbolic/divisibility.html#pharo-compiledMethod-23">EssentialsObjectTest&gt;&gt;#testInspectFractionReciprocalKissing</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-33">EssentialsObjectTest&gt;&gt;#testInspectGoldenRatio</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-34">EssentialsObjectTest&gt;&gt;#testInspectGoldenRatio</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-46">EssentialsObjectTest&gt;&gt;#testInspectHeap</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-47">EssentialsObjectTest&gt;&gt;#testInspectHeap</a>
 </li>
         <li><a href="pharo/oo.html#pharo-compiledMethod-7">EssentialsObjectTest&gt;&gt;#testInspectIceRepository</a>
 </li>
@@ -1447,29 +1550,31 @@
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-0">EssentialsObjectTest&gt;&gt;#testInspectObjectModel</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-38">EssentialsObjectTest&gt;&gt;#testInspectOneToMany</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-39">EssentialsObjectTest&gt;&gt;#testInspectOneToMany</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-31">EssentialsObjectTest&gt;&gt;#testInspectPascalArray</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-32">EssentialsObjectTest&gt;&gt;#testInspectPascalArray</a>
 </li>
         <li><a href="pharo/oo.html#pharo-compiledMethod-3">EssentialsObjectTest&gt;&gt;#testInspectPoint</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-68">EssentialsObjectTest&gt;&gt;#testInspectRBNodesQuine</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-69">EssentialsObjectTest&gt;&gt;#testInspectRBNodesQuine</a>
 </li>
         <li><a href="pharo/oo.html#pharo-compiledMethod-5">EssentialsObjectTest&gt;&gt;#testInspectRSPolygon</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-47">EssentialsObjectTest&gt;&gt;#testInspectSet</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-48">EssentialsObjectTest&gt;&gt;#testInspectSet</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-24">EssentialsObjectTest&gt;&gt;#testInspectString</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-25">EssentialsObjectTest&gt;&gt;#testInspectString</a>
 </li>
         <li><a href="pharo/oo.html#pharo-compiledMethod-2">EssentialsObjectTest&gt;&gt;#testInspectTrueAndFalse</a>
+</li>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-23">EssentialsObjectTest&gt;&gt;#testLinkSubclasses</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-1">EssentialsObjectTest&gt;&gt;#testMagnitudeSubclasses</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-22">EssentialsObjectTest&gt;&gt;#testMagnitudeSubclassesSlotsGraph</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-50">EssentialsObjectTest&gt;&gt;#testRandomSubclasses</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-51">EssentialsObjectTest&gt;&gt;#testRandomSubclasses</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-67">EssentialsObjectTest&gt;&gt;#testRBNodeSubclasses</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-68">EssentialsObjectTest&gt;&gt;#testRBNodeSubclasses</a>
 </li>
         <li><a href="symbolic/divisibility.html#pharo-compiledMethod-5">SymbolicIntegerTest&gt;&gt;#testComplementaryQuoRem21Over9</a>
 </li>

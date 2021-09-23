@@ -17,6 +17,7 @@ Data Structures in Smalltalk
    symbolic/divisibility.rst
    linked-allocation/links.rst
    linked-allocation/linkedlists.rst
+   linked-allocation/binarytrees.rst
    linked-allocation/unbalancedsets.rst
    linked-allocation/storage-pools.rst
    bibliography.rst
