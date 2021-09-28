@@ -56,7 +56,8 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     goldenRatios lucasNumbers #gibonacciNumbersFirst:second:do:
 			     \/ mediantInteger: mediantFraction: kissingFractions
 			     overlappingPairsDo: kissingFractionLink: bitBRGC asShapeBinaryDots:
-			     asShapeBRGCDots testInspectObjectModel testMagnitudeSubclasses
+			     asShapeBRGCDots fairCoin #bisect:baseBlock: #bisect:from:to:baseBlock:
+			     testInspectObjectModel testMagnitudeSubclasses
 			     testMagnitudeSubclassesSlotsGraph
 			     testCollectionSubclasses testRBNodeSubclasses
 			     testInspectCharacterPi testInspectFloatPi testInspectDatetimeNow
@@ -108,6 +109,8 @@ BaselineOfBookletDSst >> scriptRedBlackSetMessagesForDoc [
 	<script: 'BaselineOfBookletDSst new scriptRedBlackSetMessagesForDoc'>
 	^ MetaSTExporter new
 		  selectors: #( empty binaryTreeElementEmpty binaryTreeElementNode
+			     tree: asBinaryTree asRedBlackSet asUnbalancedSet
+			     withArrayedCollection: withCollection: asBinaryTree:
 			     #leftBinaryTreeElement:value:rightBinaryTreeElement:
 			     push: pop root binaryTreeElementEmpty #mergeBinaryTreeElement:inBinaryTree:
 			     testPushOrderedInterval testCreation testPushOrderedInterval
