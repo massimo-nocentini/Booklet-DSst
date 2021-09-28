@@ -16,11 +16,7 @@ Data Structures in Smalltalk
    pharo/hierarchies.rst
    symbolic/divisibility.rst
    linked-allocation/links.rst
-   linked-allocation/linkedlists.rst
-   linked-allocation/binarytrees.rst
-   linked-allocation/unbalancedsets.rst
-   linked-allocation/redblacksets.rst
-   linked-allocation/leftistheaps.rst
+   linked-allocation/linked-allocation.rst
    linked-allocation/storage-pools.rst
    bibliography.rst
 

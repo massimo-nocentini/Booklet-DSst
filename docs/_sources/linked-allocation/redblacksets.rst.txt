@@ -1,6 +1,6 @@
 
-``CTRedBlackSet`` containers
-****************************
+*Red-Black* sets
+****************
 
 
 .. pharo:autoclass:: CTRedBlackSet

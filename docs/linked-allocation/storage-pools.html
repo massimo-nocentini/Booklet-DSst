@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>10. Storage pools &#8212; Data Structures in Smalltalk  documentation</title>
+    <title>6. Storage pools &#8212; Data Structures in Smalltalk  documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -15,8 +15,8 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="11. Bibliography" href="../bibliography.html" />
-    <link rel="prev" title="9. CTLeftistHeap containers" href="leftistheaps.html" />
+    <link rel="next" title="7. Bibliography" href="../bibliography.html" />
+    <link rel="prev" title="5. Containers" href="linked-allocation.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -50,29 +50,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../pharo/hierarchies.html">2. Hierarchies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../symbolic/divisibility.html">3. Divisibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="links.html">4. Links</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linkedlists.html">5. <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="binarytrees.html">6. <code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="unbalancedsets.html">7. <code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="redblacksets.html">8. <code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="leftistheaps.html">9. <code class="docutils literal notranslate"><span class="pre">CTLeftistHeap</span></code> containers</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Storage pools</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#stack-pool">10.1. <code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#queue-pool">10.2. <code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#circularlist-pool">10.3. <code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#addition-of-polynomials">10.3.1. Addition of <em>polynomials</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation.html">5. Containers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Storage pools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#stack-pool">6.1. <code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#queue-pool">6.2. <code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#circularlist-pool">6.3. <code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#addition-of-polynomials">6.3.1. Addition of <em>polynomials</em></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">11. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">7. Bibliography</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="leftistheaps.html" title="previous chapter"><span class="section-number">9. </span><code class="docutils literal notranslate"><span class="pre">CTLeftistHeap</span></code> containers</a></li>
-      <li>Next: <a href="../bibliography.html" title="next chapter"><span class="section-number">11. </span>Bibliography</a></li>
+      <li>Previous: <a href="linked-allocation.html" title="previous chapter"><span class="section-number">5. </span>Containers</a></li>
+      <li>Next: <a href="../bibliography.html" title="next chapter"><span class="section-number">7. </span>Bibliography</a></li>
   </ul></li>
 </ul>
 </div>
@@ -104,10 +100,10 @@
     <ul>
         <li>
           &larr;
-          <a href="leftistheaps.html" title="Previous document"><span class="section-number">9. </span><code class="docutils literal notranslate"><span class="pre">CTLeftistHeap</span></code> containers</a>
+          <a href="linked-allocation.html" title="Previous document"><span class="section-number">5. </span>Containers</a>
         </li>
         <li>
-          <a href="../bibliography.html" title="Next document"><span class="section-number">11. </span>Bibliography</a>
+          <a href="../bibliography.html" title="Next document"><span class="section-number">7. </span>Bibliography</a>
           &rarr;
         </li>
     </ul>
@@ -118,7 +114,7 @@
           <div class="body" role="main">
             
   <div class="section" id="storage-pools">
-<h1><span class="section-number">10. </span>Storage pools<a class="headerlink" href="#storage-pools" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6. </span>Storage pools<a class="headerlink" href="#storage-pools" title="Permalink to this headline">¶</a></h1>
 <p>The Knuth’s description of linked allocation begins at page 254 of <span id="id1">[<a class="reference internal" href="../bibliography.html#id10"><span>Knu97</span></a>]</span>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -168,7 +164,7 @@ be linked together in several orders corresponding to different lists; and so on
 <p>allow us to call <em>storage pool</em> the set of all nodes that can be allocated
 according to these messages.</p>
 <div class="section" id="stack-pool">
-<h2><span class="section-number">10.1. </span><code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool<a class="headerlink" href="#stack-pool" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.1. </span><code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool<a class="headerlink" href="#stack-pool" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testemptystack"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
 <span class="nf">testEmptyStack</span>
 
@@ -264,7 +260,7 @@ according to these messages.</p>
 <img alt="../_images/CTLinkedStoragePoolTest-testRemoveAllFromStack-empty.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testRemoveAllFromStack-empty.svg" /><p>as required.</p>
 </div>
 <div class="section" id="queue-pool">
-<h2><span class="section-number">10.2. </span><code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool<a class="headerlink" href="#queue-pool" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.2. </span><code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool<a class="headerlink" href="#queue-pool" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testemptyqueue"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
 <span class="nf">testEmptyQueue</span>
 
@@ -357,7 +353,7 @@ according to these messages.</p>
 <img alt="../_images/CTLinkedStoragePoolTest-testRemoveAllFromQueue-empty.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testRemoveAllFromQueue-empty.svg" /><p>as required.</p>
 </div>
 <div class="section" id="circularlist-pool">
-<h2><span class="section-number">10.3. </span><code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool<a class="headerlink" href="#circularlist-pool" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.3. </span><code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool<a class="headerlink" href="#circularlist-pool" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="pharo-compiledMethod-13"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testemptycircularlist"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
 <span class="nf">testEmptyCircularList</span>
 
@@ -414,7 +410,7 @@ according to these messages.</p>
 </pre></div>
 </div>
 <div class="section" id="addition-of-polynomials">
-<h3><span class="section-number">10.3.1. </span>Addition of <em>polynomials</em><a class="headerlink" href="#addition-of-polynomials" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3.1. </span>Addition of <em>polynomials</em><a class="headerlink" href="#addition-of-polynomials" title="Permalink to this headline">¶</a></h3>
 <p>Consider the addition of two polynomials,</p>
 <span class="target" id="pharo-compiledMethod-16"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testpolynomialadditionfromknuthtextbook"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
 <span class="nf">testPolynomialAdditionFromKnuthTextbook</span>
@@ -463,10 +459,10 @@ according to these messages.</p>
     <ul>
         <li>
           &larr;
-          <a href="leftistheaps.html" title="Previous document"><span class="section-number">9. </span><code class="docutils literal notranslate"><span class="pre">CTLeftistHeap</span></code> containers</a>
+          <a href="linked-allocation.html" title="Previous document"><span class="section-number">5. </span>Containers</a>
         </li>
         <li>
-          <a href="../bibliography.html" title="Next document"><span class="section-number">11. </span>Bibliography</a>
+          <a href="../bibliography.html" title="Next document"><span class="section-number">7. </span>Bibliography</a>
           &rarr;
         </li>
     </ul>

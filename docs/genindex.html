@@ -48,13 +48,9 @@
 <li class="toctree-l1"><a class="reference internal" href="pharo/hierarchies.html">2. Hierarchies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="symbolic/divisibility.html">3. Divisibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linked-allocation/links.html">4. Links</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/linkedlists.html">5. <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/binarytrees.html">6. <code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/unbalancedsets.html">7. <code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/redblacksets.html">8. <code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/leftistheaps.html">9. <code class="docutils literal notranslate"><span class="pre">CTLeftistHeap</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">10. Storage pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">11. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/linked-allocation.html">5. Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">6. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">7. Bibliography</a></li>
 </ul>
 
 <div class="relations">
@@ -160,32 +156,32 @@
     #asBinaryTree is understood by
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-4">Collection&gt;&gt;#asBinaryTree</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-4">Collection&gt;&gt;#asBinaryTree</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-17">[1]</a>
 </li>
       </ul></li>
       <li>
     #asBinaryTree: is understood by
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-5">ArrayedCollection&gt;&gt;#asBinaryTree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-5">ArrayedCollection&gt;&gt;#asBinaryTree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-18">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-12">Collection&gt;&gt;#asBinaryTree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-12">Collection&gt;&gt;#asBinaryTree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-25">[1]</a>
 </li>
       </ul></li>
       <li>
     #asLeftistHeap is understood by
 
       <ul>
-        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-1">Collection&gt;&gt;#asLeftistHeap</a>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-1">Collection&gt;&gt;#asLeftistHeap</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-40">[1]</a>
 </li>
       </ul></li>
       <li>
     #asLinkedList is understood by
 
       <ul>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-3">UndefinedObject&gt;&gt;#asLinkedList</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-3">UndefinedObject&gt;&gt;#asLinkedList</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-3">[1]</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-1">ValueLink&gt;&gt;#asLinkedList</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-1">ValueLink&gt;&gt;#asLinkedList</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-1">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -203,31 +199,38 @@
 </li>
       </ul></li>
       <li>
+    #asSplayHeap is understood by
+
+      <ul>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-44">Collection&gt;&gt;#asSplayHeap</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-1">[1]</a>
+</li>
+      </ul></li>
+      <li>
     #asUnbalancedSet is understood by
 
       <ul>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-1">Collection&gt;&gt;#asUnbalancedSet</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-31">Collection&gt;&gt;#asUnbalancedSet</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-1">[1]</a>
 </li>
       </ul></li>
       <li>
     #asValueLink is understood by
 
       <ul>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-9">SequenceableCollection&gt;&gt;#asValueLink</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-9">SequenceableCollection&gt;&gt;#asValueLink</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-9">[1]</a>
 </li>
       </ul></li>
       <li>
     #bisect:baseBlock: is understood by
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-9">ArrayedCollection&gt;&gt;#bisect:baseBlock:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-9">ArrayedCollection&gt;&gt;#bisect:baseBlock:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-22">[1]</a>
 </li>
       </ul></li>
       <li>
     #bisect:from:to:baseBlock: is understood by
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-10">ArrayedCollection&gt;&gt;#bisect:from:to:baseBlock:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-10">ArrayedCollection&gt;&gt;#bisect:from:to:baseBlock:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-23">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -255,14 +258,14 @@
     #do: is understood by
 
       <ul>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-0">Link&gt;&gt;#do:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-0">Link&gt;&gt;#do:</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-0">[1]</a>
 </li>
       </ul></li>
       <li>
     #empty is understood by
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-1">CTBinaryTreeAbstract class&gt;&gt;#empty</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-1">CTBinaryTreeAbstract class&gt;&gt;#empty</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-14">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -283,7 +286,7 @@
     #foldr:init: is understood by
 
       <ul>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-8">SequenceableCollection&gt;&gt;#foldr:init:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-8">SequenceableCollection&gt;&gt;#foldr:init:</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-8">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -348,14 +351,14 @@
     #inject:into: is understood by
 
       <ul>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-11">Collection&gt;&gt;#inject:into:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-11">Collection&gt;&gt;#inject:into:</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-11">[1]</a>
 </li>
       </ul></li>
       <li>
     #insert:left:right:inBinaryTree: is understood by
 
       <ul>
-        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-3">CTBinaryTreeNodeLeftistHeap&gt;&gt;#insert:left:right:inBinaryTree:</a>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-3">CTBinaryTreeNodeLeftistHeap&gt;&gt;#insert:left:right:inBinaryTree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-42">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -390,8 +393,6 @@
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-29">Integer&gt;&gt;#lucasNumbers</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     #makeValueLinksTable is understood by
 
@@ -408,6 +409,8 @@
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-15">Integer&gt;&gt;#mediantFraction:</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     #mediantInteger: is understood by
 
@@ -421,13 +424,15 @@
     #mergeBinaryTreeElement:inBinaryTree: is understood by
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-7">CTBinaryTreeEmpty&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-7">CTBinaryTreeEmpty&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-20">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-8">CTBinaryTreeNode&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-8">CTBinaryTreeNode&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-21">[1]</a>
 </li>
-        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-2">CTBinaryTreeNodeLeftistHeap&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-2">CTBinaryTreeNodeLeftistHeap&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-41">[1]</a>
 </li>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-2">CTBinaryTreeNodeUnbalanced&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-45">CTBinaryTreeNodeSplayHeap&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-2">[1]</a>
+</li>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-32">CTBinaryTreeNodeUnbalanced&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-2">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -494,6 +499,29 @@
 </li>
       </ul></li>
       <li>
+    #partition:inSplayHeap:do: is understood by
+
+      <ul>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-46">CTBinaryTreeEmptySplayHeap&gt;&gt;#partition:inSplayHeap:do:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-3">[1]</a>
+</li>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-47">CTBinaryTreeNodeSplayHeap&gt;&gt;#partition:inSplayHeap:do:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-4">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    #partitionGreaterThanOrEqualTo:inSplayHeap:do: is understood by
+
+      <ul>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-49">CTBinaryTreeNodeSplayHeap&gt;&gt;#partitionGreaterThanOrEqualTo:inSplayHeap:do:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-6">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    #partitionLessThan:inSplayHeap:do: is understood by
+
+      <ul>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-48">CTBinaryTreeNodeSplayHeap&gt;&gt;#partitionLessThan:inSplayHeap:do:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-5">[1]</a>
+</li>
+      </ul></li>
+      <li>
     #privateNextSeed is understood by
 
       <ul>
@@ -511,25 +539,27 @@
     #push: is understood by
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-14">CTBinaryTreeAbstract&gt;&gt;#push:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-14">CTBinaryTreeAbstract&gt;&gt;#push:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-27">[1]</a>
 </li>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-3">CTUnbalancedSet&gt;&gt;#push:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-50">CTSplayHeap&gt;&gt;#push:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-7">[1]</a>
+</li>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-33">CTUnbalancedSet&gt;&gt;#push:</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-3">[1]</a>
 </li>
       </ul></li>
       <li>
     #push:witness:continuation:inSet: is understood by
 
       <ul>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-6">CTBinaryTreeEmptyUnbalanced&gt;&gt;#push:witness:continuation:inSet:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-36">CTBinaryTreeEmptyUnbalanced&gt;&gt;#push:witness:continuation:inSet:</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-6">[1]</a>
 </li>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-5">CTBinaryTreeNodeUnbalanced&gt;&gt;#push:witness:continuation:inSet:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-35">CTBinaryTreeNodeUnbalanced&gt;&gt;#push:witness:continuation:inSet:</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-5">[1]</a>
 </li>
       </ul></li>
       <li>
     #pushingAlreadyIncluded:continuation: is understood by
 
       <ul>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-7">CTUnbalancedSet&gt;&gt;#pushingAlreadyIncluded:continuation:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-37">CTUnbalancedSet&gt;&gt;#pushingAlreadyIncluded:continuation:</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-7">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -580,7 +610,7 @@
     #to:by: is understood by
 
       <ul>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-6">Number&gt;&gt;#to:by:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-6">Number&gt;&gt;#to:by:</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-6">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -601,11 +631,13 @@
     #tree: is understood by
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-3">CTBinaryTreeAbstractTest&gt;&gt;#tree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-3">CTBinaryTreeAbstractTest&gt;&gt;#tree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-16">[1]</a>
 </li>
-        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-0">CTLeftistHeapTest&gt;&gt;#tree:</a>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-0">CTLeftistHeapTest&gt;&gt;#tree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-39">[1]</a>
 </li>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-0">CTUnbalancedSetTest&gt;&gt;#tree:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-43">CTSplayHeapTest&gt;&gt;#tree:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-0">[1]</a>
+</li>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-30">CTUnbalancedSetTest&gt;&gt;#tree:</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-0">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -619,21 +651,21 @@
     #valueWithArgumentedExit is understood by
 
       <ul>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-4">BlockClosure&gt;&gt;#valueWithArgumentedExit</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-34">BlockClosure&gt;&gt;#valueWithArgumentedExit</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-4">[1]</a>
 </li>
       </ul></li>
       <li>
     #withArrayedCollection: is understood by
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-6">CTBinaryTreeAbstract class&gt;&gt;#withArrayedCollection:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-6">CTBinaryTreeAbstract class&gt;&gt;#withArrayedCollection:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-19">[1]</a>
 </li>
       </ul></li>
       <li>
     #withCollection: is understood by
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-13">CTBinaryTreeAbstract class&gt;&gt;#withCollection:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-13">CTBinaryTreeAbstract class&gt;&gt;#withCollection:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-26">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -660,11 +692,11 @@
     a ArrayedCollection understands
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-5">#asBinaryTree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-5">#asBinaryTree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-18">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-9">#bisect:baseBlock:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-9">#bisect:baseBlock:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-22">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-10">#bisect:from:to:baseBlock:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-10">#bisect:from:to:baseBlock:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-23">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -682,22 +714,24 @@
       <ul>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-20">#kissingFractions</a>
 </li>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-4">#valueWithArgumentedExit</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-34">#valueWithArgumentedExit</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-4">[1]</a>
 </li>
       </ul></li>
       <li>
     a Collection understands
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-4">#asBinaryTree</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-4">#asBinaryTree</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-17">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-12">#asBinaryTree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-12">#asBinaryTree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-25">[1]</a>
 </li>
-        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-1">#asLeftistHeap</a>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-1">#asLeftistHeap</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-40">[1]</a>
 </li>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-1">#asUnbalancedSet</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-44">#asSplayHeap</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-1">[1]</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-11">#inject:into:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-31">#asUnbalancedSet</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-1">[1]</a>
+</li>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-11">#inject:into:</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-11">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -717,81 +751,101 @@
     a CTBinaryTreeAbstract class understands
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-1">#empty</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-1">#empty</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-14">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-6">#withArrayedCollection:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-6">#withArrayedCollection:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-19">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-13">#withCollection:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-13">#withCollection:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-26">[1]</a>
 </li>
       </ul></li>
       <li>
     a CTBinaryTreeAbstract understands
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-14">#push:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-14">#push:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-27">[1]</a>
 </li>
       </ul></li>
       <li>
     a CTBinaryTreeAbstractTest understands
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-0">#testCreation</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-0">#testCreation</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-13">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-11">#testPushOrderedCollection</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-11">#testPushOrderedCollection</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-24">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-2">#testPushOrderedInterval</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-2">#testPushOrderedInterval</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-15">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-16">#testPushShuffledCollection</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-16">#testPushShuffledCollection</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-29">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-15">#testPushShuffledInterval</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-15">#testPushShuffledInterval</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-28">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-3">#tree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-3">#tree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-16">[1]</a>
 </li>
       </ul></li>
       <li>
     a CTBinaryTreeEmpty understands
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-7">#mergeBinaryTreeElement:inBinaryTree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-7">#mergeBinaryTreeElement:inBinaryTree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-20">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    a CTBinaryTreeEmptySplayHeap understands
+
+      <ul>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-46">#partition:inSplayHeap:do:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-3">[1]</a>
 </li>
       </ul></li>
       <li>
     a CTBinaryTreeEmptyUnbalanced understands
 
       <ul>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-6">#push:witness:continuation:inSet:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-36">#push:witness:continuation:inSet:</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-6">[1]</a>
 </li>
       </ul></li>
       <li>
     a CTBinaryTreeNode understands
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-8">#mergeBinaryTreeElement:inBinaryTree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-8">#mergeBinaryTreeElement:inBinaryTree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-21">[1]</a>
 </li>
       </ul></li>
       <li>
     a CTBinaryTreeNodeLeftistHeap understands
 
       <ul>
-        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-3">#insert:left:right:inBinaryTree:</a>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-3">#insert:left:right:inBinaryTree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-42">[1]</a>
 </li>
-        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-2">#mergeBinaryTreeElement:inBinaryTree:</a>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-2">#mergeBinaryTreeElement:inBinaryTree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-41">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    a CTBinaryTreeNodeSplayHeap understands
+
+      <ul>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-45">#mergeBinaryTreeElement:inBinaryTree:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-2">[1]</a>
+</li>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-47">#partition:inSplayHeap:do:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-4">[1]</a>
+</li>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-49">#partitionGreaterThanOrEqualTo:inSplayHeap:do:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-6">[1]</a>
+</li>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-48">#partitionLessThan:inSplayHeap:do:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-5">[1]</a>
 </li>
       </ul></li>
       <li>
     a CTBinaryTreeNodeUnbalanced understands
 
       <ul>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-2">#mergeBinaryTreeElement:inBinaryTree:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-32">#mergeBinaryTreeElement:inBinaryTree:</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-2">[1]</a>
 </li>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-5">#push:witness:continuation:inSet:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-35">#push:witness:continuation:inSet:</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-5">[1]</a>
 </li>
       </ul></li>
       <li>
     a CTLeftistHeapTest understands
 
       <ul>
-        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-0">#tree:</a>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-0">#tree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-39">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -881,37 +935,51 @@
 </li>
         <li><a href="linked-allocation/links.html#pharo-compiledMethod-16">#test4321ValueLinksNested</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-2">#testAsLinkedList</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-2">#testAsLinkedList</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-2">[1]</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-5">#testAsLinkedList4321</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-5">#testAsLinkedList4321</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-5">[1]</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-7">#testAsLinkedListFromInterval</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-7">#testAsLinkedListFromInterval</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-7">[1]</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-10">#testAsValueLink</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-10">#testAsValueLink</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-10">[1]</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-12">#testAsValueLinkInjectInto</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-12">#testAsValueLinkInjectInto</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-12">[1]</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-4">#testNilAsLinkedList</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-4">#testNilAsLinkedList</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-4">[1]</a>
 </li>
         <li><a href="linked-allocation/links.html#pharo-compiledMethod-12">#testSimpleValueLink</a>
+</li>
+      </ul></li>
+      <li>
+    a CTSplayHeap understands
+
+      <ul>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-50">#push:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-7">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    a CTSplayHeapTest understands
+
+      <ul>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-43">#tree:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-0">[1]</a>
 </li>
       </ul></li>
       <li>
     a CTUnbalancedSet understands
 
       <ul>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-3">#push:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-33">#push:</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-3">[1]</a>
 </li>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-7">#pushingAlreadyIncluded:continuation:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-37">#pushingAlreadyIncluded:continuation:</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-7">[1]</a>
 </li>
       </ul></li>
       <li>
     a CTUnbalancedSetTest understands
 
       <ul>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-8">#testPushDoubledObject</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-38">#testPushDoubledObject</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-8">[1]</a>
 </li>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-0">#tree:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-30">#tree:</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-0">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -1086,7 +1154,7 @@
     a Link understands
 
       <ul>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-0">#do:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-0">#do:</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-0">[1]</a>
 </li>
         <li><a href="linked-allocation/links.html#pharo-compiledMethod-3">#next:</a>
 </li>
@@ -1101,7 +1169,7 @@
     a Number understands
 
       <ul>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-6">#to:by:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-6">#to:by:</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-6">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -1212,9 +1280,9 @@
     a SequenceableCollection understands
 
       <ul>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-9">#asValueLink</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-9">#asValueLink</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-9">[1]</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-8">#foldr:init:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-8">#foldr:init:</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-8">[1]</a>
 </li>
         <li><a href="linked-allocation/links.html#pharo-compiledMethod-30">#isAcyclicWithRespectToAssociations:</a>
 </li>
@@ -1273,14 +1341,14 @@
     a UndefinedObject understands
 
       <ul>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-3">#asLinkedList</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-3">#asLinkedList</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-3">[1]</a>
 </li>
       </ul></li>
       <li>
     a ValueLink understands
 
       <ul>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-1">#asLinkedList</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-1">#asLinkedList</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-1">[1]</a>
 </li>
       </ul></li>
   </ul></td>
@@ -1306,9 +1374,9 @@
     Package Collections-Sequenceable-Base contains
 
       <ul>
-        <li><a href="linked-allocation/linkedlists.html#pharo-class-1">Interval</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-class-1">Interval</a>, <a href="linked-allocation/linkedlists.html#pharo-class-1">[1]</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-class-0">LinkedList</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-class-0">LinkedList</a>, <a href="linked-allocation/linkedlists.html#pharo-class-0">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -1324,13 +1392,13 @@
     Package Containers-BinaryTreeAbstract contains
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-class-0">CTBinaryTreeAbstract</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-class-0">CTBinaryTreeAbstract</a>, <a href="linked-allocation/linked-allocation.html#pharo-class-2">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-class-1">CTBinaryTreeElement</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-class-1">CTBinaryTreeElement</a>, <a href="linked-allocation/linked-allocation.html#pharo-class-3">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-class-2">CTBinaryTreeEmpty</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-class-2">CTBinaryTreeEmpty</a>, <a href="linked-allocation/linked-allocation.html#pharo-class-4">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-class-3">CTBinaryTreeNode</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-class-3">CTBinaryTreeNode</a>, <a href="linked-allocation/linked-allocation.html#pharo-class-5">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -1351,7 +1419,7 @@
     Package Containers-LeftistHeap contains
 
       <ul>
-        <li><a href="linked-allocation/leftistheaps.html#pharo-class-0">CTLeftistHeap</a>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-class-0">CTLeftistHeap</a>, <a href="linked-allocation/linked-allocation.html#pharo-class-8">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -1365,38 +1433,45 @@
     Package Containers-RedBlackSet contains
 
       <ul>
-        <li><a href="linked-allocation/redblacksets.html#pharo-class-0">CTRedBlackSet</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-class-7">CTRedBlackSet</a>, <a href="linked-allocation/redblacksets.html#pharo-class-0">[1]</a>
 </li>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-class-0">CTUnbalancedSet</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-class-6">CTUnbalancedSet</a>, <a href="linked-allocation/unbalancedsets.html#pharo-class-0">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    Package Containers-SplayHeap contains
+
+      <ul>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-class-9">CTSplayHeap</a>, <a href="linked-allocation/splayheaps.html#pharo-class-0">[1]</a>
 </li>
       </ul></li>
       <li>
     Protocol *Collections-Sequenceable
 
       <ul>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-6">Number&gt;&gt;#to:by:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-6">Number&gt;&gt;#to:by:</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-6">[1]</a>
 </li>
       </ul></li>
       <li>
     Protocol *Containers-BinaryTreeAbstract
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-5">ArrayedCollection&gt;&gt;#asBinaryTree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-5">ArrayedCollection&gt;&gt;#asBinaryTree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-18">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-12">Collection&gt;&gt;#asBinaryTree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-12">Collection&gt;&gt;#asBinaryTree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-25">[1]</a>
 </li>
       </ul></li>
       <li>
     Protocol *Containers-Essentials
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-9">ArrayedCollection&gt;&gt;#bisect:baseBlock:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-9">ArrayedCollection&gt;&gt;#bisect:baseBlock:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-22">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-10">ArrayedCollection&gt;&gt;#bisect:from:to:baseBlock:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-10">ArrayedCollection&gt;&gt;#bisect:from:to:baseBlock:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-23">[1]</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-20">BlockClosure&gt;&gt;#kissingFractions</a>
 </li>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-4">BlockClosure&gt;&gt;#valueWithArgumentedExit</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-34">BlockClosure&gt;&gt;#valueWithArgumentedExit</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-4">[1]</a>
 </li>
         <li><a href="linked-allocation/links.html#pharo-compiledMethod-27">Dictionary&gt;&gt;#anyAssociation</a>
 </li>
@@ -1444,7 +1519,7 @@
 </li>
         <li><a href="symbolic/divisibility.html#pharo-compiledMethod-2">Integer&gt;&gt;#quoRemInteger:</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-0">Link&gt;&gt;#do:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-0">Link&gt;&gt;#do:</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-0">[1]</a>
 </li>
         <li><a href="linked-allocation/links.html#pharo-compiledMethod-3">Link&gt;&gt;#next:</a>
 </li>
@@ -1456,13 +1531,13 @@
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-56">Random&gt;&gt;#fairCoin</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-9">SequenceableCollection&gt;&gt;#asValueLink</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-9">SequenceableCollection&gt;&gt;#asValueLink</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-9">[1]</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-8">SequenceableCollection&gt;&gt;#foldr:init:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-8">SequenceableCollection&gt;&gt;#foldr:init:</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-8">[1]</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-3">UndefinedObject&gt;&gt;#asLinkedList</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-3">UndefinedObject&gt;&gt;#asLinkedList</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-3">[1]</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-1">ValueLink&gt;&gt;#asLinkedList</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-1">ValueLink&gt;&gt;#asLinkedList</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-1">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -1497,7 +1572,7 @@
     Protocol *Containers-LeftistHeap
 
       <ul>
-        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-1">Collection&gt;&gt;#asLeftistHeap</a>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-1">Collection&gt;&gt;#asLeftistHeap</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-40">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -1532,9 +1607,16 @@
     Protocol *Containers-RedBlackSet
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-4">Collection&gt;&gt;#asBinaryTree</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-4">Collection&gt;&gt;#asBinaryTree</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-17">[1]</a>
 </li>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-1">Collection&gt;&gt;#asUnbalancedSet</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-31">Collection&gt;&gt;#asUnbalancedSet</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-1">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    Protocol *Containers-SplayHeap
+
+      <ul>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-44">Collection&gt;&gt;#asSplayHeap</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-1">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -1566,35 +1648,39 @@
     Protocol actions
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-7">CTBinaryTreeEmpty&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-7">CTBinaryTreeEmpty&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-20">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-8">CTBinaryTreeNode&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-8">CTBinaryTreeNode&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-21">[1]</a>
 </li>
-        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-3">CTBinaryTreeNodeLeftistHeap&gt;&gt;#insert:left:right:inBinaryTree:</a>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-3">CTBinaryTreeNodeLeftistHeap&gt;&gt;#insert:left:right:inBinaryTree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-42">[1]</a>
 </li>
-        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-2">CTBinaryTreeNodeLeftistHeap&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-2">CTBinaryTreeNodeLeftistHeap&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-41">[1]</a>
 </li>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-2">CTBinaryTreeNodeUnbalanced&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-45">CTBinaryTreeNodeSplayHeap&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-2">[1]</a>
+</li>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-32">CTBinaryTreeNodeUnbalanced&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-2">[1]</a>
 </li>
       </ul></li>
       <li>
     Protocol adding
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-14">CTBinaryTreeAbstract&gt;&gt;#push:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-14">CTBinaryTreeAbstract&gt;&gt;#push:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-27">[1]</a>
 </li>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-5">CTBinaryTreeNodeUnbalanced&gt;&gt;#push:witness:continuation:inSet:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-35">CTBinaryTreeNodeUnbalanced&gt;&gt;#push:witness:continuation:inSet:</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-5">[1]</a>
 </li>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-3">CTUnbalancedSet&gt;&gt;#push:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-50">CTSplayHeap&gt;&gt;#push:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-7">[1]</a>
+</li>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-33">CTUnbalancedSet&gt;&gt;#push:</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-3">[1]</a>
 </li>
       </ul></li>
       <li>
     Protocol as yet unclassified
 
       <ul>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-6">CTBinaryTreeEmptyUnbalanced&gt;&gt;#push:witness:continuation:inSet:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-36">CTBinaryTreeEmptyUnbalanced&gt;&gt;#push:witness:continuation:inSet:</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-6">[1]</a>
 </li>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-7">CTUnbalancedSet&gt;&gt;#pushingAlreadyIncluded:continuation:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-37">CTUnbalancedSet&gt;&gt;#pushingAlreadyIncluded:continuation:</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-7">[1]</a>
 </li>
         <li><a href="symbolic/divisibility.html#pharo-compiledMethod-3">QuoRemComplementary class&gt;&gt;#a:b:</a>
 </li>
@@ -1610,7 +1696,7 @@
     Protocol enumerating
 
       <ul>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-11">Collection&gt;&gt;#inject:into:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-11">Collection&gt;&gt;#inject:into:</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-11">[1]</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-21">SequenceableCollection&gt;&gt;#overlappingPairsDo:</a>
 </li>
@@ -1644,9 +1730,22 @@
     Protocol instance creation
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-6">CTBinaryTreeAbstract class&gt;&gt;#withArrayedCollection:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-6">CTBinaryTreeAbstract class&gt;&gt;#withArrayedCollection:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-19">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-13">CTBinaryTreeAbstract class&gt;&gt;#withCollection:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-13">CTBinaryTreeAbstract class&gt;&gt;#withCollection:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-26">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    Protocol partitioning
+
+      <ul>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-46">CTBinaryTreeEmptySplayHeap&gt;&gt;#partition:inSplayHeap:do:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-3">[1]</a>
+</li>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-47">CTBinaryTreeNodeSplayHeap&gt;&gt;#partition:inSplayHeap:do:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-4">[1]</a>
+</li>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-49">CTBinaryTreeNodeSplayHeap&gt;&gt;#partitionGreaterThanOrEqualTo:inSplayHeap:do:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-6">[1]</a>
+</li>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-48">CTBinaryTreeNodeSplayHeap&gt;&gt;#partitionLessThan:inSplayHeap:do:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-5">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -1671,26 +1770,26 @@
     Protocol requirements
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-1">CTBinaryTreeAbstract class&gt;&gt;#empty</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-1">CTBinaryTreeAbstract class&gt;&gt;#empty</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-14">[1]</a>
 </li>
       </ul></li>
       <li>
     Protocol tests
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-0">CTBinaryTreeAbstractTest&gt;&gt;#testCreation</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-0">CTBinaryTreeAbstractTest&gt;&gt;#testCreation</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-13">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-11">CTBinaryTreeAbstractTest&gt;&gt;#testPushOrderedCollection</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-11">CTBinaryTreeAbstractTest&gt;&gt;#testPushOrderedCollection</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-24">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-2">CTBinaryTreeAbstractTest&gt;&gt;#testPushOrderedInterval</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-2">CTBinaryTreeAbstractTest&gt;&gt;#testPushOrderedInterval</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-15">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-16">CTBinaryTreeAbstractTest&gt;&gt;#testPushShuffledCollection</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-16">CTBinaryTreeAbstractTest&gt;&gt;#testPushShuffledCollection</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-29">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-15">CTBinaryTreeAbstractTest&gt;&gt;#testPushShuffledInterval</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-15">CTBinaryTreeAbstractTest&gt;&gt;#testPushShuffledInterval</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-28">[1]</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-3">CTBinaryTreeAbstractTest&gt;&gt;#tree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-3">CTBinaryTreeAbstractTest&gt;&gt;#tree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-16">[1]</a>
 </li>
-        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-0">CTLeftistHeapTest&gt;&gt;#tree:</a>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-0">CTLeftistHeapTest&gt;&gt;#tree:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-39">[1]</a>
 </li>
         <li><a href="linked-allocation/storage-pools.html#pharo-compiledMethod-13">CTLinkedStoragePoolTest&gt;&gt;#testEmptyCircularList</a>
 </li>
@@ -1740,23 +1839,25 @@
 </li>
         <li><a href="linked-allocation/links.html#pharo-compiledMethod-16">CTLinksValueLinkTest&gt;&gt;#test4321ValueLinksNested</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-2">CTLinksValueLinkTest&gt;&gt;#testAsLinkedList</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-2">CTLinksValueLinkTest&gt;&gt;#testAsLinkedList</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-2">[1]</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-5">CTLinksValueLinkTest&gt;&gt;#testAsLinkedList4321</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-5">CTLinksValueLinkTest&gt;&gt;#testAsLinkedList4321</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-5">[1]</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-7">CTLinksValueLinkTest&gt;&gt;#testAsLinkedListFromInterval</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-7">CTLinksValueLinkTest&gt;&gt;#testAsLinkedListFromInterval</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-7">[1]</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-10">CTLinksValueLinkTest&gt;&gt;#testAsValueLink</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-10">CTLinksValueLinkTest&gt;&gt;#testAsValueLink</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-10">[1]</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-12">CTLinksValueLinkTest&gt;&gt;#testAsValueLinkInjectInto</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-12">CTLinksValueLinkTest&gt;&gt;#testAsValueLinkInjectInto</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-12">[1]</a>
 </li>
-        <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-4">CTLinksValueLinkTest&gt;&gt;#testNilAsLinkedList</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-4">CTLinksValueLinkTest&gt;&gt;#testNilAsLinkedList</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-4">[1]</a>
 </li>
         <li><a href="linked-allocation/links.html#pharo-compiledMethod-12">CTLinksValueLinkTest&gt;&gt;#testSimpleValueLink</a>
 </li>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-8">CTUnbalancedSetTest&gt;&gt;#testPushDoubledObject</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-43">CTSplayHeapTest&gt;&gt;#tree:</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-0">[1]</a>
 </li>
-        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-0">CTUnbalancedSetTest&gt;&gt;#tree:</a>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-38">CTUnbalancedSetTest&gt;&gt;#testPushDoubledObject</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-8">[1]</a>
+</li>
+        <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-30">CTUnbalancedSetTest&gt;&gt;#tree:</a>, <a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-0">[1]</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-42">EssentialsObjectTest&gt;&gt;#testByteArrayInteger</a>
 </li>

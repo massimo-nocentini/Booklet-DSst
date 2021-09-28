@@ -1,6 +1,6 @@
 
-``CTBinaryTreeAbstract`` containers
-***********************************
+*Binary* trees
+**************
 
 A *free binary tree* container is defined according to
 

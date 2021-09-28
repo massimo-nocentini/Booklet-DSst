@@ -49,13 +49,9 @@
 <li class="toctree-l1"><a class="reference internal" href="pharo/hierarchies.html">2. Hierarchies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="symbolic/divisibility.html">3. Divisibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linked-allocation/links.html">4. Links</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/linkedlists.html">5. <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/binarytrees.html">6. <code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/unbalancedsets.html">7. <code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/redblacksets.html">8. <code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/leftistheaps.html">9. <code class="docutils literal notranslate"><span class="pre">CTLeftistHeap</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">10. Storage pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">11. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/linked-allocation.html">5. Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">6. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">7. Bibliography</a></li>
 </ul>
 
 <div class="relations">
@@ -190,21 +186,31 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/linkedlists.html">5. <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/binarytrees.html">6. <code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/unbalancedsets.html">7. <code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/redblacksets.html">8. <code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/leftistheaps.html">9. <code class="docutils literal notranslate"><span class="pre">CTLeftistHeap</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">10. Storage pools</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="linked-allocation/storage-pools.html#stack-pool">10.1. <code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linked-allocation/storage-pools.html#queue-pool">10.2. <code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linked-allocation/storage-pools.html#circularlist-pool">10.3. <code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="linked-allocation/storage-pools.html#addition-of-polynomials">10.3.1. Addition of <em>polynomials</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/linked-allocation.html">5. Containers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="linked-allocation/linked-allocation.html#lists">5.1. Lists</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#linked">5.1.1. Linked</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="linked-allocation/linked-allocation.html#trees">5.2. Trees</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#binary-trees">5.2.1. <em>Binary</em> trees</a></li>
+<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#search-sets">5.2.2. <em>Search</em> sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#red-black-sets">5.2.3. <em>Red-Black</em> sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#leftist-heaps">5.2.4. <em>Leftist</em> heaps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#splay-heaps">5.2.5. <em>Splay</em> heaps</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">11. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">6. Storage pools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="linked-allocation/storage-pools.html#stack-pool">6.1. <code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linked-allocation/storage-pools.html#queue-pool">6.2. <code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linked-allocation/storage-pools.html#circularlist-pool">6.3. <code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="linked-allocation/storage-pools.html#addition-of-polynomials">6.3.1. Addition of <em>polynomials</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">7. Bibliography</a></li>
 </ul>
 </div>
 <p>Moreover, have a look at the <a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a>.</p>

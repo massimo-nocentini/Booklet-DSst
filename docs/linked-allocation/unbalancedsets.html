@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>7. CTUnbalancedSet containers &#8212; Data Structures in Smalltalk  documentation</title>
+    <title>Search sets &#8212; Data Structures in Smalltalk  documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -15,8 +15,6 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8. CTRedBlackSet containers" href="redblacksets.html" />
-    <link rel="prev" title="6. CTBinaryTreeAbstract containers" href="binarytrees.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -45,26 +43,20 @@
 
 
 <h3>Navigation</h3>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../pharo/oo.html">1. Object model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pharo/hierarchies.html">2. Hierarchies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../symbolic/divisibility.html">3. Divisibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="links.html">4. Links</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linkedlists.html">5. <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="binarytrees.html">6. <code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">7. <code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="redblacksets.html">8. <code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="leftistheaps.html">9. <code class="docutils literal notranslate"><span class="pre">CTLeftistHeap</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storage-pools.html">10. Storage pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">11. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation.html">5. Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="storage-pools.html">6. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">7. Bibliography</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="binarytrees.html" title="previous chapter"><span class="section-number">6. </span><code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a></li>
-      <li>Next: <a href="redblacksets.html" title="next chapter"><span class="section-number">8. </span><code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a></li>
   </ul></li>
 </ul>
 </div>
@@ -94,14 +86,6 @@
                 &nbsp;
   <nav id="rellinks">
     <ul>
-        <li>
-          &larr;
-          <a href="binarytrees.html" title="Previous document"><span class="section-number">6. </span><code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a>
-        </li>
-        <li>
-          <a href="redblacksets.html" title="Next document"><span class="section-number">8. </span><code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a>
-          &rarr;
-        </li>
     </ul>
   </nav>
               </div>
@@ -109,8 +93,8 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="ctunbalancedset-containers">
-<h1><span class="section-number">7. </span><code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers<a class="headerlink" href="#ctunbalancedset-containers" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="search-sets">
+<h1><em>Search</em> sets<a class="headerlink" href="#search-sets" title="Permalink to this headline">¶</a></h1>
 <p>A <em>search binary tree</em> is defined by subclassing</p>
 <span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctunbalancedset"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeAbstract</span> <span class="nf">subclass:</span> <span class="ss">#CTUnbalancedSet</span>
 	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
@@ -284,14 +268,6 @@ invoked in the leaves in case of doubles.</p>
                 &nbsp;
   <nav id="rellinks">
     <ul>
-        <li>
-          &larr;
-          <a href="binarytrees.html" title="Previous document"><span class="section-number">6. </span><code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a>
-        </li>
-        <li>
-          <a href="redblacksets.html" title="Next document"><span class="section-number">8. </span><code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a>
-          &rarr;
-        </li>
     </ul>
   </nav>
               </div>

@@ -1,6 +1,6 @@
 
-``CTLeftistHeap`` containers
-****************************
+*Leftist* heaps
+***************
 
 A *search binary tree* is defined by subclassing
 

@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Splay heaps &#8212; Data Structures in Smalltalk  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Data Structures in Smalltalk</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=massimo-nocentini&repo=Booklet-DSst&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pharo/oo.html">1. Object model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pharo/hierarchies.html">2. Hierarchies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic/divisibility.html">3. Divisibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">4. Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation.html">5. Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="storage-pools.html">6. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">7. Bibliography</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+              <div class="related top">
+                &nbsp;
+  <nav id="rellinks">
+    <ul>
+    </ul>
+  </nav>
+              </div>
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="splay-heaps">
+<h1><em>Splay</em> heaps<a class="headerlink" href="#splay-heaps" title="Permalink to this headline">¶</a></h1>
+<p>A <em>search binary tree</em> is defined by subclassing</p>
+<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctsplayheap"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeAbstract</span> <span class="nf">subclass:</span> <span class="ss">#CTSplayHeap</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-SplayHeap&#39;</span>
+</pre></div>
+</div>
+<p>and the corresponding test class defines,</p>
+<span class="target" id="pharo-compiledMethod-0"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctsplayheaptest-tree"><div class="highlight"><pre><span></span><span class="c">&quot;CTSplayHeapTest, protocol tests&quot;</span>
+<span class="nf">tree:</span> <span class="nv">aCollection</span>
+
+   <span class="o">^</span> <span class="nv">aCollection</span> <span class="nf">asSplayHeap</span>
+</pre></div>
+</div>
+<p>that uses</p>
+<span class="target" id="pharo-compiledMethod-1"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-collection-assplayheap"><div class="highlight"><pre><span></span><span class="c">&quot;Collection, protocol *Containers-SplayHeap&quot;</span>
+<span class="nf">asSplayHeap</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">asBinaryTree:</span> <span class="nc">CTSplayHeap</span>
+</pre></div>
+</div>
+<p>to show the following inspectors. First, the empty tree looks like</p>
+<img alt="../_images/CTSplayHeapTest-testCreation.svg" class="align-center" src="../_images/CTSplayHeapTest-testCreation.svg" /><p>Second, we have the four cases:</p>
+<ul>
+<li><p>sorted data in arrayed collection,</p>
+<img alt="../_images/CTSplayHeapTest-testPushOrderedInterval.svg" class="align-center" src="../_images/CTSplayHeapTest-testPushOrderedInterval.svg" /><p>by means of</p>
+<span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreenodesplayheap-mergebinarytreeelement-inbinarytree"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeNodeSplayHeap, protocol actions&quot;</span>
+<span class="nf">mergeBinaryTreeElement:</span> <span class="nv">aBTElement</span> <span class="nf">inBinaryTree:</span> <span class="nv">aBinaryTree</span>
+
+   <span class="o">^</span> <span class="nv">aBTElement</span>
+        <span class="nf">partition:</span> <span class="nv">value</span>
+        <span class="nf">inSplayHeap:</span> <span class="nv">aBinaryTree</span>
+        <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">l</span> <span class="o">:</span><span class="nv">r</span> <span class="o">|</span> 
+           <span class="o">|</span><span class="nv"> lMerged rMerged </span><span class="o">|</span>
+           <span class="nv">lMerged</span> <span class="o">:=</span> <span class="nv">l</span>
+                         <span class="nf">mergeBinaryTreeElement:</span> <span class="nv">previousLink</span>
+                         <span class="nf">inBinaryTree:</span> <span class="nv">aBinaryTree</span><span class="p">.</span>
+           <span class="nv">rMerged</span> <span class="o">:=</span> <span class="nv">r</span>
+                         <span class="nf">mergeBinaryTreeElement:</span> <span class="nv">nextLink</span>
+                         <span class="nf">inBinaryTree:</span> <span class="nv">aBinaryTree</span><span class="p">.</span>
+           <span class="nv">aBinaryTree</span>
+              <span class="nf">leftBinaryTreeElement:</span> <span class="nv">lMerged</span>
+              <span class="nf">value:</span> <span class="nv">value</span>
+              <span class="nf">rightBinaryTreeElement:</span> <span class="nv">rMerged</span> ]
+</pre></div>
+</div>
+<p>that dispatches over</p>
+<span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeemptysplayheap-partition-insplayheap-do"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeEmptySplayHeap, protocol partitioning&quot;</span>
+<span class="nf">partition:</span> <span class="nv">pivot</span> <span class="nf">inSplayHeap:</span> <span class="nv">aHeap</span> <span class="nf">do:</span> <span class="nv">aBlock</span>
+
+   <span class="o">^</span> <span class="nv">aBlock</span>
+        <span class="nf">value:</span> <span class="nv">aHeap</span> <span class="nf">binaryTreeElementEmpty</span>
+        <span class="nf">value:</span> <span class="nv">aHeap</span> <span class="nf">binaryTreeElementEmpty</span>
+</pre></div>
+</div>
+<span class="target" id="pharo-compiledMethod-4"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreenodesplayheap-partition-insplayheap-do"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeNodeSplayHeap, protocol partitioning&quot;</span>
+<span class="nf">partition:</span> <span class="nv">pivot</span> <span class="nf">inSplayHeap:</span> <span class="nv">aHeap</span> <span class="nf">do:</span> <span class="nv">aBlock</span>
+
+   <span class="o">^</span> (<span class="nv">aHeap</span> <span class="nf">is:</span> <span class="nv">value</span> <span class="nf">lessThan:</span> <span class="nv">pivot</span>)
+        <span class="nb">ifTrue:</span> [ 
+        <span class="bp">self</span> <span class="nf">partitionLessThan:</span> <span class="nv">pivot</span> <span class="nf">inSplayHeap:</span> <span class="nv">aHeap</span> <span class="nf">do:</span> <span class="nv">aBlock</span> ]
+        <span class="nb">ifFalse:</span> [ 
+           <span class="bp">self</span>
+              <span class="nf">partitionGreaterThanOrEqualTo:</span> <span class="nv">pivot</span>
+              <span class="nf">inSplayHeap:</span> <span class="nv">aHeap</span>
+              <span class="nf">do:</span> <span class="nv">aBlock</span> ]
+</pre></div>
+</div>
+<p>where the latter uses both</p>
+<span class="target" id="pharo-compiledMethod-5"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreenodesplayheap-partitionlessthan-insplayheap-do"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeNodeSplayHeap, protocol partitioning&quot;</span>
+<span class="nf">partitionLessThan:</span> <span class="nv">pivot</span> <span class="nf">inSplayHeap:</span> <span class="nv">aHeap</span> <span class="nf">do:</span> <span class="nv">aBlock</span>
+
+   <span class="o">^</span> <span class="nv">nextLink</span>
+        <span class="nf">ifEmpty:</span> [ <span class="nv">aBlock</span> <span class="nf">value:</span> <span class="bp">self</span> <span class="nf">value:</span> <span class="nv">aHeap</span> <span class="nf">binaryTreeElementEmpty</span> ]
+        <span class="nf">ifNotEmpty:</span> [ 
+           <span class="o">|</span> <span class="nv">y</span> <span class="nf">|</span>
+           <span class="nv">y</span> <span class="o">:=</span> <span class="nv">nextLink</span> <span class="nf">value</span><span class="p">.</span>
+           (<span class="nv">aHeap</span> <span class="nf">is:</span> <span class="nv">y</span> <span class="nf">lessThan:</span> <span class="nv">pivot</span>)
+              <span class="nb">ifTrue:</span> [ 
+                 <span class="nv">nextLink</span> <span class="nf">nextLink</span>
+                    <span class="nf">partition:</span> <span class="nv">pivot</span>
+                    <span class="nf">inSplayHeap:</span> <span class="nv">aHeap</span>
+                    <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">s</span> <span class="o">:</span><span class="nv">b</span> <span class="o">|</span> 
+                       <span class="o">|</span><span class="nv"> ll l </span><span class="o">|</span>
+                       <span class="nv">ll</span> <span class="o">:=</span> <span class="nv">aHeap</span>
+                                <span class="nf">leftBinaryTreeElement:</span> <span class="nv">previousLink</span>
+                                <span class="nf">value:</span> <span class="nv">value</span>
+                                <span class="nf">rightBinaryTreeElement:</span> <span class="nv">nextLink</span> <span class="nf">previousLink</span><span class="p">.</span>
+                       <span class="nv">l</span> <span class="o">:=</span> <span class="nv">aHeap</span>
+                               <span class="nf">leftBinaryTreeElement:</span> <span class="nv">ll</span>
+                               <span class="nf">value:</span> <span class="nv">y</span>
+                               <span class="nf">rightBinaryTreeElement:</span> <span class="nv">s</span><span class="p">.</span>
+                       <span class="nv">aBlock</span> <span class="nf">value:</span> <span class="nv">l</span> <span class="nf">value:</span> <span class="nv">b</span> ] ]
+              <span class="nb">ifFalse:</span> [ 
+                 <span class="nv">nextLink</span> <span class="nf">previousLink</span>
+                    <span class="nf">partition:</span> <span class="nv">pivot</span>
+                    <span class="nf">inSplayHeap:</span> <span class="nv">aHeap</span>
+                    <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">s</span> <span class="o">:</span><span class="nv">b</span> <span class="o">|</span> 
+                       <span class="o">|</span><span class="nv"> r l </span><span class="o">|</span>
+                       <span class="nv">l</span> <span class="o">:=</span> <span class="nv">aHeap</span>
+                               <span class="nf">leftBinaryTreeElement:</span> <span class="nv">previousLink</span>
+                               <span class="nf">value:</span> <span class="nv">value</span>
+                               <span class="nf">rightBinaryTreeElement:</span> <span class="nv">s</span><span class="p">.</span>
+                       <span class="nv">r</span> <span class="o">:=</span> <span class="nv">aHeap</span>
+                               <span class="nf">leftBinaryTreeElement:</span> <span class="nv">b</span>
+                               <span class="nf">value:</span> <span class="nv">y</span>
+                               <span class="nf">rightBinaryTreeElement:</span> <span class="nv">nextLink</span> <span class="nf">nextLink</span><span class="p">.</span>
+                       <span class="nv">aBlock</span> <span class="nf">value:</span> <span class="nv">l</span> <span class="nf">value:</span> <span class="nv">r</span> ] ] ]
+</pre></div>
+</div>
+<p>and</p>
+<span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreenodesplayheap-partitiongreaterthanorequalto-insplayheap-do"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeNodeSplayHeap, protocol partitioning&quot;</span>
+<span class="nf">partitionGreaterThanOrEqualTo:</span> <span class="nv">pivot</span> <span class="nf">inSplayHeap:</span> <span class="nv">aHeap</span> <span class="nf">do:</span> <span class="nv">aBlock</span>
+
+   <span class="o">^</span> <span class="nv">previousLink</span>
+        <span class="nf">ifEmpty:</span> [ <span class="nv">aBlock</span> <span class="nf">value:</span> <span class="nv">aHeap</span> <span class="nf">binaryTreeElementEmpty</span> <span class="nf">value:</span> <span class="bp">self</span> ]
+        <span class="nf">ifNotEmpty:</span> [ 
+           <span class="o">|</span> <span class="nv">y</span> <span class="nf">|</span>
+           <span class="nv">y</span> <span class="o">:=</span> <span class="nv">previousLink</span> <span class="nf">value</span><span class="p">.</span>
+           (<span class="nv">aHeap</span> <span class="nf">is:</span> <span class="nv">y</span> <span class="nf">lessThan:</span> <span class="nv">pivot</span>)
+              <span class="nb">ifTrue:</span> [ 
+                 <span class="nv">previousLink</span> <span class="nf">nextLink</span>
+                    <span class="nf">partition:</span> <span class="nv">pivot</span>
+                    <span class="nf">inSplayHeap:</span> <span class="nv">aHeap</span>
+                    <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">s</span> <span class="o">:</span><span class="nv">b</span> <span class="o">|</span> 
+                       <span class="o">|</span><span class="nv"> r l </span><span class="o">|</span>
+                       <span class="nv">l</span> <span class="o">:=</span> <span class="nv">aHeap</span>
+                               <span class="nf">leftBinaryTreeElement:</span> <span class="nv">previousLink</span> <span class="nf">previousLink</span>
+                               <span class="nf">value:</span> <span class="nv">y</span>
+                               <span class="nf">rightBinaryTreeElement:</span> <span class="nv">s</span><span class="p">.</span>
+                       <span class="nv">r</span> <span class="o">:=</span> <span class="nv">aHeap</span>
+                               <span class="nf">leftBinaryTreeElement:</span> <span class="nv">b</span>
+                               <span class="nf">value:</span> <span class="nv">value</span>
+                               <span class="nf">rightBinaryTreeElement:</span> <span class="nv">nextLink</span><span class="p">.</span>
+                       <span class="nv">aBlock</span> <span class="nf">value:</span> <span class="nv">l</span> <span class="nf">value:</span> <span class="nv">r</span> ] ]
+              <span class="nb">ifFalse:</span> [ 
+                 <span class="nv">previousLink</span> <span class="nf">previousLink</span>
+                    <span class="nf">partition:</span> <span class="nv">pivot</span>
+                    <span class="nf">inSplayHeap:</span> <span class="nv">aHeap</span>
+                    <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">s</span> <span class="o">:</span><span class="nv">b</span> <span class="o">|</span> 
+                       <span class="o">|</span><span class="nv"> r rr </span><span class="o">|</span>
+                       <span class="nv">rr</span> <span class="o">:=</span> <span class="nv">aHeap</span>
+                                <span class="nf">leftBinaryTreeElement:</span> <span class="nv">previousLink</span> <span class="nf">nextLink</span>
+                                <span class="nf">value:</span> <span class="nv">value</span>
+                                <span class="nf">rightBinaryTreeElement:</span> <span class="nv">nextLink</span><span class="p">.</span>
+                       <span class="nv">r</span> <span class="o">:=</span> <span class="nv">aHeap</span>
+                               <span class="nf">leftBinaryTreeElement:</span> <span class="nv">b</span>
+                               <span class="nf">value:</span> <span class="nv">y</span>
+                               <span class="nf">rightBinaryTreeElement:</span> <span class="nv">rr</span><span class="p">.</span>
+                       <span class="nv">aBlock</span> <span class="nf">value:</span> <span class="nv">s</span> <span class="nf">value:</span> <span class="nv">r</span> ] ] ]
+</pre></div>
+</div>
+<p>in turn.</p>
+</li>
+<li><p>sorted data in ordered collection,</p>
+<img alt="../_images/CTSplayHeapTest-testPushOrderedCollection.svg" class="align-center" src="../_images/CTSplayHeapTest-testPushOrderedCollection.svg" /><p>by means of</p>
+<span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctsplayheap-push"><div class="highlight"><pre><span></span><span class="c">&quot;CTSplayHeap, protocol adding&quot;</span>
+<span class="nf">push:</span> <span class="nv">anObject</span>
+
+   <span class="nv">representation</span> <span class="o">:=</span> <span class="nv">representation</span>
+                        <span class="nf">partition:</span> <span class="nv">anObject</span>
+                        <span class="nf">inSplayHeap:</span> <span class="bp">self</span>
+                        <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">l</span> <span class="o">:</span><span class="nv">r</span> <span class="o">|</span> 
+                           <span class="bp">self</span>
+                              <span class="nf">leftBinaryTreeElement:</span> <span class="nv">l</span>
+                              <span class="nf">value:</span> <span class="nv">anObject</span>
+                              <span class="nf">rightBinaryTreeElement:</span> <span class="nv">r</span> ]
+</pre></div>
+</div>
+</li>
+<li><p>shuffled data in arrayed collection,</p>
+<img alt="../_images/CTSplayHeapTest-testPushShuffledInterval.svg" class="align-center" src="../_images/CTSplayHeapTest-testPushShuffledInterval.svg" /></li>
+<li><p>shuffled data in ordered collection,</p>
+<img alt="../_images/CTSplayHeapTest-testPushShuffledCollection.svg" class="align-center" src="../_images/CTSplayHeapTest-testPushShuffledCollection.svg" /></li>
+</ul>
+</div>
+
+
+          </div>
+              <div class="related bottom">
+                &nbsp;
+  <nav id="rellinks">
+    <ul>
+    </ul>
+  </nav>
+              </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Massimo Nocentini.
+      
+      |
+      <a href="../_sources/linked-allocation/splayheaps.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

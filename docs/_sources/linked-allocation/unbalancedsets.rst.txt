@@ -1,6 +1,6 @@
 
-``CTUnbalancedSet`` containers
-******************************
+*Search* sets
+*************
 
 A *search binary tree* is defined by subclassing
 
