@@ -110,10 +110,12 @@ BaselineOfBookletDSst >> scriptRedBlackSetMessagesForDoc [
 	^ MetaSTExporter new
 		  selectors: #( empty binaryTreeElementEmpty binaryTreeElementNode
 			     tree: asBinaryTree asRedBlackSet asUnbalancedSet
-			     withArrayedCollection: withCollection: asBinaryTree:
-			     #leftBinaryTreeElement:value:rightBinaryTreeElement:
+			     asSplayHeap withArrayedCollection: withCollection:
+			     asBinaryTree: #leftBinaryTreeElement:value:rightBinaryTreeElement:
 			     #insert:left:right:inBinaryTree:
-			     #push:witness:continuation:inSet:
+			     #partitionLessThan:inSplayHeap:do:
+			     #partitionGreaterThanOrEqualTo:inSplayHeap:do:
+			     #partition:inSplayHeap:do: #push:witness:continuation:inSet:
 			     asLeftistHeap push: pop root binaryTreeElementEmpty
 			     #mergeBinaryTreeElement:inBinaryTree:
 			     #pushingAlreadyIncluded:continuation:
