@@ -51,9 +51,9 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 	<script: 'BaselineOfBookletDSst new scriptCoreMessagesForDoc'>
 	^ MetaSTExporter new
 		  selectors:
-			  #( dcMultiplyInteger: #halves:base: #halves:at:digits:base:
-			     next privateNextValue privateNextSeed fibonacciNumbers
-			     goldenRatios lucasNumbers #gibonacciNumbersFirst:second:do:
+			  #( valueWithArgumentedExit dcMultiplyInteger: #halves:base:
+			     #halves:at:digits:base: next privateNextValue privateNextSeed
+			     fibonacciNumbers goldenRatios lucasNumbers #gibonacciNumbersFirst:second:do:
 			     \/ mediantInteger: mediantFraction: kissingFractions
 			     overlappingPairsDo: kissingFractionLink: bitBRGC asShapeBinaryDots:
 			     asShapeBRGCDots fairCoin #bisect:baseBlock: #bisect:from:to:baseBlock:
@@ -112,10 +112,12 @@ BaselineOfBookletDSst >> scriptRedBlackSetMessagesForDoc [
 			     tree: asBinaryTree asRedBlackSet asUnbalancedSet
 			     withArrayedCollection: withCollection: asBinaryTree:
 			     #leftBinaryTreeElement:value:rightBinaryTreeElement:
+			     #push:witness:continuation:inSet:
 			     push: pop root binaryTreeElementEmpty #mergeBinaryTreeElement:inBinaryTree:
+			     #pushingAlreadyIncluded:continuation:
 			     testPushOrderedInterval testCreation testPushOrderedInterval
 			     testPushShuffledInterval testPushShuffledCollection
-			     testPushOrderedCollection );
+			     testPushOrderedCollection testPushDoubledObject );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'redblackset-messages.json' ]
 		  ofPackage: self class package
