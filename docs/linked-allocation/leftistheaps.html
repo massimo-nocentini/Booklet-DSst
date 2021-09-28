@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>9. CTLeftistHeap containers &#8212; Data Structures in Smalltalk  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="10. Storage pools" href="storage-pools.html" />
+    <link rel="prev" title="8. CTRedBlackSet containers" href="redblacksets.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Data Structures in Smalltalk</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=massimo-nocentini&repo=Booklet-DSst&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../pharo/oo.html">1. Object model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pharo/hierarchies.html">2. Hierarchies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic/divisibility.html">3. Divisibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">4. Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linkedlists.html">5. <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="binarytrees.html">6. <code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unbalancedsets.html">7. <code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="redblacksets.html">8. <code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. <code class="docutils literal notranslate"><span class="pre">CTLeftistHeap</span></code> containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="storage-pools.html">10. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">11. Bibliography</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="redblacksets.html" title="previous chapter"><span class="section-number">8. </span><code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a></li>
+      <li>Next: <a href="storage-pools.html" title="next chapter"><span class="section-number">10. </span>Storage pools</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+              <div class="related top">
+                &nbsp;
+  <nav id="rellinks">
+    <ul>
+        <li>
+          &larr;
+          <a href="redblacksets.html" title="Previous document"><span class="section-number">8. </span><code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a>
+        </li>
+        <li>
+          <a href="storage-pools.html" title="Next document"><span class="section-number">10. </span>Storage pools</a>
+          &rarr;
+        </li>
+    </ul>
+  </nav>
+              </div>
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="ctleftistheap-containers">
+<h1><span class="section-number">9. </span><code class="docutils literal notranslate"><span class="pre">CTLeftistHeap</span></code> containers<a class="headerlink" href="#ctleftistheap-containers" title="Permalink to this headline">¶</a></h1>
+<p>A <em>search binary tree</em> is defined by subclassing</p>
+<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctleftistheap"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeAbstract</span> <span class="nf">subclass:</span> <span class="ss">#CTLeftistHeap</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-LeftistHeap&#39;</span>
+</pre></div>
+</div>
+<p>and the corresponding test class defines,</p>
+<span class="target" id="pharo-compiledMethod-0"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctleftistheaptest-tree"><div class="highlight"><pre><span></span><span class="c">&quot;CTLeftistHeapTest, protocol tests&quot;</span>
+<span class="nf">tree:</span> <span class="nv">aCollection</span>
+
+   <span class="o">^</span> <span class="nv">aCollection</span> <span class="nf">asLeftistHeap</span>
+</pre></div>
+</div>
+<p>that uses</p>
+<span class="target" id="pharo-compiledMethod-1"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-collection-asleftistheap"><div class="highlight"><pre><span></span><span class="c">&quot;Collection, protocol *Containers-LeftistHeap&quot;</span>
+<span class="nf">asLeftistHeap</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">asBinaryTree:</span> <span class="nc">CTLeftistHeap</span>
+</pre></div>
+</div>
+<p>to show the following inspectors. First, the empty tree looks like</p>
+<img alt="../_images/CTLeftistHeapTest-testCreation.svg" class="align-center" src="../_images/CTLeftistHeapTest-testCreation.svg" /><p>Second, we have the four cases:</p>
+<ul>
+<li><p>sorted data in arrayed collection,</p>
+<img alt="../_images/CTLeftistHeapTest-testPushOrderedInterval.svg" class="align-center" src="../_images/CTLeftistHeapTest-testPushOrderedInterval.svg" /><p>by means of</p>
+<span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreenodeleftistheap-mergebinarytreeelement-inbinarytree"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeNodeLeftistHeap, protocol actions&quot;</span>
+<span class="nf">mergeBinaryTreeElement:</span> <span class="nv">aBTElement</span> <span class="nf">inBinaryTree:</span> <span class="nv">aBinaryTree</span>
+
+   <span class="o">^</span> <span class="nv">aBTElement</span> <span class="nf">ifEmpty:</span> [ <span class="bp">self</span> ] <span class="nf">ifNotEmpty:</span> [ 
+        <span class="o">|</span> <span class="nv">y</span> <span class="nf">|</span>
+        <span class="nv">y</span> <span class="o">:=</span> <span class="nv">aBTElement</span> <span class="nf">value</span><span class="p">.</span>
+        ((<span class="nv">aBinaryTree</span> <span class="nf">is:</span> <span class="nv">value</span> <span class="nf">lessThan:</span> <span class="nv">y</span>) <span class="nf">or:</span> [ 
+            <span class="nv">aBinaryTree</span> <span class="nf">is:</span> <span class="nv">value</span> <span class="nf">equalTo:</span> <span class="nv">y</span> ])
+           <span class="nb">ifTrue:</span> [ 
+              <span class="o">|</span> <span class="nv">r</span> <span class="nf">|</span>
+              <span class="nv">r</span> <span class="o">:=</span> <span class="nv">nextLink</span>
+                      <span class="nf">mergeBinaryTreeElement:</span> <span class="nv">aBTElement</span>
+                      <span class="nf">inBinaryTree:</span> <span class="nv">aBinaryTree</span><span class="p">.</span>
+              <span class="bp">self</span>
+                 <span class="nf">insert:</span> <span class="nv">value</span>
+                 <span class="nf">left:</span> <span class="nv">previousLink</span>
+                 <span class="nf">right:</span> <span class="nv">r</span>
+                 <span class="nf">inBinaryTree:</span> <span class="nv">aBinaryTree</span> ]
+           <span class="nb">ifFalse:</span> [ 
+              <span class="o">|</span> <span class="nv">r</span> <span class="nf">|</span>
+              <span class="nv">r</span> <span class="o">:=</span> <span class="bp">self</span>
+                      <span class="nf">mergeBinaryTreeElement:</span> <span class="nv">aBTElement</span> <span class="nf">nextLink</span>
+                      <span class="nf">inBinaryTree:</span> <span class="nv">aBinaryTree</span><span class="p">.</span>
+              <span class="bp">self</span>
+                 <span class="nf">insert:</span> <span class="nv">y</span>
+                 <span class="nf">left:</span> <span class="nv">aBTElement</span> <span class="nf">previousLink</span>
+                 <span class="nf">right:</span> <span class="nv">r</span>
+                 <span class="nf">inBinaryTree:</span> <span class="nv">aBinaryTree</span> ] ]
+</pre></div>
+</div>
+<p>and</p>
+<span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreenodeleftistheap-insert-left-right-inbinarytree"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeNodeLeftistHeap, protocol actions&quot;</span>
+<span class="nf">insert:</span> <span class="nv">aValue</span> <span class="nf">left:</span> <span class="nv">leftHeap</span> <span class="nf">right:</span> <span class="nv">rightHeap</span> <span class="nf">inBinaryTree:</span> <span class="nv">aBinaryTree</span>
+
+   <span class="o">|</span><span class="nv"> v w t </span><span class="o">|</span>
+   <span class="nv">v</span> <span class="o">:=</span> <span class="nv">leftHeap</span> <span class="nf">rank</span><span class="p">.</span>
+   <span class="nv">w</span> <span class="o">:=</span> <span class="nv">rightHeap</span> <span class="nf">rank</span><span class="p">.</span>
+   (<span class="nv">aBinaryTree</span> <span class="nf">is:</span> <span class="nv">v</span> <span class="nf">lessThan:</span> <span class="nv">w</span>)
+      <span class="nb">ifTrue:</span> [ 
+         <span class="nv">t</span> <span class="o">:=</span> <span class="nv">aBinaryTree</span>
+                 <span class="nf">leftBinaryTreeElement:</span> <span class="nv">rightHeap</span>
+                 <span class="nf">value:</span> <span class="nv">aValue</span>
+                 <span class="nf">rightBinaryTreeElement:</span> <span class="nv">leftHeap</span><span class="p">.</span>
+         <span class="nv">t</span> <span class="nf">rank:</span> <span class="nv">v</span> <span class="nf">+</span> <span class="m">1</span> ]
+      <span class="nb">ifFalse:</span> [ 
+         <span class="nv">t</span> <span class="o">:=</span> <span class="nv">aBinaryTree</span>
+                 <span class="nf">leftBinaryTreeElement:</span> <span class="nv">leftHeap</span>
+                 <span class="nf">value:</span> <span class="nv">aValue</span>
+                 <span class="nf">rightBinaryTreeElement:</span> <span class="nv">rightHeap</span><span class="p">.</span>
+         <span class="nv">t</span> <span class="nf">rank:</span> <span class="nv">w</span> <span class="nf">+</span> <span class="m">1</span> ]<span class="p">.</span>
+   <span class="o">^</span> <span class="nv">t</span>
+</pre></div>
+</div>
+</li>
+<li><p>sorted data in ordered collection,</p>
+<img alt="../_images/CTLeftistHeapTest-testPushOrderedCollection.svg" class="align-center" src="../_images/CTLeftistHeapTest-testPushOrderedCollection.svg" /></li>
+<li><p>shuffled data in arrayed collection,</p>
+<img alt="../_images/CTLeftistHeapTest-testPushShuffledInterval.svg" class="align-center" src="../_images/CTLeftistHeapTest-testPushShuffledInterval.svg" /></li>
+<li><p>shuffled data in ordered collection,</p>
+<img alt="../_images/CTLeftistHeapTest-testPushShuffledCollection.svg" class="align-center" src="../_images/CTLeftistHeapTest-testPushShuffledCollection.svg" /></li>
+</ul>
+</div>
+
+
+          </div>
+              <div class="related bottom">
+                &nbsp;
+  <nav id="rellinks">
+    <ul>
+        <li>
+          &larr;
+          <a href="redblacksets.html" title="Previous document"><span class="section-number">8. </span><code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a>
+        </li>
+        <li>
+          <a href="storage-pools.html" title="Next document"><span class="section-number">10. </span>Storage pools</a>
+          &rarr;
+        </li>
+    </ul>
+  </nav>
+              </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Massimo Nocentini.
+      
+      |
+      <a href="../_sources/linked-allocation/leftistheaps.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

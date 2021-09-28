@@ -20,6 +20,7 @@ Data Structures in Smalltalk
    linked-allocation/binarytrees.rst
    linked-allocation/unbalancedsets.rst
    linked-allocation/redblacksets.rst
+   linked-allocation/leftistheaps.rst
    linked-allocation/storage-pools.rst
    bibliography.rst
 

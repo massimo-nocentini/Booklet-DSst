@@ -54,8 +54,9 @@
 <li class="toctree-l1"><a class="reference internal" href="binarytrees.html">6. <code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">7. <code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="redblacksets.html">8. <code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storage-pools.html">9. Storage pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">10. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leftistheaps.html">9. <code class="docutils literal notranslate"><span class="pre">CTLeftistHeap</span></code> containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="storage-pools.html">10. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">11. Bibliography</a></li>
 </ul>
 
 <div class="relations">
@@ -110,13 +111,172 @@
             
   <div class="section" id="ctunbalancedset-containers">
 <h1><span class="section-number">7. </span><code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers<a class="headerlink" href="#ctunbalancedset-containers" title="Permalink to this headline">¶</a></h1>
+<p>A <em>search binary tree</em> is defined by subclassing</p>
 <span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctunbalancedset"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeAbstract</span> <span class="nf">subclass:</span> <span class="ss">#CTUnbalancedSet</span>
 	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
 	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
 	<span class="nf">package:</span> <span class="s">&#39;Containers-RedBlackSet&#39;</span>
 </pre></div>
 </div>
-<img alt="../_images/CTUnbalancedSetTest-testCreation.svg" class="align-center" src="../_images/CTUnbalancedSetTest-testCreation.svg" /><img alt="../_images/CTUnbalancedSetTest-testPushOrderedInterval.svg" class="align-center" src="../_images/CTUnbalancedSetTest-testPushOrderedInterval.svg" /><img alt="../_images/CTUnbalancedSetTest-testPushOrderedCollection.svg" class="align-center" src="../_images/CTUnbalancedSetTest-testPushOrderedCollection.svg" /><img alt="../_images/CTUnbalancedSetTest-testPushShuffledInterval.svg" class="align-center" src="../_images/CTUnbalancedSetTest-testPushShuffledInterval.svg" /><img alt="../_images/CTUnbalancedSetTest-testPushShuffledCollection.svg" class="align-center" src="../_images/CTUnbalancedSetTest-testPushShuffledCollection.svg" /></div>
+<p>and the corresponding test class defines,</p>
+<span class="target" id="pharo-compiledMethod-0"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctunbalancedsettest-tree"><div class="highlight"><pre><span></span><span class="c">&quot;CTUnbalancedSetTest, protocol tests&quot;</span>
+<span class="nf">tree:</span> <span class="nv">aCollection</span>
+
+   <span class="o">^</span> <span class="nv">aCollection</span> <span class="nf">asUnbalancedSet</span>
+</pre></div>
+</div>
+<p>that uses</p>
+<span class="target" id="pharo-compiledMethod-1"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-collection-asunbalancedset"><div class="highlight"><pre><span></span><span class="c">&quot;Collection, protocol *Containers-RedBlackSet&quot;</span>
+<span class="nf">asUnbalancedSet</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">asBinaryTree:</span> <span class="nc">CTUnbalancedSet</span>
+</pre></div>
+</div>
+<p>to show the following inspectors. First, the empty tree looks like</p>
+<img alt="../_images/CTUnbalancedSetTest-testCreation.svg" class="align-center" src="../_images/CTUnbalancedSetTest-testCreation.svg" /><p>Second, we have the four cases:</p>
+<ul>
+<li><p>sorted data in arrayed collection,</p>
+<img alt="../_images/CTUnbalancedSetTest-testPushOrderedInterval.svg" class="align-center" src="../_images/CTUnbalancedSetTest-testPushOrderedInterval.svg" /><p>by means of</p>
+<span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreenodeunbalanced-mergebinarytreeelement-inbinarytree"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeNodeUnbalanced, protocol actions&quot;</span>
+<span class="nf">mergeBinaryTreeElement:</span> <span class="nv">aBTElement</span> <span class="nf">inBinaryTree:</span> <span class="nv">aBinaryTree</span>
+
+   <span class="o">|</span><span class="nv"> lesserTree greaterTree tree </span><span class="o">|</span>
+   <span class="bp">self</span> <span class="nf">value</span> <span class="nf">&lt;</span> <span class="nv">aBTElement</span> <span class="nf">value</span>
+      <span class="nb">ifTrue:</span> [ 
+         <span class="nv">lesserTree</span> <span class="o">:=</span> <span class="bp">self</span><span class="p">.</span>
+         <span class="nv">greaterTree</span> <span class="o">:=</span> <span class="nv">aBTElement</span> ]
+      <span class="nb">ifFalse:</span> [ 
+         <span class="nv">lesserTree</span> <span class="o">:=</span> <span class="nv">aBTElement</span><span class="p">.</span>
+         <span class="nv">greaterTree</span> <span class="o">:=</span> <span class="bp">self</span> ]<span class="p">.</span>
+
+   <span class="nv">tree</span> <span class="o">:=</span> <span class="nv">lesserTree</span> <span class="nf">nextLink</span>
+              <span class="nf">mergeBinaryTreeElement:</span> <span class="nv">greaterTree</span>
+              <span class="nf">inBinaryTree:</span> <span class="nv">aBinaryTree</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="nv">aBinaryTree</span>
+        <span class="nf">leftBinaryTreeElement:</span> <span class="nv">lesserTree</span> <span class="nf">previousLink</span>
+        <span class="nf">value:</span> <span class="nv">lesserTree</span> <span class="nf">value</span>
+        <span class="nf">rightBinaryTreeElement:</span> <span class="nv">tree</span>
+</pre></div>
+</div>
+</li>
+<li><p>sorted data in ordered collection,</p>
+<img alt="../_images/CTUnbalancedSetTest-testPushOrderedCollection.svg" class="align-center" src="../_images/CTUnbalancedSetTest-testPushOrderedCollection.svg" /><p>by means of</p>
+<span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctunbalancedset-push"><div class="highlight"><pre><span></span><span class="c">&quot;CTUnbalancedSet, protocol adding&quot;</span>
+<span class="nf">push:</span> <span class="nv">anObject</span>
+
+   <span class="nv">representation</span> <span class="o">:=</span> [ <span class="o">:</span><span class="nv">hop</span> <span class="o">|</span> 
+                     <span class="nv">representation</span>
+                        <span class="nf">push:</span> <span class="nv">anObject</span>
+                        <span class="nf">witness:</span> <span class="nc">Object</span> <span class="nb">new</span>
+                        <span class="nf">continuation:</span> <span class="nv">hop</span>
+                        <span class="nf">inSet:</span> <span class="bp">self</span> ] <span class="nf">valueWithArgumentedExit</span>
+</pre></div>
+</div>
+<p>that, first uses</p>
+<span class="target" id="pharo-compiledMethod-4"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-blockclosure-valuewithargumentedexit"><div class="highlight"><pre><span></span><span class="c">&quot;BlockClosure, protocol *Containers-Essentials&quot;</span>
+<span class="nf">valueWithArgumentedExit</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">value:</span> [ <span class="o">:</span><span class="nv">anObject</span> <span class="o">|</span> <span class="o">^</span> <span class="nv">anObject</span> ]
+</pre></div>
+</div>
+<p>and, second, dispatches over</p>
+<span class="target" id="pharo-compiledMethod-5"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreenodeunbalanced-push-witness-continuation-inset"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeNodeUnbalanced, protocol adding&quot;</span>
+<span class="nf">push:</span> <span class="nv">anObject</span> <span class="nf">witness:</span> <span class="nv">aWitness</span> <span class="nf">continuation:</span> <span class="nv">aContinuation</span> <span class="nf">inSet:</span> <span class="nv">aBinaryTree</span>
+
+   <span class="o">^</span> (<span class="nv">aBinaryTree</span> <span class="nf">is:</span> <span class="nv">anObject</span> <span class="nf">lessThan:</span> <span class="nv">value</span>)
+        <span class="nb">ifTrue:</span> [ 
+           <span class="o">|</span> <span class="nv">link</span> <span class="nf">|</span>
+           <span class="nv">link</span> <span class="o">:=</span> <span class="nv">previousLink</span>
+                      <span class="nf">push:</span> <span class="nv">anObject</span>
+                      <span class="nf">witness:</span> <span class="nv">aWitness</span>
+                      <span class="nf">continuation:</span> <span class="nv">aContinuation</span>
+                      <span class="nf">inSet:</span> <span class="nv">aBinaryTree</span><span class="p">.</span>
+
+           <span class="bp">self</span> <span class="nf">class</span> <span class="nb">new</span>
+              <span class="nf">previousLink:</span> <span class="nv">link</span><span class="p">;</span>
+              <span class="nf">value:</span> <span class="nv">value</span><span class="p">;</span>
+              <span class="nf">nextLink:</span> <span class="nv">nextLink</span><span class="p">;</span>
+              <span class="nf">yourself</span> ]
+        <span class="nb">ifFalse:</span> [ 
+           <span class="o">|</span> <span class="nv">link</span> <span class="nf">|</span>
+           <span class="nv">link</span> <span class="o">:=</span> <span class="nv">nextLink</span>
+                      <span class="nf">push:</span> <span class="nv">anObject</span>
+                      <span class="nf">witness:</span> <span class="nv">value</span>
+                      <span class="nf">continuation:</span> <span class="nv">aContinuation</span>
+                      <span class="nf">inSet:</span> <span class="nv">aBinaryTree</span><span class="p">.</span>
+
+           <span class="bp">self</span> <span class="nf">class</span> <span class="nb">new</span>
+              <span class="nf">previousLink:</span> <span class="nv">previousLink</span><span class="p">;</span>
+              <span class="nf">value:</span> <span class="nv">value</span><span class="p">;</span>
+              <span class="nf">nextLink:</span> <span class="nv">link</span><span class="p">;</span>
+              <span class="nf">yourself</span> ]
+</pre></div>
+</div>
+<span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeemptyunbalanced-push-witness-continuation-inset"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeEmptyUnbalanced, protocol as yet unclassified&quot;</span>
+<span class="nf">push:</span> <span class="nv">anObject</span> <span class="nf">witness:</span> <span class="nv">aWitness</span> <span class="nf">continuation:</span> <span class="nv">aContinuation</span> <span class="nf">inSet:</span> <span class="nv">aSet</span>
+
+   <span class="o">^</span> (<span class="nv">aSet</span> <span class="nf">is:</span> <span class="nv">anObject</span> <span class="nf">equalTo:</span> <span class="nv">aWitness</span>)
+        <span class="nb">ifTrue:</span> [ 
+        <span class="nv">aSet</span> <span class="nf">pushingAlreadyIncluded:</span> <span class="nv">anObject</span> <span class="nf">continuation:</span> <span class="nv">aContinuation</span> ]
+        <span class="nb">ifFalse:</span> [ <span class="nv">aSet</span> <span class="nf">binaryTreeElementLeaf:</span> <span class="nv">anObject</span> ]
+</pre></div>
+</div>
+<p>where the latter delegates to</p>
+<span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctunbalancedset-pushingalreadyincluded-continuation"><div class="highlight"><pre><span></span><span class="c">&quot;CTUnbalancedSet, protocol as yet unclassified&quot;</span>
+<span class="nf">pushingAlreadyIncluded:</span> <span class="nv">anObject</span> <span class="nf">continuation:</span> <span class="nv">aContinuation</span>
+
+   <span class="o">^</span> <span class="nv">aContinuation</span> <span class="nf">value:</span> <span class="nv">representation</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">push:</span></code> message with its dispatched messages implements the technique
+described in <span id="id1">[<a class="reference internal" href="../bibliography.html#id16"><span>And91</span></a>]</span>, originally
+pointed out by <span id="id2">[<a class="reference internal" href="../bibliography.html#id17"><span>Oka98</span></a>]</span> at page 14, that does <span class="math notranslate nohighlight">\(d+1\)</span>
+comparisons, where <span class="math notranslate nohighlight">\(d\)</span> is the depth of the tree, respect to <span class="math notranslate nohighlight">\(2d\)</span>
+in the worst case.</p>
+</div>
+</li>
+<li><p>shuffled data in arrayed collection,</p>
+<img alt="../_images/CTUnbalancedSetTest-testPushShuffledInterval.svg" class="align-center" src="../_images/CTUnbalancedSetTest-testPushShuffledInterval.svg" /></li>
+<li><p>shuffled data in ordered collection,</p>
+<img alt="../_images/CTUnbalancedSetTest-testPushShuffledCollection.svg" class="align-center" src="../_images/CTUnbalancedSetTest-testPushShuffledCollection.svg" /></li>
+</ul>
+<p>Observe that the constraint of uniqueness of objects is respected,</p>
+<span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctunbalancedsettest-testpushdoubledobject"><div class="highlight"><pre><span></span><span class="c">&quot;CTUnbalancedSetTest, protocol tests&quot;</span>
+<span class="nf">testPushDoubledObject</span>
+
+   <span class="o">|</span><span class="nv"> set representation </span><span class="o">|</span>
+   <span class="nv">set</span> <span class="o">:=</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">10</span>) <span class="nf">shuffled</span> <span class="nf">asUnbalancedSet</span><span class="p">.</span>
+   <span class="nv">representation</span> <span class="o">:=</span> <span class="nv">set</span> <span class="nf">representation</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">set</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;original&#39;</span><span class="p">.</span>
+
+   <span class="nv">set</span>
+      <span class="nf">push:</span> <span class="m">1</span><span class="p">;</span>
+      <span class="nf">push:</span> <span class="m">5</span><span class="p">;</span>
+      <span class="nf">push:</span> <span class="m">10</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">set</span> <span class="nf">representation</span> <span class="nf">equals:</span> <span class="nv">representation</span><span class="p">.</span>
+
+   <span class="nv">set</span> <span class="nf">push:</span> <span class="m">0</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">deny:</span> <span class="nv">set</span> <span class="nf">representation</span> <span class="nf">equals:</span> <span class="nv">representation</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">set</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;augmented&#39;</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/CTUnbalancedSetTest-testPushDoubledObject-original.svg" class="align-center" src="../_images/CTUnbalancedSetTest-testPushDoubledObject-original.svg" /><img alt="../_images/CTUnbalancedSetTest-testPushDoubledObject-augmented.svg" class="align-center" src="../_images/CTUnbalancedSetTest-testPushDoubledObject-augmented.svg" /></div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>According to the exercises 2.3 and 2.4 of <span id="id3">[<a class="reference internal" href="../bibliography.html#id17"><span>Oka98</span></a>]</span>, the
+underlying linked structure isn’t doubled as the second assert checks, by
+means of the <em>context-return block</em> passed at the start of a <code class="docutils literal notranslate"><span class="pre">push:</span></code> and
+invoked in the leaves in case of doubles.</p>
+</div>
+</div>
 
 
           </div>

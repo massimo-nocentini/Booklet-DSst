@@ -52,8 +52,9 @@
 <li class="toctree-l1"><a class="reference internal" href="linked-allocation/binarytrees.html">6. <code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linked-allocation/unbalancedsets.html">7. <code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linked-allocation/redblacksets.html">8. <code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">9. Storage pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">10. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/leftistheaps.html">9. <code class="docutils literal notranslate"><span class="pre">CTLeftistHeap</span></code> containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">10. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">11. Bibliography</a></li>
 </ul>
 
 <div class="relations">
@@ -172,6 +173,13 @@
 </li>
       </ul></li>
       <li>
+    #asLeftistHeap is understood by
+
+      <ul>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-1">Collection&gt;&gt;#asLeftistHeap</a>
+</li>
+      </ul></li>
+      <li>
     #asLinkedList is understood by
 
       <ul>
@@ -192,6 +200,13 @@
 
       <ul>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-44">Integer&gt;&gt;#asShapeBRGCDots</a>
+</li>
+      </ul></li>
+      <li>
+    #asUnbalancedSet is understood by
+
+      <ul>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-1">Collection&gt;&gt;#asUnbalancedSet</a>
 </li>
       </ul></li>
       <li>
@@ -337,6 +352,13 @@
 </li>
       </ul></li>
       <li>
+    #insert:left:right:inBinaryTree: is understood by
+
+      <ul>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-3">CTBinaryTreeNodeLeftistHeap&gt;&gt;#insert:left:right:inBinaryTree:</a>
+</li>
+      </ul></li>
+      <li>
     #isAcyclicWithRespectToAssociations: is understood by
 
       <ul>
@@ -361,8 +383,6 @@
         <li><a href="symbolic/divisibility.html#pharo-compiledMethod-20">Fraction&gt;&gt;#kissingFractions</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     #lucasNumbers is understood by
 
@@ -370,6 +390,8 @@
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-29">Integer&gt;&gt;#lucasNumbers</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     #makeValueLinksTable is understood by
 
@@ -402,6 +424,10 @@
         <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-7">CTBinaryTreeEmpty&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
 </li>
         <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-8">CTBinaryTreeNode&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+</li>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-2">CTBinaryTreeNodeLeftistHeap&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+</li>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-2">CTBinaryTreeNodeUnbalanced&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
 </li>
       </ul></li>
       <li>
@@ -487,6 +513,24 @@
       <ul>
         <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-14">CTBinaryTreeAbstract&gt;&gt;#push:</a>
 </li>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-3">CTUnbalancedSet&gt;&gt;#push:</a>
+</li>
+      </ul></li>
+      <li>
+    #push:witness:continuation:inSet: is understood by
+
+      <ul>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-6">CTBinaryTreeEmptyUnbalanced&gt;&gt;#push:witness:continuation:inSet:</a>
+</li>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-5">CTBinaryTreeNodeUnbalanced&gt;&gt;#push:witness:continuation:inSet:</a>
+</li>
+      </ul></li>
+      <li>
+    #pushingAlreadyIncluded:continuation: is understood by
+
+      <ul>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-7">CTUnbalancedSet&gt;&gt;#pushingAlreadyIncluded:continuation:</a>
+</li>
       </ul></li>
       <li>
     #quoRemComplementaryInteger: is understood by
@@ -559,12 +603,23 @@
       <ul>
         <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-3">CTBinaryTreeAbstractTest&gt;&gt;#tree:</a>
 </li>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-0">CTLeftistHeapTest&gt;&gt;#tree:</a>
+</li>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-0">CTUnbalancedSetTest&gt;&gt;#tree:</a>
+</li>
       </ul></li>
       <li>
     #value:onCycleDo: is understood by
 
       <ul>
         <li><a href="linked-allocation/links.html#pharo-compiledMethod-19">TopologicalSortAlgorithm&gt;&gt;#value:onCycleDo:</a>
+</li>
+      </ul></li>
+      <li>
+    #valueWithArgumentedExit is understood by
+
+      <ul>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-4">BlockClosure&gt;&gt;#valueWithArgumentedExit</a>
 </li>
       </ul></li>
       <li>
@@ -627,6 +682,8 @@
       <ul>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-20">#kissingFractions</a>
 </li>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-4">#valueWithArgumentedExit</a>
+</li>
       </ul></li>
       <li>
     a Collection understands
@@ -635,6 +692,10 @@
         <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-4">#asBinaryTree</a>
 </li>
         <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-12">#asBinaryTree:</a>
+</li>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-1">#asLeftistHeap</a>
+</li>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-1">#asUnbalancedSet</a>
 </li>
         <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-11">#inject:into:</a>
 </li>
@@ -695,10 +756,42 @@
 </li>
       </ul></li>
       <li>
+    a CTBinaryTreeEmptyUnbalanced understands
+
+      <ul>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-6">#push:witness:continuation:inSet:</a>
+</li>
+      </ul></li>
+      <li>
     a CTBinaryTreeNode understands
 
       <ul>
         <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-8">#mergeBinaryTreeElement:inBinaryTree:</a>
+</li>
+      </ul></li>
+      <li>
+    a CTBinaryTreeNodeLeftistHeap understands
+
+      <ul>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-3">#insert:left:right:inBinaryTree:</a>
+</li>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-2">#mergeBinaryTreeElement:inBinaryTree:</a>
+</li>
+      </ul></li>
+      <li>
+    a CTBinaryTreeNodeUnbalanced understands
+
+      <ul>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-2">#mergeBinaryTreeElement:inBinaryTree:</a>
+</li>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-5">#push:witness:continuation:inSet:</a>
+</li>
+      </ul></li>
+      <li>
+    a CTLeftistHeapTest understands
+
+      <ul>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-0">#tree:</a>
 </li>
       </ul></li>
       <li>
@@ -801,6 +894,24 @@
         <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-4">#testNilAsLinkedList</a>
 </li>
         <li><a href="linked-allocation/links.html#pharo-compiledMethod-12">#testSimpleValueLink</a>
+</li>
+      </ul></li>
+      <li>
+    a CTUnbalancedSet understands
+
+      <ul>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-3">#push:</a>
+</li>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-7">#pushingAlreadyIncluded:continuation:</a>
+</li>
+      </ul></li>
+      <li>
+    a CTUnbalancedSetTest understands
+
+      <ul>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-8">#testPushDoubledObject</a>
+</li>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-0">#tree:</a>
 </li>
       </ul></li>
       <li>
@@ -1237,6 +1348,13 @@
 </li>
       </ul></li>
       <li>
+    Package Containers-LeftistHeap contains
+
+      <ul>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-class-0">CTLeftistHeap</a>
+</li>
+      </ul></li>
+      <li>
     Package Containers-LinkedStoragePool contains
 
       <ul>
@@ -1277,6 +1395,8 @@
         <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-10">ArrayedCollection&gt;&gt;#bisect:from:to:baseBlock:</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-20">BlockClosure&gt;&gt;#kissingFractions</a>
+</li>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-4">BlockClosure&gt;&gt;#valueWithArgumentedExit</a>
 </li>
         <li><a href="linked-allocation/links.html#pharo-compiledMethod-27">Dictionary&gt;&gt;#anyAssociation</a>
 </li>
@@ -1374,6 +1494,13 @@
 </li>
       </ul></li>
       <li>
+    Protocol *Containers-LeftistHeap
+
+      <ul>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-1">Collection&gt;&gt;#asLeftistHeap</a>
+</li>
+      </ul></li>
+      <li>
     Protocol *Containers-Links
 
       <ul>
@@ -1406,6 +1533,8 @@
 
       <ul>
         <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-4">Collection&gt;&gt;#asBinaryTree</a>
+</li>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-1">Collection&gt;&gt;#asUnbalancedSet</a>
 </li>
       </ul></li>
       <li>
@@ -1441,6 +1570,12 @@
 </li>
         <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-8">CTBinaryTreeNode&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
 </li>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-3">CTBinaryTreeNodeLeftistHeap&gt;&gt;#insert:left:right:inBinaryTree:</a>
+</li>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-2">CTBinaryTreeNodeLeftistHeap&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+</li>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-2">CTBinaryTreeNodeUnbalanced&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+</li>
       </ul></li>
       <li>
     Protocol adding
@@ -1448,11 +1583,19 @@
       <ul>
         <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-14">CTBinaryTreeAbstract&gt;&gt;#push:</a>
 </li>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-5">CTBinaryTreeNodeUnbalanced&gt;&gt;#push:witness:continuation:inSet:</a>
+</li>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-3">CTUnbalancedSet&gt;&gt;#push:</a>
+</li>
       </ul></li>
       <li>
     Protocol as yet unclassified
 
       <ul>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-6">CTBinaryTreeEmptyUnbalanced&gt;&gt;#push:witness:continuation:inSet:</a>
+</li>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-7">CTUnbalancedSet&gt;&gt;#pushingAlreadyIncluded:continuation:</a>
+</li>
         <li><a href="symbolic/divisibility.html#pharo-compiledMethod-3">QuoRemComplementary class&gt;&gt;#a:b:</a>
 </li>
       </ul></li>
@@ -1547,6 +1690,8 @@
 </li>
         <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-3">CTBinaryTreeAbstractTest&gt;&gt;#tree:</a>
 </li>
+        <li><a href="linked-allocation/leftistheaps.html#pharo-compiledMethod-0">CTLeftistHeapTest&gt;&gt;#tree:</a>
+</li>
         <li><a href="linked-allocation/storage-pools.html#pharo-compiledMethod-13">CTLinkedStoragePoolTest&gt;&gt;#testEmptyCircularList</a>
 </li>
         <li><a href="linked-allocation/storage-pools.html#pharo-compiledMethod-8">CTLinkedStoragePoolTest&gt;&gt;#testEmptyQueue</a>
@@ -1608,6 +1753,10 @@
         <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-4">CTLinksValueLinkTest&gt;&gt;#testNilAsLinkedList</a>
 </li>
         <li><a href="linked-allocation/links.html#pharo-compiledMethod-12">CTLinksValueLinkTest&gt;&gt;#testSimpleValueLink</a>
+</li>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-8">CTUnbalancedSetTest&gt;&gt;#testPushDoubledObject</a>
+</li>
+        <li><a href="linked-allocation/unbalancedsets.html#pharo-compiledMethod-0">CTUnbalancedSetTest&gt;&gt;#tree:</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-42">EssentialsObjectTest&gt;&gt;#testByteArrayInteger</a>
 </li>
