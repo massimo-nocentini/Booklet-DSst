@@ -112,8 +112,10 @@ BaselineOfBookletDSst >> scriptRedBlackSetMessagesForDoc [
 			     tree: asBinaryTree asRedBlackSet asUnbalancedSet
 			     withArrayedCollection: withCollection: asBinaryTree:
 			     #leftBinaryTreeElement:value:rightBinaryTreeElement:
+			     #insert:left:right:inBinaryTree:
 			     #push:witness:continuation:inSet:
-			     push: pop root binaryTreeElementEmpty #mergeBinaryTreeElement:inBinaryTree:
+			     asLeftistHeap push: pop root binaryTreeElementEmpty
+			     #mergeBinaryTreeElement:inBinaryTree:
 			     #pushingAlreadyIncluded:continuation:
 			     testPushOrderedInterval testCreation testPushOrderedInterval
 			     testPushShuffledInterval testPushShuffledCollection
