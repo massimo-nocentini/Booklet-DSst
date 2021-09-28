@@ -477,6 +477,12 @@ which finally provides the implementation according to
 The *Bernoulli* distribution
 ++++++++++++++++++++++++++++
 
+Using a *fair coin*,
+
+.. pharo:autocompiledmethod:: Random>>#fairCoin
+
+we simulate some tosses
+
 .. pharo:autocompiledmethod:: RandomTestDistributions>>#testBernoulli
 
   .. image:: ../../../Containers-Essentials/images/RandomTestDistributions-testBernoulli.svg

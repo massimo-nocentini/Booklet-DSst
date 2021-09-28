@@ -51,8 +51,9 @@
 <li class="toctree-l1"><a class="reference internal" href="linked-allocation/linkedlists.html">5. <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linked-allocation/binarytrees.html">6. <code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linked-allocation/unbalancedsets.html">7. <code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">8. Storage pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">9. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/redblacksets.html">8. <code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">9. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">10. Bibliography</a></li>
 </ul>
 
 <div class="relations">
@@ -155,6 +156,22 @@
 </li>
       </ul></li>
       <li>
+    #asBinaryTree is understood by
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-4">Collection&gt;&gt;#asBinaryTree</a>
+</li>
+      </ul></li>
+      <li>
+    #asBinaryTree: is understood by
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-5">ArrayedCollection&gt;&gt;#asBinaryTree:</a>
+</li>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-12">Collection&gt;&gt;#asBinaryTree:</a>
+</li>
+      </ul></li>
+      <li>
     #asLinkedList is understood by
 
       <ul>
@@ -182,6 +199,20 @@
 
       <ul>
         <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-9">SequenceableCollection&gt;&gt;#asValueLink</a>
+</li>
+      </ul></li>
+      <li>
+    #bisect:baseBlock: is understood by
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-9">ArrayedCollection&gt;&gt;#bisect:baseBlock:</a>
+</li>
+      </ul></li>
+      <li>
+    #bisect:from:to:baseBlock: is understood by
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-10">ArrayedCollection&gt;&gt;#bisect:from:to:baseBlock:</a>
 </li>
       </ul></li>
       <li>
@@ -217,6 +248,13 @@
 
       <ul>
         <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-1">CTBinaryTreeAbstract class&gt;&gt;#empty</a>
+</li>
+      </ul></li>
+      <li>
+    #fairCoin is understood by
+
+      <ul>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-56">Random&gt;&gt;#fairCoin</a>
 </li>
       </ul></li>
       <li>
@@ -323,6 +361,8 @@
         <li><a href="symbolic/divisibility.html#pharo-compiledMethod-20">Fraction&gt;&gt;#kissingFractions</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     #lucasNumbers is understood by
 
@@ -330,8 +370,6 @@
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-29">Integer&gt;&gt;#lucasNumbers</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     #makeValueLinksTable is understood by
 
@@ -361,9 +399,9 @@
     #mergeBinaryTreeElement:inBinaryTree: is understood by
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-4">CTBinaryTreeEmpty&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-7">CTBinaryTreeEmpty&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-5">CTBinaryTreeNode&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-8">CTBinaryTreeNode&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
 </li>
       </ul></li>
       <li>
@@ -379,17 +417,17 @@
       <ul>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-53">Random&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-57">RandomBernoulli&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-58">RandomBernoulli&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-59">RandomBinomial&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-60">RandomBinomial&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-67">RandomBoxMullerBivariateGaussian&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-68">RandomBoxMullerBivariateGaussian&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-63">RandomExponential&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-64">RandomExponential&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-65">RandomGaussian&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-66">RandomGaussian&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-61">RandomGeometric&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-62">RandomGeometric&gt;&gt;#next</a>
 </li>
       </ul></li>
       <li>
@@ -447,7 +485,7 @@
     #push: is understood by
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-3">CTBinaryTreeAbstract&gt;&gt;#push:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-14">CTBinaryTreeAbstract&gt;&gt;#push:</a>
 </li>
       </ul></li>
       <li>
@@ -516,10 +554,31 @@
 </li>
       </ul></li>
       <li>
+    #tree: is understood by
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-3">CTBinaryTreeAbstractTest&gt;&gt;#tree:</a>
+</li>
+      </ul></li>
+      <li>
     #value:onCycleDo: is understood by
 
       <ul>
         <li><a href="linked-allocation/links.html#pharo-compiledMethod-19">TopologicalSortAlgorithm&gt;&gt;#value:onCycleDo:</a>
+</li>
+      </ul></li>
+      <li>
+    #withArrayedCollection: is understood by
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-6">CTBinaryTreeAbstract class&gt;&gt;#withArrayedCollection:</a>
+</li>
+      </ul></li>
+      <li>
+    #withCollection: is understood by
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-13">CTBinaryTreeAbstract class&gt;&gt;#withCollection:</a>
 </li>
       </ul></li>
       <li>
@@ -543,6 +602,17 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
+    a ArrayedCollection understands
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-5">#asBinaryTree:</a>
+</li>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-9">#bisect:baseBlock:</a>
+</li>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-10">#bisect:from:to:baseBlock:</a>
+</li>
+      </ul></li>
+      <li>
     a Association understands
 
       <ul>
@@ -562,6 +632,10 @@
     a Collection understands
 
       <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-4">#asBinaryTree</a>
+</li>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-12">#asBinaryTree:</a>
+</li>
         <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-11">#inject:into:</a>
 </li>
       </ul></li>
@@ -584,12 +658,16 @@
       <ul>
         <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-1">#empty</a>
 </li>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-6">#withArrayedCollection:</a>
+</li>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-13">#withCollection:</a>
+</li>
       </ul></li>
       <li>
     a CTBinaryTreeAbstract understands
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-3">#push:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-14">#push:</a>
 </li>
       </ul></li>
       <li>
@@ -598,27 +676,29 @@
       <ul>
         <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-0">#testCreation</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-6">#testPushOrderedCollection</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-11">#testPushOrderedCollection</a>
 </li>
         <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-2">#testPushOrderedInterval</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-8">#testPushShuffledCollection</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-16">#testPushShuffledCollection</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-7">#testPushShuffledInterval</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-15">#testPushShuffledInterval</a>
+</li>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-3">#tree:</a>
 </li>
       </ul></li>
       <li>
     a CTBinaryTreeEmpty understands
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-4">#mergeBinaryTreeElement:inBinaryTree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-7">#mergeBinaryTreeElement:inBinaryTree:</a>
 </li>
       </ul></li>
       <li>
     a CTBinaryTreeNode understands
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-5">#mergeBinaryTreeElement:inBinaryTree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-8">#mergeBinaryTreeElement:inBinaryTree:</a>
 </li>
       </ul></li>
       <li>
@@ -810,7 +890,7 @@
 </li>
         <li><a href="pharo/oo.html#pharo-compiledMethod-3">#testInspectPoint</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-69">#testInspectRBNodesQuine</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-70">#testInspectRBNodesQuine</a>
 </li>
         <li><a href="pharo/oo.html#pharo-compiledMethod-5">#testInspectRSPolygon</a>
 </li>
@@ -828,7 +908,7 @@
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-51">#testRandomSubclasses</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-68">#testRBNodeSubclasses</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-69">#testRBNodeSubclasses</a>
 </li>
       </ul></li>
   </ul></td>
@@ -947,6 +1027,8 @@
     a Random understands
 
       <ul>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-56">#fairCoin</a>
+</li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-53">#next</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-55">#privateNextSeed</a>
@@ -958,59 +1040,59 @@
     a RandomBernoulli understands
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-57">#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-58">#next</a>
 </li>
       </ul></li>
       <li>
     a RandomBinomial understands
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-59">#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-60">#next</a>
 </li>
       </ul></li>
       <li>
     a RandomBoxMullerBivariateGaussian understands
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-67">#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-68">#next</a>
 </li>
       </ul></li>
       <li>
     a RandomExponential understands
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-63">#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-64">#next</a>
 </li>
       </ul></li>
       <li>
     a RandomGaussian understands
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-65">#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-66">#next</a>
 </li>
       </ul></li>
       <li>
     a RandomGeometric understands
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-61">#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-62">#next</a>
 </li>
       </ul></li>
       <li>
     a RandomTestDistributions understands
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-56">#testBernoulli</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-57">#testBernoulli</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-58">#testBinomial</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-59">#testBinomial</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-62">#testExponential</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-63">#testExponential</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-64">#testGaussian</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-65">#testGaussian</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-66">#testGaussianBoxMuller</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-67">#testGaussianBoxMuller</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-60">#testGeometric</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-61">#testGeometric</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-52">#testUniform</a>
 </li>
@@ -1165,6 +1247,8 @@
     Package Containers-RedBlackSet contains
 
       <ul>
+        <li><a href="linked-allocation/redblacksets.html#pharo-class-0">CTRedBlackSet</a>
+</li>
         <li><a href="linked-allocation/unbalancedsets.html#pharo-class-0">CTUnbalancedSet</a>
 </li>
       </ul></li>
@@ -1176,9 +1260,22 @@
 </li>
       </ul></li>
       <li>
+    Protocol *Containers-BinaryTreeAbstract
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-5">ArrayedCollection&gt;&gt;#asBinaryTree:</a>
+</li>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-12">Collection&gt;&gt;#asBinaryTree:</a>
+</li>
+      </ul></li>
+      <li>
     Protocol *Containers-Essentials
 
       <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-9">ArrayedCollection&gt;&gt;#bisect:baseBlock:</a>
+</li>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-10">ArrayedCollection&gt;&gt;#bisect:from:to:baseBlock:</a>
+</li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-20">BlockClosure&gt;&gt;#kissingFractions</a>
 </li>
         <li><a href="linked-allocation/links.html#pharo-compiledMethod-27">Dictionary&gt;&gt;#anyAssociation</a>
@@ -1237,6 +1334,8 @@
 </li>
         <li><a href="linked-allocation/links.html#pharo-compiledMethod-24">Object&gt;&gt;#yourself:</a>
 </li>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-56">Random&gt;&gt;#fairCoin</a>
+</li>
         <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-9">SequenceableCollection&gt;&gt;#asValueLink</a>
 </li>
         <li><a href="linked-allocation/linkedlists.html#pharo-compiledMethod-8">SequenceableCollection&gt;&gt;#foldr:init:</a>
@@ -1250,17 +1349,17 @@
     Protocol *Containers-Essentials-Tests
 
       <ul>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-56">RandomTestDistributions&gt;&gt;#testBernoulli</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-57">RandomTestDistributions&gt;&gt;#testBernoulli</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-58">RandomTestDistributions&gt;&gt;#testBinomial</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-59">RandomTestDistributions&gt;&gt;#testBinomial</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-62">RandomTestDistributions&gt;&gt;#testExponential</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-63">RandomTestDistributions&gt;&gt;#testExponential</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-64">RandomTestDistributions&gt;&gt;#testGaussian</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-65">RandomTestDistributions&gt;&gt;#testGaussian</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-66">RandomTestDistributions&gt;&gt;#testGaussianBoxMuller</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-67">RandomTestDistributions&gt;&gt;#testGaussianBoxMuller</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-60">RandomTestDistributions&gt;&gt;#testGeometric</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-61">RandomTestDistributions&gt;&gt;#testGeometric</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-52">RandomTestDistributions&gt;&gt;#testUniform</a>
 </li>
@@ -1303,6 +1402,13 @@
 </li>
       </ul></li>
       <li>
+    Protocol *Containers-RedBlackSet
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-4">Collection&gt;&gt;#asBinaryTree</a>
+</li>
+      </ul></li>
+      <li>
     Protocol accessing
 
       <ul>
@@ -1314,33 +1420,33 @@
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-53">Random&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-57">RandomBernoulli&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-58">RandomBernoulli&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-59">RandomBinomial&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-60">RandomBinomial&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-67">RandomBoxMullerBivariateGaussian&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-68">RandomBoxMullerBivariateGaussian&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-63">RandomExponential&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-64">RandomExponential&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-65">RandomGaussian&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-66">RandomGaussian&gt;&gt;#next</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-61">RandomGeometric&gt;&gt;#next</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-62">RandomGeometric&gt;&gt;#next</a>
 </li>
       </ul></li>
       <li>
     Protocol actions
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-4">CTBinaryTreeEmpty&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-7">CTBinaryTreeEmpty&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-5">CTBinaryTreeNode&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-8">CTBinaryTreeNode&gt;&gt;#mergeBinaryTreeElement:inBinaryTree:</a>
 </li>
       </ul></li>
       <li>
     Protocol adding
 
       <ul>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-3">CTBinaryTreeAbstract&gt;&gt;#push:</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-14">CTBinaryTreeAbstract&gt;&gt;#push:</a>
 </li>
       </ul></li>
       <li>
@@ -1378,6 +1484,8 @@
         <li><a href="linked-allocation/links.html#pharo-compiledMethod-19">TopologicalSortAlgorithm&gt;&gt;#value:onCycleDo:</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     Protocol initialization
 
@@ -1389,8 +1497,15 @@
         <li><a href="linked-allocation/storage-pools.html#pharo-compiledMethod-2">CTLinkedStoragePool&gt;&gt;#releaseLink:</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    Protocol instance creation
+
+      <ul>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-6">CTBinaryTreeAbstract class&gt;&gt;#withArrayedCollection:</a>
+</li>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-13">CTBinaryTreeAbstract class&gt;&gt;#withCollection:</a>
+</li>
+      </ul></li>
       <li>
     Protocol private
 
@@ -1422,13 +1537,15 @@
       <ul>
         <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-0">CTBinaryTreeAbstractTest&gt;&gt;#testCreation</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-6">CTBinaryTreeAbstractTest&gt;&gt;#testPushOrderedCollection</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-11">CTBinaryTreeAbstractTest&gt;&gt;#testPushOrderedCollection</a>
 </li>
         <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-2">CTBinaryTreeAbstractTest&gt;&gt;#testPushOrderedInterval</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-8">CTBinaryTreeAbstractTest&gt;&gt;#testPushShuffledCollection</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-16">CTBinaryTreeAbstractTest&gt;&gt;#testPushShuffledCollection</a>
 </li>
-        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-7">CTBinaryTreeAbstractTest&gt;&gt;#testPushShuffledInterval</a>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-15">CTBinaryTreeAbstractTest&gt;&gt;#testPushShuffledInterval</a>
+</li>
+        <li><a href="linked-allocation/binarytrees.html#pharo-compiledMethod-3">CTBinaryTreeAbstractTest&gt;&gt;#tree:</a>
 </li>
         <li><a href="linked-allocation/storage-pools.html#pharo-compiledMethod-13">CTLinkedStoragePoolTest&gt;&gt;#testEmptyCircularList</a>
 </li>
@@ -1568,7 +1685,7 @@
 </li>
         <li><a href="pharo/oo.html#pharo-compiledMethod-3">EssentialsObjectTest&gt;&gt;#testInspectPoint</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-69">EssentialsObjectTest&gt;&gt;#testInspectRBNodesQuine</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-70">EssentialsObjectTest&gt;&gt;#testInspectRBNodesQuine</a>
 </li>
         <li><a href="pharo/oo.html#pharo-compiledMethod-5">EssentialsObjectTest&gt;&gt;#testInspectRSPolygon</a>
 </li>
@@ -1586,7 +1703,7 @@
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-51">EssentialsObjectTest&gt;&gt;#testRandomSubclasses</a>
 </li>
-        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-68">EssentialsObjectTest&gt;&gt;#testRBNodeSubclasses</a>
+        <li><a href="pharo/hierarchies.html#pharo-compiledMethod-69">EssentialsObjectTest&gt;&gt;#testRBNodeSubclasses</a>
 </li>
         <li><a href="symbolic/divisibility.html#pharo-compiledMethod-5">SymbolicIntegerTest&gt;&gt;#testComplementaryQuoRem21Over9</a>
 </li>

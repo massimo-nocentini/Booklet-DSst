@@ -98,8 +98,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../linked-allocation/linkedlists.html">5. <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../linked-allocation/binarytrees.html">6. <code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../linked-allocation/unbalancedsets.html">7. <code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/storage-pools.html">8. Storage pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">9. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/redblacksets.html">8. <code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/storage-pools.html">9. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">10. Bibliography</a></li>
 </ul>
 
 <div class="relations">
@@ -1091,11 +1092,21 @@ full dots stand for 1s.</p>
 </div>
 <div class="section" id="the-bernoulli-distribution">
 <h3><span class="section-number">2.5.2. </span>The <em>Bernoulli</em> distribution<a class="headerlink" href="#the-bernoulli-distribution" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-56"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testbernoulli"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
+<p>Using a <em>fair coin</em>,</p>
+<span class="target" id="pharo-compiledMethod-56"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-random-faircoin"><div class="highlight"><pre><span></span><span class="c">&quot;Random, protocol *Containers-Essentials&quot;</span>
+<span class="nf">fairCoin</span>
+
+   <span class="o">^</span> (<span class="nc">RandomBernoulli</span> <span class="nf">seed:</span> <span class="nv">seed</span>)
+        <span class="nf">p:</span> <span class="m">0.5</span><span class="p">;</span>
+        <span class="nf">yourself</span>
+</pre></div>
+</div>
+<p>we simulate some tosses</p>
+<span class="target" id="pharo-compiledMethod-57"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testbernoulli"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testBernoulli</span>
 
    <span class="o">|</span><span class="nv"> gen </span><span class="o">|</span>
-   <span class="nv">gen</span> <span class="o">:=</span> <span class="nc">RandomBernoulli</span> <span class="nf">seed:</span> <span class="m">13</span><span class="p">.</span>
+   <span class="nv">gen</span> <span class="o">:=</span> (<span class="nc">Random</span> <span class="nf">seed:</span> <span class="m">13</span>) <span class="nf">fairCoin</span><span class="p">.</span>
 
    <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">gen</span><span class="p">.</span>
 
@@ -1107,7 +1118,7 @@ full dots stand for 1s.</p>
 <blockquote>
 <div><img alt="../_images/RandomTestDistributions-testBernoulli.svg" class="align-center" src="../_images/RandomTestDistributions-testBernoulli.svg" /></div></blockquote>
 <p>where</p>
-<span class="target" id="pharo-compiledMethod-57"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randombernoulli-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomBernoulli, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-58"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randombernoulli-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomBernoulli, protocol accessing&quot;</span>
 <span class="nf">next</span>
 
    <span class="o">^</span> (<span class="bp">super</span> <span class="nf">next</span> <span class="nf">&lt;</span> <span class="nv">p</span>) <span class="nf">asInteger</span>
@@ -1116,7 +1127,7 @@ full dots stand for 1s.</p>
 </div>
 <div class="section" id="the-binomial-distribution">
 <h3><span class="section-number">2.5.3. </span>The <em>binomial</em> distribution<a class="headerlink" href="#the-binomial-distribution" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-58"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testbinomial"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-59"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testbinomial"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testBinomial</span>
 
    <span class="o">|</span><span class="nv"> gen </span><span class="o">|</span>
@@ -1135,7 +1146,7 @@ full dots stand for 1s.</p>
 <blockquote>
 <div><img alt="../_images/RandomTestDistributions-testBinomial.svg" class="align-center" src="../_images/RandomTestDistributions-testBinomial.svg" /></div></blockquote>
 <p>where</p>
-<span class="target" id="pharo-compiledMethod-59"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randombinomial-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomBinomial, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-60"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randombinomial-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomBinomial, protocol accessing&quot;</span>
 <span class="nf">next</span>
 
    <span class="o">^</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="nv">n</span>)
@@ -1152,7 +1163,7 @@ full dots stand for 1s.</p>
 	<span class="nf">package:</span> <span class="s">&#39;Containers-Essentials-Random&#39;</span>
 </pre></div>
 </div>
-<span class="target" id="pharo-compiledMethod-60"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testgeometric"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-61"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testgeometric"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testGeometric</span>
 
    <span class="o">|</span><span class="nv"> gen </span><span class="o">|</span>
@@ -1170,7 +1181,7 @@ full dots stand for 1s.</p>
 <blockquote>
 <div><img alt="../_images/RandomTestDistributions-testGeometric.svg" class="align-center" src="../_images/RandomTestDistributions-testGeometric.svg" /></div></blockquote>
 <p>where</p>
-<span class="target" id="pharo-compiledMethod-61"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomgeometric-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomGeometric, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-62"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomgeometric-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomGeometric, protocol accessing&quot;</span>
 <span class="nf">next</span>
 
    <span class="o">|</span><span class="nv"> failures </span><span class="o">|</span>
@@ -1185,7 +1196,7 @@ full dots stand for 1s.</p>
 </div>
 <div class="section" id="the-exponential-distribution">
 <h3><span class="section-number">2.5.5. </span>The <em>exponential</em> distribution<a class="headerlink" href="#the-exponential-distribution" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-62"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testexponential"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-63"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testexponential"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testExponential</span>
 
    <span class="o">|</span><span class="nv"> gen </span><span class="o">|</span>
@@ -1201,7 +1212,7 @@ full dots stand for 1s.</p>
 <blockquote>
 <div><img alt="../_images/RandomTestDistributions-testExponential.svg" class="align-center" src="../_images/RandomTestDistributions-testExponential.svg" /></div></blockquote>
 <p>where</p>
-<span class="target" id="pharo-compiledMethod-63"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomexponential-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomExponential, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-64"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomexponential-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomExponential, protocol accessing&quot;</span>
 <span class="nf">next</span>
 
    <span class="o">^</span> (<span class="m">1</span> <span class="nf">-</span> <span class="bp">super</span> <span class="nf">next</span>) <span class="nf">ln</span> <span class="nf">negated</span> <span class="nf">/</span> <span class="nv">lambda</span>
@@ -1210,7 +1221,7 @@ full dots stand for 1s.</p>
 </div>
 <div class="section" id="the-gaussian-distribution">
 <h3><span class="section-number">2.5.6. </span>The <em>gaussian</em> distribution<a class="headerlink" href="#the-gaussian-distribution" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-64"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testgaussian"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-65"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testgaussian"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testGaussian</span>
 
    <span class="o">|</span><span class="nv"> gen </span><span class="o">|</span>
@@ -1226,7 +1237,7 @@ full dots stand for 1s.</p>
 <blockquote>
 <div><img alt="../_images/RandomTestDistributions-testGaussian.svg" class="align-center" src="../_images/RandomTestDistributions-testGaussian.svg" /></div></blockquote>
 <p>where</p>
-<span class="target" id="pharo-compiledMethod-65"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomgaussian-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomGaussian, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-66"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomgaussian-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomGaussian, protocol accessing&quot;</span>
 <span class="nf">next</span>
 
    <span class="o">|</span><span class="nv"> z </span><span class="o">|</span>
@@ -1246,7 +1257,7 @@ full dots stand for 1s.</p>
 <div class="section" id="the-bivariate-gaussian-distribution">
 <h3><span class="section-number">2.5.7. </span>The <em>bivariate gaussian</em> distribution<a class="headerlink" href="#the-bivariate-gaussian-distribution" title="Permalink to this headline">¶</a></h3>
 <p>A sample from a <em>bivariate</em> Gaussian distribution can be inspected by</p>
-<span class="target" id="pharo-compiledMethod-66"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testgaussianboxmuller"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-67"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testgaussianboxmuller"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testGaussianBoxMuller</span>
 
    <span class="o">|</span><span class="nv"> gen </span><span class="o">|</span>
@@ -1262,7 +1273,7 @@ full dots stand for 1s.</p>
 <blockquote>
 <div><img alt="../_images/RandomTestDistributions-testGaussianBoxMuller.svg" class="align-center" src="../_images/RandomTestDistributions-testGaussianBoxMuller.svg" /></div></blockquote>
 <p>where the message</p>
-<span class="target" id="pharo-compiledMethod-67"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomboxmullerbivariategaussian-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomBoxMullerBivariateGaussian, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-68"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomboxmullerbivariategaussian-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomBoxMullerBivariateGaussian, protocol accessing&quot;</span>
 <span class="nf">next</span>
 
    <span class="o">|</span><span class="nv"> u1 u2 z0 z1 z w </span><span class="o">|</span>
@@ -1280,7 +1291,7 @@ full dots stand for 1s.</p>
 </div>
 <div class="section" id="rbnode-hierarchy">
 <h2><span class="section-number">2.6. </span><code class="docutils literal notranslate"><span class="pre">RBNode</span></code> hierarchy<a class="headerlink" href="#rbnode-hierarchy" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="pharo-compiledMethod-68"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testrbnodesubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-69"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testrbnodesubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testRBNodeSubclasses</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportShapeOf:</span> <span class="nc">RBNode</span> <span class="nf">accessorBlock:</span> <span class="ss">#asShapeSubclasses</span>
@@ -1300,7 +1311,7 @@ full dots stand for 1s.</p>
 </pre></div>
 </div>
 <p>evaluates to <code class="docutils literal notranslate"><span class="pre">#t</span></code>; in parallel, our Smalltalk implementation</p>
-<span class="target" id="pharo-compiledMethod-69"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectrbnodesquine"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-70"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectrbnodesquine"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectRBNodesQuine</span>
 
    <span class="o">|</span><span class="nv"> quine aQuineBlock evalBlock </span><span class="o">|</span>

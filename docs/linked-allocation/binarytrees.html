@@ -51,13 +51,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../symbolic/divisibility.html">3. Divisibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="links.html">4. Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linkedlists.html">5. <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">6. <code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#definition">6.1. Definition</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. <code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="unbalancedsets.html">7. <code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="storage-pools.html">8. Storage pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">9. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="redblacksets.html">8. <code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="storage-pools.html">9. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">10. Bibliography</a></li>
 </ul>
 
 <div class="relations">
@@ -112,14 +110,14 @@
             
   <div class="section" id="ctbinarytreeabstract-containers">
 <h1><span class="section-number">6. </span><code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers<a class="headerlink" href="#ctbinarytreeabstract-containers" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="definition">
-<h2><span class="section-number">6.1. </span>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
+<p>A <em>free binary tree</em> container is defined according to</p>
 <span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreeabstract"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">subclass:</span> <span class="ss">#CTBinaryTreeAbstract</span>
 	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;representation&#39;</span>
 	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
 	<span class="nf">package:</span> <span class="s">&#39;Containers-BinaryTreeAbstract&#39;</span>
 </pre></div>
 </div>
+<p>and its responsibility is to direct and manage objects of types</p>
 <span class="target" id="pharo-class-1"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreeelement"><div class="highlight"><pre><span></span><span class="nc">CTDoubleValueLink</span> <span class="nf">subclass:</span> <span class="ss">#CTBinaryTreeElement</span>
 	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
 	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
@@ -138,10 +136,12 @@
 	<span class="nf">package:</span> <span class="s">&#39;Containers-BinaryTreeAbstract&#39;</span>
 </pre></div>
 </div>
+<p>as actual representation for the underlying structure. The simpler container is
+the empty tree,</p>
 <span class="target" id="pharo-compiledMethod-0"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstracttest-testcreation"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstractTest, protocol tests&quot;</span>
 <span class="nf">testCreation</span>
 
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="bp">self</span> <span class="nf">tree:</span> {  })
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nc">CTBinaryTreeAbstract</span> <span class="nf">empty</span>
 </pre></div>
 </div>
 <blockquote>
@@ -154,40 +154,59 @@
         <span class="nv">aTree</span> <span class="nf">representation:</span> <span class="nv">aTree</span> <span class="nf">binaryTreeElementEmpty</span> ]
 </pre></div>
 </div>
+<p>In general, we use collections and then build trees out of them. On one hand,
+using <code class="docutils literal notranslate"><span class="pre">ArrayedCollection</span></code> objects</p>
 <span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstracttest-testpushorderedinterval"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstractTest, protocol tests&quot;</span>
 <span class="nf">testPushOrderedInterval</span>
 
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="bp">self</span> <span class="nf">tree:</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">20</span>))
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="bp">self</span> <span class="nf">tree:</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">20</span>) <span class="nf">asArray</span>)
 </pre></div>
 </div>
 <blockquote>
 <div><img alt="../_images/CTBinaryTreeAbstractTest-testPushOrderedInterval.svg" class="align-center" src="../_images/CTBinaryTreeAbstractTest-testPushOrderedInterval.svg" /></div></blockquote>
 <p>where</p>
-<span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstract-push"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstract, protocol adding&quot;</span>
-<span class="nf">push:</span> <span class="nv">anObject</span>
+<span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstracttest-tree"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstractTest, protocol tests&quot;</span>
+<span class="nf">tree:</span> <span class="nv">aCollection</span>
 
-   <span class="o">|</span><span class="nv"> leaf </span><span class="o">|</span>
-   <span class="nv">leaf</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">binaryTreeElementLeaf:</span> <span class="nv">anObject</span><span class="p">.</span>
+   <span class="o">^</span> <span class="nv">aCollection</span> <span class="nf">asBinaryTree</span>
+</pre></div>
+</div>
+<span class="target" id="pharo-compiledMethod-4"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-collection-asbinarytree"><div class="highlight"><pre><span></span><span class="c">&quot;Collection, protocol *Containers-RedBlackSet&quot;</span>
+<span class="nf">asBinaryTree</span>
 
-   <span class="nv">representation</span> <span class="o">:=</span> <span class="nv">leaf</span>
-                        <span class="nf">mergeBinaryTreeElement:</span> <span class="nv">representation</span>
-                        <span class="nf">inBinaryTree:</span> <span class="bp">self</span>
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">asBinaryTree:</span> <span class="nc">CTBinaryTreeAbstract</span>
+</pre></div>
+</div>
+<span class="target" id="pharo-compiledMethod-5"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-arrayedcollection-asbinarytree"><div class="highlight"><pre><span></span><span class="c">&quot;ArrayedCollection, protocol *Containers-BinaryTreeAbstract&quot;</span>
+<span class="nf">asBinaryTree:</span> <span class="nv">aClass</span>
+
+   <span class="o">^</span> <span class="nv">aClass</span> <span class="nf">withArrayedCollection:</span> <span class="bp">self</span>
 </pre></div>
 </div>
 <p>and</p>
-<span class="target" id="pharo-compiledMethod-4"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeempty-mergebinarytreeelement-inbinarytree"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeEmpty, protocol actions&quot;</span>
+<span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstract-class-witharrayedcollection"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstract class, protocol instance creation&quot;</span>
+<span class="nf">withArrayedCollection:</span> <span class="nv">aCollection</span>
+
+   <span class="o">^</span> <span class="nv">aCollection</span> <span class="nf">ifEmpty:</span> [ <span class="bp">self</span> <span class="nf">empty</span> ] <span class="nf">ifNotEmpty:</span> [ 
+        <span class="bp">self</span> <span class="nb">new</span> <span class="nf">yourself:</span> [ <span class="o">:</span><span class="nv">tree</span> <span class="o">|</span> 
+           <span class="nv">tree</span> <span class="nf">representation:</span> (<span class="nv">aCollection</span>
+                  <span class="nf">bisect:</span> [ <span class="o">:</span><span class="nv">l</span> <span class="o">:</span><span class="nv">r</span> <span class="o">|</span> 
+                  <span class="nv">l</span> <span class="nf">mergeBinaryTreeElement:</span> <span class="nv">r</span> <span class="nf">inBinaryTree:</span> <span class="nv">tree</span> ]
+                  <span class="nf">baseBlock:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">tree</span> <span class="nf">binaryTreeElementLeaf:</span> <span class="nv">each</span> ]) ] ]
+</pre></div>
+</div>
+<p>dispatches over</p>
+<span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeempty-mergebinarytreeelement-inbinarytree"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeEmpty, protocol actions&quot;</span>
 <span class="nf">mergeBinaryTreeElement:</span> <span class="nv">aBTElement</span> <span class="nf">inBinaryTree:</span> <span class="nv">aBinaryTree</span>
 
    <span class="o">^</span> <span class="nv">aBTElement</span>
 </pre></div>
 </div>
-<span class="target" id="pharo-compiledMethod-5"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreenode-mergebinarytreeelement-inbinarytree"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeNode, protocol actions&quot;</span>
+<span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreenode-mergebinarytreeelement-inbinarytree"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeNode, protocol actions&quot;</span>
 <span class="nf">mergeBinaryTreeElement:</span> <span class="nv">aBTElement</span> <span class="nf">inBinaryTree:</span> <span class="nv">aBinaryTree</span>
 
-   <span class="o">^</span> (<span class="nc">RandomBernoulli</span> <span class="nb">new</span>
-         <span class="nf">p:</span> <span class="m">0.5</span><span class="p">;</span>
-         <span class="nf">next</span>) <span class="nf">=</span> <span class="m">0</span>
-        <span class="nb">ifTrue:</span> [ 
+   <span class="o">^</span> (<span class="nc">Random</span> <span class="nf">seed:</span> <span class="m">13</span>) <span class="nf">fairCoin</span>
+        <span class="nf">ifHead:</span> [ 
            <span class="o">|</span> <span class="nv">link</span> <span class="nf">|</span>
            <span class="nv">link</span> <span class="o">:=</span> <span class="nv">previousLink</span>
                       <span class="nf">mergeBinaryTreeElement:</span> <span class="nv">aBTElement</span>
@@ -197,7 +216,7 @@
               <span class="nf">leftBinaryTreeElement:</span> <span class="nv">link</span>
               <span class="nf">value:</span> <span class="nv">value</span>
               <span class="nf">rightBinaryTreeElement:</span> <span class="nv">nextLink</span> ]
-        <span class="nb">ifFalse:</span> [ 
+        <span class="nf">ifTail:</span> [ 
            <span class="o">|</span> <span class="nv">link</span> <span class="nf">|</span>
            <span class="nv">link</span> <span class="o">:=</span> <span class="nv">nextLink</span>
                       <span class="nf">mergeBinaryTreeElement:</span> <span class="nv">aBTElement</span>
@@ -209,7 +228,43 @@
               <span class="nf">rightBinaryTreeElement:</span> <span class="nv">link</span> ]
 </pre></div>
 </div>
-<span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstracttest-testpushorderedcollection"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstractTest, protocol tests&quot;</span>
+<p>by means of <em>bisection</em></p>
+<span class="target" id="pharo-compiledMethod-9"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-arrayedcollection-bisect-baseblock"><div class="highlight"><pre><span></span><span class="c">&quot;ArrayedCollection, protocol *Containers-Essentials&quot;</span>
+<span class="nf">bisect:</span> <span class="nv">mergeBlock</span> <span class="nf">baseBlock:</span> <span class="nv">baseBlock</span>
+
+   <span class="o">^</span> <span class="bp">self</span>
+        <span class="nf">bisect:</span> <span class="nv">mergeBlock</span>
+        <span class="nf">from:</span> <span class="m">1</span>
+        <span class="nf">to:</span> <span class="bp">self</span> <span class="nf">size</span>
+        <span class="nf">baseBlock:</span> <span class="nv">baseBlock</span>
+</pre></div>
+</div>
+<span class="target" id="pharo-compiledMethod-10"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-arrayedcollection-bisect-from-to-baseblock"><div class="highlight"><pre><span></span><span class="c">&quot;ArrayedCollection, protocol *Containers-Essentials&quot;</span>
+<span class="nf">bisect:</span> <span class="nv">mergeBlock</span> <span class="nf">from:</span> <span class="nv">low</span> <span class="nf">to:</span> <span class="nv">high</span> <span class="nf">baseBlock:</span> <span class="nv">baseBlock</span>
+
+   <span class="o">|</span><span class="nv"> diff </span><span class="o">|</span>
+   <span class="nv">diff</span> <span class="o">:=</span> <span class="nv">high</span> <span class="nf">-</span> <span class="nv">low</span><span class="p">.</span>
+   <span class="o">^</span> <span class="nv">diff</span> <span class="nf">=</span> <span class="m">0</span>
+        <span class="nb">ifTrue:</span> [ 
+        <span class="nv">baseBlock</span> <span class="nf">value:</span> (<span class="bp">self</span> <span class="nf">at:</span> <span class="nv">high</span>) <span class="c">&quot;Because `high` equals `low`.&quot;</span> ]
+        <span class="nb">ifFalse:</span> [ 
+           <span class="o">|</span> <span class="nv">middle</span> <span class="nf">left</span> <span class="nf">right</span> <span class="nf">|</span>
+           <span class="nv">middle</span> <span class="o">:=</span> <span class="nv">diff</span> <span class="nf">//</span> <span class="m">2</span> <span class="nf">+</span> <span class="nv">low</span><span class="p">.</span>
+           <span class="nv">left</span> <span class="o">:=</span> <span class="bp">self</span>
+                      <span class="nf">bisect:</span> <span class="nv">mergeBlock</span>
+                      <span class="nf">from:</span> <span class="nv">low</span>
+                      <span class="nf">to:</span> <span class="nv">middle</span>
+                      <span class="nf">baseBlock:</span> <span class="nv">baseBlock</span><span class="p">.</span>
+           <span class="nv">right</span> <span class="o">:=</span> <span class="bp">self</span>
+                       <span class="nf">bisect:</span> <span class="nv">mergeBlock</span>
+                       <span class="nf">from:</span> <span class="nv">middle</span> <span class="nf">+</span> <span class="m">1</span>
+                       <span class="nf">to:</span> <span class="nv">high</span>
+                       <span class="nf">baseBlock:</span> <span class="nv">baseBlock</span><span class="p">.</span>
+           <span class="nv">mergeBlock</span> <span class="nf">value:</span> <span class="nv">left</span> <span class="nf">value:</span> <span class="nv">right</span> ]
+</pre></div>
+</div>
+<p>to finally build the tree. On the other hand, using <code class="docutils literal notranslate"><span class="pre">Collection</span></code> objects</p>
+<span class="target" id="pharo-compiledMethod-11"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstracttest-testpushorderedcollection"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstractTest, protocol tests&quot;</span>
 <span class="nf">testPushOrderedCollection</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span>
@@ -218,7 +273,36 @@
 </div>
 <blockquote>
 <div><img alt="../_images/CTBinaryTreeAbstractTest-testPushOrderedCollection.svg" class="align-center" src="../_images/CTBinaryTreeAbstractTest-testPushOrderedCollection.svg" /></div></blockquote>
-<span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstracttest-testpushshuffledinterval"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstractTest, protocol tests&quot;</span>
+<p>where</p>
+<span class="target" id="pharo-compiledMethod-12"></span><div class="highlight-smalltalk notranslate" id="id1"><div class="highlight"><pre><span></span><span class="c">&quot;Collection, protocol *Containers-BinaryTreeAbstract&quot;</span>
+<span class="nf">asBinaryTree:</span> <span class="nv">aClass</span>
+
+   <span class="o">^</span> <span class="nv">aClass</span> <span class="nf">withCollection:</span> <span class="bp">self</span>
+</pre></div>
+</div>
+<p>and</p>
+<span class="target" id="pharo-compiledMethod-13"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstract-class-withcollection"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstract class, protocol instance creation&quot;</span>
+<span class="nf">withCollection:</span> <span class="nv">aCollection</span>
+
+   <span class="o">^</span> <span class="nv">aCollection</span>
+        <span class="nf">inject:</span> <span class="bp">self</span> <span class="nf">empty</span>
+        <span class="nf">into:</span> [ <span class="o">:</span><span class="nv">aBinaryTree</span> <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">aBinaryTree</span> <span class="nf">push:</span> <span class="nv">each</span> ]
+</pre></div>
+</div>
+<p>uses</p>
+<span class="target" id="pharo-compiledMethod-14"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstract-push"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstract, protocol adding&quot;</span>
+<span class="nf">push:</span> <span class="nv">anObject</span>
+
+   <span class="o">|</span><span class="nv"> leaf </span><span class="o">|</span>
+   <span class="nv">leaf</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">binaryTreeElementLeaf:</span> <span class="nv">anObject</span><span class="p">.</span>
+
+   <span class="nv">representation</span> <span class="o">:=</span> <span class="nv">leaf</span>
+                        <span class="nf">mergeBinaryTreeElement:</span> <span class="nv">representation</span>
+                        <span class="nf">inBinaryTree:</span> <span class="bp">self</span>
+</pre></div>
+</div>
+<p>repeatedly. The two cases above can be redone with shuffled collections, both</p>
+<span class="target" id="pharo-compiledMethod-15"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstracttest-testpushshuffledinterval"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstractTest, protocol tests&quot;</span>
 <span class="nf">testPushShuffledInterval</span>
 
    <span class="o">|</span><span class="nv"> shuffled </span><span class="o">|</span>
@@ -233,7 +317,8 @@
 </div>
 <blockquote>
 <div><img alt="../_images/CTBinaryTreeAbstractTest-testPushShuffledInterval.svg" class="align-center" src="../_images/CTBinaryTreeAbstractTest-testPushShuffledInterval.svg" /></div></blockquote>
-<span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstracttest-testpushshuffledcollection"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstractTest, protocol tests&quot;</span>
+<p>and</p>
+<span class="target" id="pharo-compiledMethod-16"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeabstracttest-testpushshuffledcollection"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeAbstractTest, protocol tests&quot;</span>
 <span class="nf">testPushShuffledCollection</span>
 
    <span class="o">|</span><span class="nv"> shuffled </span><span class="o">|</span>
@@ -250,7 +335,7 @@
 </div>
 <blockquote>
 <div><img alt="../_images/CTBinaryTreeAbstractTest-testPushShuffledCollection.svg" class="align-center" src="../_images/CTBinaryTreeAbstractTest-testPushShuffledCollection.svg" /></div></blockquote>
-</div>
+<p>respectively.</p>
 </div>
 
 

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>7. CTUnbalancedSet containers &#8212; Data Structures in Smalltalk  documentation</title>
+    <title>8. CTRedBlackSet containers &#8212; Data Structures in Smalltalk  documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -15,8 +15,8 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8. CTRedBlackSet containers" href="redblacksets.html" />
-    <link rel="prev" title="6. CTBinaryTreeAbstract containers" href="binarytrees.html" />
+    <link rel="next" title="9. Storage pools" href="storage-pools.html" />
+    <link rel="prev" title="7. CTUnbalancedSet containers" href="unbalancedsets.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -52,8 +52,8 @@
 <li class="toctree-l1"><a class="reference internal" href="links.html">4. Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linkedlists.html">5. <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="binarytrees.html">6. <code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">7. <code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="redblacksets.html">8. <code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unbalancedsets.html">7. <code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. <code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="storage-pools.html">9. Storage pools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bibliography.html">10. Bibliography</a></li>
 </ul>
@@ -62,8 +62,8 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="binarytrees.html" title="previous chapter"><span class="section-number">6. </span><code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a></li>
-      <li>Next: <a href="redblacksets.html" title="next chapter"><span class="section-number">8. </span><code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a></li>
+      <li>Previous: <a href="unbalancedsets.html" title="previous chapter"><span class="section-number">7. </span><code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a></li>
+      <li>Next: <a href="storage-pools.html" title="next chapter"><span class="section-number">9. </span>Storage pools</a></li>
   </ul></li>
 </ul>
 </div>
@@ -95,10 +95,10 @@
     <ul>
         <li>
           &larr;
-          <a href="binarytrees.html" title="Previous document"><span class="section-number">6. </span><code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a>
+          <a href="unbalancedsets.html" title="Previous document"><span class="section-number">7. </span><code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a>
         </li>
         <li>
-          <a href="redblacksets.html" title="Next document"><span class="section-number">8. </span><code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a>
+          <a href="storage-pools.html" title="Next document"><span class="section-number">9. </span>Storage pools</a>
           &rarr;
         </li>
     </ul>
@@ -108,15 +108,15 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="ctunbalancedset-containers">
-<h1><span class="section-number">7. </span><code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers<a class="headerlink" href="#ctunbalancedset-containers" title="Permalink to this headline">¶</a></h1>
-<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctunbalancedset"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeAbstract</span> <span class="nf">subclass:</span> <span class="ss">#CTUnbalancedSet</span>
+  <div class="section" id="ctredblackset-containers">
+<h1><span class="section-number">8. </span><code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers<a class="headerlink" href="#ctredblackset-containers" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctredblackset"><div class="highlight"><pre><span></span><span class="nc">CTUnbalancedSet</span> <span class="nf">subclass:</span> <span class="ss">#CTRedBlackSet</span>
 	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
 	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
 	<span class="nf">package:</span> <span class="s">&#39;Containers-RedBlackSet&#39;</span>
 </pre></div>
 </div>
-<img alt="../_images/CTUnbalancedSetTest-testCreation.svg" class="align-center" src="../_images/CTUnbalancedSetTest-testCreation.svg" /><img alt="../_images/CTUnbalancedSetTest-testPushOrderedInterval.svg" class="align-center" src="../_images/CTUnbalancedSetTest-testPushOrderedInterval.svg" /><img alt="../_images/CTUnbalancedSetTest-testPushOrderedCollection.svg" class="align-center" src="../_images/CTUnbalancedSetTest-testPushOrderedCollection.svg" /><img alt="../_images/CTUnbalancedSetTest-testPushShuffledInterval.svg" class="align-center" src="../_images/CTUnbalancedSetTest-testPushShuffledInterval.svg" /><img alt="../_images/CTUnbalancedSetTest-testPushShuffledCollection.svg" class="align-center" src="../_images/CTUnbalancedSetTest-testPushShuffledCollection.svg" /></div>
+<img alt="../_images/CTRedBlackSetTest-testCreation.svg" class="align-center" src="../_images/CTRedBlackSetTest-testCreation.svg" /><img alt="../_images/CTRedBlackSetTest-testPushOrderedInterval.svg" class="align-center" src="../_images/CTRedBlackSetTest-testPushOrderedInterval.svg" /><img alt="../_images/CTRedBlackSetTest-testPushOrderedCollection.svg" class="align-center" src="../_images/CTRedBlackSetTest-testPushOrderedCollection.svg" /><img alt="../_images/CTRedBlackSetTest-testPushShuffledInterval.svg" class="align-center" src="../_images/CTRedBlackSetTest-testPushShuffledInterval.svg" /><img alt="../_images/CTRedBlackSetTest-testPushShuffledCollection.svg" class="align-center" src="../_images/CTRedBlackSetTest-testPushShuffledCollection.svg" /></div>
 
 
           </div>
@@ -126,10 +126,10 @@
     <ul>
         <li>
           &larr;
-          <a href="binarytrees.html" title="Previous document"><span class="section-number">6. </span><code class="docutils literal notranslate"><span class="pre">CTBinaryTreeAbstract</span></code> containers</a>
+          <a href="unbalancedsets.html" title="Previous document"><span class="section-number">7. </span><code class="docutils literal notranslate"><span class="pre">CTUnbalancedSet</span></code> containers</a>
         </li>
         <li>
-          <a href="redblacksets.html" title="Next document"><span class="section-number">8. </span><code class="docutils literal notranslate"><span class="pre">CTRedBlackSet</span></code> containers</a>
+          <a href="storage-pools.html" title="Next document"><span class="section-number">9. </span>Storage pools</a>
           &rarr;
         </li>
     </ul>
@@ -144,7 +144,7 @@
       &copy;2020, Massimo Nocentini.
       
       |
-      <a href="../_sources/linked-allocation/unbalancedsets.rst.txt"
+      <a href="../_sources/linked-allocation/redblacksets.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
