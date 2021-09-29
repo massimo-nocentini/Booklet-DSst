@@ -113,11 +113,12 @@ BaselineOfBookletDSst >> scriptRedBlackSetMessagesForDoc [
 			     asSplayHeap withArrayedCollection: withCollection:
 			     asBinaryTree: #leftBinaryTreeElement:value:rightBinaryTreeElement:
 			     #insert:left:right:inBinaryTree:
-			     #partitionLessThan:inSplayHeap:do:
+			     asBinomialHeap #partitionLessThan:inSplayHeap:do:
 			     #partitionGreaterThanOrEqualTo:inSplayHeap:do:
-			     #partition:inSplayHeap:do: #push:witness:continuation:inSet:
-			     asLeftistHeap push: pop root binaryTreeElementEmpty
-			     #mergeBinaryTreeElement:inBinaryTree:
+			     linkBinomialTree: #partition:inSplayHeap:do:
+			     #push:witness:continuation:inSet:
+			     #pushTree:onTrees: #merge:with: asLeftistHeap push: pop root
+			     binaryTreeElementEmpty #mergeBinaryTreeElement:inBinaryTree:
 			     #pushingAlreadyIncluded:continuation:
 			     testPushOrderedInterval testCreation testPushOrderedInterval
 			     testPushShuffledInterval testPushShuffledCollection
