@@ -59,7 +59,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#search-sets">5.2.1. <em>Search</em> sets</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#red-black-sets">5.2.2. <em>Red-Black</em> sets</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#leftist-heaps">5.2.3. <em>Leftist</em> heaps</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#splay-heaps">5.2.4. <em>Splay</em> heaps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#binomial-heaps">5.2.4. <em>Binomial</em> heaps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#splay-heaps">5.2.5. <em>Splay</em> heaps</a></li>
 </ul>
 </li>
 </ul>
@@ -842,24 +843,168 @@ invoked in the leaves in case of doubles.</p>
 <img alt="../_images/CTLeftistHeapTest-testPushShuffledCollection.svg" class="align-center" src="../_images/CTLeftistHeapTest-testPushShuffledCollection.svg" /></li>
 </ul>
 </div>
+<div class="section" id="binomial-heaps">
+<h3><span class="section-number">5.2.4. </span><em>Binomial</em> heaps<a class="headerlink" href="#binomial-heaps" title="Permalink to this headline">¶</a></h3>
+<p>A <em>free binary tree</em> container is defined according to</p>
+<span class="target" id="pharo-class-9"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinomialheap"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">subclass:</span> <span class="ss">#CTBinomialHeap</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;representation&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-BinomialHeap&#39;</span>
+</pre></div>
+</div>
+<p>and its responsibility is to direct and manage objects of types</p>
+<span class="target" id="pharo-class-10"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinomialtree"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">subclass:</span> <span class="ss">#CTBinomialTree</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;content children&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-BinomialHeap&#39;</span>
+</pre></div>
+</div>
+<p>as actual representation for the underlying structure. The simpler container is
+the empty tree,</p>
+<img alt="../_images/CTBinomialHeapTest-testCreation.svg" class="align-center" src="../_images/CTBinomialHeapTest-testCreation.svg" /><p>where</p>
+<span class="target" id="pharo-compiledMethod-43"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinomialheap-class-empty"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinomialHeap class, protocol requirements&quot;</span>
+<span class="nf">empty</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nb">new</span>
+        <span class="nf">representation:</span> <span class="bp">nil</span><span class="p">;</span>
+        <span class="nf">yourself</span>
+</pre></div>
+</div>
+<p>In general, we use collections and then build trees out of them. On one hand,
+using <code class="docutils literal notranslate"><span class="pre">ArrayedCollection</span></code> objects</p>
+<img alt="../_images/CTBinomialHeapTest-testPushOrderedInterval.svg" class="align-center" src="../_images/CTBinomialHeapTest-testPushOrderedInterval.svg" /><p>where</p>
+<span class="target" id="pharo-compiledMethod-44"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinomialheaptest-tree"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinomialHeapTest, protocol tests&quot;</span>
+<span class="nf">tree:</span> <span class="nv">aCollection</span>
+
+   <span class="o">^</span> <span class="nv">aCollection</span> <span class="nf">asBinomialHeap</span>
+</pre></div>
+</div>
+<span class="target" id="pharo-compiledMethod-45"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-collection-asbinomialheap"><div class="highlight"><pre><span></span><span class="c">&quot;Collection, protocol *Containers-BinomialHeap&quot;</span>
+<span class="nf">asBinomialHeap</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">asBinaryTree:</span> <span class="nc">CTBinomialHeap</span>
+</pre></div>
+</div>
+<p>and</p>
+<span class="target" id="pharo-compiledMethod-46"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinomialheap-class-witharrayedcollection"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinomialHeap class, protocol instance creation&quot;</span>
+<span class="nf">withArrayedCollection:</span> <span class="nv">aCollection</span>
+
+   <span class="o">^</span> <span class="nv">aCollection</span> <span class="nf">ifEmpty:</span> [ <span class="bp">self</span> <span class="nf">empty</span> ] <span class="nf">ifNotEmpty:</span> [ 
+        <span class="bp">self</span> <span class="nb">new</span> <span class="nf">yourself:</span> [ <span class="o">:</span><span class="nv">tree</span> <span class="o">|</span> 
+           <span class="nv">tree</span> <span class="nf">representation:</span> (<span class="nv">aCollection</span>
+                  <span class="nf">bisect:</span> [ <span class="o">:</span><span class="nv">l</span> <span class="o">:</span><span class="nv">r</span> <span class="o">|</span> <span class="nv">tree</span> <span class="nf">merge:</span> <span class="nv">l</span> <span class="nf">with:</span> <span class="nv">r</span> ]
+                  <span class="nf">baseBlock:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="m">0</span> <span class="nf">-&gt;</span> (<span class="nc">CTBinomialTree</span> <span class="nf">leaf:</span> <span class="nv">each</span>) <span class="nf">~~&gt;</span> <span class="bp">nil</span> ]) ] ]
+</pre></div>
+</div>
+<p>uses</p>
+<span class="target" id="pharo-compiledMethod-47"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinomialheap-merge-with"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinomialHeap, protocol adding&quot;</span>
+<span class="nf">merge:</span> <span class="nv">trees</span> <span class="nf">with:</span> <span class="nv">otherTrees</span>
+
+   <span class="o">^</span> <span class="nv">trees</span> <span class="nf">ifNil:</span> [ <span class="nv">otherTrees</span> ] <span class="nf">ifNotNil:</span> [ 
+        <span class="nv">otherTrees</span> <span class="nf">ifNil:</span> [ <span class="nv">trees</span> ] <span class="nf">ifNotNil:</span> [ 
+           <span class="o">|</span> <span class="nv">aTree</span> <span class="nf">anotherTree</span> <span class="nf">allButFirstTrees</span> <span class="nf">allButFirstOtherTrees</span> <span class="nf">aRank</span> <span class="nf">anotherRank</span> <span class="nf">|</span>
+           <span class="c">&quot;Getting rests of both collections of trees to merge.&quot;</span>
+           <span class="nv">allButFirstTrees</span> <span class="o">:=</span> <span class="nv">trees</span> <span class="nf">nextLink</span><span class="p">.</span>
+           <span class="nv">allButFirstOtherTrees</span> <span class="o">:=</span> <span class="nv">otherTrees</span> <span class="nf">nextLink</span><span class="p">.</span>
+
+           <span class="c">&quot;Getting current topmost trees.&quot;</span>
+           <span class="nv">aTree</span> <span class="o">:=</span> <span class="nv">trees</span> <span class="nf">value</span><span class="p">.</span>
+           <span class="nv">anotherTree</span> <span class="o">:=</span> <span class="nv">otherTrees</span> <span class="nf">value</span><span class="p">.</span>
+
+           <span class="c">&quot;Getting ranks.&quot;</span>
+           <span class="nv">aRank</span> <span class="o">:=</span> <span class="nv">aTree</span> <span class="nf">key</span><span class="p">.</span>
+           <span class="nv">anotherRank</span> <span class="o">:=</span> <span class="nv">anotherTree</span> <span class="nf">key</span><span class="p">.</span>
+
+           <span class="c">&quot;Rank comparison via `#key`.&quot;</span>
+           <span class="nv">aRank</span> <span class="nf">&lt;</span> <span class="nv">anotherRank</span>
+              <span class="nb">ifTrue:</span> [ 
+              <span class="nv">aTree</span> <span class="nf">~~&gt;</span> (<span class="bp">self</span> <span class="nf">merge:</span> <span class="nv">allButFirstTrees</span> <span class="nf">with:</span> <span class="nv">otherTrees</span>) ]
+              <span class="nb">ifFalse:</span> [ 
+                 <span class="nv">anotherRank</span> <span class="nf">&lt;</span> <span class="nv">aRank</span>
+                    <span class="nb">ifTrue:</span> [ 
+                    <span class="nv">anotherTree</span>
+                    <span class="nf">~~&gt;</span> (<span class="bp">self</span> <span class="nf">merge:</span> <span class="nv">trees</span> <span class="nf">with:</span> <span class="nv">allButFirstOtherTrees</span>) ]
+                    <span class="nb">ifFalse:</span> [ 
+                       <span class="o">|</span> <span class="nv">binomialTree</span> <span class="nf">mergedTrees</span> <span class="nf">|</span>
+                       <span class="c">&quot;Invariant: both `aTree` and `anotherTree` have the *same* rank.&quot;</span>
+                       <span class="nv">binomialTree</span> <span class="o">:=</span> <span class="nv">aTree</span> <span class="nf">value</span> <span class="nf">linkBinomialTree:</span>
+                                          <span class="nv">anotherTree</span> <span class="nf">value</span><span class="p">.</span>
+                       <span class="nv">mergedTrees</span> <span class="o">:=</span> <span class="bp">self</span>
+                                         <span class="nf">merge:</span> <span class="nv">allButFirstTrees</span>
+                                         <span class="nf">with:</span> <span class="nv">allButFirstOtherTrees</span><span class="p">.</span>
+                       <span class="bp">self</span> <span class="nf">pushTree:</span> <span class="nv">aRank</span> <span class="nf">+</span> <span class="m">1</span> <span class="nf">-&gt;</span> <span class="nv">binomialTree</span> <span class="nf">onTrees:</span> <span class="nv">mergedTrees</span> ] ] ] ]
+</pre></div>
+</div>
+<p>that delegates on both</p>
+<span class="target" id="pharo-compiledMethod-48"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinomialheap-pushtree-ontrees"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinomialHeap, protocol adding&quot;</span>
+<span class="nf">pushTree:</span> <span class="nv">anAssociation</span> <span class="nf">onTrees:</span> <span class="nv">trees</span>
+
+   <span class="o">^</span> <span class="nv">trees</span> <span class="nf">ifNil:</span> [ <span class="nv">anAssociation</span> <span class="nf">~~&gt;</span> <span class="nv">trees</span> ] <span class="nf">ifNotNil:</span> [ 
+        <span class="o">|</span> <span class="nv">carAssociation</span> <span class="nf">rank</span> <span class="nf">|</span>
+        <span class="nv">rank</span> <span class="o">:=</span> <span class="nv">anAssociation</span> <span class="nf">key</span><span class="p">.</span>
+        <span class="nv">carAssociation</span> <span class="o">:=</span> <span class="nv">trees</span> <span class="nf">value</span><span class="p">.</span>
+        <span class="nv">rank</span> <span class="nf">&lt;</span> <span class="nv">carAssociation</span> <span class="nf">key</span>
+           <span class="nb">ifTrue:</span> [ <span class="nv">anAssociation</span> <span class="nf">~~&gt;</span> <span class="nv">trees</span> ]
+           <span class="nb">ifFalse:</span> [ 
+              <span class="bp">self</span>
+                 <span class="nf">pushTree:</span> <span class="nv">rank</span> <span class="nf">+</span> <span class="m">1</span>
+                    <span class="nf">-&gt;</span>
+                    (<span class="nv">anAssociation</span> <span class="nf">value</span> <span class="nf">linkBinomialTree:</span> <span class="nv">carAssociation</span> <span class="nf">value</span>)
+                 <span class="nf">onTrees:</span> <span class="nv">trees</span> <span class="nf">nextLink</span> ] ]
+</pre></div>
+</div>
+<p>and</p>
+<span class="target" id="pharo-compiledMethod-49"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinomialtree-linkbinomialtree"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinomialTree, protocol as yet unclassified&quot;</span>
+<span class="nf">linkBinomialTree:</span> <span class="nv">aTree</span>
+
+   <span class="o">|</span><span class="nv"> x </span><span class="o">|</span>
+   <span class="nv">x</span> <span class="o">:=</span> <span class="nv">aTree</span> <span class="nf">content</span><span class="p">.</span>
+   <span class="o">^</span> <span class="nv">content</span> <span class="nf">&lt;</span> <span class="nv">x</span>
+        <span class="nb">ifTrue:</span> [ <span class="bp">self</span> <span class="nf">class</span> <span class="nf">node:</span> <span class="nv">content</span> <span class="nf">children:</span> <span class="nv">aTree</span> <span class="nf">~~&gt;</span> <span class="nv">children</span> ]
+        <span class="nb">ifFalse:</span> [ <span class="bp">self</span> <span class="nf">class</span> <span class="nf">node:</span> <span class="nv">x</span> <span class="nf">children:</span> <span class="bp">self</span> <span class="nf">~~&gt;</span> <span class="nv">aTree</span> <span class="nf">children</span> ]
+</pre></div>
+</div>
+<p>to finally build the tree. On the other hand, using <code class="docutils literal notranslate"><span class="pre">Collection</span></code> objects</p>
+<img alt="../_images/CTBinomialHeapTest-testPushOrderedCollection.svg" class="align-center" src="../_images/CTBinomialHeapTest-testPushOrderedCollection.svg" /><p>where</p>
+<span class="target" id="pharo-compiledMethod-50"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinomialheap-class-withcollection"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinomialHeap class, protocol instance creation&quot;</span>
+<span class="nf">withCollection:</span> <span class="nv">aCollection</span>
+
+   <span class="o">^</span> <span class="nv">aCollection</span>
+        <span class="nf">inject:</span> <span class="bp">self</span> <span class="nf">empty</span>
+        <span class="nf">into:</span> [ <span class="o">:</span><span class="nv">aBinaryTree</span> <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">aBinaryTree</span> <span class="nf">push:</span> <span class="nv">each</span> ]
+</pre></div>
+</div>
+<p>uses</p>
+<span class="target" id="pharo-compiledMethod-51"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinomialheap-push"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinomialHeap, protocol adding&quot;</span>
+<span class="nf">push:</span> <span class="nv">x</span>
+
+   <span class="nv">representation</span> <span class="o">:=</span> <span class="bp">self</span>
+                        <span class="nf">pushTree:</span> <span class="m">0</span> <span class="nf">-&gt;</span> (<span class="nc">CTBinomialTree</span> <span class="nf">leaf:</span> <span class="nv">x</span>)
+                        <span class="nf">onTrees:</span> <span class="nv">representation</span>
+</pre></div>
+</div>
+<p>repeatedly. The two cases above can be redone with shuffled collections, both</p>
+<img alt="../_images/CTBinomialHeapTest-testPushShuffledInterval.svg" class="align-center" src="../_images/CTBinomialHeapTest-testPushShuffledInterval.svg" /><p>and</p>
+<img alt="../_images/CTBinomialHeapTest-testPushShuffledCollection.svg" class="align-center" src="../_images/CTBinomialHeapTest-testPushShuffledCollection.svg" /><p>respectively.</p>
+</div>
 <div class="section" id="splay-heaps">
-<h3><span class="section-number">5.2.4. </span><em>Splay</em> heaps<a class="headerlink" href="#splay-heaps" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.5. </span><em>Splay</em> heaps<a class="headerlink" href="#splay-heaps" title="Permalink to this headline">¶</a></h3>
 <p>A <em>search binary tree</em> is defined by subclassing</p>
-<span class="target" id="pharo-class-9"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctsplayheap"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeAbstract</span> <span class="nf">subclass:</span> <span class="ss">#CTSplayHeap</span>
+<span class="target" id="pharo-class-11"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctsplayheap"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeAbstract</span> <span class="nf">subclass:</span> <span class="ss">#CTSplayHeap</span>
 	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
 	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
 	<span class="nf">package:</span> <span class="s">&#39;Containers-SplayHeap&#39;</span>
 </pre></div>
 </div>
 <p>and the corresponding test class defines,</p>
-<span class="target" id="pharo-compiledMethod-43"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctsplayheaptest-tree"><div class="highlight"><pre><span></span><span class="c">&quot;CTSplayHeapTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-52"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctsplayheaptest-tree"><div class="highlight"><pre><span></span><span class="c">&quot;CTSplayHeapTest, protocol tests&quot;</span>
 <span class="nf">tree:</span> <span class="nv">aCollection</span>
 
    <span class="o">^</span> <span class="nv">aCollection</span> <span class="nf">asSplayHeap</span>
 </pre></div>
 </div>
 <p>that uses</p>
-<span class="target" id="pharo-compiledMethod-44"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-collection-assplayheap"><div class="highlight"><pre><span></span><span class="c">&quot;Collection, protocol *Containers-SplayHeap&quot;</span>
+<span class="target" id="pharo-compiledMethod-53"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-collection-assplayheap"><div class="highlight"><pre><span></span><span class="c">&quot;Collection, protocol *Containers-SplayHeap&quot;</span>
 <span class="nf">asSplayHeap</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">asBinaryTree:</span> <span class="nc">CTSplayHeap</span>
@@ -870,7 +1015,7 @@ invoked in the leaves in case of doubles.</p>
 <ul>
 <li><p>sorted data in arrayed collection,</p>
 <img alt="../_images/CTSplayHeapTest-testPushOrderedInterval.svg" class="align-center" src="../_images/CTSplayHeapTest-testPushOrderedInterval.svg" /><p>by means of</p>
-<span class="target" id="pharo-compiledMethod-45"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreenodesplayheap-mergebinarytreeelement-inbinarytree"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeNodeSplayHeap, protocol actions&quot;</span>
+<span class="target" id="pharo-compiledMethod-54"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreenodesplayheap-mergebinarytreeelement-inbinarytree"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeNodeSplayHeap, protocol actions&quot;</span>
 <span class="nf">mergeBinaryTreeElement:</span> <span class="nv">aBTElement</span> <span class="nf">inBinaryTree:</span> <span class="nv">aBinaryTree</span>
 
    <span class="o">^</span> <span class="nv">aBTElement</span>
@@ -891,7 +1036,7 @@ invoked in the leaves in case of doubles.</p>
 </pre></div>
 </div>
 <p>that dispatches over</p>
-<span class="target" id="pharo-compiledMethod-46"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeemptysplayheap-partition-insplayheap-do"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeEmptySplayHeap, protocol partitioning&quot;</span>
+<span class="target" id="pharo-compiledMethod-55"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreeemptysplayheap-partition-insplayheap-do"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeEmptySplayHeap, protocol partitioning&quot;</span>
 <span class="nf">partition:</span> <span class="nv">pivot</span> <span class="nf">inSplayHeap:</span> <span class="nv">aHeap</span> <span class="nf">do:</span> <span class="nv">aBlock</span>
 
    <span class="o">^</span> <span class="nv">aBlock</span>
@@ -899,7 +1044,7 @@ invoked in the leaves in case of doubles.</p>
         <span class="nf">value:</span> <span class="nv">aHeap</span> <span class="nf">binaryTreeElementEmpty</span>
 </pre></div>
 </div>
-<span class="target" id="pharo-compiledMethod-47"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreenodesplayheap-partition-insplayheap-do"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeNodeSplayHeap, protocol partitioning&quot;</span>
+<span class="target" id="pharo-compiledMethod-56"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreenodesplayheap-partition-insplayheap-do"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeNodeSplayHeap, protocol partitioning&quot;</span>
 <span class="nf">partition:</span> <span class="nv">pivot</span> <span class="nf">inSplayHeap:</span> <span class="nv">aHeap</span> <span class="nf">do:</span> <span class="nv">aBlock</span>
 
    <span class="o">^</span> (<span class="nv">aHeap</span> <span class="nf">is:</span> <span class="nv">value</span> <span class="nf">lessThan:</span> <span class="nv">pivot</span>)
@@ -913,7 +1058,7 @@ invoked in the leaves in case of doubles.</p>
 </pre></div>
 </div>
 <p>where the latter uses both</p>
-<span class="target" id="pharo-compiledMethod-48"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreenodesplayheap-partitionlessthan-insplayheap-do"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeNodeSplayHeap, protocol partitioning&quot;</span>
+<span class="target" id="pharo-compiledMethod-57"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreenodesplayheap-partitionlessthan-insplayheap-do"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeNodeSplayHeap, protocol partitioning&quot;</span>
 <span class="nf">partitionLessThan:</span> <span class="nv">pivot</span> <span class="nf">inSplayHeap:</span> <span class="nv">aHeap</span> <span class="nf">do:</span> <span class="nv">aBlock</span>
 
    <span class="o">^</span> <span class="nv">nextLink</span>
@@ -955,7 +1100,7 @@ invoked in the leaves in case of doubles.</p>
 </pre></div>
 </div>
 <p>and</p>
-<span class="target" id="pharo-compiledMethod-49"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreenodesplayheap-partitiongreaterthanorequalto-insplayheap-do"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeNodeSplayHeap, protocol partitioning&quot;</span>
+<span class="target" id="pharo-compiledMethod-58"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctbinarytreenodesplayheap-partitiongreaterthanorequalto-insplayheap-do"><div class="highlight"><pre><span></span><span class="c">&quot;CTBinaryTreeNodeSplayHeap, protocol partitioning&quot;</span>
 <span class="nf">partitionGreaterThanOrEqualTo:</span> <span class="nv">pivot</span> <span class="nf">inSplayHeap:</span> <span class="nv">aHeap</span> <span class="nf">do:</span> <span class="nv">aBlock</span>
 
    <span class="o">^</span> <span class="nv">previousLink</span>
@@ -1000,7 +1145,7 @@ invoked in the leaves in case of doubles.</p>
 </li>
 <li><p>sorted data in ordered collection,</p>
 <img alt="../_images/CTSplayHeapTest-testPushOrderedCollection.svg" class="align-center" src="../_images/CTSplayHeapTest-testPushOrderedCollection.svg" /><p>by means of</p>
-<span class="target" id="pharo-compiledMethod-50"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctsplayheap-push"><div class="highlight"><pre><span></span><span class="c">&quot;CTSplayHeap, protocol adding&quot;</span>
+<span class="target" id="pharo-compiledMethod-59"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctsplayheap-push"><div class="highlight"><pre><span></span><span class="c">&quot;CTSplayHeap, protocol adding&quot;</span>
 <span class="nf">push:</span> <span class="nv">anObject</span>
 
    <span class="nv">representation</span> <span class="o">:=</span> <span class="nv">representation</span>
