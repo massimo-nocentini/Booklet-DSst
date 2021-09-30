@@ -1,6 +1,6 @@
 
-Divisibility
-************
+Numbers
+*******
 
 Quotients and remainders
 ========================
@@ -109,7 +109,7 @@ Coprimes
   .. image:: ../../../Containers-Essentials/images/SymbolicIntegerTest-testGCDofMultiplicativeInversesInZ17.svg
     :align: center
 
-:math:`GCD(F_{n}, F_{n+1})`, where :math:`F_{n}` is the :math:`n`\-th Fibonacci number
+:math:`GCD(f_{n}, f_{n+1})`, where :math:`f_{n}` is the :math:`n`\-th Fibonacci number
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. pharo:autocompiledmethod:: SymbolicIntegerTest>>#testGCDofAdjacentFibonacciNumbers
@@ -153,3 +153,24 @@ Moreover, consider the reciprocal
     :align: center
 
 which yields a simpler visualization.
+
+
+*Skew Binary Canonical* sparse representation
+=============================================
+
+Using the conversion message
+
+.. pharo:autocompiledmethod:: Integer>>#asSkewBinaryCanonicalSparse
+
+we can inspect by means of the test case
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectSkewBinaryCanonicalSparse
+
+that does its asserts using the backward conversion message,
+
+.. pharo:autocompiledmethod:: SkewBinaryCanonicalNumber>>#asInteger
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectSkewBinaryCanonicalSparse-increasing.svg
+    :align: center
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectSkewBinaryCanonicalSparse-decreasing.svg
+    :align: center

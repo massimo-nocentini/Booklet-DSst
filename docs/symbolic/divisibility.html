@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3. Divisibility &#8212; Data Structures in Smalltalk  documentation</title>
+    <title>3. Numbers &#8212; Data Structures in Smalltalk  documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -48,16 +48,17 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../pharo/oo.html">1. Object model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pharo/hierarchies.html">2. Hierarchies</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Divisibility</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Numbers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#quotients-and-remainders">3.1. Quotients and remainders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#greatest-common-divisor">3.2. Greatest Common Divisor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#diophantine-equations">3.3. Diophantine equations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#coprimes">3.3.1. Coprimes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mathbb-z-17-field">3.3.2. <span class="math notranslate nohighlight">\(\mathbb{Z}_{17}\)</span> field</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#gcd-f-n-f-n-1-where-f-n-is-the-n-th-fibonacci-number">3.3.3. <span class="math notranslate nohighlight">\(GCD(F_{n}, F_{n+1})\)</span>, where <span class="math notranslate nohighlight">\(F_{n}\)</span> is the <span class="math notranslate nohighlight">\(n\)</span>-th Fibonacci number</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gcd-f-n-f-n-1-where-f-n-is-the-n-th-fibonacci-number">3.3.3. <span class="math notranslate nohighlight">\(GCD(f_{n}, f_{n+1})\)</span>, where <span class="math notranslate nohighlight">\(f_{n}\)</span> is the <span class="math notranslate nohighlight">\(n\)</span>-th Fibonacci number</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#kissing-fractions">3.3.4. Kissing <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#skew-binary-canonical-sparse-representation">3.4. <em>Skew Binary Canonical</em> sparse representation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../linked-allocation/links.html">4. Links</a></li>
@@ -116,8 +117,8 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="divisibility">
-<h1><span class="section-number">3. </span>Divisibility<a class="headerlink" href="#divisibility" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="numbers">
+<h1><span class="section-number">3. </span>Numbers<a class="headerlink" href="#numbers" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="quotients-and-remainders">
 <h2><span class="section-number">3.1. </span>Quotients and remainders<a class="headerlink" href="#quotients-and-remainders" title="Permalink to this headline">¶</a></h2>
 <p>Lets divide <span class="math notranslate nohighlight">\(21\)</span> by <span class="math notranslate nohighlight">\(9\)</span>,</p>
@@ -340,7 +341,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 <div><img alt="../_images/SymbolicIntegerTest-testGCDofMultiplicativeInversesInZ17.svg" class="align-center" src="../_images/SymbolicIntegerTest-testGCDofMultiplicativeInversesInZ17.svg" /></div></blockquote>
 </div>
 <div class="section" id="gcd-f-n-f-n-1-where-f-n-is-the-n-th-fibonacci-number">
-<h3><span class="section-number">3.3.3. </span><span class="math notranslate nohighlight">\(GCD(F_{n}, F_{n+1})\)</span>, where <span class="math notranslate nohighlight">\(F_{n}\)</span> is the <span class="math notranslate nohighlight">\(n\)</span>-th Fibonacci number<a class="headerlink" href="#gcd-f-n-f-n-1-where-f-n-is-the-n-th-fibonacci-number" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.3.3. </span><span class="math notranslate nohighlight">\(GCD(f_{n}, f_{n+1})\)</span>, where <span class="math notranslate nohighlight">\(f_{n}\)</span> is the <span class="math notranslate nohighlight">\(n\)</span>-th Fibonacci number<a class="headerlink" href="#gcd-f-n-f-n-1-where-f-n-is-the-n-th-fibonacci-number" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="pharo-compiledMethod-17"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdofadjacentfibonaccinumbers"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testGCDofAdjacentFibonacciNumbers</span>
 
@@ -456,6 +457,54 @@ while the number of columns equals the divisor denoted by the instance variable 
 <div><img alt="../_images/EssentialsObjectTest-testInspectFractionReciprocalKissing.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectFractionReciprocalKissing.svg" /></div></blockquote>
 <p>which yields a simpler visualization.</p>
 </div>
+</div>
+<div class="section" id="skew-binary-canonical-sparse-representation">
+<h2><span class="section-number">3.4. </span><em>Skew Binary Canonical</em> sparse representation<a class="headerlink" href="#skew-binary-canonical-sparse-representation" title="Permalink to this headline">¶</a></h2>
+<p>Using the conversion message</p>
+<span class="target" id="pharo-compiledMethod-24"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-asskewbinarycanonicalsparse"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="nf">asSkewBinaryCanonicalSparse</span>
+
+   <span class="o">|</span><span class="nv"> skew </span><span class="o">|</span>
+   <span class="nv">skew</span> <span class="o">:=</span> <span class="nc">SkewBinaryCanonicalNumber</span> <span class="nb">new</span><span class="p">.</span>
+   <span class="bp">self</span> <span class="nb">timesRepeat:</span> [ <span class="nv">skew</span> <span class="o">:=</span> <span class="nv">skew</span> <span class="nf">increment</span> ]<span class="p">.</span>
+   <span class="o">^</span> <span class="nv">skew</span>
+</pre></div>
+</div>
+<p>we can inspect by means of the test case</p>
+<span class="target" id="pharo-compiledMethod-25"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectskewbinarycanonicalsparse"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="nf">testInspectSkewBinaryCanonicalSparse</span>
+
+   <span class="o">|</span><span class="nv"> skewNumbers backwards </span><span class="o">|</span>
+   <span class="nv">skewNumbers</span> <span class="o">:=</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="m">20</span>) <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> 
+                     <span class="nv">each</span> <span class="nf">asSkewBinaryCanonicalSparse</span> <span class="nf">yourself:</span> [ <span class="o">:</span><span class="nv">skew</span> <span class="o">|</span> 
+                        <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">skew</span> <span class="nf">asInteger</span> <span class="nf">equals:</span> <span class="nv">each</span> ] ]<span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">skewNumbers</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;increasing&#39;</span><span class="p">.</span>
+
+   <span class="nv">backwards</span> <span class="o">:=</span> <span class="nv">skewNumbers</span> <span class="nf">reversed</span>
+                   <span class="nf">with:</span> (<span class="m">19</span> <span class="nf">to:</span> <span class="m">0</span> <span class="nf">by:</span> <span class="m">-1</span>)
+                   <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">skew</span> <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> 
+                      <span class="nv">skew</span> <span class="nf">decrement</span> <span class="nf">yourself:</span> [ <span class="o">:</span><span class="nv">previous</span> <span class="o">|</span> 
+                         <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">previous</span> <span class="nf">asInteger</span> <span class="nf">equals:</span> <span class="nv">each</span> ] ]<span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">backwards</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;decreasing&#39;</span>
+</pre></div>
+</div>
+<p>that does its asserts using the backward conversion message,</p>
+<span class="target" id="pharo-compiledMethod-26"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-skewbinarycanonicalnumber-asinteger"><div class="highlight"><pre><span></span><span class="c">&quot;SkewBinaryCanonicalNumber, protocol converting&quot;</span>
+<span class="nf">asInteger</span>
+
+   <span class="o">|</span><span class="nv"> value vl </span><span class="o">|</span>
+   <span class="nv">value</span> <span class="o">:=</span> <span class="m">0</span><span class="p">.</span>
+   <span class="nv">vl</span> <span class="o">:=</span> <span class="nv">representation</span><span class="p">.</span>
+   [ <span class="nv">vl</span> <span class="nf">isNil</span> ] <span class="nb">whileFalse:</span> [ 
+      <span class="nv">value</span> <span class="o">:=</span> <span class="nv">value</span> <span class="nf">+</span> <span class="nv">vl</span> <span class="nf">value</span><span class="p">.</span>
+      <span class="nv">vl</span> <span class="o">:=</span> <span class="nv">vl</span> <span class="nf">nextLink</span> ]<span class="p">.</span>
+   <span class="o">^</span> <span class="nv">value</span>
+</pre></div>
+</div>
+<blockquote>
+<div><img alt="../_images/EssentialsObjectTest-testInspectSkewBinaryCanonicalSparse-increasing.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectSkewBinaryCanonicalSparse-increasing.svg" /><img alt="../_images/EssentialsObjectTest-testInspectSkewBinaryCanonicalSparse-decreasing.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectSkewBinaryCanonicalSparse-decreasing.svg" /></div></blockquote>
 </div>
 </div>
 
