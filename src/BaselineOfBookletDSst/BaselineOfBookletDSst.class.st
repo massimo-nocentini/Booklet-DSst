@@ -52,13 +52,14 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 	^ MetaSTExporter new
 		  selectors:
 			  #( valueWithArgumentedExit dcMultiplyInteger: #halves:base:
-			     #halves:at:digits:base: next privateNextValue privateNextSeed
-			     fibonacciNumbers goldenRatios lucasNumbers #gibonacciNumbersFirst:second:do:
+			     asInteger #halves:at:digits:base: next privateNextValue
+			     privateNextSeed fibonacciNumbers goldenRatios lucasNumbers
+			     #gibonacciNumbersFirst:second:do:
 			     \/ mediantInteger: mediantFraction: kissingFractions
 			     overlappingPairsDo: kissingFractionLink: bitBRGC asShapeBinaryDots:
 			     asShapeBRGCDots fairCoin #bisect:baseBlock: #bisect:from:to:baseBlock:
-			     testInspectObjectModel testMagnitudeSubclasses
-			     testMagnitudeSubclassesSlotsGraph
+			     asSkewBinaryCanonicalSparse testInspectObjectModel
+			     testMagnitudeSubclasses testMagnitudeSubclassesSlotsGraph
 			     testCollectionSubclasses testRBNodeSubclasses
 			     testInspectCharacterPi testInspectFloatPi testInspectDatetimeNow
 			     testInspectAssociation testInspectInteger13
@@ -81,7 +82,7 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     testInspectIceRepository testInspectIceRepositoryCommitsGraph
 			     testInspectOneToMany testInspectPascalArray
 			     testInspectCatalanArray testInspectLargeInteger
-			     testLinkSubclasses );
+			     testLinkSubclasses testInspectSkewBinaryCanonicalSparse );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'core-messages.json' ]
 		  ofPackage: self class package
