@@ -30,7 +30,29 @@ BaselineOfBookletDSst >> baseline: spec [
 
 		spec baseline: 'ContainersBinaryTreeAbstract' with: [ 
 			spec repository:
-				'github://massimo-nocentini/Containers-BinaryTreeAbstract' ] ]
+				'github://massimo-nocentini/Containers-BinaryTreeAbstract' ].
+
+		spec baseline: 'ContainersBinomialHeap' with: [ 
+			spec repository:
+				'github://massimo-nocentini/Containers-BinomialHeap' ].
+
+		spec
+			baseline: 'ContainersHeapQ'
+			with: [ 
+			spec repository: 'github://massimo-nocentini/Containers-HeapQ' ].
+
+		spec baseline: 'ContainersRedBlackSet' with: [ 
+			spec repository:
+				'github://massimo-nocentini/Containers-RedBlackSet' ].
+
+		spec
+			baseline: 'ContainersSplayHeap'
+			with: [ 
+			spec repository: 'github://massimo-nocentini/Containers-SplayHeap' ].
+
+		spec baseline: 'ContainersLeftistHeap' with: [ 
+			spec repository:
+				'github://massimo-nocentini/Containers-LeftistHeap' ] ]
 ]
 
 { #category : #documentation }
@@ -39,8 +61,10 @@ BaselineOfBookletDSst >> runAllTests [
 	<script: 'BaselineOfBookletDSst new runAllTests'>
 	{ 'Containers-Essentials-Tests'. 'Containers-Links-Tests'.
 	'Containers-LinkedStoragePool-Tests'.
-	'Containers-RedBlackSet-Tests' } do: [ :each | 
-		each asPackage testSuite run ].
+	'Containers-RedBlackSet-Tests'. 'Containers-BinomialHeap-Tests'.
+	'Containers-BinaryTreeAbstract-Tests'.
+	'Containers-LeftistHeap-Tests'. 'Containers-SplayHeap-Tests' } do: [ 
+		:each | each asPackage testSuite run ].
 
 	self inform: thisContext method name , ' has finished.'
 ]
@@ -53,8 +77,8 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 		  selectors:
 			  #( valueWithArgumentedExit dcMultiplyInteger: #halves:base:
 			     asInteger #halves:at:digits:base: next privateNextValue
-			     privateNextSeed fibonacciNumbers goldenRatios lucasNumbers
-			     #gibonacciNumbersFirst:second:do:
+			     privateNextSeed fibonacciNumbers goldenRatiosLower
+			     goldenRatiosGreater lucasNumbers #gibonacciNumbersFirst:second:do:
 			     \/ mediantInteger: mediantFraction: kissingFractions
 			     overlappingPairsDo: kissingFractionLink: bitBRGC asShapeBinaryDots:
 			     asShapeBRGCDots fairCoin #bisect:baseBlock: #bisect:from:to:baseBlock:
