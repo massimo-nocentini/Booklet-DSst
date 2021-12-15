@@ -4,15 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Splay heaps &#8212; Data Structures in Smalltalk  documentation</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
    
@@ -64,7 +64,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -93,13 +93,12 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="splay-heaps">
+  <section id="splay-heaps">
 <h1><em>Splay</em> heaps<a class="headerlink" href="#splay-heaps" title="Permalink to this headline">¶</a></h1>
 <p>A <em>search binary tree</em> is defined by subclassing</p>
-<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctsplayheap"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeAbstract</span> <span class="nf">subclass:</span> <span class="ss">#CTSplayHeap</span>
-	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
-	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
-	<span class="nf">package:</span> <span class="s">&#39;Containers-SplayHeap&#39;</span>
+<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctsplayheap"><div class="highlight"><pre><span></span>CTBinaryTreeAbstract &lt;&lt; #CTSplayHeap
+	slots: {};
+	package: &#39;Containers-SplayHeap&#39;
 </pre></div>
 </div>
 <p>and the corresponding test class defines,</p>
@@ -270,7 +269,7 @@
 <li><p>shuffled data in ordered collection,</p>
 <img alt="../_images/CTSplayHeapTest-testPushShuffledCollection.svg" class="align-center" src="../_images/CTSplayHeapTest-testPushShuffledCollection.svg" /></li>
 </ul>
-</div>
+</section>
 
 
           </div>
