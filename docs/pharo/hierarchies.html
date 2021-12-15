@@ -220,14 +220,14 @@
 <div><img alt="../_images/EssentialsObjectTest-testInspectInteger13Detailed.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectInteger13Detailed.svg" /></div></blockquote>
 </section>
 <section id="by-karatsuba-multiplication">
-<h3><span class="section-number">2.2.4. </span><span class="math notranslate nohighlight">\({42!}^{2}\)</span> by Karatsuba multiplication<a class="headerlink" href="#by-karatsuba-multiplication" title="Permalink to this headline">¶</a></h3>
+<span id="index-0"></span><h3><span class="section-number">2.2.4. </span><span class="math notranslate nohighlight">\({42!}^{2}\)</span> by Karatsuba multiplication<a class="headerlink" href="#by-karatsuba-multiplication" title="Permalink to this headline">¶</a></h3>
 <p>After the post <span id="id1">[<a class="reference internal" href="../bibliography.html#id13" title="Sven VC. Speeding up factorial computation by changing the order of multiplications. URL: https://medium.com/concerning-pharo/speeding-up-factorial-computation-by-changing-the-order-of-multiplications-f4da3a5576da.">VC</a>]</span>, here we explore another large integer</p>
 <span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectlargeinteger"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectLargeInteger</span>
 
    <span class="o">|</span><span class="nv"> large n </span><span class="o">|</span>
    <span class="nv">n</span> <span class="o">:=</span> <span class="m">42</span> <span class="nf">factorial</span><span class="p">.</span>
-   <span class="nv">large</span> <span class="o">:=</span> <span class="nv">n</span> <span class="nf">dcMultiplyInteger:</span> <span class="nv">n</span><span class="p">.</span>
+   <span class="nv">large</span> <span class="o">:=</span> <span class="nv">n</span> <span class="nf">dcMultiplyInteger:</span> <span class="nv">n</span> <span class="nf">base:</span> <span class="m">10</span><span class="p">.</span>
 
    <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">large</span> <span class="nf">equals:</span> <span class="nv">n</span> <span class="nf">*</span> <span class="nv">n</span><span class="p">.</span>
 
@@ -237,11 +237,8 @@
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspectLargeInteger.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectLargeInteger.svg" /></div></blockquote>
 <p>where the message</p>
-<span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-dcmultiplyinteger"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
-<span class="nf">dcMultiplyInteger:</span> <span class="nv">anInteger</span>
-
-   <span class="o">|</span><span class="nv"> base </span><span class="o">|</span>
-   <span class="nv">base</span> <span class="o">:=</span> <span class="m">10</span><span class="p">.</span>
+<span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-dcmultiplyinteger-base"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="nf">dcMultiplyInteger:</span> <span class="nv">anInteger</span> <span class="nf">base:</span> <span class="nv">base</span>
 
    <span class="o">^</span> ((<span class="bp">self</span> <span class="nf">between:</span> <span class="m">0</span> <span class="nf">and:</span> <span class="nv">base</span> <span class="nf">-</span> <span class="m">1</span>) <span class="nf">and:</span> [ 
          <span class="nv">anInteger</span> <span class="nf">between:</span> <span class="m">0</span> <span class="nf">and:</span> <span class="nv">base</span> <span class="nf">-</span> <span class="m">1</span> ])
@@ -264,12 +261,15 @@
                  <span class="nv">y</span>
                     <span class="nf">halves:</span> [ <span class="o">:</span><span class="nv">yHigh</span> <span class="o">:</span><span class="nv">yLow</span> <span class="o">:</span><span class="nv">yn</span> <span class="o">:</span><span class="nv">yl</span> <span class="o">|</span> 
                        <span class="o">|</span><span class="nv"> p pp xyHigh xyLow </span><span class="o">|</span>
-                       <span class="nv">p</span> <span class="o">:=</span> <span class="nv">xHigh</span> <span class="nf">+</span> <span class="nv">xLow</span> <span class="nf">dcMultiplyInteger:</span> <span class="nv">yHigh</span> <span class="nf">+</span> <span class="nv">yLow</span><span class="p">.</span>
-                       <span class="nv">xyHigh</span> <span class="o">:=</span> <span class="nv">xHigh</span> <span class="nf">dcMultiplyInteger:</span> <span class="nv">yHigh</span><span class="p">.</span>
-                       <span class="nv">xyLow</span> <span class="o">:=</span> <span class="nv">xLow</span> <span class="nf">dcMultiplyInteger:</span> <span class="nv">yLow</span><span class="p">.</span>
+                       <span class="nv">p</span> <span class="o">:=</span> (<span class="nv">xHigh</span> <span class="nf">add:</span> <span class="nv">xLow</span>)
+                               <span class="nf">dcMultiplyInteger:</span> (<span class="nv">yHigh</span> <span class="nf">add:</span> <span class="nv">yLow</span>)
+                               <span class="nf">base:</span> <span class="nv">base</span><span class="p">.</span>
+                       <span class="nv">xyHigh</span> <span class="o">:=</span> <span class="nv">xHigh</span> <span class="nf">dcMultiplyInteger:</span> <span class="nv">yHigh</span> <span class="nf">base:</span> <span class="nv">base</span><span class="p">.</span>
+                       <span class="nv">xyLow</span> <span class="o">:=</span> <span class="nv">xLow</span> <span class="nf">dcMultiplyInteger:</span> <span class="nv">yLow</span> <span class="nf">base:</span> <span class="nv">base</span><span class="p">.</span>
 
-                       <span class="nv">pp</span> <span class="o">:=</span> <span class="nv">p</span> <span class="nf">-</span> <span class="nv">xyHigh</span> <span class="nf">-</span> <span class="nv">xyLow</span> <span class="nf">*</span> (<span class="nv">base</span> <span class="nf">**</span> <span class="nv">xl</span>)<span class="p">.</span>
-                       <span class="nv">xyHigh</span> <span class="nf">*</span> (<span class="nv">base</span> <span class="nf">**</span> <span class="nv">xl</span> <span class="nf">double</span>) <span class="nf">+</span> <span class="nv">pp</span> <span class="nf">+</span> <span class="nv">xyLow</span> ]
+                       <span class="nv">pp</span> <span class="o">:=</span> ((<span class="nv">p</span> <span class="nf">subtractNumber:</span> <span class="nv">xyHigh</span>) <span class="nf">subtractNumber:</span> <span class="nv">xyLow</span>)
+                             <span class="nf">*</span> (<span class="nv">base</span> <span class="nf">**</span> <span class="nv">xl</span>)<span class="p">.</span>
+                       (<span class="nv">xyHigh</span> <span class="nf">*</span> (<span class="nv">base</span> <span class="nf">**</span> <span class="nv">xl</span> <span class="nf">double</span>) <span class="nf">add:</span> <span class="nv">pp</span>) <span class="nf">add:</span> <span class="nv">xyLow</span> ]
                     <span class="nf">at:</span> <span class="nv">xl</span>
                     <span class="nf">digits:</span> <span class="nv">yDigits</span>
                     <span class="nf">base:</span> <span class="nv">base</span> ]
@@ -286,7 +286,7 @@ y = y_{b}\cdot 10^{b} + y_{b-1}\cdot 10^{b-1} + \cdots + y_{1}\cdot 10^{1} + y_{
 <div class="math notranslate nohighlight">
 \[\begin{split}x = x_{1}\cdot 10^{{{n}\over{2}}} + x_{0} \\
 y = y_{1}\cdot 10^{{{n}\over{2}}} + y_{0}\end{split}\]</div>
-<p>respectively, and there are <em>three</em> recursive <code class="docutils literal notranslate"><span class="pre">#dcMultiplyInteger:</span></code> message sends.
+<p>respectively, and there are <em>three</em> recursive <code class="docutils literal notranslate"><span class="pre">#dcMultiplyInteger:base:</span></code> message sends.
 The implementation follows from both the fact</p>
 <div class="math notranslate nohighlight">
 \[x\,y = x_{1}\,y_{1}\cdot 10^{n} + (x_{1}\,y_{0} + x_{0}\,y_{1})\cdot 10^{{{n}\over{2}}} + x_{0}\,y_{0}\]</div>
@@ -333,7 +333,8 @@ The implementation follows from both the fact</p>
 </pre></div>
 </div>
 <p>helps the recursive message.</p>
-</section>
+<p id="index-1">A complete profiling of <span class="math notranslate nohighlight">\(835 \cdot 714\)</span> using this technique looks like</p>
+<img alt="../_images/EssentialsObjectTest-testInspectLargeIntegerProfiled-sequence-diagram.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectLargeIntegerProfiled-sequence-diagram.svg" /></section>
 <section id="the-irrational">
 <h3><span class="section-number">2.2.5. </span>The irrational <code class="docutils literal notranslate"><span class="pre">π</span></code><a class="headerlink" href="#the-irrational" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="pharo-compiledMethod-10"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfloatpi"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>

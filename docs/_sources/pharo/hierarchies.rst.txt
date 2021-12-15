@@ -47,6 +47,9 @@ The integer ``13`` in various representations
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectInteger13Detailed.svg
     :align: center
 
+.. index::
+  single: Divide and Conquer; Karatsuba multiplication
+
 :math:`{42!}^{2}` by Karatsuba multiplication
 +++++++++++++++++++++++++++++++++++++++++++++
 
@@ -59,7 +62,7 @@ After the post :cite:`sven/speeding-up-factorial`, here we explore another large
 
 where the message
 
-.. pharo:autocompiledmethod:: Integer>>#dcMultiplyInteger:
+.. pharo:autocompiledmethod:: Integer>>#dcMultiplyInteger:base:
 
 implements the algorithm described in :cite:`10.5555/1051910`, at page 232.
 Such algorithm runs in :math:`O(n^{\log_{2}{3}})` because the input numbers
@@ -77,7 +80,7 @@ and let :math:`n = \max(a, b)`, are broken in *two* parts
   x = x_{1}\cdot 10^{{{n}\over{2}}} + x_{0} \\
   y = y_{1}\cdot 10^{{{n}\over{2}}} + y_{0}
 
-respectively, and there are *three* recursive ``#dcMultiplyInteger:`` message sends.
+respectively, and there are *three* recursive ``#dcMultiplyInteger:base:`` message sends.
 The implementation follows from both the fact
 
 .. math::
@@ -99,7 +102,19 @@ and
 
 .. pharo:autocompiledmethod:: Integer>>#halves:at:digits:base:
 
-helps the recursive message.
+helps the recursive message. 
+
+.. index::
+  single: Sequence diagrams; 83 * 71 using Karatsuba multiplication
+
+A complete profiling of :math:`835 \cdot 714` using this technique looks like
+
+..
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectLargeIntegerProfiled-contexts-tree.svg
+    :align: center
+
+.. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectLargeIntegerProfiled-sequence-diagram.svg
+  :align: center
 
 The irrational ``π``
 ++++++++++++++++++++
