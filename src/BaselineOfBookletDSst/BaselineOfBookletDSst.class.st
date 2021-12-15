@@ -129,6 +129,23 @@ BaselineOfBookletDSst >> scriptLinkMessagesForDoc [
 ]
 
 { #category : #documentation }
+BaselineOfBookletDSst >> scriptNumbersForDoc [
+
+	<script: 'BaselineOfBookletDSst new scriptNumbersForDoc'>
+	^ MetaSTExporter new
+		  selectors:
+			  #( bitAverage: #bitToggle:do: previousEven previousEvenOrSelf
+			     previousOdd previousOddOrSelf nextEven nextEvenOrSelf
+			     nextOdd nextOddOrSelf testBitAverage testBitToggleDo
+			     testBitToggleDo1 testPreviousEven testPreviousEvenOrSelf
+			     testNextEven testNextEvenOrSelf testPreviousOdd
+			     testPreviousOddOrSelf testNextOdd testNextOddOrSelf );
+		  exportWithRepositoryPath: [ :aPath | 
+			  aPath / 'json-for-doc' / 'numbers.json' ]
+		  ofPackage: self class package
+]
+
+{ #category : #documentation }
 BaselineOfBookletDSst >> scriptRedBlackSetMessagesForDoc [
 
 	<script: 'BaselineOfBookletDSst new scriptRedBlackSetMessagesForDoc'>
