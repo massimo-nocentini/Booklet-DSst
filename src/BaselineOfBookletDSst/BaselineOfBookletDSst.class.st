@@ -106,6 +106,7 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     testInspectIceRepository testInspectIceRepositoryCommitsGraph
 			     testInspectOneToMany testInspectPascalArray
 			     testInspectCatalanArray testInspectLargeInteger
+			     testInspectLargeIntegerProfiled
 			     testLinkSubclasses testInspectSkewBinaryCanonicalSparse );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'core-messages.json' ]
