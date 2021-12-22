@@ -44,6 +44,28 @@ property, else the nearest such value:
 .. pharo:autocompiledmethod:: Integer>>#nextOddOrSelf
 .. pharo:autocompiledmethod:: IntegerTest>>#testNextOddOrSelf
 
+Horner's rule
+=============
+
+Let
+
+.. pharo:autocompiledmethod:: SequenceableCollection>>#horner:init:
+
+in
+
+.. pharo:autocompiledmethod:: MWVisualizationsTest>>#testSequenceableCollectionHornerInit
+
+  .. image:: ../../../../bauing-schmidt/MethodWrappers/images/MWVisualizationsTest-testSequenceableCollectionHornerInit.svg
+    :align: center
+
+.. index::
+  single: Sequence diagrams; Horner's rule
+
+that admits the profiling,
+
+.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MWVisualizationsTest-testSequenceableCollectionHornerInit-sequence-diagram.svg
+  :align: center
+
 Quotients and remainders
 ========================
 
