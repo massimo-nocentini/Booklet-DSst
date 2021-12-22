@@ -106,7 +106,7 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     testInspectIceRepository testInspectIceRepositoryCommitsGraph
 			     testInspectOneToMany testInspectPascalArray
 			     testInspectCatalanArray testInspectLargeInteger
-			     testInspectLargeIntegerProfiled
+			     testInspectLargeIntegerProfiled testSequenceableCollectionHornerInit
 			     testLinkSubclasses testInspectSkewBinaryCanonicalSparse );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'core-messages.json' ]
@@ -135,12 +135,12 @@ BaselineOfBookletDSst >> scriptNumbersForDoc [
 	<script: 'BaselineOfBookletDSst new scriptNumbersForDoc'>
 	^ MetaSTExporter new
 		  selectors:
-			  #( bitAverage: #bitToggle:do: previousEven previousEvenOrSelf
-			     previousOdd previousOddOrSelf nextEven nextEvenOrSelf
-			     nextOdd nextOddOrSelf testBitAverage testBitToggleDo
-			     testBitToggleDo1 testPreviousEven testPreviousEvenOrSelf
-			     testNextEven testNextEvenOrSelf testPreviousOdd
-			     testPreviousOddOrSelf testNextOdd testNextOddOrSelf );
+			  #( #horner:init: bitAverage: #bitToggle:do: previousEven
+			     previousEvenOrSelf previousOdd previousOddOrSelf
+			     nextEven nextEvenOrSelf nextOdd nextOddOrSelf testBitAverage
+			     testBitToggleDo testBitToggleDo1 testPreviousEven
+			     testPreviousEvenOrSelf testNextEven testNextEvenOrSelf
+			     testPreviousOdd testPreviousOddOrSelf testNextOdd testNextOddOrSelf );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'numbers.json' ]
 		  ofPackage: self class package
