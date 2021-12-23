@@ -16,7 +16,7 @@
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3. Numbers" href="../symbolic/divisibility.html" />
+    <link rel="next" title="3. Bits" href="../symbolic/bits.html" />
     <link rel="prev" title="1. Object model" href="oo.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -54,11 +54,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#the-character">2.2.1. The character <code class="docutils literal notranslate"><span class="pre">π</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dateandtime-now">2.2.2. <code class="docutils literal notranslate"><span class="pre">DateAndTime</span></code>, now</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-integer-13-in-various-representations">2.2.3. The integer <code class="docutils literal notranslate"><span class="pre">13</span></code> in various representations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#by-karatsuba-multiplication">2.2.4. <span class="math notranslate nohighlight">\({42!}^{2}\)</span> by Karatsuba multiplication</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-irrational">2.2.5. The irrational <code class="docutils literal notranslate"><span class="pre">π</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#a-reflective-association">2.2.6. A (reflective) <code class="docutils literal notranslate"><span class="pre">Association</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#some-fractions-with-kisses-by-mediants">2.2.7. Some <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s, with kisses by <em>mediants</em></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#magnitude-hierarchy-again">2.2.8. <code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy, again</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-irrational">2.2.4. The irrational <code class="docutils literal notranslate"><span class="pre">π</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-reflective-association">2.2.5. A (reflective) <code class="docutils literal notranslate"><span class="pre">Association</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#some-fractions-with-kisses-by-mediants">2.2.6. Some <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s, with kisses by <em>mediants</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#magnitude-hierarchy-again">2.2.7. <code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy, again</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#link-hierarchy">2.3. <code class="docutils literal notranslate"><span class="pre">Link</span></code> hierarchy</a></li>
@@ -94,11 +93,12 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../symbolic/divisibility.html">3. Numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/links.html">4. Links</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/linked-allocation.html">5. Containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/storage-pools.html">6. Storage pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">7. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic/bits.html">3. Bits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic/divisibility.html">4. Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/links.html">5. Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/linked-allocation.html">6. Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/storage-pools.html">7. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">8. Bibliography</a></li>
 </ul>
 
 <div class="relations">
@@ -106,7 +106,7 @@
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="oo.html" title="previous chapter"><span class="section-number">1. </span>Object model</a></li>
-      <li>Next: <a href="../symbolic/divisibility.html" title="next chapter"><span class="section-number">3. </span>Numbers</a></li>
+      <li>Next: <a href="../symbolic/bits.html" title="next chapter"><span class="section-number">3. </span>Bits</a></li>
   </ul></li>
 </ul>
 </div>
@@ -141,7 +141,7 @@
           <a href="oo.html" title="Previous document"><span class="section-number">1. </span>Object model</a>
         </li>
         <li>
-          <a href="../symbolic/divisibility.html" title="Next document"><span class="section-number">3. </span>Numbers</a>
+          <a href="../symbolic/bits.html" title="Next document"><span class="section-number">3. </span>Bits</a>
           &rarr;
         </li>
     </ul>
@@ -219,130 +219,9 @@
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspectInteger13Detailed.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectInteger13Detailed.svg" /></div></blockquote>
 </section>
-<section id="by-karatsuba-multiplication">
-<span id="index-0"></span><h3><span class="section-number">2.2.4. </span><span class="math notranslate nohighlight">\({42!}^{2}\)</span> by Karatsuba multiplication<a class="headerlink" href="#by-karatsuba-multiplication" title="Permalink to this headline">¶</a></h3>
-<p>After the post <span id="id1">[<a class="reference internal" href="../bibliography.html#id13" title="Sven VC. Speeding up factorial computation by changing the order of multiplications. URL: https://medium.com/concerning-pharo/speeding-up-factorial-computation-by-changing-the-order-of-multiplications-f4da3a5576da.">VC</a>]</span>, here we explore another large integer</p>
-<span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectlargeinteger"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
-<span class="nf">testInspectLargeInteger</span>
-
-   <span class="o">|</span><span class="nv"> large n </span><span class="o">|</span>
-   <span class="nv">n</span> <span class="o">:=</span> <span class="m">42</span> <span class="nf">factorial</span><span class="p">.</span>
-   <span class="nv">large</span> <span class="o">:=</span> <span class="nv">n</span> <span class="nf">dcMultiplyInteger:</span> <span class="nv">n</span> <span class="nf">base:</span> <span class="m">10</span><span class="p">.</span>
-
-   <span class="bp">self</span>
-      <span class="nf">assert:</span> <span class="nv">large</span> <span class="nf">equals:</span> <span class="nv">n</span> <span class="nf">*</span> <span class="nv">n</span><span class="p">;</span>
-      <span class="nf">assert:</span> (<span class="nv">n</span> <span class="nf">dcMultiplyIntegerSlow:</span> <span class="nv">n</span> <span class="nf">base:</span> <span class="m">10</span>) <span class="nf">equals:</span> <span class="nv">large</span><span class="p">.</span>
-
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">large</span>
-</pre></div>
-</div>
-<blockquote>
-<div><img alt="../_images/EssentialsObjectTest-testInspectLargeInteger.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectLargeInteger.svg" /></div></blockquote>
-<p>where the message</p>
-<span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-dcmultiplyinteger-base"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
-<span class="nf">dcMultiplyInteger:</span> <span class="nv">anInteger</span> <span class="nf">base:</span> <span class="nv">base</span>
-
-   <span class="o">^</span> ((<span class="bp">self</span> <span class="nf">between:</span> <span class="m">0</span> <span class="nf">and:</span> <span class="nv">base</span> <span class="nf">-</span> <span class="m">1</span>) <span class="nf">and:</span> [ 
-         <span class="nv">anInteger</span> <span class="nf">between:</span> <span class="m">0</span> <span class="nf">and:</span> <span class="nv">base</span> <span class="nf">-</span> <span class="m">1</span> ])
-        <span class="nb">ifTrue:</span> [ <span class="bp">self</span> <span class="nf">multiplyNumber:</span> <span class="nv">anInteger</span> ]
-        <span class="nb">ifFalse:</span> [ 
-           <span class="o">|</span> <span class="nv">x</span> <span class="nf">y</span> <span class="nf">yDigits</span> <span class="nf">|</span>
-           (<span class="bp">self</span> <span class="nf">numberOfDigitsInBase:</span> <span class="nv">base</span>)
-           <span class="nf">&gt;</span> (<span class="nv">anInteger</span> <span class="nf">numberOfDigitsInBase:</span> <span class="nv">base</span>)
-              <span class="nb">ifTrue:</span> [ 
-                 <span class="nv">x</span> <span class="o">:=</span> <span class="bp">self</span><span class="p">.</span>
-                 <span class="nv">y</span> <span class="o">:=</span> <span class="nv">anInteger</span> ]
-              <span class="nb">ifFalse:</span> [ 
-                 <span class="nv">x</span> <span class="o">:=</span> <span class="nv">anInteger</span><span class="p">.</span>
-                 <span class="nv">y</span> <span class="o">:=</span> <span class="bp">self</span> ]<span class="p">.</span>
-
-           <span class="nv">yDigits</span> <span class="o">:=</span> <span class="nv">y</span> <span class="nf">numberOfDigitsInBase:</span> <span class="nv">base</span><span class="p">.</span>
-
-           <span class="nv">x</span>
-              <span class="nf">halves:</span> [ <span class="o">:</span><span class="nv">xHigh</span> <span class="o">:</span><span class="nv">xLow</span> <span class="o">:</span><span class="nv">xn</span> <span class="o">:</span><span class="nv">xl</span> <span class="o">|</span> 
-                 <span class="nv">y</span>
-                    <span class="nf">halves:</span> [ <span class="o">:</span><span class="nv">yHigh</span> <span class="o">:</span><span class="nv">yLow</span> <span class="o">:</span><span class="nv">yn</span> <span class="o">:</span><span class="nv">yl</span> <span class="o">|</span> 
-                       <span class="o">|</span><span class="nv"> p pp xyHigh xyLow exp </span><span class="o">|</span>
-                       <span class="nv">p</span> <span class="o">:=</span> (<span class="nv">xHigh</span> <span class="nf">add:</span> <span class="nv">xLow</span>)
-                               <span class="nf">dcMultiplyInteger:</span> (<span class="nv">yHigh</span> <span class="nf">add:</span> <span class="nv">yLow</span>)
-                               <span class="nf">base:</span> <span class="nv">base</span><span class="p">.</span>
-                       <span class="nv">xyHigh</span> <span class="o">:=</span> <span class="nv">xHigh</span> <span class="nf">dcMultiplyInteger:</span> <span class="nv">yHigh</span> <span class="nf">base:</span> <span class="nv">base</span><span class="p">.</span>
-                       <span class="nv">xyLow</span> <span class="o">:=</span> <span class="nv">xLow</span> <span class="nf">dcMultiplyInteger:</span> <span class="nv">yLow</span> <span class="nf">base:</span> <span class="nv">base</span><span class="p">.</span>
-
-                       <span class="nv">exp</span> <span class="o">:=</span> <span class="nv">base</span> <span class="nf">**</span> <span class="nv">xl</span><span class="p">.</span>
-                       <span class="nv">pp</span> <span class="o">:=</span> <span class="nv">p</span> <span class="nf">subtractNumber:</span> (<span class="nv">xyHigh</span> <span class="nf">add:</span> <span class="nv">xyLow</span>)<span class="p">.</span>
-
-                       <span class="c">&quot;According to the Horner schema.&quot;</span>
-                       (((<span class="nv">xyHigh</span> <span class="nf">multiplyNumber:</span> <span class="nv">exp</span>) <span class="nf">add:</span> <span class="nv">pp</span>) <span class="nf">multiplyNumber:</span> <span class="nv">exp</span>) 
-                          <span class="nf">add:</span> <span class="nv">xyLow</span> ]
-                    <span class="nf">at:</span> <span class="nv">xl</span>
-                    <span class="nf">digits:</span> <span class="nv">yDigits</span>
-                    <span class="nf">base:</span> <span class="nv">base</span> ]
-              <span class="nf">base:</span> <span class="nv">base</span> ]
-</pre></div>
-</div>
-<p>implements the algorithm described in <span id="id2">[<a class="reference internal" href="../bibliography.html#id14" title="Jon Kleinberg and Eva Tardos. Algorithm Design. Addison-Wesley Longman Publishing Co., Inc., USA, 2005. ISBN 0321295358.">KT05</a>]</span>, at page 232.
-Such algorithm runs in <span class="math notranslate nohighlight">\(O(n^{\log_{2}{3}})\)</span> because the input numbers
-<span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}x = x_{a}\cdot 10^{a} + x_{a-1}\cdot 10^{a-1} + \cdots + x_{1}\cdot 10^{1} + x_{0}\cdot 10^{0} \\
-y = y_{b}\cdot 10^{b} + y_{b-1}\cdot 10^{b-1} + \cdots + y_{1}\cdot 10^{1} + y_{0}\cdot 10^{0}\end{split}\]</div>
-<p>and let <span class="math notranslate nohighlight">\(n = \max(a, b)\)</span>, are broken in <em>two</em> parts</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}x = x_{1}\cdot 10^{{{n}\over{2}}} + x_{0} \\
-y = y_{1}\cdot 10^{{{n}\over{2}}} + y_{0}\end{split}\]</div>
-<p>respectively, and there are <em>three</em> recursive <code class="docutils literal notranslate"><span class="pre">#dcMultiplyInteger:base:</span></code> message sends.
-The implementation follows from both the fact</p>
-<div class="math notranslate nohighlight">
-\[x\,y = x_{1}\,y_{1}\cdot 10^{n} + (x_{1}\,y_{0} + x_{0}\,y_{1})\cdot 10^{{{n}\over{2}}} + x_{0}\,y_{0}\]</div>
-<p>and</p>
-<div class="math notranslate nohighlight">
-\[(x_{1} + x_{0})\,(y_{1} + y_{0}) = x_{1}\,y_{1} + \left(x_{1}\,y_{0} + x_{0}\,y_{1}\right) + x_{0}\,y_{0}\]</div>
-<p>respectively, more references can also be found in
-<span id="id3">[<a class="reference internal" href="../bibliography.html#id15" title="Wikipedia. Karatsuba algorithm. URL: https://en.wikipedia.org/wiki/Karatsuba_algorithm.">Wik</a>]</span>. Two auxiliary messages</p>
-<span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-halves-base"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
-<span class="nf">halves:</span> <span class="nv">aBlock</span> <span class="nf">base:</span> <span class="nv">aBase</span>
-
-   <span class="o">|</span><span class="nv"> n </span><span class="o">|</span>
-   <span class="nv">n</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">numberOfDigitsInBase:</span> <span class="nv">aBase</span><span class="p">.</span>
-
-   <span class="o">^</span> <span class="bp">self</span>
-        <span class="nf">halves:</span> <span class="nv">aBlock</span>
-        <span class="nf">at:</span> (<span class="nv">n</span> <span class="nf">/</span> <span class="m">2</span>) <span class="nf">ceiling</span>
-        <span class="nf">digits:</span> <span class="nv">n</span>
-        <span class="nf">base:</span> <span class="nv">aBase</span>
-</pre></div>
-</div>
-<p>and</p>
-<span class="target" id="pharo-compiledMethod-9"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-halves-at-digits-base"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
-<span class="nf">halves:</span> <span class="nv">aBlock</span> <span class="nf">at:</span> <span class="nv">l</span> <span class="nf">digits:</span> <span class="nv">n</span> <span class="nf">base:</span> <span class="nv">aBase</span>
-
-   <span class="o">|</span><span class="nv"> low high lSucc </span><span class="o">|</span>
-   <span class="nv">lSucc</span> <span class="o">:=</span> <span class="nv">l</span> <span class="nf">+</span> <span class="m">1</span><span class="p">.</span>
-
-   <span class="nv">low</span> <span class="o">:=</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="nv">l</span>) <span class="nf">inject:</span> <span class="m">0</span> <span class="nf">into:</span> [ <span class="o">:</span><span class="nv">acc</span> <span class="o">:</span><span class="nv">i</span> <span class="o">|</span> 
-             <span class="o">|</span><span class="nv"> d </span><span class="o">|</span>
-             <span class="nv">d</span> <span class="o">:=</span> (<span class="bp">self</span> <span class="nf">digitAt:</span> <span class="nv">i</span> <span class="nf">base:</span> <span class="nv">aBase</span>) <span class="nf">*</span> (<span class="nv">aBase</span> <span class="nf">**</span> (<span class="nv">i</span> <span class="nf">-</span> <span class="m">1</span>))<span class="p">.</span>
-             <span class="nv">d</span> <span class="nf">+</span> <span class="nv">acc</span> ]<span class="p">.</span>
-
-   <span class="nv">high</span> <span class="o">:=</span> (<span class="nv">lSucc</span> <span class="nf">to:</span> <span class="nv">n</span>) <span class="nf">inject:</span> <span class="m">0</span> <span class="nf">into:</span> [ <span class="o">:</span><span class="nv">acc</span> <span class="o">:</span><span class="nv">i</span> <span class="o">|</span> 
-              <span class="o">|</span><span class="nv"> d </span><span class="o">|</span>
-              <span class="nv">d</span> <span class="o">:=</span> (<span class="bp">self</span> <span class="nf">digitAt:</span> <span class="nv">i</span> <span class="nf">base:</span> <span class="nv">aBase</span>) <span class="nf">*</span> (<span class="nv">aBase</span> <span class="nf">**</span> (<span class="nv">i</span> <span class="nf">-</span> <span class="nv">lSucc</span>))<span class="p">.</span>
-              <span class="nv">d</span> <span class="nf">+</span> <span class="nv">acc</span> ]<span class="p">.</span>
-
-   <span class="o">^</span> <span class="nv">aBlock</span>
-        <span class="nf">value:</span> <span class="nv">high</span>
-        <span class="nf">value:</span> <span class="nv">low</span>
-        <span class="nf">value:</span> <span class="nv">n</span>
-        <span class="nf">value:</span> <span class="nv">l</span>
-</pre></div>
-</div>
-<p>helps the recursive message.</p>
-<p id="index-1">A complete profiling of <span class="math notranslate nohighlight">\(835 \cdot 714\)</span> using this technique looks like</p>
-<img alt="../_images/EssentialsObjectTest-testInspectLargeIntegerProfiled-sequence-diagram.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectLargeIntegerProfiled-sequence-diagram.svg" /></section>
 <section id="the-irrational">
-<h3><span class="section-number">2.2.5. </span>The irrational <code class="docutils literal notranslate"><span class="pre">π</span></code><a class="headerlink" href="#the-irrational" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-10"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfloatpi"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<h3><span class="section-number">2.2.4. </span>The irrational <code class="docutils literal notranslate"><span class="pre">π</span></code><a class="headerlink" href="#the-irrational" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfloatpi"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectFloatPi</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nc">Float</span> <span class="nf">π</span>
@@ -352,8 +231,8 @@ The implementation follows from both the fact</p>
 <div><img alt="../_images/EssentialsObjectTest-testInspectFloatPi.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectFloatPi.svg" /></div></blockquote>
 </section>
 <section id="a-reflective-association">
-<h3><span class="section-number">2.2.6. </span>A (reflective) <code class="docutils literal notranslate"><span class="pre">Association</span></code><a class="headerlink" href="#a-reflective-association" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-11"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectassociation"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<h3><span class="section-number">2.2.5. </span>A (reflective) <code class="docutils literal notranslate"><span class="pre">Association</span></code><a class="headerlink" href="#a-reflective-association" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectassociation"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectAssociation</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="m">42</span> <span class="nf">-&gt;</span> <span class="bp">thisContext</span> <span class="nf">method</span>
@@ -363,9 +242,9 @@ The implementation follows from both the fact</p>
 <div><img alt="../_images/EssentialsObjectTest-testInspectAssociation.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectAssociation.svg" /></div></blockquote>
 </section>
 <section id="some-fractions-with-kisses-by-mediants">
-<h3><span class="section-number">2.2.7. </span>Some <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s, with kisses by <em>mediants</em><a class="headerlink" href="#some-fractions-with-kisses-by-mediants" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.6. </span>Some <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s, with kisses by <em>mediants</em><a class="headerlink" href="#some-fractions-with-kisses-by-mediants" title="Permalink to this headline">¶</a></h3>
 <p>Have a look at the fraction <span class="math notranslate nohighlight">\(- {{1} \over {2}}\)</span> by the following inspector,</p>
-<span class="target" id="pharo-compiledMethod-12"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfraction"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfraction"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectFraction</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="m">-1</span> <span class="nf">/</span> <span class="m">2</span>
@@ -375,26 +254,26 @@ The implementation follows from both the fact</p>
 <div><img alt="../_images/EssentialsObjectTest-testInspectFraction.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectFraction.svg" /></div></blockquote>
 <p>Some fractions kiss each other,  here we see kisses by <em>mediants</em> via the
 polymorphism of the message <code class="docutils literal notranslate"><span class="pre">#\/</span></code>,</p>
-<span class="target" id="pharo-compiledMethod-13"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-fraction"><div class="highlight"><pre><span></span><span class="c">&quot;Fraction, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-9"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-fraction"><div class="highlight"><pre><span></span><span class="c">&quot;Fraction, protocol *Containers-Essentials&quot;</span>
 <span class="nf">\/</span> <span class="nv">anObject</span>
 
    <span class="o">^</span> <span class="nv">anObject</span> <span class="nf">mediantFraction:</span> <span class="bp">self</span>
 </pre></div>
 </div>
-<span class="target" id="pharo-compiledMethod-14"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-10"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">\/</span> <span class="nv">anObject</span>
 
    <span class="o">^</span> <span class="nv">anObject</span> <span class="nf">mediantInteger:</span> <span class="bp">self</span>
 </pre></div>
 </div>
 <p>that both implementations dispatch back to their arguments according to</p>
-<span class="target" id="pharo-compiledMethod-15"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-mediantfraction"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-11"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-mediantfraction"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">mediantFraction:</span> <span class="nv">aFraction</span>
 
    <span class="o">^</span> <span class="nv">aFraction</span> <span class="nf">numerator</span> <span class="nf">+</span> <span class="bp">self</span> <span class="nf">/</span> (<span class="nv">aFraction</span> <span class="nf">denominator</span> <span class="nf">+</span> <span class="bp">self</span>)
 </pre></div>
 </div>
-<span class="target" id="pharo-compiledMethod-16"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-fraction-mediantfraction"><div class="highlight"><pre><span></span><span class="c">&quot;Fraction, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-12"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-fraction-mediantfraction"><div class="highlight"><pre><span></span><span class="c">&quot;Fraction, protocol *Containers-Essentials&quot;</span>
 <span class="nf">mediantFraction:</span> <span class="nv">aFraction</span>
 
    <span class="o">^</span> <span class="nv">aFraction</span> <span class="nf">numerator</span> <span class="nf">+</span> <span class="bp">self</span> <span class="nf">numerator</span>
@@ -402,13 +281,13 @@ polymorphism of the message <code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 <p>for the former and to</p>
-<span class="target" id="pharo-compiledMethod-17"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-mediantinteger"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-13"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-mediantinteger"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">mediantInteger:</span> <span class="nv">anInteger</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">+</span> <span class="nv">anInteger</span> <span class="nf">/</span> <span class="m">2</span>
 </pre></div>
 </div>
-<span class="target" id="pharo-compiledMethod-18"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-fraction-mediantinteger"><div class="highlight"><pre><span></span><span class="c">&quot;Fraction, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-14"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-fraction-mediantinteger"><div class="highlight"><pre><span></span><span class="c">&quot;Fraction, protocol *Containers-Essentials&quot;</span>
 <span class="nf">mediantInteger:</span> <span class="nv">anInteger</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">numerator</span> <span class="nf">+</span> <span class="nv">anInteger</span> <span class="nf">numerator</span>
@@ -416,7 +295,7 @@ polymorphism of the message <code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 <p>for the latter. Now we can see some kisses,</p>
-<span class="target" id="pharo-compiledMethod-19"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfractionkissingenumeration"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-15"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfractionkissingenumeration"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectFractionKissingEnumeration</span>
 
    <span class="o">|</span><span class="nv"> fractions n </span><span class="o">|</span>
@@ -497,7 +376,7 @@ polymorphism of the message <code class="docutils literal notranslate"><span cla
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspectFractionKissingEnumeration.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectFractionKissingEnumeration.svg" /></div></blockquote>
 <p>where</p>
-<span class="target" id="pharo-compiledMethod-20"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-blockclosure-kissingfractions"><div class="highlight"><pre><span></span><span class="c">&quot;BlockClosure, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-16"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-blockclosure-kissingfractions"><div class="highlight"><pre><span></span><span class="c">&quot;BlockClosure, protocol *Containers-Essentials&quot;</span>
 <span class="nf">kissingFractions</span>
 
    <span class="o">|</span><span class="nv"> fractions news level </span><span class="o">|</span>
@@ -525,7 +404,7 @@ polymorphism of the message <code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 <p>lies on the utility message</p>
-<span class="target" id="pharo-compiledMethod-21"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-overlappingpairsdo"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol enumerating&quot;</span>
+<span class="target" id="pharo-compiledMethod-17"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-overlappingpairsdo"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol enumerating&quot;</span>
 <span class="nf">overlappingPairsDo:</span> <span class="nv">aBlock</span>
 
    <span class="c">&quot;Emit overlapping pairs of my elements into aBlock&quot;</span>
@@ -542,14 +421,14 @@ next section.</p>
 <p class="admonition-title">See also</p>
 <p>On one hand, more kissing fractions by <em>Diophantine equations</em> are the
 subject of the section <a class="reference internal" href="../symbolic/divisibility.html#kissing-fractions-diophantine"><span class="std std-ref">Kissing Fractions</span></a>; on the other
-hand, both <span id="id4">[<a class="reference internal" href="../bibliography.html#id3" title="Martin H. Weissman. Fractions and semiotics. 2012. URL: https://illustratedtheoryofnumbers.wordpress.com/2012/07/31/fractions-and-semiotics/.">Wei12</a>]</span> and
-<span id="id5">[<a class="reference internal" href="../bibliography.html#id2" title="Alan F. Beardon and Ian Short. A geometric representation of continued fractions. The American Mathematical Monthly, 121(5):391–402, 2014. URL: http://www.jstor.org/stable/10.4169/amer.math.monthly.121.05.391.">BS14</a>]</span> are inspired by the seminal work
-<span id="id6">[<a class="reference internal" href="../bibliography.html#id8" title="L. R. Ford. Fractions. The American Mathematical Monthly, 45(9):586–601, 1938. URL: http://www.jstor.org/stable/2302799.">For38</a>]</span>.</p>
+hand, both <span id="id1">[<a class="reference internal" href="../bibliography.html#id3" title="Martin H. Weissman. Fractions and semiotics. 2012. URL: https://illustratedtheoryofnumbers.wordpress.com/2012/07/31/fractions-and-semiotics/.">Wei12</a>]</span> and
+<span id="id2">[<a class="reference internal" href="../bibliography.html#id2" title="Alan F. Beardon and Ian Short. A geometric representation of continued fractions. The American Mathematical Monthly, 121(5):391–402, 2014. URL: http://www.jstor.org/stable/10.4169/amer.math.monthly.121.05.391.">BS14</a>]</span> are inspired by the seminal work
+<span id="id3">[<a class="reference internal" href="../bibliography.html#id8" title="L. R. Ford. Fractions. The American Mathematical Monthly, 45(9):586–601, 1938. URL: http://www.jstor.org/stable/2302799.">For38</a>]</span>.</p>
 </div>
 </section>
 <section id="magnitude-hierarchy-again">
-<h3><span class="section-number">2.2.8. </span><code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy, again<a class="headerlink" href="#magnitude-hierarchy-again" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-22"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testmagnitudesubclassesslotsgraph"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<h3><span class="section-number">2.2.7. </span><code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy, again<a class="headerlink" href="#magnitude-hierarchy-again" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="pharo-compiledMethod-18"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testmagnitudesubclassesslotsgraph"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testMagnitudeSubclassesSlotsGraph</span>
 
    <span class="o">^</span> <span class="bp">self</span>
@@ -563,7 +442,7 @@ hand, both <span id="id4">[<a class="reference internal" href="../bibliography.h
 </section>
 <section id="link-hierarchy">
 <h2><span class="section-number">2.3. </span><code class="docutils literal notranslate"><span class="pre">Link</span></code> hierarchy<a class="headerlink" href="#link-hierarchy" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="pharo-compiledMethod-23"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testlinksubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-19"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testlinksubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testLinkSubclasses</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportShapeOf:</span> <span class="nc">Link</span> <span class="nf">accessorBlock:</span> <span class="ss">#asShapeSubclasses</span>
@@ -574,7 +453,7 @@ hand, both <span id="id4">[<a class="reference internal" href="../bibliography.h
 </section>
 <section id="collection-hierarchy">
 <h2><span class="section-number">2.4. </span><code class="docutils literal notranslate"><span class="pre">Collection</span></code> hierarchy<a class="headerlink" href="#collection-hierarchy" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="pharo-compiledMethod-24"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testcollectionsubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-20"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testcollectionsubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testCollectionSubclasses</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportShapeOf:</span> <span class="nc">Collection</span> <span class="nf">accessorBlock:</span> <span class="ss">#asShapeSubclasses</span>
@@ -584,7 +463,7 @@ hand, both <span id="id4">[<a class="reference internal" href="../bibliography.h
 <div><img alt="../_images/EssentialsObjectTest-testCollectionSubclasses.svg" class="align-center" src="../_images/EssentialsObjectTest-testCollectionSubclasses.svg" /></div></blockquote>
 <section id="lorem-ipsum">
 <h3><span class="section-number">2.4.1. </span>Lorem ipsum<a class="headerlink" href="#lorem-ipsum" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-25"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectstring"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-21"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectstring"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectString</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="nc">String</span> <span class="nf">loremIpsum:</span> <span class="m">100</span>)
@@ -595,8 +474,8 @@ hand, both <span id="id4">[<a class="reference internal" href="../bibliography.h
 </section>
 <section id="an-array-of-generalized-fibonacci-numbers">
 <h3><span class="section-number">2.4.2. </span>An <code class="docutils literal notranslate"><span class="pre">Array</span></code> of (generalized) Fibonacci numbers<a class="headerlink" href="#an-array-of-generalized-fibonacci-numbers" title="Permalink to this headline">¶</a></h3>
-<p>Two famous sequences of numbers <span id="id7">[<a class="reference internal" href="../bibliography.html#id5" title="Neil J. A. Sloane. Fibonacci numbers beginning at 0. URL: https://oeis.org/A000045.">Sloc</a>]</span> and <span id="id8">[<a class="reference internal" href="../bibliography.html#id4" title="Neil J. A. Sloane. Lucas numbers beginning at 2. URL: https://oeis.org/A000032.">Slod</a>]</span>, of <em>Fibonacci</em> numbers</p>
-<span class="target" id="pharo-compiledMethod-26"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspect20fibonaccinumbers"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<p>Two famous sequences of numbers <span id="id4">[<a class="reference internal" href="../bibliography.html#id5" title="Neil J. A. Sloane. Fibonacci numbers beginning at 0. URL: https://oeis.org/A000045.">Sloc</a>]</span> and <span id="id5">[<a class="reference internal" href="../bibliography.html#id4" title="Neil J. A. Sloane. Lucas numbers beginning at 2. URL: https://oeis.org/A000032.">Slod</a>]</span>, of <em>Fibonacci</em> numbers</p>
+<span class="target" id="pharo-compiledMethod-22"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspect20fibonaccinumbers"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspect20FibonacciNumbers</span>
 
    <span class="o">|</span><span class="nv"> fibs </span><span class="o">|</span>
@@ -617,7 +496,7 @@ hand, both <span id="id4">[<a class="reference internal" href="../bibliography.h
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspect20FibonacciNumbers.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspect20FibonacciNumbers.svg" /></div></blockquote>
 <p>and of <em>Lucas</em> numbers</p>
-<span class="target" id="pharo-compiledMethod-27"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspect20lucasnumbers"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-23"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspect20lucasnumbers"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspect20LucasNumbers</span>
 
    <span class="o">|</span><span class="nv"> lucas </span><span class="o">|</span>
@@ -639,20 +518,20 @@ hand, both <span id="id4">[<a class="reference internal" href="../bibliography.h
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspect20lucasNumbers.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspect20lucasNumbers.svg" /></div></blockquote>
 <p>respectively, where both of them</p>
-<span class="target" id="pharo-compiledMethod-28"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-fibonaccinumbers"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-24"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-fibonaccinumbers"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">fibonacciNumbers</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">gibonacciNumbersFirst:</span> <span class="m">0</span> <span class="nf">second:</span> <span class="m">1</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">a</span> <span class="o">:</span><span class="nv">b</span> <span class="o">|</span> <span class="nv">a</span> <span class="nf">+</span> <span class="nv">b</span> ]
 </pre></div>
 </div>
-<span class="target" id="pharo-compiledMethod-29"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-lucasnumbers"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-25"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-lucasnumbers"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">lucasNumbers</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">gibonacciNumbersFirst:</span> <span class="m">2</span> <span class="nf">second:</span> <span class="m">1</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">a</span> <span class="o">:</span><span class="nv">b</span> <span class="o">|</span> <span class="nv">a</span> <span class="nf">+</span> <span class="nv">b</span> ]
 </pre></div>
 </div>
 <p>lie on</p>
-<span class="target" id="pharo-compiledMethod-30"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-gibonaccinumbersfirst-second-do"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-26"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-gibonaccinumbersfirst-second-do"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">gibonacciNumbersFirst:</span> <span class="nv">first</span> <span class="nf">second:</span> <span class="nv">second</span> <span class="nf">do:</span> <span class="nv">aBlock</span>
 
    <span class="o">^</span> <span class="bp">self</span>
@@ -674,8 +553,8 @@ hand, both <span id="id4">[<a class="reference internal" href="../bibliography.h
         <span class="nf">ifNotPositive:</span> [ <span class="ss">#(</span>  <span class="ss">)</span> ]
 </pre></div>
 </div>
-<p>Another famous sequence <span id="id9">[<a class="reference internal" href="../bibliography.html#id6" title="Neil J. A. Sloane. Catalan numbers. URL: https://oeis.org/A000108.">Slob</a>]</span> reads as</p>
-<span class="target" id="pharo-compiledMethod-31"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspect20catalannumbers"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<p>Another famous sequence <span id="id6">[<a class="reference internal" href="../bibliography.html#id6" title="Neil J. A. Sloane. Catalan numbers. URL: https://oeis.org/A000108.">Slob</a>]</span> reads as</p>
+<span class="target" id="pharo-compiledMethod-27"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspect20catalannumbers"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspect20CatalanNumbers</span>
 
    <span class="o">|</span><span class="nv"> catalan </span><span class="o">|</span>
@@ -697,7 +576,7 @@ hand, both <span id="id4">[<a class="reference internal" href="../bibliography.h
 </section>
 <section id="dimensional-arrays">
 <h3><span class="section-number">2.4.3. </span>2-Dimensional arrays<a class="headerlink" href="#dimensional-arrays" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-32"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectpascalarray"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-28"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectpascalarray"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectPascalArray</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="nc">Array2D</span> <span class="nf">pascal:</span> <span class="m">1</span> <span class="nf">&lt;&lt;</span> <span class="m">4</span>)
@@ -705,7 +584,7 @@ hand, both <span id="id4">[<a class="reference internal" href="../bibliography.h
 </div>
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspectPascalArray.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectPascalArray.svg" /></div></blockquote>
-<span class="target" id="pharo-compiledMethod-33"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectcatalanarray"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-29"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectcatalanarray"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectCatalanArray</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="nc">Array2D</span> <span class="nf">catalan:</span> <span class="m">1</span> <span class="nf">&lt;&lt;</span> <span class="m">4</span>)
@@ -717,7 +596,7 @@ hand, both <span id="id4">[<a class="reference internal" href="../bibliography.h
 <section id="golden-ratios">
 <h3><span class="section-number">2.4.4. </span>Golden ratios<a class="headerlink" href="#golden-ratios" title="Permalink to this headline">¶</a></h3>
 <p>The well known Golden ratio looks like</p>
-<span class="target" id="pharo-compiledMethod-34"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectgoldenratio"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-30"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectgoldenratio"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectGoldenRatio</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nc">Float</span> <span class="nf">goldenRatio</span>
@@ -726,7 +605,7 @@ hand, both <span id="id4">[<a class="reference internal" href="../bibliography.h
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspectGoldenRatio.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectGoldenRatio.svg" /></div></blockquote>
 <p>and also the following golden ratios</p>
-<span class="target" id="pharo-compiledMethod-35"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspect10goldenratios"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-31"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspect10goldenratios"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspect10GoldenRatios</span>
 
    <span class="o">|</span><span class="nv"> ratios </span><span class="o">|</span>
@@ -745,7 +624,7 @@ hand, both <span id="id4">[<a class="reference internal" href="../bibliography.h
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspect10GoldenRatios.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspect10GoldenRatios.svg" /></div></blockquote>
 <p>are generated by the message</p>
-<span class="target" id="pharo-compiledMethod-36"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-goldenratioslower"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-32"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-goldenratioslower"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">goldenRatiosLower</span>
 
    <span class="o">^</span> <span class="bp">self</span>
@@ -755,7 +634,7 @@ hand, both <span id="id4">[<a class="reference internal" href="../bibliography.h
 </pre></div>
 </div>
 <p>that uses the same message and can be used to generate the following golden rectangles</p>
-<span class="target" id="pharo-compiledMethod-37"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspect10goldenrectangles"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-33"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspect10goldenrectangles"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspect10GoldenRectangles</span>
 
    <span class="o">|</span><span class="nv"> rectangles </span><span class="o">|</span>
@@ -775,7 +654,7 @@ hand, both <span id="id4">[<a class="reference internal" href="../bibliography.h
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspect10GoldenRectangles.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspect10GoldenRectangles.svg" /></div></blockquote>
 <p>consequently. The previous rectangles can be nested</p>
-<span class="target" id="pharo-compiledMethod-38"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspect10goldenrectanglesnested"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-34"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspect10goldenrectanglesnested"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspect10GoldenRectanglesNested</span>
 
    <span class="o">|</span><span class="nv"> rectangles </span><span class="o">|</span>
@@ -796,7 +675,7 @@ hand, both <span id="id4">[<a class="reference internal" href="../bibliography.h
 <p>to have a comprehensive representation.</p>
 <section id="one-to-many-descriptors">
 <h4><span class="section-number">2.4.4.1. </span>One-to-Many descriptors<a class="headerlink" href="#one-to-many-descriptors" title="Permalink to this headline">¶</a></h4>
-<span class="target" id="pharo-compiledMethod-39"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectonetomany"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-35"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectonetomany"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectOneToMany</span>
 
    <span class="o">^</span> <span class="bp">self</span>
@@ -814,7 +693,7 @@ hand, both <span id="id4">[<a class="reference internal" href="../bibliography.h
 <section id="some-bytearrays">
 <h3><span class="section-number">2.4.5. </span>Some <code class="docutils literal notranslate"><span class="pre">ByteArray</span></code>s<a class="headerlink" href="#some-bytearrays" title="Permalink to this headline">¶</a></h3>
 <p>On one hand, the combination of the previous two types of objects allows us to inspect a <code class="docutils literal notranslate"><span class="pre">ByteArray</span></code> object,</p>
-<span class="target" id="pharo-compiledMethod-40"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testbytearrayloremipsum"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-36"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testbytearrayloremipsum"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testByteArrayLoremIpsum</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="nc">String</span> <span class="nf">loremIpsum:</span> <span class="m">50</span>) <span class="nf">asByteArray</span>
@@ -823,7 +702,7 @@ hand, both <span id="id4">[<a class="reference internal" href="../bibliography.h
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testByteArrayLoremIpsum.svg" class="align-center" src="../_images/EssentialsObjectTest-testByteArrayLoremIpsum.svg" /></div></blockquote>
 <p>On the other hand, a bare bone array of bytes can be built as in</p>
-<span class="target" id="pharo-compiledMethod-41"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testbytearrayliteral"><div class="highlight"><pre><span></span>&quot;EssentialsObjectTest, protocol tests&quot;
+<span class="target" id="pharo-compiledMethod-37"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testbytearrayliteral"><div class="highlight"><pre><span></span>&quot;EssentialsObjectTest, protocol tests&quot;
 testByteArrayLiteral
 
    ^ self exportSlotsGraphOf: #[ 18 10 253 ]
@@ -832,7 +711,7 @@ testByteArrayLiteral
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testByteArrayLiteral.svg" class="align-center" src="../_images/EssentialsObjectTest-testByteArrayLiteral.svg" /></div></blockquote>
 <p>and, in more simpler terms, even an <code class="docutils literal notranslate"><span class="pre">Integer</span></code> can be seen as an array of this type</p>
-<span class="target" id="pharo-compiledMethod-42"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testbytearrayinteger"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-38"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testbytearrayinteger"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testByteArrayInteger</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="m">50</span> <span class="nf">fibonacciNumbers</span> <span class="nf">last</span> <span class="nf">asByteArray</span>
@@ -843,10 +722,10 @@ testByteArrayLiteral
 </section>
 <section id="binary-reflected-gray-codes">
 <h3><span class="section-number">2.4.6. </span>Binary Reflected Gray Codes<a class="headerlink" href="#binary-reflected-gray-codes" title="Permalink to this headline">¶</a></h3>
-<p>In <span id="id10">[<a class="reference internal" href="../bibliography.html#id12" title="F. Gray. Pulse code communication. 1953. US Patent 2,632,058. URL: http://www.google.com/patents/US2632058.">Gra53</a>]</span>, Frank Gray introduces <em>“an
+<p>In <span id="id7">[<a class="reference internal" href="../bibliography.html#id12" title="F. Gray. Pulse code communication. 1953. US Patent 2,632,058. URL: http://www.google.com/patents/US2632058.">Gra53</a>]</span>, Frank Gray introduces <em>“an
 ordering of the binary numeral system such that two successive values differ in
 only one bit”</em> – from <a class="reference external" href="https://en.wikipedia.org/wiki/Gray_code">Wikipedia</a>,</p>
-<span class="target" id="pharo-compiledMethod-43"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectbrgcodes"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-39"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectbrgcodes"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectBRGCodes</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span>
@@ -855,22 +734,22 @@ only one bit”</em> – from <a class="reference external" href="https://en.wik
 </div>
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspectBRGCodes.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectBRGCodes.svg" /></div></blockquote>
-<p>also known as <span id="id11">[<a class="reference internal" href="../bibliography.html#id7" title="Neil J. A. Sloane. Binary reflected gray code. URL: https://oeis.org/A014550.">Sloa</a>]</span>. The message</p>
-<span class="target" id="pharo-compiledMethod-44"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-asshapebrgcdots"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials-Visualizations&quot;</span>
+<p>also known as <span id="id8">[<a class="reference internal" href="../bibliography.html#id7" title="Neil J. A. Sloane. Binary reflected gray code. URL: https://oeis.org/A014550.">Sloa</a>]</span>. The message</p>
+<span class="target" id="pharo-compiledMethod-40"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-asshapebrgcdots"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials-Visualizations&quot;</span>
 <span class="nf">asShapeBRGCDots</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">asShapeBinaryDots:</span> (<span class="bp">self</span> <span class="nf">bitBRGC</span> <span class="nf">printStringBase:</span> <span class="m">2</span>) <span class="nf">asArray</span>
 </pre></div>
 </div>
 <p>relies on both</p>
-<span class="target" id="pharo-compiledMethod-45"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-bitbrgc"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-41"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-bitbrgc"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">bitBRGC</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">bitXor:</span> <span class="bp">self</span> <span class="nf">&gt;&gt;</span> <span class="m">1</span>
 </pre></div>
 </div>
 <p>that computes the Gray representation corresponding to the receiver <code class="docutils literal notranslate"><span class="pre">Integer</span></code>, and</p>
-<span class="target" id="pharo-compiledMethod-46"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-asshapebinarydots"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials-Visualizations&quot;</span>
+<span class="target" id="pharo-compiledMethod-42"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-asshapebinarydots"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials-Visualizations&quot;</span>
 <span class="nf">asShapeBinaryDots:</span> <span class="nv">repr</span>
 
    <span class="o">|</span><span class="nv"> dots </span><span class="o">|</span>
@@ -908,7 +787,7 @@ full dots stand for 1s.</p>
 <section id="a-heap-step-by-step-construction">
 <h3><span class="section-number">2.4.7. </span>A <code class="docutils literal notranslate"><span class="pre">Heap</span></code>, step by step construction<a class="headerlink" href="#a-heap-step-by-step-construction" title="Permalink to this headline">¶</a></h3>
 <p>Here we construct a heap according to the given sequence (<em>order matters</em>),</p>
-<span class="target" id="pharo-compiledMethod-47"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectheap"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-43"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectheap"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectHeap</span>
 
    <span class="o">|</span><span class="nv"> array random heap </span><span class="o">|</span>
@@ -985,7 +864,7 @@ full dots stand for 1s.</p>
 </section>
 <section id="a-set">
 <h3><span class="section-number">2.4.8. </span>A <code class="docutils literal notranslate"><span class="pre">Set</span></code><a class="headerlink" href="#a-set" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-48"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectset"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-44"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectset"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectSet</span>
 
    <span class="o">|</span><span class="nv"> random sample n </span><span class="o">|</span>
@@ -1005,7 +884,7 @@ full dots stand for 1s.</p>
 </section>
 <section id="a-dictionary">
 <h3><span class="section-number">2.4.9. </span>A <code class="docutils literal notranslate"><span class="pre">Dictionary</span></code><a class="headerlink" href="#a-dictionary" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-49"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectdictionary"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-45"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectdictionary"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectDictionary</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="nc">Dictionary</span> <span class="nb">new</span>
@@ -1020,7 +899,7 @@ full dots stand for 1s.</p>
 </section>
 <section id="a-bag">
 <h3><span class="section-number">2.4.10. </span>A <code class="docutils literal notranslate"><span class="pre">Bag</span></code><a class="headerlink" href="#a-bag" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-50"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectbag"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-46"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectbag"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectBag</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="nc">Bag</span> <span class="nf">withAll:</span> <span class="nc">String</span> <span class="nf">loremIpsum</span>)
@@ -1032,7 +911,7 @@ full dots stand for 1s.</p>
 </section>
 <section id="random-hierarchy">
 <h2><span class="section-number">2.5. </span><code class="docutils literal notranslate"><span class="pre">Random</span></code> hierarchy<a class="headerlink" href="#random-hierarchy" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="pharo-compiledMethod-51"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testrandomsubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-47"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testrandomsubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testRandomSubclasses</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportShapeOf:</span> <span class="nc">Random</span> <span class="nf">accessorBlock:</span> <span class="ss">#asShapeSubclasses</span>
@@ -1042,7 +921,7 @@ full dots stand for 1s.</p>
 <div><img alt="../_images/EssentialsObjectTest-testRandomSubclasses.svg" class="align-center" src="../_images/EssentialsObjectTest-testRandomSubclasses.svg" /></div></blockquote>
 <section id="the-uniform-distribution">
 <h3><span class="section-number">2.5.1. </span>The <em>uniform</em> distribution<a class="headerlink" href="#the-uniform-distribution" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-52"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testuniform"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-48"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testuniform"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testUniform</span>
 
    <span class="o">|</span><span class="nv"> gen </span><span class="o">|</span>
@@ -1058,7 +937,7 @@ full dots stand for 1s.</p>
 <blockquote>
 <div><img alt="../_images/RandomTestDistributions-testUniform.svg" class="align-center" src="../_images/RandomTestDistributions-testUniform.svg" /></div></blockquote>
 <p>where both messages</p>
-<span class="target" id="pharo-compiledMethod-53"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-random-next"><div class="highlight"><pre><span></span><span class="c">&quot;Random, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-49"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-random-next"><div class="highlight"><pre><span></span><span class="c">&quot;Random, protocol accessing&quot;</span>
 <span class="nf">next</span>
 
    <span class="c">&quot;Answer a random Float in the interval [0 to 1).&quot;</span>
@@ -1066,7 +945,7 @@ full dots stand for 1s.</p>
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">privateNextValue</span>
 </pre></div>
 </div>
-<span class="target" id="pharo-compiledMethod-54"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-random-privatenextvalue"><div class="highlight"><pre><span></span><span class="c">&quot;Random, protocol private&quot;</span>
+<span class="target" id="pharo-compiledMethod-50"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-random-privatenextvalue"><div class="highlight"><pre><span></span><span class="c">&quot;Random, protocol private&quot;</span>
 <span class="nf">privateNextValue</span>
 
    <span class="c">&quot;Answer a random Float in the interval [0 to 1).&quot;</span>
@@ -1075,7 +954,7 @@ full dots stand for 1s.</p>
 </pre></div>
 </div>
 <p>lie on the message</p>
-<span class="target" id="pharo-compiledMethod-55"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-random-privatenextseed"><div class="highlight"><pre><span></span><span class="c">&quot;Random, protocol private&quot;</span>
+<span class="target" id="pharo-compiledMethod-51"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-random-privatenextseed"><div class="highlight"><pre><span></span><span class="c">&quot;Random, protocol private&quot;</span>
 <span class="nf">privateNextSeed</span>
 
    <span class="c">&quot;This method generates random instances of Integer    in the interval</span>
@@ -1092,12 +971,12 @@ full dots stand for 1s.</p>
 </pre></div>
 </div>
 <p>which finally provides the implementation according to
-<span id="id12">[<a class="reference internal" href="../bibliography.html#id9" title="S. K. Park and K. W. Miller. Random number generators: good ones are hard to find. Commun. ACM, 31(10):1192–1201, October 1988. URL: https://doi.org/10.1145/63039.63042, doi:10.1145/63039.63042.">PM88</a>]</span> as the message’s comment states.</p>
+<span id="id9">[<a class="reference internal" href="../bibliography.html#id9" title="S. K. Park and K. W. Miller. Random number generators: good ones are hard to find. Commun. ACM, 31(10):1192–1201, October 1988. URL: https://doi.org/10.1145/63039.63042, doi:10.1145/63039.63042.">PM88</a>]</span> as the message’s comment states.</p>
 </section>
 <section id="the-bernoulli-distribution">
 <h3><span class="section-number">2.5.2. </span>The <em>Bernoulli</em> distribution<a class="headerlink" href="#the-bernoulli-distribution" title="Permalink to this headline">¶</a></h3>
 <p>Using a <em>fair coin</em>,</p>
-<span class="target" id="pharo-compiledMethod-56"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-random-faircoin"><div class="highlight"><pre><span></span><span class="c">&quot;Random, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-52"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-random-faircoin"><div class="highlight"><pre><span></span><span class="c">&quot;Random, protocol *Containers-Essentials&quot;</span>
 <span class="nf">fairCoin</span>
 
    <span class="o">^</span> (<span class="nc">RandomBernoulli</span> <span class="nf">seed:</span> <span class="nv">seed</span>)
@@ -1106,7 +985,7 @@ full dots stand for 1s.</p>
 </pre></div>
 </div>
 <p>we simulate some tosses</p>
-<span class="target" id="pharo-compiledMethod-57"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testbernoulli"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-53"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testbernoulli"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testBernoulli</span>
 
    <span class="o">|</span><span class="nv"> gen </span><span class="o">|</span>
@@ -1122,7 +1001,7 @@ full dots stand for 1s.</p>
 <blockquote>
 <div><img alt="../_images/RandomTestDistributions-testBernoulli.svg" class="align-center" src="../_images/RandomTestDistributions-testBernoulli.svg" /></div></blockquote>
 <p>where</p>
-<span class="target" id="pharo-compiledMethod-58"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randombernoulli-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomBernoulli, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-54"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randombernoulli-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomBernoulli, protocol accessing&quot;</span>
 <span class="nf">next</span>
 
    <span class="o">^</span> (<span class="bp">super</span> <span class="nf">next</span> <span class="nf">&lt;</span> <span class="nv">p</span>) <span class="nf">asInteger</span>
@@ -1131,7 +1010,7 @@ full dots stand for 1s.</p>
 </section>
 <section id="the-binomial-distribution">
 <h3><span class="section-number">2.5.3. </span>The <em>binomial</em> distribution<a class="headerlink" href="#the-binomial-distribution" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-59"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testbinomial"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-55"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testbinomial"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testBinomial</span>
 
    <span class="o">|</span><span class="nv"> gen </span><span class="o">|</span>
@@ -1150,7 +1029,7 @@ full dots stand for 1s.</p>
 <blockquote>
 <div><img alt="../_images/RandomTestDistributions-testBinomial.svg" class="align-center" src="../_images/RandomTestDistributions-testBinomial.svg" /></div></blockquote>
 <p>where</p>
-<span class="target" id="pharo-compiledMethod-60"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randombinomial-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomBinomial, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-56"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randombinomial-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomBinomial, protocol accessing&quot;</span>
 <span class="nf">next</span>
 
    <span class="o">^</span> (<span class="m">1</span> <span class="nf">to:</span> <span class="nv">n</span>)
@@ -1167,7 +1046,7 @@ full dots stand for 1s.</p>
 	package: &#39;Containers-Essentials&#39;
 </pre></div>
 </div>
-<span class="target" id="pharo-compiledMethod-61"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testgeometric"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-57"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testgeometric"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testGeometric</span>
 
    <span class="o">|</span><span class="nv"> gen </span><span class="o">|</span>
@@ -1185,7 +1064,7 @@ full dots stand for 1s.</p>
 <blockquote>
 <div><img alt="../_images/RandomTestDistributions-testGeometric.svg" class="align-center" src="../_images/RandomTestDistributions-testGeometric.svg" /></div></blockquote>
 <p>where</p>
-<span class="target" id="pharo-compiledMethod-62"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomgeometric-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomGeometric, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-58"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomgeometric-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomGeometric, protocol accessing&quot;</span>
 <span class="nf">next</span>
 
    <span class="o">|</span><span class="nv"> failures </span><span class="o">|</span>
@@ -1200,7 +1079,7 @@ full dots stand for 1s.</p>
 </section>
 <section id="the-exponential-distribution">
 <h3><span class="section-number">2.5.5. </span>The <em>exponential</em> distribution<a class="headerlink" href="#the-exponential-distribution" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-63"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testexponential"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-59"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testexponential"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testExponential</span>
 
    <span class="o">|</span><span class="nv"> gen </span><span class="o">|</span>
@@ -1216,7 +1095,7 @@ full dots stand for 1s.</p>
 <blockquote>
 <div><img alt="../_images/RandomTestDistributions-testExponential.svg" class="align-center" src="../_images/RandomTestDistributions-testExponential.svg" /></div></blockquote>
 <p>where</p>
-<span class="target" id="pharo-compiledMethod-64"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomexponential-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomExponential, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-60"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomexponential-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomExponential, protocol accessing&quot;</span>
 <span class="nf">next</span>
 
    <span class="o">^</span> (<span class="m">1</span> <span class="nf">-</span> <span class="bp">super</span> <span class="nf">next</span>) <span class="nf">ln</span> <span class="nf">negated</span> <span class="nf">/</span> <span class="nv">lambda</span>
@@ -1225,7 +1104,7 @@ full dots stand for 1s.</p>
 </section>
 <section id="the-gaussian-distribution">
 <h3><span class="section-number">2.5.6. </span>The <em>gaussian</em> distribution<a class="headerlink" href="#the-gaussian-distribution" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-65"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testgaussian"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-61"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testgaussian"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testGaussian</span>
 
    <span class="o">|</span><span class="nv"> gen </span><span class="o">|</span>
@@ -1241,7 +1120,7 @@ full dots stand for 1s.</p>
 <blockquote>
 <div><img alt="../_images/RandomTestDistributions-testGaussian.svg" class="align-center" src="../_images/RandomTestDistributions-testGaussian.svg" /></div></blockquote>
 <p>where</p>
-<span class="target" id="pharo-compiledMethod-66"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomgaussian-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomGaussian, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-62"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomgaussian-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomGaussian, protocol accessing&quot;</span>
 <span class="nf">next</span>
 
    <span class="o">|</span><span class="nv"> z </span><span class="o">|</span>
@@ -1261,7 +1140,7 @@ full dots stand for 1s.</p>
 <section id="the-bivariate-gaussian-distribution">
 <h3><span class="section-number">2.5.7. </span>The <em>bivariate gaussian</em> distribution<a class="headerlink" href="#the-bivariate-gaussian-distribution" title="Permalink to this headline">¶</a></h3>
 <p>A sample from a <em>bivariate</em> Gaussian distribution can be inspected by</p>
-<span class="target" id="pharo-compiledMethod-67"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testgaussianboxmuller"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-63"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomtestdistributions-testgaussianboxmuller"><div class="highlight"><pre><span></span><span class="c">&quot;RandomTestDistributions, protocol *Containers-Essentials-Tests&quot;</span>
 <span class="nf">testGaussianBoxMuller</span>
 
    <span class="o">|</span><span class="nv"> gen </span><span class="o">|</span>
@@ -1277,7 +1156,7 @@ full dots stand for 1s.</p>
 <blockquote>
 <div><img alt="../_images/RandomTestDistributions-testGaussianBoxMuller.svg" class="align-center" src="../_images/RandomTestDistributions-testGaussianBoxMuller.svg" /></div></blockquote>
 <p>where the message</p>
-<span class="target" id="pharo-compiledMethod-68"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomboxmullerbivariategaussian-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomBoxMullerBivariateGaussian, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-64"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-randomboxmullerbivariategaussian-next"><div class="highlight"><pre><span></span><span class="c">&quot;RandomBoxMullerBivariateGaussian, protocol accessing&quot;</span>
 <span class="nf">next</span>
 
    <span class="o">|</span><span class="nv"> u1 u2 z0 z1 z w </span><span class="o">|</span>
@@ -1290,12 +1169,12 @@ full dots stand for 1s.</p>
    <span class="o">^</span> <span class="nv">z0</span> <span class="nf">@</span> <span class="nv">z1</span>
 </pre></div>
 </div>
-<p>implements the algorithm described in <span id="id13">[<a class="reference internal" href="../bibliography.html#id11" title="G. E. P. Box and Mervin E. Muller. A Note on the Generation of Random Normal Deviates. The Annals of Mathematical Statistics, 29(2):610 – 611, 1958. URL: https://doi.org/10.1214/aoms/1177706645, doi:10.1214/aoms/1177706645.">BM58</a>]</span>.</p>
+<p>implements the algorithm described in <span id="id10">[<a class="reference internal" href="../bibliography.html#id11" title="G. E. P. Box and Mervin E. Muller. A Note on the Generation of Random Normal Deviates. The Annals of Mathematical Statistics, 29(2):610 – 611, 1958. URL: https://doi.org/10.1214/aoms/1177706645, doi:10.1214/aoms/1177706645.">BM58</a>]</span>.</p>
 </section>
 </section>
 <section id="rbnode-hierarchy">
 <h2><span class="section-number">2.6. </span><code class="docutils literal notranslate"><span class="pre">RBNode</span></code> hierarchy<a class="headerlink" href="#rbnode-hierarchy" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="pharo-compiledMethod-69"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testrbnodesubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-65"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testrbnodesubclasses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testRBNodeSubclasses</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportShapeOf:</span> <span class="nc">RBNode</span> <span class="nf">accessorBlock:</span> <span class="ss">#asShapeSubclasses</span>
@@ -1315,7 +1194,7 @@ full dots stand for 1s.</p>
 </pre></div>
 </div>
 <p>evaluates to <code class="docutils literal notranslate"><span class="pre">#t</span></code>; in parallel, our Smalltalk implementation</p>
-<span class="target" id="pharo-compiledMethod-70"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectrbnodesquine"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-66"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectrbnodesquine"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectRBNodesQuine</span>
 
    <span class="o">|</span><span class="nv"> quine aQuineBlock evalBlock </span><span class="o">|</span>
@@ -1354,7 +1233,7 @@ full dots stand for 1s.</p>
           <a href="oo.html" title="Previous document"><span class="section-number">1. </span>Object model</a>
         </li>
         <li>
-          <a href="../symbolic/divisibility.html" title="Next document"><span class="section-number">3. </span>Numbers</a>
+          <a href="../symbolic/bits.html" title="Next document"><span class="section-number">3. </span>Bits</a>
           &rarr;
         </li>
     </ul>

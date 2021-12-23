@@ -47,11 +47,12 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pharo/oo.html">1. Object model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pharo/hierarchies.html">2. Hierarchies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="symbolic/divisibility.html">3. Numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/links.html">4. Links</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/linked-allocation.html">5. Containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">6. Storage pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">7. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbolic/bits.html">3. Bits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbolic/divisibility.html">4. Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/links.html">5. Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/linked-allocation.html">6. Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">7. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">8. Bibliography</a></li>
 </ul>
 
 <div class="relations">
@@ -126,11 +127,10 @@
 <li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#the-character">2.2.1. The character <code class="docutils literal notranslate"><span class="pre">π</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#dateandtime-now">2.2.2. <code class="docutils literal notranslate"><span class="pre">DateAndTime</span></code>, now</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#the-integer-13-in-various-representations">2.2.3. The integer <code class="docutils literal notranslate"><span class="pre">13</span></code> in various representations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#by-karatsuba-multiplication">2.2.4. <span class="math notranslate nohighlight">\({42!}^{2}\)</span> by Karatsuba multiplication</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#the-irrational">2.2.5. The irrational <code class="docutils literal notranslate"><span class="pre">π</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#a-reflective-association">2.2.6. A (reflective) <code class="docutils literal notranslate"><span class="pre">Association</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#some-fractions-with-kisses-by-mediants">2.2.7. Some <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s, with kisses by <em>mediants</em></a></li>
-<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#magnitude-hierarchy-again">2.2.8. <code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy, again</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#the-irrational">2.2.4. The irrational <code class="docutils literal notranslate"><span class="pre">π</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#a-reflective-association">2.2.5. A (reflective) <code class="docutils literal notranslate"><span class="pre">Association</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#some-fractions-with-kisses-by-mediants">2.2.6. Some <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s, with kisses by <em>mediants</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pharo/hierarchies.html#magnitude-hierarchy-again">2.2.7. <code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> hierarchy, again</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pharo/hierarchies.html#link-hierarchy">2.3. <code class="docutils literal notranslate"><span class="pre">Link</span></code> hierarchy</a></li>
@@ -166,59 +166,73 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="symbolic/divisibility.html">3. Numbers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="symbolic/divisibility.html#bit-wizardry">3.1. Bit wizardry</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#average-without-overflow">3.1.1. Average without overflow</a></li>
-<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#toggling-between-values">3.1.2. Toggling between values</a></li>
-<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#next-or-previous-even-or-odd-value">3.1.3. Next or previous even or odd value</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="symbolic/divisibility.html#horner-s-rule">3.2. Horner’s rule</a></li>
-<li class="toctree-l2"><a class="reference internal" href="symbolic/divisibility.html#quotients-and-remainders">3.3. Quotients and remainders</a></li>
-<li class="toctree-l2"><a class="reference internal" href="symbolic/divisibility.html#greatest-common-divisor">3.4. Greatest Common Divisor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="symbolic/divisibility.html#diophantine-equations">3.5. Diophantine equations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#coprimes">3.5.1. Coprimes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#mathbb-z-17-field">3.5.2. <span class="math notranslate nohighlight">\(\mathbb{Z}_{17}\)</span> field</a></li>
-<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#gcd-f-n-f-n-1-where-f-n-is-the-n-th-fibonacci-number">3.5.3. <span class="math notranslate nohighlight">\(GCD(f_{n}, f_{n+1})\)</span>, where <span class="math notranslate nohighlight">\(f_{n}\)</span> is the <span class="math notranslate nohighlight">\(n\)</span>-th Fibonacci number</a></li>
-<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#kissing-fractions">3.5.4. Kissing <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="symbolic/divisibility.html#skew-binary-canonical-sparse-representation">3.6. <em>Skew Binary Canonical</em> sparse representation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/links.html">4. Links</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="linked-allocation/links.html#link-objects">4.1. <code class="docutils literal notranslate"><span class="pre">Link</span></code> objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linked-allocation/links.html#valuelink-objects">4.2. <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="linked-allocation/links.html#topological-sorting">4.2.1. Topological sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbolic/bits.html">3. Bits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="symbolic/bits.html#wizardry">3.1. Wizardry</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="symbolic/bits.html#average-without-overflow">3.1.1. Average without overflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symbolic/bits.html#toggling-between-values">3.1.2. Toggling between values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symbolic/bits.html#next-or-previous-even-or-odd-value">3.1.3. Next or previous even or odd value</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/linked-allocation.html">5. Containers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="linked-allocation/linked-allocation.html#lists">5.1. Lists</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#linked">5.1.1. Linked</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbolic/divisibility.html">4. Numbers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="symbolic/divisibility.html#fibonacci-numbers">4.1. Fibonacci numbers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#exponential-implementation">4.1.1. Exponential implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#memoized-implementation">4.1.2. Memoized implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#tail-call-implementation">4.1.3. Tail-call implementation</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="linked-allocation/linked-allocation.html#trees">5.2. Trees</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#search-sets">5.2.1. <em>Search</em> sets</a></li>
-<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#red-black-sets">5.2.2. <em>Red-Black</em> sets</a></li>
-<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#leftist-heaps">5.2.3. <em>Leftist</em> heaps</a></li>
-<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#binomial-heaps">5.2.4. <em>Binomial</em> heaps</a></li>
-<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#splay-heaps">5.2.5. <em>Splay</em> heaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symbolic/divisibility.html#multiplication">4.2. Multiplication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#horner-s-method">4.2.1. <em>Horner</em>'s method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#estrin-s-method">4.2.2. <em>Estrin</em>'s method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#karatsuba-s-method">4.2.3. <em>Karatsuba</em>'s method</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="symbolic/divisibility.html#quotients-and-remainders">4.3. Quotients and remainders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symbolic/divisibility.html#greatest-common-divisor">4.4. Greatest Common Divisor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symbolic/divisibility.html#diophantine-equations">4.5. Diophantine equations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#coprimes">4.5.1. Coprimes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#mathbb-z-17-field">4.5.2. <span class="math notranslate nohighlight">\(\mathbb{Z}_{17}\)</span> field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#gcd-f-n-f-n-1-where-f-n-is-the-n-th-fibonacci-number">4.5.3. <span class="math notranslate nohighlight">\(GCD(f_{n}, f_{n+1})\)</span>, where <span class="math notranslate nohighlight">\(f_{n}\)</span> is the <span class="math notranslate nohighlight">\(n\)</span>-th Fibonacci number</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symbolic/divisibility.html#kissing-fractions">4.5.4. Kissing <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="symbolic/divisibility.html#skew-binary-canonical-sparse-representation">4.6. <em>Skew Binary Canonical</em> sparse representation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/links.html">5. Links</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="linked-allocation/links.html#link-objects">5.1. <code class="docutils literal notranslate"><span class="pre">Link</span></code> objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linked-allocation/links.html#valuelink-objects">5.2. <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="linked-allocation/links.html#topological-sorting">5.2.1. Topological sorting</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">6. Storage pools</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="linked-allocation/storage-pools.html#stack-pool">6.1. <code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linked-allocation/storage-pools.html#queue-pool">6.2. <code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linked-allocation/storage-pools.html#circularlist-pool">6.3. <code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="linked-allocation/storage-pools.html#addition-of-polynomials">6.3.1. Addition of <em>polynomials</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/linked-allocation.html">6. Containers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="linked-allocation/linked-allocation.html#lists">6.1. Lists</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#linked">6.1.1. Linked</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="linked-allocation/linked-allocation.html#trees">6.2. Trees</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#search-sets">6.2.1. <em>Search</em> sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#red-black-sets">6.2.2. <em>Red-Black</em> sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#leftist-heaps">6.2.3. <em>Leftist</em> heaps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#binomial-heaps">6.2.4. <em>Binomial</em> heaps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="linked-allocation/linked-allocation.html#splay-heaps">6.2.5. <em>Splay</em> heaps</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">7. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">7. Storage pools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="linked-allocation/storage-pools.html#stack-pool">7.1. <code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linked-allocation/storage-pools.html#queue-pool">7.2. <code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linked-allocation/storage-pools.html#circularlist-pool">7.3. <code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="linked-allocation/storage-pools.html#addition-of-polynomials">7.3.1. Addition of <em>polynomials</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">8. Bibliography</a></li>
 </ul>
 </div>
 <p>Moreover, have a look at the <a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a>.</p>

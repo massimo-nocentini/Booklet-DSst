@@ -14,6 +14,7 @@ Data Structures in Smalltalk
 
    pharo/oo.rst
    pharo/hierarchies.rst
+   symbolic/bits.rst
    symbolic/divisibility.rst
    linked-allocation/links.rst
    linked-allocation/linked-allocation.rst

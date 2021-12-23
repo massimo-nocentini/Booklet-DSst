@@ -2,50 +2,69 @@
 Numbers
 *******
 
-Bit wizardry
-============
+Fibonacci numbers
+=================
 
-The following manipulation have been adapted from :cite:`10.5555/1941953`.
+.. index::
+  single: Sequence diagrams; Fibonacci numbers, exponential
 
-Average without overflow
-++++++++++++++++++++++++
+Exponential implementation
+++++++++++++++++++++++++++
 
-.. pharo:autocompiledmethod:: Integer>>#bitAverage:
-.. pharo:autocompiledmethod:: IntegerTest>>#testBitAverage
+Let
 
-Toggling between values
+.. pharo:autocompiledmethod:: Integer>>#slowFibonacci
+
+in
+
+.. pharo:autocompiledmethod:: MWVisualizationsTest>>#testProfileSlowFibonacciWithAdd
+
+  .. image:: ../../../../bauing-schmidt/MethodWrappers/images/MWVisualizationsTest-testProfileSlowFibonacciWithAdd-sequence-diagram.svg
+    :align: center
+
+.. index::
+  single: Sequence diagrams; Fibonacci numbers, additions
+
+Moreover, we can inspect the sequence of *additions* that are performed,
+
+.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MWVisualizationsTest-testProfileSlowFibonacciWithAddOnly-sequence-diagram.svg
+    :align: center
+
+.. index::
+  single: Sequence diagrams; Fibonacci numbers, memoized
+
+Memoized implementation
 +++++++++++++++++++++++
 
-.. pharo:autocompiledmethod:: Integer>>#bitToggle:do:
-.. pharo:autocompiledmethod:: IntegerTest>>#testBitToggleDo
-.. pharo:autocompiledmethod:: IntegerTest>>#testBitToggleDo1
+To take the exponential complexity of the previous implementation we can use either memoization,
 
-Next or previous even or odd value
-++++++++++++++++++++++++++++++++++
+.. pharo:autocompiledmethod:: MWVisualizationsTest>>#testProfileSlowFibonacciMemoingWithAdd
 
-.. pharo:autocompiledmethod:: Integer>>#previousEven
-.. pharo:autocompiledmethod:: IntegerTest>>#testPreviousEven
-.. pharo:autocompiledmethod:: Integer>>#nextEven
-.. pharo:autocompiledmethod:: IntegerTest>>#testNextEven
-.. pharo:autocompiledmethod:: Integer>>#previousOdd
-.. pharo:autocompiledmethod:: IntegerTest>>#testPreviousOdd
-.. pharo:autocompiledmethod:: Integer>>#nextOdd
-.. pharo:autocompiledmethod:: IntegerTest>>#testNextOdd
+  .. image:: ../../../../bauing-schmidt/MethodWrappers/images/MWVisualizationsTest-testProfileSlowFibonacciMemoingWithAdd-sequence-diagram.svg
+    :align: center
 
-The following messages return the unmodified argument if it has the required
-property, else the nearest such value:
+.. index::
+  single: Sequence diagrams; Fibonacci numbers, tail-calls
 
-.. pharo:autocompiledmethod:: Integer>>#previousEvenOrSelf
-.. pharo:autocompiledmethod:: IntegerTest>>#testPreviousEvenOrSelf
-.. pharo:autocompiledmethod:: Integer>>#nextEvenOrSelf
-.. pharo:autocompiledmethod:: IntegerTest>>#testNextEvenOrSelf
-.. pharo:autocompiledmethod:: Integer>>#previousOddOrSelf
-.. pharo:autocompiledmethod:: IntegerTest>>#testPreviousOddOrSelf
-.. pharo:autocompiledmethod:: Integer>>#nextOddOrSelf
-.. pharo:autocompiledmethod:: IntegerTest>>#testNextOddOrSelf
+Tail-call implementation
+++++++++++++++++++++++++
 
-Horner's rule
-=============
+Or tail-call messages,
+
+.. pharo:autocompiledmethod:: MWVisualizationsTest>>#testProfileSlowFibonacciTailWithAdd
+
+  .. image:: ../../../../bauing-schmidt/MethodWrappers/images/MWVisualizationsTest-testProfileSlowFibonacciTailWithAdd-sequence-diagram.svg
+    :align: center
+
+where
+
+.. pharo:autocompiledmethod:: Integer>>#slowFibonacci:tail:
+
+Multiplication
+==============
+
+*Horner*\'s method
+++++++++++++++++++
 
 Let
 
@@ -59,11 +78,109 @@ in
     :align: center
 
 .. index::
-  single: Sequence diagrams; Horner's rule
+  single: Sequence diagrams; Horner's method
 
 that admits the profiling,
 
 .. image:: ../../../../bauing-schmidt/MethodWrappers/images/MWVisualizationsTest-testSequenceableCollectionHornerInit-sequence-diagram.svg
+  :align: center
+
+.. index::
+  single: Divide and Conquer; Estrin's method
+
+*Estrin*\'s method
+++++++++++++++++++
+
+According to :cite:`10.1145/1460361.1460365`, let
+
+.. pharo:autocompiledmethod:: SequenceableCollection>>#estrin:init:
+
+in
+
+.. pharo:autocompiledmethod:: MWVisualizationsTest>>#testSequenceableCollectionEstrinInit
+
+  .. image:: ../../../../bauing-schmidt/MethodWrappers/images/MWVisualizationsTest-testSequenceableCollectionEstrinInit.svg
+    :align: center
+
+.. index::
+  single: Sequence diagrams; Estrin's method
+
+where 
+
+.. pharo:autocompiledmethod:: SequenceableCollection>>#estrin:
+
+admits the profiling,
+
+.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MWVisualizationsTest-testSequenceableCollectionEstrinInit-sequence-diagram.svg
+  :align: center
+
+.. index::
+  single: Divide and Conquer; Karatsuba's method
+
+*Karatsuba*\'s method
++++++++++++++++++++++
+
+After the post :cite:`sven/speeding-up-factorial`, here we explore another large integer
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectLargeInteger
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectLargeInteger.svg
+    :align: center
+
+where the message
+
+.. pharo:autocompiledmethod:: Integer>>#dcMultiplyInteger:base:
+
+implements the algorithm described in :cite:`10.5555/1051910`, at page 232.
+Such algorithm runs in :math:`O(n^{\log_{2}{3}})` because the input numbers
+:math:`x` and :math:`y`, 
+
+.. math::
+
+  x = x_{a}\cdot 10^{a} + x_{a-1}\cdot 10^{a-1} + \cdots + x_{1}\cdot 10^{1} + x_{0}\cdot 10^{0} \\
+  y = y_{b}\cdot 10^{b} + y_{b-1}\cdot 10^{b-1} + \cdots + y_{1}\cdot 10^{1} + y_{0}\cdot 10^{0} 
+
+and let :math:`n = \max(a, b)`, are broken in *two* parts
+
+.. math::
+
+  x = x_{1}\cdot 10^{{{n}\over{2}}} + x_{0} \\
+  y = y_{1}\cdot 10^{{{n}\over{2}}} + y_{0}
+
+respectively, and there are *three* recursive ``#dcMultiplyInteger:base:`` message sends.
+The implementation follows from both the fact
+
+.. math::
+
+  x\,y = x_{1}\,y_{1}\cdot 10^{n} + (x_{1}\,y_{0} + x_{0}\,y_{1})\cdot 10^{{{n}\over{2}}} + x_{0}\,y_{0}
+
+and 
+
+.. math::
+
+  (x_{1} + x_{0})\,(y_{1} + y_{0}) = x_{1}\,y_{1} + \left(x_{1}\,y_{0} + x_{0}\,y_{1}\right) + x_{0}\,y_{0}
+
+respectively, more references can also be found in
+:cite:`wikipedia/Karatsuba-algorithm`. Two auxiliary messages
+
+.. pharo:autocompiledmethod:: Integer>>#halves:base:
+
+and
+
+.. pharo:autocompiledmethod:: Integer>>#halves:at:digits:base:
+
+helps the recursive message. 
+
+.. index::
+  single: Sequence diagrams; Karatsuba's method
+
+A complete profiling of :math:`835 \cdot 714` using this technique looks like
+
+..
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectLargeIntegerProfiled-contexts-tree.svg
+    :align: center
+
+.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MWVisualizationsTest-testInspectLargeIntegerProfiled-sequence-diagram.svg
   :align: center
 
 Quotients and remainders
