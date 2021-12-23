@@ -63,8 +63,9 @@ BaselineOfBookletDSst >> runAllTests [
 	'Containers-LinkedStoragePool-Tests'.
 	'Containers-RedBlackSet-Tests'. 'Containers-BinomialHeap-Tests'.
 	'Containers-BinaryTreeAbstract-Tests'.
-	'Containers-LeftistHeap-Tests'. 'Containers-SplayHeap-Tests' } do: [ 
-		:each | each asPackage testSuite run ].
+	'Containers-LeftistHeap-Tests'. 'Containers-SplayHeap-Tests'.
+	'MethodWrappers-Tests-Visualizations' } do: [ :each | 
+		each asPackage testSuite run ].
 
 	self inform: thisContext method name , ' has finished.'
 ]
@@ -106,7 +107,6 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     testInspectIceRepository testInspectIceRepositoryCommitsGraph
 			     testInspectOneToMany testInspectPascalArray
 			     testInspectCatalanArray testInspectLargeInteger
-			     testInspectLargeIntegerProfiled testSequenceableCollectionHornerInit
 			     testLinkSubclasses testInspectSkewBinaryCanonicalSparse );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'core-messages.json' ]
@@ -135,8 +135,8 @@ BaselineOfBookletDSst >> scriptNumbersForDoc [
 	<script: 'BaselineOfBookletDSst new scriptNumbersForDoc'>
 	^ MetaSTExporter new
 		  selectors:
-			  #( #horner:init: bitAverage: #bitToggle:do: previousEven
-			     previousEvenOrSelf previousOdd previousOddOrSelf
+			  #( #horner:init: estrin: #estrin:init: bitAverage: #bitToggle:do:
+			     previousEven previousEvenOrSelf previousOdd previousOddOrSelf
 			     nextEven nextEvenOrSelf nextOdd nextOddOrSelf testBitAverage
 			     testBitToggleDo testBitToggleDo1 testPreviousEven
 			     testPreviousEvenOrSelf testNextEven testNextEvenOrSelf
@@ -194,13 +194,21 @@ BaselineOfBookletDSst >> scriptSymbolicDivisibilityForDoc [
 	<script: 'BaselineOfBookletDSst new scriptSymbolicDivisibilityForDoc'>
 	^ MetaSTExporter new
 		  selectors:
-			  #( initialize /% /%~ /%< >|< quoRemInteger: quoRemComplementaryInteger:
+			  #( slowFibonacci #slowFibonacci:tail: initialize /% /%~ /%< >|<
+			     quoRemInteger: quoRemComplementaryInteger:
 			     quoRemMinimalInteger: #a:b: #testStandardQuoRem21Over9
 			     testComplementaryQuoRem21Over9 testComplementaryQuoRem9Over21
 			     testQuoRem9Over21 testQuoRemMinimal9Over21
 			     testGCDof9and21 testGCDof12and21 testGCDof83and71
 			     testGCDofZ17 testGCDofMultiplicativeInversesInZ17
-			     testGCDofAdjacentFibonacciNumbers );
+			     testGCDofAdjacentFibonacciNumbers
+			     testInspectLargeIntegerProfiled
+			     testSequenceableCollectionHornerInit
+			     testSequenceableCollectionEstrinInit
+			     testProfileSlowFibonacciWithAdd
+			     testProfileSlowFibonacciWithAddOnly
+			     testProfileSlowFibonacciMemoingWithAdd
+			     testProfileSlowFibonacciTailWithAdd );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'symbolic-divisibility.json' ]
 		  ofPackage: self class package
