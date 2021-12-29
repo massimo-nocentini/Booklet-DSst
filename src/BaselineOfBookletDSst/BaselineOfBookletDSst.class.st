@@ -194,8 +194,8 @@ BaselineOfBookletDSst >> scriptSymbolicDivisibilityForDoc [
 	<script: 'BaselineOfBookletDSst new scriptSymbolicDivisibilityForDoc'>
 	^ MetaSTExporter new
 		  selectors:
-			  #( slowFibonacci #slowFibonacci:tail: initialize /% /%~ /%< >|<
-			     quoRemInteger: quoRemComplementaryInteger:
+			  #( slowFibonacci #slowFibonacci:tail: #slowFibonacciMemo:
+			     initialize /% /%~ /%< >|< quoRemInteger: quoRemComplementaryInteger:
 			     quoRemMinimalInteger: #a:b: #testStandardQuoRem21Over9
 			     testComplementaryQuoRem21Over9 testComplementaryQuoRem9Over21
 			     testQuoRem9Over21 testQuoRemMinimal9Over21
