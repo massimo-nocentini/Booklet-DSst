@@ -143,7 +143,8 @@
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">&lt;</span> <span class="m">2</span>
         <span class="nb">ifTrue:</span> [ <span class="bp">self</span> ]
-        <span class="nb">ifFalse:</span> [ (<span class="bp">self</span> <span class="nf">-</span> <span class="m">1</span>) <span class="nf">slowFibonacci</span> <span class="nf">add:</span> (<span class="bp">self</span> <span class="nf">-</span> <span class="m">2</span>) <span class="nf">slowFibonacci</span> ]
+        <span class="nb">ifFalse:</span> [ 
+        (<span class="bp">self</span> <span class="nf">-</span> <span class="m">1</span>) <span class="nf">slowFibonacci</span> <span class="nf">addNumber:</span> (<span class="bp">self</span> <span class="nf">-</span> <span class="m">2</span>) <span class="nf">slowFibonacci</span> ]
 </pre></div>
 </div>
 <p>in</p>
@@ -201,29 +202,31 @@
 <span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-mwvisualizationstest-testprofileslowfibonaccimemoingwithadd"><div class="highlight"><pre><span></span><span class="c">&quot;MWVisualizationsTest, protocol tests&quot;</span>
 <span class="nf">testProfileSlowFibonacciMemoingWithAdd</span>
 
-   <span class="o">|</span><span class="nv"> handlerCounting handler tree result handlerExecution metadata presenter </span><span class="o">|</span>
+   <span class="o">|</span><span class="nv"> tree result handlerExecution metadata presenter handlerCopying </span><span class="o">|</span>
    <span class="nv">tree</span> <span class="o">:=</span> <span class="nc">CTOrderPreservingTree</span> <span class="nb">new</span><span class="p">.</span>
-
-   <span class="nv">handlerCounting</span> <span class="o">:=</span> <span class="nc">MWHandlerCounting</span> <span class="nb">new</span><span class="p">.</span>
 
    <span class="nv">handlerExecution</span> <span class="o">:=</span> <span class="nc">MWHandlerProfiling</span> <span class="nb">new</span>
                           <span class="nf">tree:</span> <span class="nv">tree</span><span class="p">;</span>
                           <span class="nf">yourself</span><span class="p">.</span>
 
-   <span class="nv">handler</span> <span class="o">:=</span> <span class="nc">MWHandlerMemoing</span> <span class="nb">new</span>
-                 <span class="nf">handler:</span> <span class="nv">handlerExecution</span><span class="p">;</span>
-                 <span class="nf">yourself</span><span class="p">.</span>
+   <span class="nv">handlerCopying</span> <span class="o">:=</span> <span class="nc">MWHandlerReceiverArgumentsCopying</span> <span class="nb">new</span>
+                        <span class="nf">handler:</span> <span class="nv">handlerExecution</span><span class="p">;</span>
+                        <span class="nf">yourself</span><span class="p">.</span>
 
-   <span class="nv">result</span> <span class="o">:=</span> (<span class="nc">MWSession</span> <span class="nf">withAllImplementations:</span> { (<span class="nc">Number</span> <span class="nf">&gt;&gt;</span> <span class="ss">#add:</span>) })
-                <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">each</span> <span class="nf">handler:</span> <span class="nv">handler</span> ]<span class="p">;</span>
+   <span class="nv">result</span> <span class="o">:=</span> <span class="nc">MWSession</span> <span class="nb">new</span>
                 <span class="nf">add:</span> (<span class="nc">MWDecorator</span> <span class="nb">new</span>
-                       <span class="nf">compiledMethod:</span> <span class="nc">Integer</span> <span class="nf">&gt;&gt;</span> <span class="ss">#slowFibonacci</span><span class="p">;</span>
-                       <span class="nf">handler:</span> <span class="nv">handler</span><span class="p">;</span>
+                       <span class="nf">compiledMethod:</span> <span class="nc">Integer</span> <span class="nf">&gt;&gt;</span> <span class="ss">#slowFibonacciMemo:</span><span class="p">;</span>
+                       <span class="nf">handler:</span> <span class="nv">handlerCopying</span><span class="p">;</span>
                        <span class="nf">yourself</span>)<span class="p">;</span>
-                <span class="nf">value:</span> [ <span class="m">10</span> <span class="nf">slowFibonacci</span> ]<span class="p">.</span>
+                <span class="nf">add:</span> (<span class="nc">MWDecorator</span> <span class="nb">new</span>
+                       <span class="nf">compiledMethod:</span> <span class="nc">Number</span> <span class="nf">&gt;&gt;</span> <span class="ss">#addNumber:</span><span class="p">;</span>
+                       <span class="nf">handler:</span> <span class="nv">handlerExecution</span><span class="p">;</span>
+                       <span class="nf">yourself</span>)<span class="p">;</span>
+                <span class="nf">value:</span> [ <span class="m">6</span> <span class="nf">slowFibonacciMemo:</span> <span class="nc">Dictionary</span> <span class="nb">new</span> ]<span class="p">.</span>
 
    <span class="nv">metadata</span> <span class="o">:=</span> <span class="nc">IdentityDictionary</span> <span class="nb">new</span><span class="p">.</span>
    <span class="nv">handlerExecution</span> <span class="nf">metadata:</span> <span class="nv">metadata</span><span class="p">.</span>
+   <span class="nv">handlerCopying</span> <span class="nf">metadata:</span> <span class="nv">metadata</span><span class="p">.</span>
 
    <span class="c">&quot;Show here the new presenter.&quot;</span>
    <span class="nv">presenter</span> <span class="o">:=</span> (<span class="nc">MWSpPresenter</span> <span class="nf">on:</span> <span class="nv">tree</span> <span class="nf">-&gt;</span> <span class="nv">metadata</span>)
@@ -232,8 +235,8 @@
                    <span class="nf">yourself</span><span class="p">.</span>
 
    <span class="bp">self</span>
-      <span class="nf">assert:</span> <span class="nv">tree</span> <span class="nf">size</span> <span class="nf">equals:</span> <span class="m">28</span><span class="p">;</span>
-      <span class="nf">assert:</span> <span class="nv">result</span> <span class="nf">equals:</span> <span class="m">11</span> <span class="nf">fibonacciNumbers</span> <span class="nf">last</span><span class="p">.</span>
+      <span class="nf">assert:</span> <span class="nv">tree</span> <span class="nf">size</span> <span class="nf">equals:</span> <span class="m">16</span><span class="p">;</span>
+      <span class="nf">assert:</span> <span class="nv">result</span> <span class="nf">equals:</span> <span class="m">7</span> <span class="nf">fibonacciNumbers</span> <span class="nf">last</span><span class="p">.</span>
 
    <span class="bp">self</span>
       <span class="nf">export:</span> <span class="nv">tree</span>
@@ -243,11 +246,23 @@
 </div>
 <blockquote>
 <div><img alt="../_images/MWVisualizationsTest-testProfileSlowFibonacciMemoingWithAdd-sequence-diagram.svg" class="align-center" src="../_images/MWVisualizationsTest-testProfileSlowFibonacciMemoingWithAdd-sequence-diagram.svg" /></div></blockquote>
+<p>where</p>
+<span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-slowfibonaccimemo"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="nf">slowFibonacciMemo:</span> <span class="nv">aDictionary</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">&lt;</span> <span class="m">2</span>
+        <span class="nb">ifTrue:</span> [ <span class="bp">self</span> ]
+        <span class="nb">ifFalse:</span> [ 
+           <span class="nv">aDictionary</span> <span class="nf">at:</span> <span class="bp">self</span> <span class="nf">ifAbsentPut:</span> [ 
+              (<span class="bp">self</span> <span class="nf">-</span> <span class="m">1</span> <span class="nf">slowFibonacciMemo:</span> <span class="nv">aDictionary</span>) <span class="nf">addNumber:</span>
+                 (<span class="bp">self</span> <span class="nf">-</span> <span class="m">2</span> <span class="nf">slowFibonacciMemo:</span> <span class="nv">aDictionary</span>) ] ]
+</pre></div>
+</div>
 </section>
 <section id="tail-call-implementation">
 <span id="index-3"></span><h3><span class="section-number">4.1.3. </span>Tail-call implementation<a class="headerlink" href="#tail-call-implementation" title="Permalink to this headline">¶</a></h3>
 <p>Or tail-call messages,</p>
-<span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-mwvisualizationstest-testprofileslowfibonaccitailwithadd"><div class="highlight"><pre><span></span><span class="c">&quot;MWVisualizationsTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-4"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-mwvisualizationstest-testprofileslowfibonaccitailwithadd"><div class="highlight"><pre><span></span><span class="c">&quot;MWVisualizationsTest, protocol tests&quot;</span>
 <span class="nf">testProfileSlowFibonacciTailWithAdd</span>
 
    <span class="o">|</span><span class="nv"> wrapper handlerExecution tree metadata result wrapperAdd presenter </span><span class="o">|</span>
@@ -263,14 +278,14 @@
                  <span class="nf">yourself</span><span class="p">.</span>
 
    <span class="nv">wrapperAdd</span> <span class="o">:=</span> <span class="nc">MWDecorator</span> <span class="nb">new</span>
-                    <span class="nf">compiledMethod:</span> <span class="nc">Number</span> <span class="nf">&gt;&gt;</span> <span class="ss">#add:</span><span class="p">;</span>
+                    <span class="nf">compiledMethod:</span> <span class="nc">Number</span> <span class="nf">&gt;&gt;</span> <span class="ss">#addNumber:</span><span class="p">;</span>
                     <span class="nf">handler:</span> <span class="nv">handlerExecution</span><span class="p">;</span>
                     <span class="nf">yourself</span><span class="p">.</span>
 
    <span class="nv">result</span> <span class="o">:=</span> <span class="nc">MWSession</span> <span class="nb">new</span>
                 <span class="nf">add:</span> <span class="nv">wrapper</span><span class="p">;</span>
                 <span class="nf">add:</span> <span class="nv">wrapperAdd</span><span class="p">;</span>
-                <span class="nf">value:</span> [ <span class="m">10</span> <span class="nf">slowFibonacci:</span> <span class="m">0</span> <span class="nf">tail:</span> <span class="m">1</span> ]<span class="p">.</span>
+                <span class="nf">value:</span> [ <span class="m">6</span> <span class="nf">slowFibonacci:</span> <span class="m">0</span> <span class="nf">tail:</span> <span class="m">1</span> ]<span class="p">.</span>
 
    <span class="nv">metadata</span> <span class="o">:=</span> <span class="nc">IdentityDictionary</span> <span class="nb">new</span><span class="p">.</span>
    <span class="nv">handlerExecution</span> <span class="nf">metadata:</span> <span class="nv">metadata</span><span class="p">.</span>
@@ -282,8 +297,8 @@
                    <span class="nf">yourself</span><span class="p">.</span>
 
    <span class="bp">self</span>
-      <span class="nf">assert:</span> <span class="nv">tree</span> <span class="nf">size</span> <span class="nf">equals:</span> <span class="m">21</span><span class="p">;</span>
-      <span class="nf">assert:</span> <span class="nv">result</span> <span class="nf">equals:</span> <span class="m">11</span> <span class="nf">fibonacciNumbers</span> <span class="nf">last</span><span class="p">.</span>
+      <span class="nf">assert:</span> <span class="nv">tree</span> <span class="nf">size</span> <span class="nf">equals:</span> <span class="m">13</span><span class="p">;</span>
+      <span class="nf">assert:</span> <span class="nv">result</span> <span class="nf">equals:</span> <span class="m">7</span> <span class="nf">fibonacciNumbers</span> <span class="nf">last</span><span class="p">.</span>
 
    <span class="bp">self</span>
       <span class="nf">export:</span> <span class="nv">tree</span>
@@ -294,11 +309,11 @@
 <blockquote>
 <div><img alt="../_images/MWVisualizationsTest-testProfileSlowFibonacciTailWithAdd-sequence-diagram.svg" class="align-center" src="../_images/MWVisualizationsTest-testProfileSlowFibonacciTailWithAdd-sequence-diagram.svg" /></div></blockquote>
 <p>where</p>
-<span class="target" id="pharo-compiledMethod-4"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-slowfibonacci-tail"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-5"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-slowfibonacci-tail"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">slowFibonacci:</span> <span class="nv">a</span> <span class="nf">tail:</span> <span class="nv">b</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">&gt;</span> <span class="m">0</span>
-        <span class="nb">ifTrue:</span> [ <span class="bp">self</span> <span class="nf">-</span> <span class="m">1</span> <span class="nf">slowFibonacci:</span> <span class="nv">b</span> <span class="nf">tail:</span> (<span class="nv">a</span> <span class="nf">add:</span> <span class="nv">b</span>) ]
+        <span class="nb">ifTrue:</span> [ <span class="bp">self</span> <span class="nf">-</span> <span class="m">1</span> <span class="nf">slowFibonacci:</span> <span class="nv">b</span> <span class="nf">tail:</span> (<span class="nv">a</span> <span class="nf">addNumber:</span> <span class="nv">b</span>) ]
         <span class="nb">ifFalse:</span> [ <span class="nv">a</span> ]
 </pre></div>
 </div>
@@ -309,7 +324,7 @@
 <section id="horner-s-method">
 <h3><span class="section-number">4.2.1. </span><em>Horner</em>'s method<a class="headerlink" href="#horner-s-method" title="Permalink to this headline">¶</a></h3>
 <p>Let</p>
-<span class="target" id="pharo-compiledMethod-5"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-horner-init"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-horner-init"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-Essentials&quot;</span>
 <span class="nf">horner:</span> <span class="nv">base</span> <span class="nf">init:</span> <span class="nv">init</span>
 
    <span class="o">^</span> <span class="bp">self</span>
@@ -318,7 +333,7 @@
 </pre></div>
 </div>
 <p>in</p>
-<span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-mwvisualizationstest-testsequenceablecollectionhornerinit"><div class="highlight"><pre><span></span><span class="c">&quot;MWVisualizationsTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-mwvisualizationstest-testsequenceablecollectionhornerinit"><div class="highlight"><pre><span></span><span class="c">&quot;MWVisualizationsTest, protocol tests&quot;</span>
 <span class="nf">testSequenceableCollectionHornerInit</span>
 
    <span class="o">|</span><span class="nv"> tree metadata result handlerExecution handlerCopying presenter </span><span class="o">|</span>
@@ -368,7 +383,7 @@
 <section id="estrin-s-method">
 <span id="index-5"></span><h3><span class="section-number">4.2.2. </span><em>Estrin</em>'s method<a class="headerlink" href="#estrin-s-method" title="Permalink to this headline">¶</a></h3>
 <p>According to <span id="id1">[<a class="reference internal" href="../bibliography.html#id20" title="Gerald Estrin. Organization of computer systems: the fixed plus variable structure computer. In Papers Presented at the May 3-5, 1960, Western Joint IRE-AIEE-ACM Computer Conference, 33–40. New York, NY, USA, 1960. Association for Computing Machinery. doi:10.1145/1460361.1460365.">Est60</a>]</span>, let</p>
-<span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-estrin-init"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-estrin-init"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-Essentials&quot;</span>
 <span class="nf">estrin:</span> <span class="nv">base</span> <span class="nf">init:</span> <span class="nv">init</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">ifEmpty:</span> [ <span class="nv">init</span> ] <span class="nf">ifNotEmpty:</span> [ 
@@ -390,7 +405,7 @@
 </pre></div>
 </div>
 <p>in</p>
-<span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-mwvisualizationstest-testsequenceablecollectionestrininit"><div class="highlight"><pre><span></span><span class="c">&quot;MWVisualizationsTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-9"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-mwvisualizationstest-testsequenceablecollectionestrininit"><div class="highlight"><pre><span></span><span class="c">&quot;MWVisualizationsTest, protocol tests&quot;</span>
 <span class="nf">testSequenceableCollectionEstrinInit</span>
 
    <span class="o">|</span><span class="nv"> tree metadata result handlerExecution handlerCopying presenter </span><span class="o">|</span>
@@ -423,8 +438,8 @@
                    <span class="nf">yourself</span><span class="p">.</span>
 
    <span class="bp">self</span>
-      <span class="nf">assert:</span> <span class="nv">tree</span> <span class="nf">size</span> <span class="nf">equals:</span> <span class="m">13</span><span class="p">;</span>
-      <span class="nf">assert:</span> <span class="nv">result</span> <span class="nf">equals:</span> <span class="m">1356</span><span class="p">.</span>
+      <span class="nf">assert:</span> <span class="nv">tree</span> <span class="nf">size</span> <span class="nf">equals:</span> <span class="m">17</span><span class="p">;</span>
+      <span class="nf">assert:</span> <span class="nv">result</span> <span class="nf">equals:</span> <span class="m">13569</span><span class="p">.</span>
 
    <span class="bp">self</span>
       <span class="nf">export:</span> <span class="nv">tree</span>
@@ -436,7 +451,7 @@
 <blockquote>
 <div><img alt="../_images/MWVisualizationsTest-testSequenceableCollectionEstrinInit.svg" class="align-center" src="../_images/MWVisualizationsTest-testSequenceableCollectionEstrinInit.svg" /></div></blockquote>
 <p id="index-6">where</p>
-<span class="target" id="pharo-compiledMethod-9"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-estrin"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-10"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-estrin"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-Essentials&quot;</span>
 <span class="nf">estrin:</span> <span class="nv">x</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">reversed</span> <span class="nf">estrin:</span> <span class="nv">x</span> <span class="nf">init:</span> <span class="m">0</span>
@@ -447,7 +462,7 @@
 <section id="karatsuba-s-method">
 <span id="index-7"></span><h3><span class="section-number">4.2.3. </span><em>Karatsuba</em>'s method<a class="headerlink" href="#karatsuba-s-method" title="Permalink to this headline">¶</a></h3>
 <p>After the post <span id="id2">[<a class="reference internal" href="../bibliography.html#id13" title="Sven VC. Speeding up factorial computation by changing the order of multiplications. URL: https://medium.com/concerning-pharo/speeding-up-factorial-computation-by-changing-the-order-of-multiplications-f4da3a5576da.">VC</a>]</span>, here we explore another large integer</p>
-<span class="target" id="pharo-compiledMethod-10"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectlargeinteger"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-11"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectlargeinteger"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectLargeInteger</span>
 
    <span class="o">|</span><span class="nv"> large n </span><span class="o">|</span>
@@ -464,7 +479,7 @@
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspectLargeInteger.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectLargeInteger.svg" /></div></blockquote>
 <p>where the message</p>
-<span class="target" id="pharo-compiledMethod-11"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-dcmultiplyinteger-base"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-12"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-dcmultiplyinteger-base"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">dcMultiplyInteger:</span> <span class="nv">anInteger</span> <span class="nf">base:</span> <span class="nv">base</span>
 
    <span class="o">^</span> ((<span class="bp">self</span> <span class="nf">between:</span> <span class="m">0</span> <span class="nf">and:</span> <span class="nv">base</span> <span class="nf">-</span> <span class="m">1</span>) <span class="nf">and:</span> [ 
@@ -525,7 +540,7 @@ The implementation follows from both the fact</p>
 \[(x_{1} + x_{0})\,(y_{1} + y_{0}) = x_{1}\,y_{1} + \left(x_{1}\,y_{0} + x_{0}\,y_{1}\right) + x_{0}\,y_{0}\]</div>
 <p>respectively, more references can also be found in
 <span id="id4">[<a class="reference internal" href="../bibliography.html#id15" title="Wikipedia. Karatsuba algorithm. URL: https://en.wikipedia.org/wiki/Karatsuba_algorithm.">Wik</a>]</span>. Two auxiliary messages</p>
-<span class="target" id="pharo-compiledMethod-12"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-halves-base"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-13"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-halves-base"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">halves:</span> <span class="nv">aBlock</span> <span class="nf">base:</span> <span class="nv">aBase</span>
 
    <span class="o">|</span><span class="nv"> n </span><span class="o">|</span>
@@ -539,7 +554,7 @@ The implementation follows from both the fact</p>
 </pre></div>
 </div>
 <p>and</p>
-<span class="target" id="pharo-compiledMethod-13"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-halves-at-digits-base"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-14"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-halves-at-digits-base"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">halves:</span> <span class="nv">aBlock</span> <span class="nf">at:</span> <span class="nv">l</span> <span class="nf">digits:</span> <span class="nv">n</span> <span class="nf">base:</span> <span class="nv">aBase</span>
 
    <span class="o">|</span><span class="nv"> low high lSucc </span><span class="o">|</span>
@@ -569,7 +584,7 @@ The implementation follows from both the fact</p>
 <section id="quotients-and-remainders">
 <h2><span class="section-number">4.3. </span>Quotients and remainders<a class="headerlink" href="#quotients-and-remainders" title="Permalink to this headline">¶</a></h2>
 <p>Lets divide <span class="math notranslate nohighlight">\(21\)</span> by <span class="math notranslate nohighlight">\(9\)</span>,</p>
-<span class="target" id="pharo-compiledMethod-14"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-teststandardquorem21over9"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-15"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-teststandardquorem21over9"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testStandardQuoRem21Over9</span>
 
    <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
@@ -583,21 +598,21 @@ The implementation follows from both the fact</p>
 <blockquote>
 <div><img alt="../_images/SymbolicIntegerTest-testStandardQuoRem21Over9.svg" class="align-center" src="../_images/SymbolicIntegerTest-testStandardQuoRem21Over9.svg" /></div></blockquote>
 <p>by means of the binary message</p>
-<span class="target" id="pharo-compiledMethod-15"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-16"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">/%</span> <span class="nv">anObject</span>
 
    <span class="o">^</span> <span class="nv">anObject</span> <span class="nf">quoRemInteger:</span> <span class="bp">self</span>
 </pre></div>
 </div>
 <p>that dispatches</p>
-<span class="target" id="pharo-compiledMethod-16"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-quoreminteger"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-17"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-quoreminteger"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">quoRemInteger:</span> <span class="nv">anInteger</span>
 
    <span class="o">^</span> <span class="nc">QuoRemStandard</span> <span class="nf">a:</span> <span class="nv">anInteger</span> <span class="nf">b:</span> <span class="bp">self</span>
 </pre></div>
 </div>
 <p>which instantiate a symbolic <code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> object via the class-side message</p>
-<span class="target" id="pharo-compiledMethod-17"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-quoremcomplementary-class-a-b"><div class="highlight"><pre><span></span><span class="c">&quot;QuoRemComplementary class, protocol as yet unclassified&quot;</span>
+<span class="target" id="pharo-compiledMethod-18"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-quoremcomplementary-class-a-b"><div class="highlight"><pre><span></span><span class="c">&quot;QuoRemComplementary class, protocol as yet unclassified&quot;</span>
 <span class="nf">a:</span> <span class="nv">a</span> <span class="nf">b:</span> <span class="nv">b</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">basicNew</span>
@@ -608,7 +623,7 @@ The implementation follows from both the fact</p>
 </pre></div>
 </div>
 <p>where both the <em>quotient</em> and the <em>remainder</em> are computed in the overridden</p>
-<span class="target" id="pharo-compiledMethod-18"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-quoremstandard-initialize"><div class="highlight"><pre><span></span><span class="c">&quot;QuoRemStandard, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-19"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-quoremstandard-initialize"><div class="highlight"><pre><span></span><span class="c">&quot;QuoRemStandard, protocol accessing&quot;</span>
 <span class="nf">initialize</span>
 
    <span class="bp">super</span> <span class="nf">initialize</span><span class="p">.</span>
@@ -619,7 +634,7 @@ The implementation follows from both the fact</p>
 </div>
 <p>as the usual computation does and the assertion checks in the initial test case.</p>
 <p>The same division can be carried out by</p>
-<span class="target" id="pharo-compiledMethod-19"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testcomplementaryquorem21over9"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-20"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testcomplementaryquorem21over9"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testComplementaryQuoRem21Over9</span>
 
    <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
@@ -633,14 +648,14 @@ The implementation follows from both the fact</p>
 <blockquote>
 <div><img alt="../_images/SymbolicIntegerTest-testComplementaryQuoRem21Over9.svg" class="align-center" src="../_images/SymbolicIntegerTest-testComplementaryQuoRem21Over9.svg" /></div></blockquote>
 <p>that yields a negative remainder, shown by full dots. To do that, we have the following messages chain</p>
-<span class="target" id="pharo-compiledMethod-20"></span><div class="highlight-smalltalk notranslate" id="id5"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-21"></span><div class="highlight-smalltalk notranslate" id="id5"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">/%~</span> <span class="nv">anObject</span>
 
    <span class="o">^</span> <span class="nv">anObject</span> <span class="nf">quoRemComplementaryInteger:</span> <span class="bp">self</span>
 </pre></div>
 </div>
 <p>that dispatches</p>
-<span class="target" id="pharo-compiledMethod-21"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-quoremcomplementaryinteger"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-22"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-quoremcomplementaryinteger"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">quoRemComplementaryInteger:</span> <span class="nv">anInteger</span>
 
    <span class="o">^</span> <span class="nc">QuoRemComplementary</span> <span class="nf">a:</span> <span class="nv">anInteger</span> <span class="nf">b:</span> <span class="bp">self</span>
@@ -654,7 +669,7 @@ The implementation follows from both the fact</p>
 </pre></div>
 </div>
 <p>Both the <em>quotient</em> and the <em>remainder</em> are computed in the initialization message</p>
-<span class="target" id="pharo-compiledMethod-22"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-quoremcomplementary-initialize"><div class="highlight"><pre><span></span><span class="c">&quot;QuoRemComplementary, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-23"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-quoremcomplementary-initialize"><div class="highlight"><pre><span></span><span class="c">&quot;QuoRemComplementary, protocol accessing&quot;</span>
 <span class="nf">initialize</span>
 
    <span class="nv">ratio</span> <span class="o">:=</span> <span class="nv">a</span> <span class="nf">/</span> <span class="nv">b</span><span class="p">.</span>
@@ -666,7 +681,7 @@ The implementation follows from both the fact</p>
 <p>The latter representation is uniform in the sense that it yields a rectangle of dots
 that are stacked horizontally, where the number of rows equals the quotient of the division
 while the number of columns equals the divisor denoted by the instance variable <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
-<span class="target" id="pharo-compiledMethod-23"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testcomplementaryquorem9over21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-24"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testcomplementaryquorem9over21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testComplementaryQuoRem9Over21</span>
 
    <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
@@ -679,7 +694,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 </div>
 <blockquote>
 <div><img alt="../_images/SymbolicIntegerTest-testComplementaryQuoRem9Over21.svg" class="align-center" src="../_images/SymbolicIntegerTest-testComplementaryQuoRem9Over21.svg" /></div></blockquote>
-<span class="target" id="pharo-compiledMethod-24"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testquorem9over21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-25"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testquorem9over21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testQuoRem9Over21</span>
 
    <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
@@ -692,7 +707,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 </div>
 <blockquote>
 <div><img alt="../_images/SymbolicIntegerTest-testQuoRem9Over21.svg" class="align-center" src="../_images/SymbolicIntegerTest-testQuoRem9Over21.svg" /></div></blockquote>
-<span class="target" id="pharo-compiledMethod-25"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testquoremminimal9over21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-26"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testquoremminimal9over21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testQuoRemMinimal9Over21</span>
 
    <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
@@ -708,7 +723,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 </section>
 <section id="greatest-common-divisor">
 <h2><span class="section-number">4.4. </span>Greatest Common Divisor<a class="headerlink" href="#greatest-common-divisor" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="pharo-compiledMethod-26"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdof9and21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-27"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdof9and21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testGCDof9and21</span>
 
    <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
@@ -721,7 +736,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 </div>
 <blockquote>
 <div><img alt="../_images/SymbolicIntegerTest-testGCDof9and21.svg" class="align-center" src="../_images/SymbolicIntegerTest-testGCDof9and21.svg" /></div></blockquote>
-<span class="target" id="pharo-compiledMethod-27"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdof12and21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-28"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdof12and21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testGCDof12and21</span>
 
    <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
@@ -739,7 +754,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 <h2><span class="section-number">4.5. </span>Diophantine equations<a class="headerlink" href="#diophantine-equations" title="Permalink to this headline">¶</a></h2>
 <section id="coprimes">
 <h3><span class="section-number">4.5.1. </span>Coprimes<a class="headerlink" href="#coprimes" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-28"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdof83and71"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-29"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdof83and71"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testGCDof83and71</span>
 
    <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
@@ -755,7 +770,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 </section>
 <section id="mathbb-z-17-field">
 <h3><span class="section-number">4.5.2. </span><span class="math notranslate nohighlight">\(\mathbb{Z}_{17}\)</span> field<a class="headerlink" href="#mathbb-z-17-field" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-29"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdofz17"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-30"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdofz17"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testGCDofZ17</span>
 
    <span class="o">|</span><span class="nv"> field prime interval </span><span class="o">|</span>
@@ -772,7 +787,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 </div>
 <blockquote>
 <div><img alt="../_images/SymbolicIntegerTest-testGCDofZ17.svg" class="align-center" src="../_images/SymbolicIntegerTest-testGCDofZ17.svg" /></div></blockquote>
-<span class="target" id="pharo-compiledMethod-30"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdofmultiplicativeinversesinz17"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-31"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdofmultiplicativeinversesinz17"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testGCDofMultiplicativeInversesInZ17</span>
 
    <span class="o">|</span><span class="nv"> gcds inverses </span><span class="o">|</span>
@@ -789,7 +804,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 </section>
 <section id="gcd-f-n-f-n-1-where-f-n-is-the-n-th-fibonacci-number">
 <h3><span class="section-number">4.5.3. </span><span class="math notranslate nohighlight">\(GCD(f_{n}, f_{n+1})\)</span>, where <span class="math notranslate nohighlight">\(f_{n}\)</span> is the <span class="math notranslate nohighlight">\(n\)</span>-th Fibonacci number<a class="headerlink" href="#gcd-f-n-f-n-1-where-f-n-is-the-n-th-fibonacci-number" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-31"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdofadjacentfibonaccinumbers"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-32"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdofadjacentfibonaccinumbers"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testGCDofAdjacentFibonacciNumbers</span>
 
    <span class="o">|</span><span class="nv"> fibs gcds </span><span class="o">|</span>
@@ -812,7 +827,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 <section id="kissing-fractions">
 <span id="kissing-fractions-diophantine"></span><h3><span class="section-number">4.5.4. </span>Kissing <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s<a class="headerlink" href="#kissing-fractions" title="Permalink to this headline">¶</a></h3>
 <p>Consider the <code class="docutils literal notranslate"><span class="pre">Fraction</span></code></p>
-<span class="target" id="pharo-compiledMethod-32"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfractionforkisses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-33"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfractionforkisses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectFractionForKisses</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="m">4</span> <span class="nf">/</span> <span class="m">17</span>
@@ -821,7 +836,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspectFractionForKisses.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectFractionForKisses.svg" /></div></blockquote>
 <p>which kisses other fractions, by tangents of Ford’s circles</p>
-<span class="target" id="pharo-compiledMethod-33"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfractionkissing"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-34"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfractionkissing"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectFractionKissing</span>
 
    <span class="o">|</span><span class="nv"> aFraction </span><span class="o">|</span>
@@ -842,7 +857,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspectFractionKissing.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectFractionKissing.svg" /></div></blockquote>
 <p>where</p>
-<span class="target" id="pharo-compiledMethod-34"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-fraction-kissingfractions"><div class="highlight"><pre><span></span><span class="c">&quot;Fraction, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-35"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-fraction-kissingfractions"><div class="highlight"><pre><span></span><span class="c">&quot;Fraction, protocol *Containers-Essentials&quot;</span>
 <span class="nf">kissingFractions</span>
 
    <span class="o">|</span><span class="nv"> kissedFractions vl </span><span class="o">|</span>
@@ -873,20 +888,20 @@ while the number of columns equals the divisor denoted by the instance variable 
 </pre></div>
 </div>
 <p>and the polymorphism on <code class="docutils literal notranslate"><span class="pre">#kissingFractionLink:</span></code> reads as follows</p>
-<span class="target" id="pharo-compiledMethod-35"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-fraction-kissingfractionlink"><div class="highlight"><pre><span></span><span class="c">&quot;Fraction, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-36"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-fraction-kissingfractionlink"><div class="highlight"><pre><span></span><span class="c">&quot;Fraction, protocol *Containers-Essentials&quot;</span>
 <span class="nf">kissingFractionLink:</span> <span class="nv">aLink</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">~~&gt;</span> <span class="nv">aLink</span>
 </pre></div>
 </div>
-<span class="target" id="pharo-compiledMethod-36"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-kissingfractionlink"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-37"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-kissingfractionlink"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">kissingFractionLink:</span> <span class="nv">aLink</span>
 
    <span class="o">^</span> <span class="nv">aLink</span>
 </pre></div>
 </div>
 <p>Moreover, consider the reciprocal</p>
-<span class="target" id="pharo-compiledMethod-37"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfractionreciprocalkissing"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-38"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfractionreciprocalkissing"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectFractionReciprocalKissing</span>
 
    <span class="o">|</span><span class="nv"> aFraction </span><span class="o">|</span>
@@ -908,7 +923,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 <section id="skew-binary-canonical-sparse-representation">
 <h2><span class="section-number">4.6. </span><em>Skew Binary Canonical</em> sparse representation<a class="headerlink" href="#skew-binary-canonical-sparse-representation" title="Permalink to this headline">¶</a></h2>
 <p>Using the conversion message</p>
-<span class="target" id="pharo-compiledMethod-38"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-asskewbinarycanonicalsparse"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-39"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-asskewbinarycanonicalsparse"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">asSkewBinaryCanonicalSparse</span>
 
    <span class="o">|</span><span class="nv"> skew </span><span class="o">|</span>
@@ -918,7 +933,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 </pre></div>
 </div>
 <p>we can inspect by means of the test case</p>
-<span class="target" id="pharo-compiledMethod-39"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectskewbinarycanonicalsparse"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-40"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectskewbinarycanonicalsparse"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectSkewBinaryCanonicalSparse</span>
 
    <span class="o">|</span><span class="nv"> skewNumbers backwards </span><span class="o">|</span>
@@ -938,7 +953,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 </pre></div>
 </div>
 <p>that does its asserts using the backward conversion message,</p>
-<span class="target" id="pharo-compiledMethod-40"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-skewbinarycanonicalnumber-asinteger"><div class="highlight"><pre><span></span><span class="c">&quot;SkewBinaryCanonicalNumber, protocol converting&quot;</span>
+<span class="target" id="pharo-compiledMethod-41"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-skewbinarycanonicalnumber-asinteger"><div class="highlight"><pre><span></span><span class="c">&quot;SkewBinaryCanonicalNumber, protocol converting&quot;</span>
 <span class="nf">asInteger</span>
 
    <span class="o">|</span><span class="nv"> value </span><span class="o">|</span>

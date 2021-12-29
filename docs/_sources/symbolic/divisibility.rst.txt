@@ -43,6 +43,10 @@ To take the exponential complexity of the previous implementation we can use eit
   .. image:: ../../../../bauing-schmidt/MethodWrappers/images/MWVisualizationsTest-testProfileSlowFibonacciMemoingWithAdd-sequence-diagram.svg
     :align: center
 
+where
+
+.. pharo:autocompiledmethod:: Integer>>#slowFibonacciMemo:
+
 .. index::
   single: Sequence diagrams; Fibonacci numbers, tail-calls
 

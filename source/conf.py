@@ -84,7 +84,7 @@ html_theme_options = {
     'github_user': 'massimo-nocentini',
     'github_repo': 'Booklet-DSst',
     #'font_family': 'Lucida Grande',
-    'code_font_family': 'Menlo, Monaco, Ubuntu Mono, Consolas',
+    #'code_font_family': 'Menlo, Monaco, Ubuntu Mono, Consolas',
     'code_font_size': '0.8em',
     'show_relbars': True,
     'fixed_sidebar':True,
