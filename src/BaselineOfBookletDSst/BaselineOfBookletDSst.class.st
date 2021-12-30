@@ -21,7 +21,7 @@ BaselineOfBookletDSst >> baseline: spec [
 
 		spec
 			baseline: 'MethodWrappersMN'
-			with: [ spec repository: 'github://bauing-schmidt/MethodWrappers' ].
+			with: [ spec repository: 'github://bauing-schmidt/MethodWrappers:UML-sequence-diagram/' ].
 
 		spec
 			baseline: 'ContainersLinks'
