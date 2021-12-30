@@ -195,12 +195,12 @@ BaselineOfBookletDSst >> scriptSymbolicDivisibilityForDoc [
 	^ MetaSTExporter new
 		  selectors:
 			  #( slowFibonacci #slowFibonacci:tail: #slowFibonacciMemo:
-			     initialize /% /%~ /%< >|< quoRemInteger: quoRemComplementaryInteger:
-			     quoRemMinimalInteger: #a:b: #testStandardQuoRem21Over9
-			     testComplementaryQuoRem21Over9 testComplementaryQuoRem9Over21
-			     testQuoRem9Over21 testQuoRemMinimal9Over21
-			     testGCDof9and21 testGCDof12and21 testGCDof83and71
-			     testGCDofZ17 testGCDofMultiplicativeInversesInZ17
+			     factorialRecursive productTo: initialize /% /%~ /%< >|< quoRemInteger:
+			     quoRemComplementaryInteger: quoRemMinimalInteger:
+			     #a:b: #testStandardQuoRem21Over9 testComplementaryQuoRem21Over9
+			     testComplementaryQuoRem9Over21 testQuoRem9Over21
+			     testQuoRemMinimal9Over21 testGCDof9and21 testGCDof12and21
+			     testGCDof83and71 testGCDofZ17 testGCDofMultiplicativeInversesInZ17
 			     testGCDofAdjacentFibonacciNumbers
 			     testInspectLargeIntegerProfiled
 			     testSequenceableCollectionHornerInit
@@ -208,7 +208,8 @@ BaselineOfBookletDSst >> scriptSymbolicDivisibilityForDoc [
 			     testProfileSlowFibonacciWithAdd
 			     testProfileSlowFibonacciWithAddOnly
 			     testProfileSlowFibonacciMemoingWithAdd
-			     testProfileSlowFibonacciTailWithAdd );
+			     testProfileSlowFibonacciTailWithAdd
+			     testInspectFactorialRecursive testInspectProductTo );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'symbolic-divisibility.json' ]
 		  ofPackage: self class package
