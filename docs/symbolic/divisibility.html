@@ -61,6 +61,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#horner-s-method">4.2.1. <em>Horner</em>'s method</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#estrin-s-method">4.2.2. <em>Estrin</em>'s method</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#karatsuba-s-method">4.2.3. <em>Karatsuba</em>'s method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#factorial-slow-and-fast">4.2.4. Factorial: slow and fast</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#quotients-and-remainders">4.3. Quotients and remainders</a></li>
@@ -580,11 +581,58 @@ The implementation follows from both the fact</p>
 <p>helps the recursive message.</p>
 <p id="index-8">A complete profiling of <span class="math notranslate nohighlight">\(835 \cdot 714\)</span> using this technique looks like</p>
 <img alt="../_images/MWVisualizationsTest-testInspectLargeIntegerProfiled-sequence-diagram.svg" class="align-center" src="../_images/MWVisualizationsTest-testInspectLargeIntegerProfiled-sequence-diagram.svg" /></section>
+<section id="factorial-slow-and-fast">
+<h3><span class="section-number">4.2.4. </span>Factorial: slow and fast<a class="headerlink" href="#factorial-slow-and-fast" title="Permalink to this headline">¶</a></h3>
+<p>According the post <span id="id5">[<a class="reference internal" href="../bibliography.html#id13" title="Sven VC. Speeding up factorial computation by changing the order of multiplications. URL: https://medium.com/concerning-pharo/speeding-up-factorial-computation-by-changing-the-order-of-multiplications-f4da3a5576da.">VC</a>]</span>, we implement the factorial
+function twice in order to compute</p>
+<div class="math notranslate nohighlight">
+\[16! = 20922789888000\]</div>
+<p>On one hand, the slow version follows straightforward from the mathematical definition,</p>
+<span class="target" id="pharo-compiledMethod-15"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-factorialrecursive"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="nf">factorialRecursive</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">&gt;</span> <span class="m">0</span>
+        <span class="nb">ifTrue:</span> [ 
+        <span class="bp">self</span> <span class="nf">multiplyNumber:</span> (<span class="bp">self</span> <span class="nf">subtractNumber:</span> <span class="m">1</span>) <span class="nf">factorialRecursive</span> ]
+        <span class="nb">ifFalse:</span> [ 
+           <span class="bp">self</span> <span class="nf">=</span> <span class="m">0</span>
+              <span class="nb">ifTrue:</span> [ <span class="m">1</span> ]
+              <span class="nb">ifFalse:</span> [ <span class="bp">self</span> <span class="nf">error:</span> <span class="s">&#39;Not valid for negative integers&#39;</span> ] ]
+</pre></div>
+</div>
+<p>and the interactions are</p>
+<img alt="../_images/MWVisualizationsTest-testInspectFactorialRecursive-sequence-diagram.svg" class="align-center" id="index-9" src="../_images/MWVisualizationsTest-testInspectFactorialRecursive-sequence-diagram.svg" /><p>On the other hand, the fast version uses a divide and conquer approach,</p>
+<span class="target" id="pharo-compiledMethod-16"><span id="index-10"></span></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-productto"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="nf">productTo:</span> <span class="nv">upper</span>
+
+   <span class="c">&quot;Return the product of all integers between </span>
+<span class="c">   the receiver (exclusive) and upper (inclusive).&quot;</span>
+
+   <span class="o">|</span><span class="nv"> delta product middle </span><span class="o">|</span>
+   <span class="nv">delta</span> <span class="o">:=</span> <span class="nv">upper</span> <span class="nf">subtractNumber:</span> <span class="bp">self</span><span class="p">.</span>
+   <span class="o">^</span> <span class="nv">delta</span> <span class="nf">&lt;=</span> <span class="m">0</span>
+        <span class="nb">ifTrue:</span> [ <span class="nc">Error</span> <span class="nf">signal</span> ]
+        <span class="nb">ifFalse:</span> [ 
+           <span class="nv">delta</span> <span class="nf">&lt;</span> <span class="m">5</span>
+              <span class="nb">ifTrue:</span> [ 
+                 <span class="nv">product</span> <span class="o">:=</span> <span class="nv">upper</span><span class="p">.</span>
+                 <span class="m">1</span> <span class="nf">to:</span> <span class="nv">delta</span> <span class="nf">-</span> <span class="m">1</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> 
+                    <span class="nv">product</span> <span class="o">:=</span> (<span class="nv">upper</span> <span class="nf">subtractNumber:</span> <span class="nv">each</span>) <span class="nf">multiplyNumber:</span>
+                                  <span class="nv">product</span> ]<span class="p">.</span>
+                 <span class="nv">product</span> ]
+              <span class="nb">ifFalse:</span> [ 
+                 <span class="nv">middle</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">+</span> <span class="nv">upper</span> <span class="nf">&gt;&gt;</span> <span class="m">1</span><span class="p">.</span>
+                 (<span class="bp">self</span> <span class="nf">productTo:</span> <span class="nv">middle</span>) <span class="nf">multiplyNumber:</span>
+                    (<span class="nv">middle</span> <span class="nf">productTo:</span> <span class="nv">upper</span>) ] ]
+</pre></div>
+</div>
+<p>and the interactions are</p>
+<img alt="../_images/MWVisualizationsTest-testInspectProductTo-sequence-diagram.svg" class="align-center" id="index-11" src="../_images/MWVisualizationsTest-testInspectProductTo-sequence-diagram.svg" /></section>
 </section>
 <section id="quotients-and-remainders">
 <h2><span class="section-number">4.3. </span>Quotients and remainders<a class="headerlink" href="#quotients-and-remainders" title="Permalink to this headline">¶</a></h2>
 <p>Lets divide <span class="math notranslate nohighlight">\(21\)</span> by <span class="math notranslate nohighlight">\(9\)</span>,</p>
-<span class="target" id="pharo-compiledMethod-15"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-teststandardquorem21over9"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-17"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-teststandardquorem21over9"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testStandardQuoRem21Over9</span>
 
    <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
@@ -598,21 +646,21 @@ The implementation follows from both the fact</p>
 <blockquote>
 <div><img alt="../_images/SymbolicIntegerTest-testStandardQuoRem21Over9.svg" class="align-center" src="../_images/SymbolicIntegerTest-testStandardQuoRem21Over9.svg" /></div></blockquote>
 <p>by means of the binary message</p>
-<span class="target" id="pharo-compiledMethod-16"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-18"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">/%</span> <span class="nv">anObject</span>
 
    <span class="o">^</span> <span class="nv">anObject</span> <span class="nf">quoRemInteger:</span> <span class="bp">self</span>
 </pre></div>
 </div>
 <p>that dispatches</p>
-<span class="target" id="pharo-compiledMethod-17"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-quoreminteger"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-19"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-quoreminteger"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">quoRemInteger:</span> <span class="nv">anInteger</span>
 
    <span class="o">^</span> <span class="nc">QuoRemStandard</span> <span class="nf">a:</span> <span class="nv">anInteger</span> <span class="nf">b:</span> <span class="bp">self</span>
 </pre></div>
 </div>
 <p>which instantiate a symbolic <code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> object via the class-side message</p>
-<span class="target" id="pharo-compiledMethod-18"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-quoremcomplementary-class-a-b"><div class="highlight"><pre><span></span><span class="c">&quot;QuoRemComplementary class, protocol as yet unclassified&quot;</span>
+<span class="target" id="pharo-compiledMethod-20"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-quoremcomplementary-class-a-b"><div class="highlight"><pre><span></span><span class="c">&quot;QuoRemComplementary class, protocol as yet unclassified&quot;</span>
 <span class="nf">a:</span> <span class="nv">a</span> <span class="nf">b:</span> <span class="nv">b</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">basicNew</span>
@@ -623,7 +671,7 @@ The implementation follows from both the fact</p>
 </pre></div>
 </div>
 <p>where both the <em>quotient</em> and the <em>remainder</em> are computed in the overridden</p>
-<span class="target" id="pharo-compiledMethod-19"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-quoremstandard-initialize"><div class="highlight"><pre><span></span><span class="c">&quot;QuoRemStandard, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-21"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-quoremstandard-initialize"><div class="highlight"><pre><span></span><span class="c">&quot;QuoRemStandard, protocol accessing&quot;</span>
 <span class="nf">initialize</span>
 
    <span class="bp">super</span> <span class="nf">initialize</span><span class="p">.</span>
@@ -634,7 +682,7 @@ The implementation follows from both the fact</p>
 </div>
 <p>as the usual computation does and the assertion checks in the initial test case.</p>
 <p>The same division can be carried out by</p>
-<span class="target" id="pharo-compiledMethod-20"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testcomplementaryquorem21over9"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-22"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testcomplementaryquorem21over9"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testComplementaryQuoRem21Over9</span>
 
    <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
@@ -648,14 +696,14 @@ The implementation follows from both the fact</p>
 <blockquote>
 <div><img alt="../_images/SymbolicIntegerTest-testComplementaryQuoRem21Over9.svg" class="align-center" src="../_images/SymbolicIntegerTest-testComplementaryQuoRem21Over9.svg" /></div></blockquote>
 <p>that yields a negative remainder, shown by full dots. To do that, we have the following messages chain</p>
-<span class="target" id="pharo-compiledMethod-21"></span><div class="highlight-smalltalk notranslate" id="id5"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-23"></span><div class="highlight-smalltalk notranslate" id="id6"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">/%~</span> <span class="nv">anObject</span>
 
    <span class="o">^</span> <span class="nv">anObject</span> <span class="nf">quoRemComplementaryInteger:</span> <span class="bp">self</span>
 </pre></div>
 </div>
 <p>that dispatches</p>
-<span class="target" id="pharo-compiledMethod-22"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-quoremcomplementaryinteger"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-24"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-quoremcomplementaryinteger"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">quoRemComplementaryInteger:</span> <span class="nv">anInteger</span>
 
    <span class="o">^</span> <span class="nc">QuoRemComplementary</span> <span class="nf">a:</span> <span class="nv">anInteger</span> <span class="nf">b:</span> <span class="bp">self</span>
@@ -669,7 +717,7 @@ The implementation follows from both the fact</p>
 </pre></div>
 </div>
 <p>Both the <em>quotient</em> and the <em>remainder</em> are computed in the initialization message</p>
-<span class="target" id="pharo-compiledMethod-23"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-quoremcomplementary-initialize"><div class="highlight"><pre><span></span><span class="c">&quot;QuoRemComplementary, protocol accessing&quot;</span>
+<span class="target" id="pharo-compiledMethod-25"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-quoremcomplementary-initialize"><div class="highlight"><pre><span></span><span class="c">&quot;QuoRemComplementary, protocol accessing&quot;</span>
 <span class="nf">initialize</span>
 
    <span class="nv">ratio</span> <span class="o">:=</span> <span class="nv">a</span> <span class="nf">/</span> <span class="nv">b</span><span class="p">.</span>
@@ -681,7 +729,7 @@ The implementation follows from both the fact</p>
 <p>The latter representation is uniform in the sense that it yields a rectangle of dots
 that are stacked horizontally, where the number of rows equals the quotient of the division
 while the number of columns equals the divisor denoted by the instance variable <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
-<span class="target" id="pharo-compiledMethod-24"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testcomplementaryquorem9over21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-26"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testcomplementaryquorem9over21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testComplementaryQuoRem9Over21</span>
 
    <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
@@ -694,7 +742,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 </div>
 <blockquote>
 <div><img alt="../_images/SymbolicIntegerTest-testComplementaryQuoRem9Over21.svg" class="align-center" src="../_images/SymbolicIntegerTest-testComplementaryQuoRem9Over21.svg" /></div></blockquote>
-<span class="target" id="pharo-compiledMethod-25"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testquorem9over21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-27"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testquorem9over21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testQuoRem9Over21</span>
 
    <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
@@ -707,7 +755,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 </div>
 <blockquote>
 <div><img alt="../_images/SymbolicIntegerTest-testQuoRem9Over21.svg" class="align-center" src="../_images/SymbolicIntegerTest-testQuoRem9Over21.svg" /></div></blockquote>
-<span class="target" id="pharo-compiledMethod-26"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testquoremminimal9over21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-28"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testquoremminimal9over21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testQuoRemMinimal9Over21</span>
 
    <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
@@ -723,7 +771,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 </section>
 <section id="greatest-common-divisor">
 <h2><span class="section-number">4.4. </span>Greatest Common Divisor<a class="headerlink" href="#greatest-common-divisor" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="pharo-compiledMethod-27"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdof9and21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-29"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdof9and21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testGCDof9and21</span>
 
    <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
@@ -736,7 +784,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 </div>
 <blockquote>
 <div><img alt="../_images/SymbolicIntegerTest-testGCDof9and21.svg" class="align-center" src="../_images/SymbolicIntegerTest-testGCDof9and21.svg" /></div></blockquote>
-<span class="target" id="pharo-compiledMethod-28"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdof12and21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-30"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdof12and21"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testGCDof12and21</span>
 
    <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
@@ -754,7 +802,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 <h2><span class="section-number">4.5. </span>Diophantine equations<a class="headerlink" href="#diophantine-equations" title="Permalink to this headline">¶</a></h2>
 <section id="coprimes">
 <h3><span class="section-number">4.5.1. </span>Coprimes<a class="headerlink" href="#coprimes" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-29"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdof83and71"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-31"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdof83and71"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testGCDof83and71</span>
 
    <span class="o">|</span><span class="nv"> quoRem </span><span class="o">|</span>
@@ -770,7 +818,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 </section>
 <section id="mathbb-z-17-field">
 <h3><span class="section-number">4.5.2. </span><span class="math notranslate nohighlight">\(\mathbb{Z}_{17}\)</span> field<a class="headerlink" href="#mathbb-z-17-field" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-30"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdofz17"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-32"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdofz17"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testGCDofZ17</span>
 
    <span class="o">|</span><span class="nv"> field prime interval </span><span class="o">|</span>
@@ -787,7 +835,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 </div>
 <blockquote>
 <div><img alt="../_images/SymbolicIntegerTest-testGCDofZ17.svg" class="align-center" src="../_images/SymbolicIntegerTest-testGCDofZ17.svg" /></div></blockquote>
-<span class="target" id="pharo-compiledMethod-31"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdofmultiplicativeinversesinz17"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-33"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdofmultiplicativeinversesinz17"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testGCDofMultiplicativeInversesInZ17</span>
 
    <span class="o">|</span><span class="nv"> gcds inverses </span><span class="o">|</span>
@@ -804,7 +852,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 </section>
 <section id="gcd-f-n-f-n-1-where-f-n-is-the-n-th-fibonacci-number">
 <h3><span class="section-number">4.5.3. </span><span class="math notranslate nohighlight">\(GCD(f_{n}, f_{n+1})\)</span>, where <span class="math notranslate nohighlight">\(f_{n}\)</span> is the <span class="math notranslate nohighlight">\(n\)</span>-th Fibonacci number<a class="headerlink" href="#gcd-f-n-f-n-1-where-f-n-is-the-n-th-fibonacci-number" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-compiledMethod-32"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdofadjacentfibonaccinumbers"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-34"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdofadjacentfibonaccinumbers"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testGCDofAdjacentFibonacciNumbers</span>
 
    <span class="o">|</span><span class="nv"> fibs gcds </span><span class="o">|</span>
@@ -827,7 +875,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 <section id="kissing-fractions">
 <span id="kissing-fractions-diophantine"></span><h3><span class="section-number">4.5.4. </span>Kissing <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s<a class="headerlink" href="#kissing-fractions" title="Permalink to this headline">¶</a></h3>
 <p>Consider the <code class="docutils literal notranslate"><span class="pre">Fraction</span></code></p>
-<span class="target" id="pharo-compiledMethod-33"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfractionforkisses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-35"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfractionforkisses"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectFractionForKisses</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="m">4</span> <span class="nf">/</span> <span class="m">17</span>
@@ -836,7 +884,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspectFractionForKisses.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectFractionForKisses.svg" /></div></blockquote>
 <p>which kisses other fractions, by tangents of Ford’s circles</p>
-<span class="target" id="pharo-compiledMethod-34"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfractionkissing"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-36"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfractionkissing"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectFractionKissing</span>
 
    <span class="o">|</span><span class="nv"> aFraction </span><span class="o">|</span>
@@ -857,7 +905,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testInspectFractionKissing.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectFractionKissing.svg" /></div></blockquote>
 <p>where</p>
-<span class="target" id="pharo-compiledMethod-35"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-fraction-kissingfractions"><div class="highlight"><pre><span></span><span class="c">&quot;Fraction, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-37"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-fraction-kissingfractions"><div class="highlight"><pre><span></span><span class="c">&quot;Fraction, protocol *Containers-Essentials&quot;</span>
 <span class="nf">kissingFractions</span>
 
    <span class="o">|</span><span class="nv"> kissedFractions vl </span><span class="o">|</span>
@@ -888,20 +936,20 @@ while the number of columns equals the divisor denoted by the instance variable 
 </pre></div>
 </div>
 <p>and the polymorphism on <code class="docutils literal notranslate"><span class="pre">#kissingFractionLink:</span></code> reads as follows</p>
-<span class="target" id="pharo-compiledMethod-36"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-fraction-kissingfractionlink"><div class="highlight"><pre><span></span><span class="c">&quot;Fraction, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-38"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-fraction-kissingfractionlink"><div class="highlight"><pre><span></span><span class="c">&quot;Fraction, protocol *Containers-Essentials&quot;</span>
 <span class="nf">kissingFractionLink:</span> <span class="nv">aLink</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">~~&gt;</span> <span class="nv">aLink</span>
 </pre></div>
 </div>
-<span class="target" id="pharo-compiledMethod-37"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-kissingfractionlink"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-39"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-kissingfractionlink"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">kissingFractionLink:</span> <span class="nv">aLink</span>
 
    <span class="o">^</span> <span class="nv">aLink</span>
 </pre></div>
 </div>
 <p>Moreover, consider the reciprocal</p>
-<span class="target" id="pharo-compiledMethod-38"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfractionreciprocalkissing"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-40"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfractionreciprocalkissing"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectFractionReciprocalKissing</span>
 
    <span class="o">|</span><span class="nv"> aFraction </span><span class="o">|</span>
@@ -923,7 +971,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 <section id="skew-binary-canonical-sparse-representation">
 <h2><span class="section-number">4.6. </span><em>Skew Binary Canonical</em> sparse representation<a class="headerlink" href="#skew-binary-canonical-sparse-representation" title="Permalink to this headline">¶</a></h2>
 <p>Using the conversion message</p>
-<span class="target" id="pharo-compiledMethod-39"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-asskewbinarycanonicalsparse"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-41"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-asskewbinarycanonicalsparse"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">asSkewBinaryCanonicalSparse</span>
 
    <span class="o">|</span><span class="nv"> skew </span><span class="o">|</span>
@@ -933,7 +981,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 </pre></div>
 </div>
 <p>we can inspect by means of the test case</p>
-<span class="target" id="pharo-compiledMethod-40"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectskewbinarycanonicalsparse"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-42"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectskewbinarycanonicalsparse"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectSkewBinaryCanonicalSparse</span>
 
    <span class="o">|</span><span class="nv"> skewNumbers backwards </span><span class="o">|</span>
@@ -953,7 +1001,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 </pre></div>
 </div>
 <p>that does its asserts using the backward conversion message,</p>
-<span class="target" id="pharo-compiledMethod-41"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-skewbinarycanonicalnumber-asinteger"><div class="highlight"><pre><span></span><span class="c">&quot;SkewBinaryCanonicalNumber, protocol converting&quot;</span>
+<span class="target" id="pharo-compiledMethod-43"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-skewbinarycanonicalnumber-asinteger"><div class="highlight"><pre><span></span><span class="c">&quot;SkewBinaryCanonicalNumber, protocol converting&quot;</span>
 <span class="nf">asInteger</span>
 
    <span class="o">|</span><span class="nv"> value </span><span class="o">|</span>

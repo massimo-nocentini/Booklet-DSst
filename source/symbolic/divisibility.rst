@@ -187,6 +187,44 @@ A complete profiling of :math:`835 \cdot 714` using this technique looks like
 .. image:: ../../../../bauing-schmidt/MethodWrappers/images/MWVisualizationsTest-testInspectLargeIntegerProfiled-sequence-diagram.svg
   :align: center
 
+
+Factorial: slow and fast
+++++++++++++++++++++++++
+
+According the post :cite:`sven/speeding-up-factorial`, we implement the factorial
+function twice in order to compute 
+
+.. math::
+
+  16! = 20922789888000
+
+On one hand, the slow version follows straightforward from the mathematical definition,  
+
+.. pharo:autocompiledmethod:: Integer>>#factorialRecursive
+
+and the interactions are
+
+.. index::
+  single: Sequence diagrams; Factorial, slow
+
+.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MWVisualizationsTest-testInspectFactorialRecursive-sequence-diagram.svg
+  :align: center
+
+On the other hand, the fast version uses a divide and conquer approach,
+
+.. index::
+  single: Divide and Conquer; Factorial, fast
+
+.. pharo:autocompiledmethod:: Integer>>#productTo:
+
+and the interactions are
+
+.. index::
+  single: Sequence diagrams; Factorial, fast
+
+.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MWVisualizationsTest-testInspectProductTo-sequence-diagram.svg
+  :align: center
+
 Quotients and remainders
 ========================
 
