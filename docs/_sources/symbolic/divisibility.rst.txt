@@ -135,7 +135,7 @@ Here we explore a large integer
 that equals :math:`(42!)^{2}` where squaring is performed by multiplication of
 :math:`42!` with itself by means of the message
 
-.. pharo:autocompiledmethod:: Integer>>#dcMultiplyInteger:base:
+.. pharo:autocompiledmethod:: Integer>>#karatsuba:base:
 
 according to the algorithm described in :cite:`10.5555/1051910`, page 232.
 Such algorithm runs in :math:`O(n^{\log_{2}{3}})` because the input numbers
@@ -153,7 +153,7 @@ and let :math:`n = \max(a, b)`, are broken in *two* parts
   x = x_{1}\cdot 10^{{{n}\over{2}}} + x_{0} \\
   y = y_{1}\cdot 10^{{{n}\over{2}}} + y_{0}
 
-respectively, and there are *three* recursive ``#dcMultiplyInteger:base:`` message sends.
+respectively, and there are *three* recursive ``#karatsuba:base:`` message sends.
 The implementation follows from both the fact
 
 .. math::
