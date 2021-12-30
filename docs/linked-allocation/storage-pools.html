@@ -133,8 +133,9 @@ be linked together in several orders corresponding to different lists; and so on
 </div></blockquote>
 </div>
 <p>We start with the mechanism that supplies space for a new node, by the class</p>
-<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctlinkedstoragepool"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">&lt;&lt;</span> <span class="ss">#CTLinkedStoragePool</span>
-	<span class="nf">slots:</span> { <span class="ss">#avail</span> }<span class="p">;</span>
+<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctlinkedstoragepool"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">subclass:</span> <span class="ss">#CTLinkedStoragePool</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;avail&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
 	<span class="nf">package:</span> <span class="s">&#39;Containers-LinkedStoragePool&#39;</span>
 </pre></div>
 </div>

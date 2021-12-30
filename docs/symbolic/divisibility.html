@@ -395,7 +395,7 @@
               <span class="nv">even</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">class</span> <span class="nf">streamContents:</span> [ <span class="o">:</span><span class="nv">evenStream</span> <span class="o">|</span> 
                          <span class="nv">odd</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">class</span> <span class="nf">streamContents:</span> [ <span class="o">:</span><span class="nv">oddStream</span> <span class="o">|</span> 
                                    <span class="bp">self</span> <span class="nf">withIndexDo:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">:</span><span class="nv">i</span> <span class="o">|</span> 
-                                      <span class="nv">i</span> <span class="nf">even</span>
+                                      (<span class="nv">i</span> <span class="nf">-</span> <span class="m">1</span>) <span class="nf">even</span>
                                          <span class="nb">ifTrue:</span> [ <span class="nv">evenStream</span> <span class="nf">nextPut:</span> <span class="nv">each</span> ]
                                          <span class="nb">ifFalse:</span> [ <span class="nv">oddStream</span> <span class="nf">nextPut:</span> <span class="nv">each</span> ] ] ] ]<span class="p">.</span>
 
@@ -695,10 +695,10 @@ function twice in order to compute</p>
 </pre></div>
 </div>
 <p>which instantiate a symbolic <code class="docutils literal notranslate"><span class="pre">Magnitude</span></code> object of class</p>
-<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-quoremcomplementary"><div class="highlight"><pre><span></span><span class="nc">Magnitude</span> <span class="nf">&lt;&lt;</span> <span class="ss">#QuoRemComplementary</span>
-	<span class="nf">slots:</span> { <span class="ss">#a</span> <span class="p">.</span> <span class="ss">#b</span> <span class="p">.</span> <span class="ss">#ratio</span> <span class="p">.</span> <span class="ss">#quo</span> <span class="p">.</span> <span class="ss">#rem</span> }<span class="p">;</span>
-	<span class="nf">tag:</span> <span class="s">&#39;Numbers&#39;</span><span class="p">;</span>
-	<span class="nf">package:</span> <span class="s">&#39;Containers-Essentials&#39;</span>
+<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-quoremcomplementary"><div class="highlight"><pre><span></span><span class="nc">Magnitude</span> <span class="nf">subclass:</span> <span class="ss">#QuoRemComplementary</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;a b ratio quo rem&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-Essentials-Numbers&#39;</span>
 </pre></div>
 </div>
 <p>Both the <em>quotient</em> and the <em>remainder</em> are computed in the initialization message</p>

@@ -162,7 +162,7 @@ and of *Lucas* numbers
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspect20LucasNumbers
 
-  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspect20lucasNumbers.svg
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspect20LucasNumbers.svg
     :align: center
 
 respectively, where both of them

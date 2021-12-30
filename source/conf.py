@@ -83,7 +83,7 @@ html_theme_options = {
     "globaltoc_collapse": False,
     'github_user': 'massimo-nocentini',
     'github_repo': 'Booklet-DSst',
-    #'font_family': 'Lucida Grande',
+    'font_family': 'Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji',
     #'code_font_family': 'Menlo, Monaco, Ubuntu Mono, Consolas',
     'code_font_size': '0.8em',
     'show_relbars': True,

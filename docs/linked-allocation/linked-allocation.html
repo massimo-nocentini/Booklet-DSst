@@ -136,10 +136,10 @@ those links as a whole, hiding the inner machinery that keeps their structure
 sound. Those managers are called <em>containers</em>.</p>
 <p>A <code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> understands the <code class="docutils literal notranslate"><span class="pre">#asLinkedList</span></code> message to enclose itself in
 a <code class="docutils literal notranslate"><span class="pre">LinkedList</span></code> container</p>
-<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-linkedlist"><div class="highlight"><pre><span></span><span class="nc">SequenceableCollection</span> <span class="nf">&lt;&lt;</span> <span class="ss">#LinkedList</span>
-	<span class="nf">slots:</span> { <span class="ss">#firstLink</span> <span class="p">.</span> <span class="ss">#lastLink</span> }<span class="p">;</span>
-	<span class="nf">tag:</span> <span class="s">&#39;Base&#39;</span><span class="p">;</span>
-	<span class="nf">package:</span> <span class="s">&#39;Collections-Sequenceable&#39;</span>
+<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-linkedlist"><div class="highlight"><pre><span></span><span class="nc">SequenceableCollection</span> <span class="nf">subclass:</span> <span class="ss">#LinkedList</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;firstLink lastLink&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Collections-Sequenceable-Base&#39;</span>
 </pre></div>
 </div>
 <p>for example,</p>
@@ -227,10 +227,10 @@ then all the values are kept as well</p>
 </pre></div>
 </div>
 <p>and</p>
-<span class="target" id="pharo-class-1"></span><div class="highlight-smalltalk notranslate" id="pharo-class-interval"><div class="highlight"><pre><span></span><span class="nc">SequenceableCollection</span> <span class="nf">&lt;&lt;</span> <span class="ss">#Interval</span>
-	<span class="nf">slots:</span> { <span class="ss">#start</span> <span class="p">.</span> <span class="ss">#stop</span> <span class="p">.</span> <span class="ss">#step</span> }<span class="p">;</span>
-	<span class="nf">tag:</span> <span class="s">&#39;Base&#39;</span><span class="p">;</span>
-	<span class="nf">package:</span> <span class="s">&#39;Collections-Sequenceable&#39;</span>
+<span class="target" id="pharo-class-1"></span><div class="highlight-smalltalk notranslate" id="pharo-class-interval"><div class="highlight"><pre><span></span><span class="nc">SequenceableCollection</span> <span class="nf">subclass:</span> <span class="ss">#Interval</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;start stop step&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Collections-Sequenceable-Base&#39;</span>
 
 <span class="c">&quot;I represent a finite arithmetic progression (a range of number).</span>
 
@@ -347,25 +347,29 @@ then all the values are kept as well</p>
 <section id="trees">
 <h2><span class="section-number">6.2. </span>Trees<a class="headerlink" href="#trees" title="Permalink to this headline">¶</a></h2>
 <p>A <em>free binary tree</em> container is defined according to</p>
-<span class="target" id="pharo-class-2"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreeabstract"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">&lt;&lt;</span> <span class="ss">#CTBinaryTreeAbstract</span>
-	<span class="nf">slots:</span> { <span class="ss">#representation</span> }<span class="p">;</span>
+<span class="target" id="pharo-class-2"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreeabstract"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">subclass:</span> <span class="ss">#CTBinaryTreeAbstract</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;representation&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
 	<span class="nf">package:</span> <span class="s">&#39;Containers-BinaryTreeAbstract&#39;</span>
 </pre></div>
 </div>
 <p>and its responsibility is to direct and manage objects of types</p>
-<span class="target" id="pharo-class-3"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreeelement"><div class="highlight"><pre><span></span>CTDoubleValueLink &lt;&lt; #CTBinaryTreeElement
-	slots: {};
-	package: &#39;Containers-BinaryTreeAbstract&#39;
+<span class="target" id="pharo-class-3"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreeelement"><div class="highlight"><pre><span></span><span class="nc">CTDoubleValueLink</span> <span class="nf">subclass:</span> <span class="ss">#CTBinaryTreeElement</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-BinaryTreeAbstract&#39;</span>
 </pre></div>
 </div>
-<span class="target" id="pharo-class-4"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreeempty"><div class="highlight"><pre><span></span>CTBinaryTreeElement &lt;&lt; #CTBinaryTreeEmpty
-	slots: {};
-	package: &#39;Containers-BinaryTreeAbstract&#39;
+<span class="target" id="pharo-class-4"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreeempty"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeElement</span> <span class="nf">subclass:</span> <span class="ss">#CTBinaryTreeEmpty</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-BinaryTreeAbstract&#39;</span>
 </pre></div>
 </div>
-<span class="target" id="pharo-class-5"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreenode"><div class="highlight"><pre><span></span>CTBinaryTreeElement &lt;&lt; #CTBinaryTreeNode
-	slots: {};
-	package: &#39;Containers-BinaryTreeAbstract&#39;
+<span class="target" id="pharo-class-5"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreenode"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeElement</span> <span class="nf">subclass:</span> <span class="ss">#CTBinaryTreeNode</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-BinaryTreeAbstract&#39;</span>
 </pre></div>
 </div>
 <p>as actual representation for the underlying structure. The simpler container is
@@ -571,9 +575,10 @@ using <code class="docutils literal notranslate"><span class="pre">ArrayedCollec
 <section id="search-sets">
 <h3><span class="section-number">6.2.1. </span><em>Search</em> sets<a class="headerlink" href="#search-sets" title="Permalink to this headline">¶</a></h3>
 <p>A <em>search binary tree</em> is defined by subclassing</p>
-<span class="target" id="pharo-class-6"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctunbalancedset"><div class="highlight"><pre><span></span>CTBinaryTreeAbstract &lt;&lt; #CTUnbalancedSet
-	slots: {};
-	package: &#39;Containers-RedBlackSet&#39;
+<span class="target" id="pharo-class-6"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctunbalancedset"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeAbstract</span> <span class="nf">subclass:</span> <span class="ss">#CTUnbalancedSet</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-RedBlackSet&#39;</span>
 </pre></div>
 </div>
 <p>and the corresponding test class defines,</p>
@@ -737,18 +742,20 @@ invoked in the leaves in case of doubles.</p>
 </section>
 <section id="red-black-sets">
 <h3><span class="section-number">6.2.2. </span><em>Red-Black</em> sets<a class="headerlink" href="#red-black-sets" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="pharo-class-7"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctredblackset"><div class="highlight"><pre><span></span>CTUnbalancedSet &lt;&lt; #CTRedBlackSet
-	slots: {};
-	package: &#39;Containers-RedBlackSet&#39;
+<span class="target" id="pharo-class-7"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctredblackset"><div class="highlight"><pre><span></span><span class="nc">CTUnbalancedSet</span> <span class="nf">subclass:</span> <span class="ss">#CTRedBlackSet</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-RedBlackSet&#39;</span>
 </pre></div>
 </div>
 <img alt="../_images/CTRedBlackSetTest-testCreation.svg" class="align-center" src="../_images/CTRedBlackSetTest-testCreation.svg" /><img alt="../_images/CTRedBlackSetTest-testPushOrderedInterval.svg" class="align-center" src="../_images/CTRedBlackSetTest-testPushOrderedInterval.svg" /><img alt="../_images/CTRedBlackSetTest-testPushOrderedCollection.svg" class="align-center" src="../_images/CTRedBlackSetTest-testPushOrderedCollection.svg" /><img alt="../_images/CTRedBlackSetTest-testPushShuffledInterval.svg" class="align-center" src="../_images/CTRedBlackSetTest-testPushShuffledInterval.svg" /><img alt="../_images/CTRedBlackSetTest-testPushShuffledCollection.svg" class="align-center" src="../_images/CTRedBlackSetTest-testPushShuffledCollection.svg" /></section>
 <section id="leftist-heaps">
 <h3><span class="section-number">6.2.3. </span><em>Leftist</em> heaps<a class="headerlink" href="#leftist-heaps" title="Permalink to this headline">¶</a></h3>
 <p>A <em>search binary tree</em> is defined by subclassing</p>
-<span class="target" id="pharo-class-8"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctleftistheap"><div class="highlight"><pre><span></span>CTBinaryTreeAbstract &lt;&lt; #CTLeftistHeap
-	slots: {};
-	package: &#39;Containers-LeftistHeap&#39;
+<span class="target" id="pharo-class-8"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctleftistheap"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeAbstract</span> <span class="nf">subclass:</span> <span class="ss">#CTLeftistHeap</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-LeftistHeap&#39;</span>
 </pre></div>
 </div>
 <p>and the corresponding test class defines,</p>
@@ -835,14 +842,16 @@ invoked in the leaves in case of doubles.</p>
 <section id="binomial-heaps">
 <h3><span class="section-number">6.2.4. </span><em>Binomial</em> heaps<a class="headerlink" href="#binomial-heaps" title="Permalink to this headline">¶</a></h3>
 <p>A <em>free binary tree</em> container is defined according to</p>
-<span class="target" id="pharo-class-9"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinomialheap"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">&lt;&lt;</span> <span class="ss">#CTBinomialHeap</span>
-	<span class="nf">slots:</span> { <span class="ss">#representation</span> }<span class="p">;</span>
+<span class="target" id="pharo-class-9"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinomialheap"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">subclass:</span> <span class="ss">#CTBinomialHeap</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;representation&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
 	<span class="nf">package:</span> <span class="s">&#39;Containers-BinomialHeap&#39;</span>
 </pre></div>
 </div>
 <p>and its responsibility is to direct and manage objects of types</p>
-<span class="target" id="pharo-class-10"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinomialtree"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">&lt;&lt;</span> <span class="ss">#CTBinomialTree</span>
-	<span class="nf">slots:</span> { <span class="ss">#content</span> <span class="p">.</span> <span class="ss">#children</span> }<span class="p">;</span>
+<span class="target" id="pharo-class-10"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinomialtree"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">subclass:</span> <span class="ss">#CTBinomialTree</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;content children&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
 	<span class="nf">package:</span> <span class="s">&#39;Containers-BinomialHeap&#39;</span>
 </pre></div>
 </div>
@@ -977,9 +986,10 @@ using <code class="docutils literal notranslate"><span class="pre">ArrayedCollec
 <section id="splay-heaps">
 <h3><span class="section-number">6.2.5. </span><em>Splay</em> heaps<a class="headerlink" href="#splay-heaps" title="Permalink to this headline">¶</a></h3>
 <p>A <em>search binary tree</em> is defined by subclassing</p>
-<span class="target" id="pharo-class-11"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctsplayheap"><div class="highlight"><pre><span></span>CTBinaryTreeAbstract &lt;&lt; #CTSplayHeap
-	slots: {};
-	package: &#39;Containers-SplayHeap&#39;
+<span class="target" id="pharo-class-11"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctsplayheap"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeAbstract</span> <span class="nf">subclass:</span> <span class="ss">#CTSplayHeap</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-SplayHeap&#39;</span>
 </pre></div>
 </div>
 <p>and the corresponding test class defines,</p>

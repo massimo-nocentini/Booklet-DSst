@@ -95,25 +95,29 @@
           <div class="body" role="main">
             
   <p>A <em>free binary tree</em> container is defined according to</p>
-<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreeabstract"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">&lt;&lt;</span> <span class="ss">#CTBinaryTreeAbstract</span>
-	<span class="nf">slots:</span> { <span class="ss">#representation</span> }<span class="p">;</span>
+<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreeabstract"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">subclass:</span> <span class="ss">#CTBinaryTreeAbstract</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;representation&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
 	<span class="nf">package:</span> <span class="s">&#39;Containers-BinaryTreeAbstract&#39;</span>
 </pre></div>
 </div>
 <p>and its responsibility is to direct and manage objects of types</p>
-<span class="target" id="pharo-class-1"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreeelement"><div class="highlight"><pre><span></span>CTDoubleValueLink &lt;&lt; #CTBinaryTreeElement
-	slots: {};
-	package: &#39;Containers-BinaryTreeAbstract&#39;
+<span class="target" id="pharo-class-1"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreeelement"><div class="highlight"><pre><span></span><span class="nc">CTDoubleValueLink</span> <span class="nf">subclass:</span> <span class="ss">#CTBinaryTreeElement</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-BinaryTreeAbstract&#39;</span>
 </pre></div>
 </div>
-<span class="target" id="pharo-class-2"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreeempty"><div class="highlight"><pre><span></span>CTBinaryTreeElement &lt;&lt; #CTBinaryTreeEmpty
-	slots: {};
-	package: &#39;Containers-BinaryTreeAbstract&#39;
+<span class="target" id="pharo-class-2"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreeempty"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeElement</span> <span class="nf">subclass:</span> <span class="ss">#CTBinaryTreeEmpty</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-BinaryTreeAbstract&#39;</span>
 </pre></div>
 </div>
-<span class="target" id="pharo-class-3"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreenode"><div class="highlight"><pre><span></span>CTBinaryTreeElement &lt;&lt; #CTBinaryTreeNode
-	slots: {};
-	package: &#39;Containers-BinaryTreeAbstract&#39;
+<span class="target" id="pharo-class-3"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreenode"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeElement</span> <span class="nf">subclass:</span> <span class="ss">#CTBinaryTreeNode</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Containers-BinaryTreeAbstract&#39;</span>
 </pre></div>
 </div>
 <p>as actual representation for the underlying structure. The simpler container is

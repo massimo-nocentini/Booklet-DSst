@@ -120,10 +120,10 @@
 <h2><span class="section-number">5.1. </span><code class="docutils literal notranslate"><span class="pre">Link</span></code> objects<a class="headerlink" href="#link-objects" title="Permalink to this headline">¶</a></h2>
 <p>Our discussion starts with a tiny class <code class="docutils literal notranslate"><span class="pre">Link</span></code> that is provided by default in
 a fresh image; its definition follows,</p>
-<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-link"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">&lt;&lt;</span> <span class="ss">#Link</span>
-	<span class="nf">slots:</span> { <span class="ss">#nextLink</span> }<span class="p">;</span>
-	<span class="nf">tag:</span> <span class="s">&#39;Links&#39;</span><span class="p">;</span>
-	<span class="nf">package:</span> <span class="s">&#39;Collections-Support&#39;</span>
+<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-link"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">subclass:</span> <span class="ss">#Link</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;nextLink&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Collections-Support-Links&#39;</span>
 
 <span class="c">&quot;An instance of me is a simple record of a pointer to another Link. I am an abstract class; my concrete subclasses, for example, Process, can be stored in a LinkedList structure.&quot;</span>
 </pre></div>
@@ -279,10 +279,10 @@ requested to skip too much,</p>
 <p>A <code class="docutils literal notranslate"><span class="pre">Link</span></code> by itself encodes just a node of a chain. We can augment those
 objects such that each node in the chain carries a <em>value</em> also, to have a
 <em>chain of values</em> actually. Such new objects belong to the class</p>
-<span class="target" id="pharo-class-1"></span><div class="highlight-smalltalk notranslate" id="pharo-class-valuelink"><div class="highlight"><pre><span></span><span class="nc">Link</span> <span class="nf">&lt;&lt;</span> <span class="ss">#ValueLink</span>
-	<span class="nf">slots:</span> { <span class="ss">#value</span> }<span class="p">;</span>
-	<span class="nf">tag:</span> <span class="s">&#39;Links&#39;</span><span class="p">;</span>
-	<span class="nf">package:</span> <span class="s">&#39;Collections-Support&#39;</span>
+<span class="target" id="pharo-class-1"></span><div class="highlight-smalltalk notranslate" id="pharo-class-valuelink"><div class="highlight"><pre><span></span><span class="nc">Link</span> <span class="nf">subclass:</span> <span class="ss">#ValueLink</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;value&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Collections-Support-Links&#39;</span>
 
 <span class="c">&quot;A ValueLink is a Link containing a Value.</span>
 <span class="c">Adding an object to a LinkedList which is not a Link will create a ValueLink containing that object.</span>
