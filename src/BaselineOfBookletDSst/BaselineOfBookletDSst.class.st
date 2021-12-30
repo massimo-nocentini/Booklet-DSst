@@ -20,6 +20,11 @@ BaselineOfBookletDSst >> baseline: spec [
 			spec repository: 'github://massimo-nocentini/Containers-Essentials' ].
 
 		spec
+			baseline: 'MethodWrappersWithoutDependencies'
+			with: [ 
+			spec repository: 'github://massimo-nocentini/MethodWrappers' ].
+
+		spec
 			baseline: 'ContainersLinks'
 			with: [ 
 			spec repository: 'github://massimo-nocentini/Containers-Links' ].
