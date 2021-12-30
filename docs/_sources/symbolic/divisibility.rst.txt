@@ -124,18 +124,20 @@ admits the profiling,
 *Karatsuba*\'s method
 +++++++++++++++++++++
 
-After the post :cite:`sven/speeding-up-factorial`, here we explore another large integer
+Here we explore a large integer 
 
-.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectLargeInteger
+..
+  .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectLargeInteger
 
-  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectLargeInteger.svg
-    :align: center
+.. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectLargeInteger.svg
+  :align: center
 
-where the message
+that equals :math:`(42!)^{2}` where squaring is performed by multiplication of
+:math:`42!` with itself by means of the message
 
 .. pharo:autocompiledmethod:: Integer>>#dcMultiplyInteger:base:
 
-implements the algorithm described in :cite:`10.5555/1051910`, at page 232.
+according to the algorithm described in :cite:`10.5555/1051910`, page 232.
 Such algorithm runs in :math:`O(n^{\log_{2}{3}})` because the input numbers
 :math:`x` and :math:`y`, 
 
@@ -188,8 +190,8 @@ A complete profiling of :math:`835 \cdot 714` using this technique looks like
   :align: center
 
 
-Factorial: slow and fast
-++++++++++++++++++++++++
+Factorials
+++++++++++
 
 According the post :cite:`sven/speeding-up-factorial`, we implement the factorial
 function twice in order to compute 
