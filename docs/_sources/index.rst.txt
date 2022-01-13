@@ -8,6 +8,8 @@
 Data Structures in Smalltalk
 ============================
 
+:math:`\,`
+
 .. toctree::
    :maxdepth: 4
    :numbered:
