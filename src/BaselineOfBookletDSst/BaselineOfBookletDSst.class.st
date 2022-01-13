@@ -97,7 +97,7 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     testInspect20FibonacciNumbers testInspect20LucasNumbers
 			     testInspect20CatalanNumbers testInspectPoint testInspectBRGCodes
 			     #testInspectColorGray testInspectObject testInspectNil
-			     testInspectTrueAndFalse testInspectRSPolygon
+			     testInspectTrue testInspectFalse testInspectRSPolygon
 			     testInspectPoint testInspectRBNodesQuine
 			     testInspectFraction #testInspectFractionForKisses
 			     testInspectFractionKissing testInspectFractionReciprocalKissing
