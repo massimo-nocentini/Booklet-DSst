@@ -2,11 +2,8 @@
 Object model
 ************
 
-For a fistful of objects
-========================
-
 An ``Object``, simply
-+++++++++++++++++++++
+=====================
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectObject
 
@@ -14,7 +11,7 @@ An ``Object``, simply
     :align: center
     
 ``nil``, even more simpler
-++++++++++++++++++++++++++
+==========================
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectNil
 
@@ -22,59 +19,26 @@ An ``Object``, simply
     :align: center
 
 ``true`` and ``false``
-++++++++++++++++++++++
-
-.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectTrueAndFalse
-
-  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectTrueAndFalse.svg
-    :align: center
-
-A ``Point``
-+++++++++++
-
-.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectPoint
-
-  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectPoint.svg
-    :align: center
-
-The ``Color`` gray, translucent
-+++++++++++++++++++++++++++++++
-
-.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectColorGray
-
-  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectColorGray.svg
-    :align: center
-
-A ``RSShape`` of a polygon, quoting itself
-++++++++++++++++++++++++++++++++++++++++++
-
-.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectRSPolygon
-
-  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectRSPolygon.svg
-    :align: center
-
-
-
-For a few objects more 
 ======================
 
-A ``Context``
-+++++++++++++
+On one hand, *truthness* is encoded by,
 
-.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectContext
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectTrue
 
-  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectContext.svg
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectTrue.svg
     :align: center
 
-A Git repository
-++++++++++++++++
+On the other hand, *falsehood* is encoded by,
 
-.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectIceRepository
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectFalse
 
-  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectIceRepository.svg
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectFalse.svg
     :align: center
 
-.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectIceRepositoryCommitsGraph
+``Object`` class and its superclasses 
+=====================================
 
-  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectIceRepositoryCommitsGraph.svg
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectObjectModel
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectObjectModel.svg
     :align: center

@@ -194,11 +194,10 @@ Factorials
 ++++++++++
 
 According the post :cite:`sven/speeding-up-factorial`, we implement the factorial
-function twice in order to compute 
+function twice in order to compute :math:`16!` that equals
 
-.. math::
-
-  16! = 20922789888000
+.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MWVisualizationsTest-testInspectFactorialRecursive.svg
+  :align: center
 
 On one hand, the slow version follows straightforward from the mathematical definition,  
 

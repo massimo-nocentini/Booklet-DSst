@@ -569,10 +569,8 @@ The implementation follows from both the fact</p>
 <section id="factorials">
 <h3><span class="section-number">4.2.4. </span>Factorials<a class="headerlink" href="#factorials" title="Permalink to this headline">¶</a></h3>
 <p>According the post <span id="id4">[<a class="reference internal" href="../bibliography.html#id13" title="Sven VC. Speeding up factorial computation by changing the order of multiplications. URL: https://medium.com/concerning-pharo/speeding-up-factorial-computation-by-changing-the-order-of-multiplications-f4da3a5576da.">VC</a>]</span>, we implement the factorial
-function twice in order to compute</p>
-<div class="math notranslate nohighlight">
-\[16! = 20922789888000\]</div>
-<p>On one hand, the slow version follows straightforward from the mathematical definition,</p>
+function twice in order to compute <span class="math notranslate nohighlight">\(16!\)</span> that equals</p>
+<img alt="../_images/MWVisualizationsTest-testInspectFactorialRecursive.svg" class="align-center" src="../_images/MWVisualizationsTest-testInspectFactorialRecursive.svg" /><p>On one hand, the slow version follows straightforward from the mathematical definition,</p>
 <span class="target" id="pharo-compiledMethod-14"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-factorialrecursive"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">factorialRecursive</span>
 

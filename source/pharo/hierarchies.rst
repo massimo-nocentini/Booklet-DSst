@@ -2,13 +2,6 @@
 Hierarchies
 ***********
 
-``Object`` and ``Trait`` and their superclasses 
-===============================================
-
-.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectObjectModel
-
-  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectObjectModel.svg
-    :align: center
 
 ``Magnitude`` hierarchy
 =======================
@@ -535,3 +528,52 @@ evaluates to ``#t``; in parallel, our Smalltalk implementation
 
 behaves the same, as required.
 
+
+A miscellanea of some objects
+=============================
+
+A ``Point``
++++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectPoint
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectPoint.svg
+    :align: center
+
+The ``Color`` gray, translucent
++++++++++++++++++++++++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectColorGray
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectColorGray.svg
+    :align: center
+
+A ``RSShape`` of a polygon, quoting itself
+++++++++++++++++++++++++++++++++++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectRSPolygon
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectRSPolygon.svg
+    :align: center
+
+A ``Context``
++++++++++++++
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectContext
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectContext.svg
+    :align: center
+
+A Git repository
+++++++++++++++++
+
+.. the following test causes a segmentation fault and is skipped in the suite.
+  .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectIceRepository
+  
+    .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectIceRepository.svg
+      :align: center
+
+.. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectIceRepositoryCommitsGraph
+
+  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectIceRepositoryCommitsGraph.svg
+    :align: center
