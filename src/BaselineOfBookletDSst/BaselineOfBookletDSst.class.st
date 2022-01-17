@@ -87,8 +87,9 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     \/ mediantInteger: mediantFraction: kissingFractions
 			     overlappingPairsDo: kissingFractionLink: bitBRGC asShapeBinaryDots:
 			     asShapeBRGCDots fairCoin #bisect:baseBlock: #bisect:from:to:baseBlock:
-			     asSkewBinaryCanonicalSparse testInspectObjectModel
-			     testMagnitudeSubclasses testMagnitudeSubclassesSlotsGraph
+			     asSkewBinaryCanonicalSparse #kth:ranking:atRandom:
+			     atRandom: testInspectObjectModel testMagnitudeSubclasses
+			     testMagnitudeSubclassesSlotsGraph
 			     testCollectionSubclasses testRBNodeSubclasses
 			     testInspectCharacterPi testInspectFloatPi testInspectDatetimeNow
 			     testInspectAssociation testInspectInteger13
@@ -111,7 +112,8 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     testInspectIceRepository testInspectIceRepositoryCommitsGraph
 			     testInspectOneToMany testInspectPascalArray
 			     testInspectCatalanArray testInspectLargeInteger
-			     testLinkSubclasses testInspectSkewBinaryCanonicalSparse );
+			     testLinkSubclasses testInspectSkewBinaryCanonicalSparse
+			     testInspectProbabilisticMedianRatioWithSorting );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'core-messages.json' ]
 		  ofPackage: self class package
