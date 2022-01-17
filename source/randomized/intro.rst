@@ -40,9 +40,9 @@ implementation looks like
 
 .. math::
 
-   T(n) ≤ T\left({{3}\over{4}}\,n\right) + O(n).
+   T(n) ≤ T\left({{3}\over{4}}\,n\right) + O(n)
 
-so on any input, the algorithm returns the correct answer after a linear number
+so on any input, the algorithm returns the correct answer after a *linear* number
 of steps, on the average.  The two approaches can also be compared,
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectProbabilisticMedianRatioWithSorting
