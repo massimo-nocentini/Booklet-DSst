@@ -47,10 +47,11 @@
 <li class="toctree-l1"><a class="reference internal" href="pharo/hierarchies.html">2. Hierarchies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="symbolic/bits.html">3. Bits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="symbolic/divisibility.html">4. Numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/links.html">5. Links</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/linked-allocation.html">6. Containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">7. Storage pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bibliography.html">8. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="randomized/intro.html">5. Randomization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/links.html">6. Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/linked-allocation.html">7. Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation/storage-pools.html">8. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bibliography.html">9. Bibliography</a></li>
 </ul>
 
 <div class="relations">
@@ -239,6 +240,13 @@
 
       <ul>
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-9">SequenceableCollection&gt;&gt;#asValueLink</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-9">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    #atRandom: is understood by
+
+      <ul>
+        <li><a href="randomized/intro.html#pharo-compiledMethod-1">SequenceableCollection&gt;&gt;#atRandom:</a>
 </li>
       </ul></li>
       <li>
@@ -453,6 +461,13 @@
 </li>
       </ul></li>
       <li>
+    #kth:ranking:atRandom: is understood by
+
+      <ul>
+        <li><a href="randomized/intro.html#pharo-compiledMethod-0">SequenceableCollection&gt;&gt;#kth:ranking:atRandom:</a>
+</li>
+      </ul></li>
+      <li>
     #linkBinomialTree: is understood by
 
       <ul>
@@ -491,6 +506,8 @@
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-12">Integer&gt;&gt;#mediantInteger:</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     #merge:with: is understood by
 
@@ -498,8 +515,6 @@
         <li><a href="linked-allocation/binomialheaps.html#pharo-compiledMethod-4">CTBinomialHeap&gt;&gt;#merge:with:</a>, <a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-47">[1]</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     #mergeBinaryTreeElement:inBinaryTree: is understood by
 
@@ -1284,6 +1299,8 @@
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-66">#testInspectPoint</a>
 </li>
+        <li><a href="randomized/intro.html#pharo-compiledMethod-2">#testInspectProbabilisticMedianRatioWithSorting</a>
+</li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-65">#testInspectRBNodesQuine</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-68">#testInspectRSPolygon</a>
@@ -1573,6 +1590,8 @@
       <ul>
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-9">#asValueLink</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-9">[1]</a>
 </li>
+        <li><a href="randomized/intro.html#pharo-compiledMethod-1">#atRandom:</a>
+</li>
         <li><a href="symbolic/divisibility.html#pharo-compiledMethod-10">#estrin:</a>
 </li>
         <li><a href="symbolic/divisibility.html#pharo-compiledMethod-8">#estrin:init:</a>
@@ -1582,6 +1601,8 @@
         <li><a href="symbolic/divisibility.html#pharo-compiledMethod-6">#horner:init:</a>
 </li>
         <li><a href="linked-allocation/links.html#pharo-compiledMethod-30">#isAcyclicWithRespectToAssociations:</a>
+</li>
+        <li><a href="randomized/intro.html#pharo-compiledMethod-0">#kth:ranking:atRandom:</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-16">#overlappingPairsDo:</a>
 </li>
@@ -1910,6 +1931,8 @@
 </li>
         <li><a href="symbolic/divisibility.html#pharo-compiledMethod-6">SequenceableCollection&gt;&gt;#horner:init:</a>
 </li>
+        <li><a href="randomized/intro.html#pharo-compiledMethod-0">SequenceableCollection&gt;&gt;#kth:ranking:atRandom:</a>
+</li>
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-3">UndefinedObject&gt;&gt;#asLinkedList</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-3">[1]</a>
 </li>
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-1">ValueLink&gt;&gt;#asLinkedList</a>, <a href="linked-allocation/linkedlists.html#pharo-compiledMethod-1">[1]</a>
@@ -2014,6 +2037,13 @@
 
       <ul>
         <li><a href="linked-allocation/linked-allocation.html#pharo-compiledMethod-53">Collection&gt;&gt;#asSplayHeap</a>, <a href="linked-allocation/splayheaps.html#pharo-compiledMethod-1">[1]</a>
+</li>
+      </ul></li>
+      <li>
+    Protocol *Random-Core
+
+      <ul>
+        <li><a href="randomized/intro.html#pharo-compiledMethod-1">SequenceableCollection&gt;&gt;#atRandom:</a>
 </li>
       </ul></li>
       <li>
@@ -2352,6 +2382,8 @@
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-27">EssentialsObjectTest&gt;&gt;#testInspectPascalArray</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-66">EssentialsObjectTest&gt;&gt;#testInspectPoint</a>
+</li>
+        <li><a href="randomized/intro.html#pharo-compiledMethod-2">EssentialsObjectTest&gt;&gt;#testInspectProbabilisticMedianRatioWithSorting</a>
 </li>
         <li><a href="pharo/hierarchies.html#pharo-compiledMethod-65">EssentialsObjectTest&gt;&gt;#testInspectRBNodesQuine</a>
 </li>

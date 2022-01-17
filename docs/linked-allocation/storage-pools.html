@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>7. Storage pools &#8212; Data Structures in Smalltalk  documentation</title>
+    <title>8. Storage pools &#8212; Data Structures in Smalltalk  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -16,8 +16,8 @@
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8. Bibliography" href="../bibliography.html" />
-    <link rel="prev" title="6. Containers" href="linked-allocation.html" />
+    <link rel="next" title="9. Bibliography" href="../bibliography.html" />
+    <link rel="prev" title="7. Containers" href="linked-allocation.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -51,26 +51,27 @@
 <li class="toctree-l1"><a class="reference internal" href="../pharo/hierarchies.html">2. Hierarchies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../symbolic/bits.html">3. Bits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../symbolic/divisibility.html">4. Numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="links.html">5. Links</a></li>
-<li class="toctree-l1"><a class="reference internal" href="linked-allocation.html">6. Containers</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Storage pools</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#stack-pool">7.1. <code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#queue-pool">7.2. <code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#circularlist-pool">7.3. <code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#addition-of-polynomials">7.3.1. Addition of <em>polynomials</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../randomized/intro.html">5. Randomization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">6. Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linked-allocation.html">7. Containers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Storage pools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#stack-pool">8.1. <code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#queue-pool">8.2. <code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#circularlist-pool">8.3. <code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#addition-of-polynomials">8.3.1. Addition of <em>polynomials</em></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">8. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">9. Bibliography</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="linked-allocation.html" title="previous chapter"><span class="section-number">6. </span>Containers</a></li>
-      <li>Next: <a href="../bibliography.html" title="next chapter"><span class="section-number">8. </span>Bibliography</a></li>
+      <li>Previous: <a href="linked-allocation.html" title="previous chapter"><span class="section-number">7. </span>Containers</a></li>
+      <li>Next: <a href="../bibliography.html" title="next chapter"><span class="section-number">9. </span>Bibliography</a></li>
   </ul></li>
 </ul>
 </div>
@@ -102,10 +103,10 @@
     <ul>
         <li>
           &larr;
-          <a href="linked-allocation.html" title="Previous document"><span class="section-number">6. </span>Containers</a>
+          <a href="linked-allocation.html" title="Previous document"><span class="section-number">7. </span>Containers</a>
         </li>
         <li>
-          <a href="../bibliography.html" title="Next document"><span class="section-number">8. </span>Bibliography</a>
+          <a href="../bibliography.html" title="Next document"><span class="section-number">9. </span>Bibliography</a>
           &rarr;
         </li>
     </ul>
@@ -116,7 +117,7 @@
           <div class="body" role="main">
             
   <section id="storage-pools">
-<h1><span class="section-number">7. </span>Storage pools<a class="headerlink" href="#storage-pools" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">8. </span>Storage pools<a class="headerlink" href="#storage-pools" title="Permalink to this headline">¶</a></h1>
 <p>The Knuth’s description of linked allocation begins at page 254 of <span id="id1">[<a class="reference internal" href="../bibliography.html#id10" title="Donald E. Knuth. The Art of Computer Programming, Volume 1 (3rd Ed.): Fundamental Algorithms. Addison Wesley Longman Publishing Co., Inc., USA, 1997. ISBN 0201896834.">Knu97</a>]</span>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -166,7 +167,7 @@ be linked together in several orders corresponding to different lists; and so on
 <p>allow us to call <em>storage pool</em> the set of all nodes that can be allocated
 according to these messages.</p>
 <section id="stack-pool">
-<h2><span class="section-number">7.1. </span><code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool<a class="headerlink" href="#stack-pool" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.1. </span><code class="docutils literal notranslate"><span class="pre">Stack</span></code> pool<a class="headerlink" href="#stack-pool" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testemptystack"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
 <span class="nf">testEmptyStack</span>
 
@@ -262,7 +263,7 @@ according to these messages.</p>
 <img alt="../_images/CTLinkedStoragePoolTest-testRemoveAllFromStack-empty.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testRemoveAllFromStack-empty.svg" /><p>as required.</p>
 </section>
 <section id="queue-pool">
-<h2><span class="section-number">7.2. </span><code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool<a class="headerlink" href="#queue-pool" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.2. </span><code class="docutils literal notranslate"><span class="pre">Queue</span></code> pool<a class="headerlink" href="#queue-pool" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testemptyqueue"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
 <span class="nf">testEmptyQueue</span>
 
@@ -355,7 +356,7 @@ according to these messages.</p>
 <img alt="../_images/CTLinkedStoragePoolTest-testRemoveAllFromQueue-empty.svg" class="align-center" src="../_images/CTLinkedStoragePoolTest-testRemoveAllFromQueue-empty.svg" /><p>as required.</p>
 </section>
 <section id="circularlist-pool">
-<h2><span class="section-number">7.3. </span><code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool<a class="headerlink" href="#circularlist-pool" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.3. </span><code class="docutils literal notranslate"><span class="pre">CircularList</span></code> pool<a class="headerlink" href="#circularlist-pool" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="pharo-compiledMethod-13"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testemptycircularlist"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
 <span class="nf">testEmptyCircularList</span>
 
@@ -412,7 +413,7 @@ according to these messages.</p>
 </pre></div>
 </div>
 <section id="addition-of-polynomials">
-<h3><span class="section-number">7.3.1. </span>Addition of <em>polynomials</em><a class="headerlink" href="#addition-of-polynomials" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">8.3.1. </span>Addition of <em>polynomials</em><a class="headerlink" href="#addition-of-polynomials" title="Permalink to this headline">¶</a></h3>
 <p>Consider the addition of two polynomials,</p>
 <span class="target" id="pharo-compiledMethod-16"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctlinkedstoragepooltest-testpolynomialadditionfromknuthtextbook"><div class="highlight"><pre><span></span><span class="c">&quot;CTLinkedStoragePoolTest, protocol tests&quot;</span>
 <span class="nf">testPolynomialAdditionFromKnuthTextbook</span>
@@ -461,10 +462,10 @@ according to these messages.</p>
     <ul>
         <li>
           &larr;
-          <a href="linked-allocation.html" title="Previous document"><span class="section-number">6. </span>Containers</a>
+          <a href="linked-allocation.html" title="Previous document"><span class="section-number">7. </span>Containers</a>
         </li>
         <li>
-          <a href="../bibliography.html" title="Next document"><span class="section-number">8. </span>Bibliography</a>
+          <a href="../bibliography.html" title="Next document"><span class="section-number">9. </span>Bibliography</a>
           &rarr;
         </li>
     </ul>

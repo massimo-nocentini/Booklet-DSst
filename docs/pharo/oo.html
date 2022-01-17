@@ -59,10 +59,11 @@
 <li class="toctree-l1"><a class="reference internal" href="hierarchies.html">2. Hierarchies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../symbolic/bits.html">3. Bits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../symbolic/divisibility.html">4. Numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/links.html">5. Links</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/linked-allocation.html">6. Containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/storage-pools.html">7. Storage pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">8. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../randomized/intro.html">5. Randomization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/links.html">6. Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/linked-allocation.html">7. Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/storage-pools.html">8. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">9. Bibliography</a></li>
 </ul>
 
 <div class="relations">
@@ -145,11 +146,7 @@
 <span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspecttrue"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectTrue</span>
 
-   <span class="o">^</span> <span class="bp">self</span>
-        <span class="nf">exportSlotsGraphOf:</span> <span class="bp">true</span>
-        <span class="nf">slotDescriptorsContext:</span>
-           (<span class="nc">CTSlotDescriptorsVisitor</span> <span class="nb">new</span> <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">aDescriptor</span> <span class="o">|</span> 
-               <span class="nv">aDescriptor</span> <span class="nf">inline:</span> <span class="bp">false</span> ])
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="bp">true</span>
 </pre></div>
 </div>
 <blockquote>
@@ -158,11 +155,7 @@
 <span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectfalse"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectFalse</span>
 
-   <span class="o">^</span> <span class="bp">self</span>
-        <span class="nf">exportSlotsGraphOf:</span> <span class="bp">false</span>
-        <span class="nf">slotDescriptorsContext:</span>
-           (<span class="nc">CTSlotDescriptorsVisitor</span> <span class="nb">new</span> <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">aDescriptor</span> <span class="o">|</span> 
-               <span class="nv">aDescriptor</span> <span class="nf">inline:</span> <span class="bp">false</span> ])
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="bp">false</span>
 </pre></div>
 </div>
 <blockquote>

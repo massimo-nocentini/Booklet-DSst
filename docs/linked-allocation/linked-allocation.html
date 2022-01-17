@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>6. Containers &#8212; Data Structures in Smalltalk  documentation</title>
+    <title>7. Containers &#8212; Data Structures in Smalltalk  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -16,8 +16,8 @@
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. Storage pools" href="storage-pools.html" />
-    <link rel="prev" title="5. Links" href="links.html" />
+    <link rel="next" title="8. Storage pools" href="storage-pools.html" />
+    <link rel="prev" title="6. Links" href="links.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -51,32 +51,33 @@
 <li class="toctree-l1"><a class="reference internal" href="../pharo/hierarchies.html">2. Hierarchies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../symbolic/bits.html">3. Bits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../symbolic/divisibility.html">4. Numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="links.html">5. Links</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Containers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#lists">6.1. Lists</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#linked">6.1.1. Linked</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../randomized/intro.html">5. Randomization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">6. Links</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Containers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lists">7.1. Lists</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linked">7.1.1. Linked</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#trees">6.2. Trees</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#search-sets">6.2.1. <em>Search</em> sets</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#red-black-sets">6.2.2. <em>Red-Black</em> sets</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#leftist-heaps">6.2.3. <em>Leftist</em> heaps</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#binomial-heaps">6.2.4. <em>Binomial</em> heaps</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#splay-heaps">6.2.5. <em>Splay</em> heaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trees">7.2. Trees</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#search-sets">7.2.1. <em>Search</em> sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#red-black-sets">7.2.2. <em>Red-Black</em> sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#leftist-heaps">7.2.3. <em>Leftist</em> heaps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#binomial-heaps">7.2.4. <em>Binomial</em> heaps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#splay-heaps">7.2.5. <em>Splay</em> heaps</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="storage-pools.html">7. Storage pools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">8. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="storage-pools.html">8. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">9. Bibliography</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="links.html" title="previous chapter"><span class="section-number">5. </span>Links</a></li>
-      <li>Next: <a href="storage-pools.html" title="next chapter"><span class="section-number">7. </span>Storage pools</a></li>
+      <li>Previous: <a href="links.html" title="previous chapter"><span class="section-number">6. </span>Links</a></li>
+      <li>Next: <a href="storage-pools.html" title="next chapter"><span class="section-number">8. </span>Storage pools</a></li>
   </ul></li>
 </ul>
 </div>
@@ -108,10 +109,10 @@
     <ul>
         <li>
           &larr;
-          <a href="links.html" title="Previous document"><span class="section-number">5. </span>Links</a>
+          <a href="links.html" title="Previous document"><span class="section-number">6. </span>Links</a>
         </li>
         <li>
-          <a href="storage-pools.html" title="Next document"><span class="section-number">7. </span>Storage pools</a>
+          <a href="storage-pools.html" title="Next document"><span class="section-number">8. </span>Storage pools</a>
           &rarr;
         </li>
     </ul>
@@ -122,11 +123,11 @@
           <div class="body" role="main">
             
   <section id="containers">
-<h1><span class="section-number">6. </span>Containers<a class="headerlink" href="#containers" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">7. </span>Containers<a class="headerlink" href="#containers" title="Permalink to this headline">¶</a></h1>
 <section id="lists">
-<h2><span class="section-number">6.1. </span>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.1. </span>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
 <section id="linked">
-<h3><span class="section-number">6.1.1. </span>Linked<a class="headerlink" href="#linked" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.1.1. </span>Linked<a class="headerlink" href="#linked" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">ValueLink</span></code> objects are small and allow us to compose them in an applicative
 way so that we can share part of a composite structure among different client
 objects so that those clients don’t observe any side effect on the
@@ -345,7 +346,7 @@ then all the values are kept as well</p>
 </section>
 </section>
 <section id="trees">
-<h2><span class="section-number">6.2. </span>Trees<a class="headerlink" href="#trees" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">7.2. </span>Trees<a class="headerlink" href="#trees" title="Permalink to this headline">¶</a></h2>
 <p>A <em>free binary tree</em> container is defined according to</p>
 <span class="target" id="pharo-class-2"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinarytreeabstract"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">subclass:</span> <span class="ss">#CTBinaryTreeAbstract</span>
 	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;representation&#39;</span>
@@ -573,7 +574,7 @@ using <code class="docutils literal notranslate"><span class="pre">ArrayedCollec
 <div><img alt="../_images/CTBinaryTreeAbstractTest-testPushShuffledCollection.svg" class="align-center" src="../_images/CTBinaryTreeAbstractTest-testPushShuffledCollection.svg" /></div></blockquote>
 <p>respectively.</p>
 <section id="search-sets">
-<h3><span class="section-number">6.2.1. </span><em>Search</em> sets<a class="headerlink" href="#search-sets" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.2.1. </span><em>Search</em> sets<a class="headerlink" href="#search-sets" title="Permalink to this headline">¶</a></h3>
 <p>A <em>search binary tree</em> is defined by subclassing</p>
 <span class="target" id="pharo-class-6"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctunbalancedset"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeAbstract</span> <span class="nf">subclass:</span> <span class="ss">#CTUnbalancedSet</span>
 	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
@@ -741,7 +742,7 @@ invoked in the leaves in case of doubles.</p>
 </div>
 </section>
 <section id="red-black-sets">
-<h3><span class="section-number">6.2.2. </span><em>Red-Black</em> sets<a class="headerlink" href="#red-black-sets" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.2.2. </span><em>Red-Black</em> sets<a class="headerlink" href="#red-black-sets" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="pharo-class-7"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctredblackset"><div class="highlight"><pre><span></span><span class="nc">CTUnbalancedSet</span> <span class="nf">subclass:</span> <span class="ss">#CTRedBlackSet</span>
 	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
 	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
@@ -750,7 +751,7 @@ invoked in the leaves in case of doubles.</p>
 </div>
 <img alt="../_images/CTRedBlackSetTest-testCreation.svg" class="align-center" src="../_images/CTRedBlackSetTest-testCreation.svg" /><img alt="../_images/CTRedBlackSetTest-testPushOrderedInterval.svg" class="align-center" src="../_images/CTRedBlackSetTest-testPushOrderedInterval.svg" /><img alt="../_images/CTRedBlackSetTest-testPushOrderedCollection.svg" class="align-center" src="../_images/CTRedBlackSetTest-testPushOrderedCollection.svg" /><img alt="../_images/CTRedBlackSetTest-testPushShuffledInterval.svg" class="align-center" src="../_images/CTRedBlackSetTest-testPushShuffledInterval.svg" /><img alt="../_images/CTRedBlackSetTest-testPushShuffledCollection.svg" class="align-center" src="../_images/CTRedBlackSetTest-testPushShuffledCollection.svg" /></section>
 <section id="leftist-heaps">
-<h3><span class="section-number">6.2.3. </span><em>Leftist</em> heaps<a class="headerlink" href="#leftist-heaps" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.2.3. </span><em>Leftist</em> heaps<a class="headerlink" href="#leftist-heaps" title="Permalink to this headline">¶</a></h3>
 <p>A <em>search binary tree</em> is defined by subclassing</p>
 <span class="target" id="pharo-class-8"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctleftistheap"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeAbstract</span> <span class="nf">subclass:</span> <span class="ss">#CTLeftistHeap</span>
 	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
@@ -840,7 +841,7 @@ invoked in the leaves in case of doubles.</p>
 </ul>
 </section>
 <section id="binomial-heaps">
-<h3><span class="section-number">6.2.4. </span><em>Binomial</em> heaps<a class="headerlink" href="#binomial-heaps" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.2.4. </span><em>Binomial</em> heaps<a class="headerlink" href="#binomial-heaps" title="Permalink to this headline">¶</a></h3>
 <p>A <em>free binary tree</em> container is defined according to</p>
 <span class="target" id="pharo-class-9"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctbinomialheap"><div class="highlight"><pre><span></span><span class="nc">Object</span> <span class="nf">subclass:</span> <span class="ss">#CTBinomialHeap</span>
 	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;representation&#39;</span>
@@ -984,7 +985,7 @@ using <code class="docutils literal notranslate"><span class="pre">ArrayedCollec
 <img alt="../_images/CTBinomialHeapTest-testPushShuffledCollection.svg" class="align-center" src="../_images/CTBinomialHeapTest-testPushShuffledCollection.svg" /><p>respectively.</p>
 </section>
 <section id="splay-heaps">
-<h3><span class="section-number">6.2.5. </span><em>Splay</em> heaps<a class="headerlink" href="#splay-heaps" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">7.2.5. </span><em>Splay</em> heaps<a class="headerlink" href="#splay-heaps" title="Permalink to this headline">¶</a></h3>
 <p>A <em>search binary tree</em> is defined by subclassing</p>
 <span class="target" id="pharo-class-11"></span><div class="highlight-smalltalk notranslate" id="pharo-class-ctsplayheap"><div class="highlight"><pre><span></span><span class="nc">CTBinaryTreeAbstract</span> <span class="nf">subclass:</span> <span class="ss">#CTSplayHeap</span>
 	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
@@ -1172,10 +1173,10 @@ using <code class="docutils literal notranslate"><span class="pre">ArrayedCollec
     <ul>
         <li>
           &larr;
-          <a href="links.html" title="Previous document"><span class="section-number">5. </span>Links</a>
+          <a href="links.html" title="Previous document"><span class="section-number">6. </span>Links</a>
         </li>
         <li>
-          <a href="storage-pools.html" title="Next document"><span class="section-number">7. </span>Storage pools</a>
+          <a href="storage-pools.html" title="Next document"><span class="section-number">8. </span>Storage pools</a>
           &rarr;
         </li>
     </ul>

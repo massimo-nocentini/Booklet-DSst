@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>5. Randomization &#8212; Data Structures in Smalltalk  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Links" href="../linked-allocation/links.html" />
+    <link rel="prev" title="4. Numbers" href="../symbolic/divisibility.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Data Structures in Smalltalk</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=massimo-nocentini&repo=Booklet-DSst&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../pharo/oo.html">1. Object model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pharo/hierarchies.html">2. Hierarchies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic/bits.html">3. Bits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic/divisibility.html">4. Numbers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Randomization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#k-th-element-selection">5.1. <span class="math notranslate nohighlight">\(k\)</span>-th element selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/links.html">6. Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/linked-allocation.html">7. Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/storage-pools.html">8. Storage pools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">9. Bibliography</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../symbolic/divisibility.html" title="previous chapter"><span class="section-number">4. </span>Numbers</a></li>
+      <li>Next: <a href="../linked-allocation/links.html" title="next chapter"><span class="section-number">6. </span>Links</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+              <div class="related top">
+                &nbsp;
+  <nav id="rellinks">
+    <ul>
+        <li>
+          &larr;
+          <a href="../symbolic/divisibility.html" title="Previous document"><span class="section-number">4. </span>Numbers</a>
+        </li>
+        <li>
+          <a href="../linked-allocation/links.html" title="Next document"><span class="section-number">6. </span>Links</a>
+          &rarr;
+        </li>
+    </ul>
+  </nav>
+              </div>
+          
+
+          <div class="body" role="main">
+            
+  <section id="randomization">
+<h1><span class="section-number">5. </span>Randomization<a class="headerlink" href="#randomization" title="Permalink to this headline">¶</a></h1>
+<section id="k-th-element-selection">
+<h2><span class="section-number">5.1. </span><span class="math notranslate nohighlight">\(k\)</span>-th element selection<a class="headerlink" href="#k-th-element-selection" title="Permalink to this headline">¶</a></h2>
+<p>Let</p>
+<img alt="../_images/MWVisualizationsTest-testInspectProbabilisticMedian-original.svg" class="align-center" src="../_images/MWVisualizationsTest-testInspectProbabilisticMedian-original.svg" /><p>be a collection that has</p>
+<img alt="../_images/MWVisualizationsTest-testInspectProbabilisticMedian.svg" class="align-center" src="../_images/MWVisualizationsTest-testInspectProbabilisticMedian.svg" /><p>as median value. We can either compute it by sorting in <span class="math notranslate nohighlight">\(O(n\,\log{n})\)</span> time,</p>
+<img alt="../_images/MWVisualizationsTest-testInspectProbabilisticMedian-sorted.svg" class="align-center" src="../_images/MWVisualizationsTest-testInspectProbabilisticMedian-sorted.svg" /><p>then looking for the element at the middle; or, by using a randomized approach,</p>
+<span class="target" id="pharo-compiledMethod-0"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-kth-ranking-atrandom"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-Essentials&quot;</span>
+<span class="nf">kth:</span> <span class="nv">anInteger</span> <span class="nf">ranking:</span> <span class="nv">aBlock</span> <span class="nf">atRandom:</span> <span class="nv">aRandom</span>
+
+   <span class="o">|</span><span class="nv"> lessThan equals greaterThan pivot k lessThanSize </span><span class="o">|</span>
+   <span class="nv">k</span> <span class="o">:=</span> <span class="nv">anInteger</span> <span class="nf">min:</span> <span class="bp">self</span> <span class="nf">size</span> <span class="nf">max:</span> <span class="m">1</span><span class="p">.</span>
+
+   <span class="nv">lessThan</span> <span class="o">:=</span> <span class="nc">OrderedCollection</span> <span class="nb">new</span><span class="p">.</span>
+   <span class="nv">equals</span> <span class="o">:=</span> <span class="m">0</span><span class="p">.</span>
+   <span class="nv">greaterThan</span> <span class="o">:=</span> <span class="nc">OrderedCollection</span> <span class="nb">new</span><span class="p">.</span>
+
+   <span class="nv">pivot</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">atRandom:</span> <span class="nv">aRandom</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> 
+      <span class="nv">each</span> <span class="nf">==</span> <span class="nv">pivot</span>
+         <span class="nb">ifTrue:</span> [ <span class="nv">equals</span> <span class="o">:=</span> <span class="nv">equals</span> <span class="nf">+</span> <span class="m">1</span> ]
+         <span class="nb">ifFalse:</span> [ 
+            (<span class="nv">aBlock</span> <span class="nf">value:</span> <span class="nv">each</span> <span class="nf">value:</span> <span class="nv">pivot</span>)
+               <span class="nb">ifTrue:</span> [ <span class="nv">lessThan</span> <span class="nf">add:</span> <span class="nv">each</span> ]
+               <span class="nb">ifFalse:</span> [ <span class="nv">greaterThan</span> <span class="nf">add:</span> <span class="nv">each</span> ] ] ]<span class="p">.</span>
+
+   <span class="nv">lessThanSize</span> <span class="o">:=</span> <span class="nv">lessThan</span> <span class="nf">size</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="nv">k</span> <span class="nf">&lt;=</span> <span class="nv">lessThanSize</span>
+        <span class="nb">ifTrue:</span> [ <span class="nv">lessThan</span> <span class="nf">kth:</span> <span class="nv">k</span> <span class="nf">ranking:</span> <span class="nv">aBlock</span> <span class="nf">atRandom:</span> <span class="nv">aRandom</span> ]
+        <span class="nb">ifFalse:</span> [ 
+           (<span class="nv">k</span> <span class="nf">between:</span> <span class="nv">lessThanSize</span> <span class="nf">+</span> <span class="m">1</span> <span class="nf">and:</span> <span class="nv">lessThanSize</span> <span class="nf">+</span> <span class="nv">equals</span>)
+              <span class="nb">ifTrue:</span> [ <span class="nv">pivot</span> ]
+              <span class="nb">ifFalse:</span> [ 
+                 <span class="nv">greaterThan</span>
+                    <span class="nf">kth:</span> <span class="nv">k</span> <span class="nf">-</span> <span class="nv">lessThanSize</span> <span class="nf">-</span> <span class="nv">equals</span>
+                    <span class="nf">ranking:</span> <span class="nv">aBlock</span>
+                    <span class="nf">atRandom:</span> <span class="nv">aRandom</span> ] ]
+</pre></div>
+</div>
+<p>from <span id="id1">[<a class="reference internal" href="../bibliography.html#id27" title="Sanjoy Dasgupta, Christos H. Papadimitriou, and Umesh Vazirani. Algorithms. McGraw-Hill, Inc., USA, 1 edition, 2006. ISBN 0073523402.">DPV06</a>]</span> page 53, that produces the interactions</p>
+<img alt="../_images/MWVisualizationsTest-testInspectProbabilisticMedian-sequence-diagram.svg" class="align-center" src="../_images/MWVisualizationsTest-testInspectProbabilisticMedian-sequence-diagram.svg" /><p>where the message</p>
+<span class="target" id="pharo-compiledMethod-1"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-atrandom"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Random-Core&quot;</span>
+<span class="nf">atRandom:</span> <span class="nv">aGenerator</span>
+
+   <span class="c">&quot;Answer a random element of the receiver.  Uses aGenerator which</span>
+<span class="c">   should be kept by the user in a variable and used every time. Use</span>
+<span class="c">   this instead of #atRandom for better uniformity of random numbers </span>
+<span class="c">   because only you use the generator.  Causes an error if self has no </span>
+<span class="c">   elements.&quot;</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">at:</span> (<span class="nv">aGenerator</span> <span class="nf">nextInteger:</span> <span class="bp">self</span> <span class="nf">size</span>)
+</pre></div>
+</div>
+<p>also appears to show the <em>pivot</em> element choosen at each splitting.
+Sorting is doing far more work than looking for the middle element and don’t
+care about the relative ordering of the rest of elements. The recurrence of the
+implementation looks like</p>
+<div class="math notranslate nohighlight">
+\[T(n) ≤ T\left({{3}\over{4}}\,n\right) + O(n).\]</div>
+<p>so on any input, the algorithm returns the correct answer after a linear number
+of steps, on the average.  The two approaches can also be compared,</p>
+<span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectprobabilisticmedianratiowithsorting"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="nf">testInspectProbabilisticMedianRatioWithSorting</span>
+
+   <span class="o">|</span><span class="nv"> n random collection randomized sorting middle v w </span><span class="o">|</span>
+   <span class="bp">self</span> <span class="nf">timeLimit:</span> <span class="m">6</span> <span class="nf">seconds</span><span class="p">.</span>
+
+   <span class="nv">n</span> <span class="o">:=</span> <span class="m">1e5</span><span class="p">.</span>
+   <span class="nv">random</span> <span class="o">:=</span> <span class="nc">Random</span> <span class="nf">seed:</span> <span class="m">541</span><span class="p">.</span>
+   <span class="nv">collection</span> <span class="o">:=</span> <span class="nc">OrderedCollection</span> <span class="nb">new</span><span class="p">.</span>
+   <span class="m">1</span> <span class="nf">to:</span> <span class="nv">n</span> <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">i</span> <span class="o">|</span> <span class="nv">collection</span> <span class="nf">add:</span> (<span class="nv">random</span> <span class="nf">nextInteger:</span> <span class="nv">n</span>) ]<span class="p">.</span>
+
+   <span class="nv">middle</span> <span class="o">:=</span> (<span class="nv">collection</span> <span class="nf">size</span> <span class="nf">/</span> <span class="m">2</span>) <span class="nf">floor</span><span class="p">.</span>
+
+   <span class="nv">randomized</span> <span class="o">:=</span> [ 
+                 <span class="nv">v</span> <span class="o">:=</span> <span class="nv">collection</span>
+                         <span class="nf">kth:</span> <span class="nv">middle</span>
+                         <span class="nf">ranking:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">:</span><span class="nv">pivot</span> <span class="o">|</span> <span class="nv">each</span> <span class="nf">&lt;</span> <span class="nv">pivot</span> ]
+                         <span class="nf">atRandom:</span> <span class="nv">random</span> ] <span class="nf">benchFor:</span> <span class="m">2</span> <span class="nf">seconds</span><span class="p">.</span>
+
+   <span class="nv">sorting</span> <span class="o">:=</span> [ <span class="nv">w</span> <span class="o">:=</span> <span class="nv">collection</span> <span class="nf">sorted</span> <span class="nf">at:</span> <span class="nv">middle</span> ] <span class="nf">benchFor:</span> <span class="m">2</span> <span class="nf">seconds</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">v</span> <span class="nf">equals:</span> <span class="nv">w</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">assert:</span> ((<span class="nv">randomized</span> <span class="nf">iterations</span> <span class="nf">/</span> <span class="nv">sorting</span> <span class="nf">iterations</span>) <span class="nf">asFloat</span>
+          <span class="nf">between:</span> <span class="m">2</span>
+          <span class="nf">and:</span> <span class="m">3</span>)
+</pre></div>
+</div>
+<p>differing by a factor of 2 in speed, at least.</p>
+</section>
+</section>
+
+
+          </div>
+              <div class="related bottom">
+                &nbsp;
+  <nav id="rellinks">
+    <ul>
+        <li>
+          &larr;
+          <a href="../symbolic/divisibility.html" title="Previous document"><span class="section-number">4. </span>Numbers</a>
+        </li>
+        <li>
+          <a href="../linked-allocation/links.html" title="Next document"><span class="section-number">6. </span>Links</a>
+          &rarr;
+        </li>
+    </ul>
+  </nav>
+              </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Massimo Nocentini.
+      
+      |
+      <a href="../_sources/randomized/intro.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
