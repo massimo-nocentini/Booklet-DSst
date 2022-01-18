@@ -88,8 +88,8 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     overlappingPairsDo: kissingFractionLink: bitBRGC asShapeBinaryDots:
 			     asShapeBRGCDots fairCoin #bisect:baseBlock: #bisect:from:to:baseBlock:
 			     asSkewBinaryCanonicalSparse #kth:ranking:atRandom:
-			     atRandom: testInspectObjectModel testMagnitudeSubclasses
-			     testMagnitudeSubclassesSlotsGraph
+			     atRandom: testInspectObjectModel testInspectTraitModel
+			     testMagnitudeSubclasses testMagnitudeSubclassesSlotsGraph
 			     testCollectionSubclasses testRBNodeSubclasses
 			     testInspectCharacterPi testInspectFloatPi testInspectDatetimeNow
 			     testInspectAssociation testInspectInteger13
