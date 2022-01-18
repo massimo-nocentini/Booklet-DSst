@@ -80,10 +80,11 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 	<script: 'BaselineOfBookletDSst new scriptCoreMessagesForDoc'>
 	^ MetaSTExporter new
 		  selectors:
-			  #( valueWithArgumentedExit #karatsuba:base: #halves:base:
-			     asInteger #halves:at:digits:base: next privateNextValue
-			     privateNextSeed fibonacciNumbers goldenRatiosLower
-			     goldenRatiosGreater lucasNumbers #gibonacciNumbersFirst:second:do:
+			  #( forDocumentationInBookletDSst valueWithArgumentedExit
+			     #karatsuba:base: #halves:base: asInteger #halves:at:digits:base:
+			     next privateNextValue privateNextSeed fibonacciNumbers
+			     goldenRatiosLower goldenRatiosGreater lucasNumbers
+			     #gibonacciNumbersFirst:second:do:
 			     \/ mediantInteger: mediantFraction: kissingFractions
 			     overlappingPairsDo: kissingFractionLink: bitBRGC asShapeBinaryDots:
 			     asShapeBRGCDots fairCoin #bisect:baseBlock: #bisect:from:to:baseBlock:
