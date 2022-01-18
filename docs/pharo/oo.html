@@ -175,7 +175,16 @@
 <span id="id2">[<a class="reference internal" href="../bibliography.html#id21" title="Stéphane Ducasse, Oscar Nierstrasz, Nathanael Schärli, Roel Wuyts, and Andrew P. Black. Traits: a mechanism for fine-grained reuse. ACM Trans. Program. Lang. Syst., 28(2):331–388, mar 2006. doi:10.1145/1119479.1119483.">DNScharli+06</a>]</span>, traits are another mechanism to define
 behavior. Some applications can be found in both <span id="id3">[<a class="reference internal" href="../bibliography.html#id25" title="Andrew P. Black, Nathanael Schärli, and Stéphane Ducasse. Applying traits to the smalltalk collection classes. SIGPLAN Not., 38(11):47–64, oct 2003. doi:10.1145/949343.949311.">BScharliD03</a>]</span>
 and <span id="id4">[<a class="reference internal" href="../bibliography.html#id26" title="Damien Cassou, Stéphane Ducasse, and Roel Wuyts. Traits at work: the design of a new trait-based stream library. Computer Languages, Systems &amp; Structures, 35(1):2-20, 2009. ESUG 2007 International Conference on Dynamic Languages (ESUG/ICDL 2007). doi:https://doi.org/10.1016/j.cl.2008.05.004.">CDW09</a>]</span>, also a wiki page exists at <span id="id5">[<a class="reference internal" href="../bibliography.html#id23" title="Pharo community. Traits. URL: https://github.com/pharo-open-documentation/pharo-wiki/blob/master/General/Traits.md.">com</a>]</span>.</p>
-<img alt="../_images/EssentialsObjectTest-testInspectTraitModel.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectTraitModel.svg" /></section>
+<img alt="../_images/EssentialsObjectTest-testInspectTraitModel.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectTraitModel.svg" /><p>As a real case, the class definition</p>
+<span class="target" id="pharo-class-0"></span><div class="highlight-smalltalk notranslate" id="pharo-class-collectionroottest"><div class="highlight"><pre><span></span><span class="nc">ClassTestCase</span> <span class="nf">subclass:</span> <span class="ss">#CollectionRootTest</span>
+	<span class="nf">uses:</span> <span class="nc">TIterateTest</span> <span class="nf">+</span> <span class="nc">TEmptyTest</span> <span class="nf">+</span> <span class="nc">TSizeTest</span>
+	<span class="nf">instanceVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">classVariableNames:</span> <span class="s">&#39;&#39;</span>
+	<span class="nf">package:</span> <span class="s">&#39;Collections-Abstract-Tests-Base&#39;</span>
+</pre></div>
+</div>
+<p>is an example of traits usage and its inspection produces</p>
+<img alt="../_images/EssentialsObjectTest-testInspectCollectionRootTest.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectCollectionRootTest.svg" /></section>
 </section>
 </section>
 

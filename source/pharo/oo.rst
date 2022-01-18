@@ -54,3 +54,13 @@ and :cite:`CASSOU20092`, also a wiki page exists at :cite:`pharowiki-traits`.
 
 .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectTraitModel.svg
   :align: center
+
+As a real case, the class definition
+
+.. pharo:autoclass:: CollectionRootTest
+
+is an example of traits usage and its inspection produces
+
+.. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectCollectionRootTest.svg
+  :align: center
+
