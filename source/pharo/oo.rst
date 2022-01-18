@@ -38,10 +38,11 @@ On the other hand, *falsehood* is encoded by,
 ``Object`` class and its superclasses 
 =====================================
 
+..
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectObjectModel
 
-  .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectObjectModel.svg
-    :align: center
+.. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectObjectModel.svg
+  :align: center
 
 ``Trait`` class
 +++++++++++++++
@@ -50,3 +51,6 @@ First introduced in :cite:`10.1007/978-3-540-45070-2_12` then extended in
 :cite:`10.1145/1119479.1119483`, traits are another mechanism to define
 behavior. Some applications can be found in both :cite:`10.1145/949343.949311`
 and :cite:`CASSOU20092`, also a wiki page exists at :cite:`pharowiki-traits`.
+
+.. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectTraitModel.svg
+  :align: center
