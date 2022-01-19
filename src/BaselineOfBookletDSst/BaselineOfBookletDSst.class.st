@@ -19,9 +19,9 @@ BaselineOfBookletDSst >> baseline: spec [
 			with: [ 
 			spec repository: 'github://massimo-nocentini/Containers-Essentials' ].
 
-		spec
-			baseline: 'MethodWrappersMN'
-			with: [ spec repository: 'github://bauing-schmidt/MethodWrappers:UML-sequence-diagram/' ].
+		spec baseline: 'MethodWrappersMN' with: [ 
+			spec repository:
+				'github://bauing-schmidt/MethodWrappers:UML-sequence-diagram/' ].
 
 		spec
 			baseline: 'ContainersLinks'
@@ -56,7 +56,12 @@ BaselineOfBookletDSst >> baseline: spec [
 
 		spec baseline: 'ContainersLeftistHeap' with: [ 
 			spec repository:
-				'github://massimo-nocentini/Containers-LeftistHeap' ] ]
+				'github://massimo-nocentini/Containers-LeftistHeap' ].
+
+		spec
+			baseline: 'ContainersSkipList'
+			with: [ 
+			spec repository: 'github://massimo-nocentini/Containers-SkipList' ] ]
 ]
 
 { #category : #documentation }
