@@ -116,9 +116,9 @@
 <section id="k-th-element-selection">
 <h2><span class="section-number">5.1. </span><span class="math notranslate nohighlight">\(k\)</span>-th element selection<a class="headerlink" href="#k-th-element-selection" title="Permalink to this headline">¶</a></h2>
 <p>Let</p>
-<img alt="../_images/MWVisualizationsTest-testInspectProbabilisticMedian-original.svg" class="align-center" src="../_images/MWVisualizationsTest-testInspectProbabilisticMedian-original.svg" /><p>be a collection that has</p>
-<img alt="../_images/MWVisualizationsTest-testInspectProbabilisticMedian.svg" class="align-center" src="../_images/MWVisualizationsTest-testInspectProbabilisticMedian.svg" /><p>as median value. We can either compute it by sorting in <span class="math notranslate nohighlight">\(O(n\,\log{n})\)</span> time,</p>
-<img alt="../_images/MWVisualizationsTest-testInspectProbabilisticMedian-sorted.svg" class="align-center" src="../_images/MWVisualizationsTest-testInspectProbabilisticMedian-sorted.svg" /><p>then looking for the element at the middle; or, by using a randomized approach,</p>
+<img alt="../_images/MTVisualizationsTest-testInspectProbabilisticMedian-original.svg" class="align-center" src="../_images/MTVisualizationsTest-testInspectProbabilisticMedian-original.svg" /><p>be a collection that has</p>
+<img alt="../_images/MTVisualizationsTest-testInspectProbabilisticMedian.svg" class="align-center" src="../_images/MTVisualizationsTest-testInspectProbabilisticMedian.svg" /><p>as median value. We can either compute it by sorting in <span class="math notranslate nohighlight">\(O(n\,\log{n})\)</span> time,</p>
+<img alt="../_images/MTVisualizationsTest-testInspectProbabilisticMedian-sorted.svg" class="align-center" src="../_images/MTVisualizationsTest-testInspectProbabilisticMedian-sorted.svg" /><p>then looking for the element at the middle; or, by using a randomized approach,</p>
 <span class="target" id="pharo-compiledMethod-0"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-kth-ranking-atrandom"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-Essentials&quot;</span>
 <span class="nf">kth:</span> <span class="nv">anInteger</span> <span class="nf">ranking:</span> <span class="nv">aBlock</span> <span class="nf">atRandom:</span> <span class="nv">aRandom</span>
 
@@ -154,7 +154,7 @@
 </pre></div>
 </div>
 <p>from <span id="id1">[<a class="reference internal" href="../bibliography.html#id27" title="Sanjoy Dasgupta, Christos H. Papadimitriou, and Umesh Vazirani. Algorithms. McGraw-Hill, Inc., USA, 1 edition, 2006. ISBN 0073523402.">DPV06</a>]</span> page 53, that produces the interactions</p>
-<img alt="../_images/MWVisualizationsTest-testInspectProbabilisticMedian-sequence-diagram.svg" class="align-center" src="../_images/MWVisualizationsTest-testInspectProbabilisticMedian-sequence-diagram.svg" /><p>where the message</p>
+<img alt="../_images/MTVisualizationsTest-testInspectProbabilisticMedian-sequence-diagram.svg" class="align-center" src="../_images/MTVisualizationsTest-testInspectProbabilisticMedian-sequence-diagram.svg" /><p>where the message</p>
 <span class="target" id="pharo-compiledMethod-1"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-atrandom"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Random-Core&quot;</span>
 <span class="nf">atRandom:</span> <span class="nv">aGenerator</span>
 

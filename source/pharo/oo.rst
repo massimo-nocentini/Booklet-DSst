@@ -28,6 +28,7 @@ On one hand, *truthness* is encoded by,
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectTrue.svg
     :align: center
 
+ 
 On the other hand, *falsehood* is encoded by,
 
 .. pharo:autocompiledmethod:: EssentialsObjectTest>>#testInspectFalse

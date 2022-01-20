@@ -47,8 +47,8 @@ dispatches over
 
 by means of *bisection*
 
-.. pharo:autocompiledmethod:: ArrayedCollection>>#bisect:baseBlock:
-.. pharo:autocompiledmethod:: ArrayedCollection>>#bisect:from:to:baseBlock:
+.. pharo:autocompiledmethod:: SequenceableCollection>>#bisect:baseBlock:
+.. pharo:autocompiledmethod:: SequenceableCollection>>#bisect:from:to:baseBlock:
 
 to finally build the tree. On the other hand, using ``Collection`` objects
 

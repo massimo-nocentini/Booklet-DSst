@@ -7,17 +7,17 @@ Randomization
 
 Let
 
-.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MWVisualizationsTest-testInspectProbabilisticMedian-original.svg
+.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MTVisualizationsTest-testInspectProbabilisticMedian-original.svg
   :align: center
 
 be a collection that has
 
-.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MWVisualizationsTest-testInspectProbabilisticMedian.svg
+.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MTVisualizationsTest-testInspectProbabilisticMedian.svg
   :align: center
 
 as median value. We can either compute it by sorting in :math:`O(n\,\log{n})` time,
 
-.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MWVisualizationsTest-testInspectProbabilisticMedian-sorted.svg
+.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MTVisualizationsTest-testInspectProbabilisticMedian-sorted.svg
   :align: center
 
 then looking for the element at the middle; or, by using a randomized approach,
@@ -26,7 +26,7 @@ then looking for the element at the middle; or, by using a randomized approach,
 
 from :cite:`10.5555/1177299` page 53, that produces the interactions
 
-.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MWVisualizationsTest-testInspectProbabilisticMedian-sequence-diagram.svg
+.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MTVisualizationsTest-testInspectProbabilisticMedian-sequence-diagram.svg
   :align: center
 
 where the message

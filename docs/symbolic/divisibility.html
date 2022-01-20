@@ -150,104 +150,81 @@
 </pre></div>
 </div>
 <p>in</p>
-<span class="target" id="pharo-compiledMethod-1"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-mwvisualizationstest-testprofileslowfibonacciwithadd"><div class="highlight"><pre><span></span><span class="c">&quot;MWVisualizationsTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-1"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-mtvisualizationstest-testprofileslowfibonacciwithadd"><div class="highlight"><pre><span></span><span class="c">&quot;MTVisualizationsTest, protocol tests&quot;</span>
 <span class="nf">testProfileSlowFibonacciWithAdd</span>
 
-   <span class="o">|</span><span class="nv"> wrapper handlerExecution tree metadata result wrapperAdd presenter </span><span class="o">|</span>
-   <span class="nv">tree</span> <span class="o">:=</span> <span class="nc">CTOrderPreservingTree</span> <span class="nb">new</span><span class="p">.</span>
+   <span class="o">^</span> <span class="bp">self</span>
+        <span class="nf">compiledMethods:</span> { 
+              (<span class="nc">Integer</span> <span class="nf">&gt;&gt;</span> <span class="ss">#slowFibonacci</span>)<span class="p">.</span>
+              (<span class="nc">Number</span> <span class="nf">&gt;&gt;</span> <span class="ss">#addNumber:</span>) }
+        <span class="nf">wrapping:</span> [ <span class="m">6</span> <span class="nf">slowFibonacci</span> ]
+        <span class="nf">then:</span> [ <span class="o">:</span><span class="nv">result</span> <span class="o">:</span><span class="nv">observedData</span> <span class="o">|</span> 
+           <span class="o">|</span><span class="nv"> presenter tree builder </span><span class="o">|</span>
+           <span class="nv">tree</span> <span class="o">:=</span> <span class="nv">observedData</span> <span class="nf">tree</span><span class="p">.</span>
 
-   <span class="nv">handlerExecution</span> <span class="o">:=</span> <span class="nc">MWHandlerProfiling</span> <span class="nb">new</span>
-                          <span class="nf">tree:</span> <span class="nv">tree</span><span class="p">;</span>
-                          <span class="nf">yourself</span><span class="p">.</span>
+           <span class="nv">builder</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">umlSequenceDiagramBuilder:</span>
+                         <span class="nc">RSUMLSequenceBuilder</span> <span class="nb">new</span><span class="p">.</span>
 
-   <span class="nv">wrapper</span> <span class="o">:=</span> <span class="nc">MWDecorator</span> <span class="nb">new</span>
-                 <span class="nf">compiledMethod:</span> <span class="nc">Integer</span> <span class="nf">&gt;&gt;</span> <span class="ss">#slowFibonacci</span><span class="p">;</span>
-                 <span class="nf">handler:</span> <span class="nv">handlerExecution</span><span class="p">;</span>
-                 <span class="nf">yourself</span><span class="p">.</span>
+           <span class="nv">presenter</span> <span class="o">:=</span> (<span class="nc">MTOverviewSpPresenter</span> <span class="nf">on:</span> <span class="nv">observedData</span>)
+                           <span class="nf">umlSequenceDiagramBuilder:</span> <span class="nv">builder</span><span class="p">;</span>
+                           <span class="nf">openWithSpec</span><span class="p">;</span>
+                           <span class="nf">yourself</span><span class="p">.</span>
 
-   <span class="nv">wrapperAdd</span> <span class="o">:=</span> <span class="nc">MWDecorator</span> <span class="nb">new</span>
-                    <span class="nf">compiledMethod:</span> <span class="nc">Number</span> <span class="nf">&gt;&gt;</span> <span class="ss">#addNumber:</span><span class="p">;</span>
-                    <span class="nf">handler:</span> <span class="nv">handlerExecution</span><span class="p">;</span>
-                    <span class="nf">yourself</span><span class="p">.</span>
+           <span class="bp">self</span>
+              <span class="nf">assert:</span> <span class="nv">tree</span> <span class="nf">size</span> <span class="nf">equals:</span> <span class="m">37</span><span class="p">;</span>
+              <span class="nf">assert:</span> <span class="nv">result</span> <span class="nf">equals:</span> <span class="m">7</span> <span class="nf">fibonacciNumbers</span> <span class="nf">last</span><span class="p">.</span> <span class="c">&quot; 55&quot;</span>
 
-   <span class="nv">result</span> <span class="o">:=</span> <span class="nc">MWSession</span> <span class="nb">new</span>
-                <span class="nf">add:</span> <span class="nv">wrapper</span><span class="p">;</span>
-                <span class="nf">add:</span> <span class="nv">wrapperAdd</span><span class="p">;</span>
-                <span class="nf">value:</span> [ <span class="m">6</span> <span class="nf">slowFibonacci</span> ]<span class="p">.</span>
-
-   <span class="nv">metadata</span> <span class="o">:=</span> <span class="nc">IdentityDictionary</span> <span class="nb">new</span><span class="p">.</span>
-   <span class="nv">handlerExecution</span> <span class="nf">metadata:</span> <span class="nv">metadata</span><span class="p">.</span>
-
-   <span class="c">&quot;Show here the new presenter.&quot;</span>
-   <span class="nv">presenter</span> <span class="o">:=</span> (<span class="nc">MWSpPresenter</span> <span class="nf">on:</span> <span class="nv">tree</span> <span class="nf">-&gt;</span> <span class="nv">metadata</span>)
-                   <span class="nf">useShapeSlotsDfsTree</span><span class="p">;</span>
-                   <span class="nf">openWithSpec</span><span class="p">;</span>
-                   <span class="nf">yourself</span><span class="p">.</span>
-
-   <span class="bp">self</span>
-      <span class="nf">assert:</span> <span class="nv">tree</span> <span class="nf">size</span> <span class="nf">equals:</span> <span class="m">37</span><span class="p">;</span>
-      <span class="nf">assert:</span> <span class="nv">result</span> <span class="nf">equals:</span> <span class="m">7</span> <span class="nf">fibonacciNumbers</span> <span class="nf">last</span><span class="p">.</span> <span class="c">&quot; 55&quot;</span>
-
-   <span class="bp">self</span>
-      <span class="nf">export:</span> <span class="nv">tree</span>
-      <span class="nf">pathSuffix:</span> <span class="s">&#39;sequence-diagram&#39;</span>
-      <span class="nf">onCanvasDo:</span> [ <span class="o">:</span><span class="nv">aCanvas</span> <span class="o">:</span><span class="nv">useless</span> <span class="o">|</span> <span class="nv">presenter</span> <span class="nf">currentCanvas:</span> <span class="nv">aCanvas</span> ]
+           <span class="bp">self</span>
+              <span class="nf">exportShapeOf:</span> <span class="nv">tree</span>
+              <span class="nf">accessorBlock:</span> [ <span class="o">:</span><span class="nv">aTree</span> <span class="o">|</span> 
+                 <span class="nv">aTree</span>
+                    <span class="nf">asShapeUMLSequenceDiagram:</span> <span class="nv">builder</span>
+                    <span class="nf">metadata:</span> <span class="nv">observedData</span> <span class="nf">metadata</span> ]
+              <span class="nf">pathSuffix:</span> <span class="s">&#39;sequence-diagram&#39;</span> ]
 </pre></div>
 </div>
 <blockquote>
-<div><img alt="../_images/MWVisualizationsTest-testProfileSlowFibonacciWithAdd-sequence-diagram.svg" class="align-center" src="../_images/MWVisualizationsTest-testProfileSlowFibonacciWithAdd-sequence-diagram.svg" /></div></blockquote>
+<div><img alt="../_images/MTVisualizationsTest-testProfileSlowFibonacciWithAdd-sequence-diagram.svg" class="align-center" src="../_images/MTVisualizationsTest-testProfileSlowFibonacciWithAdd-sequence-diagram.svg" /></div></blockquote>
 <p id="index-1">Moreover, we can inspect the sequence of <em>additions</em> that are performed,</p>
-<img alt="../_images/MWVisualizationsTest-testProfileSlowFibonacciWithAddOnly-sequence-diagram.svg" class="align-center" src="../_images/MWVisualizationsTest-testProfileSlowFibonacciWithAddOnly-sequence-diagram.svg" /></section>
+<img alt="../_images/MTVisualizationsTest-testProfileSlowFibonacciWithAddOnly-sequence-diagram.svg" class="align-center" src="../_images/MTVisualizationsTest-testProfileSlowFibonacciWithAddOnly-sequence-diagram.svg" /></section>
 <section id="memoized-implementation">
 <span id="index-2"></span><h3><span class="section-number">4.1.2. </span>Memoized implementation<a class="headerlink" href="#memoized-implementation" title="Permalink to this headline">¶</a></h3>
 <p>To take the exponential complexity of the previous implementation we can use either memoization,</p>
-<span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-mwvisualizationstest-testprofileslowfibonaccimemoingwithadd"><div class="highlight"><pre><span></span><span class="c">&quot;MWVisualizationsTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-mtvisualizationstest-testprofileslowfibonaccimemoingwithadd"><div class="highlight"><pre><span></span><span class="c">&quot;MTVisualizationsTest, protocol tests&quot;</span>
 <span class="nf">testProfileSlowFibonacciMemoingWithAdd</span>
 
-   <span class="o">|</span><span class="nv"> tree result handlerExecution metadata presenter handlerCopying </span><span class="o">|</span>
-   <span class="nv">tree</span> <span class="o">:=</span> <span class="nc">CTOrderPreservingTree</span> <span class="nb">new</span><span class="p">.</span>
+   <span class="o">^</span> <span class="bp">self</span>
+        <span class="nf">compiledMethods:</span> { 
+              (<span class="nc">Integer</span> <span class="nf">&gt;&gt;</span> <span class="ss">#slowFibonacciMemo:</span>)<span class="p">.</span>
+              (<span class="nc">Number</span> <span class="nf">&gt;&gt;</span> <span class="ss">#addNumber:</span>) }
+        <span class="nf">wrapping:</span> [ <span class="m">6</span> <span class="nf">slowFibonacciMemo:</span> <span class="nc">Dictionary</span> <span class="nb">new</span> ]
+        <span class="nf">then:</span> [ <span class="o">:</span><span class="nv">result</span> <span class="o">:</span><span class="nv">observedData</span> <span class="o">|</span> 
+           <span class="o">|</span><span class="nv"> presenter tree builder </span><span class="o">|</span>
+           <span class="nv">tree</span> <span class="o">:=</span> <span class="nv">observedData</span> <span class="nf">tree</span><span class="p">.</span>
 
-   <span class="nv">handlerExecution</span> <span class="o">:=</span> <span class="nc">MWHandlerProfiling</span> <span class="nb">new</span>
-                          <span class="nf">tree:</span> <span class="nv">tree</span><span class="p">;</span>
-                          <span class="nf">yourself</span><span class="p">.</span>
+           <span class="nv">builder</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">umlSequenceDiagramBuilder:</span>
+                         <span class="nc">RSUMLSequenceBuilder</span> <span class="nb">new</span><span class="p">.</span>
 
-   <span class="nv">handlerCopying</span> <span class="o">:=</span> <span class="nc">MWHandlerReceiverArgumentsCopying</span> <span class="nb">new</span>
-                        <span class="nf">handler:</span> <span class="nv">handlerExecution</span><span class="p">;</span>
-                        <span class="nf">yourself</span><span class="p">.</span>
+           <span class="nv">presenter</span> <span class="o">:=</span> (<span class="nc">MTOverviewSpPresenter</span> <span class="nf">on:</span> <span class="nv">observedData</span>)
+                           <span class="nf">umlSequenceDiagramBuilder:</span> <span class="nv">builder</span><span class="p">;</span>
+                           <span class="nf">openWithSpec</span><span class="p">;</span>
+                           <span class="nf">yourself</span><span class="p">.</span>
 
-   <span class="nv">result</span> <span class="o">:=</span> <span class="nc">MWSession</span> <span class="nb">new</span>
-                <span class="nf">add:</span> (<span class="nc">MWDecorator</span> <span class="nb">new</span>
-                       <span class="nf">compiledMethod:</span> <span class="nc">Integer</span> <span class="nf">&gt;&gt;</span> <span class="ss">#slowFibonacciMemo:</span><span class="p">;</span>
-                       <span class="nf">handler:</span> <span class="nv">handlerCopying</span><span class="p">;</span>
-                       <span class="nf">yourself</span>)<span class="p">;</span>
-                <span class="nf">add:</span> (<span class="nc">MWDecorator</span> <span class="nb">new</span>
-                       <span class="nf">compiledMethod:</span> <span class="nc">Number</span> <span class="nf">&gt;&gt;</span> <span class="ss">#addNumber:</span><span class="p">;</span>
-                       <span class="nf">handler:</span> <span class="nv">handlerExecution</span><span class="p">;</span>
-                       <span class="nf">yourself</span>)<span class="p">;</span>
-                <span class="nf">value:</span> [ <span class="m">6</span> <span class="nf">slowFibonacciMemo:</span> <span class="nc">Dictionary</span> <span class="nb">new</span> ]<span class="p">.</span>
+           <span class="bp">self</span>
+              <span class="nf">assert:</span> <span class="nv">tree</span> <span class="nf">size</span> <span class="nf">equals:</span> <span class="m">16</span><span class="p">;</span>
+              <span class="nf">assert:</span> <span class="nv">result</span> <span class="nf">equals:</span> <span class="m">7</span> <span class="nf">fibonacciNumbers</span> <span class="nf">last</span><span class="p">.</span>
 
-   <span class="nv">metadata</span> <span class="o">:=</span> <span class="nc">IdentityDictionary</span> <span class="nb">new</span><span class="p">.</span>
-   <span class="nv">handlerExecution</span> <span class="nf">metadata:</span> <span class="nv">metadata</span><span class="p">.</span>
-   <span class="nv">handlerCopying</span> <span class="nf">metadata:</span> <span class="nv">metadata</span><span class="p">.</span>
-
-   <span class="c">&quot;Show here the new presenter.&quot;</span>
-   <span class="nv">presenter</span> <span class="o">:=</span> (<span class="nc">MWSpPresenter</span> <span class="nf">on:</span> <span class="nv">tree</span> <span class="nf">-&gt;</span> <span class="nv">metadata</span>)
-                   <span class="nf">useShapeSlotsDfsTree</span><span class="p">;</span>
-                   <span class="nf">openWithSpec</span><span class="p">;</span>
-                   <span class="nf">yourself</span><span class="p">.</span>
-
-   <span class="bp">self</span>
-      <span class="nf">assert:</span> <span class="nv">tree</span> <span class="nf">size</span> <span class="nf">equals:</span> <span class="m">16</span><span class="p">;</span>
-      <span class="nf">assert:</span> <span class="nv">result</span> <span class="nf">equals:</span> <span class="m">7</span> <span class="nf">fibonacciNumbers</span> <span class="nf">last</span><span class="p">.</span>
-
-   <span class="bp">self</span>
-      <span class="nf">export:</span> <span class="nv">tree</span>
-      <span class="nf">pathSuffix:</span> <span class="s">&#39;sequence-diagram&#39;</span>
-      <span class="nf">onCanvasDo:</span> [ <span class="o">:</span><span class="nv">aCanvas</span> <span class="o">:</span><span class="nv">useless</span> <span class="o">|</span> <span class="nv">presenter</span> <span class="nf">currentCanvas:</span> <span class="nv">aCanvas</span> ]
+           <span class="bp">self</span>
+              <span class="nf">exportShapeOf:</span> <span class="nv">tree</span>
+              <span class="nf">accessorBlock:</span> [ <span class="o">:</span><span class="nv">aTree</span> <span class="o">|</span> 
+                 <span class="nv">aTree</span>
+                    <span class="nf">asShapeUMLSequenceDiagram:</span> <span class="nv">builder</span>
+                    <span class="nf">metadata:</span> <span class="nv">observedData</span> <span class="nf">metadata</span> ]
+              <span class="nf">pathSuffix:</span> <span class="s">&#39;sequence-diagram&#39;</span> ]
 </pre></div>
 </div>
 <blockquote>
-<div><img alt="../_images/MWVisualizationsTest-testProfileSlowFibonacciMemoingWithAdd-sequence-diagram.svg" class="align-center" src="../_images/MWVisualizationsTest-testProfileSlowFibonacciMemoingWithAdd-sequence-diagram.svg" /></div></blockquote>
+<div><img alt="../_images/MTVisualizationsTest-testProfileSlowFibonacciMemoingWithAdd-sequence-diagram.svg" class="align-center" src="../_images/MTVisualizationsTest-testProfileSlowFibonacciMemoingWithAdd-sequence-diagram.svg" /></div></blockquote>
 <p>where</p>
 <span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-slowfibonaccimemo"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">slowFibonacciMemo:</span> <span class="nv">aDictionary</span>
@@ -264,59 +241,48 @@
 <section id="tail-call-implementation">
 <span id="index-3"></span><h3><span class="section-number">4.1.3. </span>Tail-call implementation<a class="headerlink" href="#tail-call-implementation" title="Permalink to this headline">¶</a></h3>
 <p>Or tail-call messages,</p>
-<span class="target" id="pharo-compiledMethod-4"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-mwvisualizationstest-testprofileslowfibonaccitailwithadd"><div class="highlight"><pre><span></span><span class="c">&quot;MWVisualizationsTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-4"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-mtvisualizationstest-testprofileslowfibonaccitailwithadd"><div class="highlight"><pre><span></span><span class="c">&quot;MTVisualizationsTest, protocol tests&quot;</span>
 <span class="nf">testProfileSlowFibonacciTailWithAdd</span>
 
-   <span class="o">|</span><span class="nv"> wrapper handlerExecution tree metadata result wrapperAdd presenter </span><span class="o">|</span>
-   <span class="nv">tree</span> <span class="o">:=</span> <span class="nc">CTOrderPreservingTree</span> <span class="nb">new</span><span class="p">.</span>
+   <span class="o">^</span> <span class="bp">self</span>
+        <span class="nf">compiledMethods:</span> { 
+              (<span class="nc">Integer</span> <span class="nf">&gt;&gt;</span> <span class="ss">#slowFibonacci:tail:</span>)<span class="p">.</span>
+              (<span class="nc">Number</span> <span class="nf">&gt;&gt;</span> <span class="ss">#addNumber:</span>) }
+        <span class="nf">wrapping:</span> [ <span class="m">6</span> <span class="nf">slowFibonacci:</span> <span class="m">0</span> <span class="nf">tail:</span> <span class="m">1</span> ]
+        <span class="nf">then:</span> [ <span class="o">:</span><span class="nv">result</span> <span class="o">:</span><span class="nv">observedData</span> <span class="o">|</span> 
+           <span class="o">|</span><span class="nv"> presenter tree builder </span><span class="o">|</span>
+           <span class="nv">tree</span> <span class="o">:=</span> <span class="nv">observedData</span> <span class="nf">tree</span><span class="p">.</span>
 
-   <span class="nv">handlerExecution</span> <span class="o">:=</span> <span class="nc">MWHandlerProfiling</span> <span class="nb">new</span>
-                          <span class="nf">tree:</span> <span class="nv">tree</span><span class="p">;</span>
-                          <span class="nf">yourself</span><span class="p">.</span>
+           <span class="nv">builder</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">umlSequenceDiagramBuilder:</span>
+                         <span class="nc">RSUMLSequenceBuilder</span> <span class="nb">new</span><span class="p">.</span>
 
-   <span class="nv">wrapper</span> <span class="o">:=</span> <span class="nc">MWDecorator</span> <span class="nb">new</span>
-                 <span class="nf">compiledMethod:</span> <span class="nc">Integer</span> <span class="nf">&gt;&gt;</span> <span class="ss">#slowFibonacci:tail:</span><span class="p">;</span>
-                 <span class="nf">handler:</span> <span class="nv">handlerExecution</span><span class="p">;</span>
-                 <span class="nf">yourself</span><span class="p">.</span>
+           <span class="nv">presenter</span> <span class="o">:=</span> (<span class="nc">MTOverviewSpPresenter</span> <span class="nf">on:</span> <span class="nv">observedData</span>)
+                           <span class="nf">umlSequenceDiagramBuilder:</span> <span class="nv">builder</span><span class="p">;</span>
+                           <span class="nf">openWithSpec</span><span class="p">;</span>
+                           <span class="nf">yourself</span><span class="p">.</span>
 
-   <span class="nv">wrapperAdd</span> <span class="o">:=</span> <span class="nc">MWDecorator</span> <span class="nb">new</span>
-                    <span class="nf">compiledMethod:</span> <span class="nc">Number</span> <span class="nf">&gt;&gt;</span> <span class="ss">#addNumber:</span><span class="p">;</span>
-                    <span class="nf">handler:</span> <span class="nv">handlerExecution</span><span class="p">;</span>
-                    <span class="nf">yourself</span><span class="p">.</span>
+           <span class="bp">self</span>
+              <span class="nf">assert:</span> <span class="nv">tree</span> <span class="nf">size</span> <span class="nf">equals:</span> <span class="m">13</span><span class="p">;</span>
+              <span class="nf">assert:</span> <span class="nv">result</span> <span class="nf">equals:</span> <span class="m">6</span> <span class="nf">fibonacciNumbers</span> <span class="nf">last</span><span class="p">.</span>
 
-   <span class="nv">result</span> <span class="o">:=</span> <span class="nc">MWSession</span> <span class="nb">new</span>
-                <span class="nf">add:</span> <span class="nv">wrapper</span><span class="p">;</span>
-                <span class="nf">add:</span> <span class="nv">wrapperAdd</span><span class="p">;</span>
-                <span class="nf">value:</span> [ <span class="m">6</span> <span class="nf">slowFibonacci:</span> <span class="m">0</span> <span class="nf">tail:</span> <span class="m">1</span> ]<span class="p">.</span>
-
-   <span class="nv">metadata</span> <span class="o">:=</span> <span class="nc">IdentityDictionary</span> <span class="nb">new</span><span class="p">.</span>
-   <span class="nv">handlerExecution</span> <span class="nf">metadata:</span> <span class="nv">metadata</span><span class="p">.</span>
-
-   <span class="c">&quot;Show here the new presenter.&quot;</span>
-   <span class="nv">presenter</span> <span class="o">:=</span> (<span class="nc">MWSpPresenter</span> <span class="nf">on:</span> <span class="nv">tree</span> <span class="nf">-&gt;</span> <span class="nv">metadata</span>)
-                   <span class="nf">useShapeSlotsDfsTree</span><span class="p">;</span>
-                   <span class="nf">openWithSpec</span><span class="p">;</span>
-                   <span class="nf">yourself</span><span class="p">.</span>
-
-   <span class="bp">self</span>
-      <span class="nf">assert:</span> <span class="nv">tree</span> <span class="nf">size</span> <span class="nf">equals:</span> <span class="m">13</span><span class="p">;</span>
-      <span class="nf">assert:</span> <span class="nv">result</span> <span class="nf">equals:</span> <span class="m">7</span> <span class="nf">fibonacciNumbers</span> <span class="nf">last</span><span class="p">.</span>
-
-   <span class="bp">self</span>
-      <span class="nf">export:</span> <span class="nv">tree</span>
-      <span class="nf">pathSuffix:</span> <span class="s">&#39;sequence-diagram&#39;</span>
-      <span class="nf">onCanvasDo:</span> [ <span class="o">:</span><span class="nv">aCanvas</span> <span class="o">:</span><span class="nv">useless</span> <span class="o">|</span> <span class="nv">presenter</span> <span class="nf">currentCanvas:</span> <span class="nv">aCanvas</span> ]
+           <span class="bp">self</span>
+              <span class="nf">exportShapeOf:</span> <span class="nv">tree</span>
+              <span class="nf">accessorBlock:</span> [ <span class="o">:</span><span class="nv">aTree</span> <span class="o">|</span> 
+                 <span class="nv">aTree</span>
+                    <span class="nf">asShapeUMLSequenceDiagram:</span> <span class="nv">builder</span>
+                    <span class="nf">metadata:</span> <span class="nv">observedData</span> <span class="nf">metadata</span> ]
+              <span class="nf">pathSuffix:</span> <span class="s">&#39;sequence-diagram&#39;</span> ]
 </pre></div>
 </div>
 <blockquote>
-<div><img alt="../_images/MWVisualizationsTest-testProfileSlowFibonacciTailWithAdd-sequence-diagram.svg" class="align-center" src="../_images/MWVisualizationsTest-testProfileSlowFibonacciTailWithAdd-sequence-diagram.svg" /></div></blockquote>
+<div><img alt="../_images/MTVisualizationsTest-testProfileSlowFibonacciTailWithAdd-sequence-diagram.svg" class="align-center" src="../_images/MTVisualizationsTest-testProfileSlowFibonacciTailWithAdd-sequence-diagram.svg" /></div></blockquote>
 <p>where</p>
 <span class="target" id="pharo-compiledMethod-5"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-slowfibonacci-tail"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">slowFibonacci:</span> <span class="nv">a</span> <span class="nf">tail:</span> <span class="nv">b</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">&gt;</span> <span class="m">0</span>
-        <span class="nb">ifTrue:</span> [ <span class="bp">self</span> <span class="nf">-</span> <span class="m">1</span> <span class="nf">slowFibonacci:</span> <span class="nv">b</span> <span class="nf">tail:</span> (<span class="nv">a</span> <span class="nf">addNumber:</span> <span class="nv">b</span>) ]
-        <span class="nb">ifFalse:</span> [ <span class="nv">a</span> ]
+        <span class="nb">ifTrue:</span> [ <span class="bp">self</span> <span class="nf">-</span> <span class="m">1</span> <span class="nf">slowFibonacci:</span> (<span class="nv">a</span> <span class="nf">addNumber:</span> <span class="nv">b</span>) <span class="nf">tail:</span> <span class="nv">a</span> ]
+        <span class="nb">ifFalse:</span> [ <span class="nv">b</span> ]
 </pre></div>
 </div>
 </section>
@@ -335,53 +301,46 @@
 </pre></div>
 </div>
 <p>in</p>
-<span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-mwvisualizationstest-testsequenceablecollectionhornerinit"><div class="highlight"><pre><span></span><span class="c">&quot;MWVisualizationsTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-mtvisualizationstest-testsequenceablecollectionhornerinit"><div class="highlight"><pre><span></span><span class="c">&quot;MTVisualizationsTest, protocol tests&quot;</span>
 <span class="nf">testSequenceableCollectionHornerInit</span>
 
-   <span class="o">|</span><span class="nv"> tree metadata result handlerExecution handlerCopying presenter </span><span class="o">|</span>
-   <span class="nv">tree</span> <span class="o">:=</span> <span class="nc">CTOrderPreservingTree</span> <span class="nb">new</span><span class="p">.</span>
+   <span class="o">^</span> <span class="bp">self</span>
+        <span class="nf">compiledMethods:</span> { 
+              (<span class="nc">SequenceableCollection</span> <span class="nf">&gt;&gt;</span> <span class="ss">#horner:init:</span>)<span class="p">.</span>
+              (<span class="nc">Number</span> <span class="nf">&gt;&gt;</span> <span class="ss">#addNumber:</span>)<span class="p">.</span>
+              (<span class="nc">Number</span> <span class="nf">&gt;&gt;</span> <span class="ss">#multiplyNumber:</span>) }
+        <span class="nf">wrapping:</span> [ <span class="bp">self</span> <span class="nf">sutSequenceableCollectionHornerInit</span> ]
+        <span class="nf">then:</span> [ <span class="o">:</span><span class="nv">result</span> <span class="o">:</span><span class="nv">observedData</span> <span class="o">|</span> 
+           <span class="o">|</span><span class="nv"> presenter tree builder </span><span class="o">|</span>
+           <span class="nv">tree</span> <span class="o">:=</span> <span class="nv">observedData</span> <span class="nf">tree</span><span class="p">.</span>
 
-   <span class="nv">handlerExecution</span> <span class="o">:=</span> <span class="nc">MWHandlerProfiling</span> <span class="nb">new</span>
-                          <span class="nf">tree:</span> <span class="nv">tree</span><span class="p">;</span>
-                          <span class="nf">yourself</span><span class="p">.</span>
+           <span class="nv">builder</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">umlSequenceDiagramBuilder:</span>
+                         <span class="nc">RSUMLSequenceBuilder</span> <span class="nb">new</span><span class="p">.</span>
 
-   <span class="nv">handlerCopying</span> <span class="o">:=</span> <span class="nc">MWHandlerReceiverArgumentsCopying</span> <span class="nb">new</span>
-                        <span class="nf">handler:</span> <span class="nv">handlerExecution</span><span class="p">;</span>
-                        <span class="nf">yourself</span><span class="p">.</span>
+           <span class="nv">presenter</span> <span class="o">:=</span> (<span class="nc">MTOverviewSpPresenter</span> <span class="nf">on:</span> <span class="nv">observedData</span>)
+                           <span class="nf">umlSequenceDiagramBuilder:</span> <span class="nv">builder</span><span class="p">;</span>
+                           <span class="nf">openWithSpec</span><span class="p">;</span>
+                           <span class="nf">yourself</span><span class="p">.</span>
 
-   <span class="nv">result</span> <span class="o">:=</span> (<span class="nc">MWSession</span> <span class="nf">withAllImplementations:</span> { 
-                       (<span class="nc">SequenceableCollection</span> <span class="nf">&gt;&gt;</span> <span class="ss">#horner:init:</span>)<span class="p">.</span>
-                       <span class="c">&quot;(Collection &gt;&gt; #inject:into:).&quot;</span>
-                       (<span class="nc">Number</span> <span class="nf">&gt;&gt;</span> <span class="ss">#addNumber:</span>)<span class="p">.</span>
-                       (<span class="nc">Number</span> <span class="nf">&gt;&gt;</span> <span class="ss">#multiplyNumber:</span>) })
-                <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">each</span> <span class="nf">handler:</span> <span class="nv">handlerCopying</span> ]<span class="p">;</span>
-                <span class="nf">value:</span> [ { <span class="m">1</span><span class="p">.</span> <span class="m">3</span><span class="p">.</span> <span class="m">5</span><span class="p">.</span> <span class="m">6</span> } <span class="nf">hornerBase10</span> ]<span class="p">.</span>
+           <span class="bp">self</span>
+              <span class="nf">assert:</span> <span class="nv">tree</span> <span class="nf">size</span> <span class="nf">equals:</span> <span class="m">9</span><span class="p">;</span>
+              <span class="nf">assert:</span> <span class="nv">result</span> <span class="nf">equals:</span> <span class="m">1356</span><span class="p">.</span>
 
-   <span class="nv">metadata</span> <span class="o">:=</span> <span class="nc">IdentityDictionary</span> <span class="nb">new</span><span class="p">.</span>
-   <span class="nv">handlerExecution</span> <span class="nf">metadata:</span> <span class="nv">metadata</span><span class="p">.</span>
-   <span class="nv">handlerCopying</span> <span class="nf">metadata:</span> <span class="nv">metadata</span><span class="p">.</span>
+           <span class="bp">self</span>
+              <span class="nf">exportShapeOf:</span> <span class="nv">tree</span>
+              <span class="nf">accessorBlock:</span> [ <span class="o">:</span><span class="nv">aTree</span> <span class="o">|</span> 
+                 <span class="nv">aTree</span>
+                    <span class="nf">asShapeUMLSequenceDiagram:</span> <span class="nv">builder</span>
+                    <span class="nf">metadata:</span> <span class="nv">observedData</span> <span class="nf">metadata</span> ]
+              <span class="nf">pathSuffix:</span> <span class="s">&#39;sequence-diagram&#39;</span><span class="p">.</span>
 
-   <span class="c">&quot;Show here the new presenter.&quot;</span>
-   <span class="nv">presenter</span> <span class="o">:=</span> (<span class="nc">MWSpPresenter</span> <span class="nf">on:</span> <span class="nv">tree</span> <span class="nf">-&gt;</span> <span class="nv">metadata</span>)
-                   <span class="nf">useShapeSlotsDfsTree</span><span class="p">;</span>
-                   <span class="nf">openWithSpec</span><span class="p">;</span>
-                   <span class="nf">yourself</span><span class="p">.</span>
-
-   <span class="bp">self</span>
-      <span class="nf">assert:</span> <span class="nv">tree</span> <span class="nf">size</span> <span class="nf">equals:</span> <span class="m">9</span><span class="p">;</span>
-      <span class="nf">assert:</span> <span class="nv">result</span> <span class="nf">equals:</span> <span class="m">1356</span><span class="p">.</span>
-
-   <span class="bp">self</span>
-      <span class="nf">export:</span> <span class="nv">tree</span>
-      <span class="nf">pathSuffix:</span> <span class="s">&#39;sequence-diagram&#39;</span>
-      <span class="nf">onCanvasDo:</span> [ <span class="o">:</span><span class="nv">aCanvas</span> <span class="o">:</span><span class="nv">useless</span> <span class="o">|</span> <span class="nv">presenter</span> <span class="nf">currentCanvas:</span> <span class="nv">aCanvas</span> ]<span class="p">;</span>
-      <span class="nf">exportSlotsGraphOf:</span> <span class="nv">result</span>
+           <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">result</span> ]
 </pre></div>
 </div>
 <blockquote>
-<div><img alt="../_images/MWVisualizationsTest-testSequenceableCollectionHornerInit.svg" class="align-center" src="../_images/MWVisualizationsTest-testSequenceableCollectionHornerInit.svg" /></div></blockquote>
+<div><img alt="../_images/MTVisualizationsTest-testSequenceableCollectionHornerInit.svg" class="align-center" src="../_images/MTVisualizationsTest-testSequenceableCollectionHornerInit.svg" /></div></blockquote>
 <p id="index-4">that admits the profiling,</p>
-<img alt="../_images/MWVisualizationsTest-testSequenceableCollectionHornerInit-sequence-diagram.svg" class="align-center" src="../_images/MWVisualizationsTest-testSequenceableCollectionHornerInit-sequence-diagram.svg" /></section>
+<img alt="../_images/MTVisualizationsTest-testSequenceableCollectionHornerInit-sequence-diagram.svg" class="align-center" src="../_images/MTVisualizationsTest-testSequenceableCollectionHornerInit-sequence-diagram.svg" /></section>
 <section id="estrin-s-method">
 <span id="index-5"></span><h3><span class="section-number">4.2.2. </span><em>Estrin</em>'s method<a class="headerlink" href="#estrin-s-method" title="Permalink to this headline">¶</a></h3>
 <p>According to <span id="id1">[<a class="reference internal" href="../bibliography.html#id20" title="Gerald Estrin. Organization of computer systems: the fixed plus variable structure computer. In Papers Presented at the May 3-5, 1960, Western Joint IRE-AIEE-ACM Computer Conference, 33–40. New York, NY, USA, 1960. Association for Computing Machinery. doi:10.1145/1460361.1460365.">Est60</a>]</span>, let</p>
@@ -407,51 +366,44 @@
 </pre></div>
 </div>
 <p>in</p>
-<span class="target" id="pharo-compiledMethod-9"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-mwvisualizationstest-testsequenceablecollectionestrininit"><div class="highlight"><pre><span></span><span class="c">&quot;MWVisualizationsTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-9"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-mtvisualizationstest-testsequenceablecollectionestrininit"><div class="highlight"><pre><span></span><span class="c">&quot;MTVisualizationsTest, protocol tests&quot;</span>
 <span class="nf">testSequenceableCollectionEstrinInit</span>
 
-   <span class="o">|</span><span class="nv"> tree metadata result handlerExecution handlerCopying presenter </span><span class="o">|</span>
-   <span class="nv">tree</span> <span class="o">:=</span> <span class="nc">CTOrderPreservingTree</span> <span class="nb">new</span><span class="p">.</span>
+   <span class="o">^</span> <span class="bp">self</span>
+        <span class="nf">compiledMethods:</span> { 
+              (<span class="nc">SequenceableCollection</span> <span class="nf">&gt;&gt;</span> <span class="ss">#estrin:init:</span>)<span class="p">.</span>
+              (<span class="nc">Number</span> <span class="nf">&gt;&gt;</span> <span class="ss">#addNumber:</span>)<span class="p">.</span>
+              (<span class="nc">Number</span> <span class="nf">&gt;&gt;</span> <span class="ss">#multiplyNumber:</span>) }
+        <span class="nf">wrapping:</span> [ <span class="bp">self</span> <span class="nf">sutSequenceableCollectionEstrinInit</span> ]
+        <span class="nf">then:</span> [ <span class="o">:</span><span class="nv">result</span> <span class="o">:</span><span class="nv">observedData</span> <span class="o">|</span> 
+           <span class="o">|</span><span class="nv"> presenter tree builder </span><span class="o">|</span>
+           <span class="nv">tree</span> <span class="o">:=</span> <span class="nv">observedData</span> <span class="nf">tree</span><span class="p">.</span>
 
-   <span class="nv">handlerExecution</span> <span class="o">:=</span> <span class="nc">MWHandlerProfiling</span> <span class="nb">new</span>
-                          <span class="nf">tree:</span> <span class="nv">tree</span><span class="p">;</span>
-                          <span class="nf">yourself</span><span class="p">.</span>
+           <span class="nv">builder</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">umlSequenceDiagramBuilder:</span>
+                         <span class="nc">RSUMLSequenceBuilder</span> <span class="nb">new</span><span class="p">.</span>
 
-   <span class="nv">handlerCopying</span> <span class="o">:=</span> <span class="nc">MWHandlerReceiverArgumentsCopying</span> <span class="nb">new</span>
-                        <span class="nf">handler:</span> <span class="nv">handlerExecution</span><span class="p">;</span>
-                        <span class="nf">yourself</span><span class="p">.</span>
+           <span class="nv">presenter</span> <span class="o">:=</span> (<span class="nc">MTOverviewSpPresenter</span> <span class="nf">on:</span> <span class="nv">observedData</span>)
+                           <span class="nf">umlSequenceDiagramBuilder:</span> <span class="nv">builder</span><span class="p">;</span>
+                           <span class="nf">openWithSpec</span><span class="p">;</span>
+                           <span class="nf">yourself</span><span class="p">.</span>
 
-   <span class="nv">result</span> <span class="o">:=</span> (<span class="nc">MWSession</span> <span class="nf">withAllImplementations:</span> { 
-                       (<span class="nc">SequenceableCollection</span> <span class="nf">&gt;&gt;</span> <span class="ss">#estrin:init:</span>)<span class="p">.</span>
-                       <span class="c">&quot;(Collection &gt;&gt; #inject:into:).&quot;</span>
-                       (<span class="nc">Number</span> <span class="nf">&gt;&gt;</span> <span class="ss">#addNumber:</span>)<span class="p">.</span>
-                       (<span class="nc">Number</span> <span class="nf">&gt;&gt;</span> <span class="ss">#multiplyNumber:</span>) })
-                <span class="nf">do:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">each</span> <span class="nf">handler:</span> <span class="nv">handlerCopying</span> ]<span class="p">;</span>
-                <span class="nf">value:</span> [ { <span class="m">1</span><span class="p">.</span> <span class="m">3</span><span class="p">.</span> <span class="m">5</span><span class="p">.</span> <span class="m">6</span><span class="p">.</span> <span class="m">9</span> } <span class="nf">estrin:</span> <span class="m">10</span> ]<span class="p">.</span>
+           <span class="bp">self</span>
+              <span class="nf">assert:</span> <span class="nv">tree</span> <span class="nf">size</span> <span class="nf">equals:</span> <span class="m">17</span><span class="p">;</span>
+              <span class="nf">assert:</span> <span class="nv">result</span> <span class="nf">equals:</span> <span class="m">13569</span><span class="p">.</span>
 
-   <span class="nv">metadata</span> <span class="o">:=</span> <span class="nc">IdentityDictionary</span> <span class="nb">new</span><span class="p">.</span>
-   <span class="nv">handlerExecution</span> <span class="nf">metadata:</span> <span class="nv">metadata</span><span class="p">.</span>
-   <span class="nv">handlerCopying</span> <span class="nf">metadata:</span> <span class="nv">metadata</span><span class="p">.</span>
+           <span class="bp">self</span>
+              <span class="nf">exportShapeOf:</span> <span class="nv">tree</span>
+              <span class="nf">accessorBlock:</span> [ <span class="o">:</span><span class="nv">aTree</span> <span class="o">|</span> 
+                 <span class="nv">aTree</span>
+                    <span class="nf">asShapeUMLSequenceDiagram:</span> <span class="nv">builder</span>
+                    <span class="nf">metadata:</span> <span class="nv">observedData</span> <span class="nf">metadata</span> ]
+              <span class="nf">pathSuffix:</span> <span class="s">&#39;sequence-diagram&#39;</span><span class="p">.</span>
 
-   <span class="c">&quot;Show here the new presenter.&quot;</span>
-   <span class="nv">presenter</span> <span class="o">:=</span> (<span class="nc">MWSpPresenter</span> <span class="nf">on:</span> <span class="nv">tree</span> <span class="nf">-&gt;</span> <span class="nv">metadata</span>)
-                   <span class="nf">useShapeSlotsDfsTree</span><span class="p">;</span>
-                   <span class="nf">openWithSpec</span><span class="p">;</span>
-                   <span class="nf">yourself</span><span class="p">.</span>
-
-   <span class="bp">self</span>
-      <span class="nf">assert:</span> <span class="nv">tree</span> <span class="nf">size</span> <span class="nf">equals:</span> <span class="m">17</span><span class="p">;</span>
-      <span class="nf">assert:</span> <span class="nv">result</span> <span class="nf">equals:</span> <span class="m">13569</span><span class="p">.</span>
-
-   <span class="bp">self</span>
-      <span class="nf">export:</span> <span class="nv">tree</span>
-      <span class="nf">pathSuffix:</span> <span class="s">&#39;sequence-diagram&#39;</span>
-      <span class="nf">onCanvasDo:</span> [ <span class="o">:</span><span class="nv">aCanvas</span> <span class="o">:</span><span class="nv">useless</span> <span class="o">|</span> <span class="nv">presenter</span> <span class="nf">currentCanvas:</span> <span class="nv">aCanvas</span> ]<span class="p">;</span>
-      <span class="nf">exportSlotsGraphOf:</span> <span class="nv">result</span>
+           <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">result</span> ]
 </pre></div>
 </div>
 <blockquote>
-<div><img alt="../_images/MWVisualizationsTest-testSequenceableCollectionEstrinInit.svg" class="align-center" src="../_images/MWVisualizationsTest-testSequenceableCollectionEstrinInit.svg" /></div></blockquote>
+<div><img alt="../_images/MTVisualizationsTest-testSequenceableCollectionEstrinInit.svg" class="align-center" src="../_images/MTVisualizationsTest-testSequenceableCollectionEstrinInit.svg" /></div></blockquote>
 <p id="index-6">where</p>
 <span class="target" id="pharo-compiledMethod-10"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-estrin"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-Essentials&quot;</span>
 <span class="nf">estrin:</span> <span class="nv">x</span>
@@ -460,7 +412,7 @@
 </pre></div>
 </div>
 <p>admits the profiling,</p>
-<img alt="../_images/MWVisualizationsTest-testSequenceableCollectionEstrinInit-sequence-diagram.svg" class="align-center" src="../_images/MWVisualizationsTest-testSequenceableCollectionEstrinInit-sequence-diagram.svg" /></section>
+<img alt="../_images/MTVisualizationsTest-testSequenceableCollectionEstrinInit-sequence-diagram.svg" class="align-center" src="../_images/MTVisualizationsTest-testSequenceableCollectionEstrinInit-sequence-diagram.svg" /></section>
 <section id="karatsuba-s-method">
 <span id="index-7"></span><h3><span class="section-number">4.2.3. </span><em>Karatsuba</em>'s method<a class="headerlink" href="#karatsuba-s-method" title="Permalink to this headline">¶</a></h3>
 <p>Here we explore a large integer</p>
@@ -566,12 +518,12 @@ The implementation follows from both the fact</p>
 </div>
 <p>helps the recursive message.</p>
 <p id="index-8">A complete profiling of <span class="math notranslate nohighlight">\(835 \cdot 714\)</span> using this technique looks like</p>
-<img alt="../_images/MWVisualizationsTest-testInspectLargeIntegerProfiled-sequence-diagram.svg" class="align-center" src="../_images/MWVisualizationsTest-testInspectLargeIntegerProfiled-sequence-diagram.svg" /></section>
+<img alt="../_images/MTVisualizationsTest-testInspectLargeIntegerProfiled-sequence-diagram.svg" class="align-center" src="../_images/MTVisualizationsTest-testInspectLargeIntegerProfiled-sequence-diagram.svg" /></section>
 <section id="factorials">
 <h3><span class="section-number">4.2.4. </span>Factorials<a class="headerlink" href="#factorials" title="Permalink to this headline">¶</a></h3>
 <p>According the post <span id="id4">[<a class="reference internal" href="../bibliography.html#id13" title="Sven VC. Speeding up factorial computation by changing the order of multiplications. URL: https://medium.com/concerning-pharo/speeding-up-factorial-computation-by-changing-the-order-of-multiplications-f4da3a5576da.">VC</a>]</span>, we implement the factorial
 function twice in order to compute <span class="math notranslate nohighlight">\(16!\)</span> that equals</p>
-<img alt="../_images/MWVisualizationsTest-testInspectFactorialRecursive.svg" class="align-center" src="../_images/MWVisualizationsTest-testInspectFactorialRecursive.svg" /><p>On one hand, the slow version follows straightforward from the mathematical definition,</p>
+<img alt="../_images/MTVisualizationsTest-testInspectFactorialRecursive.svg" class="align-center" src="../_images/MTVisualizationsTest-testInspectFactorialRecursive.svg" /><p>On one hand, the slow version follows straightforward from the mathematical definition,</p>
 <span class="target" id="pharo-compiledMethod-14"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-factorialrecursive"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">factorialRecursive</span>
 
@@ -585,7 +537,7 @@ function twice in order to compute <span class="math notranslate nohighlight">\(
 </pre></div>
 </div>
 <p>and the interactions are</p>
-<img alt="../_images/MWVisualizationsTest-testInspectFactorialRecursive-sequence-diagram.svg" class="align-center" id="index-9" src="../_images/MWVisualizationsTest-testInspectFactorialRecursive-sequence-diagram.svg" /><p>On the other hand, the fast version uses a divide and conquer approach,</p>
+<img alt="../_images/MTVisualizationsTest-testInspectFactorialRecursive-sequence-diagram.svg" class="align-center" id="index-9" src="../_images/MTVisualizationsTest-testInspectFactorialRecursive-sequence-diagram.svg" /><p>On the other hand, the fast version uses a divide and conquer approach,</p>
 <span class="target" id="pharo-compiledMethod-15"><span id="index-10"></span></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-productto"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">productTo:</span> <span class="nv">upper</span>
 
@@ -611,7 +563,7 @@ function twice in order to compute <span class="math notranslate nohighlight">\(
 </pre></div>
 </div>
 <p>and the interactions are</p>
-<img alt="../_images/MWVisualizationsTest-testInspectProductTo-sequence-diagram.svg" class="align-center" id="index-11" src="../_images/MWVisualizationsTest-testInspectProductTo-sequence-diagram.svg" /></section>
+<img alt="../_images/MTVisualizationsTest-testInspectProductTo-sequence-diagram.svg" class="align-center" id="index-11" src="../_images/MTVisualizationsTest-testInspectProductTo-sequence-diagram.svg" /></section>
 </section>
 <section id="quotients-and-remainders">
 <h2><span class="section-number">4.3. </span>Quotients and remainders<a class="headerlink" href="#quotients-and-remainders" title="Permalink to this headline">¶</a></h2>

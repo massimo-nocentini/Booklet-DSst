@@ -34,6 +34,7 @@ extensions = [
         'sphinx.ext.githubpages',
         'sphinxcontrib.pharodomain',
         'sphinxcontrib.bibtex',
+        'sphinx_revealjs',
         #'sphinx_rtd_theme',
         #'recommonmark',
 ]
@@ -66,6 +67,15 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
+# options for RevealJS
+revealjs_script_conf = """
+{
+    center: false,
+    controlsLayout: 'bottom-right',
+}
+"""
+
+revealjs_style_theme = 'simple'
 
 # -- Options for HTML output -------------------------------------------------
 
