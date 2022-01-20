@@ -1,15 +1,6 @@
 
-Containers
-==========
-
-Lists
------
-
-.. include:: linkedlists.rst
-.. include:: skiplists.rst
-
 Trees
------
+=====
 
 .. include:: binarytrees.rst
 .. include:: unbalancedsets.rst
