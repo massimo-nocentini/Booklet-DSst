@@ -334,6 +334,8 @@ then all the values are kept as well</p>
 </section>
 <section id="skip-lists">
 <h2><span class="section-number">7.2. </span>Skip lists<a class="headerlink" href="#skip-lists" title="Permalink to this headline">¶</a></h2>
+<p>The first edition <span id="id1">[<a class="reference internal" href="../bibliography.html#id28" title="Pierluigi Crescenzi, Giorgio Gambosi, and Roberto Grossi. Strutture di dati e algoritmi. Progettazione, analisi e visualizzazione, 1st edition. Pearson, 2006. ISBN 8871922735.">CGG06</a>]</span> has a nice description of <em>skip lists</em>, also for the
+proof of the complexity. Let us reproduce their working example,</p>
 <span class="target" id="pharo-compiledMethod-13"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctskiplisttest-sutcrescenzi"><div class="highlight"><pre><span></span><span class="c">&quot;CTSkipListTest, protocol tests&quot;</span>
 <span class="nf">sutCrescenzi</span>
 
@@ -348,9 +350,203 @@ then all the values are kept as well</p>
 </div>
 <blockquote>
 <div><img alt="../_images/CTSkipListTest-testCrescenzi.svg" class="align-center" src="../_images/CTSkipListTest-testCrescenzi.svg" /></div></blockquote>
-<p>Addition of value 35 at height 4 produces</p>
-<img alt="../_images/CTSkipListTest-testProfileAdditionOf35.svg" class="align-center" src="../_images/CTSkipListTest-testProfileAdditionOf35.svg" /><p>after the interactions</p>
-<img alt="../_images/CTSkipListTest-testProfileAdditionOf35-sequence-diagram.svg" class="align-center" src="../_images/CTSkipListTest-testProfileAdditionOf35-sequence-diagram.svg" /></section>
+<p>built by the message</p>
+<span class="target" id="pharo-compiledMethod-14"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctskiplist-class-onsortedcollection-lowerbound-upperbound-atrandom"><div class="highlight"><pre><span></span><span class="c">&quot;CTSkipList class, protocol creation&quot;</span>
+<span class="nf">onSortedCollection:</span> <span class="nv">aCollection</span> <span class="nf">lowerBound:</span> <span class="nv">lower</span> <span class="nf">upperBound:</span> <span class="nv">upper</span> <span class="nf">atRandom:</span> <span class="nv">aRandom</span>
+
+   <span class="o">|</span><span class="nv"> brgc lists nothing cleanLists lowerJust upperJust times </span><span class="o">|</span>
+   <span class="nv">nothing</span> <span class="o">:=</span> <span class="nc">Maybe</span> <span class="nf">nothing</span><span class="p">.</span>
+   <span class="nv">lowerJust</span> <span class="o">:=</span> <span class="nv">lower</span> <span class="nf">just</span><span class="p">.</span>
+   <span class="nv">upperJust</span> <span class="o">:=</span> <span class="nv">upper</span> <span class="nf">just</span><span class="p">.</span>
+
+   <span class="nv">brgc</span> <span class="o">:=</span> <span class="nv">aCollection</span> <span class="nf">size</span> <span class="nf">asBRGCCollection</span><span class="p">.</span>
+
+   <span class="nv">lists</span> <span class="o">:=</span> <span class="bp">nil</span><span class="p">.</span>
+
+   <span class="nv">times</span> <span class="o">:=</span> <span class="nv">aCollection</span>
+               <span class="nf">ifEmpty:</span> [ <span class="m">0</span> ]
+               <span class="nf">ifNotEmpty:</span> [ (<span class="nv">aCollection</span> <span class="nf">size</span> <span class="nf">log:</span> <span class="m">2</span>) <span class="nf">floor</span> <span class="nf">+</span> <span class="m">1</span> ]<span class="p">.</span>
+
+   <span class="nv">times</span> <span class="nb">timesRepeat:</span> [ 
+      <span class="o">|</span> <span class="nv">list</span> <span class="nf">link</span> <span class="nf">nextLinkSafe</span> <span class="nf">|</span>
+      <span class="nv">link</span> <span class="o">:=</span> <span class="nv">lists</span> <span class="nf">value</span><span class="p">.</span>
+
+      <span class="nv">nextLinkSafe</span> <span class="o">:=</span> [ <span class="nv">link</span> <span class="o">:=</span> <span class="nv">link</span> <span class="nf">ifNotNil:</span> [ <span class="nv">link</span> <span class="nf">nextLink</span> ] ]<span class="p">.</span>
+
+      <span class="nv">list</span> <span class="o">:=</span> <span class="nc">CTDoubleValueLink</span> <span class="nb">new</span>
+                 <span class="nf">value:</span> <span class="nv">lowerJust</span><span class="p">;</span>
+                 <span class="nf">previousLink:</span> <span class="nv">link</span><span class="p">;</span>
+                 <span class="nf">nextLink:</span> <span class="bp">nil</span><span class="p">;</span>
+                 <span class="nf">yourself</span><span class="p">.</span>
+
+      <span class="nv">nextLinkSafe</span> <span class="nf">value</span><span class="p">.</span>
+
+      <span class="nv">aCollection</span> <span class="nf">withIndexDo:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">:</span><span class="nv">index</span> <span class="o">|</span> 
+         <span class="o">|</span><span class="nv"> left eachForList </span><span class="o">|</span>
+         <span class="nv">left</span> <span class="o">:=</span> <span class="nv">brgc</span> <span class="nf">at:</span> <span class="nv">index</span><span class="p">.</span>
+
+         <span class="nv">eachForList</span> <span class="o">:=</span> <span class="nv">left</span> <span class="nf">&gt;</span> <span class="m">0</span>
+                           <span class="nb">ifTrue:</span> [ <span class="nv">each</span> <span class="nf">just</span> ]
+                           <span class="nb">ifFalse:</span> [ <span class="nv">nothing</span> ]<span class="p">.</span>
+
+         <span class="nv">brgc</span> <span class="nf">at:</span> <span class="nv">index</span> <span class="nf">put:</span> <span class="nv">left</span> <span class="nf">-</span> <span class="m">1</span><span class="p">.</span>
+
+         <span class="nv">list</span> <span class="o">:=</span> <span class="nc">CTDoubleValueLink</span> <span class="nb">new</span>
+                    <span class="nf">value:</span> <span class="nv">eachForList</span><span class="p">;</span>
+                    <span class="nf">previousLink:</span> <span class="nv">link</span><span class="p">;</span>
+                    <span class="nf">nextLink:</span> <span class="nv">list</span><span class="p">;</span>
+                    <span class="nf">yourself</span><span class="p">.</span>
+
+         <span class="nv">nextLinkSafe</span> <span class="nf">value</span> ]<span class="p">.</span>
+
+      <span class="nv">list</span> <span class="o">:=</span> <span class="nc">CTDoubleValueLink</span> <span class="nb">new</span>
+                 <span class="nf">value:</span> <span class="nv">upperJust</span><span class="p">;</span>
+                 <span class="nf">previousLink:</span> <span class="nv">link</span><span class="p">;</span>
+                 <span class="nf">nextLink:</span> <span class="nv">list</span><span class="p">;</span>
+                 <span class="nf">yourself</span><span class="p">.</span>
+
+      <span class="nv">nextLinkSafe</span> <span class="nf">value</span><span class="p">.</span>
+
+      <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">link</span> <span class="nf">isNil</span><span class="p">.</span>
+
+      <span class="nv">lists</span> <span class="o">:=</span> <span class="nv">list</span> <span class="nf">reversed</span> <span class="nf">~~&gt;</span> <span class="nv">lists</span> ]<span class="p">.</span>
+
+   <span class="nv">cleanLists</span> <span class="o">:=</span> <span class="nv">lists</span><span class="p">.</span>
+
+   [ <span class="nv">cleanLists</span> ] <span class="nf">whileNotNil:</span> [ 
+      <span class="o">|</span> <span class="nv">list</span> <span class="nf">|</span>
+      <span class="nv">list</span> <span class="o">:=</span> <span class="nv">cleanLists</span> <span class="nf">value</span><span class="p">.</span>
+
+      [ <span class="nv">list</span> ] <span class="nf">whileNotNil:</span> [ 
+         <span class="o">|</span> <span class="nv">each</span> <span class="nf">|</span>
+         <span class="nv">each</span> <span class="o">:=</span> <span class="nv">list</span> <span class="nf">nextLink</span><span class="p">.</span>
+
+         [ <span class="nv">each</span> <span class="nf">value</span> <span class="nf">==</span> <span class="nv">nothing</span> ] <span class="nb">whileTrue:</span> [ <span class="nv">each</span> <span class="o">:=</span> <span class="nv">each</span> <span class="nf">nextLink</span> ]<span class="p">.</span>
+
+         <span class="nv">list</span> <span class="o">:=</span> <span class="nv">list</span>
+                    <span class="nf">value:</span> <span class="nv">list</span> <span class="nf">value</span> <span class="nf">content</span><span class="p">;</span>
+                    <span class="nf">nextLink:</span> <span class="nv">each</span><span class="p">;</span>
+                    <span class="nf">nextLink</span> ]<span class="p">.</span>
+
+      <span class="nv">cleanLists</span> <span class="o">:=</span> <span class="nv">cleanLists</span> <span class="nf">nextLink</span> ]<span class="p">.</span>
+
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nb">new</span>
+        <span class="nf">lists:</span> <span class="nv">lists</span><span class="p">;</span>
+        <span class="nf">sortBlock:</span> <span class="nv">aCollection</span> <span class="nf">sortBlock</span><span class="p">;</span>
+        <span class="nf">lowerBound:</span> <span class="nv">lower</span><span class="p">;</span>
+        <span class="nf">upperBound:</span> <span class="nv">upper</span><span class="p">;</span>
+        <span class="nf">random:</span> <span class="nv">aRandom</span><span class="p">;</span>
+        <span class="nf">yourself</span>
+</pre></div>
+</div>
+<p>used with a <em>geometric</em> random object,</p>
+<span class="target" id="pharo-compiledMethod-15"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctskiplist-class-onsortedcollection-lowerbound-upperbound"><div class="highlight"><pre><span></span><span class="c">&quot;CTSkipList class, protocol creation&quot;</span>
+<span class="nf">onSortedCollection:</span> <span class="nv">aCollection</span> <span class="nf">lowerBound:</span> <span class="nv">lower</span> <span class="nf">upperBound:</span> <span class="nv">upper</span>
+
+   <span class="o">^</span> <span class="bp">self</span>
+        <span class="nf">onSortedCollection:</span> <span class="nv">aCollection</span>
+        <span class="nf">lowerBound:</span> <span class="nv">lower</span>
+        <span class="nf">upperBound:</span> <span class="nv">upper</span>
+        <span class="nf">atRandom:</span> ((<span class="nc">RandomGeometric</span> <span class="nf">seed:</span> <span class="m">541</span>)
+               <span class="nf">p:</span> <span class="m">0.5</span><span class="p">;</span>
+               <span class="nf">yourself</span>)
+</pre></div>
+</div>
+<p>The lookup message,</p>
+<span class="target" id="pharo-compiledMethod-16"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctskiplist-includes-equalityblock"><div class="highlight"><pre><span></span><span class="c">&quot;CTSkipList, protocol testing&quot;</span>
+<span class="nf">includes:</span> <span class="nv">aKey</span> <span class="nf">equalityBlock:</span> <span class="nv">eqBlock</span>
+
+   <span class="o">|</span><span class="nv"> link </span><span class="o">|</span>
+   <span class="nv">link</span> <span class="o">:=</span> (<span class="bp">self</span> <span class="nf">predecessors:</span> <span class="nv">aKey</span>) <span class="nf">value</span><span class="p">.</span>
+   <span class="o">^</span> <span class="nv">eqBlock</span> <span class="nf">value:</span> <span class="nv">link</span> <span class="nf">nextLink</span> <span class="nf">value</span> <span class="nf">value:</span> <span class="nv">aKey</span>
+</pre></div>
+</div>
+<p>allows us to assert that</p>
+<img alt="../_images/CTSkipListTest-testProfileInclusion-key.svg" class="align-center" src="../_images/CTSkipListTest-testProfileInclusion-key.svg" /><p>is included in the list by means of the interactions,</p>
+<img alt="../_images/CTSkipListTest-testProfileInclusion-sequence-diagram.svg" class="align-center" src="../_images/CTSkipListTest-testProfileInclusion-sequence-diagram.svg" /><p>The search performed during lookup is actually implemented in</p>
+<span class="target" id="pharo-compiledMethod-17"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctskiplist-predecessors"><div class="highlight"><pre><span></span><span class="c">&quot;CTSkipList, protocol accessing&quot;</span>
+<span class="nf">predecessors:</span> <span class="nv">key</span>
+
+   <span class="o">|</span><span class="nv"> link predecessors </span><span class="o">|</span>
+   <span class="nv">predecessors</span> <span class="o">:=</span> <span class="bp">nil</span><span class="p">.</span>
+   <span class="nv">link</span> <span class="o">:=</span> <span class="nv">lists</span> <span class="nf">value</span><span class="p">.</span>
+
+   [ <span class="nv">link</span> ] <span class="nf">whileNotNil:</span> [ 
+      [ <span class="nv">sortBlock</span> <span class="nf">value:</span> <span class="nv">link</span> <span class="nf">nextLink</span> <span class="nf">value</span> <span class="nf">value:</span> <span class="nv">key</span> ] <span class="nb">whileTrue:</span> [ 
+         <span class="nv">link</span> <span class="o">:=</span> <span class="nv">link</span> <span class="nf">nextLink</span> ]<span class="p">.</span>
+
+      <span class="nv">predecessors</span> <span class="o">:=</span> <span class="nv">link</span> <span class="nf">~~&gt;</span> <span class="nv">predecessors</span><span class="p">.</span>
+
+      <span class="nv">link</span> <span class="o">:=</span> <span class="nv">link</span> <span class="nf">previousLink</span> ]<span class="p">.</span>
+
+   <span class="o">^</span> <span class="nv">predecessors</span>
+</pre></div>
+</div>
+<p>and is used also by insertion; by the way, in the second edition <span id="id2">[<a class="reference internal" href="../bibliography.html#id29" title="Pierluigi Crescenzi, Giorgio Gambosi, Roberto Grossi, and Gianluca Rossi. Strutture di dati e algoritmi. Progettazione, analisi e visualizzazione, 2nd edition. Pearson, 2012. ISBN 8871927818.">CGGR12</a>]</span> is explained the insertion of</p>
+<img alt="../_images/CTSkipListTest-testProfileAdditionOf35-key.svg" class="align-center" src="../_images/CTSkipListTest-testProfileAdditionOf35-key.svg" /><p>at height 4 that produces</p>
+<img alt="../_images/CTSkipListTest-testProfileAdditionOf35.svg" class="align-center" src="../_images/CTSkipListTest-testProfileAdditionOf35.svg" /><p>by means of the messages</p>
+<span class="target" id="pharo-compiledMethod-18"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctskiplist-add-atheight"><div class="highlight"><pre><span></span><span class="c">&quot;CTSkipList, protocol accessing&quot;</span>
+<span class="nf">add:</span> <span class="nv">key</span> <span class="nf">atHeight:</span> <span class="nv">r</span>
+
+   <span class="o">|</span><span class="nv"> predecessors height newLink </span><span class="o">|</span>
+   <span class="nv">predecessors</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">predecessors:</span> <span class="nv">key</span><span class="p">.</span>
+
+   <span class="nv">height</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">height</span><span class="p">.</span>
+
+   <span class="nv">newLink</span> <span class="o">:=</span> <span class="bp">self</span>
+                 <span class="nf">add:</span> <span class="nv">key</span>
+                 <span class="nf">atHeight:</span> (<span class="nv">r</span> <span class="nf">min:</span> <span class="nv">height</span>)
+                 <span class="nf">predecessors:</span> <span class="nv">predecessors</span><span class="p">.</span>
+
+   <span class="nv">r</span> <span class="nf">&gt;</span> <span class="nv">height</span> <span class="nb">ifTrue:</span> [ 
+      <span class="o">|</span> <span class="nv">newList</span> <span class="nf">list</span> <span class="nf">|</span>
+      <span class="nv">list</span> <span class="o">:=</span> <span class="nv">lists</span> <span class="nf">value</span><span class="p">.</span>
+
+      <span class="nv">newList</span> <span class="o">:=</span> <span class="nc">CTDoubleValueLink</span> <span class="nb">new</span>
+                    <span class="nf">value:</span> <span class="nv">lowerBound</span><span class="p">;</span>
+                    <span class="nf">previousLink:</span> <span class="nv">list</span><span class="p">;</span>
+                    <span class="nf">nextLink:</span> (<span class="nc">CTDoubleValueLink</span> <span class="nb">new</span>
+                           <span class="nf">value:</span> <span class="nv">key</span><span class="p">;</span>
+                           <span class="nf">previousLink:</span> <span class="nv">newLink</span><span class="p">;</span>
+                           <span class="nf">nextLink:</span> (<span class="nc">CTDoubleValueLink</span> <span class="nb">new</span>
+                                  <span class="nf">value:</span> <span class="nv">upperBound</span><span class="p">;</span>
+                                  <span class="nf">previousLink:</span> (<span class="nv">list</span> <span class="nf">ifNotNil:</span> [ <span class="nv">list</span> <span class="nf">last</span> ])<span class="p">;</span>
+                                  <span class="nf">nextLink:</span> <span class="bp">nil</span><span class="p">;</span>
+                                  <span class="nf">yourself</span>)<span class="p">;</span>
+                           <span class="nf">yourself</span>)<span class="p">;</span>
+                    <span class="nf">yourself</span><span class="p">.</span>
+
+      <span class="nv">lists</span> <span class="o">:=</span> <span class="nv">newList</span> <span class="nf">~~&gt;</span> <span class="nv">lists</span> ]
+</pre></div>
+</div>
+<p>and</p>
+<span class="target" id="pharo-compiledMethod-19"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctskiplist-add-atheight-predecessors"><div class="highlight"><pre><span></span><span class="c">&quot;CTSkipList, protocol accessing&quot;</span>
+<span class="nf">add:</span> <span class="nv">key</span> <span class="nf">atHeight:</span> <span class="nv">r</span> <span class="nf">predecessors:</span> <span class="nv">aLink</span>
+
+   <span class="o">|</span><span class="nv"> newLink predecessors </span><span class="o">|</span>
+   <span class="nv">predecessors</span> <span class="o">:=</span> <span class="nv">aLink</span><span class="p">.</span>
+   <span class="nv">newLink</span> <span class="o">:=</span> <span class="bp">nil</span><span class="p">.</span>
+
+   <span class="nv">r</span> <span class="nb">timesRepeat:</span> [ 
+      <span class="o">|</span> <span class="nv">predecessor</span> <span class="nf">|</span>
+      <span class="nv">predecessor</span> <span class="o">:=</span> <span class="nv">predecessors</span> <span class="nf">value</span><span class="p">.</span>
+
+      <span class="nv">newLink</span> <span class="o">:=</span> <span class="nc">CTDoubleValueLink</span> <span class="nb">new</span>
+                    <span class="nf">value:</span> <span class="nv">key</span><span class="p">;</span>
+                    <span class="nf">previousLink:</span> <span class="nv">newLink</span><span class="p">;</span>
+                    <span class="nf">nextLink:</span> <span class="nv">predecessor</span> <span class="nf">nextLink</span><span class="p">;</span>
+                    <span class="nf">yourself</span><span class="p">.</span>
+
+      <span class="nv">predecessor</span> <span class="nf">nextLink:</span> <span class="nv">newLink</span><span class="p">.</span>
+
+      <span class="nv">predecessors</span> <span class="o">:=</span> <span class="nv">predecessors</span> <span class="nf">nextLink</span> ]<span class="p">.</span>
+
+   <span class="o">^</span> <span class="nv">newLink</span>
+</pre></div>
+</div>
+<p>respectively.</p>
+</section>
 </section>
 
 

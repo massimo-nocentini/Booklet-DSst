@@ -2,19 +2,56 @@
 Skip lists
 **********
 
+The first edition :cite:`crescenzi/algoritmi/1st` has a nice description of *skip lists*, also for the
+proof of the complexity. Let us reproduce their working example,
 
 .. pharo:autocompiledmethod:: CTSkipListTest>>#sutCrescenzi
 
   .. image:: ../../../Containers-SkipList/images/CTSkipListTest-testCrescenzi.svg
     :align: center
 
-Addition of value 35 at height 4 produces
+built by the message
 
+.. pharo:autocompiledmethod:: CTSkipList_class>>#onSortedCollection:lowerBound:upperBound:atRandom:
+
+used with a *geometric* random object,
+
+.. pharo:autocompiledmethod:: CTSkipList_class>>#onSortedCollection:lowerBound:upperBound:
+
+The lookup message,
+
+.. pharo:autocompiledmethod:: CTSkipList>>#includes:equalityBlock:
+
+allows us to assert that
+
+.. image:: ../../../Containers-SkipList/images/CTSkipListTest-testProfileInclusion-key.svg
+  :align: center
+
+is included in the list by means of the interactions,
+
+.. image:: ../../../Containers-SkipList/images/CTSkipListTest-testProfileInclusion-sequence-diagram.svg
+  :align: center
+
+The search performed during lookup is actually implemented in
+
+.. pharo:autocompiledmethod:: CTSkipList>>#predecessors:
+
+and is used also by insertion; by the way, in the second edition :cite:`crescenzi/algoritmi/2nd` is explained the insertion of 
+
+.. image:: ../../../Containers-SkipList/images/CTSkipListTest-testProfileAdditionOf35-key.svg
+  :align: center
+
+at height 4 that produces
 
 .. image:: ../../../Containers-SkipList/images/CTSkipListTest-testProfileAdditionOf35.svg
   :align: center
 
-after the interactions
+by means of the messages
 
-.. image:: ../../../Containers-SkipList/images/CTSkipListTest-testProfileAdditionOf35-sequence-diagram.svg
-  :align: center
+.. pharo:autocompiledmethod:: CTSkipList>>#add:atHeight:
+
+and
+
+.. pharo:autocompiledmethod:: CTSkipList>>#add:atHeight:predecessors:
+
+respectively.
