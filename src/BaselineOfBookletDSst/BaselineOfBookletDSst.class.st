@@ -132,7 +132,7 @@ BaselineOfBookletDSst >> scriptLinkMessagesForDoc [
 	^ MetaSTExporter new
 		  selectors:
 			  #( do: next: nextFromLink: nextLink: nextInteger: asLinkedList
-			     testEmptyLink testLinkReferencingItself
+			     sutCrescenzi testEmptyLink testLinkReferencingItself
 			     #testThreeLinksReferencingEachOther
 			     yourself: #testLinkNext3 testLinkReferencingAnotherLink
 			     testThreeLinksTooMuchSkipping );
