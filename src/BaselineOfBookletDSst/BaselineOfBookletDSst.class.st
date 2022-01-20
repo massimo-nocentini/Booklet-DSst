@@ -132,8 +132,11 @@ BaselineOfBookletDSst >> scriptLinkMessagesForDoc [
 	^ MetaSTExporter new
 		  selectors:
 			  #( do: next: nextFromLink: nextLink: nextInteger: asLinkedList
-			     sutCrescenzi testEmptyLink testLinkReferencingItself
-			     #testThreeLinksReferencingEachOther
+			     #onSortedCollection:lowerBound:upperBound:
+			     #onSortedCollection:lowerBound:upperBound:atRandom:
+			     #includes:equalityBlock: predecessors: add: #add:atHeight:
+			     #add:atHeight:predecessors: sutCrescenzi testEmptyLink
+			     testLinkReferencingItself #testThreeLinksReferencingEachOther
 			     yourself: #testLinkNext3 testLinkReferencingAnotherLink
 			     testThreeLinksTooMuchSkipping );
 		  exportWithRepositoryPath: [ :aPath | 
