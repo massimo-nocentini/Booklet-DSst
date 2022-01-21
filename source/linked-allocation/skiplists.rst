@@ -54,4 +54,27 @@ and
 
 .. pharo:autocompiledmethod:: CTSkipList>>#add:atHeight:predecessors:
 
-respectively.
+respectively. In order to see randomization, we add elements
+
+.. image:: ../../../Containers-SkipList/images/CTSkipListTest-testProfileAddingFromScratch-elements.svg
+  :align: center
+
+one after the other to obtain the list
+
+.. image:: ../../../Containers-SkipList/images/CTSkipListTest-testProfileAddingFromScratch.svg
+  :align: center
+
+which is initially built from an empty sorted collection. Here is what happened,
+
+.. image:: ../../../Containers-SkipList/images/CTSkipListTest-testProfileAddingFromScratch-sequence-diagram.svg
+  :align: center
+
+Last, an arbitrary list with
+
+.. image:: ../../../Containers-SkipList/images/CTSkipListTest-testInspectBigList-n.svg
+  :align: center
+
+elements looks like,
+
+.. image:: ../../../Containers-SkipList/images/CTSkipListTest-testInspectBigList.svg
+  :align: center
