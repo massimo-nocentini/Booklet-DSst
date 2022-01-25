@@ -19,9 +19,9 @@ BaselineOfBookletDSst >> baseline: spec [
 			with: [ 
 			spec repository: 'github://massimo-nocentini/Containers-Essentials' ].
 
-		spec baseline: 'MethodWrappersMN' with: [ 
-			spec repository:
-				'github://bauing-schmidt/MethodWrappers:UML-sequence-diagram/' ].
+		spec
+			baseline: 'MethodTrackerMN'
+			with: [ spec repository: 'github://bauing-schmidt/MethodTracker' ].
 
 		spec
 			baseline: 'ContainersLinks'
