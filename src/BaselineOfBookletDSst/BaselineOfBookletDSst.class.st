@@ -74,7 +74,7 @@ BaselineOfBookletDSst >> runAllTests [
 	'Containers-BinaryTreeAbstract-Tests'.
 	'Containers-LeftistHeap-Tests'. 'Containers-SplayHeap-Tests'.
 	'MethodTracker-Visualizations'. 'Containers-SkipList-Tests' } do: [ 
-		:each | each asPackage testSuite run ].
+		:each | each asPackage testSuiteFromAllSelectors run ].
 
 	self inform: thisContext method name , ' has finished.'
 ]
