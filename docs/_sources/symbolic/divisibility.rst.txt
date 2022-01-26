@@ -19,7 +19,7 @@ in
 
 .. pharo:autocompiledmethod:: MTVisualizationsTest>>#testProfileSlowFibonacciWithAdd
 
-  .. image:: ../../../../bauing-schmidt/MethodWrappers/images/MTVisualizationsTest-testProfileSlowFibonacciWithAdd-sequence-diagram.svg
+  .. image:: ../../../../bauing-schmidt/MethodTracker/images/MTVisualizationsTest-testProfileSlowFibonacciWithAdd-sequence-diagram.svg
     :align: center
 
 .. index::
@@ -27,7 +27,7 @@ in
 
 Moreover, we can inspect the sequence of *additions* that are performed,
 
-.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MTVisualizationsTest-testProfileSlowFibonacciWithAddOnly-sequence-diagram.svg
+.. image:: ../../../../bauing-schmidt/MethodTracker/images/MTVisualizationsTest-testProfileSlowFibonacciWithAddOnly-sequence-diagram.svg
     :align: center
 
 .. index::
@@ -40,7 +40,7 @@ To take the exponential complexity of the previous implementation we can use eit
 
 .. pharo:autocompiledmethod:: MTVisualizationsTest>>#testProfileSlowFibonacciMemoingWithAdd
 
-  .. image:: ../../../../bauing-schmidt/MethodWrappers/images/MTVisualizationsTest-testProfileSlowFibonacciMemoingWithAdd-sequence-diagram.svg
+  .. image:: ../../../../bauing-schmidt/MethodTracker/images/MTVisualizationsTest-testProfileSlowFibonacciMemoingWithAdd-sequence-diagram.svg
     :align: center
 
 where
@@ -57,7 +57,7 @@ Or tail-call messages,
 
 .. pharo:autocompiledmethod:: MTVisualizationsTest>>#testProfileSlowFibonacciTailWithAdd
 
-  .. image:: ../../../../bauing-schmidt/MethodWrappers/images/MTVisualizationsTest-testProfileSlowFibonacciTailWithAdd-sequence-diagram.svg
+  .. image:: ../../../../bauing-schmidt/MethodTracker/images/MTVisualizationsTest-testProfileSlowFibonacciTailWithAdd-sequence-diagram.svg
     :align: center
 
 where
@@ -78,7 +78,7 @@ in
 
 .. pharo:autocompiledmethod:: MTVisualizationsTest>>#testSequenceableCollectionHornerInit
 
-  .. image:: ../../../../bauing-schmidt/MethodWrappers/images/MTVisualizationsTest-testSequenceableCollectionHornerInit.svg
+  .. image:: ../../../../bauing-schmidt/MethodTracker/images/MTVisualizationsTest-testSequenceableCollectionHornerInit.svg
     :align: center
 
 .. index::
@@ -86,7 +86,7 @@ in
 
 that admits the profiling,
 
-.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MTVisualizationsTest-testSequenceableCollectionHornerInit-sequence-diagram.svg
+.. image:: ../../../../bauing-schmidt/MethodTracker/images/MTVisualizationsTest-testSequenceableCollectionHornerInit-sequence-diagram.svg
   :align: center
 
 .. index::
@@ -103,7 +103,7 @@ in
 
 .. pharo:autocompiledmethod:: MTVisualizationsTest>>#testSequenceableCollectionEstrinInit
 
-  .. image:: ../../../../bauing-schmidt/MethodWrappers/images/MTVisualizationsTest-testSequenceableCollectionEstrinInit.svg
+  .. image:: ../../../../bauing-schmidt/MethodTracker/images/MTVisualizationsTest-testSequenceableCollectionEstrinInit.svg
     :align: center
 
 .. index::
@@ -115,7 +115,7 @@ where
 
 admits the profiling,
 
-.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MTVisualizationsTest-testSequenceableCollectionEstrinInit-sequence-diagram.svg
+.. image:: ../../../../bauing-schmidt/MethodTracker/images/MTVisualizationsTest-testSequenceableCollectionEstrinInit-sequence-diagram.svg
   :align: center
 
 .. index::
@@ -186,7 +186,7 @@ A complete profiling of :math:`835 \cdot 714` using this technique looks like
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectLargeIntegerProfiled-contexts-tree.svg
     :align: center
 
-.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MTVisualizationsTest-testInspectLargeIntegerProfiled-sequence-diagram.svg
+.. image:: ../../../../bauing-schmidt/MethodTracker/images/MTVisualizationsTest-testInspectLargeIntegerProfiled-sequence-diagram.svg
   :align: center
 
 
@@ -196,7 +196,7 @@ Factorials
 According the post :cite:`sven/speeding-up-factorial`, we implement the factorial
 function twice in order to compute :math:`16!` that equals
 
-.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MTVisualizationsTest-testInspectFactorialRecursive.svg
+.. image:: ../../../../bauing-schmidt/MethodTracker/images/MTVisualizationsTest-testInspectFactorialRecursive.svg
   :align: center
 
 On one hand, the slow version follows straightforward from the mathematical definition,  
@@ -208,7 +208,7 @@ and the interactions are
 .. index::
   single: Sequence diagrams; Factorial, slow
 
-.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MTVisualizationsTest-testInspectFactorialRecursive-sequence-diagram.svg
+.. image:: ../../../../bauing-schmidt/MethodTracker/images/MTVisualizationsTest-testInspectFactorialRecursive-sequence-diagram.svg
   :align: center
 
 On the other hand, the fast version uses a divide and conquer approach,
@@ -223,7 +223,7 @@ and the interactions are
 .. index::
   single: Sequence diagrams; Factorial, fast
 
-.. image:: ../../../../bauing-schmidt/MethodWrappers/images/MTVisualizationsTest-testInspectProductTo-sequence-diagram.svg
+.. image:: ../../../../bauing-schmidt/MethodTracker/images/MTVisualizationsTest-testInspectProductTo-sequence-diagram.svg
   :align: center
 
 Quotients and remainders
