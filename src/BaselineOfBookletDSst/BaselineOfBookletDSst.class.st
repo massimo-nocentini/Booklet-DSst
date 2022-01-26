@@ -41,6 +41,11 @@ BaselineOfBookletDSst >> baseline: spec [
 				'github://massimo-nocentini/Containers-BinomialHeap' ].
 
 		spec
+			baseline: 'ContainersSBRAL'
+			with: [ 
+			spec repository: 'github://massimo-nocentini/Containers-SBRAL' ].
+
+		spec
 			baseline: 'ContainersHeapQ'
 			with: [ 
 			spec repository: 'github://massimo-nocentini/Containers-HeapQ' ].
