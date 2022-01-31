@@ -36,13 +36,6 @@
 
 
 
-<p>
-<iframe src="https://ghbtns.com/github-btn.html?user=massimo-nocentini&repo=Booklet-DSst&type=watch&count=true&size=large&v=2"
-  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
-</p>
-
-
-
 
 
 <h3>Navigation</h3>
@@ -461,8 +454,9 @@
               <span class="nf">base:</span> <span class="nv">base</span> ]
 </pre></div>
 </div>
-<p>according to the algorithm described in <span id="id2">[<a class="reference internal" href="../bibliography.html#id14" title="Jon Kleinberg and Eva Tardos. Algorithm Design. Addison-Wesley Longman Publishing Co., Inc., USA, 2005. ISBN 0321295358.">KT05</a>]</span>, page 232.
-Such algorithm runs in <span class="math notranslate nohighlight">\(O(n^{\log_{2}{3}})\)</span> because the input numbers
+<p>according to the algorithm described in <span id="id2">[<a class="reference internal" href="../bibliography.html#id14" title="Jon Kleinberg and Eva Tardos. Algorithm Design. Addison-Wesley Longman Publishing Co., Inc., USA, 2005. ISBN 0321295358.">KT05</a>]</span>, page 232,
+after the introductory work of <span id="id3">[<a class="reference internal" href="../bibliography.html#id30" title="Anatolij A. Karatsuba and Yu. Ofman. Multiplication of multidigit numbers on automata. Soviet physics. Doklady, 7:595-596, 1963.">KO63</a>]</span>.  Such
+algorithm runs in <span class="math notranslate nohighlight">\(O(n^{\log_{2}{3}})\)</span> because the input numbers
 <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}x = x_{a}\cdot 10^{a} + x_{a-1}\cdot 10^{a-1} + \cdots + x_{1}\cdot 10^{1} + x_{0}\cdot 10^{0} \\
@@ -479,7 +473,7 @@ The implementation follows from both the fact</p>
 <div class="math notranslate nohighlight">
 \[(x_{1} + x_{0})\,(y_{1} + y_{0}) = x_{1}\,y_{1} + \left(x_{1}\,y_{0} + x_{0}\,y_{1}\right) + x_{0}\,y_{0}\]</div>
 <p>respectively, more references can also be found in
-<span id="id3">[<a class="reference internal" href="../bibliography.html#id15" title="Wikipedia. Karatsuba algorithm. URL: https://en.wikipedia.org/wiki/Karatsuba_algorithm.">Wik</a>]</span>. Two auxiliary messages</p>
+<span id="id4">[<a class="reference internal" href="../bibliography.html#id15" title="Wikipedia. Karatsuba algorithm. URL: https://en.wikipedia.org/wiki/Karatsuba_algorithm.">Wik</a>]</span>. Two auxiliary messages</p>
 <span class="target" id="pharo-compiledMethod-12"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-halves-base"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">halves:</span> <span class="nv">aBlock</span> <span class="nf">base:</span> <span class="nv">aBase</span>
 
@@ -522,7 +516,7 @@ The implementation follows from both the fact</p>
 <img alt="../_images/MTVisualizationsTest-testInspectLargeIntegerProfiled-sequence-diagram.svg" class="align-center" src="../_images/MTVisualizationsTest-testInspectLargeIntegerProfiled-sequence-diagram.svg" /></section>
 <section id="factorials">
 <h3><span class="section-number">4.2.4. </span>Factorials<a class="headerlink" href="#factorials" title="Permalink to this headline">¶</a></h3>
-<p>According the post <span id="id4">[<a class="reference internal" href="../bibliography.html#id13" title="Sven VC. Speeding up factorial computation by changing the order of multiplications. URL: https://medium.com/concerning-pharo/speeding-up-factorial-computation-by-changing-the-order-of-multiplications-f4da3a5576da.">VC</a>]</span>, we implement the factorial
+<p>According the post <span id="id5">[<a class="reference internal" href="../bibliography.html#id13" title="Sven VC. Speeding up factorial computation by changing the order of multiplications. URL: https://medium.com/concerning-pharo/speeding-up-factorial-computation-by-changing-the-order-of-multiplications-f4da3a5576da.">VC</a>]</span>, we implement the factorial
 function twice in order to compute <span class="math notranslate nohighlight">\(16!\)</span> that equals</p>
 <img alt="../_images/MTVisualizationsTest-testInspectFactorialRecursive.svg" class="align-center" src="../_images/MTVisualizationsTest-testInspectFactorialRecursive.svg" /><p>On one hand, the slow version follows straightforward from the mathematical definition,</p>
 <span class="target" id="pharo-compiledMethod-14"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-factorialrecursive"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
@@ -633,7 +627,7 @@ function twice in order to compute <span class="math notranslate nohighlight">\(
 <blockquote>
 <div><img alt="../_images/SymbolicIntegerTest-testComplementaryQuoRem21Over9.svg" class="align-center" src="../_images/SymbolicIntegerTest-testComplementaryQuoRem21Over9.svg" /></div></blockquote>
 <p>that yields a negative remainder, shown by full dots. To do that, we have the following messages chain</p>
-<span class="target" id="pharo-compiledMethod-22"></span><div class="highlight-smalltalk notranslate" id="id5"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
+<span class="target" id="pharo-compiledMethod-22"></span><div class="highlight-smalltalk notranslate" id="id6"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">/%~</span> <span class="nv">anObject</span>
 
    <span class="o">^</span> <span class="nv">anObject</span> <span class="nf">quoRemComplementaryInteger:</span> <span class="bp">self</span>

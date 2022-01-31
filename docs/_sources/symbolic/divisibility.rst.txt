@@ -137,8 +137,9 @@ that equals :math:`(42!)^{2}` where squaring is performed by multiplication of
 
 .. pharo:autocompiledmethod:: Integer>>#karatsuba:base:
 
-according to the algorithm described in :cite:`10.5555/1051910`, page 232.
-Such algorithm runs in :math:`O(n^{\log_{2}{3}})` because the input numbers
+according to the algorithm described in :cite:`10.5555/1051910`, page 232,
+after the introductory work of :cite:`Karatsuba1963MultiplicationOM`.  Such
+algorithm runs in :math:`O(n^{\log_{2}{3}})` because the input numbers
 :math:`x` and :math:`y`, 
 
 .. math::
