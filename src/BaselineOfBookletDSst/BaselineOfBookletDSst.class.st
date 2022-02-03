@@ -78,7 +78,8 @@ BaselineOfBookletDSst >> runAllTests [
 	'Containers-RedBlackSet-Tests'. 'Containers-BinomialHeap-Tests'.
 	'Containers-BinaryTreeAbstract-Tests'.
 	'Containers-LeftistHeap-Tests'. 'Containers-SplayHeap-Tests'.
-	'MethodTracker-Visualizations'. 'Containers-SkipList-Tests' }
+	'MethodTracker-Visualizations'. 'Containers-SkipList-Tests'.
+	'Containers-HeapQ-Tests' }
 		do: [ :each | each asPackage testSuiteFromAllSelectors run ]
 		displayingProgress: [ :each | 'Running tests in package: ' , each ].
 
