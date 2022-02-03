@@ -97,8 +97,8 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 			     goldenRatiosLower goldenRatiosGreater lucasNumbers
 			     #gibonacciNumbersFirst:second:do:
 			     \/ mediantInteger: mediantFraction: kissingFractions
-			     overlappingPairsDo: kissingFractionLink: bitBRGC asShapeBinaryDots:
-			     asShapeBRGCDots fairCoin #bisect:baseBlock: #bisect:from:to:baseBlock:
+			     overlappingPairsDo: kissingFractionLink: bitBRGC asShapeBinaryDots:walker:
+			     asShapeBRGCDots: fairCoin #bisect:baseBlock: #bisect:from:to:baseBlock:
 			     asSkewBinaryCanonicalSparse #kth:ranking:atRandom:
 			     atRandom: testInspectObjectModel testInspectTraitModel
 			     testMagnitudeSubclasses testMagnitudeSubclassesSlotsGraph
