@@ -268,7 +268,13 @@ only one bit"* -- from `Wikipedia <https://en.wikipedia.org/wiki/Gray_code>`_,
   .. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectBRGCodes.svg
     :align: center
 
-also known as :cite:`oeis/gray-codes`. The message
+also known as :cite:`oeis/gray-codes`, where the sequence of bit-changing
+indexes in adjacent representations,
+
+.. image:: ../../../Containers-Essentials/images/EssentialsObjectTest-testInspectBRGCodes-changing-bits.svg
+  :align: center
+
+also known as :cite:`oeis/binary-carry-sequence`. The message
 
 .. pharo:autocompiledmethod:: Integer>>#asShapeBRGCDots
 

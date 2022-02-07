@@ -337,7 +337,7 @@
 <img alt="../_images/MTVisualizationsTest-testSequenceableCollectionHornerInit-sequence-diagram.svg" class="align-center" src="../_images/MTVisualizationsTest-testSequenceableCollectionHornerInit-sequence-diagram.svg" /></section>
 <section id="estrin-s-method">
 <span id="index-5"></span><h3><span class="section-number">4.2.2. </span><em>Estrin</em>'s method<a class="headerlink" href="#estrin-s-method" title="Permalink to this headline">¶</a></h3>
-<p>According to <span id="id1">[<a class="reference internal" href="../bibliography.html#id20" title="Gerald Estrin. Organization of computer systems: the fixed plus variable structure computer. In Papers Presented at the May 3-5, 1960, Western Joint IRE-AIEE-ACM Computer Conference, 33–40. New York, NY, USA, 1960. Association for Computing Machinery. doi:10.1145/1460361.1460365.">Est60</a>]</span>, let</p>
+<p>According to <span id="id1">[<a class="reference internal" href="../bibliography.html#id21" title="Gerald Estrin. Organization of computer systems: the fixed plus variable structure computer. In Papers Presented at the May 3-5, 1960, Western Joint IRE-AIEE-ACM Computer Conference, 33–40. New York, NY, USA, 1960. Association for Computing Machinery. doi:10.1145/1460361.1460365.">Est60</a>]</span>, let</p>
 <span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-sequenceablecollection-estrin-init"><div class="highlight"><pre><span></span><span class="c">&quot;SequenceableCollection, protocol *Containers-Essentials&quot;</span>
 <span class="nf">estrin:</span> <span class="nv">base</span> <span class="nf">init:</span> <span class="nv">init</span>
 
@@ -454,8 +454,8 @@
               <span class="nf">base:</span> <span class="nv">base</span> ]
 </pre></div>
 </div>
-<p>according to the algorithm described in <span id="id2">[<a class="reference internal" href="../bibliography.html#id14" title="Jon Kleinberg and Eva Tardos. Algorithm Design. Addison-Wesley Longman Publishing Co., Inc., USA, 2005. ISBN 0321295358.">KT05</a>]</span>, page 232,
-after the introductory work of <span id="id3">[<a class="reference internal" href="../bibliography.html#id30" title="Anatolij A. Karatsuba and Yu. Ofman. Multiplication of multidigit numbers on automata. Soviet physics. Doklady, 7:595-596, 1963.">KO63</a>]</span>.  Such
+<p>according to the algorithm described in <span id="id2">[<a class="reference internal" href="../bibliography.html#id15" title="Jon Kleinberg and Eva Tardos. Algorithm Design. Addison-Wesley Longman Publishing Co., Inc., USA, 2005. ISBN 0321295358.">KT05</a>]</span>, page 232,
+after the introductory work of <span id="id3">[<a class="reference internal" href="../bibliography.html#id31" title="Anatolij A. Karatsuba and Yu. Ofman. Multiplication of multidigit numbers on automata. Soviet physics. Doklady, 7:595-596, 1963.">KO63</a>]</span>.  Such
 algorithm runs in <span class="math notranslate nohighlight">\(O(n^{\log_{2}{3}})\)</span> because the input numbers
 <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>,</p>
 <div class="math notranslate nohighlight">
@@ -473,7 +473,7 @@ The implementation follows from both the fact</p>
 <div class="math notranslate nohighlight">
 \[(x_{1} + x_{0})\,(y_{1} + y_{0}) = x_{1}\,y_{1} + \left(x_{1}\,y_{0} + x_{0}\,y_{1}\right) + x_{0}\,y_{0}\]</div>
 <p>respectively, more references can also be found in
-<span id="id4">[<a class="reference internal" href="../bibliography.html#id15" title="Wikipedia. Karatsuba algorithm. URL: https://en.wikipedia.org/wiki/Karatsuba_algorithm.">Wik</a>]</span>. Two auxiliary messages</p>
+<span id="id4">[<a class="reference internal" href="../bibliography.html#id16" title="Wikipedia. Karatsuba algorithm. URL: https://en.wikipedia.org/wiki/Karatsuba_algorithm.">Wik</a>]</span>. Two auxiliary messages</p>
 <span class="target" id="pharo-compiledMethod-12"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-halves-base"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">halves:</span> <span class="nv">aBlock</span> <span class="nf">base:</span> <span class="nv">aBase</span>
 
@@ -516,7 +516,7 @@ The implementation follows from both the fact</p>
 <img alt="../_images/MTVisualizationsTest-testInspectLargeIntegerProfiled-sequence-diagram.svg" class="align-center" src="../_images/MTVisualizationsTest-testInspectLargeIntegerProfiled-sequence-diagram.svg" /></section>
 <section id="factorials">
 <h3><span class="section-number">4.2.4. </span>Factorials<a class="headerlink" href="#factorials" title="Permalink to this headline">¶</a></h3>
-<p>According the post <span id="id5">[<a class="reference internal" href="../bibliography.html#id13" title="Sven VC. Speeding up factorial computation by changing the order of multiplications. URL: https://medium.com/concerning-pharo/speeding-up-factorial-computation-by-changing-the-order-of-multiplications-f4da3a5576da.">VC</a>]</span>, we implement the factorial
+<p>According the post <span id="id5">[<a class="reference internal" href="../bibliography.html#id14" title="Sven VC. Speeding up factorial computation by changing the order of multiplications. URL: https://medium.com/concerning-pharo/speeding-up-factorial-computation-by-changing-the-order-of-multiplications-f4da3a5576da.">VC</a>]</span>, we implement the factorial
 function twice in order to compute <span class="math notranslate nohighlight">\(16!\)</span> that equals</p>
 <img alt="../_images/MTVisualizationsTest-testInspectFactorialRecursive.svg" class="align-center" src="../_images/MTVisualizationsTest-testInspectFactorialRecursive.svg" /><p>On one hand, the slow version follows straightforward from the mathematical definition,</p>
 <span class="target" id="pharo-compiledMethod-14"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-factorialrecursive"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
