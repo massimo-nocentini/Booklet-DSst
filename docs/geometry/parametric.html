@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>10. Parametric curves &#8212; Data Structures in Smalltalk  documentation</title>
+    <title>10. Computational geometry &#8212; Data Structures in Smalltalk  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -49,7 +49,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../linked-allocation/lists.html">7. Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../linked-allocation/trees.html">8. Trees</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../linked-allocation/storage-pools.html">9. Storage pools</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Parametric curves</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Computational geometry</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#parametric-curves">10.1. Parametric curves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bezier-curves">10.2. Bezier curves</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#closed-control-net">10.2.1. Closed control net</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#degree-elevation">10.2.2. Degree elevation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#designing-notes">10.2.3. Designing notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../bibliography.html">11. Bibliography</a></li>
 </ul>
 
@@ -103,8 +112,10 @@
 
           <div class="body" role="main">
             
-  <section id="parametric-curves">
-<h1><span class="section-number">10. </span>Parametric curves<a class="headerlink" href="#parametric-curves" title="Permalink to this headline">¶</a></h1>
+  <section id="computational-geometry">
+<h1><span class="section-number">10. </span>Computational geometry<a class="headerlink" href="#computational-geometry" title="Permalink to this headline">¶</a></h1>
+<section id="parametric-curves">
+<h2><span class="section-number">10.1. </span>Parametric curves<a class="headerlink" href="#parametric-curves" title="Permalink to this headline">¶</a></h2>
 <p>We work with points</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}{\bf v}=\left (
@@ -212,6 +223,124 @@ where <span class="math notranslate nohighlight">\(\ u \in [0,\pi]\)</span>, aka
         <span class="nf">scale:</span> <span class="m">30</span>
 </pre></div>
 </div>
+</section>
+<section id="bezier-curves">
+<h2><span class="section-number">10.2. </span>Bezier curves<a class="headerlink" href="#bezier-curves" title="Permalink to this headline">¶</a></h2>
+<section id="closed-control-net">
+<h3><span class="section-number">10.2.1. </span>Closed control net<a class="headerlink" href="#closed-control-net" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/RSParametricCurveTest-testLineDeCasteljauLineClosedControlPoints.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineDeCasteljauLineClosedControlPoints.svg" /><p>and is coded as</p>
+<span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-linedecasteljaulineclosedcontrolpoints"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="nf">lineDeCasteljauLineClosedControlPoints</span>
+
+   <span class="o">|</span><span class="nv"> points </span><span class="o">|</span>
+   <span class="nv">points</span> <span class="o">:=</span> { 
+                (<span class="m">1</span> <span class="nf">@</span> <span class="m">1</span>)<span class="p">.</span>
+                (<span class="m">3</span> <span class="nf">@</span> <span class="m">4</span>)<span class="p">.</span>
+                (<span class="m">5</span> <span class="nf">@</span> <span class="m">6</span>)<span class="p">.</span>
+                (<span class="m">7</span> <span class="nf">@</span> <span class="m">8</span>)<span class="p">.</span>
+                (<span class="m">10</span> <span class="nf">@</span> <span class="m">2</span>)<span class="p">.</span>
+                (<span class="m">1</span> <span class="nf">@</span> <span class="m">1</span>) }<span class="p">.</span>
+
+   <span class="o">^</span> <span class="nc">RSdeCasteljauLine</span> <span class="nb">new</span>
+        <span class="nf">samples:</span> <span class="m">50</span><span class="p">;</span>
+        <span class="nf">controlPoints:</span> <span class="nv">points</span><span class="p">;</span>
+        <span class="nf">scale:</span> <span class="m">100</span>
+</pre></div>
+</div>
+</section>
+<section id="degree-elevation">
+<h3><span class="section-number">10.2.2. </span>Degree elevation<a class="headerlink" href="#degree-elevation" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/RSParametricCurveTest-testLinesDeCasteljauLineDegreeElevation.svg" class="align-center" src="../_images/RSParametricCurveTest-testLinesDeCasteljauLineDegreeElevation.svg" /><p>and is coded as</p>
+<span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-linesdecasteljaulinedegreeelevation"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="nf">linesDeCasteljauLineDegreeElevation</span>
+
+   <span class="o">|</span><span class="nv"> points bspline1 bspline2 bspline3 bspline4 </span><span class="o">|</span>
+   <span class="nv">points</span> <span class="o">:=</span> { 
+                (<span class="m">1</span> <span class="nf">@</span> <span class="m">1</span>)<span class="p">.</span>
+                (<span class="m">3</span> <span class="nf">@</span> <span class="m">4</span>)<span class="p">.</span>
+                (<span class="m">5</span> <span class="nf">@</span> <span class="m">6</span>)<span class="p">.</span>
+                (<span class="m">7</span> <span class="nf">@</span> (<span class="m">3</span> <span class="nf">/</span> <span class="m">2</span>))<span class="p">.</span>
+                (<span class="m">10</span> <span class="nf">@</span> <span class="m">2</span>) }<span class="p">.</span>
+
+   <span class="nv">bspline1</span> <span class="o">:=</span> <span class="nc">RSdeCasteljauLine</span> <span class="nb">new</span>
+                  <span class="nf">samples:</span> <span class="m">50</span><span class="p">;</span>
+                  <span class="nf">controlPoints:</span> <span class="nv">points</span><span class="p">;</span>
+                  <span class="nf">scale:</span> <span class="m">100</span><span class="p">.</span>
+
+   <span class="nv">bspline2</span> <span class="o">:=</span> <span class="nv">bspline1</span> <span class="nf">increment</span><span class="p">.</span>
+   <span class="nv">bspline3</span> <span class="o">:=</span> <span class="nv">bspline2</span> <span class="nf">increment</span><span class="p">.</span>
+   <span class="nv">bspline4</span> <span class="o">:=</span> <span class="nv">bspline3</span> <span class="nf">increment</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="nc">RSGroup</span>
+        <span class="nf">with:</span> <span class="nv">bspline1</span>
+        <span class="nf">with:</span> <span class="nv">bspline2</span>
+        <span class="nf">with:</span> <span class="nv">bspline3</span>
+        <span class="nf">with:</span> <span class="nv">bspline4</span>
+</pre></div>
+</div>
+</section>
+<section id="designing-notes">
+<h3><span class="section-number">10.2.3. </span>Designing notes<a class="headerlink" href="#designing-notes" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/RSParametricCurveTest-testLineDeCasteljauLineNoteBox.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineDeCasteljauLineNoteBox.svg" /><p>and is coded as</p>
+<span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-linedecasteljaulinenotebox"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="nf">lineDeCasteljauLineNoteBox</span>
+
+   <span class="o">|</span><span class="nv"> points </span><span class="o">|</span>
+   <span class="nv">points</span> <span class="o">:=</span> { 
+                (<span class="m">0</span> <span class="nf">@</span> <span class="m">0</span>)<span class="p">.</span>
+                (<span class="m">8.461</span> <span class="nf">@</span> <span class="m">36.411</span>)<span class="p">.</span>
+                (<span class="m">0.6</span> <span class="nf">@</span> <span class="m">129.887</span>)<span class="p">.</span>
+                (<span class="m">25.3</span> <span class="nf">@</span> <span class="m">195.304</span>)<span class="p">.</span>
+                (<span class="m">-67.3</span> <span class="nf">@</span> <span class="m">222.719</span>)<span class="p">.</span>
+                (<span class="m">16.72</span> <span class="nf">@</span> <span class="m">245.576</span>)<span class="p">.</span>
+                (<span class="m">-55.8</span> <span class="nf">@</span> <span class="m">178.406</span>)<span class="p">.</span>
+                (<span class="m">60</span> <span class="nf">@</span> <span class="m">136.3</span>)<span class="p">.</span>
+                (<span class="m">136</span> <span class="nf">@</span> <span class="m">136</span>)<span class="p">.</span>
+                (<span class="m">142.2</span> <span class="nf">@</span> <span class="m">222.332</span>)<span class="p">.</span>
+                (<span class="m">393.292</span> <span class="nf">@</span> <span class="m">192.739</span>)<span class="p">.</span>
+                (<span class="m">247.8</span> <span class="nf">@</span> <span class="m">244.8</span>)<span class="p">.</span>
+                (<span class="m">179.5</span> <span class="nf">@</span> <span class="m">201.105</span>)<span class="p">.</span>
+                (<span class="m">221.9</span> <span class="nf">@</span> <span class="m">163.04</span>)<span class="p">.</span>
+                (<span class="m">200</span> <span class="nf">@</span> <span class="m">125.8</span>)<span class="p">.</span>
+                (<span class="m">204.4</span> <span class="nf">@</span> <span class="m">101.697</span>)<span class="p">.</span>
+                (<span class="m">210.405</span> <span class="nf">@</span> <span class="m">85.124</span>)<span class="p">.</span>
+                (<span class="m">217.89</span> <span class="nf">@</span> <span class="m">18.03</span>)<span class="p">.</span>
+                (<span class="m">151.73</span> <span class="nf">@</span> <span class="m">29.54</span>)<span class="p">.</span>
+                (<span class="m">244.5</span> <span class="nf">@</span> <span class="m">-26.58</span>)<span class="p">.</span>
+                (<span class="m">318.633</span> <span class="nf">@</span> <span class="m">-42.131</span>)<span class="p">.</span>
+                (<span class="m">145.27</span> <span class="nf">@</span> <span class="m">1.9</span>)<span class="p">.</span>
+                (<span class="m">52.05</span> <span class="nf">@</span> <span class="m">8.718</span>)<span class="p">.</span>
+                (<span class="m">0</span> <span class="nf">@</span> <span class="m">0</span>) }<span class="p">.</span>
+
+   <span class="o">^</span> <span class="nc">RSdeCasteljauLine</span> <span class="nb">new</span>
+        <span class="nf">samples:</span> <span class="m">50</span><span class="p">;</span>
+        <span class="nf">controlPoints:</span> <span class="nv">points</span><span class="p">;</span>
+        <span class="nf">yourself</span>
+</pre></div>
+</div>
+<img alt="../_images/RSParametricCurveTest-testNoteLoremIpsum.svg" class="align-center" src="../_images/RSParametricCurveTest-testNoteLoremIpsum.svg" /><p>and is coded as</p>
+<span class="target" id="pharo-compiledMethod-9"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-noteloremipsum"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="nf">noteLoremIpsum</span>
+
+   <span class="o">^</span> <span class="nc">RSLabel</span> <span class="nb">new</span>
+        <span class="nf">text:</span> (<span class="nc">String</span> <span class="nf">loremIpsum:</span> <span class="m">50</span>)<span class="p">;</span>
+        <span class="nf">useDefaultCodeFont</span><span class="p">;</span>
+        <span class="nf">padded:</span> <span class="nc">Float</span> <span class="nf">goldenPlatinumRatio</span>
+        <span class="nf">withNoteDo:</span> [ <span class="o">:</span><span class="nv">aBox</span> <span class="o">|</span> <span class="nv">aBox</span> <span class="nf">color:</span> <span class="nc">Color</span> <span class="nf">yellow</span> <span class="nf">translucent</span> ]
+</pre></div>
+</div>
+<img alt="../_images/RSParametricCurveTest-testNoteInteger.svg" class="align-center" src="../_images/RSParametricCurveTest-testNoteInteger.svg" /><p>and is coded as</p>
+<span class="target" id="pharo-compiledMethod-10"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-noteinteger"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="nf">noteInteger</span>
+
+   <span class="o">^</span> <span class="nc">RSLabel</span> <span class="nb">new</span>
+        <span class="nf">model:</span> <span class="m">541</span><span class="p">;</span>
+        <span class="nf">useDefaultCodeFont</span><span class="p">;</span>
+        <span class="nf">notedWithPad:</span> <span class="nc">Float</span> <span class="nf">goldenPlatinumRatio</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
 

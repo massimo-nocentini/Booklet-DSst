@@ -1,6 +1,10 @@
 
+
+Computational geometry
+**********************
+
 Parametric curves
-*****************
+=================
 
 We work with points 
 
@@ -91,3 +95,50 @@ where :math:`\ u \in [0,\pi]`, aka *trochoid*,  has the graphical
 and is coded as
 
 .. pharo:autocompiledmethod:: RSBasicShapeExamples>>#lineParametricButterfly
+
+Bezier curves
+=============
+
+Closed control net
+++++++++++++++++++
+
+.. image:: ../../../Containers-Essentials/images/RSParametricCurveTest-testLineDeCasteljauLineClosedControlPoints.svg
+  :align: center
+
+and is coded as
+
+.. pharo:autocompiledmethod:: RSBasicShapeExamples>>#lineDeCasteljauLineClosedControlPoints
+
+Degree elevation
+++++++++++++++++
+
+.. image:: ../../../Containers-Essentials/images/RSParametricCurveTest-testLinesDeCasteljauLineDegreeElevation.svg
+  :align: center
+
+and is coded as
+
+.. pharo:autocompiledmethod:: RSBasicShapeExamples>>#linesDeCasteljauLineDegreeElevation
+
+Designing notes
++++++++++++++++
+
+.. image:: ../../../Containers-Essentials/images/RSParametricCurveTest-testLineDeCasteljauLineNoteBox.svg
+  :align: center
+
+and is coded as
+
+.. pharo:autocompiledmethod:: RSBasicShapeExamples>>#lineDeCasteljauLineNoteBox
+
+.. image:: ../../../Containers-Essentials/images/RSParametricCurveTest-testNoteLoremIpsum.svg
+  :align: center
+
+and is coded as
+
+.. pharo:autocompiledmethod:: RSBasicShapeExamples>>#noteLoremIpsum
+
+.. image:: ../../../Containers-Essentials/images/RSParametricCurveTest-testNoteInteger.svg
+  :align: center
+
+and is coded as
+
+.. pharo:autocompiledmethod:: RSBasicShapeExamples>>#noteInteger
