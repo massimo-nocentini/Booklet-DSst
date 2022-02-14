@@ -53,6 +53,7 @@ pharo_json_export_filenames = [
         'json-for-doc/numbers.json',
         'json-for-doc/link-core-messages.json',
         'json-for-doc/valuelink-core-messages.json',
+        'json-for-doc/curves-messages.json',
         'json-for-doc/topologicalSort-core-messages.json',
         'json-for-doc/symbolic-divisibility.json',
         'json-for-doc/storage-pools.json',

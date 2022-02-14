@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>10. Parametric curves &#8212; Data Structures in Smalltalk  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="11. Bibliography" href="../bibliography.html" />
+    <link rel="prev" title="9. Storage pools" href="../linked-allocation/storage-pools.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Data Structures in Smalltalk</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../pharo/oo.html">1. Object model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pharo/hierarchies.html">2. Hierarchies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic/bits.html">3. Bits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../symbolic/divisibility.html">4. Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../randomized/intro.html">5. Randomization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/links.html">6. Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/lists.html">7. Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/trees.html">8. Trees</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../linked-allocation/storage-pools.html">9. Storage pools</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Parametric curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">11. Bibliography</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../linked-allocation/storage-pools.html" title="previous chapter"><span class="section-number">9. </span>Storage pools</a></li>
+      <li>Next: <a href="../bibliography.html" title="next chapter"><span class="section-number">11. </span>Bibliography</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+              <div class="related top">
+                &nbsp;
+  <nav id="rellinks">
+    <ul>
+        <li>
+          &larr;
+          <a href="../linked-allocation/storage-pools.html" title="Previous document"><span class="section-number">9. </span>Storage pools</a>
+        </li>
+        <li>
+          <a href="../bibliography.html" title="Next document"><span class="section-number">11. </span>Bibliography</a>
+          &rarr;
+        </li>
+    </ul>
+  </nav>
+              </div>
+          
+
+          <div class="body" role="main">
+            
+  <section id="parametric-curves">
+<h1><span class="section-number">10. </span>Parametric curves<a class="headerlink" href="#parametric-curves" title="Permalink to this headline">¶</a></h1>
+<p>We work with points</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf v}=\left (
+      \begin{array}{c}
+      v_x\\
+      v_y
+      \end{array}  \right)\in {\mathbb R}^2\end{split}\]</div>
+<p>and think them as elements of an <em>Euclidean space</em> <span class="math notranslate nohighlight">\({\mathbb E}^2\)</span> which
+has a metric <span class="math notranslate nohighlight">\(d({\bf v}_1,{\bf v}_2)=\vert \vert {\bf v}_1-{\bf v}_2
+\vert \vert\)</span>.  A function <span class="math notranslate nohighlight">\(\Phi: {\mathbb E}^3\rightarrow  {\mathbb E}^3\)</span>
+is an <em>affine transformation</em> if it lefts baricentric combinations untouched;
+for the sake of clarity, given <span class="math notranslate nohighlight">\({\bf v}=\sum_{i=1}^n w_i {\bf v}_i\)</span> and
+<span class="math notranslate nohighlight">\(\sum_{i=1}^n w_i=1\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[\Phi({\bf v})=\sum_{i=1}^n w_i \Phi({\bf v}_i)\]</div>
+<p>if <span class="math notranslate nohighlight">\(\Phi\)</span> is affine.  A curve <span class="math notranslate nohighlight">\({\bf C}\)</span> is represented in
+<em>parametric form</em> when the coordinates of each of its points are expressed
+separately as a function of a third variable called parameter <span class="math notranslate nohighlight">\(u\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[{\bf C}(u)=(x(u), y(u))\]</div>
+<p>where <span class="math notranslate nohighlight">\(u \in [a,b]\)</span>. As a first example, the curve <span class="math notranslate nohighlight">\({\bf
+C}(u)=(u^2, u^3-u)\)</span>, where <span class="math notranslate nohighlight">\(u \in [-2,2]\)</span>, has the graphical</p>
+<img alt="../_images/RSParametricCurveTest-testLineParametricNeil.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricNeil.svg" /><p>and is coded as</p>
+<span class="target" id="pharo-compiledMethod-0"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametricneil"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="nf">lineParametricNeil</span>
+
+   <span class="o">^</span> <span class="nc">RSParametricLineXY</span> <span class="nb">new</span>
+        <span class="nf">param:</span> ((<span class="m">-2</span> <span class="nf">to:</span> <span class="m">2</span>) <span class="nf">linspace:</span> <span class="m">100</span>)<span class="p">;</span>
+        <span class="nf">x:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> <span class="nv">t</span> <span class="nf">raisedTo:</span> <span class="m">2</span> ] <span class="nf">y:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> (<span class="nv">t</span> <span class="nf">raisedTo:</span> <span class="m">3</span>) <span class="nf">-</span> <span class="nv">t</span> ]<span class="p">;</span>
+        <span class="nf">scale:</span> <span class="m">10</span>
+</pre></div>
+</div>
+<p>finally, it doesn’t admit a functional representation. Now consider the curve
+<span class="math notranslate nohighlight">\({\bf C}(u)=(cos(u), sin(u))\)</span> where <span class="math notranslate nohighlight">\(u \in [0,2\pi]\)</span> has the
+graphical</p>
+<img alt="../_images/RSParametricCurveTest-testLineParametricUnitCircle.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricUnitCircle.svg" /><p>and is coded as</p>
+<span class="target" id="pharo-compiledMethod-1"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametricunitcircle"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="nf">lineParametricUnitCircle</span>
+
+   <span class="o">^</span> <span class="nc">RSParametricLineXY</span> <span class="nb">new</span>
+        <span class="nf">param:</span> ((<span class="m">0</span> <span class="nf">to:</span> <span class="nc">Float</span> <span class="nf">pi</span> <span class="nf">*</span> <span class="m">2</span>) <span class="nf">linspace:</span> <span class="m">100</span>)<span class="p">;</span>
+        <span class="nf">x:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> <span class="nv">t</span> <span class="nf">cos</span> ] <span class="nf">y:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> <span class="nv">t</span> <span class="nf">sin</span> ]<span class="p">;</span>
+        <span class="nf">scale:</span> <span class="m">100</span>
+</pre></div>
+</div>
+<p>Another trigonometric curve <span class="math notranslate nohighlight">\({\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))\)</span>
+where <span class="math notranslate nohighlight">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has the graphical</p>
+<img alt="../_images/RSParametricCurveTest-testLineParametricTrochoid.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricTrochoid.svg" /><p>and is coded as</p>
+<span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametrictrochoid"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="nf">lineParametricTrochoid</span>
+
+   <span class="o">^</span> <span class="nc">RSParametricLineXY</span> <span class="nb">new</span>
+        <span class="nf">param:</span> ((<span class="m">0</span> <span class="nf">to:</span> <span class="nc">Float</span> <span class="nf">pi</span>) <span class="nf">linspace:</span> <span class="m">100</span>)<span class="p">;</span>
+        <span class="nf">x:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> <span class="nv">t</span> <span class="nf">cos</span> <span class="nf">*</span> (<span class="m">3</span> <span class="nf">*</span> <span class="nv">t</span>) <span class="nf">cos</span> ] <span class="nf">y:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> <span class="nv">t</span> <span class="nf">sin</span> <span class="nf">*</span> (<span class="m">3</span> <span class="nf">*</span> <span class="nv">t</span>) <span class="nf">cos</span> ]<span class="p">;</span>
+        <span class="nf">scale:</span> <span class="m">100</span>
+</pre></div>
+</div>
+<p>Another trigonometric curve <span class="math notranslate nohighlight">\({\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))\)</span>
+where <span class="math notranslate nohighlight">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has the graphical</p>
+<img alt="../_images/RSParametricCurveTest-testLineParametricLissajous.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricLissajous.svg" /><p>and is coded as</p>
+<span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametriclissajous"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="nf">lineParametricLissajous</span>
+
+   <span class="o">^</span> <span class="nc">RSParametricLineXY</span> <span class="nb">new</span>
+        <span class="nf">param:</span> ((<span class="m">0</span> <span class="nf">to:</span> <span class="nc">Float</span> <span class="nf">pi</span> <span class="nf">*</span> <span class="m">2</span>) <span class="nf">linspace:</span> <span class="m">1000</span>)<span class="p">;</span>
+        <span class="nf">x:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> (<span class="m">3</span> <span class="nf">*</span> <span class="nv">t</span>) <span class="nf">cos</span> ] <span class="nf">y:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> (<span class="m">2</span> <span class="nf">*</span> <span class="nv">t</span>) <span class="nf">sin</span> ]<span class="p">;</span>
+        <span class="nf">scale:</span> <span class="m">100</span>
+</pre></div>
+</div>
+<p>Another trigonometric curve <span class="math notranslate nohighlight">\({\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))\)</span>
+where <span class="math notranslate nohighlight">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has the graphical</p>
+<img alt="../_images/RSParametricCurveTest-testLineParametricHypotrochoid.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricHypotrochoid.svg" /><p>and is coded as</p>
+<span class="target" id="pharo-compiledMethod-4"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametrichypotrochoid"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="nf">lineParametricHypotrochoid</span>
+
+   <span class="o">|</span><span class="nv"> s r d a b </span><span class="o">|</span>
+   <span class="nv">s</span> <span class="o">:=</span> <span class="m">5</span><span class="p">.</span>
+   <span class="nv">r</span> <span class="o">:=</span> <span class="m">3</span><span class="p">.</span>
+   <span class="nv">d</span> <span class="o">:=</span> <span class="m">5</span><span class="p">.</span>
+
+   <span class="nv">a</span> <span class="o">:=</span> <span class="nv">s</span> <span class="nf">-</span> <span class="nv">r</span><span class="p">.</span>
+   <span class="nv">b</span> <span class="o">:=</span> <span class="nv">a</span> <span class="nf">/</span> <span class="nv">r</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="nc">RSParametricLineXY</span> <span class="nb">new</span>
+        <span class="nf">param:</span> ((<span class="m">-10</span> <span class="nf">to:</span> <span class="m">10</span>) <span class="nf">linspace:</span> <span class="m">10000</span>)<span class="p">;</span>
+        <span class="nf">x:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> <span class="nv">a</span> <span class="nf">*</span> <span class="nv">t</span> <span class="nf">cos</span> <span class="nf">+</span> (<span class="nv">d</span> <span class="nf">*</span> (<span class="nv">b</span> <span class="nf">*</span> <span class="nv">t</span>) <span class="nf">cos</span>) ]
+        <span class="nf">y:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> <span class="nv">a</span> <span class="nf">*</span> <span class="nv">t</span> <span class="nf">sin</span> <span class="nf">-</span> (<span class="nv">d</span> <span class="nf">*</span> (<span class="nv">b</span> <span class="nf">*</span> <span class="nv">t</span>) <span class="nf">sin</span>) ]<span class="p">;</span>
+        <span class="nf">scale:</span> <span class="m">10</span>
+</pre></div>
+</div>
+<p>Another trigonometric curve <span class="math notranslate nohighlight">\({\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))\)</span>
+where <span class="math notranslate nohighlight">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has the graphical</p>
+<img alt="../_images/RSParametricCurveTest-testLineParametricButterfly.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricButterfly.svg" /><p>and is coded as</p>
+<span class="target" id="pharo-compiledMethod-5"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametricbutterfly"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="nf">lineParametricButterfly</span>
+
+   <span class="o">^</span> <span class="nc">RSParametricLineXY</span> <span class="nb">new</span>
+        <span class="nf">param:</span> ((<span class="m">0</span> <span class="nf">to:</span> <span class="nc">Float</span> <span class="nf">pi</span> <span class="nf">*</span> <span class="m">12</span>) <span class="nf">linspace:</span> <span class="m">10000</span>)<span class="p">;</span>
+        <span class="nf">x:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> 
+           <span class="nv">t</span> <span class="nf">sin</span>
+           <span class="nf">*</span> (<span class="nv">t</span> <span class="nf">cos</span> <span class="nf">exp</span> <span class="nf">-</span> (<span class="m">2</span> <span class="nf">*</span> (<span class="m">4</span> <span class="nf">*</span> <span class="nv">t</span>) <span class="nf">cos</span>) <span class="nf">-</span> ((<span class="nv">t</span> <span class="nf">/</span> <span class="m">12</span>) <span class="nf">sin</span> <span class="nf">raisedTo:</span> <span class="m">5</span>)) ]
+        <span class="nf">y:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> 
+           <span class="nv">t</span> <span class="nf">cos</span>
+           <span class="nf">*</span> (<span class="nv">t</span> <span class="nf">cos</span> <span class="nf">exp</span> <span class="nf">-</span> (<span class="m">2</span> <span class="nf">*</span> (<span class="m">4</span> <span class="nf">*</span> <span class="nv">t</span>) <span class="nf">cos</span>) <span class="nf">-</span> ((<span class="nv">t</span> <span class="nf">/</span> <span class="m">12</span>) <span class="nf">sin</span> <span class="nf">raisedTo:</span> <span class="m">5</span>)) ]<span class="p">;</span>
+        <span class="nf">scale:</span> <span class="m">30</span>
+</pre></div>
+</div>
+</section>
+
+
+          </div>
+              <div class="related bottom">
+                &nbsp;
+  <nav id="rellinks">
+    <ul>
+        <li>
+          &larr;
+          <a href="../linked-allocation/storage-pools.html" title="Previous document"><span class="section-number">9. </span>Storage pools</a>
+        </li>
+        <li>
+          <a href="../bibliography.html" title="Next document"><span class="section-number">11. </span>Bibliography</a>
+          &rarr;
+        </li>
+    </ul>
+  </nav>
+              </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Massimo Nocentini.
+      
+      |
+      <a href="../_sources/geometry/parametric.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
