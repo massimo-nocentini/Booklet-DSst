@@ -133,6 +133,19 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 ]
 
 { #category : #documentation }
+BaselineOfBookletDSst >> scriptCurvesMessagesForDoc [
+
+	<script: 'BaselineOfBookletDSst new scriptCurvesMessagesForDoc'>
+	^ MetaSTExporter new
+		  selectors: #( lineParametricNeil lineParametricUnitCircle
+			     lineParametricTrochoid lineParametricLissajous
+			     lineParametricHypotrochoid lineParametricButterfly );
+		  exportWithRepositoryPath: [ :aPath | 
+			  aPath / 'json-for-doc' / 'curves-messages.json' ]
+		  ofPackage: self class package
+]
+
+{ #category : #documentation }
 BaselineOfBookletDSst >> scriptLinkMessagesForDoc [
 
 	<script: 'BaselineOfBookletDSst new scriptLinkMessagesForDoc'>
