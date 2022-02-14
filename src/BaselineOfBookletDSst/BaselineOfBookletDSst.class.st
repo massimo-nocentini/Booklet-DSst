@@ -139,7 +139,10 @@ BaselineOfBookletDSst >> scriptCurvesMessagesForDoc [
 	^ MetaSTExporter new
 		  selectors: #( lineParametricNeil lineParametricUnitCircle
 			     lineParametricTrochoid lineParametricLissajous
-			     lineParametricHypotrochoid lineParametricButterfly );
+			     lineParametricHypotrochoid lineParametricButterfly
+			     lineDeCasteljauLineClosedControlPoints
+			     linesDeCasteljauLineDegreeElevation
+			     lineDeCasteljauLineNoteBox noteLoremIpsum noteInteger );
 		  exportWithRepositoryPath: [ :aPath | 
 			  aPath / 'json-for-doc' / 'curves-messages.json' ]
 		  ofPackage: self class package
