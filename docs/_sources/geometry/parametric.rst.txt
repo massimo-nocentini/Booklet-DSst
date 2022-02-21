@@ -35,18 +35,22 @@ separately as a function of a third variable called parameter :math:`u`,
 
   {\bf C}(u)=(x(u), y(u))
 
-where :math:`u \in [a,b]`. As a first example, the curve :math:`{\bf
-C}(u)=(u^2, u^3-u)`, where :math:`u \in [-2,2]`, has the graphical
+where :math:`u \in [a,b]`.  Finally, many of such curves don't admit a
+functional representation.
+
+Neile parabola
+--------------
+
+The curve :math:`{\bf C}(u)=(u^2, u^3-u)`, where :math:`u \in [-2,2]`, has the graphical representation
 
 .. image:: ../../../Containers-Essentials/images/RSParametricCurveTest-testLineParametricNeil.svg
   :align: center
 
-and is coded as
+produced by the message
 
 .. pharo:autocompiledmethod:: RSBasicShapeExamples>>#lineParametricNeil
 
-finally, it doesn't admit a functional representation. Now consider the curve
-:math:`{\bf C}(u)=(cos(u), sin(u))` where :math:`u \in [0,2\pi]` has the
+Now consider the curve :math:`{\bf C}(u)=(cos(u), sin(u))` where :math:`u \in [0,2\pi]` has the
 graphical
 
 .. image:: ../../../Containers-Essentials/images/RSParametricCurveTest-testLineParametricUnitCircle.svg

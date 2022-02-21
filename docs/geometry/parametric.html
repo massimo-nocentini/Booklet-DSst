@@ -50,13 +50,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../linked-allocation/trees.html">8. Trees</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../linked-allocation/storage-pools.html">9. Storage pools</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">10. Computational geometry</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#parametric-curves">10.1. Parametric curves</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#bezier-curves">10.2. Bezier curves</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#closed-control-net">10.2.1. Closed control net</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#degree-elevation">10.2.2. Degree elevation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#designing-notes">10.2.3. Designing notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parametric-curves">10.1. Parametric curves</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#neile-parabola">10.1.1. Neile parabola</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#bezier-curves">10.2. Bezier curves</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../bibliography.html">11. Bibliography</a></li>
@@ -136,9 +134,12 @@ for the sake of clarity, given <span class="math notranslate nohighlight">\({\bf
 separately as a function of a third variable called parameter <span class="math notranslate nohighlight">\(u\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[{\bf C}(u)=(x(u), y(u))\]</div>
-<p>where <span class="math notranslate nohighlight">\(u \in [a,b]\)</span>. As a first example, the curve <span class="math notranslate nohighlight">\({\bf
-C}(u)=(u^2, u^3-u)\)</span>, where <span class="math notranslate nohighlight">\(u \in [-2,2]\)</span>, has the graphical</p>
-<img alt="../_images/RSParametricCurveTest-testLineParametricNeil.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricNeil.svg" /><p>and is coded as</p>
+<p>where <span class="math notranslate nohighlight">\(u \in [a,b]\)</span>.  Finally, many of such curves don’t admit a
+functional representation.</p>
+<section id="neile-parabola">
+<h3><span class="section-number">10.1.1. </span>Neile parabola<a class="headerlink" href="#neile-parabola" title="Permalink to this headline">¶</a></h3>
+<p>The curve <span class="math notranslate nohighlight">\({\bf C}(u)=(u^2, u^3-u)\)</span>, where <span class="math notranslate nohighlight">\(u \in [-2,2]\)</span>, has the graphical representation</p>
+<img alt="../_images/RSParametricCurveTest-testLineParametricNeil.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricNeil.svg" /><p>produced by the message</p>
 <span class="target" id="pharo-compiledMethod-0"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametricneil"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
 <span class="nf">lineParametricNeil</span>
 
@@ -148,8 +149,7 @@ C}(u)=(u^2, u^3-u)\)</span>, where <span class="math notranslate nohighlight">\(
         <span class="nf">scale:</span> <span class="m">10</span>
 </pre></div>
 </div>
-<p>finally, it doesn’t admit a functional representation. Now consider the curve
-<span class="math notranslate nohighlight">\({\bf C}(u)=(cos(u), sin(u))\)</span> where <span class="math notranslate nohighlight">\(u \in [0,2\pi]\)</span> has the
+<p>Now consider the curve <span class="math notranslate nohighlight">\({\bf C}(u)=(cos(u), sin(u))\)</span> where <span class="math notranslate nohighlight">\(u \in [0,2\pi]\)</span> has the
 graphical</p>
 <img alt="../_images/RSParametricCurveTest-testLineParametricUnitCircle.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricUnitCircle.svg" /><p>and is coded as</p>
 <span class="target" id="pharo-compiledMethod-1"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametricunitcircle"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
@@ -224,10 +224,9 @@ where <span class="math notranslate nohighlight">\(\ u \in [0,\pi]\)</span>, aka
 </pre></div>
 </div>
 </section>
+</section>
 <section id="bezier-curves">
 <h2><span class="section-number">10.2. </span>Bezier curves<a class="headerlink" href="#bezier-curves" title="Permalink to this headline">¶</a></h2>
-<section id="closed-control-net">
-<h3><span class="section-number">10.2.1. </span>Closed control net<a class="headerlink" href="#closed-control-net" title="Permalink to this headline">¶</a></h3>
 <img alt="../_images/RSParametricCurveTest-testLineDeCasteljauLineClosedControlPoints.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineDeCasteljauLineClosedControlPoints.svg" /><p>and is coded as</p>
 <span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-linedecasteljaulineclosedcontrolpoints"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
 <span class="nf">lineDeCasteljauLineClosedControlPoints</span>
@@ -247,9 +246,6 @@ where <span class="math notranslate nohighlight">\(\ u \in [0,\pi]\)</span>, aka
         <span class="nf">scale:</span> <span class="m">100</span>
 </pre></div>
 </div>
-</section>
-<section id="degree-elevation">
-<h3><span class="section-number">10.2.2. </span>Degree elevation<a class="headerlink" href="#degree-elevation" title="Permalink to this headline">¶</a></h3>
 <img alt="../_images/RSParametricCurveTest-testLinesDeCasteljauLineDegreeElevation.svg" class="align-center" src="../_images/RSParametricCurveTest-testLinesDeCasteljauLineDegreeElevation.svg" /><p>and is coded as</p>
 <span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-linesdecasteljaulinedegreeelevation"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
 <span class="nf">linesDeCasteljauLineDegreeElevation</span>
@@ -278,9 +274,6 @@ where <span class="math notranslate nohighlight">\(\ u \in [0,\pi]\)</span>, aka
         <span class="nf">with:</span> <span class="nv">bspline4</span>
 </pre></div>
 </div>
-</section>
-<section id="designing-notes">
-<h3><span class="section-number">10.2.3. </span>Designing notes<a class="headerlink" href="#designing-notes" title="Permalink to this headline">¶</a></h3>
 <img alt="../_images/RSParametricCurveTest-testLineDeCasteljauLineNoteBox.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineDeCasteljauLineNoteBox.svg" /><p>and is coded as</p>
 <span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-linedecasteljaulinenotebox"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
 <span class="nf">lineDeCasteljauLineNoteBox</span>
@@ -339,7 +332,6 @@ where <span class="math notranslate nohighlight">\(\ u \in [0,\pi]\)</span>, aka
         <span class="nf">notedWithPad:</span> <span class="nc">Float</span> <span class="nf">goldenPlatinumRatio</span>
 </pre></div>
 </div>
-</section>
 </section>
 </section>
 

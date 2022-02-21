@@ -13,7 +13,6 @@
 import os
 import sys
 # sys.path.insert(0, os.path.abspath('.'))
-from recommonmark.parser import CommonMarkParser
 
 
 
@@ -34,7 +33,7 @@ extensions = [
         'sphinx.ext.githubpages',
         'sphinxcontrib.pharodomain',
         'sphinxcontrib.bibtex',
-        'sphinx_revealjs',
+        #'sphinx_revealjs',
         #'sphinx_rtd_theme',
         #'recommonmark',
 ]
