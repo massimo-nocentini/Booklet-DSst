@@ -41,7 +41,8 @@ functional representation.
 Neile parabola
 --------------
 
-The curve :math:`{\bf C}(u)=(u^2, u^3-u)`, where :math:`u \in [-2,2]`, has the graphical representation
+Described in :cite:`pein1875semicubische`, the *Neil parabola* :math:`{\bf C}(u)=(u^2,
+u^3)`, where :math:`u \in [-2,2]`, has the graphical representation
 
 .. image:: ../../../Containers-Essentials/images/RSParametricCurveTest-testLineParametricNeil.svg
   :align: center
@@ -49,6 +50,16 @@ The curve :math:`{\bf C}(u)=(u^2, u^3-u)`, where :math:`u \in [-2,2]`, has the g
 produced by the message
 
 .. pharo:autocompiledmethod:: RSBasicShapeExamples>>#lineParametricNeil
+
+A little variation to the second component :math:`{\bf C}(u)=(u^2,
+u^3-u)`, where :math:`u \in [-2,2]`, has the graphical representation
+
+.. image:: ../../../Containers-Essentials/images/RSParametricCurveTest-testLineParametricNeil2.svg
+  :align: center
+
+produced by the message
+
+.. pharo:autocompiledmethod:: RSBasicShapeExamples>>#lineParametricNeil2
 
 Now consider the curve :math:`{\bf C}(u)=(cos(u), sin(u))` where :math:`u \in [0,2\pi]` has the
 graphical
