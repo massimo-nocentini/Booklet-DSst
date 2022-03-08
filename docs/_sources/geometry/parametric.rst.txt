@@ -10,26 +10,19 @@ We work with points
 
 .. math::
 
-  {\bf v}=\left (
+  {\bf v}=\left [
         \begin{array}{c}
         v_x\\
         v_y
-        \end{array}  \right)\in {\mathbb R}^2
+        \end{array}  \right]\in {\mathbb R}^2
 
 and think them as elements of an *Euclidean space* :math:`{\mathbb E}^2` which
 has a metric :math:`d({\bf v}_1,{\bf v}_2)=\vert \vert {\bf v}_1-{\bf v}_2
-\vert \vert`.  A function :math:`\Phi: {\mathbb E}^3\rightarrow  {\mathbb E}^3`
-is an *affine transformation* if it lefts baricentric combinations untouched;
-for the sake of clarity, given :math:`{\bf v}=\sum_{i=1}^n w_i {\bf v}_i` and
-:math:`\sum_{i=1}^n w_i=1` then 
+\vert \vert`.  
 
-.. math::
-
-   \Phi({\bf v})=\sum_{i=1}^n w_i \Phi({\bf v}_i)
-
-if :math:`\Phi` is affine.  A curve :math:`{\bf C}` is represented in
-*parametric form* when the coordinates of each of its points are expressed
-separately as a function of a third variable called parameter :math:`u`,
+A curve :math:`{\bf C}` is represented in *parametric form* when the
+coordinates of each of its points are expressed separately as a function of a
+third variable :math:`u` called *parameter*,
 
 .. math::
 
@@ -113,6 +106,47 @@ and is coded as
 
 Bezier curves
 =============
+
+Baricentric coordinates and affine transforms
+---------------------------------------------
+
+Given two points :math:`{\bf P}_1` and :math:`{\bf P}_2`, let
+
+.. math::
+
+        {\bf P}=w_1 {\bf P}_1+ (1-w_1) {\bf P}_2
+
+where :math:`w_1\in[0,1]` and :math:`w_2=1-w_1` are the *baricentric coordinates* of
+:math:`{\bf P}` with respect to :math:`{\bf P}_1` and :math:`{\bf P}_2`,
+respectively. The message
+
+.. pharo:autocompiledmethod:: Point>>#unitAffine:at:
+
+implements such combination. For the sake of clarity, the shapes
+
+
+.. image:: ../../../Containers-Essentials/images/RSParametricCurveTest-testBaricentricCoordinates.svg
+  :align: center
+
+shows the baricentric coordinates :math:`{{1}\over{4}}` and
+:math:`{{3}\over{4}}` of the point :math:`(250, 325)` with respect to :math:`(100, 100)` and :math:`(300, 400)`,
+as the test
+
+.. pharo:autocompiledmethod:: RSParametricCurveTest>>#sutBaricentricCoordinates:
+
+ensures.
+
+.. image:: ../../../Containers-Essentials/images/RSParametricCurveTest-testBaricentricCoordinatesTriangle.svg
+  :align: center
+
+A function :math:`\Phi: {\mathbb E}^3\rightarrow  {\mathbb E}^3`
+is an *affine transformation* if it lefts baricentric combinations untouched;
+for the sake of clarity, given :math:`{\bf v}=\sum_{i=1}^n w_i {\bf v}_i` and
+:math:`\sum_{i=1}^n w_i=1` then :math:`\Phi` is affine if and only if
+
+.. math::
+
+   \Phi({\bf v})=\sum_{i=1}^n w_i \Phi({\bf v}_i).
 
 Closed control net
 ++++++++++++++++++
