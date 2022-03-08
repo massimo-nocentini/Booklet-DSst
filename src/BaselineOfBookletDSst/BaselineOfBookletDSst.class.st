@@ -138,7 +138,8 @@ BaselineOfBookletDSst >> scriptCurvesMessagesForDoc [
 	<script: 'BaselineOfBookletDSst new scriptCurvesMessagesForDoc'>
 	^ MetaSTExporter new
 		  selectors:
-			  #( lineParametricNeil lineParametricNeil2 lineParametricUnitCircle
+			  #( #unitAffine:at: #unitAffine:at:and:at: sutBaricentricCoordinates:
+			     lineParametricNeil lineParametricNeil2 lineParametricUnitCircle
 			     lineParametricTrochoid lineParametricLissajous
 			     lineParametricHypotrochoid lineParametricButterfly
 			     lineDeCasteljauLineClosedControlPoints
