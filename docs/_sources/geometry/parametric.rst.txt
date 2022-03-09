@@ -110,14 +110,14 @@ Bezier curves
 Baricentric coordinates and affine transforms
 ---------------------------------------------
 
-Given two points :math:`{\bf P}_1` and :math:`{\bf P}_2`, let
+Given two points :math:`{\bf v}_1` and :math:`{\bf v}_2`, let
 
 .. math::
 
-        {\bf P}=w_1 {\bf P}_1+ (1-w_1) {\bf P}_2
+        {\bf v}=w_1 {\bf v}_1+ (1-w_1) {\bf v}_2
 
 where :math:`w_1\in[0,1]` and :math:`w_2=1-w_1` are the *baricentric coordinates* of
-:math:`{\bf P}` with respect to :math:`{\bf P}_1` and :math:`{\bf P}_2`,
+:math:`{\bf v}` with respect to :math:`{\bf v}_1` and :math:`{\bf v}_2`,
 respectively. The message
 
 .. pharo:autocompiledmethod:: Point>>#unitAffine:at:
@@ -129,17 +129,37 @@ implements such combination. For the sake of clarity, the shapes
   :align: center
 
 shows the baricentric coordinates :math:`{{1}\over{4}}` and
-:math:`{{3}\over{4}}` of the point :math:`(250, 325)` with respect to :math:`(100, 100)` and :math:`(300, 400)`,
-as the test
+:math:`{{3}\over{4}}` of the point :math:`(250, 325)` with respect to
+:math:`(100, 100)` and :math:`(300, 400)`, as the test
 
 .. pharo:autocompiledmethod:: RSParametricCurveTest>>#sutBaricentricCoordinates:
 
-ensures.
+ensures. We can do one more step, given three points :math:`{\bf v}_1`,
+:math:`{\bf v}_2` and :math:`{\bf v}_3`, let
+
+.. math::
+
+        {\bf v}=w_1 {\bf v}_1+ w_2 {\bf v}_2+(1-w_1-w_2) {\bf v}_3
+
+where :math:`w_1, w_2\in[0,1]` and :math:`w_3=1-w_1-w_2` are the *baricentric
+coordinates* of :math:`{\bf v}` with respect to :math:`{\bf v}_1`, :math:`{\bf
+v}_2` and :math:`{\bf v}_3`, respectively. The message
+
+.. pharo:autocompiledmethod:: Point>>#unitAffine:at:and:at:
+
+implements such combination. For the sake of clarity, the shapes
 
 .. image:: ../../../Containers-Essentials/images/RSParametricCurveTest-testBaricentricCoordinatesTriangle.svg
   :align: center
 
-A function :math:`\Phi: {\mathbb E}^3\rightarrow  {\mathbb E}^3`
+shows the baricentric coordinates :math:`{{1}\over{6}}`, :math:`{{1}\over{2}}`
+and :math:`{{1}\over{3}}` of the point :math:`\left({{400}\over{3}},
+300\right)` with respect to :math:`(100, 100)`, :math:`(300, 400)` and
+:math:`(-100, 250)`, as the test
+
+.. pharo:autocompiledmethod:: RSParametricCurveTest>>#sutBaricentricCoordinatesTriangle:
+
+ensures. Finally, a function :math:`\Phi: {\mathbb E}^2\rightarrow  {\mathbb E}^2`
 is an *affine transformation* if it lefts baricentric combinations untouched;
 for the sake of clarity, given :math:`{\bf v}=\sum_{i=1}^n w_i {\bf v}_i` and
 :math:`\sum_{i=1}^n w_i=1` then :math:`\Phi` is affine if and only if
@@ -149,7 +169,7 @@ for the sake of clarity, given :math:`{\bf v}=\sum_{i=1}^n w_i {\bf v}_i` and
    \Phi({\bf v})=\sum_{i=1}^n w_i \Phi({\bf v}_i).
 
 Closed control net
-++++++++++++++++++
+------------------
 
 .. image:: ../../../Containers-Essentials/images/RSParametricCurveTest-testLineDeCasteljauLineClosedControlPoints.svg
   :align: center
@@ -159,7 +179,7 @@ and is coded as
 .. pharo:autocompiledmethod:: RSBasicShapeExamples>>#lineDeCasteljauLineClosedControlPoints
 
 Degree elevation
-++++++++++++++++
+----------------
 
 .. image:: ../../../Containers-Essentials/images/RSParametricCurveTest-testLinesDeCasteljauLineDegreeElevation.svg
   :align: center
@@ -169,7 +189,7 @@ and is coded as
 .. pharo:autocompiledmethod:: RSBasicShapeExamples>>#linesDeCasteljauLineDegreeElevation
 
 Designing notes
-+++++++++++++++
+---------------
 
 .. image:: ../../../Containers-Essentials/images/RSParametricCurveTest-testLineDeCasteljauLineNoteBox.svg
   :align: center

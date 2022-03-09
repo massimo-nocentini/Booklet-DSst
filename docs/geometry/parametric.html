@@ -55,12 +55,10 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#bezier-curves">10.2. Bezier curves</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#baricentric-coordinates-and-affine-transforms">10.2.1. Baricentric coordinates and affine transforms</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#closed-control-net">10.2.1.1. Closed control net</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#degree-elevation">10.2.1.2. Degree elevation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#designing-notes">10.2.1.3. Designing notes</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#baricentric-coordinates-and-affine-transforms">10.2.1. Baricentric coordinates and affine transforms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#closed-control-net">10.2.2. Closed control net</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#degree-elevation">10.2.3. Degree elevation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#designing-notes">10.2.4. Designing notes</a></li>
 </ul>
 </li>
 </ul>
@@ -245,11 +243,11 @@ where <span class="math notranslate nohighlight">\(\ u \in [0,\pi]\)</span>, aka
 <h2><span class="section-number">10.2. </span>Bezier curves<a class="headerlink" href="#bezier-curves" title="Permalink to this headline">¶</a></h2>
 <section id="baricentric-coordinates-and-affine-transforms">
 <h3><span class="section-number">10.2.1. </span>Baricentric coordinates and affine transforms<a class="headerlink" href="#baricentric-coordinates-and-affine-transforms" title="Permalink to this headline">¶</a></h3>
-<p>Given two points <span class="math notranslate nohighlight">\({\bf P}_1\)</span> and <span class="math notranslate nohighlight">\({\bf P}_2\)</span>, let</p>
+<p>Given two points <span class="math notranslate nohighlight">\({\bf v}_1\)</span> and <span class="math notranslate nohighlight">\({\bf v}_2\)</span>, let</p>
 <div class="math notranslate nohighlight">
-\[{\bf P}=w_1 {\bf P}_1+ (1-w_1) {\bf P}_2\]</div>
+\[{\bf v}=w_1 {\bf v}_1+ (1-w_1) {\bf v}_2\]</div>
 <p>where <span class="math notranslate nohighlight">\(w_1\in[0,1]\)</span> and <span class="math notranslate nohighlight">\(w_2=1-w_1\)</span> are the <em>baricentric coordinates</em> of
-<span class="math notranslate nohighlight">\({\bf P}\)</span> with respect to <span class="math notranslate nohighlight">\({\bf P}_1\)</span> and <span class="math notranslate nohighlight">\({\bf P}_2\)</span>,
+<span class="math notranslate nohighlight">\({\bf v}\)</span> with respect to <span class="math notranslate nohighlight">\({\bf v}_1\)</span> and <span class="math notranslate nohighlight">\({\bf v}_2\)</span>,
 respectively. The message</p>
 <span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-point-unitaffine-at"><div class="highlight"><pre><span></span><span class="c">&quot;Point, protocol *Containers-Essentials&quot;</span>
 <span class="nf">unitAffine:</span> <span class="nv">aPoint</span> <span class="nf">at:</span> <span class="nv">aParam</span>
@@ -262,8 +260,8 @@ respectively. The message</p>
 </div>
 <p>implements such combination. For the sake of clarity, the shapes</p>
 <img alt="../_images/RSParametricCurveTest-testBaricentricCoordinates.svg" class="align-center" src="../_images/RSParametricCurveTest-testBaricentricCoordinates.svg" /><p>shows the baricentric coordinates <span class="math notranslate nohighlight">\({{1}\over{4}}\)</span> and
-<span class="math notranslate nohighlight">\({{3}\over{4}}\)</span> of the point <span class="math notranslate nohighlight">\((250, 325)\)</span> with respect to <span class="math notranslate nohighlight">\((100, 100)\)</span> and <span class="math notranslate nohighlight">\((300, 400)\)</span>,
-as the test</p>
+<span class="math notranslate nohighlight">\({{3}\over{4}}\)</span> of the point <span class="math notranslate nohighlight">\((250, 325)\)</span> with respect to
+<span class="math notranslate nohighlight">\((100, 100)\)</span> and <span class="math notranslate nohighlight">\((300, 400)\)</span>, as the test</p>
 <span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsparametriccurvetest-sutbaricentriccoordinates"><div class="highlight"><pre><span></span><span class="c">&quot;RSParametricCurveTest, protocol tests&quot;</span>
 <span class="nf">sutBaricentricCoordinates:</span> <span class="nv">aBlock</span>
 
@@ -284,17 +282,69 @@ as the test</p>
         <span class="nf">value:</span> <span class="nv">param</span>
 </pre></div>
 </div>
-<p>ensures.</p>
-<img alt="../_images/RSParametricCurveTest-testBaricentricCoordinatesTriangle.svg" class="align-center" src="../_images/RSParametricCurveTest-testBaricentricCoordinatesTriangle.svg" /><p>A function <span class="math notranslate nohighlight">\(\Phi: {\mathbb E}^3\rightarrow  {\mathbb E}^3\)</span>
+<p>ensures. We can do one more step, given three points <span class="math notranslate nohighlight">\({\bf v}_1\)</span>,
+<span class="math notranslate nohighlight">\({\bf v}_2\)</span> and <span class="math notranslate nohighlight">\({\bf v}_3\)</span>, let</p>
+<div class="math notranslate nohighlight">
+\[{\bf v}=w_1 {\bf v}_1+ w_2 {\bf v}_2+(1-w_1-w_2) {\bf v}_3\]</div>
+<p>where <span class="math notranslate nohighlight">\(w_1, w_2\in[0,1]\)</span> and <span class="math notranslate nohighlight">\(w_3=1-w_1-w_2\)</span> are the <em>baricentric
+coordinates</em> of <span class="math notranslate nohighlight">\({\bf v}\)</span> with respect to <span class="math notranslate nohighlight">\({\bf v}_1\)</span>, <span class="math notranslate nohighlight">\({\bf
+v}_2\)</span> and <span class="math notranslate nohighlight">\({\bf v}_3\)</span>, respectively. The message</p>
+<span class="target" id="pharo-compiledMethod-9"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-point-unitaffine-at-and-at"><div class="highlight"><pre><span></span><span class="c">&quot;Point, protocol *Containers-Essentials&quot;</span>
+<span class="nf">unitAffine:</span> <span class="nv">aPoint</span> <span class="nf">at:</span> <span class="nv">aParam</span> <span class="nf">and:</span> <span class="nv">anotherPoint</span> <span class="nf">at:</span> <span class="nv">anotherParam</span>
+
+   <span class="o">|</span><span class="nv"> t s </span><span class="o">|</span>
+   <span class="nv">t</span> <span class="o">:=</span> <span class="nv">aParam</span> <span class="nf">min:</span> <span class="m">1</span> <span class="nf">max:</span> <span class="m">0</span><span class="p">.</span>
+   <span class="nv">s</span> <span class="o">:=</span> <span class="nv">anotherParam</span> <span class="nf">min:</span> <span class="m">1</span> <span class="nf">max:</span> <span class="m">0</span><span class="p">.</span>
+
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">*</span> <span class="nv">t</span> <span class="nf">+</span> (<span class="nv">aPoint</span> <span class="nf">*</span> <span class="nv">s</span>) <span class="nf">+</span> (<span class="m">1</span> <span class="nf">-</span> <span class="nv">t</span> <span class="nf">-</span> <span class="nv">s</span> <span class="nf">*</span> <span class="nv">anotherPoint</span>)
+</pre></div>
+</div>
+<p>implements such combination. For the sake of clarity, the shapes</p>
+<img alt="../_images/RSParametricCurveTest-testBaricentricCoordinatesTriangle.svg" class="align-center" src="../_images/RSParametricCurveTest-testBaricentricCoordinatesTriangle.svg" /><p>shows the baricentric coordinates <span class="math notranslate nohighlight">\({{1}\over{6}}\)</span>, <span class="math notranslate nohighlight">\({{1}\over{2}}\)</span>
+and <span class="math notranslate nohighlight">\({{1}\over{3}}\)</span> of the point <span class="math notranslate nohighlight">\(\left({{400}\over{3}},
+300\right)\)</span> with respect to <span class="math notranslate nohighlight">\((100, 100)\)</span>, <span class="math notranslate nohighlight">\((300, 400)\)</span> and
+<span class="math notranslate nohighlight">\((-100, 250)\)</span>, as the test</p>
+<span class="target" id="pharo-compiledMethod-10"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsparametriccurvetest-sutbaricentriccoordinatestriangle"><div class="highlight"><pre><span></span><span class="c">&quot;RSParametricCurveTest, protocol systems under tests&quot;</span>
+<span class="nf">sutBaricentricCoordinatesTriangle:</span> <span class="nv">aBlock</span>
+
+   <span class="o">|</span><span class="nv"> aPoint anotherPoint param baricentricPoint yetAnotherPoint anotherParam </span><span class="o">|</span>
+   <span class="nv">aPoint</span> <span class="o">:=</span> <span class="m">100</span> <span class="nf">@</span> <span class="m">100</span><span class="p">.</span>
+   <span class="nv">anotherPoint</span> <span class="o">:=</span> <span class="m">300</span> <span class="nf">@</span> <span class="m">400</span><span class="p">.</span>
+   <span class="nv">yetAnotherPoint</span> <span class="o">:=</span> <span class="m">-100</span> <span class="nf">@</span> <span class="m">250</span><span class="p">.</span>
+
+   <span class="nv">param</span> <span class="o">:=</span> <span class="m">1</span> <span class="nf">/</span> <span class="m">6</span><span class="p">.</span>
+   <span class="nv">anotherParam</span> <span class="o">:=</span> <span class="m">1</span> <span class="nf">/</span> <span class="m">2</span><span class="p">.</span>
+
+   <span class="nv">baricentricPoint</span> <span class="o">:=</span> <span class="nv">aPoint</span>
+                          <span class="nf">unitAffine:</span> <span class="nv">anotherPoint</span>
+                          <span class="nf">at:</span> <span class="nv">param</span>
+                          <span class="nf">and:</span> <span class="nv">yetAnotherPoint</span>
+                          <span class="nf">at:</span> <span class="nv">anotherParam</span><span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">assert:</span> <span class="nv">baricentricPoint</span> <span class="nf">equals:</span> <span class="m">400</span> <span class="nf">/</span> <span class="m">3</span> <span class="nf">@</span> <span class="m">300</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="nv">aBlock</span>
+        <span class="nf">value:</span> { 
+              <span class="nv">aPoint</span><span class="p">.</span>
+              <span class="nv">anotherPoint</span><span class="p">.</span>
+              <span class="nv">yetAnotherPoint</span><span class="p">.</span>
+              <span class="nv">baricentricPoint</span> }
+        <span class="nf">value:</span> <span class="nv">param</span>
+        <span class="nf">value:</span> <span class="nv">anotherParam</span>
+</pre></div>
+</div>
+<p>ensures. Finally, a function <span class="math notranslate nohighlight">\(\Phi: {\mathbb E}^2\rightarrow  {\mathbb E}^2\)</span>
 is an <em>affine transformation</em> if it lefts baricentric combinations untouched;
 for the sake of clarity, given <span class="math notranslate nohighlight">\({\bf v}=\sum_{i=1}^n w_i {\bf v}_i\)</span> and
 <span class="math notranslate nohighlight">\(\sum_{i=1}^n w_i=1\)</span> then <span class="math notranslate nohighlight">\(\Phi\)</span> is affine if and only if</p>
 <div class="math notranslate nohighlight">
 \[\Phi({\bf v})=\sum_{i=1}^n w_i \Phi({\bf v}_i).\]</div>
+</section>
 <section id="closed-control-net">
-<h4><span class="section-number">10.2.1.1. </span>Closed control net<a class="headerlink" href="#closed-control-net" title="Permalink to this headline">¶</a></h4>
+<h3><span class="section-number">10.2.2. </span>Closed control net<a class="headerlink" href="#closed-control-net" title="Permalink to this headline">¶</a></h3>
 <img alt="../_images/RSParametricCurveTest-testLineDeCasteljauLineClosedControlPoints.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineDeCasteljauLineClosedControlPoints.svg" /><p>and is coded as</p>
-<span class="target" id="pharo-compiledMethod-9"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-linedecasteljaulineclosedcontrolpoints"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="target" id="pharo-compiledMethod-11"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-linedecasteljaulineclosedcontrolpoints"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
 <span class="nf">lineDeCasteljauLineClosedControlPoints</span>
 
    <span class="o">|</span><span class="nv"> points </span><span class="o">|</span>
@@ -314,9 +364,9 @@ for the sake of clarity, given <span class="math notranslate nohighlight">\({\bf
 </div>
 </section>
 <section id="degree-elevation">
-<h4><span class="section-number">10.2.1.2. </span>Degree elevation<a class="headerlink" href="#degree-elevation" title="Permalink to this headline">¶</a></h4>
+<h3><span class="section-number">10.2.3. </span>Degree elevation<a class="headerlink" href="#degree-elevation" title="Permalink to this headline">¶</a></h3>
 <img alt="../_images/RSParametricCurveTest-testLinesDeCasteljauLineDegreeElevation.svg" class="align-center" src="../_images/RSParametricCurveTest-testLinesDeCasteljauLineDegreeElevation.svg" /><p>and is coded as</p>
-<span class="target" id="pharo-compiledMethod-10"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-linesdecasteljaulinedegreeelevation"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="target" id="pharo-compiledMethod-12"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-linesdecasteljaulinedegreeelevation"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
 <span class="nf">linesDeCasteljauLineDegreeElevation</span>
 
    <span class="o">|</span><span class="nv"> points bspline1 bspline2 bspline3 bspline4 </span><span class="o">|</span>
@@ -345,9 +395,9 @@ for the sake of clarity, given <span class="math notranslate nohighlight">\({\bf
 </div>
 </section>
 <section id="designing-notes">
-<h4><span class="section-number">10.2.1.3. </span>Designing notes<a class="headerlink" href="#designing-notes" title="Permalink to this headline">¶</a></h4>
+<h3><span class="section-number">10.2.4. </span>Designing notes<a class="headerlink" href="#designing-notes" title="Permalink to this headline">¶</a></h3>
 <img alt="../_images/RSParametricCurveTest-testLineDeCasteljauLineNoteBox.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineDeCasteljauLineNoteBox.svg" /><p>and is coded as</p>
-<span class="target" id="pharo-compiledMethod-11"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-linedecasteljaulinenotebox"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="target" id="pharo-compiledMethod-13"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-linedecasteljaulinenotebox"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
 <span class="nf">lineDeCasteljauLineNoteBox</span>
 
    <span class="o">^</span> <span class="nc">RSdeCasteljauLine</span> <span class="nb">new</span>
@@ -381,7 +431,7 @@ for the sake of clarity, given <span class="math notranslate nohighlight">\({\bf
 </pre></div>
 </div>
 <img alt="../_images/RSParametricCurveTest-testNoteLoremIpsum.svg" class="align-center" src="../_images/RSParametricCurveTest-testNoteLoremIpsum.svg" /><p>and is coded as</p>
-<span class="target" id="pharo-compiledMethod-12"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-noteloremipsum"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="target" id="pharo-compiledMethod-14"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-noteloremipsum"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
 <span class="nf">noteLoremIpsum</span>
 
    <span class="o">^</span> <span class="nc">RSLabel</span> <span class="nb">new</span>
@@ -392,7 +442,7 @@ for the sake of clarity, given <span class="math notranslate nohighlight">\({\bf
 </pre></div>
 </div>
 <img alt="../_images/RSParametricCurveTest-testNoteInteger.svg" class="align-center" src="../_images/RSParametricCurveTest-testNoteInteger.svg" /><p>and is coded as</p>
-<span class="target" id="pharo-compiledMethod-13"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-noteinteger"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="target" id="pharo-compiledMethod-15"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-noteinteger"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
 <span class="nf">noteInteger</span>
 
    <span class="o">^</span> <span class="nc">RSLabel</span> <span class="nb">new</span>
@@ -401,7 +451,6 @@ for the sake of clarity, given <span class="math notranslate nohighlight">\({\bf
         <span class="nf">notedWithPad:</span> <span class="nc">Float</span> <span class="nf">goldenPlatinumRatio</span>
 </pre></div>
 </div>
-</section>
 </section>
 </section>
 </section>
