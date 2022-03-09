@@ -139,6 +139,7 @@ BaselineOfBookletDSst >> scriptCurvesMessagesForDoc [
 	^ MetaSTExporter new
 		  selectors:
 			  #( #unitAffine:at: #unitAffine:at:and:at: sutBaricentricCoordinates:
+			     sutBaricentricCoordinatesTriangle:
 			     lineParametricNeil lineParametricNeil2 lineParametricUnitCircle
 			     lineParametricTrochoid lineParametricLissajous
 			     lineParametricHypotrochoid lineParametricButterfly
