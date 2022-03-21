@@ -9,11 +9,15 @@
     <title>10. Computational geometry &#8212; Data Structures in Smalltalk  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/katex-math.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js"></script>
+    <script src="../_static/katex_autorenderer.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="11. Bibliography" href="../bibliography.html" />
@@ -121,26 +125,26 @@
 <section id="parametric-curves">
 <h2><span class="section-number">10.1. </span>Parametric curves<a class="headerlink" href="#parametric-curves" title="Permalink to this headline">¶</a></h2>
 <p>We work with points</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}{\bf v}=\left [
+<div class="math">
+\[{\bf v}=\left [
       \begin{array}{c}
       v_x\\
       v_y
-      \end{array}  \right]\in {\mathbb R}^2\end{split}\]</div>
-<p>and think them as elements of an <em>Euclidean space</em> <span class="math notranslate nohighlight">\({\mathbb E}^2\)</span> which
-has a metric <span class="math notranslate nohighlight">\(d({\bf v}_1,{\bf v}_2)=\vert \vert {\bf v}_1-{\bf v}_2
+      \end{array}  \right]\in {\mathbb R}^2\]</div>
+<p>and think them as elements of an <em>Euclidean space</em> <span class="math">\({\mathbb E}^2\)</span> which
+has a metric <span class="math">\(d({\bf v}_1,{\bf v}_2)=\vert \vert {\bf v}_1-{\bf v}_2
 \vert \vert\)</span>.</p>
-<p>A curve <span class="math notranslate nohighlight">\({\bf C}\)</span> is represented in <em>parametric form</em> when the
+<p>A curve <span class="math">\({\bf C}\)</span> is represented in <em>parametric form</em> when the
 coordinates of each of its points are expressed separately as a function of a
-third variable <span class="math notranslate nohighlight">\(u\)</span> called <em>parameter</em>,</p>
-<div class="math notranslate nohighlight">
+third variable <span class="math">\(u\)</span> called <em>parameter</em>,</p>
+<div class="math">
 \[{\bf C}(u)=(x(u), y(u))\]</div>
-<p>where <span class="math notranslate nohighlight">\(u \in [a,b]\)</span>.  Finally, many of such curves don’t admit a
+<p>where <span class="math">\(u \in [a,b]\)</span>.  Finally, many of such curves don’t admit a
 functional representation.</p>
 <section id="neile-parabola">
 <h3><span class="section-number">10.1.1. </span>Neile parabola<a class="headerlink" href="#neile-parabola" title="Permalink to this headline">¶</a></h3>
-<p>Described in <span id="id1">[<a class="reference internal" href="../bibliography.html#id32" title="A. Pein. Die semicubische oder Neil'sche parabel. Druck von W. Stumpf, 1875.">Pei75</a>]</span>, the <em>Neil parabola</em> <span class="math notranslate nohighlight">\({\bf C}(u)=(u^2,
-u^3)\)</span>, where <span class="math notranslate nohighlight">\(u \in [-2,2]\)</span>, has the graphical representation</p>
+<p>Described in <span id="id1">[<a class="reference internal" href="../bibliography.html#id32" title="A. Pein. Die semicubische oder Neil'sche parabel. Druck von W. Stumpf, 1875.">Pei75</a>]</span>, the <em>Neil parabola</em> <span class="math">\({\bf C}(u)=(u^2,
+u^3)\)</span>, where <span class="math">\(u \in [-2,2]\)</span>, has the graphical representation</p>
 <img alt="../_images/RSParametricCurveTest-testLineParametricNeil.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricNeil.svg" /><p>produced by the message</p>
 <span class="target" id="pharo-compiledMethod-0"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametricneil"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
 <span class="nf">lineParametricNeil</span>
@@ -151,8 +155,8 @@ u^3)\)</span>, where <span class="math notranslate nohighlight">\(u \in [-2,2]\)
         <span class="nf">scale:</span> <span class="m">10</span>
 </pre></div>
 </div>
-<p>A little variation to the second component <span class="math notranslate nohighlight">\({\bf C}(u)=(u^2,
-u^3-u)\)</span>, where <span class="math notranslate nohighlight">\(u \in [-2,2]\)</span>, has the graphical representation</p>
+<p>A little variation to the second component <span class="math">\({\bf C}(u)=(u^2,
+u^3-u)\)</span>, where <span class="math">\(u \in [-2,2]\)</span>, has the graphical representation</p>
 <img alt="../_images/RSParametricCurveTest-testLineParametricNeil2.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricNeil2.svg" /><p>produced by the message</p>
 <span class="target" id="pharo-compiledMethod-1"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametricneil2"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
 <span class="nf">lineParametricNeil2</span>
@@ -163,7 +167,7 @@ u^3-u)\)</span>, where <span class="math notranslate nohighlight">\(u \in [-2,2]
         <span class="nf">scale:</span> <span class="m">10</span>
 </pre></div>
 </div>
-<p>Now consider the curve <span class="math notranslate nohighlight">\({\bf C}(u)=(cos(u), sin(u))\)</span> where <span class="math notranslate nohighlight">\(u \in [0,2\pi]\)</span> has the
+<p>Now consider the curve <span class="math">\({\bf C}(u)=(cos(u), sin(u))\)</span> where <span class="math">\(u \in [0,2\pi]\)</span> has the
 graphical</p>
 <img alt="../_images/RSParametricCurveTest-testLineParametricUnitCircle.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricUnitCircle.svg" /><p>and is coded as</p>
 <span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametricunitcircle"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
@@ -175,8 +179,8 @@ graphical</p>
         <span class="nf">scale:</span> <span class="m">100</span>
 </pre></div>
 </div>
-<p>Another trigonometric curve <span class="math notranslate nohighlight">\({\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))\)</span>
-where <span class="math notranslate nohighlight">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has the graphical</p>
+<p>Another trigonometric curve <span class="math">\({\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))\)</span>
+where <span class="math">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has the graphical</p>
 <img alt="../_images/RSParametricCurveTest-testLineParametricTrochoid.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricTrochoid.svg" /><p>and is coded as</p>
 <span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametrictrochoid"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
 <span class="nf">lineParametricTrochoid</span>
@@ -187,8 +191,8 @@ where <span class="math notranslate nohighlight">\(\ u \in [0,\pi]\)</span>, aka
         <span class="nf">scale:</span> <span class="m">100</span>
 </pre></div>
 </div>
-<p>Another trigonometric curve <span class="math notranslate nohighlight">\({\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))\)</span>
-where <span class="math notranslate nohighlight">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has the graphical</p>
+<p>Another trigonometric curve <span class="math">\({\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))\)</span>
+where <span class="math">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has the graphical</p>
 <img alt="../_images/RSParametricCurveTest-testLineParametricLissajous.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricLissajous.svg" /><p>and is coded as</p>
 <span class="target" id="pharo-compiledMethod-4"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametriclissajous"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
 <span class="nf">lineParametricLissajous</span>
@@ -199,8 +203,8 @@ where <span class="math notranslate nohighlight">\(\ u \in [0,\pi]\)</span>, aka
         <span class="nf">scale:</span> <span class="m">100</span>
 </pre></div>
 </div>
-<p>Another trigonometric curve <span class="math notranslate nohighlight">\({\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))\)</span>
-where <span class="math notranslate nohighlight">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has the graphical</p>
+<p>Another trigonometric curve <span class="math">\({\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))\)</span>
+where <span class="math">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has the graphical</p>
 <img alt="../_images/RSParametricCurveTest-testLineParametricHypotrochoid.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricHypotrochoid.svg" /><p>and is coded as</p>
 <span class="target" id="pharo-compiledMethod-5"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametrichypotrochoid"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
 <span class="nf">lineParametricHypotrochoid</span>
@@ -220,8 +224,8 @@ where <span class="math notranslate nohighlight">\(\ u \in [0,\pi]\)</span>, aka
         <span class="nf">scale:</span> <span class="m">10</span>
 </pre></div>
 </div>
-<p>Another trigonometric curve <span class="math notranslate nohighlight">\({\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))\)</span>
-where <span class="math notranslate nohighlight">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has the graphical</p>
+<p>Another trigonometric curve <span class="math">\({\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))\)</span>
+where <span class="math">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has the graphical</p>
 <img alt="../_images/RSParametricCurveTest-testLineParametricButterfly.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricButterfly.svg" /><p>and is coded as</p>
 <span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametricbutterfly"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
 <span class="nf">lineParametricButterfly</span>
@@ -243,11 +247,11 @@ where <span class="math notranslate nohighlight">\(\ u \in [0,\pi]\)</span>, aka
 <h2><span class="section-number">10.2. </span>Bezier curves<a class="headerlink" href="#bezier-curves" title="Permalink to this headline">¶</a></h2>
 <section id="baricentric-coordinates-and-affine-transforms">
 <h3><span class="section-number">10.2.1. </span>Baricentric coordinates and affine transforms<a class="headerlink" href="#baricentric-coordinates-and-affine-transforms" title="Permalink to this headline">¶</a></h3>
-<p>Given two points <span class="math notranslate nohighlight">\({\bf v}_1\)</span> and <span class="math notranslate nohighlight">\({\bf v}_2\)</span>, let</p>
-<div class="math notranslate nohighlight">
+<p>Given two points <span class="math">\({\bf v}_1\)</span> and <span class="math">\({\bf v}_2\)</span>, let</p>
+<div class="math">
 \[{\bf v}=w_1 {\bf v}_1+ (1-w_1) {\bf v}_2\]</div>
-<p>where <span class="math notranslate nohighlight">\(w_1\in[0,1]\)</span> and <span class="math notranslate nohighlight">\(w_2=1-w_1\)</span> are the <em>baricentric coordinates</em> of
-<span class="math notranslate nohighlight">\({\bf v}\)</span> with respect to <span class="math notranslate nohighlight">\({\bf v}_1\)</span> and <span class="math notranslate nohighlight">\({\bf v}_2\)</span>,
+<p>where <span class="math">\(w_1\in[0,1]\)</span> and <span class="math">\(w_2=1-w_1\)</span> are the <em>baricentric coordinates</em> of
+<span class="math">\({\bf v}\)</span> with respect to <span class="math">\({\bf v}_1\)</span> and <span class="math">\({\bf v}_2\)</span>,
 respectively. The message</p>
 <span class="target" id="pharo-compiledMethod-7"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-point-unitaffine-at"><div class="highlight"><pre><span></span><span class="c">&quot;Point, protocol *Containers-Essentials&quot;</span>
 <span class="nf">unitAffine:</span> <span class="nv">aPoint</span> <span class="nf">at:</span> <span class="nv">aParam</span>
@@ -259,9 +263,9 @@ respectively. The message</p>
 </pre></div>
 </div>
 <p>implements such combination. For the sake of clarity, the shapes</p>
-<img alt="../_images/RSParametricCurveTest-testBaricentricCoordinates.svg" class="align-center" src="../_images/RSParametricCurveTest-testBaricentricCoordinates.svg" /><p>shows the baricentric coordinates <span class="math notranslate nohighlight">\({{1}\over{4}}\)</span> and
-<span class="math notranslate nohighlight">\({{3}\over{4}}\)</span> of the point <span class="math notranslate nohighlight">\((250, 325)\)</span> with respect to
-<span class="math notranslate nohighlight">\((100, 100)\)</span> and <span class="math notranslate nohighlight">\((300, 400)\)</span>, as the test</p>
+<img alt="../_images/RSParametricCurveTest-testBaricentricCoordinates.svg" class="align-center" src="../_images/RSParametricCurveTest-testBaricentricCoordinates.svg" /><p>shows the baricentric coordinates <span class="math">\({{1}\over{4}}\)</span> and
+<span class="math">\({{3}\over{4}}\)</span> of the point <span class="math">\((250, 325)\)</span> with respect to
+<span class="math">\((100, 100)\)</span> and <span class="math">\((300, 400)\)</span>, as the test</p>
 <span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsparametriccurvetest-sutbaricentriccoordinates"><div class="highlight"><pre><span></span><span class="c">&quot;RSParametricCurveTest, protocol tests&quot;</span>
 <span class="nf">sutBaricentricCoordinates:</span> <span class="nv">aBlock</span>
 
@@ -282,13 +286,13 @@ respectively. The message</p>
         <span class="nf">value:</span> <span class="nv">param</span>
 </pre></div>
 </div>
-<p>ensures. We can do one more step, given three points <span class="math notranslate nohighlight">\({\bf v}_1\)</span>,
-<span class="math notranslate nohighlight">\({\bf v}_2\)</span> and <span class="math notranslate nohighlight">\({\bf v}_3\)</span>, let</p>
-<div class="math notranslate nohighlight">
+<p>ensures. We can do one more step, given three points <span class="math">\({\bf v}_1\)</span>,
+<span class="math">\({\bf v}_2\)</span> and <span class="math">\({\bf v}_3\)</span>, let</p>
+<div class="math">
 \[{\bf v}=w_1 {\bf v}_1+ w_2 {\bf v}_2+(1-w_1-w_2) {\bf v}_3\]</div>
-<p>where <span class="math notranslate nohighlight">\(w_1, w_2\in[0,1]\)</span> and <span class="math notranslate nohighlight">\(w_3=1-w_1-w_2\)</span> are the <em>baricentric
-coordinates</em> of <span class="math notranslate nohighlight">\({\bf v}\)</span> with respect to <span class="math notranslate nohighlight">\({\bf v}_1\)</span>, <span class="math notranslate nohighlight">\({\bf
-v}_2\)</span> and <span class="math notranslate nohighlight">\({\bf v}_3\)</span>, respectively. The message</p>
+<p>where <span class="math">\(w_1, w_2\in[0,1]\)</span> and <span class="math">\(w_3=1-w_1-w_2\)</span> are the <em>baricentric
+coordinates</em> of <span class="math">\({\bf v}\)</span> with respect to <span class="math">\({\bf v}_1\)</span>, <span class="math">\({\bf
+v}_2\)</span> and <span class="math">\({\bf v}_3\)</span>, respectively. The message</p>
 <span class="target" id="pharo-compiledMethod-9"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-point-unitaffine-at-and-at"><div class="highlight"><pre><span></span><span class="c">&quot;Point, protocol *Containers-Essentials&quot;</span>
 <span class="nf">unitAffine:</span> <span class="nv">aPoint</span> <span class="nf">at:</span> <span class="nv">aParam</span> <span class="nf">and:</span> <span class="nv">anotherPoint</span> <span class="nf">at:</span> <span class="nv">anotherParam</span>
 
@@ -301,10 +305,10 @@ v}_2\)</span> and <span class="math notranslate nohighlight">\({\bf v}_3\)</span
 </pre></div>
 </div>
 <p>implements such combination. For the sake of clarity, the shapes</p>
-<img alt="../_images/RSParametricCurveTest-testBaricentricCoordinatesTriangle.svg" class="align-center" src="../_images/RSParametricCurveTest-testBaricentricCoordinatesTriangle.svg" /><p>shows the baricentric coordinates <span class="math notranslate nohighlight">\({{1}\over{6}}\)</span>, <span class="math notranslate nohighlight">\({{1}\over{2}}\)</span>
-and <span class="math notranslate nohighlight">\({{1}\over{3}}\)</span> of the point <span class="math notranslate nohighlight">\(\left({{400}\over{3}},
-300\right)\)</span> with respect to <span class="math notranslate nohighlight">\((100, 100)\)</span>, <span class="math notranslate nohighlight">\((300, 400)\)</span> and
-<span class="math notranslate nohighlight">\((-100, 250)\)</span>, as the test</p>
+<img alt="../_images/RSParametricCurveTest-testBaricentricCoordinatesTriangle.svg" class="align-center" src="../_images/RSParametricCurveTest-testBaricentricCoordinatesTriangle.svg" /><p>shows the baricentric coordinates <span class="math">\({{1}\over{6}}\)</span>, <span class="math">\({{1}\over{2}}\)</span>
+and <span class="math">\({{1}\over{3}}\)</span> of the point <span class="math">\(\left({{400}\over{3}},
+300\right)\)</span> with respect to <span class="math">\((100, 100)\)</span>, <span class="math">\((300, 400)\)</span> and
+<span class="math">\((-100, 250)\)</span>, as the test</p>
 <span class="target" id="pharo-compiledMethod-10"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsparametriccurvetest-sutbaricentriccoordinatestriangle"><div class="highlight"><pre><span></span><span class="c">&quot;RSParametricCurveTest, protocol systems under tests&quot;</span>
 <span class="nf">sutBaricentricCoordinatesTriangle:</span> <span class="nv">aBlock</span>
 
@@ -334,11 +338,11 @@ and <span class="math notranslate nohighlight">\({{1}\over{3}}\)</span> of the p
         <span class="nf">value:</span> <span class="nv">anotherParam</span>
 </pre></div>
 </div>
-<p>ensures. Finally, a function <span class="math notranslate nohighlight">\(\Phi: {\mathbb E}^2\rightarrow  {\mathbb E}^2\)</span>
+<p>ensures. Finally, a function <span class="math">\(\Phi: {\mathbb E}^2\rightarrow  {\mathbb E}^2\)</span>
 is an <em>affine transformation</em> if it lefts baricentric combinations untouched;
-for the sake of clarity, given <span class="math notranslate nohighlight">\({\bf v}=\sum_{i=1}^n w_i {\bf v}_i\)</span> and
-<span class="math notranslate nohighlight">\(\sum_{i=1}^n w_i=1\)</span> then <span class="math notranslate nohighlight">\(\Phi\)</span> is affine if and only if</p>
-<div class="math notranslate nohighlight">
+for the sake of clarity, given <span class="math">\({\bf v}=\sum_{i=1}^n w_i {\bf v}_i\)</span> and
+<span class="math">\(\sum_{i=1}^n w_i=1\)</span> then <span class="math">\(\Phi\)</span> is affine if and only if</p>
+<div class="math">
 \[\Phi({\bf v})=\sum_{i=1}^n w_i \Phi({\bf v}_i).\]</div>
 </section>
 <section id="closed-control-net">

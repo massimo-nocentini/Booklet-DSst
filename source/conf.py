@@ -29,10 +29,11 @@ author = 'Massimo Nocentini'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-        'sphinx.ext.mathjax',
+        #'sphinx.ext.mathjax',
         'sphinx.ext.githubpages',
         'sphinxcontrib.pharodomain',
         'sphinxcontrib.bibtex',
+        'sphinxcontrib.katex',
         #'sphinx_revealjs',
         #'sphinx_rtd_theme',
         #'recommonmark',

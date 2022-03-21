@@ -9,11 +9,15 @@
     <title>4. Numbers &#8212; Data Structures in Smalltalk  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/katex-math.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js"></script>
+    <script src="../_static/katex_autorenderer.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="5. Randomization" href="../randomized/intro.html" />
@@ -61,8 +65,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#greatest-common-divisor">4.4. Greatest Common Divisor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#diophantine-equations">4.5. Diophantine equations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#coprimes">4.5.1. Coprimes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mathbb-z-17-field">4.5.2. <span class="math notranslate nohighlight">\(\mathbb{Z}_{17}\)</span> field</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#gcd-f-n-f-n-1-where-f-n-is-the-n-th-fibonacci-number">4.5.3. <span class="math notranslate nohighlight">\(GCD(f_{n}, f_{n+1})\)</span>, where <span class="math notranslate nohighlight">\(f_{n}\)</span> is the <span class="math notranslate nohighlight">\(n\)</span>-th Fibonacci number</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mathbb-z-17-field">4.5.2. <span class="math">\(\mathbb{Z}_{17}\)</span> field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gcd-f-n-f-n-1-where-f-n-is-the-n-th-fibonacci-number">4.5.3. <span class="math">\(GCD(f_{n}, f_{n+1})\)</span>, where <span class="math">\(f_{n}\)</span> is the <span class="math">\(n\)</span>-th Fibonacci number</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#kissing-fractions">4.5.4. Kissing <code class="docutils literal notranslate"><span class="pre">Fraction</span></code>s</a></li>
 </ul>
 </li>
@@ -411,8 +415,8 @@
 <section id="karatsuba-s-method">
 <span id="index-7"></span><h3><span class="section-number">4.2.3. </span><em>Karatsuba</em>'s method<a class="headerlink" href="#karatsuba-s-method" title="Permalink to this headline">¶</a></h3>
 <p>Here we explore a large integer</p>
-<img alt="../_images/EssentialsObjectTest-testInspectLargeInteger.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectLargeInteger.svg" /><p>that equals <span class="math notranslate nohighlight">\((42!)^{2}\)</span> where squaring is performed by multiplication of
-<span class="math notranslate nohighlight">\(42!\)</span> with itself by means of the message</p>
+<img alt="../_images/EssentialsObjectTest-testInspectLargeInteger.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectLargeInteger.svg" /><p>that equals <span class="math">\((42!)^{2}\)</span> where squaring is performed by multiplication of
+<span class="math">\(42!\)</span> with itself by means of the message</p>
 <span class="target" id="pharo-compiledMethod-11"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-karatsuba-base"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">karatsuba:</span> <span class="nv">anInteger</span> <span class="nf">base:</span> <span class="nv">base</span>
 
@@ -457,21 +461,21 @@
 </div>
 <p>according to the algorithm described in <span id="id2">[<a class="reference internal" href="../bibliography.html#id15" title="Jon Kleinberg and Eva Tardos. Algorithm Design. Addison-Wesley Longman Publishing Co., Inc., USA, 2005. ISBN 0321295358.">KT05</a>]</span>, page 232,
 after the introductory work of <span id="id3">[<a class="reference internal" href="../bibliography.html#id31" title="Anatolij A. Karatsuba and Yu. Ofman. Multiplication of multidigit numbers on automata. Soviet physics. Doklady, 7:595-596, 1963.">KO63</a>]</span>.  Such
-algorithm runs in <span class="math notranslate nohighlight">\(O(n^{\log_{2}{3}})\)</span> because the input numbers
-<span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}x = x_{a}\cdot 10^{a} + x_{a-1}\cdot 10^{a-1} + \cdots + x_{1}\cdot 10^{1} + x_{0}\cdot 10^{0} \\
-y = y_{b}\cdot 10^{b} + y_{b-1}\cdot 10^{b-1} + \cdots + y_{1}\cdot 10^{1} + y_{0}\cdot 10^{0}\end{split}\]</div>
-<p>and let <span class="math notranslate nohighlight">\(n = \max(a, b)\)</span>, are broken in <em>two</em> parts</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}x = x_{1}\cdot 10^{{{n}\over{2}}} + x_{0} \\
-y = y_{1}\cdot 10^{{{n}\over{2}}} + y_{0}\end{split}\]</div>
+algorithm runs in <span class="math">\(O(n^{\log_{2}{3}})\)</span> because the input numbers
+<span class="math">\(x\)</span> and <span class="math">\(y\)</span>,</p>
+<div class="math">
+\[x = x_{a}\cdot 10^{a} + x_{a-1}\cdot 10^{a-1} + \cdots + x_{1}\cdot 10^{1} + x_{0}\cdot 10^{0} \\
+y = y_{b}\cdot 10^{b} + y_{b-1}\cdot 10^{b-1} + \cdots + y_{1}\cdot 10^{1} + y_{0}\cdot 10^{0}\]</div>
+<p>and let <span class="math">\(n = \max(a, b)\)</span>, are broken in <em>two</em> parts</p>
+<div class="math">
+\[x = x_{1}\cdot 10^{{{n}\over{2}}} + x_{0} \\
+y = y_{1}\cdot 10^{{{n}\over{2}}} + y_{0}\]</div>
 <p>respectively, and there are <em>three</em> recursive <code class="docutils literal notranslate"><span class="pre">#karatsuba:base:</span></code> message sends.
 The implementation follows from both the fact</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[x\,y = x_{1}\,y_{1}\cdot 10^{n} + (x_{1}\,y_{0} + x_{0}\,y_{1})\cdot 10^{{{n}\over{2}}} + x_{0}\,y_{0}\]</div>
 <p>and</p>
-<div class="math notranslate nohighlight">
+<div class="math">
 \[(x_{1} + x_{0})\,(y_{1} + y_{0}) = x_{1}\,y_{1} + \left(x_{1}\,y_{0} + x_{0}\,y_{1}\right) + x_{0}\,y_{0}\]</div>
 <p>respectively, more references can also be found in
 <span id="id4">[<a class="reference internal" href="../bibliography.html#id16" title="Wikipedia. Karatsuba algorithm. URL: https://en.wikipedia.org/wiki/Karatsuba_algorithm.">Wik</a>]</span>. Two auxiliary messages</p>
@@ -513,12 +517,12 @@ The implementation follows from both the fact</p>
 </pre></div>
 </div>
 <p>helps the recursive message.</p>
-<p id="index-8">A complete profiling of <span class="math notranslate nohighlight">\(835 \cdot 714\)</span> using this technique looks like</p>
+<p id="index-8">A complete profiling of <span class="math">\(835 \cdot 714\)</span> using this technique looks like</p>
 <img alt="../_images/MTVisualizationsTest-testInspectLargeIntegerProfiled-sequence-diagram.svg" class="align-center" src="../_images/MTVisualizationsTest-testInspectLargeIntegerProfiled-sequence-diagram.svg" /></section>
 <section id="factorials">
 <h3><span class="section-number">4.2.4. </span>Factorials<a class="headerlink" href="#factorials" title="Permalink to this headline">¶</a></h3>
 <p>According the post <span id="id5">[<a class="reference internal" href="../bibliography.html#id14" title="Sven VC. Speeding up factorial computation by changing the order of multiplications. URL: https://medium.com/concerning-pharo/speeding-up-factorial-computation-by-changing-the-order-of-multiplications-f4da3a5576da.">VC</a>]</span>, we implement the factorial
-function twice in order to compute <span class="math notranslate nohighlight">\(16!\)</span> that equals</p>
+function twice in order to compute <span class="math">\(16!\)</span> that equals</p>
 <img alt="../_images/MTVisualizationsTest-testInspectFactorialRecursive.svg" class="align-center" src="../_images/MTVisualizationsTest-testInspectFactorialRecursive.svg" /><p>On one hand, the slow version follows straightforward from the mathematical definition,</p>
 <span class="target" id="pharo-compiledMethod-14"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-factorialrecursive"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials&quot;</span>
 <span class="nf">factorialRecursive</span>
@@ -563,7 +567,7 @@ function twice in order to compute <span class="math notranslate nohighlight">\(
 </section>
 <section id="quotients-and-remainders">
 <h2><span class="section-number">4.3. </span>Quotients and remainders<a class="headerlink" href="#quotients-and-remainders" title="Permalink to this headline">¶</a></h2>
-<p>Lets divide <span class="math notranslate nohighlight">\(21\)</span> by <span class="math notranslate nohighlight">\(9\)</span>,</p>
+<p>Lets divide <span class="math">\(21\)</span> by <span class="math">\(9\)</span>,</p>
 <span class="target" id="pharo-compiledMethod-16"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-teststandardquorem21over9"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testStandardQuoRem21Over9</span>
 
@@ -749,7 +753,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 <div><img alt="../_images/SymbolicIntegerTest-testGCDof83and71.svg" class="align-center" src="../_images/SymbolicIntegerTest-testGCDof83and71.svg" /></div></blockquote>
 </section>
 <section id="mathbb-z-17-field">
-<h3><span class="section-number">4.5.2. </span><span class="math notranslate nohighlight">\(\mathbb{Z}_{17}\)</span> field<a class="headerlink" href="#mathbb-z-17-field" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.5.2. </span><span class="math">\(\mathbb{Z}_{17}\)</span> field<a class="headerlink" href="#mathbb-z-17-field" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="pharo-compiledMethod-31"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdofz17"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testGCDofZ17</span>
 
@@ -783,7 +787,7 @@ while the number of columns equals the divisor denoted by the instance variable 
 <div><img alt="../_images/SymbolicIntegerTest-testGCDofMultiplicativeInversesInZ17.svg" class="align-center" src="../_images/SymbolicIntegerTest-testGCDofMultiplicativeInversesInZ17.svg" /></div></blockquote>
 </section>
 <section id="gcd-f-n-f-n-1-where-f-n-is-the-n-th-fibonacci-number">
-<h3><span class="section-number">4.5.3. </span><span class="math notranslate nohighlight">\(GCD(f_{n}, f_{n+1})\)</span>, where <span class="math notranslate nohighlight">\(f_{n}\)</span> is the <span class="math notranslate nohighlight">\(n\)</span>-th Fibonacci number<a class="headerlink" href="#gcd-f-n-f-n-1-where-f-n-is-the-n-th-fibonacci-number" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.5.3. </span><span class="math">\(GCD(f_{n}, f_{n+1})\)</span>, where <span class="math">\(f_{n}\)</span> is the <span class="math">\(n\)</span>-th Fibonacci number<a class="headerlink" href="#gcd-f-n-f-n-1-where-f-n-is-the-n-th-fibonacci-number" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="pharo-compiledMethod-33"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-symbolicintegertest-testgcdofadjacentfibonaccinumbers"><div class="highlight"><pre><span></span><span class="c">&quot;SymbolicIntegerTest, protocol tests&quot;</span>
 <span class="nf">testGCDofAdjacentFibonacciNumbers</span>
 
