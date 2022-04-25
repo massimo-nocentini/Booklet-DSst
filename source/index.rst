@@ -24,6 +24,7 @@ Data Structures in Smalltalk
    linked-allocation/trees.rst
    linked-allocation/storage-pools.rst
    geometry/parametric.rst
+   open-topics.rst
    bibliography.rst
 
 Moreover, have a look at the :ref:`genindex`.  
