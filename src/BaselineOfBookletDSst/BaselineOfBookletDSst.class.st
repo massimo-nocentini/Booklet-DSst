@@ -21,7 +21,7 @@ BaselineOfBookletDSst >> baseline: spec [
 
 		spec
 			baseline: 'MethodTrackerMN'
-			with: [ spec repository: 'github://bauing-schmidt/MethodTracker' ].
+			with: [ spec repository: 'github://massimo-nocentini/MethodTracker' ].
 
 		spec
 			baseline: 'ContainersLinks'
