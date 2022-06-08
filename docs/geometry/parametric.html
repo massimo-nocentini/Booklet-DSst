@@ -56,6 +56,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">10. Computational geometry</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#parametric-curves">10.1. Parametric curves</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#neile-parabola">10.1.1. Neile parabola</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#butterfly-curve">10.1.2. Butterfly curve</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#bezier-curves">10.2. Bezier curves</a><ul>
@@ -237,8 +238,11 @@ where <span class="math">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has
         <span class="nf">scale:</span> <span class="m">10</span>
 </pre></div>
 </div>
-<p>Another trigonometric curve <span class="math">\({\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))\)</span>
-where <span class="math">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has the graphical</p>
+</section>
+<section id="butterfly-curve">
+<h3><span class="section-number">10.1.2. </span>Butterfly curve<a class="headerlink" href="#butterfly-curve" title="Permalink to this headline">¶</a></h3>
+<p>Introduced in <span id="id2">[<a class="reference internal" href="../bibliography.html#id36" title="Temple H. Fay. The butterfly curve. The American Mathematical Monthly, 96(5):442–443, 1989. URL: http://www.jstor.org/stable/2325155.">Fay89</a>]</span>, the butterfly curve <span class="math">\({\bf C}(u)\)</span>
+where <span class="math">\(\ u \in [0, 12\pi]\)</span>, has the graphical</p>
 <img alt="../_images/RSParametricCurveTest-testParametricXYLineButterfly.svg" class="align-center" src="../_images/RSParametricCurveTest-testParametricXYLineButterfly.svg" /><p>and is coded as</p>
 <span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rstparametricxylines-parametricxylinebutterfly"><div class="highlight"><pre><span></span><span class="c">&quot;RSTParametricXYLines, protocol lines&quot;</span>
 <span class="nf">parametricXYlineButterfly</span>
@@ -256,6 +260,7 @@ where <span class="math">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has
         <span class="nf">scale:</span> <span class="m">30</span>
 </pre></div>
 </div>
+<p>according to <span id="id3">[<a class="reference internal" href="../bibliography.html#id37" title="Wikipedia. Butterfly curve. URL: https://en.wikipedia.org/wiki/Butterfly_curve_(transcendental).">Wika</a>]</span>.</p>
 </section>
 </section>
 <section id="bezier-curves">

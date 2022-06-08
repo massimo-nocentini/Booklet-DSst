@@ -94,8 +94,11 @@ and is coded as
 
 .. pharo:autocompiledmethod:: RSTParametricXYLines>>#lineParametricHypotrochoid
 
-Another trigonometric curve :math:`{\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))`
-where :math:`\ u \in [0,\pi]`, aka *trochoid*,  has the graphical
+Butterfly curve
+---------------
+
+Introduced in :cite:`10.2307/2325155`, the butterfly curve :math:`{\bf C}(u)`
+where :math:`\ u \in [0, 12\pi]`, has the graphical
 
 .. image:: ../../../Containers-Essentials/images/RSParametricCurveTest-testParametricXYLineButterfly.svg
   :align: center
@@ -103,6 +106,8 @@ where :math:`\ u \in [0,\pi]`, aka *trochoid*,  has the graphical
 and is coded as
 
 .. pharo:autocompiledmethod:: RSTParametricXYLines>>#parametricXYlineButterfly
+
+according to :cite:`wikipedia/butterfly-curve`.
 
 Bezier curves
 =============
