@@ -42,7 +42,7 @@ u^3)`, where :math:`u \in [-2,2]`, has the graphical representation
 
 produced by the message
 
-.. pharo:autocompiledmethod:: RSBasicShapeExamples>>#lineParametricNeil
+.. pharo:autocompiledmethod:: RSTParametricXYLines>>#lineParametricNeil
 
 A little variation to the second component :math:`{\bf C}(u)=(u^2,
 u^3-u)`, where :math:`u \in [-2,2]`, has the graphical representation
@@ -52,7 +52,7 @@ u^3-u)`, where :math:`u \in [-2,2]`, has the graphical representation
 
 produced by the message
 
-.. pharo:autocompiledmethod:: RSBasicShapeExamples>>#lineParametricNeil2
+.. pharo:autocompiledmethod:: RSTParametricXYLines>>#lineParametricNeil2
 
 Now consider the curve :math:`{\bf C}(u)=(cos(u), sin(u))` where :math:`u \in [0,2\pi]` has the
 graphical
@@ -62,7 +62,7 @@ graphical
 
 and is coded as
 
-.. pharo:autocompiledmethod:: RSBasicShapeExamples>>#lineParametricUnitCircle
+.. pharo:autocompiledmethod:: RSTParametricXYLines>>#lineParametricUnitCircle
 
 Another trigonometric curve :math:`{\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))`
 where :math:`\ u \in [0,\pi]`, aka *trochoid*,  has the graphical
@@ -72,7 +72,7 @@ where :math:`\ u \in [0,\pi]`, aka *trochoid*,  has the graphical
 
 and is coded as
 
-.. pharo:autocompiledmethod:: RSBasicShapeExamples>>#lineParametricTrochoid
+.. pharo:autocompiledmethod:: RSTParametricXYLines>>#lineParametricTrochoid
 
 Another trigonometric curve :math:`{\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))`
 where :math:`\ u \in [0,\pi]`, aka *trochoid*,  has the graphical
@@ -82,7 +82,7 @@ where :math:`\ u \in [0,\pi]`, aka *trochoid*,  has the graphical
 
 and is coded as
 
-.. pharo:autocompiledmethod:: RSBasicShapeExamples>>#lineParametricLissajous
+.. pharo:autocompiledmethod:: RSTParametricXYLines>>#lineParametricLissajous
 
 Another trigonometric curve :math:`{\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))`
 where :math:`\ u \in [0,\pi]`, aka *trochoid*,  has the graphical
@@ -92,17 +92,17 @@ where :math:`\ u \in [0,\pi]`, aka *trochoid*,  has the graphical
 
 and is coded as
 
-.. pharo:autocompiledmethod:: RSBasicShapeExamples>>#lineParametricHypotrochoid
+.. pharo:autocompiledmethod:: RSTParametricXYLines>>#lineParametricHypotrochoid
 
 Another trigonometric curve :math:`{\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))`
 where :math:`\ u \in [0,\pi]`, aka *trochoid*,  has the graphical
 
-.. image:: ../../../Containers-Essentials/images/RSParametricCurveTest-testLineParametricButterfly.svg
+.. image:: ../../../Containers-Essentials/images/RSParametricCurveTest-testParametricXYLineButterfly.svg
   :align: center
 
 and is coded as
 
-.. pharo:autocompiledmethod:: RSBasicShapeExamples>>#lineParametricButterfly
+.. pharo:autocompiledmethod:: RSTParametricXYLines>>#parametricXYlineButterfly
 
 Bezier curves
 =============

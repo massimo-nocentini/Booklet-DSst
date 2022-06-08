@@ -354,10 +354,10 @@ proof of the complexity. Let us reproduce their working example,</p>
 <span class="target" id="pharo-compiledMethod-14"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-ctskiplist-class-onsortedcollection-lowerbound-upperbound-atrandom"><div class="highlight"><pre><span></span><span class="c">&quot;CTSkipList class, protocol creation&quot;</span>
 <span class="nf">onSortedCollection:</span> <span class="nv">aCollection</span> <span class="nf">lowerBound:</span> <span class="nv">lower</span> <span class="nf">upperBound:</span> <span class="nv">upper</span> <span class="nf">atRandom:</span> <span class="nv">aRandom</span>
 
-   <span class="o">|</span><span class="nv"> brgc lists nothing cleanLists lowerJust upperJust times </span><span class="o">|</span>
-   <span class="nv">nothing</span> <span class="o">:=</span> <span class="nc">Maybe</span> <span class="nf">nothing</span><span class="p">.</span>
-   <span class="nv">lowerJust</span> <span class="o">:=</span> <span class="nv">lower</span> <span class="nf">just</span><span class="p">.</span>
-   <span class="nv">upperJust</span> <span class="o">:=</span> <span class="nv">upper</span> <span class="nf">just</span><span class="p">.</span>
+   <span class="o">|</span><span class="nv"> brgc lists cleanLists lowerJust upperJust times nothingObject </span><span class="o">|</span>
+   <span class="nv">nothingObject</span> <span class="o">:=</span> <span class="bp">nil</span> <span class="nf">asNothingMaybe</span> <span class="nf">asCategory</span><span class="p">.</span>
+   <span class="nv">lowerJust</span> <span class="o">:=</span> <span class="nv">lower</span> <span class="nf">asJustMaybe</span> <span class="nf">asCategory</span><span class="p">.</span>
+   <span class="nv">upperJust</span> <span class="o">:=</span> <span class="nv">upper</span> <span class="nf">asJustMaybe</span> <span class="nf">asCategory</span><span class="p">.</span>
 
    <span class="nv">brgc</span> <span class="o">:=</span> <span class="nv">aCollection</span> <span class="nf">size</span> <span class="nf">asBRGCCollection</span><span class="p">.</span>
 
@@ -386,8 +386,8 @@ proof of the complexity. Let us reproduce their working example,</p>
          <span class="nv">left</span> <span class="o">:=</span> <span class="nv">brgc</span> <span class="nf">at:</span> <span class="nv">index</span><span class="p">.</span>
 
          <span class="nv">eachForList</span> <span class="o">:=</span> <span class="nv">left</span> <span class="nf">&gt;</span> <span class="m">0</span>
-                           <span class="nb">ifTrue:</span> [ <span class="nv">each</span> <span class="nf">just</span> ]
-                           <span class="nb">ifFalse:</span> [ <span class="nv">nothing</span> ]<span class="p">.</span>
+                           <span class="nb">ifTrue:</span> [ <span class="nv">each</span> <span class="nf">asJustMaybe</span> <span class="nf">asCategory</span> ]
+                           <span class="nb">ifFalse:</span> [ <span class="nv">nothingObject</span> ]<span class="p">.</span>
 
          <span class="nv">brgc</span> <span class="nf">at:</span> <span class="nv">index</span> <span class="nf">put:</span> <span class="nv">left</span> <span class="nf">-</span> <span class="m">1</span><span class="p">.</span>
 
@@ -421,10 +421,10 @@ proof of the complexity. Let us reproduce their working example,</p>
          <span class="o">|</span> <span class="nv">each</span> <span class="nf">|</span>
          <span class="nv">each</span> <span class="o">:=</span> <span class="nv">list</span> <span class="nf">nextLink</span><span class="p">.</span>
 
-         [ <span class="nv">each</span> <span class="nf">value</span> <span class="nf">==</span> <span class="nv">nothing</span> ] <span class="nb">whileTrue:</span> [ <span class="nv">each</span> <span class="o">:=</span> <span class="nv">each</span> <span class="nf">nextLink</span> ]<span class="p">.</span>
+         [ <span class="nv">each</span> <span class="nf">value</span> <span class="nf">==</span> <span class="nv">nothingObject</span> ] <span class="nb">whileTrue:</span> [ <span class="nv">each</span> <span class="o">:=</span> <span class="nv">each</span> <span class="nf">nextLink</span> ]<span class="p">.</span>
 
          <span class="nv">list</span> <span class="o">:=</span> <span class="nv">list</span>
-                    <span class="nf">value:</span> <span class="nv">list</span> <span class="nf">value</span> <span class="nf">content</span><span class="p">;</span>
+                    <span class="nf">value:</span> <span class="nv">list</span> <span class="nf">value</span> <span class="nf">argument</span><span class="p">;</span>
                     <span class="nf">nextLink:</span> <span class="nv">each</span><span class="p">;</span>
                     <span class="nf">nextLink</span> ]<span class="p">.</span>
 
@@ -517,7 +517,9 @@ proof of the complexity. Let us reproduce their working example,</p>
                            <span class="nf">yourself</span>)<span class="p">;</span>
                     <span class="nf">yourself</span><span class="p">.</span>
 
-      <span class="nv">lists</span> <span class="o">:=</span> <span class="nv">newList</span> <span class="nf">~~&gt;</span> <span class="nv">lists</span> ]
+      <span class="nv">lists</span> <span class="o">:=</span> <span class="nv">newList</span> <span class="nf">~~&gt;</span> <span class="nv">lists</span> ]<span class="p">.</span>
+
+   <span class="o">^</span> <span class="nv">key</span>
 </pre></div>
 </div>
 <p>and</p>

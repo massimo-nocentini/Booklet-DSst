@@ -147,11 +147,13 @@ functional representation.</p>
 <p>Described in <span id="id1">[<a class="reference internal" href="../bibliography.html#id32" title="A. Pein. Die semicubische oder Neil'sche parabel. Druck von W. Stumpf, 1875.">Pei75</a>]</span>, the <em>Neil parabola</em> <span class="math">\({\bf C}(u)=(u^2,
 u^3)\)</span>, where <span class="math">\(u \in [-2,2]\)</span>, has the graphical representation</p>
 <img alt="../_images/RSParametricCurveTest-testLineParametricNeil.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricNeil.svg" /><p>produced by the message</p>
-<span class="target" id="pharo-compiledMethod-0"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametricneil"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="target" id="pharo-compiledMethod-0"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rstparametricxylines-lineparametricneil"><div class="highlight"><pre><span></span><span class="c">&quot;RSTParametricXYLines, protocol lines&quot;</span>
 <span class="nf">lineParametricNeil</span>
 
-   <span class="o">^</span> <span class="nc">RSParametricLineXY</span> <span class="nb">new</span>
-        <span class="nf">param:</span> ((<span class="m">-2</span> <span class="nf">to:</span> <span class="m">2</span>) <span class="nf">linspace:</span> <span class="m">100</span>)<span class="p">;</span>
+   <span class="o">^</span> <span class="nc">RSParametricXYLine</span> <span class="nb">new</span>
+        <span class="nf">parameterization:</span> (<span class="nc">RSLinspaceParameterization</span> <span class="nb">new</span>
+               <span class="nf">from:</span> <span class="m">-2</span> <span class="nf">to:</span> <span class="m">2</span> <span class="nf">samples:</span> <span class="m">100</span><span class="p">;</span>
+               <span class="nf">yourself</span>)<span class="p">;</span>
         <span class="nf">x:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> <span class="nv">t</span> <span class="nf">raisedTo:</span> <span class="m">2</span> ] <span class="nf">y:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> <span class="nv">t</span> <span class="nf">raisedTo:</span> <span class="m">3</span> ]<span class="p">;</span>
         <span class="nf">scale:</span> <span class="m">10</span>
 </pre></div>
@@ -159,11 +161,13 @@ u^3)\)</span>, where <span class="math">\(u \in [-2,2]\)</span>, has the graphic
 <p>A little variation to the second component <span class="math">\({\bf C}(u)=(u^2,
 u^3-u)\)</span>, where <span class="math">\(u \in [-2,2]\)</span>, has the graphical representation</p>
 <img alt="../_images/RSParametricCurveTest-testLineParametricNeil2.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricNeil2.svg" /><p>produced by the message</p>
-<span class="target" id="pharo-compiledMethod-1"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametricneil2"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="target" id="pharo-compiledMethod-1"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rstparametricxylines-lineparametricneil2"><div class="highlight"><pre><span></span><span class="c">&quot;RSTParametricXYLines, protocol lines&quot;</span>
 <span class="nf">lineParametricNeil2</span>
 
-   <span class="o">^</span> <span class="nc">RSParametricLineXY</span> <span class="nb">new</span>
-        <span class="nf">param:</span> ((<span class="m">-2</span> <span class="nf">to:</span> <span class="m">2</span>) <span class="nf">linspace:</span> <span class="m">100</span>)<span class="p">;</span>
+   <span class="o">^</span> <span class="nc">RSParametricXYLine</span> <span class="nb">new</span>
+        <span class="nf">parameterization:</span> (<span class="nc">RSLinspaceParameterization</span> <span class="nb">new</span>
+               <span class="nf">from:</span> <span class="m">-2</span> <span class="nf">to:</span> <span class="m">2</span> <span class="nf">samples:</span> <span class="m">100</span><span class="p">;</span>
+               <span class="nf">yourself</span>)<span class="p">;</span>
         <span class="nf">x:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> <span class="nv">t</span> <span class="nf">raisedTo:</span> <span class="m">2</span> ] <span class="nf">y:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> (<span class="nv">t</span> <span class="nf">raisedTo:</span> <span class="m">3</span>) <span class="nf">-</span> <span class="nv">t</span> ]<span class="p">;</span>
         <span class="nf">scale:</span> <span class="m">10</span>
 </pre></div>
@@ -171,11 +175,13 @@ u^3-u)\)</span>, where <span class="math">\(u \in [-2,2]\)</span>, has the graph
 <p>Now consider the curve <span class="math">\({\bf C}(u)=(cos(u), sin(u))\)</span> where <span class="math">\(u \in [0,2\pi]\)</span> has the
 graphical</p>
 <img alt="../_images/RSParametricCurveTest-testLineParametricUnitCircle.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricUnitCircle.svg" /><p>and is coded as</p>
-<span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametricunitcircle"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="target" id="pharo-compiledMethod-2"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rstparametricxylines-lineparametricunitcircle"><div class="highlight"><pre><span></span><span class="c">&quot;RSTParametricXYLines, protocol lines&quot;</span>
 <span class="nf">lineParametricUnitCircle</span>
 
-   <span class="o">^</span> <span class="nc">RSParametricLineXY</span> <span class="nb">new</span>
-        <span class="nf">param:</span> ((<span class="m">0</span> <span class="nf">to:</span> <span class="nc">Float</span> <span class="nf">pi</span> <span class="nf">*</span> <span class="m">2</span>) <span class="nf">linspace:</span> <span class="m">100</span>)<span class="p">;</span>
+   <span class="o">^</span> <span class="nc">RSParametricXYLine</span> <span class="nb">new</span>
+        <span class="nf">parameterization:</span> (<span class="nc">RSLinspaceParameterization</span> <span class="nb">new</span>
+               <span class="nf">from:</span> <span class="m">0</span> <span class="nf">to:</span> <span class="nc">Float</span> <span class="nf">pi</span> <span class="nf">*</span> <span class="m">2</span> <span class="nf">samples:</span> <span class="m">100</span><span class="p">;</span>
+               <span class="nf">yourself</span>)<span class="p">;</span>
         <span class="nf">x:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> <span class="nv">t</span> <span class="nf">cos</span> ] <span class="nf">y:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> <span class="nv">t</span> <span class="nf">sin</span> ]<span class="p">;</span>
         <span class="nf">scale:</span> <span class="m">100</span>
 </pre></div>
@@ -183,11 +189,13 @@ graphical</p>
 <p>Another trigonometric curve <span class="math">\({\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))\)</span>
 where <span class="math">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has the graphical</p>
 <img alt="../_images/RSParametricCurveTest-testLineParametricTrochoid.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricTrochoid.svg" /><p>and is coded as</p>
-<span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametrictrochoid"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="target" id="pharo-compiledMethod-3"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rstparametricxylines-lineparametrictrochoid"><div class="highlight"><pre><span></span><span class="c">&quot;RSTParametricXYLines, protocol lines&quot;</span>
 <span class="nf">lineParametricTrochoid</span>
 
-   <span class="o">^</span> <span class="nc">RSParametricLineXY</span> <span class="nb">new</span>
-        <span class="nf">param:</span> ((<span class="m">0</span> <span class="nf">to:</span> <span class="nc">Float</span> <span class="nf">pi</span>) <span class="nf">linspace:</span> <span class="m">100</span>)<span class="p">;</span>
+   <span class="o">^</span> <span class="nc">RSParametricXYLine</span> <span class="nb">new</span>
+        <span class="nf">parameterization:</span> (<span class="nc">RSLinspaceParameterization</span> <span class="nb">new</span>
+               <span class="nf">from:</span> <span class="m">0</span> <span class="nf">to:</span> <span class="nc">Float</span> <span class="nf">pi</span> <span class="nf">samples:</span> <span class="m">100</span><span class="p">;</span>
+               <span class="nf">yourself</span>)<span class="p">;</span>
         <span class="nf">x:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> <span class="nv">t</span> <span class="nf">cos</span> <span class="nf">*</span> (<span class="m">3</span> <span class="nf">*</span> <span class="nv">t</span>) <span class="nf">cos</span> ] <span class="nf">y:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> <span class="nv">t</span> <span class="nf">sin</span> <span class="nf">*</span> (<span class="m">3</span> <span class="nf">*</span> <span class="nv">t</span>) <span class="nf">cos</span> ]<span class="p">;</span>
         <span class="nf">scale:</span> <span class="m">100</span>
 </pre></div>
@@ -195,11 +203,13 @@ where <span class="math">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has
 <p>Another trigonometric curve <span class="math">\({\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))\)</span>
 where <span class="math">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has the graphical</p>
 <img alt="../_images/RSParametricCurveTest-testLineParametricLissajous.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricLissajous.svg" /><p>and is coded as</p>
-<span class="target" id="pharo-compiledMethod-4"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametriclissajous"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="target" id="pharo-compiledMethod-4"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rstparametricxylines-lineparametriclissajous"><div class="highlight"><pre><span></span><span class="c">&quot;RSTParametricXYLines, protocol lines&quot;</span>
 <span class="nf">lineParametricLissajous</span>
 
-   <span class="o">^</span> <span class="nc">RSParametricLineXY</span> <span class="nb">new</span>
-        <span class="nf">param:</span> ((<span class="m">0</span> <span class="nf">to:</span> <span class="nc">Float</span> <span class="nf">pi</span> <span class="nf">*</span> <span class="m">2</span>) <span class="nf">linspace:</span> <span class="m">1000</span>)<span class="p">;</span>
+   <span class="o">^</span> <span class="nc">RSParametricXYLine</span> <span class="nb">new</span>
+        <span class="nf">parameterization:</span> (<span class="nc">RSLinspaceParameterization</span> <span class="nb">new</span>
+               <span class="nf">from:</span> <span class="m">0</span> <span class="nf">to:</span> <span class="nc">Float</span> <span class="nf">pi</span> <span class="nf">*</span> <span class="m">2</span> <span class="nf">samples:</span> <span class="m">1000</span><span class="p">;</span>
+               <span class="nf">yourself</span>)<span class="p">;</span>
         <span class="nf">x:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> (<span class="m">3</span> <span class="nf">*</span> <span class="nv">t</span>) <span class="nf">cos</span> ] <span class="nf">y:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> (<span class="m">2</span> <span class="nf">*</span> <span class="nv">t</span>) <span class="nf">sin</span> ]<span class="p">;</span>
         <span class="nf">scale:</span> <span class="m">100</span>
 </pre></div>
@@ -207,7 +217,7 @@ where <span class="math">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has
 <p>Another trigonometric curve <span class="math">\({\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))\)</span>
 where <span class="math">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has the graphical</p>
 <img alt="../_images/RSParametricCurveTest-testLineParametricHypotrochoid.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricHypotrochoid.svg" /><p>and is coded as</p>
-<span class="target" id="pharo-compiledMethod-5"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametrichypotrochoid"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
+<span class="target" id="pharo-compiledMethod-5"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rstparametricxylines-lineparametrichypotrochoid"><div class="highlight"><pre><span></span><span class="c">&quot;RSTParametricXYLines, protocol lines&quot;</span>
 <span class="nf">lineParametricHypotrochoid</span>
 
    <span class="o">|</span><span class="nv"> s r d a b </span><span class="o">|</span>
@@ -218,8 +228,10 @@ where <span class="math">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has
    <span class="nv">a</span> <span class="o">:=</span> <span class="nv">s</span> <span class="nf">-</span> <span class="nv">r</span><span class="p">.</span>
    <span class="nv">b</span> <span class="o">:=</span> <span class="nv">a</span> <span class="nf">/</span> <span class="nv">r</span><span class="p">.</span>
 
-   <span class="o">^</span> <span class="nc">RSParametricLineXY</span> <span class="nb">new</span>
-        <span class="nf">param:</span> ((<span class="m">-10</span> <span class="nf">to:</span> <span class="m">10</span>) <span class="nf">linspace:</span> <span class="m">10000</span>)<span class="p">;</span>
+   <span class="o">^</span> <span class="nc">RSParametricXYLine</span> <span class="nb">new</span>
+        <span class="nf">parameterization:</span> (<span class="nc">RSLinspaceParameterization</span> <span class="nb">new</span>
+               <span class="nf">from:</span> <span class="m">-10</span> <span class="nf">to:</span> <span class="m">10</span> <span class="nf">samples:</span> <span class="m">10000</span><span class="p">;</span>
+               <span class="nf">yourself</span>)<span class="p">;</span>
         <span class="nf">x:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> <span class="nv">a</span> <span class="nf">*</span> <span class="nv">t</span> <span class="nf">cos</span> <span class="nf">+</span> (<span class="nv">d</span> <span class="nf">*</span> (<span class="nv">b</span> <span class="nf">*</span> <span class="nv">t</span>) <span class="nf">cos</span>) ]
         <span class="nf">y:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> <span class="nv">a</span> <span class="nf">*</span> <span class="nv">t</span> <span class="nf">sin</span> <span class="nf">-</span> (<span class="nv">d</span> <span class="nf">*</span> (<span class="nv">b</span> <span class="nf">*</span> <span class="nv">t</span>) <span class="nf">sin</span>) ]<span class="p">;</span>
         <span class="nf">scale:</span> <span class="m">10</span>
@@ -227,12 +239,14 @@ where <span class="math">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has
 </div>
 <p>Another trigonometric curve <span class="math">\({\bf C}(u)=(cos(3u) cos(u), sin(u) cos(3u))\)</span>
 where <span class="math">\(\ u \in [0,\pi]\)</span>, aka <em>trochoid</em>,  has the graphical</p>
-<img alt="../_images/RSParametricCurveTest-testLineParametricButterfly.svg" class="align-center" src="../_images/RSParametricCurveTest-testLineParametricButterfly.svg" /><p>and is coded as</p>
-<span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsbasicshapeexamples-lineparametricbutterfly"><div class="highlight"><pre><span></span><span class="c">&quot;RSBasicShapeExamples, protocol lines&quot;</span>
-<span class="nf">lineParametricButterfly</span>
+<img alt="../_images/RSParametricCurveTest-testParametricXYLineButterfly.svg" class="align-center" src="../_images/RSParametricCurveTest-testParametricXYLineButterfly.svg" /><p>and is coded as</p>
+<span class="target" id="pharo-compiledMethod-6"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rstparametricxylines-parametricxylinebutterfly"><div class="highlight"><pre><span></span><span class="c">&quot;RSTParametricXYLines, protocol lines&quot;</span>
+<span class="nf">parametricXYlineButterfly</span>
 
-   <span class="o">^</span> <span class="nc">RSParametricLineXY</span> <span class="nb">new</span>
-        <span class="nf">param:</span> ((<span class="m">0</span> <span class="nf">to:</span> <span class="nc">Float</span> <span class="nf">pi</span> <span class="nf">*</span> <span class="m">12</span>) <span class="nf">linspace:</span> <span class="m">10000</span>)<span class="p">;</span>
+   <span class="o">^</span> <span class="nc">RSParametricXYLine</span> <span class="nb">new</span>
+        <span class="nf">parameterization:</span> (<span class="nc">RSLinspaceParameterization</span> <span class="nb">new</span>
+               <span class="nf">from:</span> <span class="m">0</span> <span class="nf">to:</span> <span class="nc">Float</span> <span class="nf">pi</span> <span class="nf">*</span> <span class="m">12</span> <span class="nf">samples:</span> <span class="m">10000</span><span class="p">;</span>
+               <span class="nf">yourself</span>)<span class="p">;</span>
         <span class="nf">x:</span> [ <span class="o">:</span><span class="nv">t</span> <span class="o">|</span> 
            <span class="nv">t</span> <span class="nf">sin</span>
            <span class="nf">*</span> (<span class="nv">t</span> <span class="nf">cos</span> <span class="nf">exp</span> <span class="nf">-</span> (<span class="m">2</span> <span class="nf">*</span> (<span class="m">4</span> <span class="nf">*</span> <span class="nv">t</span>) <span class="nf">cos</span>) <span class="nf">-</span> ((<span class="nv">t</span> <span class="nf">/</span> <span class="m">12</span>) <span class="nf">sin</span> <span class="nf">raisedTo:</span> <span class="m">5</span>)) ]
@@ -267,7 +281,7 @@ respectively. The message</p>
 <img alt="../_images/RSParametricCurveTest-testBaricentricCoordinates.svg" class="align-center" src="../_images/RSParametricCurveTest-testBaricentricCoordinates.svg" /><p>shows the baricentric coordinates <span class="math">\({{1}\over{4}}\)</span> and
 <span class="math">\({{3}\over{4}}\)</span> of the point <span class="math">\((250, 325)\)</span> with respect to
 <span class="math">\((100, 100)\)</span> and <span class="math">\((300, 400)\)</span>, as the test</p>
-<span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsparametriccurvetest-sutbaricentriccoordinates"><div class="highlight"><pre><span></span><span class="c">&quot;RSParametricCurveTest, protocol tests&quot;</span>
+<span class="target" id="pharo-compiledMethod-8"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-rsparametriccurvetest-sutbaricentriccoordinates"><div class="highlight"><pre><span></span><span class="c">&quot;RSParametricCurveTest, protocol systems under tests&quot;</span>
 <span class="nf">sutBaricentricCoordinates:</span> <span class="nv">aBlock</span>
 
    <span class="o">|</span><span class="nv"> aPoint anotherPoint param baricentricPoint </span><span class="o">|</span>
@@ -362,7 +376,7 @@ for the sake of clarity, given <span class="math">\({\bf v}=\sum_{i=1}^n w_i {\b
                 (<span class="m">1</span> <span class="nf">@</span> <span class="m">1</span>) }<span class="p">.</span>
 
    <span class="o">^</span> <span class="nc">RSdeCasteljauLine</span> <span class="nb">new</span>
-        <span class="nf">samples:</span> <span class="m">50</span><span class="p">;</span>
+        <span class="nf">samplesLinspace:</span> <span class="m">100</span><span class="p">;</span>
         <span class="nf">controlPoints:</span> <span class="nv">points</span><span class="p">;</span>
         <span class="nf">scale:</span> <span class="m">100</span>
 </pre></div>
@@ -383,7 +397,6 @@ for the sake of clarity, given <span class="math">\({\bf v}=\sum_{i=1}^n w_i {\b
                 (<span class="m">10</span> <span class="nf">@</span> <span class="m">2</span>) }<span class="p">.</span>
 
    <span class="nv">bspline1</span> <span class="o">:=</span> <span class="nc">RSdeCasteljauLine</span> <span class="nb">new</span>
-                  <span class="nf">samples:</span> <span class="m">50</span><span class="p">;</span>
                   <span class="nf">controlPoints:</span> <span class="nv">points</span><span class="p">;</span>
                   <span class="nf">scale:</span> <span class="m">100</span><span class="p">.</span>
 
@@ -406,7 +419,7 @@ for the sake of clarity, given <span class="math">\({\bf v}=\sum_{i=1}^n w_i {\b
 <span class="nf">lineDeCasteljauLineNoteBox</span>
 
    <span class="o">^</span> <span class="nc">RSdeCasteljauLine</span> <span class="nb">new</span>
-        <span class="nf">samples:</span> <span class="m">50</span><span class="p">;</span>
+        <span class="nf">samplesLinspace:</span> <span class="m">10</span><span class="p">;</span>
         <span class="nf">controlPoints:</span> { 
               (<span class="m">0</span> <span class="nf">@</span> <span class="m">0</span>)<span class="p">.</span>
               (<span class="m">8.461</span> <span class="nf">@</span> <span class="m">36.411</span>)<span class="p">.</span>

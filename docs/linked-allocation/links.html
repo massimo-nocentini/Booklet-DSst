@@ -364,7 +364,7 @@ objects such that each node in the chain carries a <em>value</em> also, to have 
 
    <span class="o">^</span> <span class="bp">self</span>
         <span class="nf">exportSlotsGraphOf:</span> <span class="nv">l</span>
-        <span class="nf">slotDescriptorsContext:</span> <span class="nc">CTSlotDescriptorsVisitorNestedLinks</span> <span class="nb">new</span>
+        <span class="nf">slotDescriptorsVisitor:</span> <span class="nc">CTSlotDescriptorsVisitorNestedLinks</span> <span class="nb">new</span>
 </pre></div>
 </div>
 <blockquote>
@@ -550,9 +550,7 @@ namely every natural <em>has</em> to be used in at least one input relation.</p>
    <span class="c">&quot;I invoke the given block giving myself as argument if it needs to consume me.</span>
 <span class="c">    Then I return my self discarding the value returned by the given block.&quot;</span>
 
-   <span class="o">^</span> <span class="nv">aBlock</span>
-        <span class="nf">cull:</span> <span class="bp">self</span><span class="p">;</span>
-        <span class="nf">itself:</span> <span class="bp">self</span>
+   <span class="nv">aBlock</span> <span class="nf">cull:</span> <span class="bp">self</span>
 </pre></div>
 </div>
 <p>and</p>

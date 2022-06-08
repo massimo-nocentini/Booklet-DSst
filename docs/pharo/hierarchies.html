@@ -208,7 +208,7 @@
 
    <span class="o">^</span> <span class="bp">self</span>
         <span class="nf">exportSlotsGraphOf:</span> <span class="m">13</span>
-        <span class="nf">slotDescriptorsContext:</span> <span class="nc">CTSlotDescriptorsVisitorIntegerDetails</span> <span class="nb">new</span>
+        <span class="nf">slotDescriptorsVisitor:</span> <span class="nc">CTSlotDescriptorsVisitorDetails</span> <span class="nb">new</span>
 </pre></div>
 </div>
 <blockquote>
@@ -428,7 +428,7 @@ hand, both <span id="id1">[<a class="reference internal" href="../bibliography.h
 
    <span class="o">^</span> <span class="bp">self</span>
         <span class="nf">exportSlotsGraphOf:</span> <span class="nc">Magnitude</span>
-        <span class="nf">slotDescriptorsContext:</span> <span class="nc">CTSlotDescriptorsVisitorClassHierarchy</span> <span class="nb">new</span>
+        <span class="nf">slotDescriptorsVisitor:</span> <span class="nc">CTSlotDescriptorsVisitorClassHierarchy</span> <span class="nb">new</span>
 </pre></div>
 </div>
 <blockquote>
@@ -654,7 +654,7 @@ hand, both <span id="id1">[<a class="reference internal" href="../bibliography.h
 
    <span class="o">|</span><span class="nv"> rectangles </span><span class="o">|</span>
    <span class="nv">rectangles</span> <span class="o">:=</span> <span class="bp">self</span> <span class="nf">testInspect10GoldenRectangles</span> <span class="nf">foldr1:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">:</span><span class="nv">aBox</span> <span class="o">|</span> 
-                    <span class="nv">aBox</span> <span class="nf">rotateByRadians:</span> <span class="nc">Float</span> <span class="nf">pi</span> <span class="nf">half</span> <span class="nf">negated</span><span class="p">.</span>
+                    <span class="nv">aBox</span> <span class="nf">rotateByRadians:</span> <span class="nc">Float</span> <span class="nf">pi</span> <span class="nf">halved</span> <span class="nf">negated</span><span class="p">.</span>
                     <span class="nc">RSLocation</span> <span class="nb">new</span> <span class="nf">left</span> <span class="nf">stick:</span> <span class="nv">aBox</span> <span class="nf">on:</span> <span class="nv">each</span><span class="p">.</span>
                     <span class="nc">RSComposite</span> <span class="nb">new</span>
                        <span class="nf">shapes:</span> { 
@@ -677,8 +677,8 @@ hand, both <span id="id1">[<a class="reference internal" href="../bibliography.h
         <span class="nf">exportSlotsGraphOf:</span> { <span class="s">&#39;hello&#39;</span><span class="p">.</span> <span class="s">&#39;world&#39;</span> } <span class="nf">~~&gt;</span> ({ 
                <span class="m">42</span> <span class="nf">asValueHolder</span><span class="p">.</span>
                <span class="nc">Float</span> <span class="nf">goldenRatio</span> <span class="nf">asValueHolder</span> } <span class="nf">~~&gt;</span> <span class="bp">nil</span>)
-        <span class="nf">slotDescriptorsContext:</span>
-        <span class="nc">SlotDescriptorsVisitorOneToManyForValueLinkTesting</span> <span class="nb">new</span>
+        <span class="nf">slotDescriptorsVisitor:</span>
+        <span class="nc">CTEssentialsOneToManyValueLinksSlotDescriptorsVisitor</span> <span class="nb">new</span>
 </pre></div>
 </div>
 <blockquote>
@@ -697,10 +697,10 @@ hand, both <span id="id1">[<a class="reference internal" href="../bibliography.h
 <blockquote>
 <div><img alt="../_images/EssentialsObjectTest-testByteArrayLoremIpsum.svg" class="align-center" src="../_images/EssentialsObjectTest-testByteArrayLoremIpsum.svg" /></div></blockquote>
 <p>On the other hand, a bare bone array of bytes can be built as in</p>
-<span class="target" id="pharo-compiledMethod-36"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testbytearrayliteral"><div class="highlight"><pre><span></span>&quot;EssentialsObjectTest, protocol tests&quot;
-testByteArrayLiteral
+<span class="target" id="pharo-compiledMethod-36"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testbytearrayliteral"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
+<span class="nf">testByteArrayLiteral</span>
 
-   ^ self exportSlotsGraphOf: #[ 18 10 253 ]
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> (<span class="nc">ByteArray</span> <span class="nf">with:</span> <span class="m">18</span> <span class="nf">with:</span> <span class="m">10</span> <span class="nf">with:</span> <span class="m">253</span>)
 </pre></div>
 </div>
 <blockquote>
@@ -723,8 +723,16 @@ only one bit”</em> – from <a class="reference external" href="https://en.wik
 <span class="target" id="pharo-compiledMethod-38"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectbrgcodes"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectBRGCodes</span>
 
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span>
-        ((<span class="m">0</span> <span class="nf">to:</span> <span class="m">15</span>) <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">each</span> <span class="nf">asShapeBRGCDots</span> ] <span class="nf">as:</span> <span class="nc">RSGroup</span>)
+   <span class="o">|</span><span class="nv"> n </span><span class="o">|</span>
+   <span class="nv">n</span> <span class="o">:=</span> <span class="m">15</span><span class="p">.</span>
+
+   <span class="bp">self</span>
+      <span class="nf">exportSlotsGraphOf:</span> <span class="nv">n</span> <span class="nf">asBRGCCollection</span>
+      <span class="nf">pathSuffix:</span> <span class="s">&#39;changing-bits&#39;</span><span class="p">.</span>
+
+   <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> ((<span class="m">0</span> <span class="nf">to:</span> <span class="nv">n</span>)
+            <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> <span class="nv">each</span> <span class="nf">asShapeBRGCDots:</span> <span class="nc">CTDfsWalker</span> <span class="nb">new</span> ]
+            <span class="nf">as:</span> <span class="nc">RSGroup</span>)
 </pre></div>
 </div>
 <blockquote>
@@ -733,9 +741,11 @@ only one bit”</em> – from <a class="reference external" href="https://en.wik
 indexes in adjacent representations,</p>
 <img alt="../_images/EssentialsObjectTest-testInspectBRGCodes-changing-bits.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectBRGCodes-changing-bits.svg" /><p>also known as <span id="id9">[<a class="reference internal" href="../bibliography.html#id6" title="Neil J. A. Sloane. Exponent of highest power of 2 dividing n, a.k.a. the binary carry sequence, the ruler sequence, or the 2-adic valuation of n. URL: https://oeis.org/A007814.">Sloc</a>]</span>. The message</p>
 <span class="target" id="pharo-compiledMethod-39"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-asshapebrgcdots"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials-Visualizations&quot;</span>
-<span class="nf">asShapeBRGCDots</span>
+<span class="nf">asShapeBRGCDots:</span> <span class="nv">aDfsWalker</span>
 
-   <span class="o">^</span> <span class="bp">self</span> <span class="nf">asShapeBinaryDots:</span> (<span class="bp">self</span> <span class="nf">bitBRGC</span> <span class="nf">printStringBase:</span> <span class="m">2</span>) <span class="nf">asArray</span>
+   <span class="o">^</span> <span class="bp">self</span>
+        <span class="nf">asShapeBinaryDots:</span> (<span class="bp">self</span> <span class="nf">bitBRGC</span> <span class="nf">printStringBase:</span> <span class="m">2</span>) <span class="nf">asArray</span>
+        <span class="nf">walker:</span> <span class="nv">aDfsWalker</span>
 </pre></div>
 </div>
 <p>relies on both</p>
@@ -746,30 +756,38 @@ indexes in adjacent representations,</p>
 </pre></div>
 </div>
 <p>that computes the Gray representation corresponding to the receiver <code class="docutils literal notranslate"><span class="pre">Integer</span></code>, and</p>
-<span class="target" id="pharo-compiledMethod-41"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-asshapebinarydots"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials-Visualizations&quot;</span>
-<span class="nf">asShapeBinaryDots:</span> <span class="nv">repr</span>
+<span class="target" id="pharo-compiledMethod-41"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-integer-asshapebinarydots-walker"><div class="highlight"><pre><span></span><span class="c">&quot;Integer, protocol *Containers-Essentials-Visualizations&quot;</span>
+<span class="nf">asShapeBinaryDots:</span> <span class="nv">repr</span> <span class="nf">walker:</span> <span class="nv">aDfsWalker</span>
 
-   <span class="o">|</span><span class="nv"> dots </span><span class="o">|</span>
+   <span class="o">|</span><span class="nv"> dots radiusOrPadding </span><span class="o">|</span>
+   <span class="nv">radiusOrPadding</span> <span class="o">:=</span> <span class="nv">aDfsWalker</span> <span class="nf">shapeBuilder</span> <span class="nf">radiusOrPadding</span><span class="p">.</span>
+
    <span class="nv">dots</span> <span class="o">:=</span> <span class="nv">repr</span> <span class="nf">collect:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">|</span> 
-              <span class="o">|</span><span class="nv"> int </span><span class="o">|</span>
+              <span class="o">|</span><span class="nv"> int circle color </span><span class="o">|</span>
               <span class="nv">int</span> <span class="o">:=</span> <span class="nc">Integer</span> <span class="nf">readFrom:</span> <span class="nv">each</span> <span class="nf">asString</span><span class="p">.</span>
-              <span class="nc">RSCircle</span> <span class="nb">new</span>
-                 <span class="nf">model:</span> <span class="nv">int</span><span class="p">;</span>
-                 <span class="nf">radius:</span> <span class="nc">Float</span> <span class="nf">goldenRatio</span> <span class="nf">double</span> <span class="nf">double</span><span class="p">;</span>
-                 <span class="nf">color:</span> <span class="nc">Color</span> <span class="nf">white</span><span class="p">;</span>
-                 <span class="nf">withBorder</span><span class="p">;</span>
-                 <span class="nf">yourself:</span> [ <span class="o">:</span><span class="nv">c</span> <span class="o">|</span> 
-                    <span class="nv">c</span> <span class="nf">color:</span> (<span class="nv">int</span>
-                              <span class="nf">ifZero:</span> [ <span class="nc">Color</span> <span class="nf">white</span> ]
-                              <span class="nf">ifOne:</span> [ <span class="nv">c</span> <span class="nf">border</span> <span class="nf">color</span> ]
-                              <span class="nf">ifTwo:</span> [ 
-                                 <span class="nv">c</span> <span class="nf">border</span>
-                                    <span class="nf">color:</span> <span class="nc">Color</span> <span class="nf">black</span><span class="p">;</span>
-                                    <span class="nf">color</span> ]
-                              <span class="nf">otherwise:</span> [ <span class="nc">Error</span> <span class="nf">signal</span> ]) ] ]<span class="p">.</span>
+
+              <span class="nv">circle</span> <span class="o">:=</span> <span class="nc">RSCircle</span> <span class="nb">new</span>
+                           <span class="nf">model:</span> <span class="nv">int</span><span class="p">;</span>
+                           <span class="nf">radius:</span> <span class="nv">radiusOrPadding</span> <span class="nf">*</span> <span class="m">2</span><span class="p">;</span>
+                           <span class="nf">color:</span> <span class="nc">Color</span> <span class="nf">white</span><span class="p">;</span>
+                           <span class="nf">withBorder</span><span class="p">;</span>
+                           <span class="nf">yourself</span><span class="p">.</span>
+
+              <span class="nv">color</span> <span class="o">:=</span> <span class="nv">int</span>
+                          <span class="nf">ifZero:</span> [ <span class="nc">Color</span> <span class="nf">white</span> ]
+                          <span class="nf">ifOne:</span> [ <span class="nv">circle</span> <span class="nf">border</span> <span class="nf">color</span> ]
+                          <span class="nf">ifTwo:</span> [ 
+                             <span class="nv">circle</span> <span class="nf">border</span>
+                                <span class="nf">color:</span> <span class="nc">Color</span> <span class="nf">black</span><span class="p">;</span>
+                                <span class="nf">color</span> ]
+                          <span class="nf">otherwise:</span> [ <span class="nc">Error</span> <span class="nf">signal</span> ]<span class="p">.</span>
+
+              <span class="nv">circle</span> <span class="nf">color:</span> <span class="nv">color</span><span class="p">.</span>
+
+              <span class="nv">circle</span> ]<span class="p">.</span>
 
    <span class="nc">RSHorizontalLineLayout</span> <span class="nb">new</span>
-      <span class="nf">gapSize:</span> <span class="nc">Float</span> <span class="nf">goldenRatio</span><span class="p">;</span>
+      <span class="nf">gapSize:</span> <span class="nv">radiusOrPadding</span> <span class="nf">/</span> <span class="m">2</span><span class="p">;</span>
       <span class="nf">on:</span> <span class="nv">dots</span><span class="p">.</span>
 
    <span class="o">^</span> <span class="nc">RSComposite</span> <span class="nb">new</span>
@@ -801,63 +819,16 @@ full dots stand for 1s.</p>
    <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">heap</span><span class="p">.</span>
 
    <span class="nv">array</span> <span class="nf">withIndexDo:</span> [ <span class="o">:</span><span class="nv">each</span> <span class="o">:</span><span class="nv">i</span> <span class="o">|</span> 
-      <span class="nv">heap</span> <span class="nf">add:</span> <span class="nv">each</span><span class="p">.</span>
+      <span class="nv">heap</span> <span class="nf">add:</span> <span class="nv">each</span>
 
-      <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">heap</span> <span class="nf">pathSuffix:</span> <span class="nv">i</span> <span class="nf">asString</span> ]
+      <span class="c">&quot;self exportSlotsGraphOf: heap pathSuffix: i asString &quot;</span> ]<span class="p">.</span>
+
+   <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="nv">heap</span> <span class="nf">pathSuffix:</span> <span class="s">&#39;final&#39;</span>
 </pre></div>
 </div>
-<p>step by step as shown below</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><img alt="../_images/EssentialsObjectTest-testInspectHeap.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap.svg" /></td>
-<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-1.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-1.svg" /></td>
-<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-2.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-2.svg" /></td>
-</tr>
-<tr class="row-even"><td><img alt="../_images/EssentialsObjectTest-testInspectHeap-3.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-3.svg" /></td>
-<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-4.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-4.svg" /></td>
-<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-5.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-5.svg" /></td>
-</tr>
-<tr class="row-odd"><td><img alt="../_images/EssentialsObjectTest-testInspectHeap-6.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-6.svg" /></td>
-<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-7.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-7.svg" /></td>
-<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-8.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-8.svg" /></td>
-</tr>
-<tr class="row-even"><td><img alt="../_images/EssentialsObjectTest-testInspectHeap-9.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-9.svg" /></td>
-<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-10.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-10.svg" /></td>
-<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-11.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-11.svg" /></td>
-</tr>
-<tr class="row-odd"><td><img alt="../_images/EssentialsObjectTest-testInspectHeap-12.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-12.svg" /></td>
-<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-13.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-13.svg" /></td>
-<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-14.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-14.svg" /></td>
-</tr>
-<tr class="row-even"><td><img alt="../_images/EssentialsObjectTest-testInspectHeap-15.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-15.svg" /></td>
-<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-16.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-16.svg" /></td>
-<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-17.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-17.svg" /></td>
-</tr>
-<tr class="row-odd"><td><img alt="../_images/EssentialsObjectTest-testInspectHeap-18.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-18.svg" /></td>
-<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-19.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-19.svg" /></td>
-<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-20.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-20.svg" /></td>
-</tr>
-<tr class="row-even"><td><img alt="../_images/EssentialsObjectTest-testInspectHeap-21.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-21.svg" /></td>
-<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-22.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-22.svg" /></td>
-<td><img alt="../_images/EssentialsObjectTest-testInspectHeap-23.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-23.svg" /></td>
-</tr>
-<tr class="row-odd"><td><img alt="../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-24.svg" class="align-center" src="../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-24.svg" /></td>
-<td><img alt="../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-25.svg" class="align-center" src="../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-25.svg" /></td>
-<td><img alt="../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-26.svg" class="align-center" src="../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-26.svg" /></td>
-</tr>
-<tr class="row-even"><td><img alt="../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-27.svg" class="align-center" src="../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-27.svg" /></td>
-<td><img alt="../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-28.svg" class="align-center" src="../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-28.svg" /></td>
-<td><img alt="../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-29.svg" class="align-center" src="../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-29.svg" /></td>
-</tr>
-</tbody>
-</table>
-<p>to get</p>
-<img alt="../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-30.svg" class="align-center" src="../../Containers-Essentials/images/EssentialsObjectTest-testInspectHeap-30.svg" /><p>which is the final object.</p>
+<p>step by step; first, the empty heap</p>
+<img alt="../_images/EssentialsObjectTest-testInspectHeap.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap.svg" /><p>second,</p>
+<img alt="../_images/EssentialsObjectTest-testInspectHeap-final.svg" class="align-center" src="../_images/EssentialsObjectTest-testInspectHeap-final.svg" /><p>which is the final object.</p>
 </section>
 <section id="a-set">
 <h3><span class="section-number">2.3.8. </span>A <code class="docutils literal notranslate"><span class="pre">Set</span></code><a class="headerlink" href="#a-set" title="Permalink to this headline">¶</a></h3>
@@ -1262,6 +1233,8 @@ full dots stand for 1s.</p>
 <h3><span class="section-number">2.6.4. </span>A <code class="docutils literal notranslate"><span class="pre">Context</span></code><a class="headerlink" href="#a-context" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="pharo-compiledMethod-69"></span><div class="highlight-smalltalk notranslate" id="pharo-compiledmethod-essentialsobjecttest-testinspectcontext"><div class="highlight"><pre><span></span><span class="c">&quot;EssentialsObjectTest, protocol tests&quot;</span>
 <span class="nf">testInspectContext</span>
+
+   <span class="bp">self</span> <span class="nf">timeLimit:</span> <span class="m">25</span> <span class="nf">seconds</span><span class="p">.</span>
 
    <span class="o">^</span> <span class="bp">self</span> <span class="nf">exportSlotsGraphOf:</span> <span class="bp">thisContext</span>
 </pre></div>
