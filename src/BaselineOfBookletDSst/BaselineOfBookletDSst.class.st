@@ -142,7 +142,7 @@ BaselineOfBookletDSst >> scriptCurvesMessagesForDoc [
 			     sutBaricentricCoordinatesTriangle:
 			     lineParametricNeil lineParametricNeil2 lineParametricUnitCircle
 			     lineParametricTrochoid lineParametricLissajous
-			     lineParametricHypotrochoid lineParametricButterfly
+			     lineParametricHypotrochoid #parametricXYlineButterfly
 			     lineDeCasteljauLineClosedControlPoints
 			     linesDeCasteljauLineDegreeElevation
 			     lineDeCasteljauLineNoteBox noteLoremIpsum noteInteger );
