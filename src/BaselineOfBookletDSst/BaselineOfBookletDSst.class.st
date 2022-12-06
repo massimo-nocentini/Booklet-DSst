@@ -14,6 +14,10 @@ BaselineOfBookletDSst >> baseline: spec [
 			with: [ 
 			spec repository: 'github://massimo-nocentini/MetaSTExporter' ].
 
+		spec baseline: 'nonlayeredtidytreesst' with: [ 
+			spec repository:
+				'github://massimo-nocentini/non-layered-tidy-trees.st' ].
+
 		spec
 			baseline: 'ContainersEssentials'
 			with: [ 
@@ -21,7 +25,8 @@ BaselineOfBookletDSst >> baseline: spec [
 
 		spec
 			baseline: 'MethodTrackerMN'
-			with: [ spec repository: 'github://massimo-nocentini/MethodTracker' ].
+			with: [ 
+			spec repository: 'github://massimo-nocentini/MethodTracker' ].
 
 		spec
 			baseline: 'ContainersLinks'
