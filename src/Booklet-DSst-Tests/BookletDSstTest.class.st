@@ -7,6 +7,14 @@ Class {
 }
 
 { #category : #tests }
+BookletDSstTest >> testBasicObjectsNotebook [
+
+	self timeLimit: 1 minute.
+
+	self exportSlotsGraphOf: BookletDSstBasicObjectsNotebook new
+]
+
+{ #category : #tests }
 BookletDSstTest >> testVanDerPloeg [
 
 	self timeLimit: 1 minute.
