@@ -23,4 +23,4 @@ Source of https://massimo-nocentini.github.io/Booklet-DSst/
 
 |Name|Topic|Link|
 |---|---|---|
-|Basic objects|_An introduction of the (Pharo) Smalltalk object model._|[pdf](https://github.com/massimo-nocentini/Booklet-DSst/blob/master/images/BookletDSstTest-testBasicObjectsNotebook.pdf)|
+|`BookletDSstTest>>#testBasicObjectsNotebook`|_An introduction of the (Pharo) Smalltalk object model._|[pdf](https://github.com/massimo-nocentini/Booklet-DSst/blob/master/images/BookletDSstTest-testBasicObjectsNotebook.pdf)|
