@@ -8,70 +8,77 @@ Class {
 BaselineOfBookletDSst >> baseline: spec [
 
 	<baseline>
-	spec for: #common do: [ 
+	spec for: #common do: [
 		spec
 			baseline: 'MetaSTExporter'
-			with: [ 
+			with: [
 			spec repository: 'github://massimo-nocentini/MetaSTExporter' ].
 
-		spec baseline: 'nonlayeredtidytreesst' with: [ 
+		spec baseline: 'nonlayeredtidytreesst' with: [
 			spec repository:
 				'github://massimo-nocentini/non-layered-tidy-trees.st' ].
 
 		spec
+			baseline: 'SmaCC'
+			with: [ spec repository: 'github://massimo-nocentini/SmaCC' ].
+
+		spec
 			baseline: 'ContainersEssentials'
-			with: [ 
+			with: [
 			spec repository: 'github://massimo-nocentini/Containers-Essentials' ].
 
 		spec
 			baseline: 'MethodTrackerMN'
-			with: [ 
+			with: [
 			spec repository: 'github://massimo-nocentini/MethodTracker' ].
 
 		spec
 			baseline: 'ContainersLinks'
-			with: [ 
+			with: [
 			spec repository: 'github://massimo-nocentini/Containers-Links' ].
 
-		spec baseline: 'ContainersLinkedStoragePool' with: [ 
+		spec baseline: 'ContainersLinkedStoragePool' with: [
 			spec repository:
 				'github://massimo-nocentini/Containers-LinkedStoragePool' ].
 
-		spec baseline: 'ContainersBinaryTreeAbstract' with: [ 
+		spec baseline: 'ContainersBinaryTreeAbstract' with: [
 			spec repository:
 				'github://massimo-nocentini/Containers-BinaryTreeAbstract' ].
 
-		spec baseline: 'ContainersBinomialHeap' with: [ 
+		spec baseline: 'ContainersBinomialHeap' with: [
 			spec repository:
 				'github://massimo-nocentini/Containers-BinomialHeap' ].
 
 		spec
 			baseline: 'ContainersSBRAL'
-			with: [ 
+			with: [
 			spec repository: 'github://massimo-nocentini/Containers-SBRAL' ].
 
 		spec
 			baseline: 'ContainersHeapQ'
-			with: [ 
+			with: [
 			spec repository: 'github://massimo-nocentini/Containers-HeapQ' ].
 
-		spec baseline: 'ContainersRedBlackSet' with: [ 
+		spec baseline: 'ContainersRedBlackSet' with: [
 			spec repository:
 				'github://massimo-nocentini/Containers-RedBlackSet' ].
 
 		spec
 			baseline: 'ContainersSplayHeap'
-			with: [ 
+			with: [
 			spec repository: 'github://massimo-nocentini/Containers-SplayHeap' ].
 
-		spec baseline: 'ContainersLeftistHeap' with: [ 
+		spec baseline: 'ContainersLeftistHeap' with: [
 			spec repository:
 				'github://massimo-nocentini/Containers-LeftistHeap' ].
 
 		spec
 			baseline: 'ContainersSkipList'
-			with: [ 
-			spec repository: 'github://massimo-nocentini/Containers-SkipList' ] ]
+			with: [
+			spec repository: 'github://massimo-nocentini/Containers-SkipList' ].
+
+		"Finally, we can now load the notebooks."
+		spec package: 'Booklet-DSst-Tests' ]
 ]
 
 { #category : #documentation }
