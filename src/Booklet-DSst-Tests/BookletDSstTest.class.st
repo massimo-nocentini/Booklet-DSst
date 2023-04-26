@@ -15,6 +15,14 @@ BookletDSstTest >> testBasicObjectsNotebook [
 ]
 
 { #category : #tests }
+BookletDSstTest >> testMicrodownNotebook [
+
+	self timeLimit: 1 minute.
+
+	self exportSlotsGraphOf: BookletDSstMicrodownNotebook new
+]
+
+{ #category : #tests }
 BookletDSstTest >> testVanDerPloeg [
 
 	self timeLimit: 1 minute.
