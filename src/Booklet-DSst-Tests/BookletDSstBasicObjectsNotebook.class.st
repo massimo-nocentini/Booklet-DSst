@@ -8,7 +8,7 @@ ProfStef   pharoZenValues.
 
 o := Object new.
 
-""where `o` is a reference to it. Wait for a moment and look at the <span foreground='gray'>little labels</span> above each boxes. 
+""denoted by the symbol `o`. Wait for a moment and look at the <span foreground='gray'>little labels</span> above each boxes. 
 They shows the _class_ of the object represented in the box, so let's inspect it""
 
 o class.
@@ -22,7 +22,9 @@ ProtoObject  >> #class.
 
 #whatIsAPrimitive implementors .
 
+""Also observe that `o` has been created by the message""
 
+o class class lookupSelector: #new
 "
 Class {
 	#name : #BookletDSstBasicObjectsNotebook,
