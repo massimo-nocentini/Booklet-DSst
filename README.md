@@ -21,9 +21,6 @@ Source of https://massimo-nocentini.github.io/Booklet-DSst/
 
 ## Notebooks
 
-|Name|Topic|Link|
-|---|---|---|
-|`BookletDSstTest>>#testBasicObjectsNotebook`|_An introduction of the (Pharo) Smalltalk object model._|[pdf](https://github.com/massimo-nocentini/Booklet-DSst/raw/master/images/BookletDSstTest-testBasicObjectsNotebook.pdf)|
-|`BookletDSstTest>>#testMicrodownNotebook`|_An introduction of the *Microdown* markup language._|[pdf](https://github.com/massimo-nocentini/Booklet-DSst/raw/master/images/BookletDSstTest-testMicrodownNotebook.pdf)|
-
+- _An introduction of the (Pharo) Smalltalk object model._ ([pdf](https://github.com/massimo-nocentini/Booklet-DSst/raw/master/images/BookletDSstTest-testBasicObjectsNotebook.pdf))
+- _An introduction of the *Microdown* markup language._ ([pdf](https://github.com/massimo-nocentini/Booklet-DSst/raw/master/images/BookletDSstTest-testMicrodownNotebook.pdf))
 
