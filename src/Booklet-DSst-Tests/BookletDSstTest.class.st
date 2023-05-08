@@ -36,6 +36,22 @@ BookletDSstTest >> testBasicObjectsNotebook [
 ]
 
 { #category : #tests }
+BookletDSstTest >> testBookletSICPNotebook [
+
+	self timeLimit: 1 minute.
+
+	self exportSlotsGraphOf: BookletSICPNotebook new.
+
+	"self
+		exportSlotsGraphOf: BookletSICPPrefacesNotebook new
+		pathSuffix: 'prefaces'."
+
+	self
+		exportSlotsGraphOf: BookletSICPBuildingAbstractionsNotebook new
+		pathSuffix: 'building-abstractions-with-procedures'
+]
+
+{ #category : #tests }
 BookletDSstTest >> testMicrodownNotebook [
 
 	self timeLimit: 1 minute.
