@@ -1,7 +1,5 @@
 "
-""This is **bold** and have a look at the following.""
-
-""Intro
+""# Intro
 
 The publication subject of this page has the following reference
   
@@ -16,9 +14,6 @@ We represent the tree used in the paper as case study to spot the core points of
 
 NonLayeredTidyTreesTest>>#testTreeLayout3_small.
 
-""Have a look at the Smalltalk's object model""
-
-Object.
 "
 Class {
 	#name : #BookletDSstVanDerPloegNotebook,
