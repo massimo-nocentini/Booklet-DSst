@@ -18,9 +18,9 @@ BaselineOfBookletDSst >> baseline: spec [
 			spec repository:
 				'github://massimo-nocentini/non-layered-tidy-trees.st' ].
 
-		spec
+		"spec
 			baseline: 'SmaCC'
-			with: [ spec repository: 'github://massimo-nocentini/SmaCC' ].
+			with: [ spec repository: 'github://massimo-nocentini/SmaCC' ]."
 
 		spec
 			baseline: 'ContainersEssentials'
