@@ -60,6 +60,14 @@ BookletDSstTest >> testMicrodownNotebook [
 ]
 
 { #category : #tests }
+BookletDSstTest >> testPdmReplicationServices [
+
+	self timeLimit: 1 minute.
+
+	self exportSlotsGraphOf: BookletDSstPdmReplicationServices new
+]
+
+{ #category : #tests }
 BookletDSstTest >> testVanDerPloeg [
 
 	self timeLimit: 1 minute.
