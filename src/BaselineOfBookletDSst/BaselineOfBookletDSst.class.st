@@ -33,6 +33,10 @@ BaselineOfBookletDSst >> baseline: spec [
 			spec repository: 'github://massimo-nocentini/MethodTracker' ].
 
 		spec
+			baseline: 'Srfi41'
+			with: [ spec repository: 'github://massimo-nocentini/srfi-41st' ].
+
+		spec
 			baseline: 'ContainersLinks'
 			with: [
 			spec repository: 'github://massimo-nocentini/Containers-Links' ].
