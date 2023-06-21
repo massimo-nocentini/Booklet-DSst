@@ -362,6 +362,7 @@ The grid about _commands_ has the following content:
 
 ""
 
+DateAndTime now.
 "
 Class {
 	#name : #BookletDSstPdmReplicationServices,
