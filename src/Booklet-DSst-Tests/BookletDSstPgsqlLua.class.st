@@ -7,6 +7,8 @@
 
 ### Connection
 
+First of all, let us show how to connect to a database,
+
 ""
 
 LibLua uniqueInstance in: [:ll | 
@@ -27,6 +29,8 @@ LibLua uniqueInstance in: [:ll |
 
 
 ""
+
+observe that the returned $0$ is equal to the enum value `LUA_OK` which indicates that the Lua computation has been executed without errors.
 
 ### Textual representation of a `select`
 ""
