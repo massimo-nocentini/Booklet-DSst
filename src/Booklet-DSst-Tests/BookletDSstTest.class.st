@@ -60,6 +60,14 @@ BookletDSstTest >> testMicrodownNotebook [
 ]
 
 { #category : #tests }
+BookletDSstTest >> testPdf [
+
+	self timeLimit: 1 minute.
+
+	self exportSlotsGraphOf: BookletDSstPdfNotebook new
+]
+
+{ #category : #tests }
 BookletDSstTest >> testPdmPgsqlLua [
 
 	self timeLimit: 1 minute.
