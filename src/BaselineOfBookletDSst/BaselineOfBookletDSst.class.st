@@ -8,12 +8,10 @@ Class {
 BaselineOfBookletDSst >> baseline: spec [
 
 	<baseline>
-	spec for: #common do: [
-		spec
+	spec for: #common do: [ "spec
 			baseline: 'MetaSTExporter'
 			with: [
-			spec repository: 'github://massimo-nocentini/MetaSTExporter' ].
-
+			spec repository: 'github://massimo-nocentini/MetaSTExporter' ]."
 		spec baseline: 'nonlayeredtidytreesst' with: [
 			spec repository:
 				'github://massimo-nocentini/non-layered-tidy-trees.st' ].
@@ -26,6 +24,15 @@ BaselineOfBookletDSst >> baseline: spec [
 			baseline: 'ContainersEssentials'
 			with: [
 			spec repository: 'github://massimo-nocentini/Containers-Essentials' ].
+
+		spec
+			baseline: 'LibPoppler'
+			with: [
+			spec repository: 'github://massimo-nocentini/libpoppler.st' ].
+
+		spec
+			baseline: 'Wolfram'
+			with: [ spec repository: 'github://massimo-nocentini/wolfram.st' ].
 
 		spec
 			baseline: 'MethodTrackerMN'
