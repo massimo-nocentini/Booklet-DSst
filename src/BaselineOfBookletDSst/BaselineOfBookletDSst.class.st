@@ -8,10 +8,20 @@ Class {
 BaselineOfBookletDSst >> baseline: spec [
 
 	<baseline>
-	spec for: #common do: [ "spec
-			baseline: 'MetaSTExporter'
+	spec for: #common do: [
+		spec
+			baseline: 'NewTools'
+			with: [ spec repository: 'github://pharo-spec/NewTools:Pharo12' ].
+
+		spec
+			baseline: 'Microdown'
+			with: [ spec repository: 'github://pillar-markup/Microdown:dev' ].
+
+		spec
+			baseline: 'BeautifulComments'
 			with: [
-			spec repository: 'github://massimo-nocentini/MetaSTExporter' ]."
+			spec repository: 'github://pillar-markup/BeautifulComments:dev' ].
+
 		spec baseline: 'nonlayeredtidytreesst' with: [
 			spec repository:
 				'github://massimo-nocentini/non-layered-tidy-trees.st' ].
