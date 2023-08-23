@@ -10,6 +10,10 @@ BaselineOfBookletDSst >> baseline: spec [
 	<baseline>
 	spec for: #common do: [
 		spec
+			baseline: 'PharoBootstrap'
+			with: [ spec repository: 'github://pharo-project/pharo:Pharo12' ].
+
+		spec
 			baseline: 'NewTools'
 			with: [ spec repository: 'github://pharo-spec/NewTools:Pharo12' ].
 
@@ -34,6 +38,11 @@ BaselineOfBookletDSst >> baseline: spec [
 			baseline: 'ContainersEssentials'
 			with: [
 			spec repository: 'github://massimo-nocentini/Containers-Essentials' ].
+
+		spec
+			baseline: 'MetaSTExporter'
+			with: [
+			spec repository: 'github://massimo-nocentini/MetaSTExporter' ].
 
 		spec
 			baseline: 'LibPoppler'
