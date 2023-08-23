@@ -13,9 +13,9 @@ BaselineOfBookletDSst >> baseline: spec [
 			baseline: 'PharoBootstrap'
 			with: [ spec repository: 'github://pharo-project/pharo:Pharo12' ].
 
-		spec
+		"spec
 			baseline: 'Pharo'
-			with: [ spec repository: 'github://pharo-project/pharo:Pharo12' ].
+			with: [ spec repository: 'github://pharo-project/pharo:Pharo12' ]."
 
 
 		"spec
