@@ -14,8 +14,13 @@ BaselineOfBookletDSst >> baseline: spec [
 			with: [ spec repository: 'github://pharo-project/pharo:Pharo12' ].
 
 		spec
+			baseline: 'Pharo'
+			with: [ spec repository: 'github://pharo-project/pharo:Pharo12' ].
+
+
+		"spec
 			baseline: 'NewTools'
-			with: [ spec repository: 'github://pharo-spec/NewTools:Pharo12' ].
+			with: [ spec repository: 'github://pharo-spec/NewTools:Pharo12' ]."
 
 		spec
 			baseline: 'Microdown'
