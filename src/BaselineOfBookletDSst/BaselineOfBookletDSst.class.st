@@ -88,6 +88,16 @@ BaselineOfBookletDSst >> baseline: spec [
 			with: [
 			spec repository: 'github://massimo-nocentini/Containers-SkipList' ].
 
+		spec
+			baseline: 'ContainersCons'
+			with: [
+			spec repository: 'github://massimo-nocentini/Containers-Cons' ].
+
+		spec
+			baseline: 'MicroKanren'
+			with: [
+			spec repository: 'github://massimo-nocentini/microkanrenst' ].
+
 		"Finally, we can now load the notebooks."
 		spec package: 'Booklet-DSst-Tests' ]
 ]
