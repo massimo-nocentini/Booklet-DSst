@@ -9,9 +9,9 @@ BaselineOfBookletDSst >> baseline: spec [
 
 	<baseline>
 	spec for: #common do: [
-		spec
+		"spec
 			baseline: 'PharoBootstrap'
-			with: [ spec repository: 'github://pharo-project/pharo:Pharo12' ].
+			with: [ spec repository: 'github://pharo-project/pharo:Pharo12' ]."
 
 		"spec
 			baseline: 'Pharo'
