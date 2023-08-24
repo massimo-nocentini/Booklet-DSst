@@ -22,14 +22,14 @@ BaselineOfBookletDSst >> baseline: spec [
 			baseline: 'NewTools'
 			with: [ spec repository: 'github://pharo-spec/NewTools:Pharo12' ]."
 
-		spec
+		"spec
 			baseline: 'Microdown'
 			with: [ spec repository: 'github://pillar-markup/Microdown:dev' ].
 
 		spec
 			baseline: 'BeautifulComments'
 			with: [
-			spec repository: 'github://pillar-markup/BeautifulComments:dev' ].
+			spec repository: 'github://pillar-markup/BeautifulComments:dev' ]."
 
 		spec baseline: 'nonlayeredtidytreesst' with: [
 			spec repository:
