@@ -52,6 +52,14 @@ BookletDSstTest >> testBookletSICPNotebook [
 ]
 
 { #category : #tests }
+BookletDSstTest >> testLua [
+
+	self timeLimit: 1 minute.
+
+	self exportSlotsGraphOf: BookletDSstLuaNotebook new
+]
+
+{ #category : #tests }
 BookletDSstTest >> testMicrodownNotebook [
 
 	self timeLimit: 1 minute.
