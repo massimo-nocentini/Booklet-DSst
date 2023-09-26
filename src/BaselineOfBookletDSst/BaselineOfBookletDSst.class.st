@@ -1,10 +1,11 @@
 Class {
-	#name : #BaselineOfBookletDSst,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfBookletDSst
+	#name : 'BaselineOfBookletDSst',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfBookletDSst',
+	#package : 'BaselineOfBookletDSst'
 }
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfBookletDSst >> baseline: spec [
 
 	<baseline>
@@ -22,11 +23,11 @@ BaselineOfBookletDSst >> baseline: spec [
 			baseline: 'NewTools'
 			with: [ spec repository: 'github://pharo-spec/NewTools:Pharo12' ]."
 
-		"spec
-			baseline: 'Microdown'
-			with: [ spec repository: 'github://pillar-markup/Microdown:dev' ].
-
 		spec
+			baseline: 'Microdown'
+			with: [ spec repository: 'github://massimo-nocentini/Microdown:dev' ].
+
+		"spec
 			baseline: 'BeautifulComments'
 			with: [
 			spec repository: 'github://pillar-markup/BeautifulComments:dev' ]."
@@ -126,7 +127,7 @@ BaselineOfBookletDSst >> baseline: spec [
 		spec package: 'Booklet-DSst-Tests' ]
 ]
 
-{ #category : #documentation }
+{ #category : 'documentation' }
 BaselineOfBookletDSst >> runAllTests [
 
 	<script: 'BaselineOfBookletDSst new runAllTests'>
@@ -143,7 +144,7 @@ BaselineOfBookletDSst >> runAllTests [
 	self inform: thisContext method name , ' has finished.'
 ]
 
-{ #category : #documentation }
+{ #category : 'documentation' }
 BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 
 	<script: 'BaselineOfBookletDSst new scriptCoreMessagesForDoc'>
@@ -189,7 +190,7 @@ BaselineOfBookletDSst >> scriptCoreMessagesForDoc [
 		  ofPackage: self class package
 ]
 
-{ #category : #documentation }
+{ #category : 'documentation' }
 BaselineOfBookletDSst >> scriptCurvesMessagesForDoc [
 
 	<script: 'BaselineOfBookletDSst new scriptCurvesMessagesForDoc'>
@@ -208,7 +209,7 @@ BaselineOfBookletDSst >> scriptCurvesMessagesForDoc [
 		  ofPackage: self class package
 ]
 
-{ #category : #documentation }
+{ #category : 'documentation' }
 BaselineOfBookletDSst >> scriptLinkMessagesForDoc [
 
 	<script: 'BaselineOfBookletDSst new scriptLinkMessagesForDoc'>
@@ -227,7 +228,7 @@ BaselineOfBookletDSst >> scriptLinkMessagesForDoc [
 		  ofPackage: self class package
 ]
 
-{ #category : #documentation }
+{ #category : 'documentation' }
 BaselineOfBookletDSst >> scriptNumbersForDoc [
 
 	<script: 'BaselineOfBookletDSst new scriptNumbersForDoc'>
@@ -244,7 +245,7 @@ BaselineOfBookletDSst >> scriptNumbersForDoc [
 		  ofPackage: self class package
 ]
 
-{ #category : #documentation }
+{ #category : 'documentation' }
 BaselineOfBookletDSst >> scriptRedBlackSetMessagesForDoc [
 
 	<script: 'BaselineOfBookletDSst new scriptRedBlackSetMessagesForDoc'>
@@ -269,7 +270,7 @@ BaselineOfBookletDSst >> scriptRedBlackSetMessagesForDoc [
 		  ofPackage: self class package
 ]
 
-{ #category : #documentation }
+{ #category : 'documentation' }
 BaselineOfBookletDSst >> scriptStoragePoolsForDoc [
 
 	<script: 'BaselineOfBookletDSst new scriptStoragePoolsForDoc'>
@@ -286,7 +287,7 @@ BaselineOfBookletDSst >> scriptStoragePoolsForDoc [
 		  ofPackage: self class package
 ]
 
-{ #category : #documentation }
+{ #category : 'documentation' }
 BaselineOfBookletDSst >> scriptSymbolicDivisibilityForDoc [
 
 	<script: 'BaselineOfBookletDSst new scriptSymbolicDivisibilityForDoc'>
@@ -313,7 +314,7 @@ BaselineOfBookletDSst >> scriptSymbolicDivisibilityForDoc [
 		  ofPackage: self class package
 ]
 
-{ #category : #documentation }
+{ #category : 'documentation' }
 BaselineOfBookletDSst >> scriptTopologicalSortMessagesForDoc [
 
 	<script:
@@ -336,7 +337,7 @@ BaselineOfBookletDSst >> scriptTopologicalSortMessagesForDoc [
 		  ofPackage: self class package
 ]
 
-{ #category : #documentation }
+{ #category : 'documentation' }
 BaselineOfBookletDSst >> scriptValueLinkMessagesForDoc [
 
 	<script: 'BaselineOfBookletDSst new scriptValueLinkMessagesForDoc'>

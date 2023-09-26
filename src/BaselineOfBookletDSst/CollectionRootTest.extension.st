@@ -1,6 +1,6 @@
-Extension { #name : #CollectionRootTest }
+Extension { #name : 'CollectionRootTest' }
 
-{ #category : #'*BaselineOfBookletDSst' }
+{ #category : '*BaselineOfBookletDSst' }
 CollectionRootTest >> forDocumentationInBookletDSst [
 
 	
