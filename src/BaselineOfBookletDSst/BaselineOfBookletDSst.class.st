@@ -17,7 +17,7 @@ BaselineOfBookletDSst >> baseline: spec [
 			baseline: 'NewTools'
 			with: [ spec repository: 'github://pharo-spec/NewTools:Pharo12' ]."
 		spec
-			baseline: 'NewTools'
+			baseline: 'VMMaker'
 			with: [
 			spec repository: 'github://massimo-nocentini/pharo-vm:pharo-10' ].
 
