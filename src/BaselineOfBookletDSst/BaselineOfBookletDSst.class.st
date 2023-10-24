@@ -9,23 +9,22 @@ Class {
 BaselineOfBookletDSst >> baseline: spec [
 
 	<baseline>
-	spec for: #common do: [
-		"spec
+	spec for: #common do: [ "spec
 			baseline: 'PharoBootstrap'
-			with: [ spec repository: 'github://pharo-project/pharo:Pharo12' ]."
-
-		"spec
+			with: [ spec repository: 'github://pharo-project/pharo:Pharo12' ].""spec
 			baseline: 'Pharo'
-			with: [ spec repository: 'github://pharo-project/pharo:Pharo12' ]."
-
-
-		"spec
+			with: [ spec repository: 'github://pharo-project/pharo:Pharo12' ].""spec
 			baseline: 'NewTools'
 			with: [ spec repository: 'github://pharo-spec/NewTools:Pharo12' ]."
+		spec
+			baseline: 'NewTools'
+			with: [
+			spec repository: 'github://massimo-nocentini/pharo-vm:pharo-10' ].
 
 		spec
 			baseline: 'Microdown'
-			with: [ spec repository: 'github://massimo-nocentini/Microdown:dev' ].
+			with: [
+			spec repository: 'github://massimo-nocentini/Microdown:dev' ].
 
 		"spec
 			baseline: 'BeautifulComments'
