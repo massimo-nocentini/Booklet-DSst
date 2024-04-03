@@ -1,12 +1,13 @@
 Class {
-	#name : #BookletDSstTest,
-	#superclass : #TestCase,
+	#name : 'BookletDSstTest',
+	#superclass : 'TestCase',
 	#traits : 'TIceImagesExporting',
 	#classTraits : 'TIceImagesExporting classTrait',
-	#category : #'Booklet-DSst-Tests'
+	#category : 'Booklet-DSst-Tests',
+	#package : 'Booklet-DSst-Tests'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BookletDSstTest >> methodWithSomeComments [
 	"This should be [a link](https://www.alt-codes.net/check-mark-symbols.php) and a math equation $a = 3$."
 
@@ -27,7 +28,7 @@ BookletDSstTest >> methodWithSomeComments [
 	^ a
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookletDSstTest >> testBasicObjectsNotebook [
 
 	self timeLimit: 1 minute.
@@ -35,7 +36,7 @@ BookletDSstTest >> testBasicObjectsNotebook [
 	self exportSlotsGraphOf: BookletDSstBasicObjectsNotebook new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookletDSstTest >> testBookletSICPNotebook [
 
 	self timeLimit: 1 minute.
@@ -51,7 +52,7 @@ BookletDSstTest >> testBookletSICPNotebook [
 		pathSuffix: 'building-abstractions-with-procedures'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookletDSstTest >> testLua [
 
 	self timeLimit: 1 minute.
@@ -59,7 +60,7 @@ BookletDSstTest >> testLua [
 	self exportSlotsGraphOf: BookletDSstLuaNotebook new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookletDSstTest >> testMicrodownNotebook [
 
 	self timeLimit: 1 minute.
@@ -67,7 +68,7 @@ BookletDSstTest >> testMicrodownNotebook [
 	self exportSlotsGraphOf: BookletDSstMicrodownNotebook new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookletDSstTest >> testPdf [
 
 	self timeLimit: 1 minute.
@@ -75,7 +76,7 @@ BookletDSstTest >> testPdf [
 	self exportSlotsGraphOf: BookletDSstPdfNotebook new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookletDSstTest >> testPdmPgsqlLua [
 
 	self timeLimit: 1 minute.
@@ -83,7 +84,7 @@ BookletDSstTest >> testPdmPgsqlLua [
 	self exportSlotsGraphOf: BookletDSstPgsqlLua new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookletDSstTest >> testPdmReplicationServices [
 
 	self timeLimit: 1 minute.
@@ -91,7 +92,7 @@ BookletDSstTest >> testPdmReplicationServices [
 	self exportSlotsGraphOf: BookletDSstPdmReplicationServices new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BookletDSstTest >> testVanDerPloeg [
 
 	self timeLimit: 1 minute.

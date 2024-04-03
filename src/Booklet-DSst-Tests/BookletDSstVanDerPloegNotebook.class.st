@@ -16,7 +16,8 @@ NonLayeredTidyTreesTest>>#testTreeLayout3_small.
 
 "
 Class {
-	#name : #BookletDSstVanDerPloegNotebook,
-	#superclass : #CTClassCommentAutoNotebook,
-	#category : #'Booklet-DSst-Tests'
+	#name : 'BookletDSstVanDerPloegNotebook',
+	#superclass : 'CTClassCommentAutoNotebook',
+	#category : 'Booklet-DSst-Tests',
+	#package : 'Booklet-DSst-Tests'
 }

@@ -196,7 +196,8 @@ which interfaces directly over the PostgreSQL's C api.
 ""
 "
 Class {
-	#name : #BookletDSstPgsqlLua,
-	#superclass : #CTClassCommentAutoNotebook,
-	#category : #'Booklet-DSst-Tests'
+	#name : 'BookletDSstPgsqlLua',
+	#superclass : 'CTClassCommentAutoNotebook',
+	#category : 'Booklet-DSst-Tests',
+	#package : 'Booklet-DSst-Tests'
 }

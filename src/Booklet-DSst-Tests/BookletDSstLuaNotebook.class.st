@@ -228,7 +228,8 @@ return tostring (C.data.maybe.just (a):fmap(op.len))
 
 "
 Class {
-	#name : #BookletDSstLuaNotebook,
-	#superclass : #CTClassCommentAutoNotebook,
-	#category : #'Booklet-DSst-Tests'
+	#name : 'BookletDSstLuaNotebook',
+	#superclass : 'CTClassCommentAutoNotebook',
+	#category : 'Booklet-DSst-Tests',
+	#package : 'Booklet-DSst-Tests'
 }

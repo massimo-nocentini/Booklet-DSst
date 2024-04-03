@@ -10,7 +10,8 @@ We should be aware of a [pdf release](https://web.mit.edu/6.001/6.037/sicp.pdf) 
 ""
 "
 Class {
-	#name : #BookletSICPNotebook,
-	#superclass : #CTClassCommentAutoNotebook,
-	#category : #'Booklet-DSst-Tests'
+	#name : 'BookletSICPNotebook',
+	#superclass : 'CTClassCommentAutoNotebook',
+	#category : 'Booklet-DSst-Tests',
+	#package : 'Booklet-DSst-Tests'
 }

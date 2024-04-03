@@ -59,7 +59,8 @@ RSPdf>>#poppler_page_render:cairo:
 ""where the argument `p` is a _poppler document_ and the argument `cr` is a _cairo canvas_ (of C type `cairo_t`).""
 "
 Class {
-	#name : #BookletDSstPdfNotebook,
-	#superclass : #CTClassCommentAutoNotebook,
-	#category : #'Booklet-DSst-Tests'
+	#name : 'BookletDSstPdfNotebook',
+	#superclass : 'CTClassCommentAutoNotebook',
+	#category : 'Booklet-DSst-Tests',
+	#package : 'Booklet-DSst-Tests'
 }

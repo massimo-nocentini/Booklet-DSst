@@ -117,7 +117,8 @@ these considerations, programming in Lisp is great fun.
 ""
 "
 Class {
-	#name : #BookletSICPBuildingAbstractionsNotebook,
-	#superclass : #BookletSICPNotebook,
-	#category : #'Booklet-DSst-Tests'
+	#name : 'BookletSICPBuildingAbstractionsNotebook',
+	#superclass : 'BookletSICPNotebook',
+	#category : 'Booklet-DSst-Tests',
+	#package : 'Booklet-DSst-Tests'
 }

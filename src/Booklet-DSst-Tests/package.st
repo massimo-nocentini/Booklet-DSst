@@ -1,1 +1,1 @@
-Package { #name : #'Booklet-DSst-Tests' }
+Package { #name : 'Booklet-DSst-Tests' }

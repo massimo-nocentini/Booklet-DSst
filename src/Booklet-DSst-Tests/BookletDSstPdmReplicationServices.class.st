@@ -365,7 +365,8 @@ The grid about _commands_ has the following content:
 DateAndTime now.
 "
 Class {
-	#name : #BookletDSstPdmReplicationServices,
-	#superclass : #CTClassCommentAutoNotebook,
-	#category : #'Booklet-DSst-Tests'
+	#name : 'BookletDSstPdmReplicationServices',
+	#superclass : 'CTClassCommentAutoNotebook',
+	#category : 'Booklet-DSst-Tests',
+	#package : 'Booklet-DSst-Tests'
 }
