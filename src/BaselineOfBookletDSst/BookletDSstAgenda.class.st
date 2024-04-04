@@ -71,6 +71,8 @@ Refactor the actual implementation using key-value structures to just have a sin
 
 Use the more comprehensive C API function instead of going through Lua.
 
+Also include the compilation of that library in the GitHub workflow.
+
 \end{frame}
 
 \end{document}
