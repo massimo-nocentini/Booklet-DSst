@@ -1,3 +1,8 @@
+"
+# Agenda
+
+My own agenda of ideas and TODOs about Smalltalk projects.
+"
 Class {
 	#name : 'BookletDSstAgenda',
 	#superclass : 'Object',
