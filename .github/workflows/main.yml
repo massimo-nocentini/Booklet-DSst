@@ -11,17 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          path: repo
       - name: Install dependencies
         run: sudo apt install build-essential clang libpango1.0-dev libpangocairo-1.0-0 libpoppler-dev curl libgit2-dev
       - name: Do
         run: |
-          cd repo/scripts/
+          cd scripts/
           bash github-ubuntu.sh
       - name: Upload release assets
         run: |
-          cd repo
+          cd scripts/work/
           gh release create r${{github.run_number}}
-          gh release upload r${{github.run_number}} ../pharo-local/iceberg/massimo-nocentini/Booklet-DSst/images/BookletDSstTest-testBasicObjectsNotebook.svg
+          gh release upload r${{github.run_number}} ./pharo-local/iceberg/massimo-nocentini/Booklet-DSst/images/BookletDSstTest-testBasicObjectsNotebook.svg
 
