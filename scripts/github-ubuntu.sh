@@ -1,7 +1,7 @@
 
 mkdir -p ~/.config/fontconfig/
 cp fonts.conf ~/.config/fontconfig/
-fc-cache -r
+fc-cache -rv
 
 mkdir work
 cd work

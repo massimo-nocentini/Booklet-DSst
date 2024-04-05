@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install dependencies
-        run: sudo apt install build-essential clang libpango1.0-dev libpangocairo-1.0-0 libpoppler-dev curl libgit2-dev texlive
+        run: sudo apt install build-essential clang libpango1.0-dev libpangocairo-1.0-0 libpoppler-dev curl libgit2-dev texlive-full libpoppler-dev libpoppler-glib-dev libfontconfig-dev
       - name: Do
         run: |
           cd scripts/
