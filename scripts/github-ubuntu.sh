@@ -2,6 +2,8 @@
 mkdir work
 cd work
 
+fc-cache -r
+
 wget https://github.com/massimo-nocentini/pharo-vm/releases/latest/download/pharo-vm-ubuntu.zip
 
 unzip pharo-vm-ubuntu.zip
