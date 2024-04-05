@@ -1,6 +1,7 @@
 
 mkdir work
 cd work
+mkdir -p ~/.config/fontconfig/
 
 echo "
 
