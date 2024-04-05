@@ -15,8 +15,6 @@ Smalltalk snapshot: true andQuit: true."
 
 ./pharo Pharo.image eval "
 
-BookletDSstTest new 
-  testBasicObjectsNotebook;
-  yourself.
+BookletDSstTest suite run.
 
 Smalltalk snapshot: true andQuit: true."
