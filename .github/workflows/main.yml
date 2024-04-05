@@ -21,7 +21,6 @@ jobs:
           bash github-ubuntu.sh
       - name: Upload release assets
         run: |
-          cd pharo-vm
           gh release create r${{github.run_number}}
           gh release upload r${{github.run_number}} ./pharo-local/iceberg/massimo-nocentini/Booklet-DSst/images/BookletDSstTest-testBasicObjectsNotebook.svg
 
