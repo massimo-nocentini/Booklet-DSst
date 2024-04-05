@@ -21,6 +21,7 @@ jobs:
           bash github-ubuntu.sh
       - name: Upload release assets
         run: |
+          cd repo
           gh release create r${{github.run_number}}
-          gh release upload r${{github.run_number}} ./pharo-local/iceberg/massimo-nocentini/Booklet-DSst/images/BookletDSstTest-testBasicObjectsNotebook.svg
+          gh release upload r${{github.run_number}} ../pharo-local/iceberg/massimo-nocentini/Booklet-DSst/images/BookletDSstTest-testBasicObjectsNotebook.svg
 
