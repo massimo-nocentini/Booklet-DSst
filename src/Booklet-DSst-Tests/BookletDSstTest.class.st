@@ -62,7 +62,8 @@ BookletDSstTest >> testBasicObjectsNotebook [
 
 	self timeLimit: 1 minute.
 
-	self exportSlotsGraphOf: BookletDSstBasicObjectsNotebook new
+	self exportSlotsGraphOf:
+		(BookletDSstTest >> #basicPharoObjectsNotebook:) asNotebook
 ]
 
 { #category : 'tests' }
