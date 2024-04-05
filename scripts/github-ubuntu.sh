@@ -3,7 +3,7 @@ mkdir work
 cd work
 mkdir -p ~/.config/fontconfig/
 
-echo "
+echo '
 
 <?xml version="1.0"?>
 <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
@@ -47,7 +47,8 @@ echo "
 
 
 </fontconfig>
-" > ~/.config/fontconfig/fonts.conf
+' > ~/.config/fontconfig/fonts.conf
+
 fc-cache -r
 
 wget https://github.com/massimo-nocentini/pharo-vm/releases/latest/download/pharo-vm-ubuntu.zip
