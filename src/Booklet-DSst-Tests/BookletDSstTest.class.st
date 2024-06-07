@@ -65,12 +65,14 @@ For the curious reader, Knuth shows [many interesting programs](https://cs.stanf
 ## To notebooks
 
 
-[Stephan Wolfram](https://writings.stephenwolfram.com/2016/09/how-to-teach-computational-thinking/) says:
+[Stephen Wolfram](https://writings.stephenwolfram.com/2016/09/how-to-teach-computational-thinking/) says:
 
 > The idea of a notebook is to have an interactive document that 
 > freely mixes code, results, graphics, text and everything else.
 "
-
+	thisNotebook outside: [ Object ].
+	('/home/mn/Downloads/PBE-2022-03-26-index.pdf' asFileReference asPdf
+		 pages at: 288) asGroup.
 	"
 # `tree-sitter` library
 
@@ -86,7 +88,7 @@ We integrate the [tree-sitter](https://tree-sitter.github.io/tree-sitter/) libra
 
 "
 
-	"## Syntax highlight
+	"## Syntax highlights
 
 We support parsing and syntax highlights for the following languages:
 - _c_
@@ -140,14 +142,23 @@ fib (1000)
 			 'int main (int argc, char **argv) { printf("Hello world!"); }')
 			ast ].
 
-	"Let us define a simple link"
+	"# Under the hood
+	
+In a usual notebook informations flow straightforward, so they do here: let us define a simple `ValueLink` object,
+"
+	l := 3 ~~> nil.
 
-	thisNotebook outside: [ l := 3 ~~> nil ].
+	"now just link something on it"
+
+	4 ~~> l.
+
+	"We extend this paradigm by allowing outliners going _outside_; for the sake of clarity, put `l` that way:"
+
+	thisNotebook outside: [ l ].
 
 	"Now just link something else over it"
 
 	thisNotebook outside: [ 4 ~~> l ].
-
 
 	"Self referencing"
 
