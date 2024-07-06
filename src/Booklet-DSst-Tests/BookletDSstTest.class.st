@@ -40,6 +40,121 @@ class has been obtained, through the message `class` defined as follows:"
 BookletDSstTest >> esug2024MassimoNocentiniTalkNotebook: thisNotebook [
 
 	<notebook>
+	thisNotebook title: 'Notebooks'.
+
+	"
+# Notebooks
+
+by Massimo Nocentini, PhD.
+
+"
+
+	"
+## Outliners
+
+They represent objects using Roassal shapes, please _inspect_ the following ones:
+"
+
+	21 / 13.
+
+	3 ~~> (4 ~~> nil).
+
+	thisNotebook outside: [ Object ].
+
+	"
+## Microdown
+
+Use the following presenter to render the `syntax.md` file under Microdown.
+"
+	MicDocumentBrowserPangoPresenter
+		open;
+		itself: nil.
+
+	"
+## Pango shapes
+
+they allows us to use the [GMarkup language](https://docs.gtk.org/Pango/pango_markup.html) to format text in a _single_ Roassal shape.
+"
+
+	RSGroup new
+		add: (RSPangoMarkup new text:
+					 'hello <span foreground="red"  font_family="Ubuntu" size="larger" weight="bold">world</span>!');
+		yourself.
+
+	"
+## tree-sitter
+
+We support parsing and syntax highlights for the following languages:
+- _c_
+
+```language=c
+int main (int argc, char **argv) { printf(""Hello world!""); }
+```
+
+- _json_
+
+```language=json
+{ ""adf"": [ 3 ]}
+```
+
+- _javascript_
+
+```language=javascript
+var canvas = new fabric.Canvas('c');
+
+// create a rectangle with angle=45
+var rect = new fabric.Rect({
+  left: 100,
+  top: 100,
+  fill: 'red',
+  width: 20,
+  height: 20,
+  angle: 45
+});
+
+canvas.add(rect);
+```
+
+- _python_
+
+```language=python
+def fib(n):
+	# comment
+	a, b = 0, 1
+	while a < n:
+		print(a, end=' ')
+		a, b = b, a+b
+	
+fib (1000)
+```
+via a VM plugin.
+"
+
+	thisNotebook outside: [
+		(TSLanguage c parser treeOfString:
+			 'int main (int argc, char **argv) { printf("Hello world!"); }')
+			ast ].
+
+	"## Pdf shapes"
+
+	('/home/mn/Downloads/PBE-2022-03-26-index.pdf' asFileReference asPdf
+		 pages at: 288) asGroup.
+
+	"Pay attention to the new tabs in the Calypso browser"
+
+	(LibPopplerTestCase >> #examplePBE_objectModel)
+		browse;
+		itself: 'Have a look at the other methods too.'.
+
+	"{{<span size=""20pt"" foreground=""red"">}}Install this notebook in a compiled method and attach the `<notebook>` pragma to it.{{</span>}}"
+
+	BookletDSstTest >> #esug2024MassimoNocentiniTalkNotebook:
+]
+
+{ #category : 'notebook' }
+BookletDSstTest >> esug2024MassimoNocentiniTalkNotebookMoreDetailed: thisNotebook [
+
+	<notebook>
 	| l |
 	thisNotebook title: 'Notebooks'.
 
@@ -70,7 +185,8 @@ For the curious reader, Knuth shows [many interesting programs](https://cs.stanf
 > The idea of a notebook is to have an interactive document that 
 > freely mixes code, results, graphics, text and everything else.
 "
-	thisNotebook outside: [ Object ].
+	thisNotebook outside: [ SortedCollection ].
+
 	('/home/mn/Downloads/PBE-2022-03-26-index.pdf' asFileReference asPdf
 		 pages at: 288) asGroup.
 	"
