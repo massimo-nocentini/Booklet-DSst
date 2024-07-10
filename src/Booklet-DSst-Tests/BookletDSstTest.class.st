@@ -37,6 +37,142 @@ class has been obtained, through the message `class` defined as follows:"
 ]
 
 { #category : 'notebook' }
+BookletDSstTest >> esug2024MassimoNocentiniFinalTalkNotebook: thisNotebook [
+
+	<notebook>
+	thisNotebook title: 'Notebooks'.
+
+	"
+# ESUG24: Notebooks
+
+Let's explore a very simple string:
+
+"
+
+	'ESUG24' asByteArray.
+
+	"
+# New Roassal shapes
+
+In addition to the `Documentation Browser`, let's introduce two new Roassal shapes:
+
+"
+
+	RSGroup new
+		add: (RSPangoMarkup new
+				 text: 'hello 
+				
+				<span font_family="Monaco" size="larger" foreground="red">world</span>!';
+				 yourself);
+		yourself.
+
+	((FileSystem root / 'Users' / 'mn' / 'Downloads'
+	  / 'PBE-2022-03-26-index.pdf') asFileReference asPdf pages at: 288)
+		asGroup.
+
+	"
+# Microdown extensions
+
+## TeX environments
+
+For mathematics, we have support standard `eq`uations
+
+$$
+a =  {{\iiiint_V \mu(t,u,v,w) \,dt\,du\,dv\,dw }\over {\pi}}
+$$
+
+or `tikZ` scripts
+
+$$texEnv=tikZ
+\usetikzlibrary {mindmap}
+\begin{tikzpicture}
+  \path[mindmap,concept color=black,text=white]
+    node[concept] {Computer Science}
+    [clockwise from=0]
+    % note that `sibling angle' can only be defined in
+    % `level 1 concept/.append style={}'
+    child[concept color=green!50!black] {
+      node[concept] {practical}
+      [clockwise from=90]
+      child { node[concept] {algorithms} }
+      child { node[concept] {data structures} }
+      child { node[concept] {pro\-gramming languages} }
+      child { node[concept] {software engineer\-ing} }
+    }
+    % note that the `concept color' is passed to the `child'(!)
+    child[concept color=blue] {
+      node[concept] {applied}
+      [clockwise from=-30]
+      child { node[concept] {databases} }
+      child { node[concept] {WWW} }
+    }
+    child[concept color=red] { node[concept] {technical} }
+    child[concept color=orange] { node[concept] {theoretical} };
+\end{tikzpicture}
+$$
+
+"
+
+	"
+## tree-sitter parsing
+
+We support parsing and syntax highlights for the following languages:
+- _c_
+
+```language=c
+int main (int argc, char **argv) { 
+	// just a comment
+	printf(""Hello world!""); 
+}
+```
+
+- _json_
+
+```language=json
+{ ""adf"": [ 3 ]}
+```
+
+- _javascript_
+
+```language=javascript
+var canvas = new fabric.Canvas('c');
+
+// create a rectangle with angle=45
+var rect = new fabric.Rect({
+  left: 100,
+  top: 100,
+  fill: 'red',
+  width: 20,
+  height: 20,
+  angle: 45
+});
+
+canvas.add(rect);
+```
+
+- _python_
+
+```language=python
+def fib(n):
+	# comment
+	a, b = 0, 1
+	while a < n:
+		print(a, end=' ')
+		a, b = b, a+b
+	
+fib (1000)
+```
+via a VM plugin.
+"
+
+	"
+{{<span size=""1618.1%"">}}Merci{{</span>}}
+"
+
+	'done.'
+]
+
+{ #category : 'notebook' }
 BookletDSstTest >> esug2024MassimoNocentiniTalkNotebook: thisNotebook [
 
 	<notebook>
@@ -137,8 +273,9 @@ via a VM plugin.
 
 	"## Pdf shapes"
 
-	('/home/mn/Downloads/PBE-2022-03-26-index.pdf' asFileReference asPdf
-		 pages at: 288) asGroup.
+	((FileSystem root / 'Users' / 'mn' / 'Downloads'
+	  / 'PBE-2022-03-26-index.pdf') asFileReference asPdf pages at: 288)
+		asGroup.
 
 	"Pay attention to the new tabs in the Calypso browser"
 
@@ -290,4 +427,14 @@ BookletDSstTest >> testBasicObjectsNotebook [
 
 	self exportSlotsGraphOf:
 		(self class >> #basicPharoObjectsNotebook:) asNotebook
+]
+
+{ #category : 'tests' }
+BookletDSstTest >> testESUG24Notebook [
+
+	self timeLimit: 1 minute.
+
+	self exportSlotsGraphOf:
+		(BookletDSstTest >> #esug2024MassimoNocentiniFinalTalkNotebook:)
+			asNotebook
 ]
