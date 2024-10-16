@@ -20,6 +20,10 @@ BaselineOfBookletDSst >> baseline: spec [
 			with: [
 			spec repository: 'github://massimo-nocentini/pharo-vm:pharo-10' ]."
 		spec
+			baseline: 'Delimcc'
+			with: [ spec repository: 'github://massimo-nocentini/delimcc.st' ].
+
+		spec
 			baseline: 'Microdown'
 			with: [
 			spec repository: 'github://massimo-nocentini/Microdown:dev' ].
@@ -119,6 +123,11 @@ BaselineOfBookletDSst >> baseline: spec [
 			baseline: 'MicroKanren'
 			with: [
 			spec repository: 'github://massimo-nocentini/microkanrenst' ].
+
+		spec
+			baseline: 'PNRRCN4UrbanMobility'
+			with: [
+			spec repository: 'github://massimo-nocentini/PNRRCN4-UrbanMobility' ].
 
 		"Finally, we can now load the notebooks."
 		spec package: 'Booklet-DSst-Tests' ]
