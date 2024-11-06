@@ -26,7 +26,7 @@ BaselineOfBookletDSst >> baseline: spec [
 		spec
 			baseline: 'Microdown'
 			with: [
-			spec repository: 'github://massimo-nocentini/Microdown:dev' ].
+			spec repository: 'github://pillar-markup/Microdown:dev' ].
 
 		"spec
 			baseline: 'BeautifulComments'
