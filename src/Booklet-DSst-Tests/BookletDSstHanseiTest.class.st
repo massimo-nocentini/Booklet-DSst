@@ -19,3 +19,13 @@ BookletDSstHanseiTest >> testExportCompiledMethods [
 		exportSlotsGraphOf: WolframHanseiTestCase >> #testGrassModelWolfram
 		pathSuffix: 'testGrassModelWolfram'
 ]
+
+{ #category : 'tests' }
+BookletDSstHanseiTest >> testExportCoreCompiledMethods [
+
+	self exportSlotsGraphOf: BlockClosure >> #hansei pathSuffix: 'hansei'.
+
+	self
+		exportSlotsGraphOf: Collection >> #asUniformWeightsDictionary
+		pathSuffix: 'asUniformWeightsDictionary'
+]
