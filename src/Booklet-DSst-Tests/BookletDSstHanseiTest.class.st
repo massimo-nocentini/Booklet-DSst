@@ -16,7 +16,7 @@ BookletDSstHanseiTest >> testExportCompiledMethods [
 		pathSuffix: 'wetgrassmodel'.
 
 	self
-		exportSlotsGraphOf: WolframHanseiTestCase >> #testGrassModelWolfram
+		exportSlotsGraphOf: WolframHanseiTestCase >> #testGrassModel
 		pathSuffix: 'testGrassModelWolfram'
 ]
 
