@@ -8,8 +8,14 @@ Class {
 }
 
 { #category : 'tests' }
-BookletDSstHanseiTest >> testExportCompiledMethodOfWetGrassModel [
+BookletDSstHanseiTest >> testExportCompiledMethods [
 
-	self exportSlotsGraphOf: THanseiTestCase
-		>> #grassModelPriorRain:rain:priorSprinkler:sprinkler:otherwise:
+	self
+		exportSlotsGraphOf: THanseiTestCase
+			>> #grassModelPriorRain:rain:priorSprinkler:sprinkler:otherwise:
+		pathSuffix: 'wetgrassmodel'.
+
+	self
+		exportSlotsGraphOf: WolframHanseiTestCase >> #testGrassModelWolfram
+		pathSuffix: 'testGrassModelWolfram'
 ]
