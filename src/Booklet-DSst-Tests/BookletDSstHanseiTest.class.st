@@ -27,5 +27,13 @@ BookletDSstHanseiTest >> testExportCoreCompiledMethods [
 
 	self
 		exportSlotsGraphOf: Collection >> #asUniformWeightsDictionary
-		pathSuffix: 'asUniformWeightsDictionary'
+		pathSuffix: 'asUniformWeightsDictionary'.
+
+	self
+		exportSlotsGraphOf: Collection >> #asSearchTree
+		pathSuffix: 'collection-asSearchTree'.
+
+	self
+		exportSlotsGraphOf: Dictionary >> #asSearchTree
+		pathSuffix: 'dictionary-asSearchTree'
 ]
