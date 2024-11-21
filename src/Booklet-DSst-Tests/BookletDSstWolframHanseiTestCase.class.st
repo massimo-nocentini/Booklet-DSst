@@ -27,7 +27,7 @@ BookletDSstWolframHanseiTestCase >> testGrassModelCloud [
 	self exportSlotsGraphOf: super testGrassModelCloud pathSuffix: 'mean'.
 
 	self
-		exportSlotsGraphOf: WolframHanseiTestCase >> #testGrassModel
+		exportSlotsGraphOf: WolframHanseiTestCase >> #testGrassModelCloud
 		pathSuffix: 'test-method'.
 
 	self
