@@ -20,3 +20,9 @@ BookletDSstWolframHanseiTestCase >> testCatalanParens [
 		exportSlotsGraphOf: THanseiTestCase >> #catalanParens:pickProb:
 		pathSuffix: 'model-method'
 ]
+
+{ #category : 'tests' }
+BookletDSstWolframHanseiTestCase >> testGrassModelCloud [
+
+	self exportSlotsGraphOf: super testGrassModelCloud pathSuffix: 'mean'
+]
