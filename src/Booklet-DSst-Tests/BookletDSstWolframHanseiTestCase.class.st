@@ -8,5 +8,15 @@ Class {
 { #category : 'tests' }
 BookletDSstWolframHanseiTestCase >> testCatalanParens [
 
-	self exportSlotsGraphOf: super testCatalanParens
+	self timeLimit: 1 minute.
+
+	self exportSlotsGraphOf: super testCatalanParens pathSuffix: 'avg'.
+
+	self
+		exportSlotsGraphOf: WolframHanseiTestCase >> #testCatalanParens
+		pathSuffix: 'test-method'.
+
+	self
+		exportSlotsGraphOf: THanseiTestCase >> #catalanParens:pickProb:
+		pathSuffix: 'model-method'
 ]
