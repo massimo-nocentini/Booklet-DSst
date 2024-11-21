@@ -24,5 +24,14 @@ BookletDSstWolframHanseiTestCase >> testCatalanParens [
 { #category : 'tests' }
 BookletDSstWolframHanseiTestCase >> testGrassModelCloud [
 
-	self exportSlotsGraphOf: super testGrassModelCloud pathSuffix: 'mean'
+	self exportSlotsGraphOf: super testGrassModelCloud pathSuffix: 'mean'.
+
+	self
+		exportSlotsGraphOf: WolframHanseiTestCase >> #testGrassModel
+		pathSuffix: 'test-method'.
+
+	self
+		exportSlotsGraphOf:
+		THanseiTestCase >> #grassModelWithCloud:rain:sprinkler:otherwise:
+		pathSuffix: 'model-method'
 ]
