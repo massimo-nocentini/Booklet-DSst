@@ -8,6 +8,8 @@ Class {
 { #category : 'tests' }
 BookletDSstWolframCoreTestCase >> testBinomial [
 
+	self timeLimit: 1 minute.
+
 	self exportSlotsGraphOf: super testBinomial pathSuffix: 'binomial'.
 
 	self
@@ -16,5 +18,9 @@ BookletDSstWolframCoreTestCase >> testBinomial [
 
 	self
 		exportSlotsGraphOf: Collection >> #binomial:asWolframExpression:
-		pathSuffix: 'binomial-method'
+		pathSuffix: 'binomial-method'.
+
+	self
+		exportSlotsGraphOf: WolframExpression >> #binomial:
+		pathSuffix: 'binomial-function'
 ]
