@@ -1,8 +1,9 @@
 Class {
 	#name : 'BookletDSstWolframHanseiTestCase',
 	#superclass : 'WolframHanseiTestCase',
-	#category : 'Booklet-DSst-Tests',
-	#package : 'Booklet-DSst-Tests'
+	#category : 'Booklet-DSst-Tests-Wolfram language',
+	#package : 'Booklet-DSst-Tests',
+	#tag : 'Wolfram language'
 }
 
 { #category : 'tests' }

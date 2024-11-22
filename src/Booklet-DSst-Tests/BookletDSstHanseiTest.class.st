@@ -3,8 +3,9 @@ Class {
 	#superclass : 'TestCase',
 	#traits : 'TIceImagesExporting',
 	#classTraits : 'TIceImagesExporting classTrait',
-	#category : 'Booklet-DSst-Tests',
-	#package : 'Booklet-DSst-Tests'
+	#category : 'Booklet-DSst-Tests-Hansei language',
+	#package : 'Booklet-DSst-Tests',
+	#tag : 'Hansei language'
 }
 
 { #category : 'tests' }
