@@ -20,13 +20,8 @@ BaselineOfBookletDSst >> baseline: spec [
 			with: [
 			spec repository: 'github://massimo-nocentini/pharo-vm:pharo-10' ]."
 		spec
-			baseline: 'Delimcc'
-			with: [ spec repository: 'github://massimo-nocentini/delimcc.st' ].
-
-		spec
 			baseline: 'Microdown'
-			with: [
-			spec repository: 'github://pillar-markup/Microdown:dev' ].
+			with: [ spec repository: 'github://pillar-markup/Microdown:dev' ].
 
 		"spec
 			baseline: 'BeautifulComments'
@@ -45,6 +40,10 @@ BaselineOfBookletDSst >> baseline: spec [
 			baseline: 'ContainersEssentials'
 			with: [
 			spec repository: 'github://massimo-nocentini/Containers-Essentials' ].
+
+		spec
+			baseline: 'Delimcc'
+			with: [ spec repository: 'github://massimo-nocentini/delimcc.st' ].
 
 		spec
 			baseline: 'MetaSTExporter'
