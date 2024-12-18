@@ -37,6 +37,11 @@ BaselineOfBookletDSst >> baseline: spec [
 			with: [ spec repository: 'github://massimo-nocentini/SmaCC' ]."
 
 		spec
+			baseline: 'ContainersCategory'
+			with: [
+			spec repository: 'github://massimo-nocentini/Containers-Category' ].
+
+		spec
 			baseline: 'ContainersEssentials'
 			with: [
 			spec repository: 'github://massimo-nocentini/Containers-Essentials' ].
