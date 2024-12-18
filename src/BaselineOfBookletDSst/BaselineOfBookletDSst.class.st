@@ -46,9 +46,9 @@ BaselineOfBookletDSst >> baseline: spec [
 			with: [
 			spec repository: 'github://massimo-nocentini/Containers-Essentials' ].
 
-		"spec
+		spec
 			baseline: 'Delimcc'
-			with: [ spec repository: 'github://massimo-nocentini/delimcc.st' ]."
+			with: [ spec repository: 'github://massimo-nocentini/delimcc.st' ].
 
 		spec
 			baseline: 'MetaSTExporter'
