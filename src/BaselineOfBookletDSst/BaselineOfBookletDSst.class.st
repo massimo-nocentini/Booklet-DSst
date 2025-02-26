@@ -20,6 +20,10 @@ BaselineOfBookletDSst >> baseline: spec [
 			with: [
 			spec repository: 'github://massimo-nocentini/pharo-vm:pharo-10' ]."
 		spec
+			baseline: 'Teapot'
+			with: [ spec repository: 'github://zeroflag/Teapot/source' ].
+
+		spec
 			baseline: 'Microdown'
 			with: [ spec repository: 'github://pillar-markup/Microdown:dev' ].
 
