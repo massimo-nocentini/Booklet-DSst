@@ -24,6 +24,11 @@ BaselineOfBookletDSst >> baseline: spec [
 			with: [ spec repository: 'github://zeroflag/Teapot/source' ].
 
 		spec
+			baseline: 'Alexandrie'
+			with: [
+			spec repository: 'github://pharo-graphics/Alexandrie:dev/src' ].
+
+		spec
 			baseline: 'Microdown'
 			with: [ spec repository: 'github://pillar-markup/Microdown:dev' ].
 
