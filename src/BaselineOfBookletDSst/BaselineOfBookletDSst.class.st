@@ -150,8 +150,10 @@ BaselineOfBookletDSst >> baseline: spec [
 			with: [
 			spec repository: 'github://massimo-nocentini/PNRRCN4-UrbanMobility' ].
 
-		"Finally, we can now load the notebooks."
-		spec package: 'Booklet-DSst-Tests' ]
+		spec
+			baseline: 'BookletDSstWiki'
+			with: [
+			spec repository: 'github://massimo-nocentini/Booklet-DSst.wiki' ] ]
 ]
 
 { #category : 'documentation' }
