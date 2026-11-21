@@ -5,7 +5,7 @@ Either load it with:
 ```smalltalk
 [ Metacello new
     baseline: 'BookletDSst';
-    repository: 'github://massimo-nocentini/Booklet-DSst/src';
+    repository: 'github://massimo-nocentini/Booklet-DSst:master/src';
     load ] on: MCMergeOrLoadWarning do: [:warning | warning load ]
 ```
 
@@ -13,7 +13,7 @@ or depend on it with:
 
 ```smalltalk
 spec baseline: 'BookletDSst'
-	with: [ spec repository: 'github://massimo-nocentini/Booklet-DSst/src' ]
+	with: [ spec repository: 'github://massimo-nocentini/Booklet-DSst:master/src' ]
 ```
 
 

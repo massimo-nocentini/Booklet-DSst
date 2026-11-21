@@ -7,153 +7,110 @@ Class {
 
 { #category : 'baselines' }
 BaselineOfBookletDSst >> baseline: spec [
+	"Pharo 15 ships PharoBootstrap, Spec2, NewTools and the core of Microdown: no spec for the first three.
+	The projects of github://massimo-nocentini use the form github://massimo-nocentini/<repository>:<default branch>/<source directory>, the same in every baseline that references them."
 
 	<baseline>
 	spec for: #common do: [
-		spec
-			baseline: 'PharoBootstrap'
-			with: [ spec repository: 'github://pharo-project/pharo:Pharo13' ].
-
-		spec
-			baseline: 'Spec2'
-			with: [ spec repository: 'github://pharo-spec/Spec:Pharo13' ].
-
-		spec
-			baseline: 'NewTools'
-			with: [ spec repository: 'github://pharo-spec/NewTools:Pharo13' ].
-
 		"spec
 			baseline: 'VMMaker'
 			with: [
 			spec repository: 'github://massimo-nocentini/pharo-vm:pharo-10' ]."
 
-		spec
-			baseline: 'Teapot'
-			with: [ spec repository: 'github://zeroflag/Teapot/source' ].
+		"The groups Deployment and Tools: the default group loads Teapot-Tests, which pulls Zinc and Zodiac from svenvc's master over the ones of Pharo 15 and breaks ZnServer."
+		spec baseline: 'Teapot' with: [
+			spec
+				repository: 'github://zeroflag/Teapot:master/source';
+				loads: #( 'Deployment' 'Tools' ) ].
 
 		spec
 			baseline: 'Alexandrie'
 			with: [
 			spec repository: 'github://pharo-graphics/Alexandrie:dev/src' ].
 
+		"The branch of Microdown that Pharo 15 is built with (BaselineOfPharo)."
 		spec
 			baseline: 'Microdown'
-			with: [ spec repository: 'github://pillar-markup/Microdown:dev' ].
+			with: [
+			spec repository: 'github://pillar-markup/Microdown:Pharo15/src' ].
 
 		"spec
 			baseline: 'BeautifulComments'
 			with: [
 			spec repository: 'github://pillar-markup/BeautifulComments:dev' ]."
 
-		spec baseline: 'nonlayeredtidytreesst' with: [
-			spec repository:
-				'github://massimo-nocentini/non-layered-tidy-trees.st' ].
-
 		"spec
 			baseline: 'SmaCC'
 			with: [ spec repository: 'github://massimo-nocentini/SmaCC' ]."
 
-		spec
-			baseline: 'ContainersCategory'
-			with: [
-			spec repository: 'github://massimo-nocentini/Containers-Category' ].
+		spec baseline: 'nonlayeredtidytreesst' with: [
+			spec repository: 'github://massimo-nocentini/non-layered-tidy-trees.st:master/src-pharo' ].
 
-		spec
-			baseline: 'ContainersEssentials'
-			with: [
-			spec repository: 'github://massimo-nocentini/Containers-Essentials' ].
+		spec baseline: 'ContainersCategory' with: [
+			spec repository: 'github://massimo-nocentini/Containers-Category:master/src' ].
 
-		spec
-			baseline: 'Delimcc'
-			with: [ spec repository: 'github://massimo-nocentini/delimcc.st' ].
+		spec baseline: 'ContainersEssentials' with: [
+			spec repository: 'github://massimo-nocentini/Containers-Essentials:master' ].
 
-		spec
-			baseline: 'MetaSTExporter'
-			with: [
-			spec repository: 'github://massimo-nocentini/MetaSTExporter' ].
+		spec baseline: 'Delimcc' with: [
+			spec repository: 'github://massimo-nocentini/delimcc.st:master' ].
 
-		spec
-			baseline: 'LibPoppler'
-			with: [
-			spec repository: 'github://massimo-nocentini/libpoppler.st' ].
+		spec baseline: 'MetaSTExporter' with: [
+			spec repository: 'github://massimo-nocentini/MetaSTExporter:master/src' ].
 
-		spec
-			baseline: 'Wolfram'
-			with: [ spec repository: 'github://massimo-nocentini/wolfram.st' ].
+		spec baseline: 'LibPoppler' with: [
+			spec repository: 'github://massimo-nocentini/libpoppler.st:master/src' ].
 
-		spec
-			baseline: 'MethodTrackerMN'
-			with: [
-			spec repository: 'github://massimo-nocentini/MethodTracker' ].
+		spec baseline: 'Wolfram' with: [
+			spec repository: 'github://massimo-nocentini/wolfram.st:master/src' ].
 
-		spec
-			baseline: 'Srfi41'
-			with: [ spec repository: 'github://massimo-nocentini/srfi-41st' ].
+		spec baseline: 'MethodTrackerMN' with: [
+			spec repository: 'github://massimo-nocentini/MethodTracker:master/src' ].
 
-		spec
-			baseline: 'ContainersLinks'
-			with: [
-			spec repository: 'github://massimo-nocentini/Containers-Links' ].
+		spec baseline: 'Srfi41' with: [
+			spec repository: 'github://massimo-nocentini/srfi-41st:master' ].
+
+		spec baseline: 'ContainersLinks' with: [
+			spec repository: 'github://massimo-nocentini/Containers-Links:master/src' ].
 
 		spec baseline: 'ContainersLinkedStoragePool' with: [
-			spec repository:
-				'github://massimo-nocentini/Containers-LinkedStoragePool' ].
+			spec repository: 'github://massimo-nocentini/Containers-LinkedStoragePool:master' ].
 
 		spec baseline: 'ContainersBinaryTreeAbstract' with: [
-			spec repository:
-				'github://massimo-nocentini/Containers-BinaryTreeAbstract' ].
+			spec repository: 'github://massimo-nocentini/Containers-BinaryTreeAbstract:master/src' ].
 
 		spec baseline: 'ContainersBinomialHeap' with: [
-			spec repository:
-				'github://massimo-nocentini/Containers-BinomialHeap' ].
+			spec repository: 'github://massimo-nocentini/Containers-BinomialHeap:master/src' ].
 
-		spec
-			baseline: 'ContainersSBRAL'
-			with: [
-			spec repository: 'github://massimo-nocentini/Containers-SBRAL' ].
+		spec baseline: 'ContainersSBRAL' with: [
+			spec repository: 'github://massimo-nocentini/Containers-SBRAL:master/src' ].
 
-		spec
-			baseline: 'ContainersHeapQ'
-			with: [
-			spec repository: 'github://massimo-nocentini/Containers-HeapQ' ].
+		spec baseline: 'ContainersHeapQ' with: [
+			spec repository: 'github://massimo-nocentini/Containers-HeapQ:master/src' ].
 
 		spec baseline: 'ContainersRedBlackSet' with: [
-			spec repository:
-				'github://massimo-nocentini/Containers-RedBlackSet' ].
+			spec repository: 'github://massimo-nocentini/Containers-RedBlackSet:master/src' ].
 
-		spec
-			baseline: 'ContainersSplayHeap'
-			with: [
-			spec repository: 'github://massimo-nocentini/Containers-SplayHeap' ].
+		spec baseline: 'ContainersSplayHeap' with: [
+			spec repository: 'github://massimo-nocentini/Containers-SplayHeap:master/src' ].
 
 		spec baseline: 'ContainersLeftistHeap' with: [
-			spec repository:
-				'github://massimo-nocentini/Containers-LeftistHeap' ].
+			spec repository: 'github://massimo-nocentini/Containers-LeftistHeap:master/src' ].
 
-		spec
-			baseline: 'ContainersSkipList'
-			with: [
-			spec repository: 'github://massimo-nocentini/Containers-SkipList' ].
+		spec baseline: 'ContainersSkipList' with: [
+			spec repository: 'github://massimo-nocentini/Containers-SkipList:master/src' ].
 
-		spec
-			baseline: 'ContainersCons'
-			with: [
-			spec repository: 'github://massimo-nocentini/Containers-Cons' ].
+		spec baseline: 'ContainersCons' with: [
+			spec repository: 'github://massimo-nocentini/Containers-Cons:master/src' ].
 
-		spec
-			baseline: 'MicroKanren'
-			with: [
-			spec repository: 'github://massimo-nocentini/microkanrenst' ].
+		spec baseline: 'MicroKanren' with: [
+			spec repository: 'github://massimo-nocentini/microkanrenst:master' ].
 
-		spec
-			baseline: 'PNRRCN4UrbanMobility'
-			with: [
-			spec repository: 'github://massimo-nocentini/PNRRCN4-UrbanMobility' ].
+		spec baseline: 'PNRRCN4UrbanMobility' with: [
+			spec repository: 'github://massimo-nocentini/PNRRCN4-UrbanMobility:master/src/smalltalk' ].
 
-		spec
-			baseline: 'BookletDSstWiki'
-			with: [
-			spec repository: 'github://massimo-nocentini/Booklet-DSst.wiki' ] ]
+		spec baseline: 'BookletDSstWiki' with: [
+			spec repository: 'github://massimo-nocentini/Booklet-DSst.wiki:master/src' ] ]
 ]
 
 { #category : 'documentation' }

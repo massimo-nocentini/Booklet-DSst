@@ -10,12 +10,12 @@ wget https://github.com/massimo-nocentini/pharo-vm/releases/latest/download/phar
 
 unzip pharo-vm-ubuntu.zip
 
-curl https://get.pharo.org/64/120 | bash
+curl https://get.pharo.org/64/150 | bash
 
 ./pharo Pharo.image eval "
 [ Metacello new
     baseline: 'BookletDSst';
-    repository: 'github://massimo-nocentini/Booklet-DSst/src';
+    repository: 'github://massimo-nocentini/Booklet-DSst:master/src';
     load ] on: MCMergeOrLoadWarning do: [:warning | warning load ].
 
 Smalltalk snapshot: true andQuit: true."
