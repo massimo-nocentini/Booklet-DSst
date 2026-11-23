@@ -1,3 +1,20 @@
+"
+I am the baseline of Booklet-DSst: I load the projects that the booklet uses. I declare no package, only the baselines of other projects (Microdown in its branch for Pharo 15).
+
+```smalltalk
+[ Metacello new
+	baseline: 'BookletDSst';
+	repository: 'github://massimo-nocentini/Booklet-DSst:master/src';
+	load ]
+		on: MCMergeOrLoadWarning
+		do: [ :warning | warning load ]
+```
+
+The methods of my `documentation` protocol are scripts, to run once the projects are loaded:
+
+- `runAllTests` runs the tests of the Containers packages it lists and of `MethodTracker-Visualizations`.
+- `scriptCoreMessagesForDoc` and the others whose name ends with `ForDoc` each export the implementors and the senders of a list of selectors, with `MetaSTExporter`, to a JSON file of the directory `json-for-doc` of my Iceberg repository.
+"
 Class {
 	#name : 'BaselineOfBookletDSst',
 	#superclass : 'BaselineOf',
